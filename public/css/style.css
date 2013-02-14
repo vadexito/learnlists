@@ -46,7 +46,7 @@ div.container a.brand {
     background: url("/images/books.jpg");
     text-align: center;
     color:#f0f6f8;
-    
+    margin-bottom : 50px;    
 }
 
 #jumbotron-header h1 {
@@ -92,5 +92,9 @@ div.container a.brand {
 .img-find {
     margin-left:20px;
     margin-right:20px;
+}
+
+#gravatar-link {
+    padding:5px 0 5px 0;
 }
 

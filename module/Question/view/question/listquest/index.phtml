@@ -14,34 +14,23 @@ $this->placeholder('header')->captureStart();
     <thead>
         <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Questions</th>
+            <th>Owner / Contributors</th>
+            <th>Date last contribution</th>
         </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-    <ul>
 <?php foreach ($lists as $list) : ?>
-        <li><a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $list->title; ?></a></li>
+      <tr>
+        <td><?php echo $list->id; ?></td>
+        <td>category</td>
+        <td><a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $list->title; ?></a></td>
+        <td><?php echo count($list->questions); ?></td>
+        <td>Author</td>
+        <td>Date</td>
+      </tr>
 <?php endforeach; ?>
-    </ul>
+    </tbody>
 </table>
