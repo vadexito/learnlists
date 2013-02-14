@@ -1,0 +1,47 @@
+<?php
+
+$title = 'Learn at LearnLists';
+$this->headTitle($title);
+$this->placeholder('header')->captureStart();
+?>
+<header id="jumbotron-header">
+    <div class="container">
+        <h1><?php echo $this->escapeHtml($title); ?></h1>
+    </div>
+</header>
+<?php $this->placeholder('header')->captureEnd(); ?>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+    <ul>
+<?php foreach ($lists as $list) : ?>
+        <li><a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $list->title; ?></a></li>
+<?php endforeach; ?>
+    </ul>
+</table>

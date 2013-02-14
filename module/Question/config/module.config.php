@@ -1,0 +1,73 @@
+<?php
+
+return [
+    'controllers' => [
+        'invokables' => [
+            'Question\Controller\Question' => 'Question\Controller\QuestionController',
+            'Question\Controller\Listquest' => 'Question\Controller\ListquestController',
+        ],
+    ],
+    'router' => [
+        'routes' => [
+            'question' => [
+                'type'    => 'segment',
+                'options' => [
+                    'route'    => '/question[/:action][/:id]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => 'Question\Controller\Question',
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'list' => [
+                'type'    => 'segment',
+                'options' => [
+                    'route'    => '/list[/:action][/:id]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => 'Question\Controller\Listquest',
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'view_manager' => [
+       'template_path_stack' => [
+            'question' => __DIR__ . '/../view',
+        ],
+    ],
+    'view_helpers' => [
+        'invokables' => [
+            'replaceBlank' => 'Question\View\Helper\ReplaceBlank',
+        ],
+    ],
+    'doctrine' => [
+        'driver' => [
+            // defines an annotation driver with two paths, and names it `my_annotation_driver`
+            'Question_driver' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => [
+                    __DIR__ . '/../src/Question/Entity',
+                    'another/path'
+                ],
+            ],
+            // default metadata driver, aggregates all other drivers into a single one.
+            // Override `orm_default` only if you know what you're doing
+            'orm_default' => [
+                'drivers' => [
+                    // register `my_annotation_driver` for any entity under namespace `My\Namespace`
+                    'Question\Entity' => 'Question_driver'
+                ]
+            ]
+        ],
+    ],
+];
