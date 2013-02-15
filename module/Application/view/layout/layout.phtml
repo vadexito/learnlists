@@ -28,31 +28,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('LearnLists') ?></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Learn') ?></a></li>
-                            <li><a href="<?php echo $this->url('list') ?>"><?php echo $this->translate('Lists') ?></a></li>
-                            <li><a href="<?php echo $this->url('list') ?>"><?php echo $this->translate('Add new list') ?></a></li>
-                        </ul>
-                        <ul class="nav pull-right">
-                            <?php if (!$this->zfcUserIdentity()) :?>
-                            <li><a href="<?php echo $this->url('zfcuser/login'); ?>"><?php echo $this->translate('Sign In'); ?></a></li>
-                            <li><a href="<?php echo $this->url('zfcuser/register'); ?>"><?php echo $this->translate('Sign Up'); ?></a></li>
-                            <?php else : ?>
-                            <li><a id="gravatar-link" href="<?php echo $this->url('zfcuser/logout'); ?>">
-                                    <?php echo $this->gravatar($this->zfcUserIdentity()->getEmail(),['img_size' => '30px']) ?>
-                                </a>
-                            </li>    
-                            <li><a href="<?php echo $this->url('zfcuser/logout'); ?>">                                    
-                                    <?php echo $this->zfcUserDisplayName() ?>                                    
-                                </a>
-                            </li>
-                            <li><a href="<?php echo $this->url('zfcuser/logout'); ?>"><?php echo $this->translate('Log out'); ?></a></li>
-                            <div style="clear:both;"></div>
-                            <?php endif; ?>
-                        </ul>                        
-                    </div><!--/.nav-collapse -->
+<?php
+$partial = ['menu.phtml','default'];
+$this->navigation('navigation')->menu()->setPartial($partial);
+echo $this->navigation('navigation')->menu()->render();
+?>
                 </div>
             </div>
         </div>

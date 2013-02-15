@@ -22,7 +22,7 @@ $settings = array(
      * instead of the default one provided. Default is ZfcUser\Entity\User.
      * The entity class should implement ZfcUser\Entity\UserInterface
      */
-    //'user_entity_class' => 'ZfcUser\Entity\User',
+     'user_entity_class' => 'ZfcUserDoctrineORM\Entity\User',
 
     /**
      * Enable registration
@@ -51,7 +51,7 @@ $settings = array(
      * Default value: array containing 'ZfcUser\Authentication\Adapter\Db' with priority 100
      * Accepted values: array containing services that implement 'ZfcUser\Authentication\Adapter\ChainableAdapter'
      */
-    'auth_adapters' => array( 100 => 'ZfcUser\Authentication\Adapter\Db' ),
+    //'auth_adapters' => array( 100 => 'ZfcUser\Authentication\Adapter\Db' ),
 
     /**
      * Enable Display Name

@@ -12,17 +12,57 @@
  */
 
 return [
-    'db' => array(
+    'db' => [
         'driver'         => 'Pdo',
-        'dsn'            => 'mysql:dbname=fenovev;host=localhost',
-        'driver_options' => array(
+        'dsn'            => 'mysql:dbname=learnlists_local;host=localhost',
+        'driver_options' => [
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
             'Zend\Db\Adapter\Adapter'
                     => 'Zend\Db\Adapter\AdapterServiceFactory',
-        ),
-    ),
+        ],
+    ],
+    'navigation' => [
+         'default' => [
+             [
+                 'id' => 'home',
+                 'label' => 'Learnlists',
+                 'route' => 'home',
+                 'class' => 'brand'
+             ],
+             [
+                 'id' => 'list_show',
+                 'label' => 'Learn',
+                 'route' => 'list'
+             ],
+             [
+                 'id' => 'list_create',
+                 'label' => 'New list',
+                 'route' => 'list',
+             ],
+             [
+                 'id' => 'login',
+                 'label' => 'Sign In',
+                 'route' => 'zfcuser/login',
+             ],
+             [
+                 'id' => 'register',
+                 'label' => 'Sign Up',
+                 'route' => 'zfcuser/register',
+             ],
+             [
+                 'id' => 'logout',
+                 'label' => 'Log out',
+                 'route' => 'zfcuser/logout',
+             ],
+             [
+                 'id' => 'profile',
+                 'label' => '',
+                 'route' => 'home',
+             ],
+         ]
+     ]
 ];

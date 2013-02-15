@@ -17,7 +17,7 @@ $this->placeholder('header')->captureStart();
             <th>Category</th>
             <th>Title</th>
             <th>Questions</th>
-            <th>Owner / Contributors</th>
+            <th>Owner</th>
             <th>Date last contribution</th>
         </tr>
     </thead>
@@ -28,8 +28,8 @@ $this->placeholder('header')->captureStart();
         <td>category</td>
         <td><a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $list->title; ?></a></td>
         <td><?php echo count($list->questions); ?></td>
-        <td>Author</td>
-        <td>Date</td>
+        <td><?php echo $this->gravatar($list->author->getEmail(),['img_size' => '30px']);echo ' '.$this->zfcUserDisplayName($list->author) ?></td>
+        <td><?php echo $list->creationDate->format(\Zend\Stdlib\DateTime::W3C); ?></td>
       </tr>
 <?php endforeach; ?>
     </tbody>

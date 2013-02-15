@@ -1,0 +1,21 @@
+<?php echo $this->navigation()->menu()->htmlify($this->container->findById('home')), PHP_EOL;?>
+<div class="nav-collapse collapse">
+    <ul class="nav">
+        <li class="active"><?php echo $this->navigation()->menu()->htmlify($this->container->findById('list_show')), PHP_EOL;?></li>
+        <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('list_create')), PHP_EOL;?></li>
+    </ul>
+    <ul class="nav pull-right">
+        <?php if (!$this->zfcUserIdentity()) :?>
+        <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('login')), PHP_EOL;?></li>
+        <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('register')), PHP_EOL;?></li>
+        <?php else : ?>
+        <li><a id="gravatar-link" href="<?php echo $this->url('home'); ?>">
+                <?php echo $this->gravatar($this->zfcUserIdentity()->getEmail(),['img_size' => '30px']) ?>
+            </a>
+        </li>    
+        <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('profile')->setLabel($this->zfcUserDisplayName())), PHP_EOL;?></li>
+        <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('logout')), PHP_EOL;?></a></li>
+        <div style="clear:both;"></div>
+        <?php endif; ?>
+    </ul>                        
+</div><!--/.nav-collapse -->
