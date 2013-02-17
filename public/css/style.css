@@ -42,6 +42,17 @@ div.container a.brand {
   max-width: 1000px;
 }
 
+/*=======================================
+layout nav bar
+=========================================*/
+#gravatar-link {
+    padding:5px 0 5px 0;
+}
+
+/*=======================================
+header
+=========================================*/
+
 #jumbotron-header {
     background: url("/images/books.jpg");
     text-align: center;
@@ -55,13 +66,18 @@ div.container a.brand {
     font-size: 5em;
 }
 
+
+/*=======================================
+question ask page
+=========================================*/
+
 .card{
     border:1px solid #cccccc;
     height: 250px;
     padding: 25px;
 }
 
-#text{
+#question_asked_text{
     font-size: 1.5em;
     font-weight: 500;
     line-height: 1.4;
@@ -70,7 +86,6 @@ div.container a.brand {
 
 #sub-title{
     text-align: center;
-    margin-top:30px;
 }
 
 #results {
@@ -94,7 +109,5 @@ div.container a.brand {
     margin-right:20px;
 }
 
-#gravatar-link {
-    padding:5px 0 5px 0;
-}
+
 

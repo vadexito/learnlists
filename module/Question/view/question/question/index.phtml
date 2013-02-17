@@ -2,11 +2,11 @@
 $this->headScript() ->prependFile($this->basePath() . '/js/backbone.min.js')
                     ->prependFile($this->basePath() . '/js/underscore.min.js');
 
-$this->inlineScript()->prependFile($this->basePath() . '/js/Question/startApp.js');
-$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/View/QuestionView.js');
-$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/Model/Question.js');
-$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/Model/Listquest.js');
-$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/utils/util.js');
+$this->inlineScript()->prependFile($this->basePath() . '/js/Question/startApp.js')
+                     ->prependFile($this->basePath() . '/js/backboneMvc/View/QuestionView.js')
+                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Question.js')
+                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Listquest.js')
+                     ->prependFile($this->basePath() . '/js/backboneMvc/utils/util.js');
 
 $title = 'Learn at LearnLists';
 $this->headTitle($title);
@@ -18,33 +18,40 @@ $this->placeholder('header')->captureStart();?>
 </header>
 <?php $this->placeholder('header')->captureEnd(); ?>
 <article id="question">         
-    <div class="row-fluid well" id="sub-title">        
-        <h4><span id="title-list"></span> (<span id="nb-questions"></span> questions)</h4>   
-        <button id="resetbutton" class="btn btn-warning"><i class="icon-repeat icon-white"></i> Again</button>
+    <div class="row-fluid" id="sub-title">        
+        <div class=" span7 well">
+            <h4><span id="title-list"></span> (<span id="nb-questions"></span> questions) by </h4>   
+            <button id="question_asked_resetbutton" class="btn btn-warning"><i class="icon-repeat icon-white"></i> Again</button>
+        </div>
+        <div class=" span5 well">
+            <h4>Rules :</h4>   
+            <p id="rules"></p>
+        </div>
     </div>    
     <div class="row-fluid">
-        <div class="offset1 span6 card well">
-            <p id="text"></p>
-    <?php        
-    $form->prepare();
-    echo $this->form()->openTag($form);
-    echo $this->formHidden($form->get('id')->setValue($listId));
-    ?>      
-            <div class="input-append input-prepend" id="input-answer-bar">
-                <span class="add-on">
-                    <img id="check-sign" class="answer-sign" src="/images/icons/check.jpg" alt="check" hidden="true" style="max-height:17px;">
-                    <img id="error-sign" class="answer-sign" src="/images/icons/error.jpg" alt="check" hidden="true" style="max-height:15px;">
-                </span>
-                <span class="control-group" id="answer-group">                
-<?php echo $this->formRow($form->get('answer'));?>
-                </span>
-<?php echo $this->formSubmit($form->get('submit'));?>
-                <button id="nextbutton" class="btn btn-primary button-answer">Next</button>    
-                <button id="showanswerbutton" class="btn btn-danger button-answer">Answer?</button>      
-<?php echo $this->form()->closeTag();?> 
-            </div>
+        <div class="span6 card well">            
+            <p id="question_asked_text"></p>            
+            <form action="" method="post" name="questionAskForm" class="form-inline" id="questionAskForm">
+                <input name="id" type="hidden" id="listId" value="<?php echo $listId ?>">         
+                <div class="input-append input-prepend" id="input-answer-bar">
+                    <span class="add-on">
+                        <img id="check-sign" class="answer-sign" src="/images/icons/check.jpg" alt="check" hidden="true" style="max-height:17px;">
+                        <img id="error-sign" class="answer-sign" src="/images/icons/error.jpg" alt="check" hidden="true" style="max-height:15px;">
+                    </span>
+                    <span class="control-group" id="answer-group">                
+                        <input name="answer" type="text" id="question_asked_answer" placeholder="Answer" autocomplete="off" value="">
+                    </span>
+                    <input name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-success button-answer" value="Check">
+                    <button id="question_asked_nextbutton" class="btn btn-primary button-answer">Next</button>    
+                    <button id="question_asked_showanswerbutton" class="btn btn-danger button-answer">Answer?</button>
+                </div>
+            </form>
         </div>
-        <div class="span4 card well">
+        <div class="span3 card well"> 
+            <img src="/images/images.jpg" alt="check" style="max-height:200px;">
+            <p style="font-size: 40px;color: black;">fassen</p>
+        </div>
+        <div class="span3 card well">
             <div class="row-fluid" id="results">
                 <div class="span6">
                     <img src="/images/check.jpg" alt="check" style="max-height:100px;">

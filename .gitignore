@@ -14,3 +14,8 @@ composer.lock
 vendor/
 data/
 
+
+#######################
+## Config
+#######################
+config/

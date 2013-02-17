@@ -70,4 +70,9 @@ return [
             ]
         ],
     ],
+    'service_manager' => [
+        'factories' => [
+            
+        ],
+    ],
 ];

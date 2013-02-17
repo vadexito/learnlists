@@ -8,7 +8,7 @@ window.QuestionView = Backbone.View.extend({
     
     initialize: function() {
         
-        this.answer = $('#answer');
+        this.answer = $('#question_asked_answer');
         this.listId = $('#listId').val();
         
         //add eventlistener if the model changes
@@ -20,16 +20,17 @@ window.QuestionView = Backbone.View.extend({
         list.fetch({success: $.proxy(function(){
             this.collection.add(list.get('questions'));
             $('#title-list').html(list.get('title'));
+            $('#rules').html(list.get('rules'));
             this.resetRound();
         },this)});
         
     },
     
     events:{
-        'click #submitbutton'       : 'checkAnswer',
-        'click #nextbutton'         : 'newQuestion',
-        'click #resetbutton'        : 'resetList',
-        'click #showanswerbutton'   : 'showAnswer'
+        'click #question_asked_submitbutton'       : 'checkAnswer',
+        'click #question_asked_nextbutton'         : 'newQuestion',
+        'click #question_asked_resetbutton'        : 'resetList',
+        'click #question_asked_showanswerbutton'   : 'showAnswer'
     },
     
     resetRound:function () {
@@ -120,7 +121,7 @@ window.QuestionView = Backbone.View.extend({
     
     questionFinished: function(){
         
-        $('#showanswerbutton,#submitbutton').attr('disabled','disabled');
+        $('#question_asked_showanswerbutton,#question_asked_submitbutton').attr('disabled','disabled');
         this.answer.attr('readonly','readonly');
         $('#nextbutton').focus();
             
@@ -128,7 +129,7 @@ window.QuestionView = Backbone.View.extend({
     
     showAnswer: function(){
         var question = this.collection.get(this.model.get('id'));
-        $('#answer').val(question.get('answer'));
+        $('#question_asked_answer').val(question.get('answer'));
         this.questionFinished();
         
         question.set('multiple',true);
@@ -153,7 +154,7 @@ window.QuestionView = Backbone.View.extend({
             var text = newQuestion.get('text').replace(/%s/,'<img class="img-find" src="/images/icons/find.png" alt="icon-hole" style="max-height:30px"/>');
             
             this.model.set({'id': newQuestion.get('id')});
-            this.$el.find('#text').html(text);
+            this.$el.find('#question_asked_text').html(text);
             $('.button-answer').removeAttr('disabled');
             this.answer.val('').focus().removeAttr('readonly'); 
         } else {
@@ -166,7 +167,7 @@ window.QuestionView = Backbone.View.extend({
         
         this.answer.attr('readonly','readonly');
         $('.button-answer').attr('disabled','disabled');
-        $('#resetbutton').focus();
+        $('#question_asked_resetbutton').focus();
     },
     
     resetList: function(e){

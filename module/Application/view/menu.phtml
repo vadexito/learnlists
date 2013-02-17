@@ -1,9 +1,6 @@
 <?php echo $this->navigation()->menu()->htmlify($this->container->findById('home')), PHP_EOL;?>
 <div class="nav-collapse collapse">
-    <ul class="nav">
-        <li class="active"><?php echo $this->navigation()->menu()->htmlify($this->container->findById('list_show')), PHP_EOL;?></li>
-        <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('list_create')), PHP_EOL;?></li>
-    </ul>
+    <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('home'),['ulClass' => 'nav']);?>
     <ul class="nav pull-right">
         <?php if (!$this->zfcUserIdentity()) :?>
         <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('login')), PHP_EOL;?></li>

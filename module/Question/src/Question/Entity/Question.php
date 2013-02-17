@@ -1,6 +1,10 @@
 <?php
 namespace Question\Entity;
 
+use Zend\InputFilter\Factory as InputFactory;     
+use Zend\InputFilter\InputFilter;                 
+use Zend\InputFilter\InputFilterAwareInterface;   
+use Zend\InputFilter\InputFilterInterface;   
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,9 +15,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @property string $text
  * @property string $answer
  * @property string $tip
+ * @property Listquest $listquest
  */
 
-class Question extends EntityAbstract
+class Question extends EntityAbstract implements InputFilterAwareInterface
 {
     /**
      * Primary Identifier
@@ -42,7 +47,7 @@ class Question extends EntityAbstract
     protected $answer;
     /**
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      * @access protected
      */
@@ -51,10 +56,11 @@ class Question extends EntityAbstract
     /**
     * 
     * @ORM\ManyToOne(targetEntity="Listquest", inversedBy="questions")
-    * @ORM\JoinColumn(name="listquests_id", referencedColumnName="id")
     * 
     */
     protected $listquest;
+    
+    protected $inputFilter;
     
     public function toArray()
     {
@@ -74,6 +80,99 @@ class Question extends EntityAbstract
         
         return $array;
         
+    }
+    
+    public function exchangeArray($data)
+    {
+        foreach (['id','text','answer','tip','listquest'] as $property)
+        {
+            $this->$property = (isset($data[$property])) ? 
+                $data[$property] : null;
+        }
+        
+    }
+    
+    // Add content to this method:
+    public function setInputFilter(InputFilterInterface $inputFilter)
+    {
+        throw new \Exception("Not used");
+    }
+
+    public function getInputFilter()
+    {
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+            $factory     = new InputFactory();
+
+            $inputFilter->add($factory->createInput([
+                'name'     => 'id',
+                'required' => true,
+                'filters'  => [
+                    ['name' => 'Int'],
+                ],
+            ]));
+
+            $inputFilter->add($factory->createInput([
+                'name'     => 'text',
+                'required' => true,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ],
+                    ],
+                ],
+            ]));
+            
+            $inputFilter->add($factory->createInput([
+                'name'     => 'answer',
+                'required' => true,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ],
+                    ],
+                ],
+            ]));
+            
+            $inputFilter->add($factory->createInput([
+                'name'     => 'tip',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ],
+                    ],
+                ],
+            ]));
+
+            $this->inputFilter = $inputFilter;
+        }
+
+        return $this->inputFilter;
     }
     
 }

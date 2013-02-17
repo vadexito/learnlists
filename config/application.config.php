@@ -8,7 +8,8 @@ return [
         'DoctrineORMModule',
         'ZfcBase',
         'ZfcUser',
-        'ZfcUserDoctrineORM'
+        'ZfcUserDoctrineORM',
+        'BjyAuthorize'
     ],
     
     

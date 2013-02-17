@@ -12,13 +12,6 @@
  */
 
 return [
-    'db' => [
-        'driver'         => 'Pdo',
-        'dsn'            => 'mysql:dbname=learnlists_local;host=localhost',
-        'driver_options' => [
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ],
-    ],
     'service_manager' => [
         'factories' => [
             'Zend\Db\Adapter\Adapter'
@@ -31,18 +24,23 @@ return [
                  'id' => 'home',
                  'label' => 'Learnlists',
                  'route' => 'home',
-                 'class' => 'brand'
+                 'class' => 'brand',
+                 'pages' => [
+                    [
+                        'id' => 'list_show',
+                        'label' => 'Browse',
+                        'route' => 'list',
+                        'action' => 'index',
+                    ],
+                    [
+                        'id' => 'list_create',
+                        'label' => 'New list',
+                        'route' => 'list',
+                        'action' => 'add',
+                    ],
+                ],
              ],
-             [
-                 'id' => 'list_show',
-                 'label' => 'Learn',
-                 'route' => 'list'
-             ],
-             [
-                 'id' => 'list_create',
-                 'label' => 'New list',
-                 'route' => 'list',
-             ],
+             
              [
                  'id' => 'login',
                  'label' => 'Sign In',

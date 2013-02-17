@@ -27,8 +27,8 @@ class ListquestRestController extends AbstractRestfulController
                         ->get('Doctrine\ORM\EntityManager')
                         ->getRepository('Question\Entity\Listquest')
                         ->find($id);
-        
-        return new JsonModel((array)$list->toArray());
+                
+        return new JsonModel($list->toArray());
     }
     
     public function create($data)

@@ -4,13 +4,17 @@ namespace Question\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Question\Model\Question;          
-use Question\Form\QuestionForm;       
+use Question\Entity\Question;          
+use Question\Form\QuestionForm;     
 
 
 class QuestionController extends AbstractActionController
 {
-    protected $questionTable;
+    /**
+     * @var Doctrine\ORM\EntityManager
+     */
+    protected $em;
+    
     
     public function indexAction()
     {
@@ -20,13 +24,43 @@ class QuestionController extends AbstractActionController
         }
         
         return [
-            'listId'    => $id,
-            'form'      => new QuestionForm(),
+            'listId'    => $id
         ];
     }
 
     public function addAction()
     {
+        $listId = (int) $this->params()->fromRoute('id', 0);
+        if (!$listId) {
+            return $this->redirect()->toRoute('home');
+        }
+        
+        $form = new QuestionForm();
+        $form->get('submit')->setValue('Add');
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $question = new Question();
+            $form->setInputFilter($question->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $listquest = $this->getEntityManager()
+                                  ->getRepository('Question\Entity\Listquest')
+                                  ->find($listId);
+                $question->exchangeArray(array_merge(
+                    $form->getData(),
+                    ['listquest' => $listquest]
+                ));
+                $this->getEntityManager()->persist($question);
+                $this->getEntityManager()->flush();
+
+                // Redirect to list of questions
+                return $this->redirect()->toRoute('list');
+            }
+        }
+        return ['form' => $form,'listId' => $listId];        
+        
     }
 
     public function editAction()
@@ -35,15 +69,22 @@ class QuestionController extends AbstractActionController
 
     public function deleteAction()
     {
+        
     }
     
-    public function getQuestionTable()
+    public function setEntityManager(EntityManager $em)
     {
-        if (!$this->questionTable) {
-            $sm = $this->getServiceLocator();
-            $this->questionTable = $sm->get('Question\Model\QuestionTable');
-        }
-        return $this->questionTable;
+        $this->em = $em;
     }
+ 
+    public function getEntityManager()
+    {
+        if (null === $this->em) {
+            $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        }
+        return $this->em;
+    } 
+    
+    
 }
 
