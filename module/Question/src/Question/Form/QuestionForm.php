@@ -11,24 +11,47 @@ class QuestionForm extends Form
         parent::__construct('questionForm');
         
         $this->setAttribute('method', 'post');
-        $this->setAttribute('class','form-inline');
         
         $this->add([
             'name'      => 'id',
             'attributes'=> [
                 'type'  => 'hidden',
-                'id'    => 'listId',
             ],
         ]);
+        
+        $this->add([
+            'name' => 'text',
+            'attributes' => [
+                'type'  => 'text',
+                'id'    => 'text',
+                'autocomplete'    => 'off',
+            ],
+            'options' => [
+                'label' => 'Text'
+            ],
+        ]);
+        
         $this->add([
             'name' => 'answer',
             'attributes' => [
                 'type'  => 'text',
                 'id'    => 'answer',
-                'placeholder'    => 'Answer',
                 'autocomplete'    => 'off',
             ],
             'options' => [
+                'label' => 'Answer'
+            ],
+        ]);
+        
+        $this->add([
+            'name' => 'tip',
+            'attributes' => [
+                'type'  => 'text',
+                'id'    => 'tip',
+                'autocomplete'    => 'off',
+            ],
+            'options' => [
+                'label' => 'Tip'
             ],
         ]);
         
@@ -38,7 +61,7 @@ class QuestionForm extends Form
                 'type'  => 'submit',
                 'value' => 'Check',
                 'id' => 'submitbutton',
-                'class' => 'btn btn-success button-answer',
+                'class' => 'btn btn-primary',
             ],
         ]);
     }
