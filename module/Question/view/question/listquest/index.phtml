@@ -14,7 +14,7 @@ $this->placeholder('header')->captureStart();
     <thead>
         <tr>
             <th>#</th>
-            <th>Category</th>
+            <th>Tags</th>
             <th>Rating</th>
             <th>Title</th>
             <th>Questions</th>
@@ -26,12 +26,12 @@ $this->placeholder('header')->captureStart();
 <?php foreach ($lists as $list) : ?>
       <tr>
         <td><?php echo $list->id; ?></td>
-        <td>category</td>
+        <td><?php if (count($list->tags) > 0) : echo $this->escapeHtml(implode(', ',$list->tags->toArray())); endif; ?></td>
         <td>
             <?php echo round($ratingService->getRatingSet($list->id)->getAmount()); ?>
             <?php if ($this->zfcUserIdentity()) : ?><a href="<?php echo $this->url('list',['action' => 'rate','id' => $list->id]); ?>">Vote</a><?php endif;?>
         </td>
-        <td><a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $list->title; ?></a></td>
+        <td><a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a></td>
         <td>
             <?php echo count($list->questions); ?>
            <?php if ($this->zfcUserIdentity() && ($list->author->getId() === $this->zfcUserIdentity()->getId())) :?> - <a href="<?php echo $this->url('question',['action' => 'add','id' => $list->id]); ?>">Add</a><?php endif; ?>

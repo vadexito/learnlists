@@ -72,4 +72,9 @@ class Tag extends EntityAbstract
         
     }
     
+    public function __toString()
+    {
+        return $this->tag;
+    }
+    
 }

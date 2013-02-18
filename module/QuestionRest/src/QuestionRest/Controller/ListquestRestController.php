@@ -3,7 +3,6 @@
 namespace QuestionRest\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
-
 use Zend\View\Model\JsonModel;
 
 class ListquestRestController extends AbstractRestfulController
