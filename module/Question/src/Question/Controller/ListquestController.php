@@ -19,13 +19,12 @@ class ListquestController extends AbstractActionController
     public function indexAction()
     {
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        
         $rep = $em->getRepository('Question\Entity\Listquest');
         
-        $lists = $rep->findAll();
-        
+        $ratingService = $this->getServiceLocator()->get('wtrating.service');
         return [
-            'lists'  => $lists
+            'lists'  => $rep->findAll(),
+            'ratingService' => $ratingService
         ];
     }
 
@@ -52,7 +51,8 @@ class ListquestController extends AbstractActionController
                 return $this->redirect()->toRoute('list');
             }
         }
-        return ['form' => $form];   
+        return ['form' => $form];
+        
     }
 
     public function editAction()
@@ -67,7 +67,30 @@ class ListquestController extends AbstractActionController
     {
         $this->em = $em;
     }
- 
+    
+    public function rateAction()
+    {
+        $typeId = (int) $this->params()->fromRoute('id', 0);
+        if (!$typeId) {
+            return $this->redirect()->toRoute('home');
+        }
+        
+        $userId = $this->zfcUserAuthentication()->getIdentity()->getId();
+        $ratingValue = 2;
+        $serviceLocator = $this->getServiceLocator();
+        
+        $rating = $serviceLocator->create('wtrating.rating');
+        $rating->setTypeId($typeId);
+        $rating->setUserId($userId);
+        $rating->setRating($ratingValue);
+
+        $ratingService = $serviceLocator->get('wtrating.service');
+        $ratingService->persist($rating);
+        
+        return $this->redirect()->toRoute('list');
+
+        
+    }
     public function getEntityManager()
     {
         if (null === $this->em) {

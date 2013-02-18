@@ -9,7 +9,8 @@ return [
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',
-        'BjyAuthorize'
+        'BjyAuthorize',
+        'WtRating'
     ],
     
     

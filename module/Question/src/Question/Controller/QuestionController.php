@@ -22,7 +22,7 @@ class QuestionController extends AbstractActionController
         if (!$id) {
             return $this->redirect()->toRoute('home');
         }
-        
+       
         return [
             'listId'    => $id
         ];
@@ -75,7 +75,8 @@ class QuestionController extends AbstractActionController
     public function setEntityManager(EntityManager $em)
     {
         $this->em = $em;
-    }
+    }   
+    
  
     public function getEntityManager()
     {

@@ -16,6 +16,7 @@
         "bjyoungblood/bjy-authorize":"dev-master",
         "unjudder/mail": "1.0-alpha",
         "zf-commons/zfc-admin":"dev-master",
-        "waltertamboer/wtrating" : "dev-master"
+        "waltertamboer/wtrating" : "dev-master",
+        "cdli/two-stage-signup" : "dev-master"
     }
 }

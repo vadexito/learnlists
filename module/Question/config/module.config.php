@@ -51,13 +51,12 @@ return [
     ],
     'doctrine' => [
         'driver' => [
-            // defines an annotation driver with two paths, and names it `my_annotation_driver`
+            // defines an annotation driver with two paths
             'Question_driver' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
                 'paths' => [
-                    __DIR__ . '/../src/Question/Entity',
-                    'another/path'
+                    __DIR__ . '/../src/Question/Entity'
                 ],
             ],
             // default metadata driver, aggregates all other drivers into a single one.
