@@ -10,6 +10,7 @@ window.QuestionView = Backbone.View.extend({
         
         this.answer = $('#question_asked_answer');
         this.listId = $('#listId').val();
+        this.text = $('#question_asked_text');
         
         //add eventlistener if the model changes
         this.listenTo(this.collection,'change:answered',this.updateStatRightAnswer);        
@@ -19,8 +20,8 @@ window.QuestionView = Backbone.View.extend({
         var list = new Listquest({id:this.listId});
         list.fetch({success: $.proxy(function(){
             this.collection.add(list.get('questions'));
-            $('#title-list').html(list.get('title'));
-            $('#rules').html(list.get('rules'));
+            $('#title-list').html(_.escape(list.get('title')));
+            $('#rules').html(_.escape(list.get('rules')));
             this.resetRound();
         },this)});
         
@@ -97,26 +98,47 @@ window.QuestionView = Backbone.View.extend({
         var question = this.collection.get(this.model.get('id'));
         var questionAnswered = question.get('answered');
         
-        //the question is found        
+        //the answer is found        
         if (value == question.get('answer') && !questionAnswered){
             
             $('#error-sign').hide();
             $('#check-sign').show();
             $('#answer-group').addClass('success');
             
-            question.set('answered',true);            
+            this.questionAnswered(question);
             
-            //deleting the id of the found element from the randomOrder array
-            this.collection.randomOrder = _.without(
-                this.collection.randomOrder,question.get('id')
-            );
+        //for the questions with missing words
+        } else if (value === _.first(this.model.get('inQuestionAnswers'))){
             
-            this.questionFinished();
+            this.text.html(
+                this.text.html().replace(/<img[^<>]*>/,
+                '<span>'+this.model.get('inQuestionAnswers').shift()+'</span>'
+            ));
+            
+            $('#error-sign').hide();
+            $('#check-sign').show();
+            $('#answer-group').addClass('success');
+            if (this.model.get('inQuestionAnswers').length === 0){
+                this.questionAnswered(question);
+            } else {
+                this.answer.val('');
+            } 
         } else {
             $('#error-sign').show();
             $('#answer-group').addClass('error');
             question.set('multiple',true);
         }
+    },
+    
+    questionAnswered: function(question){
+        
+        question.set('answered',true);
+        //deleting the id of the found element from the randomOrder array
+        this.collection.randomOrder = _.without(
+            this.collection.randomOrder,question.get('id')
+        );
+
+        this.questionFinished();
     },
     
     questionFinished: function(){
@@ -129,7 +151,7 @@ window.QuestionView = Backbone.View.extend({
     
     showAnswer: function(){
         var question = this.collection.get(this.model.get('id'));
-        $('#question_asked_answer').val(question.get('answer'));
+        this.answer.val(_.escape(question.get('answer') +' --- '+ this.model.get('inQuestionAnswers') ||''));
         this.questionFinished();
         
         question.set('multiple',true);
@@ -149,12 +171,19 @@ window.QuestionView = Backbone.View.extend({
         var newQuestion = this.collection.getNewRandomModel(this.model.get('id'));
        
         if (newQuestion) {
+            var img = '<img class="img-find" src="/images/icons/find.png" alt="icon-hole" style="max-height:30px"/>';
+            var patt = /%[^%]*%/;
+            var text = _.escape(newQuestion.get('text'));
+            var inQuestionAnswers = [];
             
+            while (patt.test(text)){
+                inQuestionAnswers.push((patt.exec(text)[0]).replace(/%/,'').replace(/%/,''));
+                text = text.replace(patt,img);
+            }  
             
-            var text = newQuestion.get('text').replace(/%s/,'<img class="img-find" src="/images/icons/find.png" alt="icon-hole" style="max-height:30px"/>');
-            
+            this.model.set('inQuestionAnswers',inQuestionAnswers)
             this.model.set({'id': newQuestion.get('id')});
-            this.$el.find('#question_asked_text').html(text);
+            this.text.html(text);
             $('.button-answer').removeAttr('disabled');
             this.answer.val('').focus().removeAttr('readonly'); 
         } else {
