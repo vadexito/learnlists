@@ -40,7 +40,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
     protected $text;
     /**
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      * @access protected
      */
@@ -133,7 +133,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
             
             $inputFilter->add($factory->createInput([
                 'name'     => 'answer',
-                'required' => true,
+                'required' => false,
                 'filters'  => [
                     ['name' => 'StripTags'],
                     ['name' => 'StringTrim'],

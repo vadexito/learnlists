@@ -25,9 +25,13 @@ class QuestionForm extends Form
                 'type'  => 'text',
                 'id'    => 'text',
                 'autocomplete'    => 'off',
+                'class' => 'input-xxlarge',
             ],
             'options' => [
-                'label' => 'Text'
+                'label' => 'Text (<a href="#" data-toggle="tooltip" data-placement="right" 
+                    title="Enter the text for the question. 
+                    If this is a sentence to fill in, please use two % signs in order to specify answers. 
+                    Example : He %was% not there %either%.">?</a>)'
             ],
         ]);
         
@@ -39,7 +43,8 @@ class QuestionForm extends Form
                 'autocomplete'    => 'off',
             ],
             'options' => [
-                'label' => 'Answer'
+                'label' => 'Answer (<a href="#" data-toggle="tooltip" data-placement="right" 
+                    title="Nothing to enter if the answer was already entered directly in the text (using % signs).">?</a>)'
             ],
         ]);
         
