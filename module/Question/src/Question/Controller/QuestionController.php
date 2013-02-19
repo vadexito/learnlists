@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Question\Entity\Question;          
 use Question\Form\QuestionForm;     
+use Question\Entity\Listquest;     
 
 
 class QuestionController extends AbstractActionController
@@ -35,6 +36,13 @@ class QuestionController extends AbstractActionController
             return $this->redirect()->toRoute('home');
         }
         
+        $listquest = $this  ->getEntityManager()
+                            ->getRepository('Question\Entity\Listquest')
+                            ->find($listId);
+        if (!$this->_checkUserIsAuthorized($listquest)) {
+            return $this->redirect()->toRoute('home');
+        }
+        
         $form = new QuestionForm();
         $form->get('submit')->setValue('Add');
         
@@ -44,10 +52,7 @@ class QuestionController extends AbstractActionController
             $form->setInputFilter($question->getInputFilter());
             $form->setData($request->getPost());
 
-            if ($form->isValid()) {
-                $listquest = $this->getEntityManager()
-                                  ->getRepository('Question\Entity\Listquest')
-                                  ->find($listId);
+            if ($form->isValid()) {                
                 $question->exchangeArray(array_merge(
                     $form->getData(),
                     ['listquest' => $listquest]
@@ -84,8 +89,12 @@ class QuestionController extends AbstractActionController
             $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         }
         return $this->em;
-    } 
+    }
     
-    
+    protected function _checkUserIsAuthorized(Listquest $listquest)
+    {
+        $userId = $this->zfcUserAuthentication()->getIdentity()->getId();
+        return $listquest && ($listquest->author->getId() === $userId);
+    }
 }
 
