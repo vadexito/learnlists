@@ -22,7 +22,7 @@ $settings = array(
      * instead of the default one provided. Default is ZfcUser\Entity\User.
      * The entity class should implement ZfcUser\Entity\UserInterface
      */
-     'user_entity_class' => 'ZfcUserDoctrineORM\Entity\User',
+     'user_entity_class' => 'Application\Entity\User',
 
     /**
      * Enable registration
@@ -216,7 +216,7 @@ $settings = array(
     /**
      * User table name
      */
-    //'table_name' => 'user',
+    'table_name' => 'users',
     
     /**
      * End of ZfcUser configuration
@@ -233,4 +233,20 @@ return array(
             'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Zend\Db\Adapter\Adapter',
         ),
     ),
+//    'doctrine' => array(
+//        'driver' => array(
+//            'zfcuser_entity' => array(
+//                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+//                'paths' => [
+//                    __DIR__ . '/../../module/Application/src/Application/Entity'
+//                ],
+//            ),
+//
+//            'orm_default' => array(
+//                'drivers' => array(
+//                    'Application\Entity' => 'zfcuser_entity'
+//                )
+//            )
+//        )
+//    ),
 );

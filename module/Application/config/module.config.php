@@ -89,4 +89,20 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    'doctrine' => [
+        'driver' => [
+            'zfcuser_entit' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => [
+                    __DIR__ . '/../src/Application/Entity'
+                ],
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    'Application\Entity' => 'zfcuser_entit'
+                ]
+            ]
+        ],
+    ],
 );

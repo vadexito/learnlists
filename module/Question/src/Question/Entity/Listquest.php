@@ -16,6 +16,7 @@ use Zend\InputFilter\InputFilterInterface;
  * @property string $title
  * @property string $author
  * @property string $rules
+ * @property string $level
  * @property datetime $creationDate
  * @property ArrayCollection $tags
  */
@@ -43,18 +44,27 @@ class Listquest extends EntityAbstract
     protected $title;
     
     /**
-     * Title of each list
+     * Rules for the quiz
      *
      * @ORM\Column(type="string")
      * @var string
      * @access protected
-     */
+     */    
     protected $rules;
+    
+    /**
+     * Level of the quiz
+     *
+     * @ORM\Column(type="string",nullable=true)
+     * @var string
+     * @access protected
+     */
+    protected $level;
 
     /**
      * 
-     * @ORM\ManyToOne(targetEntity="ZfcUserDoctrineORM\Entity\User")
-     * @ORM\JoinColumn(name="author_id", referencedColumnName="user_id")
+     * @ORM\ManyToOne(targetEntity="Application\Entity\User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      * 
      */
     protected $author;
@@ -125,7 +135,7 @@ class Listquest extends EntityAbstract
     
     public function exchangeArray($data)
     {
-        foreach (['id','title','rules'] as $property)
+        foreach (['id','title','level','rules'] as $property)
         {
             $this->$property = (isset($data[$property])) ? 
                 $data[$property] : null;

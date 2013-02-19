@@ -30,6 +30,19 @@ class ListquestForm extends Form
             ],
         ]);
         $this->add([
+            'name' => 'level',
+            'attributes' => [
+                'type'  => 'text',
+                'id'    => 'level',
+                'autocomplete'    => 'off',
+            ],
+            'options' => [
+                'label' => 'Level (<a href="#" data-toggle="tooltip" data-placement="right" 
+                    title="Advanced, average, beginner for example">?</a>)'
+            ],
+        ]);
+        
+        $this->add([
             'name' => 'rules',
             'attributes' => [
                 'type'  => 'text',

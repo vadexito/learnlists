@@ -18,6 +18,7 @@ echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));
 echo $this->formRow($form->get('title'));
 echo $this->formRow($form->get('tags')); 
+echo $this->formRow($form->get('level')); 
 echo $this->formRow($form->get('rules')); ?><br/>
 <?php echo $this->formSubmit($form->get('submit')); ?>
 <?php echo $this->form()->closeTag();?> 
