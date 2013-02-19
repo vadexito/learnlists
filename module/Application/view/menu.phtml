@@ -10,7 +10,10 @@
                 <?php echo $this->gravatar($this->zfcUserIdentity()->getEmail(),['img_size' => '30px']) ?>
             </a>
         </li>    
-        <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('profile')->setLabel($this->zfcUserDisplayName())), PHP_EOL;?></li>
+        <li>
+            <?php echo $this->navigation()->menu()->htmlify($this->container->findById('profile')->setLabel($this->zfcUserDisplayName()
+                    .' (' . $this->zfcUserIdentity()->getRoles()[0]->getRoleId(). ')')), PHP_EOL;?>
+        </li>
         <li><?php echo $this->navigation()->menu()->htmlify($this->container->findById('logout')), PHP_EOL;?></a></li>
         <div style="clear:both;"></div>
         <?php endif; ?>

@@ -2,7 +2,7 @@
 $title = 'Learn at LearnLists';
 $this->headTitle($title);
 $this->placeholder('header')->captureStart();?>
-<header id="jumbotron-header">
+<header id="jumbotron-header"class="home">
     <div class="container">
         <h1><?php echo $this->escapeHtml($title); ?></h1>
     </div>
@@ -12,18 +12,17 @@ $this->placeholder('header')->captureStart();?>
     <div class="span4">
         <h2><?php echo $this->translate('Learn with quiz-lists') ?></h2>
         <p><?php echo $this->translate('One great way to learn is through quiz. The possibilities offered by quizzes (image, complex sentences, sounds) multiply , '); ?></p>
-        <p><a class="btn btn-success" href=""><?php echo $this->translate('Browse lists') ?> &raquo;</a></p>
+        <p><a class="btn btn-success" href="<?php echo $this->url('list'); ?>"><?php echo $this->translate('Browse lists') ?> &raquo;</a></p>
     </div>
 
     <div class="span4">
         <h2><?php echo $this->translate('High quality quizzes') ?></h2>
-        <p><?php echo $this->translate('The quizz are developped by the community of teacher take part in our project learnlists. Each lists is identified by its quality stamps in order to rapidly help you identify the best quality lists') ?></p>
+        <p><?php echo $this->translate('Quality quizzes are developped by the community of teachers taking part in our project learnlists.') ?></p>
         
    </div>
 
    <div class="span4">
        <h2><?php echo $this->translate('Create and share you own quizzes') ?></h2>
-       <p><?php echo $this->translate('You can create and share your own private lists'); ?></p>
-       <p><a class="btn btn-success" href=""><?php echo $this->translate('Create new list') ?> &raquo;</a></p>
+       <p><?php echo $this->translate('You can create and share your own private lists. You have to be logged.'); ?></p>
    </div>
 </div>

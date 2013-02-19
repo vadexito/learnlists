@@ -72,7 +72,7 @@ $settings = array(
      * Default value: array containing 'email'
      * Accepted values: array containing one or more of: email, username
      */
-    //'auth_identity_fields' => array( 'email' ),
+    'auth_identity_fields' => array( 'email','username' ),
 
     /**
      * Login form timeout
@@ -164,7 +164,7 @@ $settings = array(
      * Default value: 'zfcuser/login'
      * Accepted values: A valid route name within your application
      */
-    //'logout_redirect_route' => 'zfcuser/login',
+    'logout_redirect_route' => 'home',
 
     /**
      * Password Security
@@ -233,20 +233,4 @@ return array(
             'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Zend\Db\Adapter\Adapter',
         ),
     ),
-//    'doctrine' => array(
-//        'driver' => array(
-//            'zfcuser_entity' => array(
-//                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-//                'paths' => [
-//                    __DIR__ . '/../../module/Application/src/Application/Entity'
-//                ],
-//            ),
-//
-//            'orm_default' => array(
-//                'drivers' => array(
-//                    'Application\Entity' => 'zfcuser_entity'
-//                )
-//            )
-//        )
-//    ),
 );
