@@ -8,7 +8,7 @@
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+        <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'])
                         ->prependStylesheet($this->basePath() . '/css/bootstrap/css/bootstrap-responsive.min.css')
                         ->prependStylesheet($this->basePath() . '/css/style.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap/css/bootstrap.min.css') ?>
@@ -43,7 +43,15 @@ echo $this->navigation('navigation')->menu()->render();
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <p>&copy; 2013 by Voilamylife <?php echo $this->translate('All rights reserved.') ?></p>
+                <ul>
+                    <li><a href="<?php echo $this->url('application/footer',['page' => 'about']); ?>">About</a></li>
+                    <li><a href="<?php echo $this->url('application/footer',['page' => 'help']); ?>">Help</a></li>
+                    <li><a href="<?php echo $this->url('application/footer',['page' => 'terms']); ?>">Terms</a></li>
+                    <li><a href="<?php echo $this->url('application/footer',['page' => 'privacy']); ?>">Privacy</a></li>
+                    <li><a href="<?php echo $this->url('application/footer',['page' => 'contact']); ?>">Contact</a></li>                    
+                </ul>
+                <p id="copyright">&copy; 2013 by Voilamylife. <?php echo $this->translate('All rights reserved.') ?></p>
+                
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>

@@ -32,7 +32,7 @@ body {
 }
 
 div.container a.brand {
-    background: url("../images/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    background: url("../images/site-logo.jpg") no-repeat scroll 0 10px transparent;
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }
@@ -49,6 +49,24 @@ layout nav bar
     padding:5px 0 5px 0;
 }
 
+/*=======================================
+layout footer
+=========================================*/
+footer ul{
+    list-style-type: none; 
+    text-align: center;
+}
+
+footer li{
+    display:inline;
+    margin: 0 10px 0 10px;
+}
+
+#copyright {
+    text-align: center;
+    margin:0;
+    font-size: 12px;
+}
 /*=======================================
 header
 =========================================*/

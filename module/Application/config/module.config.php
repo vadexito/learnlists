@@ -36,6 +36,20 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
+                    'footer' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/footer/index/[:page]',
+                            'constraints' => array(
+                                'page'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller' => 'Footer',                                
+                                'action' => 'index',                                
+                            ),
+                        ),
+                    ),
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
@@ -70,7 +84,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Footer' => 'Application\Controller\FooterController'
         ),
     ),
     'view_manager' => array(
@@ -91,7 +106,7 @@ return array(
     ),
     'doctrine' => [
         'driver' => [
-            'zfcuser_entit' => [
+            'zfcuser_entity' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
                 'paths' => [
@@ -100,7 +115,7 @@ return array(
             ],
             'orm_default' => [
                 'drivers' => [
-                    'Application\Entity' => 'zfcuser_entit'
+                    'Application\Entity' => 'zfcuser_entity'
                 ]
             ]
         ],

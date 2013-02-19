@@ -1,7 +1,6 @@
 <?php 
 return [
     'modules' => [
-        'Application',
         'Question',
         'QuestionRest',
         'DoctrineModule',
@@ -10,7 +9,8 @@ return [
         'ZfcUser',
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
-        'WtRating'
+        'WtRating',
+        'Application',        
     ],
     
     
