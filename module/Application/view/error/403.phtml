@@ -1,0 +1,27 @@
+<h1><?php echo $this->translate('A 403 error occurred') ?></h1
+
+<h2><?php echo $this->message ?></h2>
+
+<?php if (isset($error) && $error): ?>
+
+<?php
+$reasonMessage= '';
+switch ($error) {
+    case 'error-unauthorized-controller':
+        $reasonMessage = $this->translate('The requested controller was not authorized.');
+        break;
+    case 'error-unauthorized-route':
+        $reasonMessage = $this->translate('The requested route was not authorized.');
+        break;
+    case 'error-unauthorized':
+        $reasonMessage = $this->translate('The requested page was not authorized.');
+        break;
+    default:
+        $reasonMessage = $this->translate('We cannot determine at this time why a 403 was generated.');
+        break;
+}
+?>
+
+<p><?php echo $reasonMessage ?></p>
+
+<?php endif ?>

@@ -9,6 +9,8 @@ return [
         'ZfcUser',
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
+        'ZfcAdmin',
+        'CdliTwoStageSignup',
         'WtRating',
         'Application',        
     ],
