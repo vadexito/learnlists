@@ -18,6 +18,7 @@ $this->placeholder('header')->captureStart();
             <th>Rating</th>
             <th>Level</th>
             <th>Title</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -26,15 +27,14 @@ $this->placeholder('header')->captureStart();
         <td>
 <?php if ($this->zfcUserIdentity() && ($list->author->getId() === $this->zfcUserIdentity()->getId())) :?> 
             <div class="btn-group">
-                <a class="btn btn-primary" href="<?php echo $this->url('question',['action' => 'add','id' => $list->id]); ?>" title="<?php echo $this->translate('Add question'); ?>"><i class="icon-plus icon-white"></i></a>
-                <a class="btn btn-primary" href="<?php echo $this->url('list',['action' => 'show','id' => $list->id]); ?>" title="<?php echo $this->translate('Edit list'); ?>"><i class="icon-edit icon-white"></i></a>
+                <a class="btn btn-primary btn-small" href="<?php echo $this->url('question',['action' => 'add','id' => $list->id]); ?>" title="<?php echo $this->translate('Add question'); ?>"><i class="icon-plus icon-white"></i></a>
+                <a class="btn btn-primary btn-small" href="<?php echo $this->url('list',['action' => 'show','id' => $list->id]); ?>" title="<?php echo $this->translate('Edit list'); ?>"><i class="icon-edit icon-white"></i></a>
            </div>
 <?php endif; ?>
         </td>
         <td><?php if (count($list->tags) > 0) : echo $this->escapeHtml(implode(', ',$list->tags->toArray())); endif; ?></td>
         <td>
             <?php if (isset($ratingService)) : echo round($ratingService->getRatingSet($list->id)->getAmount());endif; ?>
-            <?php if ($this->zfcUserIdentity()) : ?><a href="<?php echo $this->url('list',['action' => 'rate','id' => $list->id]); ?>"><i class="icon-thumbs-up"></i></a><?php endif;?>
         </td>
         <td><?php echo $this->escapeHtml($list->level); ?></td>
         <td>
@@ -46,6 +46,13 @@ $this->placeholder('header')->captureStart();
                 created <?php echo $list->creationDate->format('Y-m-d'); ?>
             </p>
         </td>
+        <td>
+<?php if ($this->zfcUserIdentity()) : ?><?php if ($ratingService->getMapper()->hasRated($this->zfcUserIdentity()->getId(),$list->id)) : ?>
+            <a class="btn btn-mini" disabled><i class="icon-thumbs-up"></i> Like</a> I like this</a>
+<?php else : ?>
+            <a class="btn btn-mini" href="<?php echo $this->url('list',['action' => 'rate','id' => $list->id]); ?>"><i class="icon-thumbs-up"></i> Like</a>    
+<?php endif;?><?php endif;?>
+        </td>        
       </tr>
 <?php endforeach; ?>
     </tbody>

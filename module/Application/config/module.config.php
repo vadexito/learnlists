@@ -114,9 +114,14 @@ return array(
                     __DIR__ . '/../src/Application/Entity'
                 ],
             ],
+            'wtrating_entity' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
+                'paths' => __DIR__ . '/xml'
+            ],
             'orm_default' => [
                 'drivers' => [
-                    'Application\Entity' => 'zfcuser_entity'
+                    'Application\Entity' => 'zfcuser_entity',
+                    'WtRating\Entity' => 'wtrating_entity',
                 ]
             ]
         ],

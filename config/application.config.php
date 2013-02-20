@@ -9,10 +9,10 @@ return [
         'BjyAuthorize',
         'ZfcAdmin',
         'CdliTwoStageSignup',
-        'WtRating',
         'Question',
         'QuestionRest',        
-        'Application',        
+        'WtRating',  
+        'Application',
     ],
     
     

@@ -21,6 +21,7 @@ class ListquestController extends AbstractActionController
         $rep = $this->getEntityManager()->getRepository('Question\Entity\Listquest');
         
         $ratingService = $this->getServiceLocator()->get('wtrating.service');
+        
         return [
             'lists'  => $rep->findAll(),
             'ratingService' => $ratingService
@@ -90,19 +91,18 @@ class ListquestController extends AbstractActionController
         }
         
         $userId = $this->zfcUserAuthentication()->getIdentity()->getId();
-        $ratingValue = 2;
         $serviceLocator = $this->getServiceLocator();
-        
-        $rating = $serviceLocator->create('wtrating.rating');
-        $rating->setTypeId($typeId);
-        $rating->setUserId($userId);
-        $rating->setRating($ratingValue);
-
         $ratingService = $serviceLocator->get('wtrating.service');
-        $ratingService->persist($rating);
+        
+        if (!$ratingService->getMapper()->hasRated($userId,$typeId)){
+            $rating = $serviceLocator->create('wtrating.rating');
+            $rating->setTypeId($typeId);
+            $rating->setUserId($userId);
+            $rating->setRating(1);
+            $ratingService->persist($rating);
+        }
         
         return $this->redirect()->toRoute('list');
-
         
     }
     public function getEntityManager()
