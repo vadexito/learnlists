@@ -124,8 +124,8 @@ question ask page
    font-size:15px;
 }
 
-#results h4{
-    line-height: 0.5;    
+#results h3, #results h4{
+    line-height: 1;    
 }
 
 .img-find {

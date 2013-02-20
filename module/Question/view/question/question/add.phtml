@@ -11,6 +11,7 @@ $form->prepare();
 
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));
+echo $this->formHidden($form->get('listId'));
 echo $this->formRow($form->get('text'));
 echo $this->formRow($form->get('answer'));
 echo $this->formRow($form->get('tip'));?><br/><?php 

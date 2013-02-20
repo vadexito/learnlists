@@ -6,6 +6,7 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface;   
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\EntityManager;
 
 /**
  *
@@ -82,13 +83,25 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
         
     }
     
-    public function exchangeArray($data)
+    public function getArrayCopy()
     {
-        foreach (['id','text','answer','tip','listquest'] as $property)
+        return get_object_vars($this);
+    }
+    
+    public function exchangeArray(array $data,EntityManager $entityManager = NULL)
+    {
+        foreach (['id','text','answer','tip'] as $property)
         {
             $this->$property = (isset($data[$property])) ? 
                 $data[$property] : null;
         }
+        
+        if ($data['listId'] && $entityManager){
+            $this->listquest = $entityManager->find('Question\Entity\Listquest',$data['listId']);
+        }
+        
+        
+        //\Doctrine\Common\Util\Debug::dump($this);die;
         
     }
     
@@ -107,6 +120,14 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
             $inputFilter->add($factory->createInput([
                 'name'     => 'id',
                 'required' => true,
+                'filters'  => [
+                    ['name' => 'Int'],
+                ],
+            ]));
+            
+            $inputFilter->add($factory->createInput([
+                'name'     => 'listId',
+                'required' => false,
                 'filters'  => [
                     ['name' => 'Int'],
                 ],

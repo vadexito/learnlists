@@ -20,6 +20,13 @@ class QuestionForm extends Form
         ]);
         
         $this->add([
+            'name'      => 'listId',
+            'attributes'=> [
+                'type'  => 'hidden',
+            ],
+        ]);
+        
+        $this->add([
             'name' => 'text',
             'attributes' => [
                 'type'  => 'text',

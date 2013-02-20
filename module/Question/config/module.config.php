@@ -37,6 +37,32 @@ return [
                     ],
                 ],
             ],
+            'zfcadmin' => array(
+                'child_routes' => array(
+                    'mymodule' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/application',
+                            'defaults' => array(
+                                'controller' => 'Question\Controller\AdminController',
+                                'action'     => 'index',
+                            ),
+                        ),
+                        'child_routes' =>array(
+                            'mychildroute' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route' => '/',
+                                    'defaults' => array(
+                                        'controller' => 'mycontroller',
+                                        'action'     => 'myaction',
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ],
     ],
     'view_manager' => [

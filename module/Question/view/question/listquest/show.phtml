@@ -1,0 +1,59 @@
+<?php
+$title = 'Learn at LearnLists';
+$this->headTitle($title);
+$this->placeholder('header')->captureStart();
+?>
+<header id="jumbotron-header">
+    <div class="container">
+        <h1><?php echo $this->escapeHtml($title); ?></h1>
+    </div>
+</header>
+<?php $this->placeholder('header')->captureEnd(); ?>
+<h2>
+    <a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
+    (<?php echo count($list->questions); ?> questions)
+    by <?php echo $this->gravatar($list->author->getEmail(),['img_size' => '20px']);echo ' '.$this->zfcUserDisplayName($list->author) ?> 
+    (<?php echo $list->author->getRoles()[0]->getRoleId(); ?>), 
+    created <?php echo $list->creationDate->format('Y-m-d'); ?>
+    <a class="btn btn-primary pull-right" href="<?php echo $this->url('question',['action' => 'add','id' => $list->id]); ?>">
+        Add question
+    </a>
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Text</th>
+            <th>Answer</th>
+            <th>Tip</th>
+        </tr>
+    </thead>
+    <tbody>
+<?php foreach ($list->questions as $question) : ?>
+    <tr>
+        <td>
+<?php if ($this->zfcUserIdentity() && ($list->author->getId() === $this->zfcUserIdentity()->getId())) :?> 
+            <div class="btn-group">
+                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                  Edit
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo $this->url('question',['action' => 'edit','id' => $question->id]); ?>">Edit</a></li>
+                    <li><a href="<?php echo $this->url('question',['action' => 'delete','id' => $question->id]); ?>">Delete</a></li>
+                </ul>
+           </div>
+<?php else : ?>         
+            <a class="btn btn-primary dropdown-toggle" href="#">
+                Add comment                  
+            </a>
+<?php endif; ?>
+
+        </td>
+        <td><?php echo $question->text; ?></td>
+        <td><?php echo $question->answer; ?></td>
+        <td><?php echo $question->tip; ?></td>
+    </tr>
+<?php endforeach; ?>
+    </tbody>
+</table>

@@ -18,8 +18,7 @@ class ListquestController extends AbstractActionController
     
     public function indexAction()
     {
-        $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $rep = $em->getRepository('Question\Entity\Listquest');
+        $rep = $this->getEntityManager()->getRepository('Question\Entity\Listquest');
         
         $ratingService = $this->getServiceLocator()->get('wtrating.service');
         return [
@@ -27,7 +26,22 @@ class ListquestController extends AbstractActionController
             'ratingService' => $ratingService
         ];
     }
-
+    
+    public function showAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('home');
+        }
+        
+        $rep = $this->getEntityManager()
+                    ->getRepository('Question\Entity\Listquest');
+       
+        return [
+            'list'    => $rep->find($id)
+        ];
+    }
+    
     public function addAction()
     {
         $form = new ListquestForm();

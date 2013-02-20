@@ -1,8 +1,6 @@
 <?php 
 return [
     'modules' => [
-        'Question',
-        'QuestionRest',
         'DoctrineModule',
         'DoctrineORMModule',
         'ZfcBase',
@@ -12,6 +10,8 @@ return [
         'ZfcAdmin',
         'CdliTwoStageSignup',
         'WtRating',
+        'Question',
+        'QuestionRest',        
         'Application',        
     ],
     

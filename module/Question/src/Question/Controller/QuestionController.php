@@ -16,7 +16,6 @@ class QuestionController extends AbstractActionController
      */
     protected $em;
     
-    
     public function indexAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
@@ -37,13 +36,13 @@ class QuestionController extends AbstractActionController
         }
         
         $listquest = $this  ->getEntityManager()
-                            ->getRepository('Question\Entity\Listquest')
-                            ->find($listId);
+                            ->find('Question\Entity\Listquest',$listId);
         if (!$this->_checkUserIsAuthorized($listquest)) {
             return $this->redirect()->toRoute('home');
         }
         
         $form = new QuestionForm();
+        $form->get('listId')->setValue($listId);
         $form->get('submit')->setValue('Add');
         
         $request = $this->getRequest();
@@ -53,15 +52,14 @@ class QuestionController extends AbstractActionController
             $form->setData($request->getPost());
 
             if ($form->isValid()) {                
-                $question->exchangeArray(array_merge(
-                    $form->getData(),
-                    ['listquest' => $listquest]
-                ));
+                $question->exchangeArray($form->getData(),$this->getEntityManager());
                 $this->getEntityManager()->persist($question);
                 $this->getEntityManager()->flush();
 
-                // Redirect to list of questions
-                return $this->redirect()->toRoute('list');
+                return $this->redirect()->toRoute(
+                    'list',
+                    ['action' => 'show','id' => $listId]
+                );
             }
         }
         return ['form' => $form,'listId' => $listId];        
@@ -70,11 +68,73 @@ class QuestionController extends AbstractActionController
 
     public function editAction()
     {
+        
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('album', [
+                'action' => 'add'
+            ]);
+        }
+        $question = $this->getEntityManager()
+                         ->find('Question\Entity\Question',$id);
+        
+        $form  = new QuestionForm();
+        $form->bind($question);
+        $form->get('submit')->setAttribute('value', 'Edit');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setInputFilter($question->getInputFilter());
+            $form->setData($request->getPost());
+            $form->isValid(); 
+            if ($form->isValid()) {
+                
+                $this->getEntityManager()->flush();
+
+                return $this->redirect()->toRoute(
+                    'list',
+                    ['action' => 'show','id' => $question->listquest->id]
+                );
+            }
+        }
+
+        return [
+            'id' => $id,
+            'form' => $form,
+        ];
     }
 
     public function deleteAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('list');
+        }
         
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $id = (int) $request->getPost('id');
+                $question = $this->getEntityManager()
+                         ->find('Question\Entity\Question',$id);
+                if ($question){
+                    $listId = $question->listquest->id;
+                    $this->getEntityManager()->remove($question);
+                    $this->getEntityManager()->flush();
+                }
+            }
+            return $this->redirect()->toRoute(
+                'list',
+                ['action' => 'show','id' => $listId]
+            );
+        }
+
+        return [
+            'id' => $id,
+            'question' => $this->getEntityManager()
+                               ->find('Question\Entity\Question',$id),
+        ];
     }
     
     public function setEntityManager(EntityManager $em)
@@ -90,6 +150,7 @@ class QuestionController extends AbstractActionController
         }
         return $this->em;
     }
+    
     
     protected function _checkUserIsAuthorized(Listquest $listquest)
     {
