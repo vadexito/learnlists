@@ -70,6 +70,11 @@ return array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
             'Navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+            'wtrating.mapper' => function ($sm) {     
+                return new WtRating\Mapper\DoctrineMapper(
+                        $sm->get('Doctrine\ORM\EntityManager')                        
+                );
+            }
         ),
     ),
     'translator' => array(
@@ -107,23 +112,27 @@ return array(
     ),
     'doctrine' => [
         'driver' => [
-            'zfcuser_entity' => [
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => [
-                    __DIR__ . '/../src/Application/Entity'
-                ],
-            ],
-            'wtrating_entity' => [
+            'app_zfcuser_entity' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
-                'paths' => __DIR__ . '/xml'
+                'cache' => 'array',
+                'paths' => __DIR__ . '/xml',
+            ],
+            'app_zfr_forum_driver' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
+                'cache' => 'array',
+                'paths' => __DIR__ . '/xml',
+            ],            
+            'app_wtrating_entity' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
+                'paths' => __DIR__ . '/xml',
             ],
             'orm_default' => [
                 'drivers' => [
-                    'Application\Entity' => 'zfcuser_entity',
-                    'WtRating\Entity' => 'wtrating_entity',
+                    'ZfcUserLL\Entity' => 'app_zfcuser_entity',
+                    'WtRating\Entity' => 'app_wtrating_entity',
+                    'ZfrForum\Entity' => 'app_zfr_forum_driver',
                 ]
-            ]
-        ],
+            ],            
+        ],        
     ],
 );

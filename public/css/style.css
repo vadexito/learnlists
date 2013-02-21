@@ -45,8 +45,20 @@ div.container a.brand {
 /*=======================================
 layout nav bar
 =========================================*/
-#gravatar-link {
-    padding:5px 0 5px 0;
+#gravatar-link img{
+    margin : 5px 0 5px 0;
+}
+
+#menu-profile {
+    padding:0;
+}
+
+#menu-profile span.name {
+    padding:10px 15px 10px 15px;
+}
+
+#gravatar-link img {
+    padding : 0;
 }
 
 /*=======================================

@@ -2,19 +2,21 @@
 return [
     'modules' => [
         'DoctrineModule',
-        'DoctrineORMModule',
+        'DoctrineORMModule', 
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',
+        'SlmLocale',
         'BjyAuthorize',
         'ZfcAdmin',
         'CdliTwoStageSignup',
-        'Question',
-        'QuestionRest',        
         'WtRating',  
         'Application',
+        'ZfrForum',          
+        'Question',
+        'QuestionRest',        
+        
     ],
-    
     
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => [
@@ -24,7 +26,7 @@ return [
         // Module class.
         'module_paths' => [
             './module',
-            './vendor',
+            './vendor',            
         ],
 
         // An array of paths from which to glob configuration files after

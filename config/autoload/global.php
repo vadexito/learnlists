@@ -22,13 +22,17 @@ return [
 //    ],
     
     'navigation' => [
-         'default' => [
-             [
-                 'id' => 'home',
-                 'label' => 'Learnlists',
-                 'route' => 'home',
-                 'class' => 'brand',
-                 'pages' => [
+        'default' => [
+            [
+                'id' => 'general',
+                'uri' => '#',
+                'pages' => [
+                    [
+                        'id' => 'home',
+                        'label' => 'Learnlists',
+                        'route' => 'home',
+                        'class' => 'brand',                        
+                    ],
                     [
                         'id' => 'list_show',
                         'label' => 'Browse',
@@ -40,30 +44,44 @@ return [
                         'label' => 'New list',
                         'route' => 'list',
                         'action' => 'add',
+                        'resource' => 'listquest',
+                        'privilege' => 'add',
                     ],
                 ],
-             ],
-             
-             [
-                 'id' => 'login',
-                 'label' => 'Sign In',
-                 'route' => 'zfcuser/login',
-             ],
-             [
-                 'id' => 'register',
-                 'label' => 'Sign Up',
-                 'route' => 'zfcuser/register',
-             ],
-             [
-                 'id' => 'logout',
-                 'label' => 'Log out',
-                 'route' => 'zfcuser/logout',
-             ],
-             [
-                 'id' => 'profile',
-                 'label' => '',
-                 'route' => 'home',
-             ],
-         ]
-     ],
+            ],             
+            [
+                'id' => 'user',
+                'uri' => '#',
+                'pages' => [
+                    [
+                        'id' => 'login',
+                        'label' => 'Sign In',
+                        'route' => 'zfcuser/login',
+                        'resource' => 'user',
+                        'privilege' => 'login',
+                    ],
+                    [
+                        'id' => 'register',
+                        'label' => 'Sign Up',
+                        'route' => 'zfcuser/register',
+                        'resource' => 'user',
+                        'privilege' => 'register',
+                    ],
+                    [
+                        'id' => 'profile',
+                        'label' => '',
+                        'uri' => '#',
+                    ],
+                    [
+                        'id' => 'logout',
+                        'label' => 'Log out',
+                        'route' => 'zfcuser/logout',
+                        'resource' => 'user',
+                        'privilege' => 'logout',
+                    ],
+                    
+                ],
+            ],
+        ],
+    ],
 ];

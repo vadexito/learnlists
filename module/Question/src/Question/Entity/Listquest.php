@@ -46,7 +46,7 @@ class Listquest extends EntityAbstract
     /**
      * Rules for the quiz
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      * @access protected
      */    
@@ -63,7 +63,7 @@ class Listquest extends EntityAbstract
 
     /**
      * 
-     * @ORM\ManyToOne(targetEntity="Application\Entity\User")
+     * @ORM\ManyToOne(targetEntity="ZfcUserLL\Entity\User")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      * 
      */

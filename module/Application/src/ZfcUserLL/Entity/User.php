@@ -6,22 +6,24 @@
  * @license http://framework.zend.com/license/new-bsd New BSD License
  */
  
-namespace Application\Entity;
+namespace ZfcUserLL\Entity;
 
 use BjyAuthorize\Provider\Role\ProviderInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ZfcUser\Entity\UserInterface;
+use DateTime;
+use ZfrForum\Entity\UserInterface as ZfrForumUserInterface;
 
 /**
  * An example of how to implement a role aware user entity.
  *
  * @ORM\Entity
- * @ORM\Table(name="users")
+ * @ORM\Table(name="users_learnlists")
  *
  * @author Tom Oram <tom@scl.co.uk>
  */
-class User implements UserInterface, ProviderInterface
+class User implements UserInterface, ProviderInterface, ZfrForumUserInterface
 {
     /**
      * @var int
@@ -45,7 +47,7 @@ class User implements UserInterface, ProviderInterface
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(name="display_name" type="string", length=50, nullable=true)
      */
     protected $displayName;
 
@@ -62,13 +64,27 @@ class User implements UserInterface, ProviderInterface
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     * @ORM\ManyToMany(targetEntity="Application\Entity\Role")
+     * @ORM\ManyToMany(targetEntity="ZfcUserLL\Entity\Role")
      * @ORM\JoinTable(name="users_roles",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
      * )
      */
     protected $roles;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=39)
+     */
+    protected $ip = '';
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $lastActivityDate;
 
     /**
      * Initialies the roles variable.
@@ -230,5 +246,51 @@ class User implements UserInterface, ProviderInterface
     public function addRole($role)
     {
         $this->roles[] = $role;
+    }
+    
+    /**
+     * Set the IP address of the user (needed for ban functionnality)
+     *
+     * @param  string $ip
+     * @return User
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+        return $this;
+    }
+
+    /**
+     * Get the IP address of the user (needed for ban functionnality)
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * Set the last activity date (this is updated at each request)
+     *
+     * @param  DateTime $lastActivityDate
+     * @return User
+     */
+    public function setLastActivityDate(DateTime $lastActivityDate)
+    {
+        $this->lastActivityDate = clone $lastActivityDate;
+        return $this;
+    }
+
+    /**
+     * Get the last activity date
+     *
+     * @return DateTime
+     */
+    public function getLastActivityDate()
+    {
+        if ($this->lastActivityDate){
+            return clone $this->lastActivityDate;
+        }
     }
 }

@@ -79,10 +79,10 @@ return [
         'driver' => [
             // defines an annotation driver with two paths
             'Question_driver' => [
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'class' => 'Doctrine\ORM\Mapping\Driver\XMLDriver',
                 'cache' => 'array',
                 'paths' => [
-                    __DIR__ . '/../src/Question/Entity'
+                    __DIR__ . '/xml/Question'
                 ],
             ],
             // default metadata driver, aggregates all other drivers into a single one.

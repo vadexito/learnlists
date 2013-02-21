@@ -6,6 +6,9 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Question\Entity\Listquest;          
 use Question\Form\ListquestForm; 
+use ZfrForum\Entity\Post;
+use ZfrForum\Entity\Thread;
+use ZfrForum\Entity\Category;
 
 class ListquestController extends AbstractActionController
 {
@@ -22,6 +25,34 @@ class ListquestController extends AbstractActionController
         
         $ratingService = $this->getServiceLocator()->get('wtrating.service');
         
+//        $commentService = $this->getServiceLocator()->get('ZfrForum\Service\ThreadService');
+//        $postService = $this->getServiceLocator()->get('ZfrForum\Service\PostService');         
+//        
+//        $post = new Post();
+//        $post->setContent('voila');
+//        //$post->setAuthor($this->zfcUserAuthentication()->getIdentity());
+//        $post->setLastModifiedAt(new \Zend\Stdlib\DateTime());
+//        
+//        //$this->zfcUserAuthentication()->getIdentity()->setIp($_SERVER['REMOTE_ADDR']);
+//        //$this->zfcUserAuthentication()->getIdentity()->setLastActivityDate(new \Zend\Stdlib\DateTime());
+//        $this->getEntityManager()->flush();
+//        
+//        $thread = new Thread;
+//        $category = new Category();
+//        $category->setName('question');
+//        $category->setPosition(2);
+//        
+//        $thread->setTitle('t');
+//        $thread->setCategory($category);
+//        $thread->setCreatedAt(new \Zend\Stdlib\DateTime());
+//        //$thread->setCreatedBy($this->zfcUserAuthentication()->getIdentity());
+//        
+//        $this->getEntityManager()->persist($category);
+//        $this->getEntityManager()->persist($thread);
+//        $commentService->addPost($thread,$post);
+        
+        
+        
         return [
             'lists'  => $rep->findAll(),
             'ratingService' => $ratingService
@@ -33,13 +64,12 @@ class ListquestController extends AbstractActionController
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('home');
-        }
-        
-        $rep = $this->getEntityManager()
-                    ->getRepository('Question\Entity\Listquest');
-       
+        }        
         return [
-            'list'    => $rep->find($id)
+            'list'    => $this->getEntityManager()->find(
+                'Question\Entity\Listquest',
+                $id
+            )
         ];
     }
     

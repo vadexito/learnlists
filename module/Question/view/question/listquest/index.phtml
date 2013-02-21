@@ -22,38 +22,47 @@ $this->placeholder('header')->captureStart();
         </tr>
     </thead>
     <tbody>
-<?php foreach ($lists as $list) : ?>
+<?php foreach ($this->lists as $list) : $commentArea = 'comments-list-'.$list->id; ?>
       <tr>
-        <td>
-<?php if ($this->zfcUserIdentity() && ($list->author->getId() === $this->zfcUserIdentity()->getId())) :?> 
-            <div class="btn-group">
-                <a class="btn btn-primary btn-small" href="<?php echo $this->url('question',['action' => 'add','id' => $list->id]); ?>" title="<?php echo $this->translate('Add question'); ?>"><i class="icon-plus icon-white"></i></a>
-                <a class="btn btn-primary btn-small" href="<?php echo $this->url('list',['action' => 'show','id' => $list->id]); ?>" title="<?php echo $this->translate('Edit list'); ?>"><i class="icon-edit icon-white"></i></a>
-           </div>
+            <td>
+<?php if ($this->zfcUserIdentity() && ($this->zfcUserIdentity()->getRoles()[0]->getRoleId() === 'teacher')) :?>             
+                <button class="btn btn-mini btn-info " data-toggle="collapse" data-target="#<?php echo $commentArea; ?>" title="<?php echo $this->translate('See comments'); ?>">
+                    <i class="icon-chevron-down icon-white"></i>
+                </button>
 <?php endif; ?>
-        </td>
-        <td><?php if (count($list->tags) > 0) : echo $this->escapeHtml(implode(', ',$list->tags->toArray())); endif; ?></td>
-        <td>
-            <?php if (isset($ratingService)) : echo round($ratingService->getRatingSet($list->id)->getAmount());endif; ?>
-        </td>
-        <td><?php echo $this->escapeHtml($list->level); ?></td>
-        <td>
-            <a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
-            (<?php echo count($list->questions); ?> questions)
-            <p>
-                by <?php echo $this->gravatar($list->author->getEmail(),['img_size' => '20px']);echo ' '.$this->zfcUserDisplayName($list->author) ?> 
-                (<?php echo $list->author->getRoles()[0]->getRoleId(); ?>), 
-                created <?php echo $list->creationDate->format('Y-m-d'); ?>
-            </p>
-        </td>
-        <td>
+<?php if ($this->zfcUserIdentity() && ($list->author->getId() === $this->zfcUserIdentity()->getId())) :?> 
+                <div class="btn-group">
+                    <a class="btn btn-primary btn-small" href="<?php echo $this->url('question',['action' => 'add','id' => $list->id]); ?>" title="<?php echo $this->translate('Add question'); ?>"><i class="icon-plus icon-white"></i></a>
+                    <a class="btn btn-primary btn-small" href="<?php echo $this->url('list',['action' => 'show','id' => $list->id]); ?>" title="<?php echo $this->translate('Edit list'); ?>"><i class="icon-edit icon-white"></i></a>
+                </div>
+<?php endif; ?>
+            </td>
+            <td><?php if (count($list->tags) > 0) : echo $this->escapeHtml(implode(', ',$list->tags->toArray())); endif; ?></td>
+            <td>
+                <?php if (isset($ratingService)) : echo round($ratingService->getRatingSet($list->id)->getAmount());endif; ?>
+            </td>
+            <td><?php echo $this->escapeHtml($list->level); ?></td>        
+            <td>
+                <a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
+                (<?php echo count($list->questions); ?> questions)
+                <p>
+                    by <?php echo $this->gravatar($list->author->getEmail(),['img_size' => '20px']);echo ' '.$this->zfcUserDisplayName($list->author) ?> 
+                    (<?php echo $list->author->getRoles()[0]->getRoleId(); ?>), 
+                    created <?php echo $list->creationDate->format('Y-m-d'); ?>
+                </p>
+            </td>
+            <td>            
 <?php if ($this->zfcUserIdentity()) : ?><?php if ($ratingService->getMapper()->hasRated($this->zfcUserIdentity()->getId(),$list->id)) : ?>
             <a class="btn btn-mini" disabled><i class="icon-thumbs-up"></i> Like</a> I like this</a>
 <?php else : ?>
             <a class="btn btn-mini" href="<?php echo $this->url('list',['action' => 'rate','id' => $list->id]); ?>"><i class="icon-thumbs-up"></i> Like</a>    
 <?php endif;?><?php endif;?>
-        </td>        
-      </tr>
+            </td>        
+        </tr>
+      
+<?php if ($this->zfcUserIdentity() && ($this->zfcUserIdentity()->getRoles()[0]->getRoleId() === 'teacher')) :?>
+        <div id="<?php echo $commentArea; ?>" class="collapse"> In test </div>        
+<?php endif;?>      
 <?php endforeach; ?>
     </tbody>
 </table>

@@ -32,7 +32,7 @@
                     </a>
 <?php
 $partial = ['menu.phtml','default'];
-$this->navigation('navigation')->menu()->setPartial($partial);
+$this->navigation('navigation')->menu()->escapeLabels(false)->setPartial($partial);
 echo $this->navigation('navigation')->menu()->render();
 ?>
                 </div>

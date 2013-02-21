@@ -6,7 +6,7 @@
  * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Application\Entity;
+namespace ZfcUserLL\Entity;
 
 use BjyAuthorize\Acl\HierarchicalRoleInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,8 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  * @ORM\Table(name="role")
- *
- * @author Tom Oram <tom@scl.co.uk>
+ * 
  */
 class Role implements HierarchicalRoleInterface
 {
@@ -37,7 +36,7 @@ class Role implements HierarchicalRoleInterface
 
     /**
      * @var Role
-     * @ORM\ManyToOne(targetEntity="Application\Entity\Role")
+     * @ORM\ManyToOne(targetEntity="ZfcUserLL\Entity\Role")
      */
     protected $parent;
 

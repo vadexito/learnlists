@@ -34,17 +34,17 @@ class Module
     {
         return [
             'factories' => [
-                'Question\Model\QuestionTable' =>  function($sm) {
-                    $tableGateway = $sm->get('QuestionTableGateway');
-                    $table = new QuestionTable($tableGateway);
-                    return $table;
-                },
-                'QuestionTableGateway' => function ($sm) {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Question());
-                    return new TableGateway('question', $dbAdapter, null, $resultSetPrototype);
-                },
+//                'Question\Model\QuestionTable' =>  function($sm) {
+//                    $tableGateway = $sm->get('QuestionTableGateway');
+//                    $table = new QuestionTable($tableGateway);
+//                    return $table;
+//                },
+//                'QuestionTableGateway' => function ($sm) {
+//                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+//                    $resultSetPrototype = new ResultSet();
+//                    $resultSetPrototype->setArrayObjectPrototype(new Question());
+//                    return new TableGateway('question', $dbAdapter, null, $resultSetPrototype);
+//                },
             ],
         ];
     }
