@@ -25,6 +25,8 @@ class ListquestController extends AbstractActionController
         
         $ratingService = $this->getServiceLocator()->get('wtrating.service');
         
+        
+        
 //        $commentService = $this->getServiceLocator()->get('ZfrForum\Service\ThreadService');
 //        $postService = $this->getServiceLocator()->get('ZfrForum\Service\PostService');         
 //        
@@ -76,7 +78,7 @@ class ListquestController extends AbstractActionController
     public function addAction()
     {
         $form = new ListquestForm();
-        $form->get('submit')->setValue('Add');
+        $form->get('submit')->setValue(_('Add'));
         
         $request = $this->getRequest();
         if ($request->isPost()) {

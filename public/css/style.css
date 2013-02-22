@@ -69,7 +69,7 @@ footer ul{
     text-align: center;
 }
 
-footer li{
+footer li.footer-item {
     display:inline;
     margin: 0 10px 0 10px;
 }
@@ -78,6 +78,10 @@ footer li{
     text-align: center;
     margin:0;
     font-size: 12px;
+}
+
+.dropdown-menu {
+    min-width: 120px;
 }
 /*=======================================
 header
@@ -99,7 +103,7 @@ header
 #jumbotron-header.home h1 {
     margin-top: 85px;
     margin-bottom : 115px;
-    font-size: 6em;
+    font-size: 5.5em;
 }
 
 

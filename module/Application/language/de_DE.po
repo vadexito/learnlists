@@ -2,117 +2,174 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-05 23:45-0700\n"
-"PO-Revision-Date: 2012-07-06 08:18-0700\n"
-"Last-Translator: Evan Coury <me@evancoury.com>\n"
+"POT-Creation-Date: 2013-02-22 17:31+0100\n"
+"PO-Revision-Date: 2013-02-22 17:32+0100\n"
+"Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
-"Language: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-KeywordsList: translate;_:1,2\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ../../Question\n"
+"X-Poedit-SearchPath-2: ../../../config/autoload\n"
 
-#: ../view/layout/layout.phtml:6
-#: ../view/layout/layout.phtml:33
-msgid "Skeleton Application"
-msgstr ""
+#: ../../Question/src/Question/Controller/ListquestController.php:81
+#: ../../Question/src/Question/Controller/QuestionController.php:46
+msgid "Add"
+msgstr "Erstellen"
 
-#: ../view/layout/layout.phtml:36
-msgid "Home"
-msgstr "Startseite"
+#: ../../Question/src/Question/Controller/QuestionController.php:83
+#: ../../Question/view/question/listquest/show.phtml:39
+#: ../../Question/view/question/listquest/show.phtml:43
+msgid "Edit"
+msgstr "Editieren"
 
-#: ../view/layout/layout.phtml:50
-msgid "All rights reserved."
-msgstr "Alle Rechte vorbehalten."
+#: ../../Question/src/Question/Form/ListquestForm.php:29
+#: ../../Question/view/question/listquest/index.phtml:20
+msgid "Title"
+msgstr "Titel"
+
+#: ../../Question/src/Question/Form/ListquestForm.php:40
+#: ../../Question/view/question/listquest/index.phtml:19
+msgid "Level"
+msgstr "Niveau"
+
+#: ../../Question/src/Question/Form/ListquestForm.php:52
+msgid "Rules"
+msgstr "Regeln"
+
+#: ../../Question/src/Question/Form/ListquestForm.php:64
+#: ../../Question/view/question/listquest/index.phtml:17
+msgid "Tags"
+msgstr "Tags"
+
+#: ../../Question/src/Question/Form/ListquestForm.php:72
+msgid "Check"
+msgstr "Prüfen"
+
+#: ../../Question/src/Question/Form/QuestionForm.php:38
+#: ../../Question/view/question/listquest/show.phtml:27
+msgid "Text"
+msgstr "Text"
+
+#: ../../Question/src/Question/Form/QuestionForm.php:50
+#: ../../Question/view/question/listquest/show.phtml:28
+msgid "Answer"
+msgstr "Antwort"
+
+#: ../../Question/src/Question/Form/QuestionForm.php:62
+#: ../../Question/view/question/listquest/show.phtml:29
+msgid "Tip"
+msgstr "Tip"
+
+#: ../../../config/autoload/bjyauthorize.global.php:10
+msgid "user"
+msgstr "Benutzer"
+
+#: ../../../config/autoload/bjyauthorize.global.php:11
+msgid "student"
+msgstr "Student"
+
+#: ../../../config/autoload/bjyauthorize.global.php:12
+msgid "teacher"
+msgstr "Lehrer"
+
+#: ../../../config/autoload/bjyauthorize.global.php:13
+msgid "guest"
+msgstr "Gast"
+
+#: ../../../config/autoload/global.php:27
+msgid "Learnlists"
+msgstr "Learnlists"
+
+#: ../../../config/autoload/global.php:33
+msgid "Browse"
+msgstr "Browsen"
+
+#: ../../../config/autoload/global.php:39
+msgid "New list"
+msgstr "Neue Liste"
+
+#: ../../../config/autoload/global.php:53
+msgid "Sign In"
+msgstr "Einloggen"
+
+#: ../../../config/autoload/global.php:60
+msgid "Sign Up"
+msgstr "Sich registrieren"
+
+#: ../../../config/autoload/global.php:72
+msgid "Log out"
+msgstr "Ausloggen"
 
 #: ../view/application/index/index.phtml:2
-#, php-format
-msgid "Welcome to %sZend Framework 2%s"
-msgstr "Willkommen zu dem %sZend Framework 2%s"
+#: ../../Question/view/question/listquest/index.phtml:3
+#: ../../Question/view/question/listquest/show.phtml:2
+msgid "Learn at LearnLists"
+msgstr "Mit Learnlists lernen"
 
-#: ../view/application/index/index.phtml:3
-#, php-format
-msgid "Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2."
-msgstr "Herzlichen Glückwunsch! Sie haben die %sZF2 Skeleton Application%s erfolgreich installiert und benutzen gerade die Version %s des Zend Frameworks. Dieses Gerüst kann Ihnen als Einstiegspunkt, für Ihre weitere Entwicklung, basierend auf dem Zend Framework 2, dienen."
+#: ../view/application/index/index.phtml:13
+msgid "Learn with quiz-lists"
+msgstr "Lerne mit Quiz-Listen"
 
-#: ../view/application/index/index.phtml:4
-msgid "Fork Zend Framework 2 on GitHub"
-msgstr "Fork Zend Framework 2 auf GitHub"
+#: ../view/application/index/index.phtml:14
+msgid ""
+"One great way to learn is through quiz. The possibilities offered by quizzes "
+"(image, complex sentences, sounds) multiply , "
+msgstr "Quiz zu benutzen ist ein anerkanntes Mittel um nachhaltig zu lernen."
 
-#: ../view/application/index/index.phtml:10
-msgid "Follow Development"
-msgstr "Folge der Entwicklung"
+#: ../view/application/index/index.phtml:15
+msgid "Browse lists"
+msgstr "Browse dir Liste"
 
-#: ../view/application/index/index.phtml:11
-#, php-format
-msgid "Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!"
-msgstr "Das Zend Framework 2 wird z.Z. aktiv weiterentwickelt.  Sollten Sie daran interessiert sein, die Entwicklung von ZF2 zu verfolgen, so bietet Ihnen die offizielle Webseite einen eigens für das Zend Framework 2 eingerichteten Bereich, auf der Sie Verlinkungen zum ZF2 %sWiki%s, %sEntwickler Blog%s, einem %sFehlerverfolgungssystem%s und noch vielem mehr finden. Dieser Bereich ist eine hervorragende Quelle um stets aktuell zu bleiben."
+#: ../view/application/index/index.phtml:19
+msgid "High quality quizzes"
+msgstr "Spitzenqualität Quiz"
 
-#: ../view/application/index/index.phtml:12
-msgid "ZF2 Development Portal"
-msgstr "ZF2 Entwickler Portal"
+#: ../view/application/index/index.phtml:20
+msgid ""
+"Quality quizzes are developped by the community of teachers taking part in "
+"our project learnlists."
+msgstr ""
+"Um eine höhe Qualität anzubieten werden die Quiz von bei LearnLists "
+"angemeldeten Lehrern entwickelt."
 
-#: ../view/application/index/index.phtml:16
-msgid "Discover Modules"
-msgstr "Entdecken Sie Module"
+#: ../view/application/index/index.phtml:25
+msgid "Create and share you own quizzes"
+msgstr "Seine eingenen Quiz erstellen und teilen"
 
-#: ../view/application/index/index.phtml:17
-#, php-format
-msgid "The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2."
-msgstr "Die Community arbeitet momentan an einer Community Seite, welche als Galerie für ZF2 Module dient. Dieses Projekt ist %sauf GitHub%s verfügbar. Die Webseite ist bereits Online und enthält eine Liste mit schon veröffentlichten Modulen für das Zend Framework 2."
+#: ../view/application/index/index.phtml:26
+msgid "You can create and share your own private lists. You have to be logged."
+msgstr ""
+"Du kannst private oder öffentliche Liste erstellen. Man braucht dafür "
+"eingeloggt zu sein."
 
-#: ../view/application/index/index.phtml:18
-msgid "Explore ZF2 Modules"
-msgstr "Erkunden Sie ZF2 Module"
+#: ../view/error/403.phtml:1
+msgid "A 403 error occurred"
+msgstr "Es trat ein 403 Fehler auf"
 
-#: ../view/application/index/index.phtml:22
-msgid "Help &amp; Support"
-msgstr "Hilfe &amp; Support"
+#: ../view/error/403.phtml:11
+msgid "The requested controller was not authorized."
+msgstr "Der angeforderte Controller ist nicht erlaubt."
 
-#: ../view/application/index/index.phtml:23
-#, php-format
-msgid "If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We'd love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s."
-msgstr "Sollten Sie Hilfe jeglicher Art bei der Entwicklung mit dem Zend Framework 2 benötigen, kontaktieren Sie uns doch einfach über das IRC: %s#zftalk on Freenode%s. Wir freuen uns darauf, Ihnen bei Ihren Fragen zu helfen oder aber auch Ihre Meinung bezüglich der Beta Versionen zu hören. Alternativ können Sie auch die %smailing lists%s abonnieren und Ihre Fragen dort stellen."
+#: ../view/error/403.phtml:14
+msgid "The requested route was not authorized."
+msgstr "Die angeforderte Route ist nicht erlaubt."
 
-#: ../view/application/index/index.phtml:24
-msgid "Ping us on IRC"
-msgstr "Schreiben Sie uns im IRC an"
+#: ../view/error/403.phtml:17
+msgid "The requested page was not authorized."
+msgstr "Die angeforderte Seite ist nicht erlaubt."
 
-#: ../view/error/index.phtml:1
-msgid "An error occurred"
-msgstr "Ein Fehler ist aufgetreten"
-
-#: ../view/error/index.phtml:8
-msgid "Additional information"
-msgstr "Zusätzliche Information"
-
-#: ../view/error/index.phtml:11
-#: ../view/error/index.phtml:35
-msgid "File"
-msgstr "Datei"
-
-#: ../view/error/index.phtml:15
-#: ../view/error/index.phtml:39
-msgid "Message"
-msgstr "Meldung"
-
-#: ../view/error/index.phtml:19
-#: ../view/error/index.phtml:43
-#: ../view/error/404.phtml:55
-msgid "Stack trace"
-msgstr "Stapelüberwachung"
-
-#: ../view/error/index.phtml:29
-msgid "Previous exceptions"
-msgstr "Vorherige Ausnahme"
-
-#: ../view/error/index.phtml:58
-msgid "No Exception available"
-msgstr "Es ist keine Ausnahme verfügbar"
+#: ../view/error/403.phtml:20
+msgid "We cannot determine at this time why a 403 was generated."
+msgstr ""
+"Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 403 "
+"Fehler aufgetreten ist."
 
 #: ../view/error/404.phtml:1
 msgid "A 404 error occurred"
@@ -120,11 +177,15 @@ msgstr "Es trat ein 404 Fehler auf"
 
 #: ../view/error/404.phtml:10
 msgid "The requested controller was unable to dispatch the request."
-msgstr "Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten."
+msgstr ""
+"Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten."
 
 #: ../view/error/404.phtml:13
-msgid "The requested controller could not be mapped to an existing controller class."
-msgstr "Der angeforderte Controller konnte keiner Controller Klasse zugeordnet werden."
+msgid ""
+"The requested controller could not be mapped to an existing controller class."
+msgstr ""
+"Der angeforderte Controller konnte keiner Controller Klasse zugeordnet "
+"werden."
 
 #: ../view/error/404.phtml:16
 msgid "The requested controller was not dispatchable."
@@ -136,7 +197,9 @@ msgstr "Für die angeforderte URL konnte keine Übereinstimmung gefunden werden.
 
 #: ../view/error/404.phtml:22
 msgid "We cannot determine at this time why a 404 was generated."
-msgstr "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 Fehler aufgetreten ist."
+msgstr ""
+"Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 "
+"Fehler aufgetreten ist."
 
 #: ../view/error/404.phtml:34
 msgid "Controller"
@@ -147,7 +210,262 @@ msgstr "Controller"
 msgid "resolves to %s"
 msgstr "wird aufgelöst in %s"
 
-#: ../view/error/404.phtml:51
-msgid "Exception"
-msgstr "Ausnahme"
+#: ../view/error/404.phtml:53 ../view/error/index.phtml:8
+msgid "Additional information"
+msgstr "Zusätzliche Information"
 
+#: ../view/error/404.phtml:56 ../view/error/404.phtml:80
+#: ../view/error/index.phtml:11 ../view/error/index.phtml:35
+msgid "File"
+msgstr "Datei"
+
+#: ../view/error/404.phtml:60 ../view/error/404.phtml:84
+#: ../view/error/index.phtml:15 ../view/error/index.phtml:39
+msgid "Message"
+msgstr "Meldung"
+
+#: ../view/error/404.phtml:64 ../view/error/404.phtml:88
+#: ../view/error/index.phtml:19 ../view/error/index.phtml:43
+msgid "Stack trace"
+msgstr "Stapelüberwachung"
+
+#: ../view/error/404.phtml:74 ../view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr "Vorherige Ausnahme"
+
+#: ../view/error/404.phtml:103 ../view/error/index.phtml:58
+msgid "No Exception available"
+msgstr "Es ist keine Ausnahme verfügbar"
+
+#: ../view/error/index.phtml:1
+msgid "An error occurred"
+msgstr "Ein Fehler ist aufgetreten"
+
+#: ../view/layout/layout.phtml:6
+msgid "LearnLists"
+msgstr "LearnLists"
+
+#: ../view/layout/layout.phtml:46
+msgid "About"
+msgstr "Über uns"
+
+#: ../view/layout/layout.phtml:47
+msgid "Help"
+msgstr "Hilfe"
+
+#: ../view/layout/layout.phtml:48
+msgid "Terms"
+msgstr "Bedingungen"
+
+#: ../view/layout/layout.phtml:49
+msgid "Privacy"
+msgstr "Privatsphäre"
+
+#: ../view/layout/layout.phtml:50
+msgid "Contact"
+msgstr "Kontakt"
+
+#: ../view/layout/layout.phtml:52
+msgid "Language"
+msgstr "Sprache"
+
+#: ../view/layout/layout.phtml:54
+msgid "German"
+msgstr "Deutsch"
+
+#: ../view/layout/layout.phtml:55
+msgid "French"
+msgstr "Französisch"
+
+#: ../view/layout/layout.phtml:56
+msgid "English"
+msgstr "Englisch"
+
+#: ../view/layout/layout.phtml:60
+msgid "2013 by Voilamylife."
+msgstr "2013 Voilamylife."
+
+#: ../view/layout/layout.phtml:60
+msgid "All rights reserved."
+msgstr "Alle Rechte vorbehalten."
+
+#: ../../Question/view/question/listquest/add.phtml:3
+msgid "Add new list"
+msgstr "Neue Liste hinzufügen"
+
+#: ../../Question/view/question/listquest/add.phtml:16
+msgid "Advanced, average, beginner for example"
+msgstr "Schwer, sehr schwer, durchschnittlich, einfach zum Beispiel"
+
+#: ../../Question/view/question/listquest/index.phtml:18
+msgid "Rating"
+msgstr "Bewertung"
+
+#: ../../Question/view/question/listquest/index.phtml:29
+msgid "See comments"
+msgstr "Sehe Kommentare"
+
+#: ../../Question/view/question/listquest/index.phtml:35
+#: ../../Question/view/question/listquest/show.phtml:20
+msgid "Add question"
+msgstr "Neue Frage"
+
+#: ../../Question/view/question/listquest/index.phtml:36
+msgid "Edit list"
+msgstr "Liste editieren"
+
+#: ../../Question/view/question/listquest/index.phtml:47
+#: ../../Question/view/question/listquest/show.phtml:14
+msgid "question"
+msgid_plural "questions"
+msgstr[0] "Frage"
+msgstr[1] "Fragen"
+
+#: ../../Question/view/question/listquest/index.phtml:49
+#: ../../Question/view/question/listquest/show.phtml:15
+#, php-format
+msgid "by %s created on %s"
+msgstr "von %s erstellt am %s"
+
+#: ../../Question/view/question/listquest/index.phtml:57
+#: ../../Question/view/question/listquest/index.phtml:59
+msgid "Like"
+msgstr "Mag"
+
+#: ../../Question/view/question/listquest/index.phtml:57
+msgid "I like this"
+msgstr "Das mag ich"
+
+#: ../../Question/view/question/listquest/show.phtml:14
+msgid "questions"
+msgstr "Fragen"
+
+#: ../../Question/view/question/listquest/show.phtml:44
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../../Question/view/question/listquest/show.phtml:49
+msgid "Add comment"
+msgstr "Neues Kommentar"
+
+#: ../../Question/view/question/question/add.phtml:3
+msgid "Add new question"
+msgstr "Neue Frage hinzufügen"
+
+#: ../../Question/view/question/question/add.phtml:17
+#: ../../Question/view/question/question/edit.phtml:20
+msgid ""
+"Enter the text for the question. If this is a sentence to fill in, please "
+"use two \"%\" signs in order to specify answers.Example : He %was% not there "
+"%either%."
+msgstr ""
+"Hier bitte den Text der Frage einzutragen. Wenn es sich um eine zu "
+"ergänzende Frage handelt, nutzen sie Bitte zweimal die \"%\" Zeichen um die "
+"Antwort herum. Beipsiel : Er %hat% die richtige %Entscheidung %getroffen%."
+
+#: ../../Question/view/question/question/add.phtml:21
+#: ../../Question/view/question/question/edit.phtml:24
+msgid ""
+"Nothing to enter if the answer was already entered directly in the text."
+msgstr ""
+"Keine Antwort einzutragen, wenn es sich um eine zu ergänzende Frage handelt."
+
+#: ../../Question/view/question/question/delete.phtml:3
+msgid "Delete question"
+msgstr "Frage löschen"
+
+#: ../../Question/view/question/question/delete.phtml:8
+msgid "Are you sure that you want to delete the question with the text"
+msgstr ""
+"Sind Sie sicher, dass Sie die Frage mit folgendem Text löschen möchten "
+
+#: ../../Question/view/question/question/edit.phtml:2
+msgid "Edit question"
+msgstr "Frage editieren"
+
+#~ msgid ""
+#~ "Nothing to enter if the answer was already entered directly in the text "
+#~ "(using \"%\" signs)."
+#~ msgstr ""
+#~ "Keine Antwort einzutragen, wenn es sich um eine zu ergänzende Frage "
+#~ "handelt."
+
+#~ msgid "Home"
+#~ msgstr "Startseite"
+
+#~ msgid "Welcome to %sZend Framework 2%s"
+#~ msgstr "Willkommen zu dem %sZend Framework 2%s"
+
+#~ msgid ""
+#~ "Congratulations! You have successfully installed the %sZF2 Skeleton "
+#~ "Application%s. You are currently running Zend Framework version %s. This "
+#~ "skeleton can serve as a simple starting point for you to begin building "
+#~ "your application on ZF2."
+#~ msgstr ""
+#~ "Herzlichen Glückwunsch! Sie haben die %sZF2 Skeleton Application%s "
+#~ "erfolgreich installiert und benutzen gerade die Version %s des Zend "
+#~ "Frameworks. Dieses Gerüst kann Ihnen als Einstiegspunkt, für Ihre weitere "
+#~ "Entwicklung, basierend auf dem Zend Framework 2, dienen."
+
+#~ msgid "Fork Zend Framework 2 on GitHub"
+#~ msgstr "Fork Zend Framework 2 auf GitHub"
+
+#~ msgid "Follow Development"
+#~ msgstr "Folge der Entwicklung"
+
+#~ msgid ""
+#~ "Zend Framework 2 is under active development. If you are interested in "
+#~ "following the development of ZF2, there is a special ZF2 portal on the "
+#~ "official Zend Framework website which provides links to the ZF2 %swiki%s, "
+#~ "%sdev blog%s, %sissue tracker%s, and much more. This is a great resource "
+#~ "for staying up to date with the latest developments!"
+#~ msgstr ""
+#~ "Das Zend Framework 2 wird z.Z. aktiv weiterentwickelt.  Sollten Sie daran "
+#~ "interessiert sein, die Entwicklung von ZF2 zu verfolgen, so bietet Ihnen "
+#~ "die offizielle Webseite einen eigens für das Zend Framework 2 "
+#~ "eingerichteten Bereich, auf der Sie Verlinkungen zum ZF2 %sWiki%s, "
+#~ "%sEntwickler Blog%s, einem %sFehlerverfolgungssystem%s und noch vielem "
+#~ "mehr finden. Dieser Bereich ist eine hervorragende Quelle um stets "
+#~ "aktuell zu bleiben."
+
+#~ msgid "ZF2 Development Portal"
+#~ msgstr "ZF2 Entwickler Portal"
+
+#~ msgid "Discover Modules"
+#~ msgstr "Entdecken Sie Module"
+
+#~ msgid ""
+#~ "The community is working on developing a community site to serve as a "
+#~ "repository and gallery for ZF2 modules. The project is available %son "
+#~ "GitHub%s. The site is currently live and currently contains a list of "
+#~ "some of the modules already available for ZF2."
+#~ msgstr ""
+#~ "Die Community arbeitet momentan an einer Community Seite, welche als "
+#~ "Galerie für ZF2 Module dient. Dieses Projekt ist %sauf GitHub%s "
+#~ "verfügbar. Die Webseite ist bereits Online und enthält eine Liste mit "
+#~ "schon veröffentlichten Modulen für das Zend Framework 2."
+
+#~ msgid "Explore ZF2 Modules"
+#~ msgstr "Erkunden Sie ZF2 Module"
+
+#~ msgid "Help &amp; Support"
+#~ msgstr "Hilfe &amp; Support"
+
+#~ msgid ""
+#~ "If you need any help or support while developing with ZF2, you may reach "
+#~ "us via IRC: %s#zftalk on Freenode%s. We'd love to hear any questions or "
+#~ "feedback you may have regarding the beta releases. Alternatively, you may "
+#~ "subscribe and post questions to the %smailing lists%s."
+#~ msgstr ""
+#~ "Sollten Sie Hilfe jeglicher Art bei der Entwicklung mit dem Zend "
+#~ "Framework 2 benötigen, kontaktieren Sie uns doch einfach über das IRC: "
+#~ "%s#zftalk on Freenode%s. Wir freuen uns darauf, Ihnen bei Ihren Fragen zu "
+#~ "helfen oder aber auch Ihre Meinung bezüglich der Beta Versionen zu hören. "
+#~ "Alternativ können Sie auch die %smailing lists%s abonnieren und Ihre "
+#~ "Fragen dort stellen."
+
+#~ msgid "Ping us on IRC"
+#~ msgstr "Schreiben Sie uns im IRC an"
+
+#~ msgid "Exception"
+#~ msgstr "Ausnahme"

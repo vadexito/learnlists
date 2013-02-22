@@ -1,6 +1,6 @@
 <?php
 
-$title = 'Learn at LearnLists';
+$title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);
 $this->placeholder('header')->captureStart();
 ?>
@@ -14,10 +14,10 @@ $this->placeholder('header')->captureStart();
     <thead>
         <tr>
             <th></th>
-            <th>Tags</th>
-            <th>Rating</th>
-            <th>Level</th>
-            <th>Title</th>
+            <th><?php echo $this->translate('Tags'); ?></th>
+            <th><?php echo $this->translate('Rating'); ?></th>
+            <th><?php echo $this->translate('Level'); ?></th>
+            <th><?php echo $this->translate('Title'); ?></th>
             <th></th>
         </tr>
     </thead>
@@ -44,18 +44,19 @@ $this->placeholder('header')->captureStart();
             <td><?php echo $this->escapeHtml($list->level); ?></td>        
             <td>
                 <a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
-                (<?php echo count($list->questions); ?> questions)
+                (<?php $nbQuestion = count($list->questions); echo $nbQuestion.' '.$this->translatePlural(_('question','questions'),'questions',$nbQuestion);?>)
                 <p>
-                    by <?php echo $this->gravatar($list->author->getEmail(),['img_size' => '20px']);echo ' '.$this->zfcUserDisplayName($list->author) ?> 
-                    (<?php echo $list->author->getRoles()[0]->getRoleId(); ?>), 
-                    created <?php echo $list->creationDate->format('Y-m-d'); ?>
+<?php echo sprintf($this->translate('by %s created on %s'),
+    ' '.$this->gravatar($list->author->getEmail(),['img_size' => '20px']).' '.$this->zfcUserDisplayName($list->author)
+    .' ('.$list->author->getRoles()[0]->getRoleId(). '), ', 
+    ' '.$this->dateFormat($list->creationDate,IntlDateFormatter::MEDIUM)); ?>
                 </p>
             </td>
             <td>            
 <?php if ($this->zfcUserIdentity()) : ?><?php if ($ratingService->getMapper()->hasRated($this->zfcUserIdentity()->getId(),$list->id)) : ?>
-            <a class="btn btn-mini" disabled><i class="icon-thumbs-up"></i> Like</a> I like this</a>
+            <a class="btn btn-mini" disabled><i class="icon-thumbs-up"></i> <?php echo $this->translate('Like');?></a> <?php echo $this->translate('I like this');?></a>
 <?php else : ?>
-            <a class="btn btn-mini" href="<?php echo $this->url('list',['action' => 'rate','id' => $list->id]); ?>"><i class="icon-thumbs-up"></i> Like</a>    
+            <a class="btn btn-mini" href="<?php echo $this->url('list',['action' => 'rate','id' => $list->id]); ?>"><i class="icon-thumbs-up"></i> <?php echo $this->translate('Like');?></a>    
 <?php endif;?><?php endif;?>
             </td>        
         </tr>

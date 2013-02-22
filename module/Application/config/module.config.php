@@ -50,6 +50,20 @@ return array(
                             ),
                         ),
                     ),
+                    'locale' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/locale/change/[:locale]',
+                            'constraints' => array(
+                                'page'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Application\Controller',
+                                'controller' => 'Locale',                                
+                                'action' => 'change',                                
+                            ),
+                        ),
+                    ),
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
@@ -90,7 +104,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Footer' => 'Application\Controller\FooterController'
+            'Application\Controller\Footer' => 'Application\Controller\FooterController',
+            'Application\Controller\Locale' => 'Application\Controller\LocaleController'
         ),
     ),
     'view_manager' => array(

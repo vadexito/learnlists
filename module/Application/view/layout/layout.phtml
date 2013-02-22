@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('LearLists'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle($this->translate('LearnLists'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
@@ -22,7 +22,7 @@
 
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -32,25 +32,32 @@
                     </a>
 <?php
 $partial = ['menu.phtml','default'];
-$this->navigation('navigation')->menu()->escapeLabels(false)->setPartial($partial);
-echo $this->navigation('navigation')->menu()->render();
+echo $this->navigation('navigation')->menu()->setPartial($partial)->render();
 ?>
                 </div>
             </div>
-        </div>
+        </nav>
         <?php echo $this->placeholder('header') ?>
         <div class="container">
             <?php echo $this->content; ?>
             <hr>
             <footer>
                 <ul>
-                    <li><a href="<?php echo $this->url('application/footer',['page' => 'about']); ?>">About</a></li>
-                    <li><a href="<?php echo $this->url('application/footer',['page' => 'help']); ?>">Help</a></li>
-                    <li><a href="<?php echo $this->url('application/footer',['page' => 'terms']); ?>">Terms</a></li>
-                    <li><a href="<?php echo $this->url('application/footer',['page' => 'privacy']); ?>">Privacy</a></li>
-                    <li><a href="<?php echo $this->url('application/footer',['page' => 'contact']); ?>">Contact</a></li>                    
+                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'about']); ?>"><?php echo $this->translate('About'); ?></a></li>
+                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'help']); ?>"><?php echo $this->translate('Help'); ?></a></li>
+                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'terms']); ?>"><?php echo $this->translate('Terms'); ?></a></li>
+                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'privacy']); ?>"><?php echo $this->translate('Privacy'); ?></a></li>
+                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'contact']); ?>"><?php echo $this->translate('Contact'); ?></a></li>                    
+                    <li class="footer-item dropdown">
+                        <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#"><?php echo $this->translate('Language'); ?> <b class="caret"></b></a>
+                        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                            <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('German'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'de_DE']); ?>">Deutsch</a></li>
+                            <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('French'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'fr_FR']); ?>">Français</a></li>
+                            <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('English'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'en_US']); ?>">English</a></li>
+                        </ul>
+                    </li>                  
                 </ul>
-                <p id="copyright">&copy; 2013 by Voilamylife. <?php echo $this->translate('All rights reserved.') ?></p>
+                <p id="copyright">&copy; <?php echo $this->translate('2013 by Voilamylife.') ?> <?php echo $this->translate('All rights reserved.') ?></p>
                 
             </footer>
         </div> <!-- /container -->

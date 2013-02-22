@@ -11,6 +11,7 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Session\Container;
 
 class Module
 {
@@ -20,10 +21,20 @@ class Module
         $em = $e->getApplication()->getEventManager();
         
         //initiate translator
-        $services->get('translator');
-        $translatorEventManager = $e->getApplication()->getEventManager();
+        $session = new Container('learnlists_locale');
+        if ($session->locale){            
+            $locale = $session->locale;
+        } else {
+            $locale = \locale::getDefault();
+        }
+        \Locale::setDefault($locale);
+        $services->get('translator')->setLocale($locale)
+                                    ->setFallbackLocale('en_US');
+          
+        
+        
         $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($translatorEventManager);
+        $moduleRouteListener->attach($em);
         
         //initiate default role after registering
         $zfcuserService = $services->get('zfcuser_user_service');

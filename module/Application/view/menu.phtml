@@ -4,7 +4,7 @@ if ($this->zfcUserIdentity()) {
         '<span id="gravatar-link">'
         .$this->gravatar($this->zfcUserIdentity()->getEmail(),['img_size' => '30px'])
         .'</span><span class="name">'.$this->zfcUserDisplayName().' (' 
-        . $this->zfcUserIdentity()->getRoles()[0]->getRoleId(). ')</span>'
+        . $this->translate($this->zfcUserIdentity()->getRoles()[0]->getRoleId()). ')</span>'
     );
 }?>
 <div class="nav-collapse collapse">

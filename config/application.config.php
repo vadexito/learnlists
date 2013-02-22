@@ -6,7 +6,6 @@ return [
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',
-        'SlmLocale',
         'BjyAuthorize',
         'ZfcAdmin',
         'CdliTwoStageSignup',

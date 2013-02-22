@@ -11,16 +11,11 @@
  * file.
  */
 
+// in order to be detected by poedit
+function _($a,$b=NULL){return $a;}
+
 
 return [
-//    'db' => [
-//        'driver'         => 'Pdo',
-//        'dsn'            => 'mysql:dbname=learnlists_local;host=localhost',
-//        'driver_options' => [
-//            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-//        ],
-//    ],
-    
     'navigation' => [
         'default' => [
             [
@@ -29,19 +24,19 @@ return [
                 'pages' => [
                     [
                         'id' => 'home',
-                        'label' => 'Learnlists',
+                        'label' => _('Learnlists'),
                         'route' => 'home',
                         'class' => 'brand',                        
                     ],
                     [
                         'id' => 'list_show',
-                        'label' => 'Browse',
+                        'label' => _('Browse'),
                         'route' => 'list',
                         'action' => 'index',
                     ],
                     [
                         'id' => 'list_create',
-                        'label' => 'New list',
+                        'label' => _('New list'),
                         'route' => 'list',
                         'action' => 'add',
                         'resource' => 'listquest',
@@ -55,14 +50,14 @@ return [
                 'pages' => [
                     [
                         'id' => 'login',
-                        'label' => 'Sign In',
+                        'label' => _('Sign In'),
                         'route' => 'zfcuser/login',
                         'resource' => 'user',
                         'privilege' => 'login',
                     ],
                     [
                         'id' => 'register',
-                        'label' => 'Sign Up',
+                        'label' => _('Sign Up'),
                         'route' => 'zfcuser/register',
                         'resource' => 'user',
                         'privilege' => 'register',
@@ -74,12 +69,11 @@ return [
                     ],
                     [
                         'id' => 'logout',
-                        'label' => 'Log out',
+                        'label' => _('Log out'),
                         'route' => 'zfcuser/logout',
                         'resource' => 'user',
                         'privilege' => 'logout',
                     ],
-                    
                 ],
             ],
         ],

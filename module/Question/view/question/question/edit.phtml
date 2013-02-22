@@ -1,5 +1,5 @@
 <?php
-$title = 'Edit question';
+$title = $this->translate('Edit question');
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
@@ -15,9 +15,15 @@ $form->prepare();
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));
 echo $this->formHidden($form->get('listId'));
-echo $this->formRow($form->get('text'));
-echo $this->formRow($form->get('answer'));
-echo $this->formRow($form->get('tip'));?><br/><?php 
+echo $this->formRow($form->get('text'));?>
+<span class="help-inline">
+    (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Enter the text for the question. If this is a sentence to fill in, please use two "%" signs in order to specify answers.Example : He %was% not there %either%.'); ?>">?</a>)
+</span>
+<?php echo $this->formRow($form->get('answer'));?>
+<span class="help-inline">
+    (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
+</span>
+<?php echo $this->formRow($form->get('tip'));?><br/><?php 
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();
 

@@ -43,7 +43,7 @@ class QuestionController extends AbstractActionController
         
         $form = new QuestionForm();
         $form->get('listId')->setValue($listId);
-        $form->get('submit')->setValue('Add');
+        $form->get('submit')->setValue(_('Add'));
         
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -80,7 +80,7 @@ class QuestionController extends AbstractActionController
         
         $form  = new QuestionForm();
         $form->bind($question);
-        $form->get('submit')->setAttribute('value', 'Edit');
+        $form->get('submit')->setValue(_('Edit'));
 
         $request = $this->getRequest();
         if ($request->isPost()) {

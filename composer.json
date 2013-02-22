@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.*",
-        "doctrine/doctrine-orm-module": "0.*",
+        "doctrine/doctrine-orm-module": "0.*",        
         "zf-commons/zfc-user": "0.*",
         "zf-commons/zfc-user-doctrine-orm": "dev-master",
         "bjyoungblood/bjy-authorize":"dev-master",
@@ -19,7 +19,6 @@
         "waltertamboer/wtrating" : "dev-master",
         "cdli/two-stage-signup" : "dev-master",
         "gedmo/doctrine-extensions": "2.3.*@dev",
-        "zfr/zfr-forum": "dev-master",
-        "slm/locale": "dev-feature/view-helpers"
+        "zfr/zfr-forum": "dev-master"
     }
 }

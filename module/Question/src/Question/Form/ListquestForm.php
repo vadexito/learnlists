@@ -26,7 +26,7 @@ class ListquestForm extends Form
                 'autocomplete'    => 'off',
             ],
             'options' => [
-                'label' => 'Title'
+                'label' => _('Title')
             ],
         ]);
         $this->add([
@@ -37,8 +37,7 @@ class ListquestForm extends Form
                 'autocomplete'    => 'off',
             ],
             'options' => [
-                'label' => 'Level (<a href="#" data-toggle="tooltip" data-placement="right" 
-                    title="Advanced, average, beginner for example">?</a>)'
+                'label' => _('Level')
             ],
         ]);
         
@@ -50,7 +49,7 @@ class ListquestForm extends Form
                 'autocomplete'    => 'off',
             ],
             'options' => [
-                'label' => 'Rules'
+                'label' => _('Rules')
             ],
         ]);
         
@@ -62,7 +61,7 @@ class ListquestForm extends Form
                 'autocomplete'    => 'off',
             ],
             'options' => [
-                'label' => 'Tags'
+                'label' => _('Tags')
             ],
         ]);
         
@@ -70,7 +69,7 @@ class ListquestForm extends Form
             'name' => 'submit',
             'attributes' => [
                 'type'  => 'submit',
-                'value' => 'Check',
+                'value' => _('Check'),
                 'id' => 'submitbutton',
                 'class' => 'btn btn-primary',
             ],            
