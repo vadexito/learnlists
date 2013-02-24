@@ -5,6 +5,7 @@ return [
         'invokables' => [
             'Question\Controller\Question' => 'Question\Controller\QuestionController',
             'Question\Controller\Listquest' => 'Question\Controller\ListquestController',
+            'Question\Controller\Admin' => 'Question\Controller\AdminController',
         ],
     ],
     'router' => [
@@ -24,45 +25,79 @@ return [
                 ],
             ],
             'list' => [
-                'type'    => 'segment',
+                'type'    => 'literal',
                 'options' => [
-                    'route'    => '/list[/:action][/:id]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ],
+                    'route'    => '/list',
                     'defaults' => [
                         'controller' => 'Question\Controller\Listquest',
                         'action'     => 'index',
                     ],
                 ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'paginator' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/page[/:page]',
+                            'constraints' => [
+                                'page'     => '[0-9]+',
+                            ],                    
+                            'defaults' => [
+                                'page'     => 1,
+                            ],
+                        ],
+                    ],
+                    'add' => [
+                        'type' => 'literal',
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'controller'     => 'Question\Controller\Listquest',
+                                'action'     => 'add',
+                            ],
+                        ],
+                    ],                    
+                    'other' => [
+                       'type' => 'segment',
+                        'options' => [
+                            'route' => '/other[/:action][/:id]',
+                            'constraints' => [
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'action'     => 'index',
+                            ],
+                        ], 
+                    ],
+                ],
             ],
-            'zfcadmin' => array(
+            'zfcadmin' => [
                 'child_routes' => array(
-                    'mymodule' => array(
+                    'lists' => array(
                         'type' => 'Literal',
                         'options' => array(
-                            'route' => '/application',
+                            'route' => '/lists',
                             'defaults' => array(
-                                'controller' => 'Question\Controller\AdminController',
+                                'controller' => 'Question\Controller\Admin',
                                 'action'     => 'index',
                             ),
                         ),
-                        'child_routes' =>array(
-                            'mychildroute' => array(
-                                'type' => 'literal',
-                                'options' => array(
-                                    'route' => '/',
-                                    'defaults' => array(
-                                        'controller' => 'mycontroller',
-                                        'action'     => 'myaction',
-                                    ),
-                                ),
-                            ),
-                        ),
+//                        'child_routes' =>array(
+//                            'lists' => array(
+//                                'type' => 'literal',
+//                                'options' => array(
+//                                    'route' => '/',
+//                                    'defaults' => array(
+//                                        'controller' => 'mycontroller',
+//                                        'action'     => 'myaction',
+//                                    ),
+//                                ),
+//                            ),
+//                        ),
                     ),
                 ),
-            ),
+            ],
         ],
     ],
     'view_manager' => [

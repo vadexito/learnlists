@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-22 17:34+0100\n"
-"PO-Revision-Date: 2013-02-22 17:37+0100\n"
+"POT-Creation-Date: 2013-02-24 00:26+0100\n"
+"PO-Revision-Date: 2013-02-24 00:27+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: translate;_:1,2\n"
+"X-Poedit-KeywordsList: translate;_;translatePlural:1,2\n"
 "X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 1.5.4\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
@@ -30,12 +30,12 @@ msgid "Edit"
 msgstr "Editer"
 
 #: ../../Question/src/Question/Form/ListquestForm.php:29
-#: ../../Question/view/question/listquest/index.phtml:20
+#: ../../Question/view/question/listquest/index.phtml:49
 msgid "Title"
 msgstr "Titre"
 
 #: ../../Question/src/Question/Form/ListquestForm.php:40
-#: ../../Question/view/question/listquest/index.phtml:19
+#: ../../Question/view/question/listquest/index.phtml:48
 msgid "Level"
 msgstr "Niveau"
 
@@ -44,7 +44,7 @@ msgid "Rules"
 msgstr "Règles"
 
 #: ../../Question/src/Question/Form/ListquestForm.php:64
-#: ../../Question/view/question/listquest/index.phtml:17
+#: ../../Question/view/question/listquest/index.phtml:46
 msgid "Tags"
 msgstr "Etiquettes (Tags)"
 
@@ -67,43 +67,27 @@ msgstr "Réponse"
 msgid "Tip"
 msgstr "Conseil"
 
-#: ../../../config/autoload/bjyauthorize.global.php:10
-msgid "user"
-msgstr "Utilisateur"
-
-#: ../../../config/autoload/bjyauthorize.global.php:11
-msgid "student"
-msgstr "Etudiant"
-
-#: ../../../config/autoload/bjyauthorize.global.php:12
-msgid "teacher"
-msgstr "Professeur"
-
-#: ../../../config/autoload/bjyauthorize.global.php:13
-msgid "guest"
-msgstr "Nouveau"
-
-#: ../../../config/autoload/global.php:27
+#: ../../../config/autoload/global.php:24
 msgid "Learnlists"
 msgstr "Learnlists"
 
-#: ../../../config/autoload/global.php:33
+#: ../../../config/autoload/global.php:30
 msgid "Browse"
 msgstr "Listes"
 
-#: ../../../config/autoload/global.php:39
+#: ../../../config/autoload/global.php:36
 msgid "New list"
 msgstr "Nouvelle liste"
 
-#: ../../../config/autoload/global.php:53
+#: ../../../config/autoload/global.php:56
 msgid "Sign In"
 msgstr "Se connecter"
 
-#: ../../../config/autoload/global.php:60
+#: ../../../config/autoload/global.php:63
 msgid "Sign Up"
 msgstr "S'inscrire"
 
-#: ../../../config/autoload/global.php:72
+#: ../../../config/autoload/global.php:75
 msgid "Log out"
 msgstr "Déconnection"
 
@@ -296,48 +280,69 @@ msgstr "Ajouter une nouvelle liste"
 msgid "Advanced, average, beginner for example"
 msgstr "Avancé, moyen, simple"
 
-#: ../../Question/view/question/listquest/index.phtml:18
+#: ../../Question/view/question/listquest/index.phtml:26
+#, php-format
+msgid "Sort by %s"
+msgstr "Classer par %s"
+
+#: ../../Question/view/question/listquest/index.phtml:31
+msgid "By title (alphabetically)"
+msgstr "Par titre (order alphabétique)"
+
+#: ../../Question/view/question/listquest/index.phtml:32
+msgid "By ranking"
+msgstr "Par note"
+
+#: ../../Question/view/question/listquest/index.phtml:33
+msgid "By date"
+msgstr "Par date"
+
+#: ../../Question/view/question/listquest/index.phtml:34
+msgid "By author"
+msgstr "Par auteur"
+
+#: ../../Question/view/question/listquest/index.phtml:38
+msgid "Search for quiz"
+msgstr "Cherche une liste"
+
+#: ../../Question/view/question/listquest/index.phtml:47
 msgid "Rating"
 msgstr "Notation"
 
-#: ../../Question/view/question/listquest/index.phtml:29
+#: ../../Question/view/question/listquest/index.phtml:58
 msgid "See comments"
 msgstr "Voir les commentaires"
 
-#: ../../Question/view/question/listquest/index.phtml:35
+#: ../../Question/view/question/listquest/index.phtml:64
 #: ../../Question/view/question/listquest/show.phtml:20
 msgid "Add question"
 msgstr "Ajouter une question"
 
-#: ../../Question/view/question/listquest/index.phtml:36
+#: ../../Question/view/question/listquest/index.phtml:65
 msgid "Edit list"
 msgstr "Editer une liste"
 
-#: ../../Question/view/question/listquest/index.phtml:47
+#: ../../Question/view/question/listquest/index.phtml:76
 #: ../../Question/view/question/listquest/show.phtml:14
 msgid "question"
 msgid_plural "questions"
 msgstr[0] "question"
 msgstr[1] "questions"
 
-#: ../../Question/view/question/listquest/index.phtml:49
+#: ../../Question/view/question/listquest/index.phtml:78
 #: ../../Question/view/question/listquest/show.phtml:15
 #, php-format
 msgid "by %s created on %s"
 msgstr "par %s crée le %s"
 
-#: ../../Question/view/question/listquest/index.phtml:57
-#: ../../Question/view/question/listquest/index.phtml:59
+#: ../../Question/view/question/listquest/index.phtml:86
+#: ../../Question/view/question/listquest/index.phtml:88
 msgid "Like"
 msgstr "J'aime"
 
-#: ../../Question/view/question/listquest/index.phtml:57
+#: ../../Question/view/question/listquest/index.phtml:86
 msgid "I like this"
 msgstr "J'aime ça"
-
-#: ../../Question/view/question/listquest/show.phtml:14
-msgid "questions"
-msgstr "questions"
 
 #: ../../Question/view/question/listquest/show.phtml:44
 msgid "Delete"
@@ -382,6 +387,25 @@ msgstr ""
 #: ../../Question/view/question/question/edit.phtml:2
 msgid "Edit question"
 msgstr "Editer une question"
+
+#: ../language/_XMLforPoedit/role.xml:4
+msgid "guest"
+msgstr "Nouveau"
+
+#: ../language/_XMLforPoedit/role.xml:5
+msgid "user"
+msgstr "Utilisateur"
+
+#: ../language/_XMLforPoedit/role.xml:6
+msgid "teacher"
+msgstr "Professeur"
+
+#: ../language/_XMLforPoedit/role.xml:7
+msgid "student"
+msgstr "Etudiant"
+
+#~ msgid "questions"
+#~ msgstr "questions"
 
 #~ msgid "Skeleton Application"
 #~ msgstr "Skeleton Application"

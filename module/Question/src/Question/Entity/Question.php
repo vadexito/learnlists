@@ -99,10 +99,6 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
         if ($data['listId'] && $entityManager){
             $this->listquest = $entityManager->find('Question\Entity\Listquest',$data['listId']);
         }
-        
-        
-        //\Doctrine\Common\Util\Debug::dump($this);die;
-        
     }
     
     // Add content to this method:
@@ -146,7 +142,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
                         'options' => [
                             'encoding' => 'UTF-8',
                             'min'      => 1,
-                            'max'      => 100,
+                            'max'      => 255,
                         ],
                     ],
                 ],

@@ -3,6 +3,12 @@
 $title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);
 $this->placeholder('header')->captureStart();
+$this->headLink()->prependStylesheet($this->basePath() . '/js/jquery.tablesorter.pager.css');
+$this->headScript()->appendFile($this->basePath() . '/js/jquery-infinitescroll.js');
+$this->headScript()->appendFile($this->basePath() . '/js/jquery.metadata.js');
+$this->headScript()->appendFile($this->basePath() . '/js/jquery.tablesorter.min.js');
+$this->headScript()->appendFile($this->basePath() . '/js/jquery.tablesorter.pager.js');
+$this->headScript()->appendFile($this->basePath() . '/js/datatable.js');
 ?>
 <header id="jumbotron-header">
     <div class="container">
@@ -10,7 +16,15 @@ $this->placeholder('header')->captureStart();
     </div>
 </header>
 <?php $this->placeholder('header')->captureEnd(); ?>
-<table class="table">
+
+<div id="search_hidden" class="row-fluid">
+    <div class="input-append span4">
+        <input id="search_hidden" placeholder="<?php echo $this->translate('Search for quiz'); ?>" type="text" class="span10">
+        <button type="submit" class="btn"><i class="icon-search"></i></button>
+    </div>
+</div>
+
+<table id="table_lists" class="table">
     <thead>
         <tr>
             <th></th>
@@ -18,12 +32,13 @@ $this->placeholder('header')->captureStart();
             <th><?php echo $this->translate('Rating'); ?></th>
             <th><?php echo $this->translate('Level'); ?></th>
             <th><?php echo $this->translate('Title'); ?></th>
+            <th><?php echo $this->translate('Date'); ?></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 <?php foreach ($this->lists as $list) : $commentArea = 'comments-list-'.$list->id; ?>
-      <tr>
+      <tr class="listquest">
             <td>
 <?php if ($this->zfcUserIdentity() && ($this->zfcUserIdentity()->getRoles()[0]->getRoleId() === 'teacher')) :?>             
                 <button class="btn btn-mini btn-info " data-toggle="collapse" data-target="#<?php echo $commentArea; ?>" title="<?php echo $this->translate('See comments'); ?>">
@@ -44,12 +59,11 @@ $this->placeholder('header')->captureStart();
             <td><?php echo $this->escapeHtml($list->level); ?></td>        
             <td>
                 <a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
-                (<?php $nbQuestion = count($list->questions); echo $nbQuestion.' '.$this->translatePlural(_('question','questions'),'questions',$nbQuestion);?>)
+                (<?php $nbQuestion = count($list->questions); echo $nbQuestion.' '.$this->translatePlural('question','questions',$nbQuestion);?>)
                 <p>
-<?php echo sprintf($this->translate('by %s created on %s'),
+<?php echo sprintf($this->translate('by %s'),
     ' '.$this->gravatar($list->author->getEmail(),['img_size' => '20px']).' '.$this->zfcUserDisplayName($list->author)
-    .' ('.$list->author->getRoles()[0]->getRoleId(). '), ', 
-    ' '.$this->dateFormat($list->creationDate,IntlDateFormatter::MEDIUM)); ?>
+    .' ('.$list->author->getRoles()[0]->getRoleId(). '), '); ?>
                 </p>
             </td>
             <td>            
@@ -58,7 +72,10 @@ $this->placeholder('header')->captureStart();
 <?php else : ?>
             <a class="btn btn-mini" href="<?php echo $this->url('list',['action' => 'rate','id' => $list->id]); ?>"><i class="icon-thumbs-up"></i> <?php echo $this->translate('Like');?></a>    
 <?php endif;?><?php endif;?>
-            </td>        
+            </td> 
+            <td>
+                <?php echo $this->dateFormat($list->creationDate,IntlDateFormatter::MEDIUM); ?>
+            </td>
         </tr>
       
 <?php if ($this->zfcUserIdentity() && ($this->zfcUserIdentity()->getRoles()[0]->getRoleId() === 'teacher')) :?>
@@ -67,3 +84,5 @@ $this->placeholder('header')->captureStart();
 <?php endforeach; ?>
     </tbody>
 </table>
+ 
+

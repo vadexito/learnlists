@@ -11,9 +11,6 @@
  * file.
  */
 
-// in order to be detected by poedit
-function _($a,$b=NULL){return $a;}
-
 
 return [
     'navigation' => [
@@ -41,7 +38,13 @@ return [
                         'action' => 'add',
                         'resource' => 'listquest',
                         'privilege' => 'add',
+                    ],                    [
+                        'id' => 'admin-lists',
+                        'label' => 'Admin',
+                        'route' => 'zfcadmin/lists',
+                        'resource' => 'admin',
                     ],
+                    
                 ],
             ],             
             [

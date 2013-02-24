@@ -11,7 +11,7 @@ $this->placeholder('header')->captureStart();
 <?php $this->placeholder('header')->captureEnd(); ?>
 <h2>
     <a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
-    (<?php $nbQuestion = count($list->questions); echo $nbQuestion.' '.$this->translatePlural($this->translate('question'),$this->translate('questions'),$nbQuestion);?>)
+    (<?php $nbQuestion = count($list->questions); echo $nbQuestion.' '.$this->translatePlural('question','questions',$nbQuestion);?>)
 <?php echo sprintf($this->translate('by %s created on %s'),
 ' '.$this->gravatar($list->author->getEmail(),['img_size' => '20px']).' '.$this->zfcUserDisplayName($list->author)
 .' ('.$list->author->getRoles()[0]->getRoleId(). '), ', 

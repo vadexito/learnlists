@@ -105,7 +105,13 @@ header
     margin-bottom : 115px;
     font-size: 5.5em;
 }
+/*=======================================
+list of lists page
+=========================================*/
 
+table {
+    margin-top:15px;
+}
 
 /*=======================================
 question ask page

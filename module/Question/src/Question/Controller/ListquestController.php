@@ -9,6 +9,7 @@ use Question\Form\ListquestForm;
 use ZfrForum\Entity\Post;
 use ZfrForum\Entity\Thread;
 use ZfrForum\Entity\Category;
+use Zend\Paginator\Paginator;
 
 class ListquestController extends AbstractActionController
 {
@@ -53,11 +54,9 @@ class ListquestController extends AbstractActionController
 //        $this->getEntityManager()->persist($thread);
 //        $commentService->addPost($thread,$post);
         
-        
-        
         return [
-            'lists'  => $rep->findAll(),
-            'ratingService' => $ratingService
+            'ratingService' => $ratingService,
+            'lists' => $rep->findAll()
         ];
     }
     

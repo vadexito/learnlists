@@ -9,11 +9,13 @@ return [
         'BjyAuthorize',
         'ZfcAdmin',
         'CdliTwoStageSignup',
-        'WtRating',  
+        'WtRating', 
+        'AssetManager',
         'Application',
         'ZfrForum',          
         'Question',
-        'QuestionRest',        
+        'QuestionRest',
+       // 'ZF2FileUploadExamples'
         
     ],
     
