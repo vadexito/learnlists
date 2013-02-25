@@ -28,14 +28,12 @@ return [
                     [
                         'id' => 'list_show',
                         'label' => _('Browse'),
-                        'route' => 'list',
-                        'action' => 'index',
+                        'route' => 'list'
                     ],
                     [
                         'id' => 'list_create',
                         'label' => _('New list'),
-                        'route' => 'list',
-                        'action' => 'add',
+                        'route' => 'list/add',
                         'resource' => 'listquest',
                         'privilege' => 'add',
                     ],                    [

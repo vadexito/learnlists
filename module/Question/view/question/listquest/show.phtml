@@ -16,7 +16,7 @@ $this->placeholder('header')->captureStart();
 ' '.$this->gravatar($list->author->getEmail(),['img_size' => '20px']).' '.$this->zfcUserDisplayName($list->author)
 .' ('.$list->author->getRoles()[0]->getRoleId(). '), ', 
 ' '.$this->dateFormat($list->creationDate,IntlDateFormatter::MEDIUM)); ?>
-    <a class="btn btn-primary pull-right" href="<?php echo $this->url('question',['action' => 'add','id' => $list->id]); ?>">
+    <a class="btn btn-primary pull-right" href="<?php echo $this->url('question/add',['id' => $list->id]); ?>">
         <?php echo $this->translate('Add question'); ?>
     </a>
 </h2>
@@ -40,8 +40,8 @@ $this->placeholder('header')->captureStart();
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo $this->url('question',['action' => 'edit','id' => $question->id]); ?>"><?php echo $this->translate('Edit'); ?></a></li>
-                    <li><a href="<?php echo $this->url('question',['action' => 'delete','id' => $question->id]); ?>"><?php echo $this->translate('Delete'); ?></a></li>
+                    <li><a href="<?php echo $this->url('question/edit',['id' => $question->id]); ?>"><?php echo $this->translate('Edit'); ?></a></li>
+                    <li><a href="<?php echo $this->url('question/delete',['id' => $question->id]); ?>"><?php echo $this->translate('Delete'); ?></a></li>
                 </ul>
            </div>
 <?php else : ?>         

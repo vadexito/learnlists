@@ -23,6 +23,42 @@ return [
                         'action'     => 'index',
                     ],
                 ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'add' => [
+                        'type' => 'literal',
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'action'     => 'add',
+                            ],
+                        ],
+                    ],
+                    'edit' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/edit[/:id]',
+                            'constraints' => [
+                                'id'     => '[0-9]+',
+                            ],  
+                            'defaults' => [
+                                'action'     => 'edit',
+                            ],
+                        ],
+                    ],              
+                    'delete' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/delete[/:id]',
+                            'constraints' => [
+                                'id'     => '[0-9]+',
+                            ],  
+                            'defaults' => [
+                                'action'     => 'delete',
+                            ],
+                        ],
+                    ],              
+                ],
             ],
             'list' => [
                 'type'    => 'literal',
@@ -48,28 +84,41 @@ return [
                         ],
                     ],
                     'add' => [
-                        'type' => 'literal',
+                        'type' => 'segment',
                         'options' => [
-                            'route' => '/add',
+                            'route' => '/add[/:id]',
+                            'constraints' => [
+                                'id'     => '[0-9]+',
+                            ], 
                             'defaults' => [
-                                'controller'     => 'Question\Controller\Listquest',
                                 'action'     => 'add',
                             ],
                         ],
                     ],                    
-                    'other' => [
-                       'type' => 'segment',
+                    'show' => [
+                        'type' => 'segment',
                         'options' => [
-                            'route' => '/other[/:action][/:id]',
+                            'route' => '/show[/:id]',
                             'constraints' => [
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'     => '[0-9]+',
-                            ],
+                            ],  
                             'defaults' => [
-                                'action'     => 'index',
+                                'action'     => 'show',
                             ],
-                        ], 
-                    ],
+                        ],
+                    ],                    
+                    'rate' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/rate[/:id]',
+                            'constraints' => [
+                                'id'     => '[0-9]+',
+                            ],  
+                            'defaults' => [
+                                'action'     => 'rate',
+                            ],
+                        ],
+                    ],    
                 ],
             ],
             'zfcadmin' => [

@@ -47,8 +47,8 @@ $this->headScript()->appendFile($this->basePath() . '/js/datatable.js');
 <?php endif; ?>
 <?php if ($this->zfcUserIdentity() && ($list->author->getId() === $this->zfcUserIdentity()->getId())) :?> 
                 <div class="btn-group">
-                    <a class="btn btn-primary btn-small" href="<?php echo $this->url('question',['action' => 'add','id' => $list->id]); ?>" title="<?php echo $this->translate('Add question'); ?>"><i class="icon-plus icon-white"></i></a>
-                    <a class="btn btn-primary btn-small" href="<?php echo $this->url('list',['action' => 'show','id' => $list->id]); ?>" title="<?php echo $this->translate('Edit list'); ?>"><i class="icon-edit icon-white"></i></a>
+                    <a class="btn btn-primary btn-small" href="<?php echo $this->url('question/add',['id' => $list->id]); ?>" title="<?php echo $this->translate('Add question'); ?>"><i class="icon-plus icon-white"></i></a>
+                    <a class="btn btn-primary btn-small" href="<?php echo $this->url('list/show',['id' => $list->id]); ?>" title="<?php echo $this->translate('Edit list'); ?>"><i class="icon-edit icon-white"></i></a>
                 </div>
 <?php endif; ?>
             </td>
@@ -70,7 +70,7 @@ $this->headScript()->appendFile($this->basePath() . '/js/datatable.js');
 <?php if ($this->zfcUserIdentity()) : ?><?php if ($ratingService->getMapper()->hasRated($this->zfcUserIdentity()->getId(),$list->id)) : ?>
             <a class="btn btn-mini" disabled><i class="icon-thumbs-up"></i> <?php echo $this->translate('Like');?></a> <?php echo $this->translate('I like this');?></a>
 <?php else : ?>
-            <a class="btn btn-mini" href="<?php echo $this->url('list',['action' => 'rate','id' => $list->id]); ?>"><i class="icon-thumbs-up"></i> <?php echo $this->translate('Like');?></a>    
+            <a class="btn btn-mini" href="<?php echo $this->url('list/rate',['id' => $list->id]); ?>"><i class="icon-thumbs-up"></i> <?php echo $this->translate('Like');?></a>    
 <?php endif;?><?php endif;?>
             </td> 
             <td>
