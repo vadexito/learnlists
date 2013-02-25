@@ -96,10 +96,10 @@ window.QuestionView = Backbone.View.extend({
         
         var value = this.answer.val();
         var question = this.collection.get(this.model.get('id'));
-        var questionAnswered = question.get('answered');
+        var questionAnswered = question.get('answered');        
         
-        //the answer is found        
-        if (value == question.get('answer') && !questionAnswered){
+        //the answer is true for question/answer type (not missing words)        
+        if (this.isAnswerRight(value,question.get('answer')) && !questionAnswered){
             
             $('#error-sign').hide();
             $('#check-sign').show();
@@ -107,8 +107,8 @@ window.QuestionView = Backbone.View.extend({
             
             this.questionAnswered(question);
             
-        //for the questions with missing words
-        } else if (value === _.first(this.model.get('inQuestionAnswers'))){
+        //the answer is true for the questions with missing words
+        } else if (this.isAnswerRight(value, _.first(this.model.get('inQuestionAnswers')))){
             
             this.text.html(
                 this.text.html().replace(/<img[^<>]*>/,
@@ -123,10 +123,23 @@ window.QuestionView = Backbone.View.extend({
             } else {
                 this.answer.val('');
             } 
+        //the answer is false
         } else {
             $('#error-sign').show();
             $('#answer-group').addClass('error');
             question.set('multiple',true);
+        }
+    },
+    
+    isAnswerRight: function(value,answer){
+        
+        // separator for multiple possible answers is '--';
+        
+        if (!(/--/).test(answer)){
+            return value === answer;
+        } else {
+            var pattern = /[^(--)]+/g;
+            return $.inArray(value,answer.match(pattern));            
         }
     },
     
@@ -181,7 +194,7 @@ window.QuestionView = Backbone.View.extend({
                 text = text.replace(patt,img);
             }  
             
-            this.model.set('inQuestionAnswers',inQuestionAnswers)
+            this.model.set('inQuestionAnswers',inQuestionAnswers);
             this.model.set({'id': newQuestion.get('id')});
             this.text.html(text);
             $('.button-answer').removeAttr('disabled');
@@ -191,6 +204,7 @@ window.QuestionView = Backbone.View.extend({
             this.endList();
         }
     },
+    
     
     endList: function(){
         

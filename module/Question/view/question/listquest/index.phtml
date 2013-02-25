@@ -3,12 +3,7 @@
 $title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);
 $this->placeholder('header')->captureStart();
-$this->headLink()->prependStylesheet($this->basePath() . '/js/jquery.tablesorter.pager.css');
-$this->headScript()->appendFile($this->basePath() . '/js/jquery-infinitescroll.js');
-$this->headScript()->appendFile($this->basePath() . '/js/jquery.metadata.js');
-$this->headScript()->appendFile($this->basePath() . '/js/jquery.tablesorter.min.js');
-$this->headScript()->appendFile($this->basePath() . '/js/jquery.tablesorter.pager.js');
-$this->headScript()->appendFile($this->basePath() . '/js/datatable.js');
+$this->headScript()->appendFile($this->basePath() . '/js/jquery.datatable.min.js');
 ?>
 <header id="jumbotron-header">
     <div class="container">
