@@ -57,8 +57,17 @@ layout nav bar
     padding:10px 15px 10px 15px;
 }
 
+#menu-profile span.name b.caret{
+    margin-top:20px;
+}
+
+
 #gravatar-link img {
     padding : 0;
+}
+
+#dropdown-user {
+    padding:0;
 }
 
 /*=======================================
