@@ -96,10 +96,9 @@ window.QuestionView = Backbone.View.extend({
         
         var value = this.answer.val();
         var question = this.collection.get(this.model.get('id'));
-        var questionAnswered = question.get('answered');        
         
         //the answer is true for question/answer type (not missing words)        
-        if (this.isAnswerRight(value,question.get('answer')) && !questionAnswered){
+        if (this.isAnswerRight(value,question.get('answer'))){
             
             $('#error-sign').hide();
             $('#check-sign').show();
@@ -139,13 +138,22 @@ window.QuestionView = Backbone.View.extend({
             return value === answer;
         } else {
             var pattern = /[^(--)]+/g;
-            return $.inArray(value,answer.match(pattern));            
+            return ($.inArray(value,answer.match(pattern)) > -1);   
+            
         }
     },
     
     questionAnswered: function(question){
         
-        question.set('answered',true);
+        var answerType = true;
+        // 1 for right answer in less than 10s
+        // 2 for right answer in more than 10s
+        // 3 for answer with one mistake
+        // 4 for answer with more than one mistake
+        // 5 for asking for the answer        
+        
+        question.set('answered',answerType);
+        
         //deleting the id of the found element from the randomOrder array
         this.collection.randomOrder = _.without(
             this.collection.randomOrder,question.get('id')
@@ -157,6 +165,11 @@ window.QuestionView = Backbone.View.extend({
     questionFinished: function(){
         
         $('#question_asked_showanswerbutton,#question_asked_submitbutton').attr('disabled','disabled');
+        if (this.model.get('tip')){
+            $('#tip_text').html(this.model.get('tip'));
+            $('.tip').show(); 
+        }
+        
         this.answer.attr('readonly','readonly');
         $('#nextbutton').focus();
             
@@ -179,7 +192,7 @@ window.QuestionView = Backbone.View.extend({
     
     initNewQuestion: function(){
         $('#answer-group').removeClass('error').removeClass('success');
-        $('.answer-sign').hide();
+        $('.answer-sign,.tip').hide();
         
         var newQuestion = this.collection.getNewRandomModel(this.model.get('id'));
        
@@ -196,6 +209,7 @@ window.QuestionView = Backbone.View.extend({
             
             this.model.set('inQuestionAnswers',inQuestionAnswers);
             this.model.set({'id': newQuestion.get('id')});
+            this.model.set({'tip': newQuestion.get('tip')});
             this.text.html(text);
             $('.button-answer').removeAttr('disabled');
             this.answer.val('').focus().removeAttr('readonly'); 
