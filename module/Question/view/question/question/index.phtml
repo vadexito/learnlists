@@ -21,10 +21,10 @@ $this->placeholder('header')->captureStart();?>
     <div class="row-fluid" id="sub-title">        
         <div class=" span7 well">
             <h4><span id="title-list"></span> (<span id="nb-questions"></span> questions) by </h4>   
-            <button id="question_asked_resetbutton" class="btn btn-warning"><i class="icon-repeat icon-white"></i> Again</button>
+            <button id="question_asked_resetbutton" class="btn btn-warning"><i class="icon-repeat icon-white"></i> <?php echo $this->translate('Again'); ?></button>
         </div>
         <div class=" span5 well">
-            <h4>Rules :</h4>   
+            <h4><?php echo $this->translate('Rules'); ?> :</h4>   
             <p id="rules"></p>
         </div>
     </div>    
@@ -42,13 +42,14 @@ $this->placeholder('header')->captureStart();?>
                         <input name="answer" type="text" id="question_asked_answer" placeholder="Answer" autocomplete="off" value="">
                     </span>
                     <input name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-success button-answer" value="Check">
-                    <button id="question_asked_nextbutton" class="btn btn-primary button-answer">Next</button>    
-                    <button id="question_asked_showanswerbutton" class="btn btn-danger button-answer">Answer?</button>
+                    <button id="question_asked_nextbutton" class="btn btn-primary button-answer"><?php echo $this->translate('Next'); ?></button>    
+                    <button id="question_asked_showanswerbutton" class="btn btn-danger button-answer"><?php echo $this->translate('Answer?'); ?></button>
                 </div>
             </form>
         </div>
         <div class="span3 card well"> 
-            <p></p>
+            <h4 class="tip" style="display:none"><?php echo $this->translate('Tip'); ?></h4>
+            <p id="tip_text" class="tip"></p>
         </div>
         <div class="span3 card well">
             <div class="row-fluid" id="results">
