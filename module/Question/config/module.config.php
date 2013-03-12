@@ -6,29 +6,41 @@ return [
             'Question\Controller\Question' => 'Question\Controller\QuestionController',
             'Question\Controller\Listquest' => 'Question\Controller\ListquestController',
             'Question\Controller\Admin' => 'Question\Controller\AdminController',
+            'Question\Controller\Premium' => 'Question\Controller\PremiumController',
+            'Question\Controller\User' => 'Question\Controller\UserController',
         ],
     ],
     'router' => [
         'routes' => [
             'question' => [
-                'type'    => 'segment',
+                'type'    => 'literal',
                 'options' => [
-                    'route'    => '/question[/:action][/:id]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ],
+                    'route'    => '/question',
                     'defaults' => [
-                        'controller' => 'Question\Controller\Question',
-                        'action'     => 'index',
+                        'controller' => 'Question\Controller\Question'
                     ],
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'add' => [
-                        'type' => 'literal',
+                    'learn' => [
+                        'type' => 'segment',
                         'options' => [
-                            'route' => '/add',
+                            'route' => '/learn[/:id]',
+                            'constraints' => [
+                                'id'     => '[0-9]+',
+                            ],                              
+                            'defaults' => [
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],
+                    'add' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/add[/:id]',
+                            'constraints' => [
+                                'id'     => '[0-9]+',
+                            ], 
                             'defaults' => [
                                 'action'     => 'add',
                             ],
@@ -58,6 +70,19 @@ return [
                             ],
                         ],
                     ],              
+                    'user' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/user[/:id]',
+                            'constraints' => [
+                                'id'     => '[0-9]+',
+                            ],  
+                            'defaults' => [
+                                'controller' => 'Question\Controller\User',
+                                'action'     => 'index',
+                            ],
+                        ],
+                    ],              
                 ],
             ],
             'list' => [
@@ -84,12 +109,9 @@ return [
                         ],
                     ],
                     'add' => [
-                        'type' => 'segment',
+                        'type' => 'literal',
                         'options' => [
-                            'route' => '/add[/:id]',
-                            'constraints' => [
-                                'id'     => '[0-9]+',
-                            ], 
+                            'route' => '/add',
                             'defaults' => [
                                 'action'     => 'add',
                             ],
@@ -116,6 +138,16 @@ return [
                             ],  
                             'defaults' => [
                                 'action'     => 'rate',
+                            ],
+                        ],
+                    ],    
+                    'premium' => [
+                        'type' => 'literal',
+                        'options' => [
+                            'route' => '/premium',
+                            'defaults' => [
+                                'controller' => 'Question\Controller\Premium',
+                                'action'     => 'index',
                             ],
                         ],
                     ],    

@@ -2,8 +2,13 @@ $(function() {
     if ($('a[data-toggle="tooltip"]').length >0){
         $('a[data-toggle="tooltip"]').tooltip();
     }
+    if ($('a[data-toggle="popover"]').length >0){
+        $('a[data-toggle="popover"]').popover();
+    }
     
-    if ($("table").length > 0){
+    //table for the lists
+    if ($("table.listquest_table").length > 0){
+        var idTable = $('table').attr('id');
         $("table").dataTable({
             "iDisplayLength": 5,
             "sPaginationType": "full_numbers",
@@ -19,23 +24,23 @@ $(function() {
             },
             "fnInitComplete": function(oSettings, json) {                
                 $('#search_hidden').hide();
-                $('#table_lists_filter input').attr('placeholder',$('#search_hidden input').attr('placeholder'))
+                $('#'+idTable+'_filter input').attr('placeholder',$('#search_hidden input').attr('placeholder'))
                     .unwrap().wrap('<div class="input-append"/>')
                     .after('<button type="submit" class="btn"><i class="icon-search"></i></button>');
                 },
             "fnDrawCallback": function( oSettings ) {
-                $('#table_lists_paginate').addClass('pagination');
+                $('#'+idTable+'_paginate').addClass('pagination');
            
-                if ($('#table_lists_paginate ul').length == 0){
-                    $('#table_lists_paginate').children().wrapAll('<ul/>');
-                    $('#table_lists_paginate ul>a').wrap('<li/>');
+                if ($('#'+idTable+'_paginate ul').length == 0){
+                    $('#'+idTable+'_paginate').children().wrapAll('<ul/>');
+                    $('#'+idTable+'_paginate ul>a').wrap('<li/>');
                 }
                 
-                $('#table_lists_paginate li.page_number').remove(); 
-                $('#table_lists_paginate span>a').wrap('<li class="page_number"/>'); 
-                $('#table_lists_paginate ul>li').eq(1).after($('#table_lists_paginate span li'));
-                $('#table_lists_paginate span').hide(); 
-                $('#table_lists_paginate a.paginate_active').parent().addClass('active');
+                $('#'+idTable+'_paginate li.page_number').remove(); 
+                $('#'+idTable+'_paginate span>a').wrap('<li class="page_number"/>'); 
+                $('#'+idTable+'_paginate ul>li').eq(1).after($('#'+idTable+'_paginate span li'));
+                $('#'+idTable+'_paginate span').hide(); 
+                $('#'+idTable+'_paginate a.paginate_active').parent().addClass('active');
              }
         });
     } 

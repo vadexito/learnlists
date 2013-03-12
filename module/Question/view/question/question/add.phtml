@@ -6,7 +6,7 @@ $this->headTitle($title);
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('question', ['action' => 'add','id' => $listId]));
+$form->setAttribute('action', $this->url('question/add', ['id' => $listId]));
 $form->prepare();
 
 echo $this->form()->openTag($form);
@@ -14,7 +14,7 @@ echo $this->formHidden($form->get('id'));
 echo $this->formHidden($form->get('listId'));
 echo $this->formRow($form->get('text'));?>
 <span class="help-inline">
-    (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Enter the text for the question. If this is a sentence to fill in, please use two "%" signs in order to specify answers.Example : He %was% not there %either%.'); ?>">?</a>)
+    (<a href="#" data-toggle="popover" data-placement="right" title="<?php echo $this->translate('Rules for entering question text'); ?>" data-content="<?php echo $this->translate('(i) Enter the text for the question. (ii) If this is a sentence to fill in, please use two \'%\' signs in order to specify answers.Example : He %was% not there %either% (maximum two answers). (iii) in the case of multiple possibilities you can use the sign \'--\'. Example : He is tired %because--since% he did not sleep enough.'); ?>">?</a>)
 </span>
 <?php echo $this->formRow($form->get('answer'));?>
 <span class="help-inline">

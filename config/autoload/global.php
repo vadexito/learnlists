@@ -36,11 +36,18 @@ return [
                         'route' => 'list/add',
                         'resource' => 'listquest',
                         'privilege' => 'add',
-                    ],                    [
+                    ],  
+                    [
                         'id' => 'admin-lists',
                         'label' => 'Admin',
                         'route' => 'zfcadmin/lists',
                         'resource' => 'admin',
+                    ],
+                    [
+                        'id' => 'premium-myprogram',
+                        'label' => _('My program'),
+                        'route' => 'list/premium',
+                        'resource' => 'premium',
                     ],
                     
                 ],
@@ -63,10 +70,20 @@ return [
                         'resource' => 'user',
                         'privilege' => 'register',
                     ],
+                ],
+            ],
+            [
+                'id' => 'profile',
+                'uri' => '#',
+                'resource' => 'user',
+                'privilege' => 'account',
+                'pages' => [
                     [
-                        'id' => 'profile',
-                        'label' => '',
-                        'uri' => '#',
+                        'id' => 'user_account',
+                        'label' => _('My account'),
+                        'route' => 'question/user',
+                        'resource' => 'user',
+                        'privilege' => 'account',
                     ],
                     [
                         'id' => 'logout',

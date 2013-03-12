@@ -57,8 +57,8 @@ class QuestionController extends AbstractActionController
                 $this->getEntityManager()->flush();
 
                 return $this->redirect()->toRoute(
-                    'list',
-                    ['action' => 'show','id' => $listId]
+                    'list/show',
+                    ['id' => $listId]
                 );
             }
         }

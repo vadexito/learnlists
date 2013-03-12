@@ -14,12 +14,12 @@ $this->headScript()->appendFile($this->basePath() . '/js/jquery.datatable.min.js
 
 <div id="search_hidden" class="row-fluid">
     <div class="input-append span4">
-        <input id="search_hidden" placeholder="<?php echo $this->translate('Search for quiz'); ?>" type="text" class="span10">
+        <input id="search_hidden" placeholder="<?php echo $this->translate('Search'); ?>" type="text" class="span10">
         <button type="submit" class="btn"><i class="icon-search"></i></button>
     </div>
 </div>
 
-<table id="table_lists" class="table">
+<table id="table_lists" class="table listquest_table">
     <thead>
         <tr>
             <th></th>
@@ -53,7 +53,7 @@ $this->headScript()->appendFile($this->basePath() . '/js/jquery.datatable.min.js
             </td>
             <td><?php echo $this->escapeHtml($list->level); ?></td>        
             <td>
-                <a href="<?php echo $this->url('question',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
+                <a href="<?php echo $this->url('question/learn',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
                 (<?php $nbQuestion = count($list->questions); echo $nbQuestion.' '.$this->translatePlural('question','questions',$nbQuestion);?>)
                 <p>
 <?php echo sprintf($this->translate('by %s'),

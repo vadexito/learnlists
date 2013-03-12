@@ -12,7 +12,9 @@ window.Question = Backbone.Model.extend({
     defaults: {
         text: 'undefined',
         answer: 'undefined',
-        tip: 'undefined'
+        tip: 'undefined',
+        answered: false,
+        multiple: 0
     },
     
     urlRoot: "/question-rest"

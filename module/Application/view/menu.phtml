@@ -1,13 +1,20 @@
 <?php 
 if ($this->zfcUserIdentity()) {
-        $this->container->findById('profile')->setLabel(
-        '<span id="gravatar-link">'
+    $label ='<span id="gravatar-link">'
         .$this->gravatar($this->zfcUserIdentity()->getEmail(),['img_size' => '30px'])
-        .'</span><span class="name">'.$this->zfcUserDisplayName().' (' 
-        . $this->translate($this->zfcUserIdentity()->getRoles()[0]->getRoleId()). ')</span>'
-    );
+        .'</span><span class="name"> '.$this->zfcUserDisplayName().' (' 
+        . $this->translate($this->zfcUserIdentity()->getRoles()[0]->getRoleId()). ') <b class="caret"></b></span>'        
+    ;
 }?>
 <div class="nav-collapse collapse">
-    <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('general'),['ulClass' => 'nav']);?>    
-    <?php echo $this->navigation()->menu()->escapeLabels(false)->renderMenu($this->container->findById('user'),['ulClass' => 'nav pull-right']);?>
+    <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('general'),['ulClass' => 'nav']);?>
+    <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('user'),['ulClass' => 'nav pull-right']);?>    
+<?php if ($this->zfcUserIdentity()) : ?>
+    <ul id="menu-profile" class="nav pull-right">   
+        <li class="dropdown">
+            <a id="dropdown-user" href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $label; ?></a>
+            <?php echo $this->navigation()->menu()->escapeLabels(false)->renderMenu($this->container->findById('profile'),['ulClass' => 'dropdown-menu']);?>
+        </li>
+    </ul>
+<?php endif; ?>
 </div><!--/.nav-collapse -->
