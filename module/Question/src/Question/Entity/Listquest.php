@@ -6,12 +6,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Zend\InputFilter\Factory as InputFactory;     
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
-use Zend\InputFilter\InputFilterInterface;   
+use Zend\InputFilter\InputFilterInterface; 
+use Zend\Stdlib\DateTime;
 
 /**
  *
- * @ORM\Entity
- * @ORM\Table(name="listquests")
  * @property int $id
  * @property string $title
  * @property string $author
@@ -26,9 +25,6 @@ class Listquest extends EntityAbstract
     /**
      * Primary Identifier
      *
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @var integer
      * @access protected
      */
@@ -37,7 +33,6 @@ class Listquest extends EntityAbstract
     /**
      * Title of each list
      *
-     * @ORM\Column(type="string")
      * @var string
      * @access protected
      */
@@ -46,7 +41,6 @@ class Listquest extends EntityAbstract
     /**
      * Rules for the quiz
      *
-     * @ORM\Column(type="string",nullable=true)
      * @var string
      * @access protected
      */    
@@ -55,7 +49,6 @@ class Listquest extends EntityAbstract
     /**
      * Level of the quiz
      *
-     * @ORM\Column(type="string",nullable=true)
      * @var string
      * @access protected
      */
@@ -63,15 +56,13 @@ class Listquest extends EntityAbstract
 
     /**
      * 
-     * @ORM\ManyToOne(targetEntity="ZfcUserLL\Entity\User")
-     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     * @var ZfcUserLL\Entity\User
      * 
      */
     protected $author;
     
     /**
      * 
-     * @ORM\Column(name="creation_date",type="datetime")
      * @var datetime
      * @access protected
      * 
@@ -79,16 +70,12 @@ class Listquest extends EntityAbstract
     protected $creationDate;
     
     /**
-     * 
-     * @ORM\OneToMany(targetEntity="Question",mappedBy="listquest")
-     * 
+     * @var ArrayCollection of Question\Entity\Question
      */
     protected $questions;
     
     /**
-     * 
-     * @ORM\ManyToMany(targetEntity="Tag",mappedBy="listquests")     * 
-     * 
+     * ArrayCollection of Question\Entity\Tag
      */
     protected $tags;    
     
@@ -149,7 +136,7 @@ class Listquest extends EntityAbstract
         }        
         
         $this->author = $this->_user;
-        $this->creationDate = new \Zend\Stdlib\DateTime();
+        $this->creationDate = new DateTime('now',new \DateTimeZone('UTC'));
     }
     
     // Add content to this method:

@@ -5,6 +5,8 @@ return [
         'invokables' => [
             'QuestionRest\Controller\QuestionRest' => 'QuestionRest\Controller\QuestionRestController',
             'QuestionRest\Controller\ListquestRest' => 'QuestionRest\Controller\ListquestRestController',
+            'QuestionRest\Controller\QuestionresultRest' => 'QuestionRest\Controller\QuestionresultRestController',
+            'QuestionRest\Controller\RoundRest' => 'QuestionRest\Controller\RoundRestController',
         ],
     ],
     'router' => [
@@ -30,6 +32,30 @@ return [
                     ],
                     'defaults' => [
                         'controller' => 'QuestionRest\Controller\ListquestRest'
+                    ],
+                ],
+            ],
+            'round-rest' => [
+                'type'    => 'segment',
+                'options' => [
+                    'route'    => '/round-rest[/:id]',
+                    'constraints' => [
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => 'QuestionRest\Controller\RoundRest'
+                    ],
+                ],
+            ],
+            'questionresult-rest' => [
+                'type'    => 'segment',
+                'options' => [
+                    'route'    => '/questionresult-rest[/:id]',
+                    'constraints' => [
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => 'QuestionRest\Controller\QuestionresultRest'
                     ],
                 ],
             ],

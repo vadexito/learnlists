@@ -10,10 +10,12 @@ window.Question = Backbone.Model.extend({
         this.set('multiple',false);
     },
     defaults: {
-        text: 'undefined',
-        answer: 'undefined',
-        tip: 'undefined',
+        id:  undefined ,
+        text: undefined,
+        answer: undefined,
+        tip: undefined,
         answered: false,
+        answer_asked: false,
         multiple: 0
     },
     

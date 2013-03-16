@@ -22,7 +22,7 @@ class QuestionController extends AbstractActionController
         if (!$id) {
             return $this->redirect()->toRoute('home');
         }
-       
+        
         return [
             'listId'    => $id
         ];

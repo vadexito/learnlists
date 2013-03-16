@@ -23,6 +23,9 @@ $settings = array(
      * The entity class should implement ZfcUser\Entity\UserInterface
      */
      'user_entity_class' => 'ZfcUserLL\Entity\User',
+    
+    // telling ZfcUserDoctrineORM to skip the entities it defines
+     'enable_default_entities' => false,
 
     /**
      * Enable registration

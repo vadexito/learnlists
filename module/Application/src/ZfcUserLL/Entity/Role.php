@@ -13,30 +13,22 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * An example entity that represents a role.
- *
- * @ORM\Entity
- * @ORM\Table(name="role")
  * 
  */
 class Role implements HierarchicalRoleInterface
 {
     /**
      * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255, unique=true, nullable=true)
      */
     protected $roleId;
 
     /**
      * @var Role
-     * @ORM\ManyToOne(targetEntity="ZfcUserLL\Entity\Role")
      */
     protected $parent;
 

@@ -15,45 +15,30 @@ use ZfcUser\Entity\UserInterface;
 use DateTime;
 use ZfrForum\Entity\UserInterface as ZfrForumUserInterface;
 
-/**
- * An example of how to implement a role aware user entity.
- *
- * @ORM\Entity
- * @ORM\Table(name="users_learnlists")
- *
- * @author Tom Oram <tom@scl.co.uk>
- */
 class User implements UserInterface, ProviderInterface, ZfrForumUserInterface
 {
     /**
      * @var int
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255, unique=true, nullable=true)
      */
     protected $username;
 
     /**
      * @var string
-     * @ORM\Column(type="string", unique=true,  length=255)
      */
     protected $email;
 
     /**
      * @var string
-     * @ORM\Column(name="display_name" type="string", length=50, nullable=true)
      */
     protected $displayName;
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=128)
      */
     protected $password;
 
@@ -64,25 +49,16 @@ class User implements UserInterface, ProviderInterface, ZfrForumUserInterface
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     * @ORM\ManyToMany(targetEntity="ZfcUserLL\Entity\Role")
-     * @ORM\JoinTable(name="users_roles",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
-     * )
      */
     protected $roles;
     
     /**
      * @var string
-     *
-     * @ORM\Column(type="string", length=39)
      */
     protected $ip = '';
 
     /**
      * @var DateTime
-     *
-     * @ORM\Column(type="datetime")
      */
     protected $lastActivityDate;
 
@@ -233,7 +209,7 @@ class User implements UserInterface, ProviderInterface, ZfrForumUserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        return $this->roles->getValues();
     }
 
     /**

@@ -10,8 +10,6 @@ use Doctrine\ORM\EntityManager;
 
 /**
  *
- * @ORM\Entity
- * @ORM\Table(name="questions")
  * @property int $id
  * @property string $text
  * @property string $answer
@@ -24,9 +22,6 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
     /**
      * Primary Identifier
      *
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
      * @var integer
      * @access protected
      */
@@ -34,21 +29,18 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
 
     /**
      *
-     * @ORM\Column(type="string")
      * @var string
      * @access protected
      */
     protected $text;
     /**
      *
-     * @ORM\Column(type="string",nullable=true)
      * @var string
      * @access protected
      */
     protected $answer;
     /**
      *
-     * @ORM\Column(type="string",nullable=true)
      * @var string
      * @access protected
      */
@@ -56,8 +48,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
 
     /**
     * 
-    * @ORM\ManyToOne(targetEntity="Listquest", inversedBy="questions")
-    * 
+    * @var Question\Entity\ListQuest
     */
     protected $listquest;
     

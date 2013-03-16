@@ -10,14 +10,14 @@ window.QuestionView = Backbone.View.extend({
         'click #question_asked_submitbutton'       : 'checkAnswer',
         'click #question_asked_nextbutton'         : 'newQuestion',
         'click #question_asked_resetbutton'        : 'resetList',
-        'click #question_asked_showResults'         : 'showResults',
+        'click #question_asked_showResults'        : 'showResults',
         'click #question_asked_showanswerbutton'   : 'showAnswer'
     },
     
     initialize: function() {
         
+        this.listId = $('#listId').val();        
         this.answer = $('#question_asked_answer');
-        this.listId = $('#listId').val();
         this.text = $('#question_asked_text');
         
         //add eventlistener if the model changes
@@ -25,16 +25,16 @@ window.QuestionView = Backbone.View.extend({
         this.listenTo(this.collection,'change:answer_asked',this.updateStatAnswerAsked);        
         this.listenTo(this.collection,'change:multiple',this.updateStatMultiple);   //multiple corresponds to question for which at least one wrong answer was given     
         
+        //init list and questions
         var list = new Listquest({id:this.listId});
         list.fetch({success: $.proxy(function(){
-            this.initTextAnswersandLocalId(list); 
+            this.initTextAnswersandLocalId(list);
             this.collection.add(list.get('questions'));
             
             $('#title-list').html(_.escape(list.get('title')));
             $('#rules').html(_.escape(list.get('rules')));
             this.resetRound();
         },this)});
-        
     },
     
     initTextAnswersandLocalId: function (list){
@@ -73,9 +73,8 @@ window.QuestionView = Backbone.View.extend({
     },
     
     
-    
-    
     resetRound:function () {
+        
         $('#round-results').hide();
         $('#question-asking').show();
         $('#question_asked_resetbutton').hide();
@@ -91,6 +90,20 @@ window.QuestionView = Backbone.View.extend({
         $('#percent-firsttime,#percent-noanswerused').html(0);
         $('#nb-questions').html(collection.length);
         $('#bar-progress').html('').css('width','0');
+        
+        //init new round in the database        
+        var rounds = new Rounds({});
+        this.currentRound = {startDate:new Date()};
+        rounds.fetch({
+            data:{
+                listquestId:this.listId
+            }, 
+            success: $.proxy(function(){
+                
+                this.lastRounds = rounds;                
+                $('#round-number').html(rounds.models.length+1);
+            },this)
+        });
         
         this.initNewQuestion();
     },
@@ -312,7 +325,6 @@ window.QuestionView = Backbone.View.extend({
             $('.button-answer').removeAttr('disabled');
             this.answer.val('').focus().removeAttr('readonly'); 
         } else {
-            $('#nextbutton').attr('disabled','disabled');
             this.endList();
         }
     },
@@ -322,7 +334,25 @@ window.QuestionView = Backbone.View.extend({
         
         this.answer.attr('readonly','readonly');
         $('.button-answer').attr('disabled','disabled');
-        $('#question_asked_resetbutton').focus();
+        $('#nextbutton').attr('disabled','disabled');
+        $('#question_asked_showResults').focus();
+        
+        //save round
+        var round = new Round({
+            listquestId: this.listId,
+            startDate: this.currentRound.startDate,
+            endDate: new Date()
+         });    
+        round.save({},{success: $.proxy(function(){              
+            _.each(this.collection.models,function(question){
+                
+                (new Questionresult({
+                    questionId:question.get('id'),
+                    roundId:round.get('id'),
+                    answerType:question.get('answered')    
+                })).save();
+            });
+        },this)});
     },
     
     resetList: function(e){
@@ -333,25 +363,106 @@ window.QuestionView = Backbone.View.extend({
     showResults: function(e){
         e.preventDefault(); 
         $('#question-asking').hide();
-        var results = $('#round-results');        
+        var results = $('#round-results'); 
         var tbody = results.children().find('tbody');
+        var thead = results.children().find('thead');
+        thead.html('');
+        tbody.html('');
         
-        //empty the table
-        tbody.html('');    
+        var now = new Date();
+        var resultArray = {};
+        var localId = {};
         
-        //full the table
         _.each(this.collection.models, function(question){
-            tbody.append('<tr><td>'
-                +question.get('localId')
-                +'</td><td>'
-                +question.get('answered')
-                +'</td></tr>');
+            localId[question.get('id')] = question.get('localId'); 
+            resultArray[question.get('id')] = [
+                {
+                    answer : question.get('answered'),
+                    date : now,
+                    localDate:true
+                }
+            ]
         });
+        
+        _.each(this.lastRounds.models,function(round){
+            _.each(round.get('questionresults'),function(questionresult){
+                resultArray[questionresult.questionId].push({
+                    answer : parseInt(questionresult.answerType),
+                    date : new Date(round.get('startDate').date)
+                });
+            });
+        });
+        
+        var newHeadContent= '<th>#</th>';
+        var newHead;
+        var newRow;
+        
+        _.each(resultArray,function(row,index){
+            
+            // id local of each question
+            var newRowContent = '<td>'+localId[index]+'</td>';
+            delete row.localId;
+            
+            row = _.sortBy(row,function(element){  
+                return -(element.date.getTime() -  (element.localDate ? 0 : 1) * now.getTimezoneOffset()*60000);
+            })
+            
+           //create a line for each question
+            _.each(row,function(element){
+                
+                var date_futureUGC,date_pastUGC,duration;   
+                
+                date_futureUGC = now.getTime() + (element.localDate ? 0 : 1) * now.getTimezoneOffset()*60000;
+                date_pastUGC = element.date.getTime();                    
+                duration = this.countDuration(date_futureUGC - date_pastUGC);
+                
+                newRowContent+= '<td>' + element.answer +'</td>';
+                
+                if (!newHead){
+                    
+                    newHeadContent+= '<th>'+(duration.now ? 'now' : 
+                        (duration.days ? (duration.days + 'd') : '')
+                        + (duration.hours ? (duration.hours + 'h') : '')
+                        + (duration.minutes ? (duration.minutes + 'm') : '')
+                        + (duration.seconds ? (duration.seconds + 's') : '')+' ago')
+                        +'</th>';
+                }
+                
+            },this);
+            newRow = '<tr>' + newRowContent + '</tr>';  
+            //add the line to the table
+            tbody.append(newRow);
+            
+            if (!newHead){
+                newHead = '<tr>' + newHeadContent + '</tr>';
+                thead.append(newHead);
+            }
+        },this);
+        
         
         results.show();
         $(e.currentTarget).hide();
-        $('#question_asked_resetbutton').show();
+        $('#question_asked_resetbutton').show().focus();
         
+    },
+    
+    countDuration: function(duration){
+        var seconds,minutes,hours,days;
+        //duration in ms
+        seconds = Math.floor(duration/1000);
+        
+        days = Math.floor(seconds/(24 * 60 * 60));
+        hours = Math.floor((seconds - days * 24 * 60 * 60) /(60 * 60));
+        minutes = Math.floor((seconds - days * 24 * 60 * 60 - hours * 60 * 60) /60);
+        seconds = Math.floor(seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60);
+        
+        return {
+            days : days,
+            hours : hours,
+            minutes : minutes,
+            seconds : seconds,
+            now: (days == 0 && hours == 0 && minutes == 0 && seconds == 0)
+        };
     }
 });
 

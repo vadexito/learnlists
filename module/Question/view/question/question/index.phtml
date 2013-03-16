@@ -6,6 +6,8 @@ $this->inlineScript()->prependFile($this->basePath() . '/js/Question/startApp.js
                      ->prependFile($this->basePath() . '/js/backboneMvc/View/QuestionView.js')
                      ->prependFile($this->basePath() . '/js/backboneMvc/Model/Question.js')
                      ->prependFile($this->basePath() . '/js/backboneMvc/Model/Listquest.js')
+                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Round.js')
+                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Questionresult.js')
                      ->prependFile($this->basePath() . '/js/backboneMvc/utils/util.js');
 
 $title = 'Learn at LearnLists';
@@ -20,7 +22,8 @@ $this->placeholder('header')->captureStart();?>
 <article id="question">         
     <div class="row-fluid" id="sub-title">        
         <div class=" span7 well">
-            <h4><span id="title-list"></span> (<span id="nb-questions"></span> questions) by </h4>   
+            <h4><span id="title-list"></span> (<span id="nb-questions"></span> questions)</h4>
+            <?php echo $this->translate('Round'); ?> <span id="round-number"></span>
             <button style="display:none" id="question_asked_resetbutton" class="btn btn-warning"><i class="icon-repeat icon-white"></i> <?php echo $this->translate('Again'); ?></button>
             <button id="question_asked_showResults" class="btn btn-warning"><?php echo $this->translate('End round and go to results'); ?></button>
         </div>
@@ -68,14 +71,10 @@ $this->placeholder('header')->captureStart();?>
             </div>
         </div>
     </div>
-    <div class="row-fluid" id="round-results">
-        <h3><?php echo $this->translate('Round number: '); ?></h3>
+    <div class="well row-fluid" id="round-results" style="display:none">
+        <h3><?php echo $this->translate('Your results'); ?></h3>
         <table class="table">
             <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Type</th>
-                </tr>
             </thead>
             <tbody>
             </tbody>

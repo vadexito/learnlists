@@ -1,4 +1,4 @@
-window.Listquest = Backbone.Model.extend({
+window.Listquest= Backbone.Model.extend({
     
     initialize: function() {
         
