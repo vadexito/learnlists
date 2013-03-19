@@ -42,18 +42,12 @@ class RoundRestController extends AbstractRestfulController
         return new JsonModel($result);
     }        
     
-    /**
-     * get all the content (question result) of a specified round 
-     * @return boolean|\Zend\View\Model\JsonModel
-     */
     public function get($id)
     {
-        $round = $this->_getRepository()->find($id);
-        
-        var_dump($round->questionresults->count());
-        
-        
-        return new JsonModel($round->toArray());        
+//        $round = $this->_getRepository()->find($id);
+//        
+//        
+//        return new JsonModel($round->toArray());        
     }
     
     public function create($data)
@@ -64,8 +58,8 @@ class RoundRestController extends AbstractRestfulController
                                  ->find($data['listquestId']);
         
         //date are in UGT timezone
-        $round->startDate = new DateTime($data['startDate']);
-        $round->endDate = new DateTime($data['endDate']);
+        $round->startDate = new DateTime($data['startDate']['date']);
+        $round->endDate = new DateTime($data['endDate']['date']);
         
         $this->getEntityManager()->persist($round);
         
@@ -81,23 +75,36 @@ class RoundRestController extends AbstractRestfulController
     
     public function update($id, $data)
     {
-        $data['id'] = $id;
-        $question = $this->getQuestionTable()->getQuestion($id);
-        $form  = new QuestionForm();
-        $form->bind($question);
-        $form->setInputFilter($question->getInputFilter());
-        $form->setData($data);
-        if ($form->isValid()) {
-            $id = $this->getQuestionTable()->saveQuestion($form->getData());
-        }
-
-        return new JsonModel((array)$this->get($id));
+//        $data['id'] = $id;
+//        $question = $this->getQuestionTable()->getQuestion($id);
+//        $form  = new QuestionForm();
+//        $form->bind($question);
+//        $form->setInputFilter($question->getInputFilter());
+//        $form->setData($data);
+//        if ($form->isValid()) {
+//            $id = $this->getQuestionTable()->saveQuestion($form->getData());
+//        }
+//
+//        return new JsonModel((array)$this->get($id));
     }
     
     public function delete($id)
     {
-        $this->getQuestionTable()->deleteQuestion($id); 
-        return new JsonModel(['data' => 'deleted']);
+        $round = $this->_getRepository()->find($id);
+        if (!$round){
+            return new JsonModel([]);
+        }
+        
+        $this->getEntityManager()->remove($round);
+        
+        try {
+            
+            $this->getEntityManager()->flush();
+        } catch (Exception $e) {
+            throw new \Exception('Doctrine deleting failed');
+        }
+        
+        return new JsonModel([]);
     }
     
     public function getEntityManager()

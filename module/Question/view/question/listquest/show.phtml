@@ -2,7 +2,7 @@
 $title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);
 $this->placeholder('header')->captureStart();
-$this->headScript()->appendFile($this->basePath() . '/js/jquery.datatable.min.js');
+$this->headScript()->appendFile($this->basePath() . '/js/lib/jquery.datatable.min.js');
 ?>
 <header id="jumbotron-header">
     <div class="container">
@@ -11,9 +11,19 @@ $this->headScript()->appendFile($this->basePath() . '/js/jquery.datatable.min.js
 </header>
 <?php $this->placeholder('header')->captureEnd(); ?>
 <h2>
-    <a href="<?php echo $this->url('question/learn',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
-    (<?php $nbQuestion = count($list->questions); echo $nbQuestion.' '.$this->translatePlural('question','questions',$nbQuestion);?>)
-<?php echo sprintf($this->translate('by %s created on %s'),
+    <?php 
+$nbQuestion = count($list->questions); 
+$title = $this->escapeHtml($list->title)
+    .'('.$nbQuestion.' '
+    .$this->translatePlural('question','questions',$nbQuestion).')';
+if ($nbQuestion == 0) {
+    echo $title;
+} else { ?>
+            <a href="<?php echo $this->url('question/learn',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
+            (<?php  echo $nbQuestion.' '.$this->translatePlural('question','questions',$nbQuestion);?>)
+<?php }
+
+    echo sprintf($this->translate('by %s created on %s'),
 ' '.$this->gravatar($list->author->getEmail(),['img_size' => '20px']).' '.$this->zfcUserDisplayName($list->author)
 .' ('.$list->author->getRoles()[0]->getRoleId(). '), ', 
 ' '.$this->dateFormat($list->creationDate,IntlDateFormatter::MEDIUM)); ?>

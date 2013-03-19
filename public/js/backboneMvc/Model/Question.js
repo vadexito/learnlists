@@ -1,22 +1,13 @@
 window.Question = Backbone.Model.extend({
     
     initialize: function() {
-        this.resetStat();
     },
     
-    resetStat: function (){
-        this.set('answered',false);
-        this.set('answer_asked',false);
-        this.set('multiple',false);
-    },
     defaults: {
         id:  undefined ,
         text: undefined,
         answer: undefined,
-        tip: undefined,
-        answered: false,
-        answer_asked: false,
-        multiple: 0
+        tip: undefined
     },
     
     urlRoot: "/question-rest"
@@ -26,25 +17,24 @@ window.Question = Backbone.Model.extend({
 window.Questions = Backbone.Collection.extend({
     
     initialize: function() {
+        
     },
     
-    init:function(){
-        this.answered = 0;
-        this.answer_asked = 0;
-        this.multiple = 0; 
+    newRoundInit:function(){
+        
+        this.roundOrder = _.shuffle(this.pluck('id')); 
     },
-    
     
     model: Question,
     
     getNewRandomModel: function(currentId){
         
-        if (this.randomOrder){
-            if (this.randomOrder[0] === currentId
-                && this.randomOrder.length > 1 ){               
-                return this.get(this.randomOrder[1]);   
+        if (this.roundOrder){
+            if (this.roundOrder[0] === currentId
+                && this.roundOrder.length > 1 ){               
+                return this.get(this.roundOrder[1]);   
             } else {
-                return this.get(this.randomOrder[0]);    
+                return this.get(this.roundOrder[0]);    
             }
         } else {
             return false;
@@ -52,7 +42,45 @@ window.Questions = Backbone.Collection.extend({
         
     },
 
-    url: "/question-rest"
+    url: "/question-rest",
+    
+    initQuestions: function (list){
+        //localId is the id within the list (show to the student)
+        var localId = 1;
+        
+        _.each(list,function(question){
+            
+            //replace the question marks in the text
+            var img = '<img class="img-find" src="/images/icons/find.png" alt="icon-hole" style="max-height:30px"/>';
+            var patternInlineSolution = /%[^%]*%/;
+            var text = _.escape(question.text);
+            var answers = [];            
+            
+            //put answers in an array
+            if (patternInlineSolution.test(text)){
+                while (patternInlineSolution.test(text)){
+                    var solutionPart = (patternInlineSolution.exec(text)[0]).replace(/%/,'').replace(/%/,'');                
+
+                    if (!(/--/).test(solutionPart)){
+                        answers.push(solutionPart);
+                    } else {
+                         answers.push(solutionPart.match(/[^(--)]+/g));
+                    }
+
+                    //replace the %text by a question mark icon
+                    text = text.replace(patternInlineSolution,img);
+                }  
+                
+                question.answer = answers;
+            }
+            question.text = localId+'. '+ text;      
+            question.localId = localId;
+            
+            localId++;
+        }); 
+        
+        this.add(list);
+    }
 });
 
 

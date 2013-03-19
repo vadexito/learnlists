@@ -59,18 +59,22 @@ class Round extends EntityAbstract
     
     public function toArray()
     {
-        $questionresults = [];
-        foreach ($this->questionresults as $questionresult) {            
-            $questionresults[] = $questionresult->toArray();
-        }
-        
-        return [
+        $roundArray = [
             'id'        => $this->id,
             'userId'    => $this->user->getId(),
             'startDate'    => $this->startDate,
-            'endDate'       => $this->endDate,
-            'questionresults' => $questionresults
+            'endDate'       => $this->endDate
         ];
+        
+        if ($this->questionresults->count() > 0){
+            $questionresults = [];
+            foreach ($this->questionresults as $questionresult) {            
+                $questionresults[] = $questionresult->toArray();
+            }
+            $roundArray['questionresults'] = $questionresults;
+        }
+        
+        return $roundArray;
     }
     
 }

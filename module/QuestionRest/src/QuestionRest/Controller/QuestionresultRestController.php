@@ -48,7 +48,16 @@ class QuestionresultRestController extends AbstractRestfulController
     
     public function delete($id)
     {
-       
+        $this->getEntityManager()->remove($this->_getRepository()->find($id));
+        
+        try {
+            
+            $this->getEntityManager()->flush();
+        } catch (Exception $e) {
+            throw new \Exception('Doctrine deleting failed');
+        }
+        
+        return new JsonModel([]);
     }
     
     public function getEntityManager()
@@ -57,7 +66,7 @@ class QuestionresultRestController extends AbstractRestfulController
                         ->get('Doctrine\ORM\EntityManager');
     }
     
-    protected function _getRepository($entity = 'Question\Entity\Round')
+    protected function _getRepository($entity = 'Question\Entity\Questionresult')
     {
         return $this->getEntityManager()->getRepository($entity);
     }
