@@ -41,10 +41,6 @@ window.Rounds = Backbone.Collection.extend({
                 
             }
         });
-        
-        
-        
-        
     },  
     
     url: "/round-rest"

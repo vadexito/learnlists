@@ -1,6 +1,8 @@
 $(function() {
     
-    if (typeof learnMVC === 'object') {learnMVC.start();}
+    if (typeof learnMVC === 'object') {
+        learnMVC.start();
+    }
     
     if ($('a[data-toggle="tooltip"]').length >0){
         $('a[data-toggle="tooltip"]').tooltip();

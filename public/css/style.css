@@ -164,5 +164,29 @@ question ask page
     margin-right:20px;
 }
 
+/*=======================================
+question ask page / pie element
+=========================================*/
+
+input.pie{
+    border:0;
+    background-color:inherit;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+div.pie.row-fluid{
+    text-align: center;
+}
+
+div.progress.vertical{
+    height:50px;
+}
+
+p.title_pie{
+   margin-top:5px; 
+}
+
+
 
 

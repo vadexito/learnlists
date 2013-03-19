@@ -12,7 +12,7 @@ window.QuestionView = Backbone.View.extend({
         'click #question_asked_submitbutton'       : 'checkAnswer',
         'click #question_asked_nextbutton'         : 'newQuestion',
         'click #question_asked_resetbutton'        : 'resetList',
-        'click #question_asked_cancelRound'           : 'cancelRound',
+        'click #question_asked_cancelRound'        : 'cancelRound',
         'click #question_asked_showanswerbutton'   : 'showAnswer',
         'click #remove_rounds_button'              : 'removeRounds'
     },
@@ -26,20 +26,26 @@ window.QuestionView = Backbone.View.extend({
         //init list and questions
         this.list = new Listquest({id: listId});
         this.list.fetch({success: $.proxy(function(list){
-                
-            this.collection.initQuestions(list.get('questions'));            
-            $('#nb-questions').html(this.collection.length);
+            
+            this.collection.initQuestions(list.get('questions'));  
+            var nb_questions = this.collection.length;
+            $('#nb-questions').html(nb_questions);
             $('#title-list').html(_.escape(list.get('title')));
             $('#rules').html(_.escape(list.get('rules')));
             
+            learnMVC.vent.trigger("learn:init",nb_questions);
             
-            this.lastRounds = new Rounds({});
+            this.lastRounds = new Rounds();
+            
+            //TODO : not to do if not connected
             this.lastRounds.init(listId,this.maxRound);
+            
             this.initNewRound();
         },this)});
     },
     
-    initNewRound:function () {        
+    initNewRound:function () {  
+        learnMVC.vent.trigger("learn:initNewRound");
         $('#round-results').hide();
         $('#question-asking').show();
         $('.reset_button').hide();
@@ -129,7 +135,11 @@ window.QuestionView = Backbone.View.extend({
     checkAnswer: function(e){
         e.preventDefault(); 
         $('.answer-sign').hide();
-        var newResult = new Questionresult({questionId:this.model.get('id')});  
+        var newResult = new Questionresult({
+            startDate:this.model.get('startDate'),
+            questionId:this.model.get('id')
+        });  
+        
         var result = newResult.checkAnswer({
             answerGiven: this.answer.val(),
             answerInDB: this.model.get('answer'),
@@ -137,8 +147,10 @@ window.QuestionView = Backbone.View.extend({
         });
         
         if (result === true){
-            
             this.currentRound.get('questionresults').add(newResult);
+            learnMVC.vent.trigger("learn:addAnsweredQuestion",newResult.get('answerType'));
+           
+        //only a part of the answer has been given
         } else if (typeof result === 'number'){
             this.model.set('answerPart',result);
         }
@@ -192,6 +204,7 @@ window.QuestionView = Backbone.View.extend({
         });   
         newResult.saveAnswerType();
         this.currentRound.get('questionresults').add(newResult);
+        learnMVC.vent.trigger("learn:addAnsweredQuestion",newResult.get('answerType'));
     },
     
     newQuestion: function(e){
@@ -213,7 +226,6 @@ window.QuestionView = Backbone.View.extend({
             this.model.set('answerPart',0);
             //insert the text of question
             this.text.html(this.model.get('text'));
-            
             $('.button-answer').removeAttr('disabled');
             this.answer.val('').focus().removeAttr('readonly'); 
         } else {
@@ -223,13 +235,15 @@ window.QuestionView = Backbone.View.extend({
     
     
     listCompleted: function(){
+        learnMVC.vent.trigger("learn:roundCompleted");
         
         this.answer.attr('readonly','readonly');
         $('.button-answer').attr('disabled','disabled');
         $('#nextbutton').attr('disabled','disabled');
         
         this.currentRound.saveDB();
-        this.lastRounds.add(this.currentRound);        
+        this.lastRounds.add(this.currentRound); 
+        
         this.showResult();
     
     },
@@ -266,6 +280,7 @@ window.QuestionView = Backbone.View.extend({
             localId[questionId] = question.get('localId');
             resultArray[questionId] = new Array();
         });
+        
         
         var lastRounds = this.lastRounds;
         if (lastRounds){            
@@ -337,7 +352,13 @@ window.QuestionView = Backbone.View.extend({
         
         results.show();
         $('#question_asked_cancelRound').hide();
-        $('.reset_button').show().focus();
+        
+        if(this.lastRounds.models.length < this.maxRound){
+            $('#question_asked_resetbutton').show().focus();
+        }
+        
+        $('#remove_rounds_button').show();
+        
     },
     
     

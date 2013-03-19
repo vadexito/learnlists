@@ -73,7 +73,7 @@ window.Questions = Backbone.Collection.extend({
                 
                 question.answer = answers;
             }
-            question.text = localId+'. '+ text;      
+            question.text = text;      
             question.localId = localId;
             
             localId++;
