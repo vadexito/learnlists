@@ -7,8 +7,10 @@ window.CurrentStatsView = Backbone.Marionette.ItemView.extend({
         bad_bar     : '#bad_answering_bar'
     },
     initialize: function(){
+        
         var optionsNotRefreshed = {transition_delay: 0};
         var optionsRefreshed = {transition_delay: 50};
+        
         this.listenTo(this.model,'change:nb_perfect_answering',function(){
             this.render();
             this.ui.perfectbar.progressbar(optionsRefreshed);
@@ -22,6 +24,7 @@ window.CurrentStatsView = Backbone.Marionette.ItemView.extend({
             this.ui.bad_bar.progressbar(optionsNotRefreshed);
         });
         this.listenTo(this.model,'change:nb_bad_answering',function(){
+            
             this.render();
             this.ui.perfectbar.progressbar(optionsNotRefreshed);
             this.ui.average_bar.progressbar(optionsNotRefreshed);

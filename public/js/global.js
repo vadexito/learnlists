@@ -1,7 +1,11 @@
 $(function() {
     
     if (typeof learnMVC === 'object') {
-        learnMVC.start();
+        learnMVC.start({
+            listId:$('#listId').val(),
+            loggedIn: $('#listId').attr('data-loggedin'),
+            maxRound: $('#listId').attr('data-maxRound')
+        });
     }
     
     if ($('a[data-toggle="tooltip"]').length >0){

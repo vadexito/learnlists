@@ -24,7 +24,8 @@ class QuestionController extends AbstractActionController
         }
         
         return [
-            'listId'    => $id
+            'listId'    => $id,
+            'maxRound' => 5
         ];
     }
 

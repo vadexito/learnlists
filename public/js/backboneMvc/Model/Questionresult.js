@@ -20,7 +20,7 @@ window.Questionresult = Backbone.Model.extend({
     
     urlRoot: "/questionresult-rest",
     
-    saveAnswerType: function(){
+    setAnswerType: function(){
         var answerType = true;
         var timeAnswer = new Date();
         var timeToAnswer = (timeAnswer - this.get('startDate'))/1000;
@@ -55,8 +55,8 @@ window.Questionresult = Backbone.Model.extend({
             answerPart = options.answerPart,
             text = $('#question_asked_text'),
             answer = $('#question_asked_answer'),
-            answersToCheck;        
-            
+            answersToCheck; 
+        
         if (typeof answerInDB === 'string'){        
             answersToCheck = answerInDB;    
         } else if ($.isArray(answerInDB)){            
@@ -73,7 +73,6 @@ window.Questionresult = Backbone.Model.extend({
             
             // if the answer has only one part
             if (typeof answerInDB === 'string'){   
-                this.saveAnswerType();
                 return true;
             // question with multi part answers
             } 
@@ -83,8 +82,7 @@ window.Questionresult = Backbone.Model.extend({
                 text.html(this.replaceImg(text.html(),answersToCheck));
                 answerPart++;
                 
-                if (answerInDB.length === answerPart){
-                    this.saveAnswerType();
+                if (answerInDB.length === answerPart){                    
                     return true;
                 } else {
                     answer.val('');

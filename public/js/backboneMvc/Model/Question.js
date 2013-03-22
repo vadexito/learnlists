@@ -20,27 +20,11 @@ window.Questions = Backbone.Collection.extend({
         
     },
     
-    newRoundInit:function(){
-        
-        this.roundOrder = _.shuffle(this.pluck('id')); 
-    },
+    
     
     model: Question,
     
-    getNewRandomModel: function(currentId){
-        
-        if (this.roundOrder){
-            if (this.roundOrder[0] === currentId
-                && this.roundOrder.length > 1 ){               
-                return this.get(this.roundOrder[1]);   
-            } else {
-                return this.get(this.roundOrder[0]);    
-            }
-        } else {
-            return false;
-        }
-        
-    },
+    
 
     url: "/question-rest",
     

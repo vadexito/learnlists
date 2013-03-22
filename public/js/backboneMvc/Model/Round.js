@@ -1,7 +1,10 @@
 window.Round = Backbone.Model.extend({
     
     initialize: function() {
-        this.attributes.questionresults = new Questionresults();
+        learnMVC.vent.on('learn:removeRounds',function(listId){
+            var options = {data:{listquestId:listId}};
+            this.destroy(options);
+        },this);
     },
     
     urlRoot: "/round-rest",
@@ -25,6 +28,8 @@ window.Rounds = Backbone.Collection.extend({
         
     },
     
+    model: Round,
+    
     init: function(listId,maxRound){
         
         this.fetch({
@@ -32,16 +37,19 @@ window.Rounds = Backbone.Collection.extend({
                 listquestId:listId
             }, 
             success: function(rounds){                
-                $('#round-number').html((rounds.models.length+1)+'/'+maxRound);
                 //transform questionresults into a collection
                 rounds.each(function(round){
                     round.set('questionresults',new Questionresults(round.get('questionresults','')));
                 });
                 
+                learnMVC.vent.trigger("learn:initNewRound");
                 
             }
         });
-    },  
+        
+        
+        
+    },
     
     url: "/round-rest"
     

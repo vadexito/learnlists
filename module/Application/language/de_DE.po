@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-26 23:57+0100\n"
-"PO-Revision-Date: 2013-02-26 23:57+0100\n"
+"PO-Revision-Date: 2013-03-19 23:31+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -67,7 +67,7 @@ msgstr "Antwort"
 #: ../../Question/view/question/listquest/show.phtml:36
 #: ../../Question/view/question/question/index.phtml:51
 msgid "Tip"
-msgstr "Tip"
+msgstr "Tipp"
 
 #: ../../../config/autoload/global.php:24
 msgid "Learnlists"

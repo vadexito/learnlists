@@ -3,13 +3,17 @@ window.FollowerView = Backbone.Marionette.ItemView.extend({
     tagName: 'div',    
     className: 'well span12 pie',
     ui:{
-        pie_input:'#current_pie'
+        pie:'#current_pie'
     },
     initialize: function(){
-        this.listenTo(this.model,'change:nb_question',function(){
-            var total = this.model.get('nb_questions');
+        
+    },
+    
+    modelEvents:{
+        'change:nb_question': function(model,newNb){
+            var total = model.get('nb_questions');
             this.render();
-            $("#current_pie").knob({
+            this.ui.pie.knob({
                 'min':0,
                 'max':total,
                 'step':1,
@@ -17,10 +21,11 @@ window.FollowerView = Backbone.Marionette.ItemView.extend({
                 'width':80,
                 'height':80
             })
-             $("#current_pie").val(total - this.model.get('nb_question'))
-                              .trigger('change'); 
-        });
+            this.ui.pie.val(total - newNb).trigger('change'); 
+        }
     }
+    
+    
 });
 
 
