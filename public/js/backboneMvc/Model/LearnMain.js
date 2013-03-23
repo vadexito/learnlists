@@ -40,16 +40,20 @@ window.LearnMain = Backbone.Model.extend({
         learnMVC.vent.on("learn:initNewRound",this.initNewRound,this);
         learnMVC.vent.on("learn:initNewQuestion",this.initNewQuestion,this);
         learnMVC.vent.on("learn:nextQuestion",this.nextQuestion,this);        
-        learnMVC.vent.on("learn:roundCompleted",this.roundCompleted,this);        
         learnMVC.vent.on("learn:answerCheck",this.checkAnswer,this);        
         learnMVC.vent.on("learn:showAnswer",this.showAnswer,this);        
         learnMVC.vent.on("learn:proceedAnsweredQuestion",this.proceedAnsweredQuestion,this);
+        learnMVC.vent.on("learn:roundCompleted",this.roundCompleted,this);        
+        
         
     },
     
     roundCompleted: function(){
-        this.currentRound.saveDB();
-        this.lastRounds.add(this.currentRound);
+        if (this.get('loggedIn') === 'true' || this.get('saveRoundsWhenNotLogged') === true ){
+            this.currentRound.saveDB();
+            this.lastRounds.add(this.currentRound);
+        }
+        
         learnMVC.vent.trigger("learn:showResult");
 
     },
@@ -104,31 +108,35 @@ window.LearnMain = Backbone.Model.extend({
     
     proceedAnsweredQuestion: function(){
         this.currentRound.get('roundOrder').pop();
-        this.set('nb_question',this.currentRound.get('roundOrder').length);
-        this.set('tip',this.questions.collection.get(this.model.get('questionId')).get('tip'));
         this.model.setAnswerType();
         this.currentRound.get('questionresults').add(this.model);
+        
+        this.set({
+            'nb_question': this.currentRound.get('roundOrder').length,
+            'tip': this.questions.collection.get(this.model.get('questionId')).get('tip'),
+            'maxPoint': this.get('maxPoint')+ _.max(_.values(this.currentRound.answerTypePointTable)),
+            'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')]
+        });
 
         var total = this.get('nb_questions');
-
         var perfect = this.get('nb_perfect_answering') * total/100,
             average = this.get('nb_average_answering') * total/100,
                 bad = this.get('nb_bad_answering') * total/100;
 
         switch(this.model.get('answerType')){
-            case 1:
+            case '1':
                 perfect++;
                 break;
-            case 2:
+            case '2':
                 average++;
                 break;
-            case 3:
+            case '3':
                 average++;
                 break;
-            case 4:
+            case '4':
                 average++;
                 break;
-            case 5:
+            case '5':
                 bad++;
                 break;
             default:                    
@@ -138,7 +146,9 @@ window.LearnMain = Backbone.Model.extend({
             'nb_average_answering':average/total  * 100,
             'nb_bad_answering':bad/total * 100
         });
-
+        
+        
+        
     },
     
     initNewRound:function () { 
@@ -214,6 +224,8 @@ window.LearnMain = Backbone.Model.extend({
         nb_question:'',
         nb_perfect_answering:0,
         nb_average_answering:0,
-        nb_bad_answering:0
+        nb_bad_answering:0,
+        score:0,
+        maxPoint:0
     }
 }); 

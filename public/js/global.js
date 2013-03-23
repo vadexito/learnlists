@@ -4,7 +4,8 @@ $(function() {
         learnMVC.start({
             listId:$('#listId').val(),
             loggedIn: $('#listId').attr('data-loggedin'),
-            maxRound: $('#listId').attr('data-maxRound')
+            maxRound: $('#listId').attr('data-maxRound'),
+            saveRoundsWhenNotLogged: false
         });
     }
     

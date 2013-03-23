@@ -58,8 +58,7 @@ InsideNavBarView = Backbone.Marionette.ItemView.extend({
     ui: {
         cancelButton        : '#question_asked_cancelRound',
         removeRoundsButton  : '#remove_rounds_button',
-        newRoundButton      : '#question_asked_resetbutton',
-        roundShow           : '#round_show'
+        newRoundButton      : '#question_asked_resetbutton'
     },
     events:{
         'click #remove_rounds_button'          : 'removeRounds',
@@ -81,18 +80,11 @@ InsideNavBarView = Backbone.Marionette.ItemView.extend({
         learnMVC.vent.trigger("learn:showResult");
     },
     
-    initialize: function(){
-        learnMVC.vent.on('learn:init',function(){
-            if (this.model.get('loggedIn') === 'true'){
-                this.ui.roundShow.show();
-            }
-        },this);
-        
+    initialize: function(){        
         learnMVC.vent.on('learn:initNewRound',function(){
             this.ui.removeRoundsButton.hide();
             this.ui.newRoundButton.hide();
-            this.ui.cancelButton.show() 
-                      
+            this.ui.cancelButton.show()
         },this);
         
         learnMVC.vent.on('learn:initNewQuestion',function(){             
@@ -114,10 +106,7 @@ InsideNavBarView = Backbone.Marionette.ItemView.extend({
     },
     
     modelEvents:{
-        'change:round_nb change:title_list change:round_total': function(){
-            this.render();
-            this.ui.roundShow.show();
-        }
+        'change:title_list': 'render'
     }
     
 });
@@ -173,21 +162,6 @@ AskingQuestionView = Backbone.Marionette.ItemView.extend({
     }
 });
 
-Results = Backbone.Model.extend({});
-
-CurrentQuestion = Backbone.Model.extend({
-    initialize: function(){
-        var self = this;
-        learnMVC.vent.on('learn:initNewQuestion',function(text){
-            self.set('text',text);
-        });
-    },
-    defaults:{
-        text:'',
-        answer:''
-    }
-});
-
 RoundResultView = Backbone.Marionette.ItemView.extend({
     tagName: "tr",
     template: "#row_resultTable-template",
@@ -209,8 +183,11 @@ RoundResultView = Backbone.Marionette.ItemView.extend({
     modelEvents: {
         "change": "render"
     }
-    
-    
+});
+
+NoResultsView = Backbone.Marionette.ItemView.extend({
+    tagName: "tr",
+    template: "#noresult-template"
 });
 
 ResultsView = Backbone.Marionette.CompositeView.extend({
@@ -218,6 +195,7 @@ ResultsView = Backbone.Marionette.CompositeView.extend({
     tagName: 'div',    
     className: 'well span12',
     itemView: RoundResultView,
+    emptyView: NoResultsView,
     initialize: function(){
         this.collection = this.model.lastRounds;
     },
@@ -232,14 +210,15 @@ learnMVC.addInitializer(function(options){
     var learnMain = new LearnMain({
         listId:options.listId,
         loggedIn: options.loggedIn,
-        maxRound: options.maxRound
+        maxRound: options.maxRound,
+        saveRoundsWhenNotLogged : this.saveRoundsWhenNotLogged
     });    
     var layout = new LearnListsLayout({model:learnMain});    
     learnMVC.main.show(layout);  
     
     layout.follower.show(new FollowerView({model:layout.model}));
     layout.presCorner.show(new InsideNavBarView({model:layout.model}));
-    layout.currentstats.show(new CurrentStatsView({model:layout.model}));
+    //layout.currentstats.show(new CurrentStatsView({model:layout.model}));
     
     learnMVC.vent.on('learn:initNewRound',function(){
         layout.central_area.show(new AskingQuestionView({model:layout.model}));

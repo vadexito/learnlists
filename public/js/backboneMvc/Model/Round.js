@@ -1,12 +1,19 @@
 window.Round = Backbone.Model.extend({
     
     initialize: function() {
+        this.answerTypePointTable = {
+            'false' : 0,
+            '1' : 4,
+            '2' : 3,
+            '3' : 2,
+            '4' : 1,
+            '5' : 0
+        };
+        
+        learnMVC.vent.on('learn:showResult',this.initStat,this);
         learnMVC.vent.on('learn:removeRounds',function(listId){
             var options = {data:{listquestId:listId}};
             this.destroy(options);
-        },this);
-        learnMVC.vent.on('learn:showResult',function(){
-            this.initStat();
         },this);
     },
     
@@ -18,24 +25,15 @@ window.Round = Backbone.Model.extend({
             
             var total = res.models.length,
                 answerTypeNb = {},
-                givenPointTable = {
-                    'false' : 0,
-                    '1' : 4,
-                    '2' : 3,
-                    '3' : 2,
-                    '4' : 1,
-                    '5' : 0
-                },
                 totalPotentialPoint = 0,
                 totalPoint = 0;
                 
             _.each(['false','1','2','3','4','5'],function(answerType){
                 answerTypeNb[answerType] = res.where({answerType:answerType}).length;
-                totalPoint+=givenPointTable[answerType]*answerTypeNb[answerType];
-            });
+                totalPoint+=this.answerTypePointTable[answerType]*answerTypeNb[answerType];
+            },this);
             
-            totalPotentialPoint+= givenPointTable['1'] * (total - answerTypeNb['false']);
-            //console.log(totalPotentialPoint);
+            totalPotentialPoint+= this.answerTypePointTable['1'] * (total - answerTypeNb['false']);
             
             
             var sum = 0;
@@ -54,7 +52,7 @@ window.Round = Backbone.Model.extend({
             };
             
             this.set({
-                finalnote:perc(totalPoint,totalPotentialPoint,false),
+                finalnote:totalPoint + '/' + totalPotentialPoint,
                 perfectanswer:perc(answerTypeNb[1],total),  
                 averageanswer:perc([answerTypeNb[2],answerTypeNb[3],answerTypeNb[4]],total),                      
                 badanswer:perc(answerTypeNb[5],total),  
@@ -74,7 +72,8 @@ window.Round = Backbone.Model.extend({
       averageanswer:0,  
       badanswer:0,  
       notdone:0,
-      duration:{days:0,hours:0,minutes:0,seconds:0}
+      duration:{days:0,hours:0,minutes:0,seconds:0},
+      score:0
     },
     
     saveDB: function(){

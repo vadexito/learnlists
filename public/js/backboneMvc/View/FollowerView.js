@@ -9,20 +9,31 @@ window.FollowerView = Backbone.Marionette.ItemView.extend({
         
     },
     
-    modelEvents:{
-        'change:nb_question': function(model,newNb){
-            var total = model.get('nb_questions');
-            this.render();
-            this.ui.pie.knob({
-                'min':0,
-                'max':total,
-                'step':1,
-                'readOnly':true,
-                'width':80,
-                'height':80
-            })
-            this.ui.pie.val(total - newNb).trigger('change'); 
+    updateKnob: function(val){
+        var optionsKnob = {
+            'min':0,
+            'max':this.model.get('nb_questions'),
+            'step':1,
+            'readOnly':true,
+            'width':80,
+            'height':80
+        };
+        
+        this.ui.pie.knob(optionsKnob)
+        this.ui.pie.val(val).trigger('change'); 
+    },
+    
+    onRender: function(){        
+        if (this.model.get('loggedIn') === 'false'){ 
+            $('#round_show').hide();
         }
+        
+        this.updateKnob(this.model.get('nb_question'));
+    },
+    
+    
+    modelEvents:{
+        'change:nb_question change:round_nb change:round_total': 'render'
     }
     
     
