@@ -33,10 +33,6 @@ TipView = Backbone.Marionette.ItemView.extend({
 });
 
 
-
-
-
-
 AnswerView = Backbone.Marionette.ItemView.extend({
     template: "#answer_show-template",
     tagName: 'div',    
@@ -193,25 +189,41 @@ CurrentQuestion = Backbone.Model.extend({
 });
 
 RoundResultView = Backbone.Marionette.ItemView.extend({
-  tagName: "tr",
-  template: "#row-template"
+    tagName: "tr",
+    template: "#row_resultTable-template",
+    templateHelpers: {
+        roundinfo: function(){
+            
+            var duration = this.duration;        
+            return (duration.now ? 'current' : 
+                (duration.days ? (duration.days + 'd') : '')
+                + (duration.hours ? (duration.hours + 'h') : '')
+                + (duration.minutes ? (duration.minutes + 'm') : '')
+                + (duration.seconds ? (duration.seconds + 's') : '')+' ago');
+        }
+    },
+    initialize: function(){
+        
+    }, 
+    
+    modelEvents: {
+        "change": "render"
+    }
+    
+    
 });
-
-
-
 
 ResultsView = Backbone.Marionette.CompositeView.extend({
     template: "#results-template",
     tagName: 'div',    
     className: 'well span12',
-    itemViewContainer: "tbody",
     itemView: RoundResultView,
-    ui:{
-        thead:'#head_table_results',
-        tbody:'#body_table_results'
-    },
     initialize: function(){
-    }
+        this.collection = this.model.lastRounds;
+    },
+    appendHtml: function(collectionView, itemView, index){
+        collectionView.$('tbody').prepend(itemView.el);
+      }
 });
 
 
@@ -229,14 +241,6 @@ learnMVC.addInitializer(function(options){
     layout.presCorner.show(new InsideNavBarView({model:layout.model}));
     layout.currentstats.show(new CurrentStatsView({model:layout.model}));
     
-    var results = new Results({
-                duration0:0,
-                duration1:0,
-                duration2:0,
-                duration3:0,
-                duration4:0
-            });
-            
     learnMVC.vent.on('learn:initNewRound',function(){
         layout.central_area.show(new AskingQuestionView({model:layout.model}));
     });
@@ -249,9 +253,7 @@ learnMVC.addInitializer(function(options){
     learnMVC.vent.on('learn:showResult',function(){
         layout.tip.close();
         layout.answer.close();
-        layout.central_area.show(new ResultsView({
-            model:results
-        }));
+        layout.central_area.show(new ResultsView({model: layout.model}));
     });
     
 });

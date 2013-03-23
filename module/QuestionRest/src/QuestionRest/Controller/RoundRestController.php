@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 use Question\Entity\Round;
 use Zend\Stdlib\DateTime;
+
 class RoundRestController extends AbstractRestfulController
 {
     /**
@@ -57,9 +58,13 @@ class RoundRestController extends AbstractRestfulController
         $round->listquest = $this->_getRepository('Question\Entity\Listquest')
                                  ->find($data['listquestId']);
         
-        //date are in UGT timezone
-        $round->startDate = new DateTime($data['startDate']['date']);
-        $round->endDate = new DateTime($data['endDate']['date']);
+        //date come from javascript in UGT timezone, they have to be converted
+        //in local time to be stored in the database in local time
+        $localTimeZone = (new DateTime())->getTimezone();
+        $round->startDate = (new DateTime($data['startDate']['date']))
+                            ->setTimezone($localTimeZone);
+        $round->endDate = (new DateTime($data['endDate']['date']))
+                            ->setTimezone($localTimeZone);
         
         $this->getEntityManager()->persist($round);
         

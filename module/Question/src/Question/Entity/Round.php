@@ -62,8 +62,8 @@ class Round extends EntityAbstract
         $roundArray = [
             'id'        => $this->id,
             'userId'    => $this->user->getId(),
-            'startDate'    => $this->startDate,
-            'endDate'       => $this->endDate
+            'startDate' => $this->startDate,
+            'endDate'   => $this->endDate
         ];
         
         if ($this->questionresults->count() > 0){

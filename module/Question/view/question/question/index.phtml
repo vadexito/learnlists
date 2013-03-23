@@ -8,8 +8,7 @@ $this->headScript() ->prependFile($this->basePath() . '/js/lib/marionette.min.js
                     ->prependFile($this->basePath() . '/js/lib/jquery.knob.js')
                     ->prependFile($this->basePath() . '/js/lib/bootstrap-progressbar.min.js');
 
-$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/View/QuestionView.js')
-                     ->prependFile($this->basePath() . '/js/backboneMvc/View/CurrentStatsView.js')
+$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/View/CurrentStatsView.js')
                      ->prependFile($this->basePath() . '/js/backboneMvc/View/FollowerView.js')
                      ->prependFile($this->basePath() . '/js/backboneMvc/Model/Question.js')
                      ->prependFile($this->basePath() . '/js/backboneMvc/Model/Listquest.js')
@@ -31,6 +30,42 @@ $this->placeholder('header')->captureStart();?>
 <?php $this->placeholder('header')->captureEnd(); ?>
 <article id="questionMain"></article>
 <input name="id" type="hidden" data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-maxRound="<?php echo $maxRound?>" id="listId" value="<?php echo $listId ?>">
+<script id="layout-template" type="text/html">
+    <div class="span3">
+        <div class="row-fluid" id="first_presentation_corner"></div>
+        <div class="row-fluid" id="question_follower"></div>
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">
+                  <h4>
+                      <?php echo $this->translate('Questions?'); ?>                             
+                  </h4>
+                </li>
+                <li class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#general_rules">
+                        <?php echo $this->translate('How does it work?'); ?>
+                        <p class="accordion-body collapse" id="general_rules">soon</p>
+                    </a>
+                    <a class="accordion-toggle" data-toggle="collapse" href="#specific_rules">
+                        <?php echo $this->translate('Special tips for this list'); ?>
+                        <p class="accordion-body collapse" id="rules"></p>
+                    </a>
+                    <a class="accordion-toggle" data-toggle="collapse" href="#help_currentstats">
+                        <?php echo $this->translate('How do the currentstats work?'); ?>
+                        <p class="accordion-body collapse" id="help_currentstats">soon</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="span8"> 
+        <div class="row-fluid" id="central_area"></div>
+        <div class="row-fluid" id="answer_show" style="display:none"></div>
+        <div class="row-fluid" id="question_tip" style="display:none"></div>
+        <div class="row-fluid" id="round-results" style="display:none"></div>
+    </div>
+    <div class="span1 well" id="current_stats"></div>  
+</script>
 <script id="title_pie-template" type="text/html">
     <div class="row-fluid pie">
         <input type="text" id="current_pie" class="pie">
@@ -57,19 +92,27 @@ $this->placeholder('header')->captureStart();?>
     <table class="table" id="table_results">
         <thead id="head_table_results">
             <tr>
+                <th><?php echo $this->translate('Round'); ?></th>
+                <th><?php echo $this->translate('Final Note'); ?></th>
+                <th><?php echo $this->translate('Perfect'); ?></th>
+                <th><?php echo $this->translate('Average'); ?></th>
+                <th><?php echo $this->translate('Bad'); ?></th>
+                <th><?php echo $this->translate('Not done'); ?></th>
             </tr>
         </thead>
         <tbody id="body_table_results">
         </tbody>
     </table>
 </script>
-<script id="round_results-template" type="text/html">
-<?php for ($i=0;$i<$maxRound;$i++) :?>            
-                <td><%= answerType<?php echo $i; ?> %></td>          
-<?php endfor; ?> 
-    <td><%= answerType %></td>
+<script id="row_resultTable-template" type="text/html">
+    <th><%= roundinfo() %></th>
+    <th><%= finalnote %></th>
+    <th><%= perfectanswer %></th>
+    <th><%= averageanswer %></th>
+    <th><%= badanswer %></th>            
+    <th><%= notdone %></th>            
 </script>
-<script id="asking_question-template" type="text/html">
+<script id="asking_question-template" type="text/html">    
     <p id="question_asked_text"><%= text %></p>            
     <form action="" method="post" name="questionAskForm" class="form-inline" id="questionAskForm">
         <input name="id" type="hidden" id="listId" value="<?php echo $listId ?>">         
@@ -112,42 +155,6 @@ $this->placeholder('header')->captureStart();?>
             </a>
         </li>
     </ul>
-</script>
-<script id="layout-template" type="text/html">
-    <div class="span3">
-        <div class="row-fluid" id="first_presentation_corner"></div>
-        <div class="row-fluid" id="question_follower"></div>
-        <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-                <li class="nav-header">
-                  <h4>
-                      <?php echo $this->translate('Questions?'); ?>                             
-                  </h4>
-                </li>
-                <li class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" href="#general_rules">
-                        <?php echo $this->translate('How does it work?'); ?>
-                        <p class="accordion-body collapse" id="general_rules">soon</p>
-                    </a>
-                    <a class="accordion-toggle" data-toggle="collapse" href="#specific_rules">
-                        <?php echo $this->translate('Special tips for this list'); ?>
-                        <p class="accordion-body collapse" id="rules"></p>
-                    </a>
-                    <a class="accordion-toggle" data-toggle="collapse" href="#help_currentstats">
-                        <?php echo $this->translate('How do the currentstats work?'); ?>
-                        <p class="accordion-body collapse" id="help_currentstats">soon</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="span8"> 
-        <div class="row-fluid" id="central_area"></div>
-        <div class="row-fluid" id="answer_show" style="display:none"></div>
-        <div class="row-fluid" id="question_tip" style="display:none"></div>
-        <div class="row-fluid" id="round-results" style="display:none"></div>
-    </div>
-    <div class="span1 well" id="current_stats"></div>  
 </script>
 <script id="tip-template" type="text/html">
     <h4 class="tip"><?php echo $this->translate('Tip'); ?></h4>

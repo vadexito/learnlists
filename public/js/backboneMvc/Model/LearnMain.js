@@ -37,7 +37,6 @@ window.LearnMain = Backbone.Model.extend({
             }
         },this)});
     
-        this.currentRound = new Round();  
         learnMVC.vent.on("learn:initNewRound",this.initNewRound,this);
         learnMVC.vent.on("learn:initNewQuestion",this.initNewQuestion,this);
         learnMVC.vent.on("learn:nextQuestion",this.nextQuestion,this);        
@@ -45,7 +44,6 @@ window.LearnMain = Backbone.Model.extend({
         learnMVC.vent.on("learn:answerCheck",this.checkAnswer,this);        
         learnMVC.vent.on("learn:showAnswer",this.showAnswer,this);        
         learnMVC.vent.on("learn:proceedAnsweredQuestion",this.proceedAnsweredQuestion,this);
-        learnMVC.vent.on("learn:showResult",this.showResult,this);
         
     },
     
@@ -188,130 +186,6 @@ window.LearnMain = Backbone.Model.extend({
         
     },
     
-    showResult: function(){
-        
-        console.log(this.lastRounds.models);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        var results = $('#round-results');         
-//        var tbody = results.children().find('tbody');
-//        var thead = results.children().find('thead');
-//        var now = new Date();
-//        var resultArray = {};
-//        var localId = {};
-//        
-//        thead.html('');
-//        tbody.html('');
-//        
-//        this.collection.each(function(question){
-//            var questionId = question.get('id');
-//            
-//            localId[questionId] = question.get('localId');
-//            resultArray[questionId] = new Array();
-//        });
-//        
-//        
-//        var lastRounds = this.lastRounds;
-//        if (lastRounds){            
-//            lastRounds.each(function(round){
-//                
-//                round.get('questionresults').each(function(questionresult){
-//                    var answer = {
-//                        answer : parseInt(questionresult.get('answerType')),
-//                        date : new Date(round.get('endDate').date)
-//                    }
-//                    
-//                    if (round.get('localDate')){
-//                        answer['localDate'] = true;
-//                    }
-//                    
-//                    resultArray[questionresult.get('questionId')].push(answer);
-//                });
-//            }); 
-//        }
-//        
-//        var newHeadContent= '<th>#</th>';
-//        var newHead;
-//        var newRow;
-//        
-//        _.each(resultArray,function(row,index){
-//            
-//            // id local of each question
-//            var newRowContent = '<td>'+localId[index]+'</td>';
-//            delete row.localId;
-//            
-//            row = _.sortBy(row,function(element){ 
-//                return -(element.date.getTime() -  (element.localDate ? 0 : 1) * now.getTimezoneOffset()*60000);
-//            })
-//            
-//           //create a line for each question
-//           var i=row.length;
-//            _.each(row,function(element){
-//                
-//                var date_futureUGC,date_pastUGC,duration;   
-//                
-//                date_futureUGC = now.getTime() + (element.localDate ? 0 : 1) * now.getTimezoneOffset()*60000;
-//                date_pastUGC = element.date.getTime();                    
-//                duration = this.countDuration(date_futureUGC - date_pastUGC);
-//                
-//                newRowContent+= '<td>' + element.answer +'</td>';
-//                
-//                if (!newHead){
-//                    
-//                    newHeadContent+= '<th> round#' + i + ' - '
-//                        +(duration.now ? 'now' : 
-//                        (duration.days ? (duration.days + 'd') : '')
-//                        + (duration.hours ? (duration.hours + 'h') : '')
-//                        + (duration.minutes ? (duration.minutes + 'm') : '')
-//                        + (duration.seconds ? (duration.seconds + 's') : '')+' ago')
-//                        +'</th>';
-//                }
-//                i+=-1;
-//                
-//            },this);
-//            newRow = '<tr>' + newRowContent + '</tr>';  
-//            tbody.append(newRow);
-//            
-//            if (!newHead){
-//                newHead = '<tr>' + newHeadContent + '</tr>';
-//                thead.append(newHead);
-//            }
-//        },this);
-        
-        
-        
-        
-    },
-    
-    countDuration: function(duration){
-        var seconds,minutes,hours,days;
-        //duration in ms
-        seconds = Math.floor(duration/1000);
-        
-        days = Math.floor(seconds/(24 * 60 * 60));
-        hours = Math.floor((seconds - days * 24 * 60 * 60) /(60 * 60));
-        minutes = Math.floor((seconds - days * 24 * 60 * 60 - hours * 60 * 60) /60);
-        seconds = Math.floor(seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60);
-        
-        return {
-            days : days,
-            hours : hours,
-            minutes : minutes,
-            seconds : seconds,
-            now: (days == 0 && hours == 0 && minutes == 0 && seconds == 0)
-        };
-    },
-    
     replaceImg: function(initialText,replacingText,separator){
         
         if (!separator) {
@@ -332,9 +206,11 @@ window.LearnMain = Backbone.Model.extend({
         text:'',
         answer:'',
         tip:'',
+        
         round_nb:'',
         round_total:'',
         title_list:'',
+        
         nb_question:'',
         nb_perfect_answering:0,
         nb_average_answering:0,

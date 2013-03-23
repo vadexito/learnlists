@@ -9,10 +9,11 @@ window.Questionresult = Backbone.Model.extend({
         this.set('multiple',false);
         this.set('answerPart',0);
     },
+    
     defaults: {
         questionId: undefined,
         roundId: undefined,
-        answerType: false,
+        answerType: 'false',
         answer_asked: false,
         multiple: 0,
         answerPart:0
@@ -33,15 +34,15 @@ window.Questionresult = Backbone.Model.extend({
         
         if ((timeToAnswer < 30) && !this.get('multiple') 
             && !this.get('answer_asked')){
-            answerType = 1;
+            answerType = '1';
         } else if (!this.get('multiple') && !this.get('answer_asked')){
-            answerType = 2;
+            answerType = '2';
         } else if ((this.get('multiple') === 1) && !this.get('answer_asked')) {
-            answerType = 3;
+            answerType = '3';
         } else if (!this.get('answer_asked')) {
-            answerType = 4;
+            answerType = '4';
         } else {
-            answerType = 5;
+            answerType = '5';
         }
         
         this.set('answerType',answerType);        
