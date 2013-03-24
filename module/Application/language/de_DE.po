@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-26 23:57+0100\n"
-"PO-Revision-Date: 2013-03-19 23:31+0100\n"
+"POT-Creation-Date: 2013-03-23 19:52+0100\n"
+"PO-Revision-Date: 2013-03-23 19:53+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -19,13 +19,13 @@ msgstr ""
 "X-Poedit-SearchPath-2: ../../../config/autoload\n"
 
 #: ../../Question/src/Question/Controller/ListquestController.php:80
-#: ../../Question/src/Question/Controller/QuestionController.php:46
+#: ../../Question/src/Question/Controller/QuestionController.php:47
 msgid "Add"
 msgstr "Erstellen"
 
-#: ../../Question/src/Question/Controller/QuestionController.php:83
-#: ../../Question/view/question/listquest/show.phtml:46
-#: ../../Question/view/question/listquest/show.phtml:50
+#: ../../Question/src/Question/Controller/QuestionController.php:84
+#: ../../Question/view/question/listquest/show.phtml:56
+#: ../../Question/view/question/listquest/show.phtml:60
 msgid "Edit"
 msgstr "Editieren"
 
@@ -40,7 +40,6 @@ msgid "Level"
 msgstr "Niveau"
 
 #: ../../Question/src/Question/Form/ListquestForm.php:52
-#: ../../Question/view/question/question/index.phtml:27
 msgid "Rules"
 msgstr "Regeln"
 
@@ -54,18 +53,18 @@ msgid "Check"
 msgstr "Prüfen"
 
 #: ../../Question/src/Question/Form/QuestionForm.php:38
-#: ../../Question/view/question/listquest/show.phtml:34
+#: ../../Question/view/question/listquest/show.phtml:44
 msgid "Text"
 msgstr "Text"
 
 #: ../../Question/src/Question/Form/QuestionForm.php:50
-#: ../../Question/view/question/listquest/show.phtml:35
+#: ../../Question/view/question/listquest/show.phtml:45
 msgid "Answer"
 msgstr "Antwort"
 
 #: ../../Question/src/Question/Form/QuestionForm.php:62
-#: ../../Question/view/question/listquest/show.phtml:36
-#: ../../Question/view/question/question/index.phtml:51
+#: ../../Question/view/question/listquest/show.phtml:46
+#: ../../Question/view/question/question/index.phtml:160
 msgid "Tip"
 msgstr "Tipp"
 
@@ -292,7 +291,7 @@ msgid "Advanced, average, beginner for example"
 msgstr "Schwer, sehr schwer, durchschnittlich, einfach zum Beispiel"
 
 #: ../../Question/view/question/listquest/index.phtml:17
-#: ../../Question/view/question/listquest/show.phtml:26
+#: ../../Question/view/question/listquest/show.phtml:36
 msgid "Search"
 msgstr "Suchen"
 
@@ -300,47 +299,47 @@ msgstr "Suchen"
 msgid "Rating"
 msgstr "Bewertung"
 
-#: ../../Question/view/question/listquest/index.phtml:30
+#: ../../Question/view/question/listquest/index.phtml:33
 msgid "Date"
 msgstr "Datum"
 
-#: ../../Question/view/question/listquest/index.phtml:39
+#: ../../Question/view/question/listquest/index.phtml:41
 msgid "See comments"
 msgstr "Sehe Kommentare"
 
-#: ../../Question/view/question/listquest/index.phtml:45
-#: ../../Question/view/question/listquest/show.phtml:21
+#: ../../Question/view/question/listquest/index.phtml:47
+#: ../../Question/view/question/listquest/show.phtml:31
 msgid "Add question"
 msgstr "Neue Frage"
 
-#: ../../Question/view/question/listquest/index.phtml:46
+#: ../../Question/view/question/listquest/index.phtml:48
 msgid "Edit list"
 msgstr "Liste editieren"
 
-#: ../../Question/view/question/listquest/index.phtml:59
+#: ../../Question/view/question/listquest/index.phtml:70
 #, php-format
 msgid "by %s"
 msgstr "von %s"
 
-#: ../../Question/view/question/listquest/index.phtml:66
-#: ../../Question/view/question/listquest/index.phtml:68
+#: ../../Question/view/question/listquest/index.phtml:79
+#: ../../Question/view/question/listquest/index.phtml:81
 msgid "Like"
 msgstr "Mag"
 
-#: ../../Question/view/question/listquest/index.phtml:66
+#: ../../Question/view/question/listquest/index.phtml:79
 msgid "I like this"
 msgstr "Das mag ich"
 
-#: ../../Question/view/question/listquest/show.phtml:16
+#: ../../Question/view/question/listquest/show.phtml:26
 #, php-format
 msgid "by %s created on %s"
 msgstr "von %s erstellt am %s"
 
-#: ../../Question/view/question/listquest/show.phtml:51
+#: ../../Question/view/question/listquest/show.phtml:61
 msgid "Delete"
 msgstr "Löschen"
 
-#: ../../Question/view/question/listquest/show.phtml:56
+#: ../../Question/view/question/listquest/show.phtml:66
 msgid "Add comment"
 msgstr "Neues Kommentar"
 
@@ -368,7 +367,7 @@ msgstr ""
 "großen Irrtum %begangen--gemacht%."
 
 #: ../../Question/view/question/question/add.phtml:21
-#: ../../Question/view/question/question/edit.phtml:24
+#: ../../Question/view/question/question/edit.phtml:23
 msgid ""
 "Nothing to enter if the answer was already entered directly in the text."
 msgstr ""
@@ -387,7 +386,7 @@ msgstr ""
 msgid "Edit question"
 msgstr "Frage editieren"
 
-#: ../../Question/view/question/question/edit.phtml:20
+#: ../../Question/view/question/question/edit.phtml:19
 msgid ""
 "Enter the text for the question. If this is a sentence to fill in, please "
 "use two \"%\" signs in order to specify answers.Example : He %was% not there "
@@ -397,17 +396,82 @@ msgstr ""
 "ergänzende Frage handelt, nutzen sie Bitte zweimal die \"%\" Zeichen um die "
 "Antwort herum. Beipsiel : Er %hat% die richtige %Entscheidung %getroffen%."
 
-#: ../../Question/view/question/question/index.phtml:24
-msgid "Again"
-msgstr "Wiederholen"
+#: ../../Question/view/question/question/index.phtml:40
+msgid "Questions?"
+msgstr "Fragen?"
 
 #: ../../Question/view/question/question/index.phtml:45
+msgid "How does it work?"
+msgstr "Wie funktioniert es?"
+
+#: ../../Question/view/question/question/index.phtml:49
+msgid "Special tips for this list"
+msgstr "Tipps für diese List"
+
+#: ../../Question/view/question/question/index.phtml:53
+msgid "How do the currentstats work?"
+msgstr "Wie Ergebnis kalkuliert werden."
+
+#: ../../Question/view/question/question/index.phtml:69
+#: ../../Question/view/question/question/index.phtml:96
+msgid "Round"
+msgstr "Runde"
+
+#: ../../Question/view/question/question/index.phtml:75
+msgid "Still"
+msgstr "Noch"
+
+#: ../../Question/view/question/question/index.phtml:77
+msgid "Score:"
+msgstr "Ergebnis:"
+
+#: ../../Question/view/question/question/index.phtml:92
+msgid "Your results"
+msgstr "Ergebnisse:"
+
+#: ../../Question/view/question/question/index.phtml:97
+msgid "Final Note"
+msgstr "Ergebnis:"
+
+#: ../../Question/view/question/question/index.phtml:98
+msgid "Perfect"
+msgstr "Perfekt"
+
+#: ../../Question/view/question/question/index.phtml:99
+msgid "Average"
+msgstr "Durchschnitt"
+
+#: ../../Question/view/question/question/index.phtml:100
+msgid "Bad"
+msgstr "Schlecht"
+
+#: ../../Question/view/question/question/index.phtml:101
+msgid "Not done"
+msgstr "Nicht verfügbar"
+
+#: ../../Question/view/question/question/index.phtml:126
+msgid "Answer here"
+msgstr "Hier antworten"
+
+#: ../../Question/view/question/question/index.phtml:129
 msgid "Next"
 msgstr "Nächste"
 
-#: ../../Question/view/question/question/index.phtml:46
+#: ../../Question/view/question/question/index.phtml:130
 msgid "Answer?"
 msgstr "Antwort?"
+
+#: ../../Question/view/question/question/index.phtml:144
+msgid "Again"
+msgstr "Wiederholen"
+
+#: ../../Question/view/question/question/index.phtml:149
+msgid "Cancel round"
+msgstr "Runde canceln"
+
+#: ../../Question/view/question/question/index.phtml:154
+msgid "Reset rounds"
+msgstr "Alle Runden löschen"
 
 #: ../language/_XMLforPoedit/role.xml:4
 msgid "guest"
@@ -433,9 +497,6 @@ msgstr "Premium"
 #~ msgid_plural "questions"
 #~ msgstr[0] "Frage"
 #~ msgstr[1] "Fragen"
-
-#~ msgid "questions"
-#~ msgstr "Fragen"
 
 #~ msgid ""
 #~ "Nothing to enter if the answer was already entered directly in the text "

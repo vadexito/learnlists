@@ -10,20 +10,18 @@ use ZfrForum\Entity\Post;
 use ZfrForum\Entity\Thread;
 use ZfrForum\Entity\Category;
 use Zend\Paginator\Paginator;
+use Question\Provider\ProvidesEntityManager;
 
 class ListquestController extends AbstractActionController
 {
+    use ProvidesEntityManager;
+    
     protected $listTable;
     
-    /**
-     * @var Doctrine\ORM\EntityManager
-     */
-    protected $em;
     
     public function indexAction()
     {
-        $rep = $this->getEntityManager()->getRepository('Question\Entity\Listquest');
-        
+        $rep = $this->getEntityManager()->getRepository('Question\Entity\Listquest');        
         $ratingService = $this->getServiceLocator()->get('wtrating.service');
         
         
@@ -109,10 +107,7 @@ class ListquestController extends AbstractActionController
     {
     }
     
-    public function setEntityManager(EntityManager $em)
-    {
-        $this->em = $em;
-    }
+    
     
     public function rateAction()
     {
@@ -136,12 +131,5 @@ class ListquestController extends AbstractActionController
         return $this->redirect()->toRoute('list');
         
     }
-    public function getEntityManager()
-    {
-        if (null === $this->em) {
-            $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-        return $this->em;
-    } 
 }
 

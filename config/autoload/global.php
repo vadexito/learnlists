@@ -40,7 +40,7 @@ return [
                     [
                         'id' => 'admin-lists',
                         'label' => 'Admin',
-                        'route' => 'zfcadmin/lists',
+                        'route' => 'zfcadmin',
                         'resource' => 'admin',
                     ],
                     [
@@ -95,5 +95,15 @@ return [
                 ],
             ],
         ],
-    ],
+        'admin' => [
+            'lists' => [
+                'label' => 'Lists of questions',
+                'route' => 'zfcadmin/lists',
+            ],
+            'home' => [
+                'label' => 'Learnlists',
+                'route' => 'home',
+            ],
+        ],
+    ],    
 ];

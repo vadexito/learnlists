@@ -11,7 +11,6 @@ return [
         'ZfcAdmin',
         'CdliTwoStageSignup',
         'WtRating', 
-        'AssetManager',
         'Application',
         'ZfrForum',          
         'Question',

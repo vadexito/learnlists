@@ -123,9 +123,9 @@ $this->placeholder('header')->captureStart();?>
                 <img id="error-sign" class="answer-sign" src="/images/icons/error.jpg" alt="check" hidden="true" style="max-height:15px;">
             </span>
             <span class="control-group" id="answer-group">                
-                <input name="answer" type="text" id="question_asked_answer" placeholder="Answer" autocomplete="off" value="">
+                <input name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value="">
             </span>
-            <input name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-success button-answer" value="Check">
+            <input name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-success button-answer" value="<?php echo $this->translate('Check'); ?>">
             <button id="question_asked_nextbutton" class="btn btn-primary button-answer"><?php echo $this->translate('Next'); ?></button>    
             <button id="question_asked_showanswerbutton" class="btn btn-danger button-answer"><?php echo $this->translate('Answer?'); ?></button>
         </div>

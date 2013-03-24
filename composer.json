@@ -20,8 +20,7 @@
         "gedmo/doctrine-extensions": "2.3.*@dev",
         "zfr/zfr-forum": "dev-master",
         "cgm/zf2-file-upload-examples": "dev-master",
-        "kriswallsmith/assetic": "1.1.*@dev",
-        "rwoverdijk/assetmanager": "1.*"
-        
+        "kriswallsmith/assetic": "1.0.*",
+        "widmogrod/zf2-assetic-module": "dev-master"
     }
 }

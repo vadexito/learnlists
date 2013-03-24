@@ -7,14 +7,11 @@ use Zend\View\Model\ViewModel;
 use Question\Entity\Question;          
 use Question\Form\QuestionForm;     
 use Question\Entity\Listquest;     
-
+use Question\Provider\ProvidesEntityManager;
 
 class QuestionController extends AbstractActionController
 {
-    /**
-     * @var Doctrine\ORM\EntityManager
-     */
-    protected $em;
+    use ProvidesEntityManager;
     
     public function indexAction()
     {
@@ -136,20 +133,6 @@ class QuestionController extends AbstractActionController
             'question' => $this->getEntityManager()
                                ->find('Question\Entity\Question',$id),
         ];
-    }
-    
-    public function setEntityManager(EntityManager $em)
-    {
-        $this->em = $em;
-    }   
-    
- 
-    public function getEntityManager()
-    {
-        if (null === $this->em) {
-            $this->em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-        return $this->em;
     }
     
     
