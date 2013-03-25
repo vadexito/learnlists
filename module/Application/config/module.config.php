@@ -150,4 +150,70 @@ return [
             ],            
         ],        
     ],
+    'assetic_configuration' => [
+        'routes' => [
+            'home' => [
+                // Is disabled because 'default' option key will mix with this configuration section
+                // and provide @base_css assets.
+                // '@base_css',
+                '@base_js',
+            ],
+        ],
+
+        'default' => [
+            'assets' => [
+                '@base_css',
+            ],
+            'options' => [
+                'mixin' => true
+            ],
+        ],
+
+        'modules' => [
+            /*
+             * Application moodule - assets configuration
+             */
+            'application' => [
+
+                # module root path for yout css and js files
+                'root_path' => __DIR__ . '/../assets',
+
+                # collection od assets
+                'collections' => [
+
+                    'base_css' => [
+                        'assets' => [
+//                            'css/bootstrap/css/bootstrap-responsive.min.css',
+//                            'css/style.css',
+//                            'css/bootstrap/css/bootstrap.min.css'                            
+                        ],
+                        'filters' => [
+                            'CssRewriteFilter' => [
+                                'name' => 'Assetic\Filter\CssRewriteFilter'
+                            ],
+                        ],
+                        'options' => [],
+                    ],
+
+                    'base_js' => [
+                        'assets' => [
+//                            'js/lib/jquery.min.js',
+//                            'js/lib/bootstrap.min.js'
+                        ],
+                    ],
+
+                    'base_images' => [
+                        'assets' => [
+//                            'images/*.png',
+//                            'images/*.ico',
+//                            'images/*.jpg'
+                        ],
+                        'options' => [
+                            'move_raw' => true,
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];

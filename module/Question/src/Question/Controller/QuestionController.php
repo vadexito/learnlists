@@ -69,12 +69,14 @@ class QuestionController extends AbstractActionController
         
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('album', [
-                'action' => 'add'
-            ]);
+            return $this->redirect()->toRoute('home');
         }
         $question = $this->getEntityManager()
                          ->find('Question\Entity\Question',$id);
+        
+        if (!$this->_checkUserIsAuthorized($question->listquest)) {
+            return $this->redirect()->toRoute('home');
+        }
         
         $form  = new QuestionForm();
         $form->bind($question);
@@ -138,8 +140,12 @@ class QuestionController extends AbstractActionController
     
     protected function _checkUserIsAuthorized(Listquest $listquest)
     {
-        $userId = $this->zfcUserAuthentication()->getIdentity()->getId();
-        return $listquest && ($listquest->author->getId() === $userId);
+        $user = $this->zfcUserAuthentication()->getIdentity();
+        if ($user->getRole() === 'admin'){
+            return true;
+        }
+        
+        return $listquest && ($listquest->author->getId() === $user->getId());
     }
 }
 

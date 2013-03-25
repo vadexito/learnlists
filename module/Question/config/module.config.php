@@ -141,6 +141,18 @@ return [
                             ],
                         ],
                     ],    
+                    'delete' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/delete[/:id]',
+                            'constraints' => [
+                                'id'     => '[0-9]+',
+                            ],  
+                            'defaults' => [
+                                'action'     => 'delete',
+                            ],
+                        ],
+                    ],    
                     'premium' => [
                         'type' => 'literal',
                         'options' => [
@@ -188,7 +200,7 @@ return [
     ],
     'view_helpers' => [
         'invokables' => [
-            'replaceBlank' => 'Question\View\Helper\ReplaceBlank',
+            'grid' => 'Question\View\Helper\Grid',
         ],
     ],
     'doctrine' => [

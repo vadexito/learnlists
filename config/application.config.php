@@ -11,6 +11,7 @@ return [
         'ZfcAdmin',
         'CdliTwoStageSignup',
         'WtRating', 
+        'AsseticBundle',
         'Application',
         'ZfrForum',          
         'Question',

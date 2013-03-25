@@ -5,6 +5,7 @@ namespace Question\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Question\Provider\ProvidesEntityManager;
 
+
 class AdminController extends AbstractActionController
 {
     
@@ -12,10 +13,12 @@ class AdminController extends AbstractActionController
     
     public function indexAction()
     {
+        
         $rep = $this->getEntityManager()->getRepository('Question\Entity\Listquest');
+        $lists = $rep->findAll();
         
         return [
-            'lists' => $rep->findAll()
+            'lists' => $lists
         ];
     }
 }

@@ -105,6 +105,31 @@ class ListquestController extends AbstractActionController
 
     public function deleteAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('list');
+        }
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $id = (int) $request->getPost('id');
+                $list = $this->getEntityManager()
+                         ->find('Question\Entity\Listquest',$id);
+                if ($list){
+                    $this->getEntityManager()->remove($list);
+                    $this->getEntityManager()->flush();
+                }
+            }
+            return $this->redirect()->toRoute('list');
+        }
+
+        return [
+            'id' => $id,
+            'list' => $this->getEntityManager()
+                               ->find('Question\Entity\Listquest',$id),
+        ];
     }
     
     

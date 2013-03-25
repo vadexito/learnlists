@@ -269,4 +269,9 @@ class User implements UserInterface, ProviderInterface, ZfrForumUserInterface
             return clone $this->lastActivityDate;
         }
     }
+    
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
 }
