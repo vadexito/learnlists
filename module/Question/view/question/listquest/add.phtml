@@ -10,8 +10,16 @@ $form->prepare();
 
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));
-echo $this->formRow($form->get('title'));
-echo $this->formRow($form->get('tags')); 
+echo $this->formRow($form->get('title'));?>
+
+<div class="input-append">
+    <span id="tags_element">
+    <?php 
+        echo $this->formCollection($form->get('tags')); ?>
+    </span>
+    <button class="btn add_item_to_collection_button" id="add_tag_button"><i class="icon-plus"></i></button>
+</div>
+ <?php 
 echo $this->formRow($form->get('level')); ?>
 (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Advanced, average, beginner for example'); ?>">?</a>) 
 <?php echo $this->formRow($form->get('rules')); ?><br/>

@@ -9,12 +9,9 @@ $(function() {
         });
     }
     
-    if ($('a[data-toggle="tooltip"]').length >0){
-        $('a[data-toggle="tooltip"]').tooltip();
-    }
-    if ($('a[data-toggle="popover"]').length >0){
-        $('a[data-toggle="popover"]').popover();
-    }
+    $('a[data-toggle="tooltip"]').tooltip();
+    $('a[data-toggle="popover"]').popover();
+    
     
     //table for the lists
     if ($("table.listquest_table").length > 0){
@@ -54,5 +51,14 @@ $(function() {
              }
         });
     } 
+    
+    $('.add_item_to_collection_button').click(function(){
+        var currentCount = $('#tags_element input').length;
         
+        var template = $('#tags_element > span').data('template');
+        template = template.replace(/__index__/g, currentCount);
+
+        $('#tags_element').append(template);
+        $('#tags_element label').slice(1).hide();
+    });
 });

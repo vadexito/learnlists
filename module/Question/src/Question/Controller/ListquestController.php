@@ -11,6 +11,7 @@ use ZfrForum\Entity\Thread;
 use ZfrForum\Entity\Category;
 use Zend\Paginator\Paginator;
 use Question\Provider\ProvidesEntityManager;
+use DoctrineORMModule\Stdlib\Hydrator\DoctrineEntity;
 
 class ListquestController extends AbstractActionController
 {
@@ -74,20 +75,21 @@ class ListquestController extends AbstractActionController
     
     public function addAction()
     {
-        $form = new ListquestForm();
+        $form = $this->getServiceLocator()->get('Question\Form\ListquestForm');        
         $form->get('submit')->setValue(_('Add'));
         
         $request = $this->getRequest();
         if ($request->isPost()) {
             $listquest = new Listquest(
-                $this->getEntityManager(),
-                $this->zfcUserAuthentication()->getIdentity()
+                    $this->zfcUserAuthentication()->getIdentity()
             );
-            $form->setInputFilter($listquest->getInputFilter());
+            
+            $form->bind($listquest);
+            $form->setInputFilter($listquest->getInputFilter());            
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                $listquest->exchangeArray($form->getData());
+     
                 $this->getEntityManager()->persist($listquest);
                 $this->getEntityManager()->flush();
 

@@ -5,6 +5,9 @@
  */
 chdir(dirname(__DIR__));
 
+//for the developer tools module
+define('REQUEST_MICROTIME', microtime(true));
+
 // Setup autoloading
 require 'init_autoloader.php';
 

@@ -4,6 +4,7 @@ namespace Question\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
 /**
  *
  * @ORM\Entity
@@ -48,10 +49,11 @@ class Tag extends EntityAbstract
         $this->listquests = new ArrayCollection();
     }
     
-    public function addListquest(Listquest $article)
+    public function addListquest(Listquest $listquest)
     {
-        $this->listquests[] = $article;
+        $this->listquests[] = $listquest;
     }
+    
     public function toArray()
     {
         $array = [
@@ -72,9 +74,22 @@ class Tag extends EntityAbstract
         
     }
     
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+        return $this;
+    }
+    
+    public function getTag()
+    {
+        return $this->tag;
+    }
+    
     public function __toString()
     {
         return $this->tag;
     }
+    
+    
     
 }

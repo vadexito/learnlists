@@ -203,6 +203,7 @@ return [
             'grid' => 'Question\View\Helper\Grid',
         ],
     ],
+    
     'doctrine' => [
         'driver' => [
             // defines an annotation driver with two paths
@@ -221,11 +222,6 @@ return [
                     'Question\Entity' => 'Question_driver'
                 ]
             ]
-        ],
-    ],
-    'service_manager' => [
-        'factories' => [
-            
         ],
     ],
 ];

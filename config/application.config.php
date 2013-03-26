@@ -2,6 +2,7 @@
 
 return [
     'modules' => [
+        'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule', 
         'ZfcBase',

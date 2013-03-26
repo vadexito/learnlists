@@ -7,7 +7,9 @@ use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface; 
+use ZfcUser\Entity\UserInterface;
 use Zend\Stdlib\DateTime;
+
 
 /**
  *
@@ -20,7 +22,7 @@ use Zend\Stdlib\DateTime;
  * @property ArrayCollection $tags
  */
 
-class Listquest extends EntityAbstract
+class Listquest extends EntityAbstract implements InputFilterAwareInterface
 {
     /**
      * Primary Identifier
@@ -81,27 +83,90 @@ class Listquest extends EntityAbstract
     
     protected $inputFilter;
     
-    protected $_em;
-    
-    protected $_user;
-    
-    public function __construct($em = NULL,$user = NULL) 
+    public function __construct(UserInterface $user = NULL) 
     {
         $this->questions = new ArrayCollection();
         $this->tags = new ArrayCollection();
-        if ($em){
-            $this->_em = $em;
-        }
+        $this->setCreationDate(new DateTime());
         
         if ($user){
-            $this->_user = $user;
+            $this->author = $user;
         }
+    }
+    
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+        return $this;
+    }
+    
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+    
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+    
+    public function getTitle()
+    {
+        return $this->title;
+    }
+    
+    public function setLevel($level)
+    {
+        $this->level = $level;
+        return $this;
+    }
+    
+    public function getLevel()
+    {
+        return $this->level;
+    }
+    
+    public function setRules($rules)
+    {
+        $this->rules = $rules;
+        return $this;
+    }
+    
+    public function getRules()
+    {
+        return $this->rules;        
+    }
+    
+    public function setTags($tags)
+    {
+        foreach ($tags as $tag){
+            $this->addTag($tag);
+        }
+        return $this;
+    }
+    
+    public function getTags()
+    {
+        return $this->tags;
     }
     
     public function addTag(Tag $tag)
     {
         $tag->addListquest($this);
         $this->tags[] = $tag;
+        return $this;
     }
     
     public function toArray()
@@ -120,24 +185,31 @@ class Listquest extends EntityAbstract
         ];
     }
     
-    public function exchangeArray($data)
-    {
-        foreach (['id','title','level','rules'] as $property)
-        {
-            $this->$property = (isset($data[$property])) ? 
-                $data[$property] : null;
-        }
-        
-        if (isset($data['tags'])){
-            $tag = new Tag();
-            $tag->tag = $data['tags'];
-            $this->_em->persist($tag);
-            $this->addTag($tag);        
-        }        
-        
-        $this->author = $this->_user;
-        $this->creationDate = new DateTime('now',new \DateTimeZone('UTC'));
-    }
+//    public function exchangeArray($data)
+//    {
+//        
+//        
+//        
+//        
+//        foreach (['id','title','level','rules'] as $property)
+//        {
+//            $this->$property = (isset($data[$property])) ? 
+//                $data[$property] : null;
+//        }
+//        
+//        if (isset($data['tags']) && is_array($data['tags'])){
+//            foreach ($data['tags'] as $tagName){
+//                $tag = new Tag();
+//                $tag->tag = $tagName;
+//                $this->_em->persist($tag);
+//                $this->addTag($tag);       
+//            }
+//             
+//        }        
+//        die;
+//        $this->author = $this->_user;
+//        $this->creationDate = new DateTime('now',new \DateTimeZone('UTC'));
+//    }
     
     // Add content to this method:
     public function setInputFilter(InputFilterInterface $inputFilter)
@@ -196,6 +268,8 @@ class Listquest extends EntityAbstract
                     ],
                 ],
             ]));
+            
+            
 
             $this->inputFilter = $inputFilter;
         }
