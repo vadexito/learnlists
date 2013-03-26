@@ -185,32 +185,6 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
         ];
     }
     
-//    public function exchangeArray($data)
-//    {
-//        
-//        
-//        
-//        
-//        foreach (['id','title','level','rules'] as $property)
-//        {
-//            $this->$property = (isset($data[$property])) ? 
-//                $data[$property] : null;
-//        }
-//        
-//        if (isset($data['tags']) && is_array($data['tags'])){
-//            foreach ($data['tags'] as $tagName){
-//                $tag = new Tag();
-//                $tag->tag = $tagName;
-//                $this->_em->persist($tag);
-//                $this->addTag($tag);       
-//            }
-//             
-//        }        
-//        die;
-//        $this->author = $this->_user;
-//        $this->creationDate = new DateTime('now',new \DateTimeZone('UTC'));
-//    }
-    
     // Add content to this method:
     public function setInputFilter(InputFilterInterface $inputFilter)
     {

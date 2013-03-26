@@ -10,11 +10,12 @@ return [
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
         'ZfcAdmin',
-        'CdliTwoStageSignup',
+        'CdliTwoStageSignup',        
         'WtRating', 
         'AsseticBundle',
+     //   'TwitterBootstrap',
         'Application',
-        'ZfrForum',          
+     //   'ZfrForum',          
         'Question',
         'QuestionRest',
        // 'ZF2FileUploadExamples'
@@ -29,7 +30,7 @@ return [
         // Module class.
         'module_paths' => [
             './module',
-            './vendor',            
+            './vendor',
         ],
 
         // An array of paths from which to glob configuration files after
