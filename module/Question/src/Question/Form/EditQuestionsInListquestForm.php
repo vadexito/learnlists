@@ -6,6 +6,7 @@ use Zend\Form\Form;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ProvidesObjectManager;
+use DoctrineModule\Stdlib\Hydrator\Strategy\DisallowRemoveByValue;
 
 
 class EditQuestionsInListquestForm extends Form
@@ -15,13 +16,14 @@ class EditQuestionsInListquestForm extends Form
     public function __construct(ObjectManager $om)
     {
         parent::__construct('EditListquestForm');
-        $this->setObjectManager($om);
+        $this->setObjectManager($om);        
+        $this->setAttribute('method', 'post');
         
-        $this->setAttribute('method', 'post')
-             ->setHydrator(new DoctrineHydrator(
-                     $this->getObjectManager(),
-                     'Question\Entity\Listquest'
-             ));
+        $doctrineHydrator = new DoctrineHydrator(
+                $this->getObjectManager(),
+                'Question\Entity\Listquest'
+        );
+        $this->setHydrator($doctrineHydrator);
              
         
         $listquestFieldset = new ListquestFieldset($this->getObjectManager());

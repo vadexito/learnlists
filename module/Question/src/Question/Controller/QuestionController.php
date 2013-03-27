@@ -41,31 +41,12 @@ class QuestionController extends AbstractActionController
         
         $form = $this->getServiceLocator()->get('Question\Form\EditQuestionsInListquestForm');
         $form->get('submit')->setValue(_('Add'));
-        $hydratorList = $form->getHydrator();
-        $hydratorQuest = $form->get('listquest')->get('questions')->getHydrator();
-        
-        
-        
-        
-//        $data = $this->getRequest()->getPost()->toArray();
-//        var_dump($data);
-//        $hydratorList->hydrate($data,$listquest);
-//        
-//        \Doctrine\Common\Util\Debug::dump($listquest->questions);die;
-        
-        
-        
         $form->bind($listquest);  
         $request = $this->getRequest();
-        if ($request->isPost()) {  
+        if ($request->isPost()) {
             
             $form->setData($request->getPost()); 
-            var_dump($request->getPost());
-            $form->isValid();
-            var_dump($form->getMessages());
-            if ($form->isValid()) {
-     //\Doctrine\Common\Util\Debug::dump($listquest);
-     //\Doctrine\Common\Util\Debug::dump($listquest->questions);die;
+            if ($form->isValid()) {  
                 $this->getEntityManager()->persist($listquest);
                 $this->getEntityManager()->flush();
 

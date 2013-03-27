@@ -7,6 +7,7 @@ use Zend\InputFilter\InputFilterProviderInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ProvidesObjectManager;
+use DoctrineModule\Stdlib\Hydrator\Strategy\DisallowRemoveByValue;
 
 
 class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
@@ -17,9 +18,13 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
     {
         parent::__construct('listquest');
         $this->setObjectManager($om);        
-        $this->setHydrator(new DoctrineHydrator($om, 'Question\Entity\Listquest'))
-             ->setObject(new Listquest());
-    
+        $this->setObject(new Listquest());
+        
+        $doctrineHydrator = new DoctrineHydrator(
+                $this->getObjectManager(),
+                'Question\Entity\Listquest'
+        );
+        $this->setHydrator($doctrineHydrator);
     
         $this->add([
             'name'      => 'id',
@@ -82,7 +87,7 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
             'type'    => 'Zend\Form\Element\Collection',
             'name' => 'questions',
             'options' => [
-                'count' => 1,
+                'count' => 0,
                 'template_placeholder' => '__index__',
                 'should_create_template' => true,
                 'allow_add' => true,
