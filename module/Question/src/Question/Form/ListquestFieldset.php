@@ -84,8 +84,8 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
         
         $questionFieldset = new QuestionFieldset($this->getObjectManager());
         $this->add([
-            'type'    => 'Zend\Form\Element\Collection',
             'name' => 'questions',
+            'type'    => 'Zend\Form\Element\Collection',
             'options' => [
                 'count' => 0,
                 'template_placeholder' => '__index__',

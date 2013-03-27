@@ -1,11 +1,11 @@
 <?php 
-$this->headTitle()->prepend('Contact');
-$this->headTitle()->prepend('Thank You!');
+$this->headTitle()->prepend($this->translate('Contact'));
+$this->headTitle()->prepend($this->translate('Thank you!'));
 ?>
 <section class="contact">
-<h2>Thank you!</h2>
+<h2><?php echo $this->translate('Thank you!');?></h2>
 
 <p>
-    Your message has been sent!
+    <?php echo $this->translate('Your message has been sent!');?>
 </p>
 </section>

@@ -290,6 +290,25 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                 ],
             ]));
             
+            $inputFilter->add($factory->createInput([
+                'name'     => 'level',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ],
+                    ],
+                ],
+            ]));
+            
             
 
             $this->inputFilter = $inputFilter;

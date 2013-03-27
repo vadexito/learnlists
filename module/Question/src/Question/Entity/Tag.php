@@ -3,7 +3,10 @@ namespace Question\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Zend\InputFilter\Factory as InputFactory;     
+use Zend\InputFilter\InputFilter;                 
+use Zend\InputFilter\InputFilterAwareInterface;   
+use Zend\InputFilter\InputFilterInterface;   
 
 /**
  *
@@ -14,7 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @property ArrayCollection $listquests
  */
 
-class Tag extends EntityAbstract
+class Tag extends EntityAbstract implements InputFilterAwareInterface
 {
     /**
      * Primary Identifier
@@ -90,6 +93,41 @@ class Tag extends EntityAbstract
         return $this->tag;
     }
     
-    
+    // Add content to this method:
+    public function setInputFilter(InputFilterInterface $inputFilter)
+    {
+        throw new \Exception("Not used");
+    }
+
+    public function getInputFilter()
+    {
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+            $factory     = new InputFactory();
+
+            $inputFilter->add($factory->createInput([
+                'name'     => 'tag',
+                'required' => true,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 2,
+                            'max'      => 20,
+                        ],
+                    ],
+                ],
+            ]));
+
+            $this->inputFilter = $inputFilter;
+        }
+
+        return $this->inputFilter;
+    }
     
 }

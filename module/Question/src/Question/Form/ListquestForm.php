@@ -43,7 +43,9 @@ class ListquestForm extends Form
         $this->setValidationGroup([
             'listquest' => [
                 'title',
-                'tags'
+                'tags',
+                'level',
+                'rules'
             ],
         ]);
     }
