@@ -19,10 +19,10 @@
         "waltertamboer/wtrating" : "dev-master",
         "cdli/two-stage-signup" : "dev-master",
         "gedmo/doctrine-extensions": "2.3.*@dev",
-        "zfr/zfr-forum": "dev-master",
-        "cgm/zf2-file-upload-examples": "dev-master",
         "kriswallsmith/assetic": "1.0.*",
         "widmogrod/zf2-assetic-module": "dev-master",
-        "widmogrod/data-grid": "dev-master"
+        "widmogrod/data-grid": "dev-master",
+        "phly/phly-contact": "dev-master",
+        "zendframework/zendservice-recaptcha": "2.0.*@dev"
     }
 }

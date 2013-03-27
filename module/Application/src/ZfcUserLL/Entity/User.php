@@ -13,9 +13,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ZfcUser\Entity\UserInterface;
 use DateTime;
-use ZfrForum\Entity\UserInterface as ZfrForumUserInterface;
 
-class User implements UserInterface, ProviderInterface, ZfrForumUserInterface
+class User implements UserInterface, ProviderInterface
 {
     /**
      * @var int

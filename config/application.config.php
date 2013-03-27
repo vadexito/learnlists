@@ -12,14 +12,12 @@ return [
         'ZfcAdmin',
         'CdliTwoStageSignup',        
         'WtRating', 
+        'PhlyContact', 
         'AsseticBundle',
      //   'TwitterBootstrap',
-        'Application',
-     //   'ZfrForum',          
+        'Application',         
         'Question',
         'QuestionRest',
-       // 'ZF2FileUploadExamples'
-        
     ],
     
     // These are various options for the listeners attached to the ModuleManager
