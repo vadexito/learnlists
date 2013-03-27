@@ -7,6 +7,7 @@ use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;   
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\EntityManager;
+use Question\Entity\Listquest;
 
 /**
  *
@@ -79,19 +80,6 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
         return get_object_vars($this);
     }
     
-    public function exchangeArray(array $data,EntityManager $entityManager = NULL)
-    {
-        foreach (['id','text','answer','tip'] as $property)
-        {
-            $this->$property = (isset($data[$property])) ? 
-                $data[$property] : null;
-        }
-        
-        if ($data['listId'] && $entityManager){
-            $this->listquest = $entityManager->find('Question\Entity\Listquest',$data['listId']);
-        }
-    }
-    
     // Add content to this method:
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
@@ -107,14 +95,6 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
             $inputFilter->add($factory->createInput([
                 'name'     => 'id',
                 'required' => true,
-                'filters'  => [
-                    ['name' => 'Int'],
-                ],
-            ]));
-            
-            $inputFilter->add($factory->createInput([
-                'name'     => 'listId',
-                'required' => false,
                 'filters'  => [
                     ['name' => 'Int'],
                 ],
@@ -181,6 +161,47 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
         }
 
         return $this->inputFilter;
+    }
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setText($text)
+    {
+        $this->text = $text;
+        return $this;
+    }
+    public function getText()
+    {
+        return $this->text;
+    }
+    public function setTip($tip)
+    {
+        $this->tip = $tip;
+        return $this;
+    }
+    public function getTip()
+    {
+        return $this->tip;
+    }
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+        return $this;
+    }
+    public function getAnswer()
+    {
+        return $this->answer;
+    }
+    public function setListquest(Listquest $listquest = NULL)
+    {
+        $this->listquest = $listquest;
+        return $this;
+    }
+    public function getListquest()
+    {
+        return $this->listquest ;
     }
     
 }

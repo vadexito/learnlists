@@ -5,15 +5,14 @@ namespace Question;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 use Question\Form\TagFieldset;
+use Question\Form\EditQuestionsInListquestForm;
 use Question\Form\ListquestForm;
 
 class Module implements 
     AutoloaderProviderInterface,
-    ConfigProviderInterface,
-    ServiceProviderInterface
+    ConfigProviderInterface
 {
     public function getConfig()
     {
@@ -42,6 +41,11 @@ class Module implements
             
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');    
                     return new ListquestForm($entityManager);
+                },
+                'Question\Form\EditQuestionsInListquestForm' =>  function($sm) {
+            
+                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
+                    return new EditQuestionsInListquestForm($entityManager);
                 },
             ],
         ];

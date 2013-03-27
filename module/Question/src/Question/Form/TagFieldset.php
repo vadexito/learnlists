@@ -4,17 +4,20 @@ namespace Question\Form;
 use Question\Entity\Tag;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use Zend\Stdlib\Hydrator\ClassMethods as ClassMethodsHydrator;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Doctrine\Common\Persistence\ObjectManager;
+use DoctrineModule\Persistence\ProvidesObjectManager;
 
 
 class TagFieldset extends Fieldset implements InputFilterProviderInterface
 {
-    public function __construct()
+    use ProvidesObjectManager;
+    
+    public function __construct(ObjectManager $om)
     {
-        
         parent::__construct('tag');
-        
-        $this->setHydrator(new ClassMethodsHydrator(false))
+        $this->setObjectManager($om);        
+        $this->setHydrator(new DoctrineHydrator($om, 'Question\Entity\Tag'))
              ->setObject(new Tag());
     
     

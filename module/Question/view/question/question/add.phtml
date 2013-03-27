@@ -10,16 +10,18 @@ $form->setAttribute('action', $this->url('question/add', ['id' => $listId]));
 $form->prepare();
 
 echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id'));
-echo $this->formHidden($form->get('listId'));
-echo $this->formRow($form->get('text'));?>
+//echo $this->formHidden($form->get('id'));
+//echo $this->formHidden($form->get('title'));
+echo $this->formCollection($form->get('listquest'));
+//echo $this->formHidden($formQuestion->get('id'));
+//echo $this->formRow($formQuestion->get('text'));?>
 <span class="help-inline">
     (<a href="#" data-toggle="popover" data-placement="right" title="<?php echo $this->translate('Rules for entering question text'); ?>" data-content="<?php echo $this->translate('(i) Enter the text for the question. (ii) If this is a sentence to fill in, please use two \'%\' signs in order to specify answers.Example : He %was% not there %either% (maximum two answers). (iii) in the case of multiple possibilities you can use the sign \'--\'. Example : He is tired %because--since% he did not sleep enough.'); ?>">?</a>)
 </span>
-<?php echo $this->formRow($form->get('answer'));?>
+//<?php //echo $this->formRow($formQuestion->get('answer'));?>
 <span class="help-inline">
     (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
 </span>
-    <?php echo $this->formRow($form->get('tip'));?><br/><?php 
+    <?php //echo $this->formRow($formQuestion->get('tip'));?><br/><?php 
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();

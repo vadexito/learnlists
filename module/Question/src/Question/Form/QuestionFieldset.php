@@ -1,26 +1,29 @@
 <?php
-
 namespace Question\Form;
 
-use Zend\Form\Form;
+use Question\Entity\Question;
+use Zend\Form\Fieldset;
+use Zend\InputFilter\InputFilterProviderInterface;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Doctrine\Common\Persistence\ObjectManager;
+use DoctrineModule\Persistence\ProvidesObjectManager;
 
-class QuestionForm extends Form
+
+class QuestionFieldset extends Fieldset implements InputFilterProviderInterface
 {
-    public function __construct($name = null)
+    use ProvidesObjectManager;
+    
+    public function __construct(ObjectManager $om)
     {
-        parent::__construct('questionForm');
+        parent::__construct('question');
+        $this->setObjectManager($om);
         
-        $this->setAttribute('method', 'post');
-        
+        $this->setHydrator(new DoctrineHydrator($om, 'Question\Entity\Question'))
+             ->setObject(new Question());
+    
+    
         $this->add([
             'name'      => 'id',
-            'attributes'=> [
-                'type'  => 'hidden',
-            ],
-        ]);
-        
-        $this->add([
-            'name'      => 'listId',
             'attributes'=> [
                 'type'  => 'hidden',
             ],
@@ -33,6 +36,7 @@ class QuestionForm extends Form
                 'id'    => 'text',
                 'autocomplete'    => 'off',
                 'class' => 'input-xxlarge',
+                'required' => 'required'
             ],
             'options' => [
                 'label' => _('Text')
@@ -62,15 +66,26 @@ class QuestionForm extends Form
                 'label' => _('Tip')
             ],
         ]);
-        
-        $this->add([
-            'name' => 'submit',
-            'attributes' => [
-                'type'  => 'submit',
-                'value' => 'Check',
-                'id' => 'submitbutton',
-                'class' => 'btn btn-primary',
+    }
+
+   /**
+     * @return array
+     */    
+    public function getInputFilterSpecification()    
+    {
+        return [
+            'id' => [
+                'required' => false,
             ],
-        ]);
+            'text' => [
+                'required' => true,
+            ],
+            'answer' => [
+                'required' => false,
+            ],
+            'tip' => [
+                'required' => false,
+            ],
+        ];
     }
 }

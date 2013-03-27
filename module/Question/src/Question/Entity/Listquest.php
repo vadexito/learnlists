@@ -3,12 +3,14 @@ namespace Question\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Zend\InputFilter\Factory as InputFactory;     
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface; 
 use ZfcUser\Entity\UserInterface;
 use Zend\Stdlib\DateTime;
+use Traversable;
 
 
 /**
@@ -94,12 +96,6 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
         }
     }
     
-    public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
-    
     public function getId()
     {
         return $this->id;
@@ -168,7 +164,48 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
         $this->tags[] = $tag;
         return $this;
     }
+    public function addTags(Collection $tags)
+    {
+        foreach ($tags as $tag) {
+            $this->addTag($tag);
+        }
+        return $this;
+    }
+    public function removeTags(Collection $tags)
+    {
+        foreach ($tags as $tag) {
+            $tag->listquests->removeElement($this);
+            $this->tags->removeElement($tag);
+        }
+    }
     
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+    
+    public function addQuestion(Question $question)
+    {
+        $this->questions->add($question);
+        $question->setListquest($this);
+        return $this;
+    }
+    
+    public function addQuestions(Collection $questions)
+    {
+        foreach ($questions as $question) {
+            $this->addQuestion($question);
+        }
+        return $this;
+    }
+    
+    public function removeQuestions(Collection $questions)
+    {
+        foreach ($questions as $question) {
+            $question->setListquest(null);
+            $this->questions->removeElement($question);
+        }
+    }
     public function toArray()
     {
         $questions = [];
@@ -222,6 +259,16 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                         ],
                     ],
                 ],
+            ]));
+            
+            $inputFilter->add($factory->createInput([
+                'name'     => 'tags',
+                'required' => false,
+            ]));
+            
+            $inputFilter->add($factory->createInput([
+                'name'     => 'questions',
+                'required' => false,
             ]));
             
             $inputFilter->add($factory->createInput([

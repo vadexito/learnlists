@@ -32,26 +32,41 @@ class QuestionController extends AbstractActionController
         if (!$listId) {
             return $this->redirect()->toRoute('home');
         }
-        
         $listquest = $this  ->getEntityManager()
                             ->find('Question\Entity\Listquest',$listId);
+        
         if (!$this->_checkUserIsAuthorized($listquest)) {
             return $this->redirect()->toRoute('home');
         }
         
-        $form = new QuestionForm();
-        $form->get('listId')->setValue($listId);
+        $form = $this->getServiceLocator()->get('Question\Form\EditQuestionsInListquestForm');
         $form->get('submit')->setValue(_('Add'));
+        $hydratorList = $form->getHydrator();
+        $hydratorQuest = $form->get('listquest')->get('questions')->getHydrator();
         
+        
+        
+        
+//        $data = $this->getRequest()->getPost()->toArray();
+//        var_dump($data);
+//        $hydratorList->hydrate($data,$listquest);
+//        
+//        \Doctrine\Common\Util\Debug::dump($listquest->questions);die;
+        
+        
+        
+        $form->bind($listquest);  
         $request = $this->getRequest();
-        if ($request->isPost()) {
-            $question = new Question();
-            $form->setInputFilter($question->getInputFilter());
-            $form->setData($request->getPost());
-
-            if ($form->isValid()) {                
-                $question->exchangeArray($form->getData(),$this->getEntityManager());
-                $this->getEntityManager()->persist($question);
+        if ($request->isPost()) {  
+            
+            $form->setData($request->getPost()); 
+            var_dump($request->getPost());
+            $form->isValid();
+            var_dump($form->getMessages());
+            if ($form->isValid()) {
+     //\Doctrine\Common\Util\Debug::dump($listquest);
+     //\Doctrine\Common\Util\Debug::dump($listquest->questions);die;
+                $this->getEntityManager()->persist($listquest);
                 $this->getEntityManager()->flush();
 
                 return $this->redirect()->toRoute(
@@ -141,8 +156,11 @@ class QuestionController extends AbstractActionController
     protected function _checkUserIsAuthorized(Listquest $listquest)
     {
         $user = $this->zfcUserAuthentication()->getIdentity();
-        if ($user->getRole() === 'admin'){
-            return true;
+        
+        foreach ($user->getRoles() as $role){
+            if ($role->getRoleId() === 'admin'){
+                return true;
+            }
         }
         
         return $listquest && ($listquest->author->getId() === $user->getId());

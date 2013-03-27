@@ -85,9 +85,8 @@ class ListquestController extends AbstractActionController
             );
             
             $form->bind($listquest);
-            $form->setInputFilter($listquest->getInputFilter());            
             $form->setData($request->getPost());
-
+            
             if ($form->isValid()) {
      
                 $this->getEntityManager()->persist($listquest);
