@@ -8,7 +8,6 @@ use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface; 
-use ZfcUser\Entity\UserInterface;
 use Zend\Stdlib\DateTime;
 use Traversable;
 
@@ -85,15 +84,10 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
     
     protected $inputFilter;
     
-    public function __construct(UserInterface $user = NULL) 
+    public function __construct() 
     {
         $this->questions = new ArrayCollection();
         $this->tags = new ArrayCollection();
-        $this->setCreationDate(new DateTime());
-        
-        if ($user){
-            $this->author = $user;
-        }
     }
     
     public function getId()
@@ -254,21 +248,11 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                         'name'    => 'StringLength',
                         'options' => [
                             'encoding' => 'UTF-8',
-                            'min'      => 1,
-                            'max'      => 100,
+                            'min'      => 2,
+                            'max'      => 50,
                         ],
                     ],
                 ],
-            ]));
-            
-            $inputFilter->add($factory->createInput([
-                'name'     => 'tags',
-                'required' => false,
-            ]));
-            
-            $inputFilter->add($factory->createInput([
-                'name'     => 'questions',
-                'required' => false,
             ]));
             
             $inputFilter->add($factory->createInput([
@@ -291,6 +275,16 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
             ]));
             
             $inputFilter->add($factory->createInput([
+                'name'     => 'questions',
+                'required' => false,
+            ]));
+            
+            $inputFilter->add($factory->createInput([
+                'name'     => 'tags',
+                'required' => true,
+            ]));
+            
+            $inputFilter->add($factory->createInput([
                 'name'     => 'level',
                 'required' => false,
                 'filters'  => [
@@ -303,7 +297,7 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                         'options' => [
                             'encoding' => 'UTF-8',
                             'min'      => 1,
-                            'max'      => 100,
+                            'max'      => 20,
                         ],
                     ],
                 ],

@@ -47,7 +47,7 @@ class EditQuestionsInListquestForm extends Form
         
         $this->setValidationGroup([
             'listquest' => [
-                'questions',
+                'questions'//=> ['question'],
             ],
         ]);
     }

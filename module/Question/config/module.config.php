@@ -166,31 +166,25 @@ return [
                 ],
             ],
             'zfcadmin' => [
-                'child_routes' => array(
-                    'lists' => array(
+                'child_routes' => [
+                    'lists' => [
                         'type' => 'Literal',
-                        'options' => array(
+                        'options' => [
                             'route' => '/lists',
-                            'defaults' => array(
+                            'defaults' => [
                                 'controller' => 'Question\Controller\Admin',
                                 'action'     => 'index',
-                            ),
-                        ),
-//                        'child_routes' =>array(
-//                            'lists' => array(
-//                                'type' => 'literal',
-//                                'options' => array(
-//                                    'route' => '/',
-//                                    'defaults' => array(
-//                                        'controller' => 'mycontroller',
-//                                        'action'     => 'myaction',
-//                                    ),
-//                                ),
-//                            ),
-//                        ),
-                    ),
-                ),
+                            ],
+                        ],
+                    ],
+                ],
             ],
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            'learnlists-listquestfactory-service' => 'Question\Service\ListquestServiceFactory',
+            'learnlists-listquest-service' => 'Question\Service\ListquestService'
         ],
     ],
     'view_manager' => [

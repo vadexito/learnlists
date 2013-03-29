@@ -147,7 +147,6 @@ return [
                 'drivers' => [
                     'ZfcUserLL\Entity' => 'app_zfcuser_entity',
                     'WtRating\Entity' => 'app_wtrating_entity',
-                    'ZfrForum\Entity' => 'app_zfr_forum_driver',
                 ]
             ],            
         ],        

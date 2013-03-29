@@ -5,16 +5,24 @@ namespace WtRating\Mapper;
 use WtRating\Entity\Rating;
 use WtRating\Entity\RatingSet;
 use Doctrine\ORM\EntityManager;
+use DoctrineModule\Persistence\ProvidesObjectManager;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class DoctrineMapper implements MapperInterface
 {
-    private $em;
+    /**
+     * The repository for the rating entity.
+     *
+     * @var Repository
+     */
     private $rep;
 
-    public function __construct(EntityManager $em)
+    use ProvidesObjectManager;
+    
+    public function __construct(ObjectManager $om)
     {
-        $this->em = $em;
-        $this->rep = $em->getRepository('WtRating\Entity\Rating');
+        $this->setObjectManager($om);
+        $this->rep = $om->getRepository('WtRating\Entity\Rating');
         
     }
 
@@ -77,10 +85,10 @@ class DoctrineMapper implements MapperInterface
     public function persist(Rating $rating)
     {
         if ($rating->getId()) {
-            $this->em->flush();
+            $this->getObjectManager()->flush();
         } else {
-            $this->em->persist($rating);
-            $this->em->flush();
+            $this->getObjectManager()->persist($rating);
+            $this->getObjectManager()->flush();
         }
     }
 }

@@ -37,11 +37,11 @@ class Module
         $moduleRouteListener->attach($em);
         
         //initiate default role after registering
+        $entityManager = $services->get('Doctrine\ORM\EntityManager');
         $zfcuserService = $services->get('zfcuser_user_service');
         $zfcuserEventManager = $zfcuserService->getEventManager();
-        $zfcuserEventManager->attach('register', function($e) use ($services) {
+        $zfcuserEventManager->attach('register', function($e) use ($entityManager) {
             
-            $entityManager = $services->get('Doctrine\ORM\EntityManager');
             $role = $entityManager->getRepository('ZfcUserLL\Entity\Role')->find(5);
             $e->getParam('user')->addRole($role);
         });
@@ -52,6 +52,21 @@ class Module
         $role = $authorize->getIdentity();
         \Zend\View\Helper\Navigation::setDefaultAcl($acl);
         \Zend\View\Helper\Navigation::setDefaultRole($role);
+        
+        //after each login save IP and date of last activity
+        $zfcServiceEvents = $services->get('ZfcUser\Authentication\Adapter\AdapterChain')->getEventManager();
+        $zfcServiceEvents->attach(
+            'authenticate',
+            function ($e) use ($entityManager) {
+                $user = $e->getParams();
+                $userEntity = $entityManager->getRepository('ZfcUserLL\Entity\User')
+                                      ->find($user['identity']);
+                $userEntity->setIp($_SERVER['REMOTE_ADDR']);
+                $userEntity->setLastActivityDate(new \DateTime());
+                $entityManager->flush();
+            }
+        );
+        
     }
 
     

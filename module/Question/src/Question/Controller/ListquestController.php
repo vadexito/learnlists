@@ -6,56 +6,19 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Question\Entity\Listquest;          
 use Question\Form\ListquestForm; 
-use ZfrForum\Entity\Post;
-use ZfrForum\Entity\Thread;
-use ZfrForum\Entity\Category;
-use Zend\Paginator\Paginator;
-use Question\Provider\ProvidesEntityManager;
 use DoctrineORMModule\Stdlib\Hydrator\DoctrineEntity;
 
 class ListquestController extends AbstractActionController
 {
-    use ProvidesEntityManager;
-    
-    protected $listTable;
-    
+    protected $listquestService = NULL;
     
     public function indexAction()
     {
-        $rep = $this->getEntityManager()->getRepository('Question\Entity\Listquest');        
         $ratingService = $this->getServiceLocator()->get('wtrating.service');
-        
-        
-        
-//        $commentService = $this->getServiceLocator()->get('ZfrForum\Service\ThreadService');
-//        $postService = $this->getServiceLocator()->get('ZfrForum\Service\PostService');         
-//        
-//        $post = new Post();
-//        $post->setContent('voila');
-//        //$post->setAuthor($this->zfcUserAuthentication()->getIdentity());
-//        $post->setLastModifiedAt(new \Zend\Stdlib\DateTime());
-//        
-//        //$this->zfcUserAuthentication()->getIdentity()->setIp($_SERVER['REMOTE_ADDR']);
-//        //$this->zfcUserAuthentication()->getIdentity()->setLastActivityDate(new \Zend\Stdlib\DateTime());
-//        $this->getEntityManager()->flush();
-//        
-//        $thread = new Thread;
-//        $category = new Category();
-//        $category->setName('question');
-//        $category->setPosition(2);
-//        
-//        $thread->setTitle('t');
-//        $thread->setCategory($category);
-//        $thread->setCreatedAt(new \Zend\Stdlib\DateTime());
-//        //$thread->setCreatedBy($this->zfcUserAuthentication()->getIdentity());
-//        
-//        $this->getEntityManager()->persist($category);
-//        $this->getEntityManager()->persist($thread);
-//        $commentService->addPost($thread,$post);
         
         return [
             'ratingService' => $ratingService,
-            'lists' => $rep->findAll()
+            'lists' => $this->getListquestService()->fetchAll()
         ];
     }
     
@@ -66,10 +29,7 @@ class ListquestController extends AbstractActionController
             return $this->redirect()->toRoute('home');
         }        
         return [
-            'list'    => $this->getEntityManager()->find(
-                'Question\Entity\Listquest',
-                $id
-            )
+            'list'    => $this->getListquestService()->fetchById($id)
         ];
     }
     
@@ -80,17 +40,14 @@ class ListquestController extends AbstractActionController
         
         $request = $this->getRequest();
         if ($request->isPost()) {
-            $listquest = new Listquest(
-                    $this->zfcUserAuthentication()->getIdentity()
-            );
+            $listquest = $this->getListquestService()->generateNewListquest();
             
             $form->bind($listquest);
             $form->setData($request->getPost());
             
             if ($form->isValid()) {
      
-                $this->getEntityManager()->persist($listquest);
-                $this->getEntityManager()->flush();
+                $this->getListquestService()->insertListquest($listquest);
 
                 // Redirect to list of questions
                 return $this->redirect()->toRoute('list');
@@ -116,11 +73,9 @@ class ListquestController extends AbstractActionController
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
                 $id = (int) $request->getPost('id');
-                $list = $this->getEntityManager()
-                         ->find('Question\Entity\Listquest',$id);
+                $list = $this->getListquestService()->fetchById($id);
                 if ($list){
-                    $this->getEntityManager()->remove($list);
-                    $this->getEntityManager()->flush();
+                    $this->getListquestService()->deleteListquest($list);
                 }
             }
             return $this->redirect()->toRoute('list');
@@ -128,8 +83,7 @@ class ListquestController extends AbstractActionController
 
         return [
             'id' => $id,
-            'list' => $this->getEntityManager()
-                               ->find('Question\Entity\Listquest',$id),
+            'list' => $this->getListquestService()->fetchById($id),
         ];
     }
     
@@ -156,6 +110,15 @@ class ListquestController extends AbstractActionController
         
         return $this->redirect()->toRoute('list');
         
+    }
+    
+    public function getListquestService()
+    {
+        if ($this->listquestService === NULL){
+            $this->listquestService = $this->getServiceLocator()
+                        ->get('learnlists-listquestfactory-service'); 
+        }
+        return $this->listquestService;
     }
 }
 

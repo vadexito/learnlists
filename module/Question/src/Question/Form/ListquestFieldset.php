@@ -107,18 +107,34 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
                 'required' => false,
             ],
             'title' => [
+                'name'     => 'title',
                 'required' => true,
-            ],
-            'rules' => [
-                'required' => false,
-            ],
-            'level' => [
-                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 2,
+                            'max'      => 50,
+                        ],
+                    ],
+                ],
             ],
             'tags' => [
                 'required' => true,
             ],
             'questions' => [
+                'required' => false,
+            ],
+
+            'rules' => [
+                'required' => false,
+            ],
+            'level' => [
                 'required' => false,
             ],
         ];

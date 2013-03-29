@@ -1,0 +1,26 @@
+<h1><?php echo $this->translate('Step 1: Email Verification'); ?></h1>
+<?php
+if(!$this->enableRegistration)
+{
+    print '<div class="alert alert-error">Registration is disabled</div>';
+    return;
+}
+
+$form = $this->form;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/register/step1'));
+$form->setAttribute('method', 'POST');
+
+echo $this->form()->openTag($form);
+?>
+<dl class="zend_form">
+
+<?php foreach ($form->getElements() as $element) { ?>
+    <?php if ($element->getLabel() != null) { ?>
+    <dt><?php echo $this->formLabel($element); ?></dt>
+    <?php } ?>
+    <dd><?php echo $this->formInput($element) . $this->formElementErrors($element); ?></dd>
+<?php } ?>
+</dl>
+
+<?php $this->url('zfcuser/register/step1'); ?>
