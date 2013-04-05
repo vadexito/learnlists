@@ -16,6 +16,14 @@ LearnListsLayout = Backbone.Marionette.Layout.extend({
       currentstats: '#current_stats',
       presCorner  : '#first_presentation_corner',
       tip         : '#question_tip'
+    },
+    
+    modelEvents:{
+        'change:title_list': 'renderTitle'
+    },
+    
+    renderTitle: function(model,data){
+        $('#title_list').html(data);
     }
 });
 
@@ -103,12 +111,7 @@ InsideNavBarView = Backbone.Marionette.ItemView.extend({
             
             this.ui.cancelButton.hide();
         },this); 
-    },
-    
-    modelEvents:{
-        'change:title_list': 'render'
     }
-    
 });
 
 AskingQuestionView = Backbone.Marionette.ItemView.extend({
@@ -168,12 +171,23 @@ RoundResultView = Backbone.Marionette.ItemView.extend({
     templateHelpers: {
         roundinfo: function(){
             
-            var duration = this.duration;        
-            return (duration.now ? 'current' : 
-                (duration.days ? (duration.days + 'd') : '')
-                + (duration.hours ? (duration.hours + 'h') : '')
-                + (duration.minutes ? (duration.minutes + 'm') : '')
-                + (duration.seconds ? (duration.seconds + 's') : '')+' ago');
+            var duration = this.duration; 
+            var time;
+            
+            if (duration.now){
+                return 'current';
+            }            
+            if (duration.days > 0){
+                time = duration.days + 'd';
+            } else if (duration.hours > 0){
+                time = duration.hours + 'h';
+            } else if (duration.minutes > 0){
+                time = duration.minutes + 'm';
+            } else if (duration.seconds > 0){
+                time = duration.seconds + 's';
+            }
+            
+            return time+' ago';
         }
     },
     initialize: function(){

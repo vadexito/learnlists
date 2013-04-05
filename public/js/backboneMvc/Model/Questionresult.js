@@ -140,5 +140,9 @@ window.Questionresults = Backbone.Collection.extend({
         
     },
     
+    comparator: function(questionresult){
+        return -parseInt(questionresult.get('answerType'));
+    },
+    
     url: "/questionresult-rest"
 });

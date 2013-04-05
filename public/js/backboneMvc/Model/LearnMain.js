@@ -30,9 +30,10 @@ window.LearnMain = Backbone.Model.extend({
             
             //init last rounds
             this.lastRounds = new Rounds();
-            if (loggedIn === 'true'){
+            if (loggedIn === 'true'){                
                 this.lastRounds.init(listId,maxRound);
             } else {
+                //no last round to init if not logged
                 learnMVC.vent.trigger("learn:initNewRound");
             }
         },this)});
@@ -155,12 +156,12 @@ window.LearnMain = Backbone.Model.extend({
         
         this.set('round_nb',this.lastRounds.models.length + 1);
         
-        //fetch former rounds from the database and create new Round       
+        //create new Round       
         this.currentRound = new Round({
             listquestId: this.questions.listId,
             startDate: {date:new Date()},
             questionresults : new Questionresults(),
-            roundOrder: _.shuffle(this.questions.collection.pluck('id')), 
+            roundOrder: this.lastRounds.newRoundOrder(this.questions.collection), 
             localDate:true
         });
         
