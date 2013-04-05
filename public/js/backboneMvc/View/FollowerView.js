@@ -33,7 +33,7 @@ window.FollowerView = Backbone.Marionette.ItemView.extend({
     
     
     modelEvents:{
-        'change:nb_question change:round_nb change:round_total': 'render'
+        'change:nb_question change:comments change:round_nb change:round_total': 'render'
     }
     
     

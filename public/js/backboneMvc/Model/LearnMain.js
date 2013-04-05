@@ -112,6 +112,7 @@ window.LearnMain = Backbone.Model.extend({
         this.model.setAnswerType();
         this.currentRound.get('questionresults').add(this.model);
         
+        var answerType = this.model.get('answerType');
         this.set({
             'nb_question': this.currentRound.get('roundOrder').length,
             'tip': this.questions.collection.get(this.model.get('questionId')).get('tip'),
@@ -124,7 +125,7 @@ window.LearnMain = Backbone.Model.extend({
             average = this.get('nb_average_answering') * total/100,
                 bad = this.get('nb_bad_answering') * total/100;
 
-        switch(this.model.get('answerType')){
+        switch(answerType){
             case '1':
                 perfect++;
                 break;
@@ -147,6 +148,26 @@ window.LearnMain = Backbone.Model.extend({
             'nb_average_answering':average/total  * 100,
             'nb_bad_answering':bad/total * 100
         });
+        
+        if (this.lastRounds.models.length > 0 ){
+            var lastAnswerType = _.first(_.last(this.lastRounds.models)
+                              .get('questionresults')
+                              .where({'questionId':this.model.get('questionId')}))
+                              .get('answerType');
+            var comments = '';
+
+            if (answerType === '1'){
+                if (lastAnswerType === '1'){
+                    comments = 'Always perfect';
+                } else if (lastAnswerType === '2'){
+                    comments = 'You did it in less than 10 seconds';
+                } else {
+                    comments = 'Much better now!';
+                }
+            };
+
+            this.set('comments',comments);
+        }
         
         
         
@@ -181,7 +202,8 @@ window.LearnMain = Backbone.Model.extend({
         //push the new id to the end of the array (in case the next button is pushed before the question is answered)
         this.currentRound.get('roundOrder').shift();
         this.currentRound.get('roundOrder').push(questionId);
-
+        this.set('comments','');
+        
         var question = this.questions.collection.get(questionId);
         this.model = new Questionresult({
             startDate:new Date(),
@@ -227,6 +249,7 @@ window.LearnMain = Backbone.Model.extend({
         nb_average_answering:0,
         nb_bad_answering:0,
         score:0,
-        maxPoint:0
+        maxPoint:0,
+        comments:''
     }
 }); 
