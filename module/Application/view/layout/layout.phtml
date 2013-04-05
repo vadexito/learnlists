@@ -19,7 +19,7 @@
         
         <?php $this->inlineScript()->appendFile($this->basePath() . '/js/global.js');?>
         <?php
-//            echo $this->plugin('HeadLink');
+// for asset maneger  echo $this->plugin('HeadLink');
 //            echo $this->plugin('HeadStyle');
 //            echo $this->plugin('HeadScript');
         ?>
@@ -45,23 +45,39 @@ echo $this->navigation('navigation')->menu()->setPartial($partial)->render();
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <ul>
-                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'about']); ?>"><?php echo $this->translate('About'); ?></a></li>
-                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'help']); ?>"><?php echo $this->translate('Help'); ?></a></li>
-                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'terms']); ?>"><?php echo $this->translate('Terms'); ?></a></li>
-                    <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'privacy']); ?>"><?php echo $this->translate('Privacy'); ?></a></li>
-                    <li class="footer-item"><a href="<?php echo $this->url('contact'); ?>"><?php echo $this->translate('Contact'); ?></a></li>                    
-                    <li class="footer-item dropdown">
-                        <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#"><?php echo $this->translate('Language'); ?> <b class="caret"></b></a>
-                        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                            <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('German'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'de_DE']); ?>">Deutsch</a></li>
-                            <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('French'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'fr_FR']); ?>">Français</a></li>
-                            <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('English'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'en_US']); ?>">English</a></li>
-                        </ul>
-                    </li>                  
-                </ul>
-                <p id="copyright">&copy; <?php echo $this->translate('2013 by Voilamylife.') ?> <?php echo $this->translate('All rights reserved.') ?></p>
-                
+                <div class="row-fluid">
+                    <div class="offset1 span3">
+                        <h5><?php echo $this->translate('Company'); ?></h5>
+                        <ul>
+                            <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'about']); ?>"><?php echo $this->translate('About'); ?></a></li>
+                            <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'terms']); ?>"><?php echo $this->translate('Terms'); ?></a></li>
+                            <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'privacy']); ?>"><?php echo $this->translate('Privacy'); ?></a></li>
+                            <li class="footer-item"><a href="<?php echo $this->url('contact'); ?>"><?php echo $this->translate('Contact'); ?></a></li> 
+                       </ul>
+                   </div>
+                   <div class="span3">
+                       <h5><?php echo $this->translate('Help'); ?></h5>
+                       <ul>
+                           <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'help']); ?>"><?php echo $this->translate('Help'); ?></a></li>      
+                       </ul>
+                   </div>
+                   <div class="offset2 span3">
+                       <h5><?php echo $this->translate('Localisation'); ?></h5>
+                       <ul>
+                           <li class="footer-item dropdown">
+                               <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#"><?php echo $this->language(); ?> <b class="caret"></b></a>
+                               <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('German'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'de_DE']); ?>">Deutsch</a></li>
+                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('French'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'fr_FR']); ?>">Français</a></li>
+                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('English'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'en_US']); ?>">English</a></li>
+                               </ul>
+                           </li>                  
+                       </ul>
+                   </div>
+                </div>
+                <div class="row-fluid"> 
+                    <p id="copyright">&copy; <?php echo $this->translate('2013 by Voilamylife.') ?> <?php echo $this->translate('All rights reserved.') ?></p>
+                </div>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>

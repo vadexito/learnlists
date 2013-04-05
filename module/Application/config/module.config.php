@@ -108,6 +108,11 @@ return [
             'Application\Controller\Locale' => 'Application\Controller\LocaleController'
         ],
     ],
+    'view_helpers' => [
+        'invokables' => [
+            'language' => 'Application\View\Helper\Language',
+        ],
+    ],            
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,

@@ -12,6 +12,7 @@ namespace Application;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Session\Container;
+use Locale;
 
 class Module
 {
@@ -25,9 +26,10 @@ class Module
         if ($session->locale){            
             $locale = $session->locale;
         } else {
-            $locale = \locale::getDefault();
+            $locale = Locale::getDefault();
+            $session->locale = $locale;
         }
-        \Locale::setDefault($locale);
+        Locale::setDefault($locale);
         $services->get('translator')->setLocale($locale)
                                     ->setFallbackLocale('en_US');
           
