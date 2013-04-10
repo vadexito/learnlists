@@ -13,6 +13,7 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Session\Container;
 use Locale;
+use Zend\View\Helper\Navigation;
 
 class Module
 {
@@ -20,20 +21,6 @@ class Module
     {
         $services = $e->getApplication()->getServiceManager();
         $em = $e->getApplication()->getEventManager();
-        
-        //initiate translator
-        $session = new Container('learnlists_locale');
-        if ($session->locale){            
-            $locale = $session->locale;
-        } else {
-            $locale = Locale::getDefault();
-            $session->locale = $locale;
-        }
-        Locale::setDefault($locale);
-        $services->get('translator')->setLocale($locale)
-                                    ->setFallbackLocale('en_US');
-          
-        
         
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($em);
@@ -52,20 +39,22 @@ class Module
         $authorize = $services->get('BjyAuthorize\Service\Authorize');
         $acl = $authorize->getAcl();
         $role = $authorize->getIdentity();
-        \Zend\View\Helper\Navigation::setDefaultAcl($acl);
-        \Zend\View\Helper\Navigation::setDefaultRole($role);
+        Navigation::setDefaultAcl($acl);
+        Navigation::setDefaultRole($role);
         
         //after each login save IP and date of last activity
         $zfcServiceEvents = $services->get('ZfcUser\Authentication\Adapter\AdapterChain')->getEventManager();
         $zfcServiceEvents->attach(
             'authenticate',
             function ($e) use ($entityManager) {
-                $user = $e->getParams();
-                $userEntity = $entityManager->getRepository('ZfcUserLL\Entity\User')
+                if ($e->getParams('code') === 1){
+                    $userEntity = $entityManager->getRepository('ZfcUserLL\Entity\User')
                                       ->find($user['identity']);
-                $userEntity->setIp($_SERVER['REMOTE_ADDR']);
-                $userEntity->setLastActivityDate(new \DateTime());
-                $entityManager->flush();
+                    $userEntity->setIp($_SERVER['REMOTE_ADDR']);
+                    $userEntity->setLastActivityDate(new \DateTime());
+                    $entityManager->flush();
+                }
+                
             }
         );
         
