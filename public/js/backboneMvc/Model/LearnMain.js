@@ -154,19 +154,25 @@ window.LearnMain = Backbone.Model.extend({
                               .get('questionresults')
                               .where({'questionId':this.model.get('questionId')}))
                               .get('answerType');
-            var comments = '';
-
-            if (answerType === '1'){
-                if (lastAnswerType === '1'){
-                    comments = 'Always perfect';
-                } else if (lastAnswerType === '2'){
-                    comments = 'You did it in less than 10 seconds';
-                } else {
-                    comments = 'Much better now!';
+            
+            var commentsValues = {
+                '1':{
+                    '1' : 'Always perfect',
+                    '2' : 'You did perfect in less than 10 seconds now',
+                    '3' : 'Perfect, no more mistake like last time!',
+                    '4' : 'Perfect, no more mistakes like last time!',
+                    '5' : 'Perfect and you did not ask the answer like last time!'
+                },
+                '2':{
+                    '1' : 'Last time you were quicker',
+                    '2' : 'Like last time, you are still too slow',
+                    '3' : 'Great, no more mistake like last time but too slow!',
+                    '4' : 'Great, no more mistakes like last time but too slow!',
+                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
                 }
             };
 
-            this.set('comments',comments);
+            this.set('comments',commentsValues[answerType][lastAnswerType] || '');
         }
         
         

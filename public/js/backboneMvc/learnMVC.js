@@ -133,18 +133,18 @@ AskingQuestionView = Backbone.Marionette.ItemView.extend({
             $('#bar-progress').html('').css('width','0');         
         });
         
+         learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){             
+            this.ui.answerButton.attr('disabled','disabled');
+            this.ui.checkButton.attr('disabled','disabled');
+            this.ui.answerInput.attr('readonly','readonly');
+            this.ui.nextButton.focus();
+        },this);
+        
         learnMVC.vent.on('learn:initNewQuestion',function(){             
             this.ui.answerButtons.removeAttr('disabled');
             this.ui.answerInput.val('').focus().removeAttr('readonly'); 
             $('#answer-group').removeClass('error').removeClass('success');
             $('.answer-sign').hide();
-        },this);
-        
-        learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){             
-            this.ui.answerButton.attr('disabled','disabled');
-            this.ui.checkButton.attr('disabled','disabled');
-            this.ui.answerInput.attr('readonly','readonly');
-            this.ui.nextButton.focus();
         },this);
     },
     events:{

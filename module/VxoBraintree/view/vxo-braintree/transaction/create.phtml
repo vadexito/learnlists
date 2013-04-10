@@ -1,0 +1,22 @@
+<?php
+$title = $this->translate('Create transaction');
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form->setAttribute('action', $this->url('payment/create_transaction'));
+$form->prepare(); 
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+?>
+
+<script type="text/javascript" src="https://js.braintreegateway.com/v1/braintree.js"></script>
+<script type="text/javascript">
+  var braintree = Braintree.create("MIIBCgKCAQEAz7xGfzZe8pS64I1b4FAxDDJhvz5WjvVE2/T/7iP/OtqNTqKVTv3hwN+pbzCgqCi04hzXOmbqsps2YoMBaBT4JEfEPh6UxlWMmQfR9TJqrovYcjOi3i9QC5og4nufL8nwZhUFwVvRq4iDumYSShq7jmebw62t4KGR7XyF1JZwjNfrnHZvkggmx+ZncTiBOZnwHB1Lf8IVm5hKA4Js/C7kRxFgyJap0rSSo8DOTihFegUBXpevNmgTn1NbONj4zBcZrGMlQZqj+hhQk028bY/MUtn/qFa/45Wgx2Wi8ATdqXCupBYpR1VGwb0j3WsjK5u/BgEqirMwmwx5fsk8467/aQIDAQAB");
+  braintree.onSubmitEncryptForm('braintree-payment-form');
+</script>
+
+
+

@@ -23,6 +23,8 @@
         "widmogrod/zf2-assetic-module": "dev-master",
         "widmogrod/data-grid": "dev-master",
         "phly/phly-contact": "dev-master",
-        "zendframework/zendservice-recaptcha": "2.0.*@dev"
+        "zendframework/zendservice-recaptcha": "2.0.*@dev",
+        "vxo/vxo-locale": "dev-master",
+        "braintree/braintree_php": "2.19.0"
     }
 }

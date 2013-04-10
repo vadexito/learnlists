@@ -67,9 +67,9 @@ echo $this->navigation('navigation')->menu()->setPartial($partial)->render();
                            <li class="footer-item dropdown">
                                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#"><?php echo $this->language(); ?> <b class="caret"></b></a>
                                <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('German'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'de_DE']); ?>">Deutsch</a></li>
-                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('French'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'fr_FR']); ?>">Français</a></li>
-                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('English'); ?>" href="<?php echo $this->url('application/locale',['locale' => 'en_US']); ?>">English</a></li>
+                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('German'); ?>" href="<?php echo $this->url('locale/change',['locale' => 'de_DE']); ?>">Deutsch</a></li>
+                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('French'); ?>" href="<?php echo $this->url('locale/change',['locale' => 'fr_FR']); ?>">Français</a></li>
+                                   <li><a class="language" role="menuitem" tabindex="-1" title="<?php echo $this->translate('English'); ?>" href="<?php echo $this->url('locale/change',['locale' => 'en_US']); ?>">English</a></li>
                                </ul>
                            </li>                  
                        </ul>

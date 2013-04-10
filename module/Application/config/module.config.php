@@ -50,20 +50,6 @@ return [
                             ],
                         ],
                     ],
-                    'locale' => [
-                        'type'    => 'Segment',
-                        'options' => [
-                            'route'    => '/locale/change/[:locale]',
-                            'constraints' => [
-                                'page'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ],
-                            'defaults' => [
-                                '__NAMESPACE__' => 'Application\Controller',
-                                'controller' => 'Locale',                                
-                                'action' => 'change',                                
-                            ],
-                        ],
-                    ],
                     'default' => [
                         'type'    => 'Segment',
                         'options' => [
@@ -105,14 +91,8 @@ return [
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Footer' => 'Application\Controller\FooterController',
-            'Application\Controller\Locale' => 'Application\Controller\LocaleController'
         ],
     ],
-    'view_helpers' => [
-        'invokables' => [
-            'language' => 'Application\View\Helper\Language',
-        ],
-    ],            
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
