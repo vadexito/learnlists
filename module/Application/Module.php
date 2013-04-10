@@ -13,7 +13,9 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Session\Container;
 use Locale;
+use DateTime;
 use Zend\View\Helper\Navigation;
+use Zend\Authentication\Result;
 
 class Module
 {
@@ -33,6 +35,9 @@ class Module
             
             $role = $entityManager->getRepository('ZfcUserLL\Entity\Role')->find(5);
             $e->getParam('user')->addRole($role);
+            $e->getParam('user')->setCreationDate(new DateTime());
+            $e->getParam('user')->setIp($_SERVER['REMOTE_ADDR']);
+            $e->getParam('user')->setLastActivityDate(new DateTime());
         });
         
         //initialize nagivation with ACL
@@ -47,14 +52,14 @@ class Module
         $zfcServiceEvents->attach(
             'authenticate',
             function ($e) use ($entityManager) {
-                if ($e->getParams('code') === 1){
+                //if authentical successful
+                if ($e->getParams('code') === Result::SUCCESS){
                     $userEntity = $entityManager->getRepository('ZfcUserLL\Entity\User')
                                       ->find($user['identity']);
                     $userEntity->setIp($_SERVER['REMOTE_ADDR']);
-                    $userEntity->setLastActivityDate(new \DateTime());
+                    $userEntity->setLastActivityDate(new DateTime());
                     $entityManager->flush();
                 }
-                
             }
         );
         

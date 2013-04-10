@@ -60,6 +60,11 @@ class User implements UserInterface, ProviderInterface
      * @var DateTime
      */
     protected $lastActivityDate;
+    
+    /**
+     * @var DateTime
+     */
+    protected $creationDate;
 
     /**
      * Initialies the roles variable.
@@ -266,6 +271,24 @@ class User implements UserInterface, ProviderInterface
     {
         if ($this->lastActivityDate){
             return clone $this->lastActivityDate;
+        }
+    }
+    
+    public function setCreationDate(DateTime $creationDate)
+    {
+        $this->creationDate = clone $creationDate;
+        return $this;
+    }
+
+    /**
+     * Get the last activity date
+     *
+     * @return DateTime
+     */
+    public function getCreationDate()
+    {
+        if ($this->creationDate){
+            return clone $this->creationDate;
         }
     }
     
