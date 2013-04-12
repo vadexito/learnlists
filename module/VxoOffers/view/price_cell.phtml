@@ -1,0 +1,39 @@
+<div class="row-fluid top">
+    <h3><?php echo $offer['name']; ?></h3>
+    <h5><?php echo $offer['description']; ?></h5>
+    <div class="popular"></div>
+</div><hr>
+<div class="row-fluid price">
+    <h2><?php echo $price['amount']; ?></h2>
+    <h6><?php echo $price['frequency']; ?></h6>
+</div><hr>
+<div class="row-fluid volumes">
+    <div class="span4 volume">
+        <h6 class="title"><?php echo $volumes['volume1']['title']; ?></h6>
+        <p class="number"><small><?php echo $volumes['volume1']['number']; ?></small></p>
+    </div>
+    <div class="span4 volume">
+        <h6 class="title"><?php echo $volumes['volume2']['title']; ?></h6>
+        <p class="number"><small><?php echo $volumes['volume2']['number']; ?></small></p>
+    </div>
+    <div class="span4 volume">
+        <h6 class="title"><?php echo $volumes['volume3']['title']; ?></h6>
+        <p class="number"><small><?php echo $volumes['volume3']['number']; ?></small></p>
+    </div>
+</div><hr>
+<div class="row-fluid core_features">
+  <div class="icon"></div>
+  <p class="title"><strong><?php echo $coreFeatures['title']; ?></strong></p>
+</div>
+<div class="row-fluid feature_list">
+    <div class="background_line"></div>
+<?php foreach ($coreFeatures['features'] as $feature) : ?>  
+    <p class="feature">
+        <i class="icon-plus"></i>
+        <span class="name"><?php echo $feature; ?></span>
+    </p>
+<?php endforeach; ?>
+</div><hr>
+<div class='row-fluid choose_plan_container'>
+    <a href="<?php echo $buttonText['href']; ?>" class="<?php echo $buttonText['class']; ?>"><?php echo $buttonText['text']; ?></a>
+</div>

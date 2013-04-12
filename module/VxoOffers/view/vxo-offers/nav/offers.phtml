@@ -1,25 +1,141 @@
 <?php
 $title = $this->translate('Our Learning Offers');
 $this->headTitle($title);
+
+$offerOption1 = [
+    'offer' => [
+        'name' => $this->translate('BASIC'),
+        'description' => $this->translate('Great to get started'),
+    ],
+    'price' => [
+        'amount' => $this->translate('FREE'),
+        'frequency' => $this->translate(''),
+    ],
+    'volumes' => [
+        'volume1' => [
+            'title' => $this->translate('Student quizzes'),
+            'number' =>$this->translate('No limit'),
+        ],
+        'volume2' => [
+            'title' => $this->translate('Teacher quizzes'),
+            'number' => $this->translate('10/month'),
+        ],
+        'volume3' => [
+            'title' => $this->translate('Top best quizzes'),
+            'number' => $this->translate('1/month'),
+        ],
+    ],
+    'coreFeatures' => [
+        'title' => $this->translate('Search through the whole set of quizzes'),
+        'features' => [
+            $this->translate('Create unlimited quizzes'),
+            $this->translate('Access profesionnal learning method'),
+        ]
+    ],
+    'buttonText' => [
+        'text' => $this->translate('Choose Standard offer'),
+        'class' => 'btn btn-primary btn-block btn-large choose_plan_button',
+        'href' => $this->url('payment/create_transaction'),
+    ],
+
+];
+
+$offerOption2 = [
+    'offer' => [
+        'name' => $this->translate('INTENSE'),
+        'description' => $this->translate('Excellent for intense learning'),
+    ],
+    'price' => [
+        'amount' => $this->translate('10 €'),
+        'frequency' => $this->translate('per month (no minimum)'),
+    ],
+    'volumes' => [
+        'volume1' => [
+            'title' => $this->translate('Student quizzes'),
+            'number' =>$this->translate('No limit'),
+        ],
+        'volume2' => [
+            'title' => $this->translate('Teacher quizzes'),
+            'number' => $this->translate('20/month'),
+        ],
+        'volume3' => [
+            'title' => $this->translate('Top best quizzes'),
+            'number' => $this->translate('10/month'),
+        ],
+    ],
+    'coreFeatures' => [
+        'title' => $this->translate('Search through the whole set of quizzes'),
+        'features' => [
+            $this->translate('Create unlimited  quizzes'),
+            $this->translate('Access profesionnal learning method'),
+            $this->translate('Access unlimited tips and comments form teachers'),
+        ]
+    ],
+    'buttonText' => [
+        'text' => $this->translate('Choose Intense offer'),
+        'class' => 'btn btn-success btn-block btn-large choose_plan_button',
+        'href' => $this->url('payment/create_transaction'),
+    ],
+
+];
+
+$offerOption3 = [
+    'offer' => [
+        'name' => $this->translate('FULL'),
+        'description' => $this->translate('The most complete offer'),
+    ],
+    'price' => [
+        'amount' => $this->translate('12 €'),
+        'frequency' => $this->translate('per month (no minimum)'),
+    ],
+    'volumes' => [
+        'volume1' => [
+            'title' => $this->translate('Student quizzes'),
+            'number' =>$this->translate('No limit'),
+        ],
+        'volume2' => [
+            'title' => $this->translate('Teacher quizzes'),
+            'number' => $this->translate('No limit'),
+        ],
+        'volume3' => [
+            'title' => $this->translate('Top best quizzes'),
+            'number' => $this->translate('No limit'),
+        ],
+    ],
+    'coreFeatures' => [
+        'title' => $this->translate('Search through the whole set of quizzes'),
+        'features' => [
+            $this->translate('Create your own quizzes'),
+            $this->translate('Access profesionnal learning method'),
+            $this->translate('Access unlimited tips and comments form teachers'),
+        ]
+    ],
+    'buttonText' => [
+        'text' => $this->translate('Choose full offer'),
+        'class' => 'btn btn-warning btn-block btn-large choose_plan_button',
+        'href' => $this->url('payment/create_transaction'),
+    ],
+];
+
 ?>
-<div class="well row-fluid">
+<div class="well row-fluid offers">
     <div class="row-fluid">
         <h1 class="offers"><?php echo $this->translate('The quizzes that match your needs.'); ?></h1>
     </div>
     <div class="row-fluid">
-        <div class="span4">
-            <div class="offset2 well span10">
-                <?php echo $this->priceCell(); ?>
-            </div>
-        </div>
-        <div class="span4">
+        <div class="offer1 span4 price-cell">
             <div class="offset1 well span10">
-                <?php echo $this->priceCell(); ?>
+                <?php echo $this->partial('price_cell.phtml',$offerOption1);?>
             </div>
         </div>
-        <div class="span4">
-            <div class="well span10">
-                <?php echo $this->priceCell(); ?>
+        <div class="offer2 span4 price-cell">
+            <div class="well span11">
+                <?php echo $this->partial('price_cell.phtml',$offerOption2);?>
+            </div>
+        </div>
+        <div class="offer3 span4 price-cell">
+            <div class="well span11">
+                <?php echo $this->partial('price_cell.phtml',$offerOption3);?>
             </div>
         </div>
     </div>

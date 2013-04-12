@@ -7,9 +7,11 @@
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
         <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'])
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/vendor/bootstrap/css/bootstrap-responsive.min.css')
                         ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap/css/bootstrap.min.css') ?>
+                        ->prependStylesheet($this->basePath() . '/css/vendor/font-awesome/css/font-awesome.min.css') 
+                        ->prependStylesheet($this->basePath() . '/css/vendor/bootstrap/css/bootstrap.min.css') ?>
+                        
 
         <!-- Scripts -->
          <!-- Scripts -->
@@ -41,7 +43,7 @@ echo $this->navigation('navigation')->menu()->setPartial($partial)->render();
             </div>
         </nav>
         <?php echo $this->placeholder('header') ?>
-        <div class="container">
+        <div id="main" class="container">
             <?php echo $this->content; ?>
             <hr>
             <footer>

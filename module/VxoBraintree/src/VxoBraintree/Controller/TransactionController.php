@@ -16,11 +16,6 @@ class TransactionController extends AbstractActionController
         Braintree_Configuration::publicKey('5522v4dhzxmsmdtf');
         Braintree_Configuration::privateKey('1b78e512186aaa9d1be056946e58b9b2');
         
-        
-        
-        
-        
-        
         $form = new \VxoBraintree\Form\TransactionForm();
         $form->get('submit')->setValue(_('Create transaction'));
         
@@ -51,9 +46,8 @@ class TransactionController extends AbstractActionController
                   $response = "<h1>Error: " . $result->message . "</h1>";
                 }
                 
-                var_dump($response);die;
                 return $this->redirect()->toRoute(
-                    'payment/success'
+                    'offers/success_payment'
                 );
             }
         }

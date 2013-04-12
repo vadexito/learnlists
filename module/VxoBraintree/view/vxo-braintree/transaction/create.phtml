@@ -3,17 +3,22 @@ $title = $this->translate('Create transaction');
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
-
+<h2>
+    <?php echo $this->translate('Your product :'); ?>
+</h2>
 <?php
 $form->setAttribute('action', $this->url('payment/create_transaction'));
+$form->setAttribute('autocomplete', 'off');
 $form->prepare(); 
 echo $this->form()->openTag($form);
 echo $this->formRow($form->get('number')); ?>
 <?php echo $this->formRow($form->get('cvv')); ?>
 <?php echo $this->formRow($form->get('month')); ?>
-<?php echo $this->formRow($form->get('year')); ?><br/>
-<?php echo $this->formSubmit($form->get('submit')); 
-echo $this->form()->closeTag();
+<?php echo $this->formRow($form->get('year')); ?>
+<div class="form-actions">
+    <?php echo $this->formSubmit($form->get('submit')); ?> 
+</div>
+<?php echo $this->form()->closeTag();
 ?>
 
 <script type="text/javascript" src="https://js.braintreegateway.com/v1/braintree.js"></script>

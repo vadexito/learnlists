@@ -229,11 +229,128 @@ p.title_pie{
 /*=======================================
 offers presentation
 =========================================*/
+div.well.offers {
+    background: #6b6b6b; /* Old browsers */
+    background: -moz-linear-gradient(top, #6b6b6b 0%, #a0a0a0 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6b6b6b), color-stop(100%,#a0a0a0)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #6b6b6b 0%,#a0a0a0 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #6b6b6b 0%,#a0a0a0 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #6b6b6b 0%,#a0a0a0 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #6b6b6b 0%,#a0a0a0 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', endColorstr='#a0a0a0',GradientType=0 ); /* IE6-9 */
+}
 
-h1.offers,h2.offers,h3.offers,h4.offers {
+
+div.price-cell > div.well {
+    border-radius: 30px;
+    border-width: 5px;
+    border-color: grey;
+}
+
+/* Generated with Ultimate CSS Gradient Generator*/
+div.price-cell.offer1 > div.well {
+    
+    background: #88bfe8; /* Old browsers */
+    background: -moz-linear-gradient(top, #88bfe8 1%, #006dcc 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#88bfe8), color-stop(100%,#006dcc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #88bfe8 1%,#006dcc 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #88bfe8 1%,#006dcc 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #88bfe8 1%,#006dcc 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #88bfe8 1%,#006dcc 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88bfe8', endColorstr='#006dcc',GradientType=0 ); /* IE6-9 */
+}
+div.price-cell.offer2 > div.well {
+    
+    background: #a0fb00; /* Old browsers */
+    background: -moz-linear-gradient(top, #a0fb00 2%, #57a900 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#a0fb00), color-stop(100%,#57a900)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a0fb00 2%,#57a900 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a0fb00 2%,#57a900 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a0fb00 2%,#57a900 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #a0fb00 2%,#57a900 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0fb00', endColorstr='#57a900',GradientType=0 ); /* IE6-9 */
+}
+div.price-cell.offer3 > div.well {
+    
+    background: #f9f200; /* Old browsers */
+    background: -moz-linear-gradient(top, #f9f200 1%, #f89406 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f9f200), color-stop(100%,#f89406)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f9f200 1%,#f89406 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f9f200 1%,#f89406 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f9f200 1%,#f89406 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f9f200 1%,#f89406 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f200', endColorstr='#f89406',GradientType=0 ); /* IE6-9 */
+}
+div.price-cell.offer2 div.popular {
+    background: url("/images/popular.png") no-repeat;
+    width: 70px;
+    position:relative;
+    height: 74px;
+    top: -109px;
+    right: -191px;
+}
+
+div.offers h1 {
+    color:rgba(250,250,250,1);
+    text-shadow: rgba(10,10,10,10.5) 0 1px 0;
+}
+
+div.offers h3 {
+    color:rgba(250,250,250,1);
+    text-shadow: rgba(0,0,0,1) 0 1px 0;
+}
+
+div.offers h1,div.offers h2,div.offers h3,
+div.offers h4,div.offers h5, div.offers h6,
+div.volume {
     text-align: center;
+}
+
+div.offers h1,div.offers h2,div.offers h3,
+div.offers h4,div.offers h5, div.offers h6,
+div.volume,div.feature,div.feature_list {
+    text-shadow: rgba(255,255,255,0.5) 0 1px 0;
 }
 h1.offers {
     margin-bottom: 30px;
+}
+
+div.offers hr {
+    margin-top:10px;
+    margin-bottom:10px;
+    background-color:grey;
+    height:1.5px;
+}
+
+div.top {
+    height: 80px;
+}
+div.price {
+    height: 70px;
+}
+div.price h2 {
+    margin-bottom:0;
+    padding: 0;
+}
+div.price h6 {
+    margin:0;
+}
+
+div.volumes {
+    height: 100px;
+}
+
+div.volumes h5 {
+  margin:0;  
+}
+
+div.core_features {
+    height: 60px;
+}
+div.feature_list {
+    height: 150px;
+}
+div.choose_plan_container {
+    height: 50px;
 }
 
