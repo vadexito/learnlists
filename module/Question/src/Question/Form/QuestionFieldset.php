@@ -48,6 +48,7 @@ class QuestionFieldset extends Fieldset implements InputFilterProviderInterface
             'attributes' => [
                 'type'  => 'text',
                 'id'    => 'answer',
+                'class' => 'input-medium',
                 'autocomplete'    => 'off',
             ],
             'options' => [

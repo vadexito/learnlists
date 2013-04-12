@@ -29,17 +29,6 @@ class ListquestController extends AbstractActionController
         ];
     }
     
-    public function showAction()
-    {
-        $id = (int) $this->params()->fromRoute('id', 0);
-        if (!$id) {
-            return $this->redirect()->toRoute('home');
-        }        
-        return [
-            'list'    => $this->getListquestService()->fetchById($id)
-        ];
-    }
-    
     public function addAction()
     {
         $form = $this->getServiceLocator()->get('Question\Form\ListquestForm');        
@@ -61,11 +50,37 @@ class ListquestController extends AbstractActionController
             }
         }
         return ['form' => $form];
-        
     }
 
     public function editAction()
     {
+        $listId = (int) $this->params()->fromRoute('id', 0);
+        if (!$listId) {
+            return $this->redirect()->toRoute('home');
+        }
+        $listquest = $this->getListquestService()->fetchById($listId);
+        
+        if (!$this->_checkUserIsAuthorized($listquest)) {
+            return $this->redirect()->toRoute('home');
+        }
+        
+        $form = $this->getServiceLocator()->get('Question\Form\EditQuestionsInListquestForm');
+        $form->get('submit')->setValue(_('Add'));
+        $form->bind($listquest);  
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            
+            $form->setData($request->getPost()); 
+            if ($form->isValid()) {  
+                $listquest = $this->getListquestService()->updateListquest($listquest);
+
+                return $this->redirect()->toRoute(
+                    'list/edit',
+                    ['id' => $listId]
+                );
+            }
+        }
+        return ['form' => $form,'list' => $listquest];       
     }
 
     public function deleteAction()
@@ -126,6 +141,19 @@ class ListquestController extends AbstractActionController
                         ->get('learnlists-listquestfactory-service'); 
         }
         return $this->listquestService;
+    }
+    
+    protected function _checkUserIsAuthorized(Listquest $listquest)
+    {
+        $user = $this->zfcUserAuthentication()->getIdentity();
+        
+        foreach ($user->getRoles() as $role){
+            if ($role->getRoleId() === 'admin'){
+                return true;
+            }
+        }
+        
+        return $listquest && ($listquest->author->getId() === $user->getId());
     }
 }
 

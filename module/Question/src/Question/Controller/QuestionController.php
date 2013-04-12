@@ -5,7 +5,7 @@ namespace Question\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Question\Entity\Question;          
-use Question\Form\QuestionForm;     
+use Question\Form\EditQuestionForm;     
 use Question\Entity\Listquest;     
 use Question\Provider\ProvidesEntityManager;
 
@@ -26,43 +26,8 @@ class QuestionController extends AbstractActionController
         ];
     }
 
-    public function addAction()
-    {
-        $listId = (int) $this->params()->fromRoute('id', 0);
-        if (!$listId) {
-            return $this->redirect()->toRoute('home');
-        }
-        $listquest = $this  ->getEntityManager()
-                            ->find('Question\Entity\Listquest',$listId);
-        
-        if (!$this->_checkUserIsAuthorized($listquest)) {
-            return $this->redirect()->toRoute('home');
-        }
-        
-        $form = $this->getServiceLocator()->get('Question\Form\EditQuestionsInListquestForm');
-        $form->get('submit')->setValue(_('Add'));
-        $form->bind($listquest);  
-        $request = $this->getRequest();
-        if ($request->isPost()) {
-            
-            $form->setData($request->getPost()); 
-            if ($form->isValid()) {  
-                $this->getEntityManager()->persist($listquest);
-                $this->getEntityManager()->flush();
-
-                return $this->redirect()->toRoute(
-                    'list/show',
-                    ['id' => $listId]
-                );
-            }
-        }
-        return ['form' => $form,'listId' => $listId];        
-        
-    }
-
     public function editAction()
     {
-        
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('home');
@@ -74,7 +39,7 @@ class QuestionController extends AbstractActionController
             return $this->redirect()->toRoute('home');
         }
         
-        $form  = new QuestionForm();
+        $form  = $this->getServiceLocator()->get('edit-question-form');
         $form->bind($question);
         $form->get('submit')->setValue(_('Edit'));
 
@@ -89,7 +54,7 @@ class QuestionController extends AbstractActionController
 
                 return $this->redirect()->toRoute(
                     'list',
-                    ['action' => 'show','id' => $question->listquest->id]
+                    ['action' => 'edit','id' => $question->listquest->id]
                 );
             }
         }

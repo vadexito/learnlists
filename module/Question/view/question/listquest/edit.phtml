@@ -1,1 +1,64 @@
-bla
+<?php
+
+$title = sprintf($this->translate('Edit %s'),$list->title);
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('list/edit', ['id' => $list->id]));
+$form->prepare();
+echo $this->form()->openTag($form);
+$questionTarget = $this->form->get('listquest')->get('questions')->getTargetElement();
+
+?>
+
+<span id="questions_element">
+    <table>
+        <thead>
+            <th>
+                <?php echo $questionTarget->get('text')->getLabel();?>
+                <span class="help-inline">
+                    (<a href="#" data-toggle="popover" data-placement="bottom" title="<?php echo $this->translate('Rules for entering question text'); ?>" data-content="<?php echo $this->translate('(i) Enter the text for the question. (ii) If this is a sentence to fill in, please use two \'%\' signs in order to specify answers.Example : He %was% not there %either% (maximum two answers). (iii) in the case of multiple possibilities you can use the sign \'--\'. Example : He is tired %because--since% he did not sleep enough.'); ?>">?</a>)
+                </span>
+            </th>
+            <th>
+                <?php echo $questionTarget->get('answer')->getLabel();?>
+                <span class="help-inline">
+                    (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
+                </span>
+            </th>
+            <th><?php echo $questionTarget->get('tip')->getLabel();?></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <?php foreach ($form->get('listquest')->get('questions') as $question) : ?>        
+        <tr class="populate">
+            <?php echo $this->formHidden($question->get('id'));?>
+            <td><?php echo $this->formInput($question->get('text'));?></td>
+            <td><?php echo $this->formInput($question->get('answer'));?></td>
+            <td><?php echo $this->formInput($question->get('tip'));?></td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-mini btn-primary" href="<?php echo $this->url('question/edit',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Edit question'); ?>">
+                        <i class="icon-edit icon-white"></i>
+                    </a>
+                    <a class="btn btn-mini btn-primary" href="<?php echo $this->url('question/delete',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Remove question'); ?>">
+                        <i class="icon-remove icon-white"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>  
+        <?php endforeach;?>
+        </tbody>
+    </table>
+    <div id="questions_element_adding">
+        <?php echo $this->formCollection()->renderTemplate($this->form->get('listquest')->get('questions')) ?>
+        <div class="added_elements"></div>
+        <a data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Press to add a new empty line. Press the save button below to save'); ?>" data-collection="questions_element" class="btn add_item_to_collection_button" id="add_questions_button"><i class="icon-plus"></i></a>
+    </div>
+</span>
+<div class="form-actions">
+    <?php echo $this->formSubmit($form->get('submit'));?>
+</div>
+<?php echo $this->form()->closeTag();

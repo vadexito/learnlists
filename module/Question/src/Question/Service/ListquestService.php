@@ -52,6 +52,11 @@ class ListquestService
         $this->getObjectManager()->flush();
     }
     
+    public function updateListquest(Listquest $listquest)
+    {
+        $this->getObjectManager()->flush();
+    }
+    
     public function deleteListquest(Listquest $listquest)
     {
         $this->getObjectManager()->remove($listquest);

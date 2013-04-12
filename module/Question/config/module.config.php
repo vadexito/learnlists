@@ -34,22 +34,10 @@ return [
                             ],
                         ],
                     ],
-                    'add' => [
-                        'type' => 'segment',
-                        'options' => [
-                            'route' => '/add[/:id]',
-                            'constraints' => [
-                                'id'     => '[0-9]+',
-                            ], 
-                            'defaults' => [
-                                'action'     => 'add',
-                            ],
-                        ],
-                    ],
                     'edit' => [
                         'type' => 'segment',
                         'options' => [
-                            'route' => '/edit[/:id]',
+                            'route' => '/edit/:id',
                             'constraints' => [
                                 'id'     => '[0-9]+',
                             ],  
@@ -117,15 +105,15 @@ return [
                             ],
                         ],
                     ],                    
-                    'show' => [
+                    'edit' => [
                         'type' => 'segment',
                         'options' => [
-                            'route' => '/show[/:id]',
+                            'route' => '/edit/:id',
                             'constraints' => [
                                 'id'     => '[0-9]+',
                             ],  
                             'defaults' => [
-                                'action'     => 'show',
+                                'action'     => 'edit',
                             ],
                         ],
                     ],                    

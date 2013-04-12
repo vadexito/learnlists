@@ -16,7 +16,6 @@ $this->headScript()->appendFile($this->basePath() . '/js/lib/jquery.datatable.mi
 <table id="table_lists" class="table listquest_table">
     <thead>
         <tr>
-            <th></th>
             <th><?php echo $this->translate('Tags'); ?></th>
             <th><?php echo $this->translate('Rating'); ?></th>
             <th><?php echo $this->translate('Level'); ?></th>
@@ -25,24 +24,12 @@ $this->headScript()->appendFile($this->basePath() . '/js/lib/jquery.datatable.mi
             <th></th>
 <?php endif; ?>           
             <th><?php echo $this->translate('Date'); ?></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 <?php foreach ($this->lists as $list) : $commentArea = 'comments-list-'.$list->id; ?>
       <tr class="listquest">
-            <td>
-<?php if ($this->zfcUserIdentity() && ($this->zfcUserIdentity()->getRoles()[0]->getRoleId() === 'teacher')) :?>             
-                <button class="btn btn-mini btn-info " data-toggle="collapse" data-target="#<?php echo $commentArea; ?>" title="<?php echo $this->translate('See comments'); ?>">
-                    <i class="icon-chevron-down icon-white"></i>
-                </button>
-<?php endif; ?>
-<?php if ($this->zfcUserIdentity() && ($list->author->getId() === $this->zfcUserIdentity()->getId())) :?> 
-                <div class="btn-group">
-                    <a class="btn btn-primary btn-small" href="<?php echo $this->url('question/add',['id' => $list->id]); ?>" title="<?php echo $this->translate('Add question'); ?>"><i class="icon-plus icon-white"></i></a>
-                    <a class="btn btn-primary btn-small" href="<?php echo $this->url('list/show',['id' => $list->id]); ?>" title="<?php echo $this->translate('Edit list'); ?>"><i class="icon-edit icon-white"></i></a>
-                </div>
-<?php endif; ?>
-            </td>
             <td><?php if (count($list->tags) > 0) : echo $this->escapeHtml(implode(', ',$list->tags->toArray())); endif; ?></td>
             <td>
                 <?php if (isset($ratingService)) : echo round($ratingService->getRatingSet($list->id)->getAmount());endif; ?>
@@ -81,8 +68,19 @@ if ($nbQuestion == 0) {
             <td>
                 <?php echo $this->dateFormat($list->creationDate,IntlDateFormatter::MEDIUM); ?>
             </td>
+            <td>
+<?php if ($this->zfcUserIdentity() && ($this->zfcUserIdentity()->getRoles()[0]->getRoleId() === 'teacher')) :?>             
+                <button class="btn btn-mini btn-info " data-toggle="collapse" data-target="#<?php echo $commentArea; ?>" title="<?php echo $this->translate('See comments'); ?>">
+                    <i class="icon-chevron-down icon-white"></i>
+                </button>
+<?php endif; ?>
+<?php if ($this->zfcUserIdentity() && ($list->author->getId() === $this->zfcUserIdentity()->getId())) :?> 
+                <a class="btn btn-mini btn-primary" href="<?php echo $this->url('list/edit',['id' => $list->id]); ?>" title="<?php echo $this->translate('Edit list'); ?>">
+                    <i class="icon-edit icon-white"></i>
+                </a>
+<?php endif; ?>
+            </td>
         </tr>
-      
 <?php if ($this->zfcUserIdentity() && ($this->zfcUserIdentity()->getRoles()[0]->getRoleId() === 'teacher')) :?>
         <div id="<?php echo $commentArea; ?>" class="collapse"> In test </div>        
 <?php endif;?>      

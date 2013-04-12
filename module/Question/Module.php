@@ -9,6 +9,7 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Question\Form\TagFieldset;
 use Question\Form\EditQuestionsInListquestForm;
 use Question\Form\ListquestForm;
+use Question\Form\EditQuestionForm;
 
 class Module implements 
     AutoloaderProviderInterface,
@@ -37,15 +38,17 @@ class Module implements
     {
         return [
             'factories' => [
-                'Question\Form\ListquestForm' =>  function($sm) {
-            
+                'Question\Form\ListquestForm' =>  function($sm) {            
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');    
                     return new ListquestForm($entityManager);
                 },
-                'Question\Form\EditQuestionsInListquestForm' =>  function($sm) {
-            
+                'Question\Form\EditQuestionsInListquestForm' =>  function($sm) {            
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
                     return new EditQuestionsInListquestForm($entityManager);
+                },
+                'edit-question-form' =>  function($sm) {            
+                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
+                    return new EditQuestionForm($entityManager);
                 },
             ],
         ];

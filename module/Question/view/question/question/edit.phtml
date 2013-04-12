@@ -11,17 +11,17 @@ $form->setAttribute('action', $this->url('question/edit',[
 $form->prepare();
 
 echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id'));
-echo $this->formHidden($form->get('listId'));
-echo $this->formRow($form->get('text'));?>
+$question = $form->get('question');
+echo $this->formHidden($question->get('id'));
+echo $this->formRow($question->get('text'));?>
 <span class="help-inline">
     (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Enter the text for the question. If this is a sentence to fill in, please use two "%" signs in order to specify answers.Example : He %was% not there %either%.'); ?>">?</a>)
 </span>
-<?php echo $this->formRow($form->get('answer'));?>
+<?php echo $this->formRow($question->get('answer'));?>
 <span class="help-inline">
     (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
 </span>
-<?php echo $this->formRow($form->get('tip'));?>
+<?php echo $this->formRow($question->get('tip'));?>
 <div class="form-actions">
     <?php echo $this->formSubmit($form->get('submit'));?>
 </div>
