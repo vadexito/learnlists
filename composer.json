@@ -25,6 +25,7 @@
         "phly/phly-contact": "dev-master",
         "zendframework/zendservice-recaptcha": "2.0.*@dev",
         "vxo/vxo-locale": "dev-master",
+        "phly/phly-simple-page": "dev-develop",
         "braintree/braintree_php": "2.19.0"
     }
 }
