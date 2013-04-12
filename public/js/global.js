@@ -1,5 +1,13 @@
 $(function() {
     
+    //focus on home page
+    if ($('#tags').length > 0){
+        $('#tags').focus();
+    }
+    
+    
+    
+    
     if (typeof learnMVC === 'object') {
         learnMVC.start({
             listId:$('#listId').val(),
