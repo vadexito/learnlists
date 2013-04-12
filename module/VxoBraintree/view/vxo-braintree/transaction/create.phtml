@@ -8,7 +8,11 @@ $this->headTitle($title);
 $form->setAttribute('action', $this->url('payment/create_transaction'));
 $form->prepare(); 
 echo $this->form()->openTag($form);
-echo $this->formCollection($form);
+echo $this->formRow($form->get('number')); ?>
+<?php echo $this->formRow($form->get('cvv')); ?>
+<?php echo $this->formRow($form->get('month')); ?>
+<?php echo $this->formRow($form->get('year')); ?><br/>
+<?php echo $this->formSubmit($form->get('submit')); 
 echo $this->form()->closeTag();
 ?>
 

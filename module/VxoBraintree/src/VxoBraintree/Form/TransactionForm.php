@@ -76,7 +76,7 @@ class TransactionForm extends Form
                 'type'  => 'submit',
                 'value' => 'Check',
                 'id' => 'submitbutton',
-                'class' => 'btn btn-block btn-primary',
+                'class' => 'btn btn-primary',
             ],
         ]);
     }
