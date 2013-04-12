@@ -22,6 +22,13 @@ class ListquestController extends AbstractActionController
         ];
     }
     
+    public function homeAction()
+    {
+        return [
+            'lists' => $this->getListquestService()->fetchAll()
+        ];
+    }
+    
     public function showAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);

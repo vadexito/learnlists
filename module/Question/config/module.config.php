@@ -30,7 +30,7 @@ return [
                                 'id'     => '[0-9]+',
                             ],                              
                             'defaults' => [
-                                'action'     => 'index',
+                                'action'     => 'learn',
                             ],
                         ],
                     ],

@@ -13,7 +13,7 @@ class QuestionController extends AbstractActionController
 {
     use ProvidesEntityManager;
     
-    public function indexAction()
+    public function learnAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
