@@ -49,16 +49,16 @@ echo $this->navigation('navigation')->menu()->setPartial($partial)->render();
                     <div class="offset1 span3">
                         <h5><?php echo $this->translate('Company'); ?></h5>
                         <ul>
-                            <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'about']); ?>"><?php echo $this->translate('About'); ?></a></li>
-                            <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'terms']); ?>"><?php echo $this->translate('Terms'); ?></a></li>
-                            <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'privacy']); ?>"><?php echo $this->translate('Privacy'); ?></a></li>
+                            <li class="footer-item"><a href="<?php echo $this->url('footer/about'); ?>"><?php echo $this->translate('About'); ?></a></li>
+                            <li class="footer-item"><a href="<?php echo $this->url('footer/terms'); ?>"><?php echo $this->translate('Terms'); ?></a></li>
+                            <li class="footer-item"><a href="<?php echo $this->url('footer/privacy'); ?>"><?php echo $this->translate('Privacy'); ?></a></li>
                             <li class="footer-item"><a href="<?php echo $this->url('contact'); ?>"><?php echo $this->translate('Contact'); ?></a></li> 
                        </ul>
                    </div>
                    <div class="span3">
                        <h5><?php echo $this->translate('Help'); ?></h5>
                        <ul>
-                           <li class="footer-item"><a href="<?php echo $this->url('application/footer',['page' => 'help']); ?>"><?php echo $this->translate('Q&A'); ?></a></li>      
+                           <li class="footer-item"><a href="<?php echo $this->url('footer/help'); ?>"><?php echo $this->translate('Q&A'); ?></a></li>      
                        </ul>
                    </div>
                    <div class="offset2 span3">

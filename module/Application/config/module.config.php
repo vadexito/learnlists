@@ -11,12 +11,60 @@ return [
     'router' => [
         'routes' => [
             'home' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'Literal',
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
+                        'controller' => 'Question\Controller\Listquest',
+                        'action'     => 'home',
+                    ],
+                ],
+            ],
+            'footer' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route'    => '/footer',
+                    'defaults' => [
+                        'controller' => 'PhlySimplePage\Controller\Page'
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'about' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/about',
+                            'defaults' => [
+                                'template'   => 'application/footer/about',
+                            ],
+                        ],
+                    ],
+                    'terms' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/terms',
+                            'defaults' => [
+                                'template'   => 'application/footer/terms',
+                            ],
+                        ],
+                    ],
+                    'privacy' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/privacy',
+                            'defaults' => [
+                                'template'   => 'application/footer/privacy',
+                            ],
+                        ],
+                    ],
+                    'help' => [
+                        'type'    => 'Literal',
+                        'options' => [
+                            'route'    => '/help',
+                            'defaults' => [
+                                'template'   => 'application/footer/help',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -36,20 +84,6 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'footer' => [
-                        'type'    => 'Segment',
-                        'options' => [
-                            'route'    => '/footer/index/[:page]',
-                            'constraints' => [
-                                'page'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ],
-                            'defaults' => [
-                                '__NAMESPACE__' => 'Application\Controller',
-                                'controller' => 'Footer',                                
-                                'action' => 'index',                                
-                            ],
-                        ],
-                    ],
                     'default' => [
                         'type'    => 'Segment',
                         'options' => [
@@ -90,7 +124,6 @@ return [
     'controllers' => [
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Footer' => 'Application\Controller\FooterController',
         ],
     ],
     'view_manager' => [
