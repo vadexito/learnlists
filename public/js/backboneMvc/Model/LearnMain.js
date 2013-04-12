@@ -18,6 +18,7 @@ window.LearnMain = Backbone.Model.extend({
                 collection:new Questions()
             };
             
+            
             this.questions.collection.initQuestions(list.get('questions'));  
             
             learnMVC.vent.trigger("learn:init");
@@ -64,7 +65,7 @@ window.LearnMain = Backbone.Model.extend({
         var roundOrder = this.currentRound.get('roundOrder');
 
         if (roundOrder.length > 0) {            
-            learnMVC.vent.trigger("learn:initNewQuestion",_.first(this.currentRound.get('roundOrder')));
+            learnMVC.vent.trigger("learn:initNewQuestion",_.first(roundOrder));
         } else {
             learnMVC.vent.trigger("learn:roundCompleted");
         }
@@ -172,7 +173,10 @@ window.LearnMain = Backbone.Model.extend({
                 }
             };
 
-            this.set('comments',commentsValues[answerType][lastAnswerType] || '');
+            if (commentsValues[String(answerType)]){
+                this.set('comments',commentsValues[String(answerType)][String(lastAnswerType)] || '');
+            }
+            
         }
         
         
@@ -216,7 +220,7 @@ window.LearnMain = Backbone.Model.extend({
             answerPart:0,
             questionId:questionId
         });      
-
+        
         this.set({
             'text': question.get('text')
         });
