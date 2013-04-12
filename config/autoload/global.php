@@ -36,7 +36,12 @@ return [
                         'route' => 'list/add',
                         'resource' => 'listquest',
                         'privilege' => 'add',
-                    ],  
+                    ], 
+                    [
+                        'id' => 'offers',
+                        'label' => _('Offers'),
+                        'route' => 'offers',
+                    ],                      
                     [
                         'id' => 'admin-lists',
                         'label' => 'Admin',
@@ -49,7 +54,6 @@ return [
                         'route' => 'list/premium',
                         'resource' => 'premium',
                     ],
-                    
                 ],
             ],             
             [
