@@ -67,10 +67,7 @@ window.Questionresult = Backbone.Model.extend({
         //the answer is true   
         if (this.isAnswerRight(answerGiven,answersToCheck)){
             
-            
-            $('#error-sign').hide();
-            $('#check-sign').show();
-            $('#answer-group').addClass('success');
+            learnMVC.vent.trigger("learn:answerSuccess");
             
             // if the answer has only one part
             if (typeof answerInDB === 'string'){   
@@ -92,8 +89,7 @@ window.Questionresult = Backbone.Model.extend({
             }
         //the answer is false
         } else {
-            $('#error-sign').show();
-            $('#answer-group').addClass('error');
+            learnMVC.vent.trigger("learn:answerError");
             this.set('multiple',this.get('multiple') + 1);
             return false;
         }

@@ -64,7 +64,7 @@ window.LearnMain = Backbone.Model.extend({
 
         var roundOrder = this.currentRound.get('roundOrder');
 
-        if (roundOrder.length > 0) {            
+        if (roundOrder.length > 0) {   
             learnMVC.vent.trigger("learn:initNewQuestion",_.first(roundOrder));
         } else {
             learnMVC.vent.trigger("learn:roundCompleted");
@@ -203,7 +203,6 @@ window.LearnMain = Backbone.Model.extend({
                 'nb_average_answering':0,
                 'nb_bad_answering':0
             });
-            
         learnMVC.vent.trigger("learn:nextQuestion");
     },
     

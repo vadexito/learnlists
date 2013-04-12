@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-10 17:34+0100\n"
-"PO-Revision-Date: 2013-04-10 20:34+0100\n"
+"POT-Creation-Date: 2013-04-12 19:25+0100\n"
+"PO-Revision-Date: 2013-04-12 19:25+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -18,24 +18,28 @@ msgstr ""
 "X-Poedit-SearchPath-1: ../../Question\n"
 "X-Poedit-SearchPath-2: ../../../config/autoload\n"
 
-#: ../../Question/src/Question/Controller/ListquestController.php:39
-#: ../../Question/src/Question/Controller/QuestionController.php:43
+#: ../../Question/src/Question/Controller/ListquestController.php:35
+#: ../../Question/src/Question/Controller/ListquestController.php:68
 msgid "Add"
 msgstr "Erstellen"
 
-#: ../../Question/src/Question/Controller/QuestionController.php:79
-#: ../../Question/view/question/listquest/show.phtml:56
-#: ../../Question/view/question/listquest/show.phtml:60
+#: ../../Question/src/Question/Controller/QuestionController.php:44
 msgid "Edit"
 msgstr "Editieren"
 
+#: ../../Question/src/Question/Form/EditQuestionForm.php:36
+#: ../../Question/src/Question/Form/ListquestForm.php:37
+#: ../../Question/view/question/question/learn.phtml:98
+msgid "Check"
+msgstr "Anworten"
+
 #: ../../Question/src/Question/Form/ListquestFieldset.php:45
-#: ../../Question/view/question/listquest/index.phtml:29
+#: ../../Question/view/question/listquest/index.phtml:22
 msgid "Title"
 msgstr "Titel"
 
 #: ../../Question/src/Question/Form/ListquestFieldset.php:56
-#: ../../Question/view/question/listquest/index.phtml:28
+#: ../../Question/view/question/listquest/index.phtml:21
 msgid "Level"
 msgstr "Niveau"
 
@@ -43,25 +47,17 @@ msgstr "Niveau"
 msgid "Rules"
 msgstr "Regeln"
 
-#: ../../Question/src/Question/Form/ListquestForm.php:37
-#: ../../Question/view/question/question/index.phtml:109
-msgid "Check"
-msgstr "Anworten"
-
 #: ../../Question/src/Question/Form/QuestionFieldset.php:42
-#: ../../Question/view/question/listquest/show.phtml:44
 msgid "Text"
 msgstr "Text"
 
-#: ../../Question/src/Question/Form/QuestionFieldset.php:54
-#: ../../Question/view/question/listquest/show.phtml:45
-#: ../../Question/view/question/question/index.phtml:118
+#: ../../Question/src/Question/Form/QuestionFieldset.php:55
+#: ../../Question/view/question/question/learn.phtml:110
 msgid "Answer"
 msgstr "Lösung"
 
-#: ../../Question/src/Question/Form/QuestionFieldset.php:66
-#: ../../Question/view/question/listquest/show.phtml:46
-#: ../../Question/view/question/question/index.phtml:133
+#: ../../Question/src/Question/Form/QuestionFieldset.php:67
+#: ../../Question/view/question/question/learn.phtml:125
 msgid "Tip"
 msgstr "Kommentar"
 
@@ -82,66 +78,29 @@ msgstr "Browsen"
 msgid "New list"
 msgstr "Neue Liste"
 
-#: ../../../config/autoload/global.php:48
+#: ../../../config/autoload/global.php:42
+msgid "Offers"
+msgstr ""
+
+#: ../../../config/autoload/global.php:53
 msgid "My program"
 msgstr "Mein Programm"
 
-#: ../../../config/autoload/global.php:61 ../view/zfc-user/user/login.phtml:1
+#: ../../../config/autoload/global.php:65 ../view/zfc-user/user/login.phtml:1
 msgid "Sign In"
 msgstr "Einloggen"
 
-#: ../../../config/autoload/global.php:68
+#: ../../../config/autoload/global.php:72
 msgid "Sign Up"
 msgstr "Anmelden"
 
-#: ../../../config/autoload/global.php:83
+#: ../../../config/autoload/global.php:87
 msgid "My account"
 msgstr "Mein Konto"
 
-#: ../../../config/autoload/global.php:90
+#: ../../../config/autoload/global.php:94
 msgid "Log out"
 msgstr "Ausloggen"
-
-#: ../view/application/index/index.phtml:2
-msgid "Learn with top quizzes"
-msgstr "Lerne mit den besten Quiz"
-
-#: ../view/application/index/index.phtml:13
-msgid "Find the quizz you need"
-msgstr "Finde das passende Quiz"
-
-#: ../view/application/index/index.phtml:14
-#, fuzzy
-msgid ""
-"One great way to learn is through quiz. At Learnlists, you can find quizzes "
-"developed by teachers which ensures their top quality."
-msgstr "Quiz zu benutzen ist ein anerkanntes Mittel um nachhaltig zu lernen."
-
-#: ../view/application/index/index.phtml:15
-msgid "Browse lists"
-msgstr "Listen ansehen"
-
-#: ../view/application/index/index.phtml:19
-msgid "Learn through validated methods"
-msgstr "Lerne mittels bewährter Techniken und anspruchsvoller Listen"
-
-#: ../view/application/index/index.phtml:20
-msgid ""
-"At learnlists, we developped thanks to profesionnals (teachers and memory "
-"scientists and doctors) method that maximize the memorization processs and "
-"minimize your effort"
-msgstr ""
-
-#: ../view/application/index/index.phtml:25
-msgid "Create and share you own quizzes"
-msgstr "Erstelle und teile eine Liste"
-
-#: ../view/application/index/index.phtml:26
-#, fuzzy
-msgid "You can create and share your own private lists."
-msgstr ""
-"Du kannst private oder öffentliche Liste erstellen. Man braucht dafür "
-"eingeloggt zu sein."
 
 #: ../view/cdli-twostagesignup/email/verification.phtml:2
 msgid ""
@@ -355,77 +314,16 @@ msgid "Are you sure that you want to delete the whole list"
 msgstr ""
 "Sind Sie sicher, dass Sie die Frage mit folgendem Text löschen möchten "
 
-#: ../../Question/view/question/listquest/index.phtml:3
-#: ../../Question/view/question/listquest/show.phtml:2
-msgid "Learn at LearnLists"
-msgstr "Mit Learnlists lernen"
-
-#: ../../Question/view/question/listquest/index.phtml:17
-#: ../../Question/view/question/listquest/show.phtml:36
-msgid "Search"
-msgstr "Suchen"
-
-#: ../../Question/view/question/listquest/index.phtml:26
-msgid "Tags"
-msgstr "Tags"
-
-#: ../../Question/view/question/listquest/index.phtml:27
-msgid "Rating"
-msgstr "Bewertung"
-
-#: ../../Question/view/question/listquest/index.phtml:33
-msgid "Date"
-msgstr "Datum"
-
-#: ../../Question/view/question/listquest/index.phtml:41
-msgid "See comments"
-msgstr "Sehe Kommentare"
-
-#: ../../Question/view/question/listquest/index.phtml:47
-#: ../../Question/view/question/listquest/show.phtml:31
-msgid "Add question"
-msgstr "Neue Frage"
-
-#: ../../Question/view/question/listquest/index.phtml:48
-msgid "Edit list"
+#: ../../Question/view/question/listquest/edit.phtml:3
+#, fuzzy, php-format
+msgid "Edit %s"
 msgstr "Liste bearbeiten"
 
-#: ../../Question/view/question/listquest/index.phtml:70
-#, php-format
-msgid "by %s"
-msgstr "von %s"
-
-#: ../../Question/view/question/listquest/index.phtml:79
-#: ../../Question/view/question/listquest/index.phtml:81
-msgid "Like"
-msgstr "Mag ich"
-
-#: ../../Question/view/question/listquest/index.phtml:79
-msgid "I like this"
-msgstr "Das mag ich"
-
-#: ../../Question/view/question/listquest/show.phtml:26
-#, php-format
-msgid "by %s created on %s"
-msgstr "von %s erstellt am %s"
-
-#: ../../Question/view/question/listquest/show.phtml:61
-msgid "Delete"
-msgstr "Löschen"
-
-#: ../../Question/view/question/listquest/show.phtml:66
-msgid "Add comment"
-msgstr "Neues Kommentar"
-
-#: ../../Question/view/question/question/add.phtml:3
-msgid "Add new question"
-msgstr "Frage hinzufügen"
-
-#: ../../Question/view/question/question/add.phtml:22
+#: ../../Question/view/question/listquest/edit.phtml:22
 msgid "Rules for entering question text"
 msgstr "Wie man Fragen einträgt"
 
-#: ../../Question/view/question/question/add.phtml:22
+#: ../../Question/view/question/listquest/edit.phtml:22
 msgid ""
 "(i) Enter the text for the question. (ii) If this is a sentence to fill in, "
 "please use two '%' signs in order to specify answers.Example : He %was% not "
@@ -440,16 +338,136 @@ msgstr ""
 "Zeichen '--' benutzt werden wie im folgenden Beipspiel : Ihr habt einen "
 "großen Irrtum %begangen--gemacht%."
 
-#: ../../Question/view/question/question/add.phtml:28
+#: ../../Question/view/question/listquest/edit.phtml:28
 #: ../../Question/view/question/question/edit.phtml:22
 msgid ""
 "Nothing to enter if the answer was already entered directly in the text."
 msgstr ""
 "Keine Antwort einzutragen, wenn es sich um eine zu ergänzende Frage handelt."
 
-#: ../../Question/view/question/question/add.phtml:47
+#: ../../Question/view/question/listquest/edit.phtml:43
+#: ../../Question/view/question/question/edit.phtml:2
+msgid "Edit question"
+msgstr "Frage editieren"
+
+#: ../../Question/view/question/listquest/edit.phtml:46
+#, fuzzy
+msgid "Remove question"
+msgstr "Frage löschen"
+
+#: ../../Question/view/question/listquest/edit.phtml:58
 msgid "Press to add a new empty line. Press the save button below to save"
 msgstr ""
+
+#: ../../Question/view/question/listquest/home.phtml:2
+#, fuzzy
+msgid "Learn with quizzes"
+msgstr "Lerne mit den besten Quiz"
+
+#: ../../Question/view/question/listquest/home.phtml:9
+#, php-format
+msgid ""
+"Learn with %d high quality quizzes proposed by our community of teachers."
+msgstr ""
+
+#: ../../Question/view/question/listquest/home.phtml:11
+msgid "Which quizz are you looking for?"
+msgstr ""
+
+#: ../../Question/view/question/listquest/home.phtml:12
+msgid "Language"
+msgstr "Sprache"
+
+#: ../../Question/view/question/listquest/home.phtml:13
+#: ../../Question/view/question/listquest/index.phtml:11
+msgid "Search"
+msgstr "Suchen"
+
+#: ../../Question/view/question/listquest/home.phtml:20
+#, fuzzy
+msgid "Find high quality quizzes"
+msgstr "Spitzenqualität Quiz"
+
+#: ../../Question/view/question/listquest/home.phtml:21
+msgid ""
+"Quizzes are developed by profesionnal teachers and evaluated by the user "
+"commnunity which ensures top quality."
+msgstr ""
+
+#: ../../Question/view/question/listquest/home.phtml:22
+msgid "Browse lists"
+msgstr "Listen ansehen"
+
+#: ../../Question/view/question/listquest/home.phtml:26
+#, fuzzy
+msgid "Learn through efficient methods"
+msgstr "Lerne mittels bewährter Techniken und anspruchsvoller Listen"
+
+#: ../../Question/view/question/listquest/home.phtml:27
+msgid ""
+"Thanks to teaching profesionnals (teachers and memory scientists and "
+"doctors), Learnlists offers specific method that maximize the memorization "
+"processs and minimize the effort"
+msgstr ""
+
+#: ../../Question/view/question/listquest/home.phtml:28
+msgid "About our methods"
+msgstr ""
+
+#: ../../Question/view/question/listquest/home.phtml:32
+#, fuzzy
+msgid "Create and share quizzes"
+msgstr "Erstelle und teile eine Liste"
+
+#: ../../Question/view/question/listquest/home.phtml:33
+#, fuzzy
+msgid "You can also create and share your own private lists."
+msgstr ""
+"Du kannst private oder öffentliche Liste erstellen. Man braucht dafür "
+"eingeloggt zu sein."
+
+#: ../../Question/view/question/listquest/home.phtml:34
+#, fuzzy
+msgid "Learn how create lists"
+msgstr "Mit Learnlists lernen"
+
+#: ../../Question/view/question/listquest/index.phtml:3
+msgid "Learn at LearnLists"
+msgstr "Mit Learnlists lernen"
+
+#: ../../Question/view/question/listquest/index.phtml:19
+msgid "Tags"
+msgstr "Tags"
+
+#: ../../Question/view/question/listquest/index.phtml:20
+msgid "Rating"
+msgstr "Bewertung"
+
+#: ../../Question/view/question/listquest/index.phtml:26
+msgid "Date"
+msgstr "Datum"
+
+#: ../../Question/view/question/listquest/index.phtml:51
+#, php-format
+msgid "by %s"
+msgstr "von %s"
+
+#: ../../Question/view/question/listquest/index.phtml:60
+#: ../../Question/view/question/listquest/index.phtml:62
+msgid "Like"
+msgstr "Mag ich"
+
+#: ../../Question/view/question/listquest/index.phtml:60
+msgid "I like this"
+msgstr "Das mag ich"
+
+#: ../../Question/view/question/listquest/index.phtml:73
+msgid "See comments"
+msgstr "Sehe Kommentare"
+
+#: ../../Question/view/question/listquest/index.phtml:78
+msgid "Edit list"
+msgstr "Liste bearbeiten"
 
 #: ../../Question/view/question/question/delete.phtml:3
 msgid "Delete question"
@@ -459,10 +477,6 @@ msgstr "Frage löschen"
 msgid "Are you sure that you want to delete the question with the text"
 msgstr ""
 "Sind Sie sicher, dass Sie die Frage mit folgendem Text löschen möchten "
-
-#: ../../Question/view/question/question/edit.phtml:2
-msgid "Edit question"
-msgstr "Frage editieren"
 
 #: ../../Question/view/question/question/edit.phtml:18
 msgid ""
@@ -474,64 +488,68 @@ msgstr ""
 "ergänzende Frage handelt, nutzen sie Bitte zweimal die \"%\" Zeichen um die "
 "Antwort herum. Beipsiel : Er %hat% die richtige %Entscheidung %getroffen%."
 
-#: ../../Question/view/question/question/index.phtml:43
-#: ../../Question/view/question/question/index.phtml:71
+#: ../../Question/view/question/question/learn.phtml:43
+#: ../../Question/view/question/question/learn.phtml:71
 msgid "Round"
 msgstr "Runde"
 
-#: ../../Question/view/question/question/index.phtml:49
+#: ../../Question/view/question/question/learn.phtml:49
 msgid "Still"
 msgstr "Noch"
 
-#: ../../Question/view/question/question/index.phtml:51
+#: ../../Question/view/question/question/learn.phtml:51
 msgid "Score:"
 msgstr "Ergebnis:"
 
-#: ../../Question/view/question/question/index.phtml:67
+#: ../../Question/view/question/question/learn.phtml:67
 msgid "Your results"
 msgstr "Ergebnisse:"
 
-#: ../../Question/view/question/question/index.phtml:72
+#: ../../Question/view/question/question/learn.phtml:72
 msgid "Final Note"
 msgstr "Ergebnis:"
 
-#: ../../Question/view/question/question/index.phtml:73
+#: ../../Question/view/question/question/learn.phtml:73
 msgid "Perfect"
 msgstr "Perfekt"
 
-#: ../../Question/view/question/question/index.phtml:74
+#: ../../Question/view/question/question/learn.phtml:74
 msgid "Average"
 msgstr "Durchschnitt"
 
-#: ../../Question/view/question/question/index.phtml:75
+#: ../../Question/view/question/question/learn.phtml:75
 msgid "Bad"
 msgstr "Schlecht"
 
-#: ../../Question/view/question/question/index.phtml:76
+#: ../../Question/view/question/question/learn.phtml:76
 msgid "Not done"
 msgstr "Nicht verfügbar"
 
-#: ../../Question/view/question/question/index.phtml:101
+#: ../../Question/view/question/question/learn.phtml:96
 msgid "Answer here"
 msgstr "Hier antworten"
 
-#: ../../Question/view/question/question/index.phtml:106
+#: ../../Question/view/question/question/learn.phtml:102
 msgid "Next"
 msgstr "Nächste"
 
-#: ../../Question/view/question/question/index.phtml:112
-msgid "Answer?"
-msgstr "Antwort?"
+#: ../../Question/view/question/question/learn.phtml:102
+msgid "Skip"
+msgstr "Überspringen"
 
-#: ../../Question/view/question/question/index.phtml:123
+#: ../../Question/view/question/question/learn.phtml:105
+msgid "Answer?"
+msgstr "Lösung"
+
+#: ../../Question/view/question/question/learn.phtml:115
 msgid "Again"
 msgstr "Wiederholen"
 
-#: ../../Question/view/question/question/index.phtml:126
+#: ../../Question/view/question/question/learn.phtml:118
 msgid "Cancel round"
 msgstr "Neu anfangen"
 
-#: ../../Question/view/question/question/index.phtml:129
+#: ../../Question/view/question/question/learn.phtml:121
 msgid "Reset rounds"
 msgstr "Alle Runden löschen"
 
@@ -555,8 +573,30 @@ msgstr "Student"
 msgid "premium"
 msgstr "Premium"
 
-#~ msgid "High quality quizzes"
-#~ msgstr "Spitzenqualität Quiz"
+#~ msgid "Find the quizz you need"
+#~ msgstr "Finde das passende Quiz"
+
+#, fuzzy
+#~ msgid ""
+#~ "One great way to learn is through quiz. At Learnlists, you can find "
+#~ "quizzes developed by teachers which ensures their top quality."
+#~ msgstr ""
+#~ "Quiz zu benutzen ist ein anerkanntes Mittel um nachhaltig zu lernen."
+
+#~ msgid "Add question"
+#~ msgstr "Neue Frage"
+
+#~ msgid "by %s created on %s"
+#~ msgstr "von %s erstellt am %s"
+
+#~ msgid "Delete"
+#~ msgstr "Löschen"
+
+#~ msgid "Add comment"
+#~ msgstr "Neues Kommentar"
+
+#~ msgid "Add new question"
+#~ msgstr "Frage hinzufügen"
 
 #~ msgid ""
 #~ "Quality quizzes are developped by the community of teachers taking part "
@@ -564,9 +604,6 @@ msgstr "Premium"
 #~ msgstr ""
 #~ "Um eine höhe Qualität anzubieten werden die Quiz von bei LearnLists "
 #~ "angemeldeten Lehrern entwickelt."
-
-#~ msgid "Language"
-#~ msgstr "Sprache"
 
 #~ msgid "Questions?"
 #~ msgstr "Fragen?"
