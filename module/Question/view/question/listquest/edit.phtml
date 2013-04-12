@@ -38,12 +38,12 @@ $questionTarget = $this->form->get('listquest')->get('questions')->getTargetElem
             <td><?php echo $this->formInput($question->get('text'));?></td>
             <td><?php echo $this->formInput($question->get('answer'));?></td>
             <td><?php echo $this->formInput($question->get('tip'));?></td>
-            <td>
+            <td class="btn-group">
                 <div class="btn-group">
-                    <a class="btn btn-mini btn-primary" href="<?php echo $this->url('question/edit',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Edit question'); ?>">
+                    <a class="btn btn-mini btn-primary edit-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('question/edit',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Edit question'); ?>">
                         <i class="icon-edit icon-white"></i>
                     </a>
-                    <a class="btn btn-mini btn-primary" href="<?php echo $this->url('question/delete',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Remove question'); ?>">
+                    <a class="btn btn-mini btn-primary delete-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('question/delete',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Remove question'); ?>">
                         <i class="icon-remove icon-white"></i>
                     </a>
                 </div>

@@ -28,7 +28,7 @@ class Grid extends AbstractHelper
             $listId = $row['id'];
             
             $btnEdit = '<a href="'
-                .$this->getView()->url('list/show',['id' => $listId])
+                .$this->getView()->url('list/edit',['id' => $listId])
                 .'" class="btn"><i class="icon-edit"></i></a>';
             
             $btnDelete = '<a href="'

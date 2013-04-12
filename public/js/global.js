@@ -60,10 +60,10 @@ $(function() {
         });
     } 
     
-    
+    //multi line elements
     var collection = $('#questions_element');
     collection.find('tr.populate input').attr('readonly','true');
-    
+    //multi line element for edit list (several questions)
     $('#add_questions_button.add_item_to_collection_button').click(function(e){
         e.preventDefault();
         
@@ -82,6 +82,8 @@ $(function() {
         $('#'+ collectionId).find('tbody').append(addedPlace.find('tr'));
         
     });
+    
+    //multi line elemnet for create list
     $('#add_tags_button.add_item_to_collection_button').click(function(e){
         e.preventDefault();
         var collectionId = $(e.currentTarget).data('collection');    
@@ -95,4 +97,13 @@ $(function() {
         collection.append(template);        
         collection.find('label').slice(1).hide();
     });
+    
+    //edit list page
+    $('a.edit-question').click(function(e){
+        e.preventDefault();
+        $(e.currentTarget).parents('tr').find('input').removeAttr('readonly');
+        $(e.currentTarget).hide();        
+    });
+    
+    
 });

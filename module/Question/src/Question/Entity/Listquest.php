@@ -78,6 +78,11 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
     protected $questions;
     
     /**
+     * @var ArrayCollection of Question\Entity\Question
+     */
+    protected $rounds;
+    
+    /**
      * ArrayCollection of Question\Entity\Tag
      */
     protected $tags;    
@@ -88,6 +93,7 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
     {
         $this->questions = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->rounds = new ArrayCollection();
     }
     
     public function getId()
@@ -198,6 +204,29 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
         foreach ($questions as $question) {
             $question->setListquest(null);
             $this->questions->removeElement($question);
+        }
+    }
+    
+    public function addRound(Round $round)
+    {
+        $this->rounds->add($round);
+        $round->setListquest($this);
+        return $this;
+    }
+    
+    public function addRounds(Collection $rounds)
+    {
+        foreach ($rounds as $round) {
+            $this->addRound($round);
+        }
+        return $this;
+    }
+    
+    public function removeRounds(Collection $rounds)
+    {
+        foreach ($rounds as $round) {
+            $round->setListquest(null);
+            $this->rounds->removeElement($round);
         }
     }
     public function toArray()

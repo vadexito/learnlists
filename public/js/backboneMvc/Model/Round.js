@@ -136,6 +136,7 @@ window.Rounds = Backbone.Collection.extend({
         //if there are historical data
         if (this.models.length > 0){
             var lastResults = _.last(this.models).get('questionresults');
+            console.log(lastResults);
             console.log(lastResults.pluck('questionId'));
             console.log(lastResults.pluck('answerType'));
             return lastResults.pluck('questionId');            

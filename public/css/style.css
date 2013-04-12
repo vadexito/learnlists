@@ -138,7 +138,18 @@ table {
 }
 
 /*=======================================
-question ask page
+edit list page
+=========================================*/
+
+td.btn-group {
+    margin:0;
+    margin-left: 10px;
+    margin-top: 3px;
+    padding:0;
+}
+
+/*=======================================
+question ask page general
 =========================================*/
 
 .card{
