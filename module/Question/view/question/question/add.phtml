@@ -47,8 +47,7 @@ $questionTarget = $this->form->get('listquest')->get('questions')->getTargetElem
         <a data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Press to add a new empty line. Press the save button below to save'); ?>" data-collection="questions_element" class="btn add_item_to_collection_button" id="add_questions_button"><i class="icon-plus"></i></a>
     </div>
 </span>
-<br/>
-<br/>
-<?php 
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+<div class="form-actions">
+    <?php echo $this->formSubmit($form->get('submit'));?>
+</div>
+<?php echo $this->form()->closeTag();

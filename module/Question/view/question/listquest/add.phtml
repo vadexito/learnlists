@@ -24,7 +24,9 @@ echo $this->formRow($listquestFieldset->get('title'));?>
  <?php 
 echo $this->formRow($listquestFieldset->get('level')); ?>
 (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Advanced, average, beginner for example'); ?>">?</a>) 
-<?php echo $this->formRow($listquestFieldset->get('rules')); ?><br/>
-<?php echo $this->formSubmit($form->get('submit')); ?>
+<?php echo $this->formRow($listquestFieldset->get('rules')); ?>
+<div class="form-actions">
+    <?php echo $this->formSubmit($form->get('submit')); ?>
+</div>
 <?php echo $this->form()->closeTag();?> 
 

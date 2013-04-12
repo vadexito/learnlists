@@ -21,9 +21,11 @@ echo $this->formRow($form->get('text'));?>
 <span class="help-inline">
     (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
 </span>
-<?php echo $this->formRow($form->get('tip'));?><br/><?php 
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+<?php echo $this->formRow($form->get('tip'));?>
+<div class="form-actions">
+    <?php echo $this->formSubmit($form->get('submit'));?>
+</div>
+<?php echo $this->form()->closeTag();
 
 
 

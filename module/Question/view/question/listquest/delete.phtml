@@ -11,7 +11,9 @@ $this->headTitle($title);
 <form action="<?php echo $this->url('list/delete', ['id' => $this->id]); ?>" method="post">
 <div>
     <input type="hidden" name="id" value="<?php echo (int) $list->id; ?>" />
-    <input type="submit" name="del" value="Yes" />
-    <input type="submit" name="del" value="No" />
+    <div class="form-actions">
+        <input type="submit" name="del" value="Yes" />
+        <input type="submit" name="del" value="No" />
+    </div>
 </div>
 </form>
