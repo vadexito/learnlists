@@ -3,6 +3,10 @@ namespace LrnlListquests\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use DateTime;
+use LrnlListquests\Entity\Listquest;
+use ZfcUser\Entity\UserInterface;
+use Doctrine\Common\Collections\Collection;
 
 class Round extends EntityAbstract
 {
@@ -75,6 +79,75 @@ class Round extends EntityAbstract
         }
         
         return $roundArray;
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function setUser(UserInterface $user = NULL)
+    {
+        $this->user = $user;
+        return $this;
+    }
+    
+    public function getUser()
+    {
+        return $this->user;
+    }
+    
+    public function setListquest(Listquest $listquest = NULL)
+    {
+        $this->listquest = $listquest;
+        return $this;
+    }
+    
+    public function getListquest()
+    {
+        return $this->listquest;
+    }
+    
+    public function setStartDate(DateTime $startDate)
+    {
+        $this->startDate = $startDate;
+        return $this;
+    }
+    
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+    
+    public function setEndDate(DateTime $endDate)
+    {
+        $this->endDate = $endDate;
+        return $this;
+    }
+    
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+    
+    public function addQuestionresults(Collection $questionresults)
+    {
+        foreach ($questionresults as $questionresult) {
+            $questionresult->setRound($this);
+            $this->questionresults->add($questionresult);
+        }
+    }
+
+    public function removeQuestionresults(Collection $questionresults)
+    {
+        foreach ($questionresults as $questionresult) {
+            $questionresult->setRound(NULL);
+            $this->questionresults->removeElement($questionresult);
+        }
+    }
+
+    public function getQuestionresults()
+    {
+        return $this->questionresults;
     }
     
 }

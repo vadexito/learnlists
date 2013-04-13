@@ -16,6 +16,7 @@ class ListquestController extends AbstractActionController
     {
         $ratingService = $this->getServiceLocator()->get('wtrating.service');
         
+        
         return [
             'ratingService' => $ratingService,
             'lists' => $this->getListquestService()->fetchAll()

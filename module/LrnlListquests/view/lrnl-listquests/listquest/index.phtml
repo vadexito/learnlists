@@ -30,14 +30,14 @@ $this->headScript()->appendFile($this->basePath() . '/js/lib/jquery.datatable.mi
     <tbody>
 <?php foreach ($this->lists as $list) : $commentArea = 'comments-list-'.$list->id; ?>
       <tr class="listquest">
-            <td><?php if (count($list->tags) > 0) : echo $this->escapeHtml(implode(', ',$list->tags->toArray())); endif; ?></td>
+            <td><?php $tags = $list->tags; if (count($tags) > 0) : echo $this->escapeHtml(implode(', ',$tags->toArray())); endif; ?></td>
             <td>
                 <?php if (isset($ratingService)) : echo round($ratingService->getRatingSet($list->id)->getAmount());endif; ?>
             </td>
             <td><?php echo $this->escapeHtml($list->level); ?></td>        
             <td>
 <?php 
-$nbQuestion = count($list->questions); 
+$nbQuestion = $list->questions->count(); 
 $title = $this->escapeHtml($list->title)
     .'('.$nbQuestion.' '
     .$this->translatePlural('question','questions',$nbQuestion).')';
@@ -87,5 +87,3 @@ if ($nbQuestion == 0) {
 <?php endforeach; ?>
     </tbody>
 </table>
- 
-

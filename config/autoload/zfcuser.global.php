@@ -157,12 +157,12 @@ $settings = array(
      * Accepted values: A valid route name within your application
      *
      */
-    'login_redirect_route' => 'list',
+    'login_redirect_route' => 'listquests/list',
 
     /**
      * Logout Redirect Route
      *
-     * Upon logging out the user will be redirected to the enterd route
+     * Upon logging out the user will be redirected to the entered route
      *
      * Default value: 'zfcuser/login'
      * Accepted values: A valid route name within your application

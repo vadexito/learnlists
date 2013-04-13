@@ -18,8 +18,9 @@ class QuestionFieldset extends Fieldset implements InputFilterProviderInterface
         parent::__construct('question');
         $this->setObjectManager($om);
         
-        $this->setHydrator(new DoctrineHydrator($om, get_class(new Question())))
-             ->setObject(new Question());
+        $question = new Question();
+        $this->setHydrator(new DoctrineHydrator($om, get_class($question)))
+             ->setObject($question);
     
     
         $this->add([

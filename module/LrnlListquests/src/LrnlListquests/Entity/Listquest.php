@@ -8,8 +8,11 @@ use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface; 
-use Zend\Stdlib\DateTime;
 use Traversable;
+use LrnlListquests\Entity\Round;
+use LrnlListquests\Entity\Tag;
+use LrnlListquests\Entity\Question;
+use DateTime;
 
 
 /**
@@ -78,7 +81,7 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
     protected $questions;
     
     /**
-     * @var ArrayCollection of LrnlListquests\Entity\Question
+     * @var ArrayCollection of LrnlListquests\Entity\Round
      */
     protected $rounds;
     
@@ -101,7 +104,7 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
         return $this->id;
     }
     
-    public function setCreationDate($creationDate)
+    public function setCreationDate(DateTime $creationDate)
     {
         $this->creationDate = $creationDate;
         return $this;
@@ -205,6 +208,11 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
             $question->setListquest(null);
             $this->questions->removeElement($question);
         }
+    }
+    
+    public function getRounds()
+    {
+        return $this->rounds;
     }
     
     public function addRound(Round $round)

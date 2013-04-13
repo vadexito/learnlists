@@ -8,6 +8,7 @@ use LrnlListquests\Entity\Listquest;
 use ZfcUser\Entity\UserInterface;
 use DateTime;
 use LrnlListquests\Exception\ServiceException;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 class QuestionresultService
 {
@@ -30,12 +31,18 @@ class QuestionresultService
         if ($data === NULL){            
             return $questionresult;
         }
-        $questionresult->question = $this->getObjectManager()->getRepository('LrnlListquests\Entity\Question')
-                                 ->find($data['questionId']);
-        $questionresult->round = $this  ->getObjectManager()->getRepository('LrnlListquests\Entity\Round')
-                                        ->find($data['roundId']);  
-        $questionresult->answerType = $data['answerType'];
+        $hydrator = new DoctrineHydrator(
+            $this->getObjectManager(),
+            $this->_classEntity
+        );
         
+        $dataHydrate = [
+            'question' => $data['questionId'],
+            'round' => $data['roundId'],
+            'answerType' => $data['answerType']
+        ];
+        
+        $hydrator->hydrate($dataHydrate,$questionresult);
         $this->getObjectManager()->persist($questionresult);
         
         try {
@@ -61,7 +68,6 @@ class QuestionresultService
         
         $this->getObjectManager()->remove($this->fetchById($id));
         try {
-            
             $this->getObjectManager()->flush();
         } catch (\Exception $e) {
             throw new ServiceException('Doctrine deleting failed');

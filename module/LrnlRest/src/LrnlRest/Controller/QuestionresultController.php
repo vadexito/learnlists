@@ -18,9 +18,9 @@ class QuestionresultController extends AbstractRestfulController
     
     public function create($data)
     {
-        $this  ->getServiceLocator()
-                        ->get('learnlists-questionresultfactory-service')
-                        ->createNewEntity($data);
+        $questionresult = $this ->getServiceLocator()
+                                ->get('learnlists-questionresultfactory-service')
+                                ->createNewEntity($data);
         
         return new JsonModel((array)$questionresult->toArray());
     }

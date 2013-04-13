@@ -14,7 +14,6 @@ class RoundServiceFactory implements FactoryInterface
         $objectManager = $services->get('doctrine.entitymanager.orm_default');
         $user = $services->get('zfcuser_auth_service')->getIdentity();
         $service   = new RoundService($objectManager,$user, new Round());
-        $service->setListquestService($services->get('learnlists-listquestfactory-service'));
         return $service;
     }
 }

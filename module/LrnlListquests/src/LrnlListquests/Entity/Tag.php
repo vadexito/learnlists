@@ -3,6 +3,7 @@ namespace LrnlListquests\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Zend\InputFilter\Factory as InputFactory;     
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
@@ -38,7 +39,8 @@ class Tag extends EntityAbstract implements InputFilterAwareInterface
      */
     protected $tag;    
     
-
+    
+    
     /**
     * 
     * @ORM\ManyToMany(targetEntity="Listquest", inversedBy="tags")
@@ -52,10 +54,38 @@ class Tag extends EntityAbstract implements InputFilterAwareInterface
         $this->listquests = new ArrayCollection();
     }
     
+    public function getId()
+    {
+        return $this->id;
+    }
+    
     public function addListquest(Listquest $listquest)
     {
         $this->listquests[] = $listquest;
     }
+    
+    public function addListquests(Collection $listquests)
+    {
+        foreach ($listquests as $listquest) {            
+            $this->addListquest($listquest);
+        }
+    }
+
+    public function removeListquests(Collection $listquests)
+    {
+        foreach ($listquests as $listquest) {
+            $this->listquests->removeElement($listquest);
+        }
+    }
+
+    public function getListquests()
+    {
+        return $this->listquests;
+    }
+    
+    
+    
+    
     
     public function toArray()
     {

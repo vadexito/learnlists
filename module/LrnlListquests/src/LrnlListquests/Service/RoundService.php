@@ -9,6 +9,7 @@ use ZfcUser\Entity\UserInterface;
 use DateTime;
 use LrnlListquests\Service\ListquestService;
 use LrnlListquests\Exception\ServiceException;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 class RoundService
 {
@@ -34,17 +35,24 @@ class RoundService
         if ($data === NULL){            
             return $round;
         }
-        
-        $round->listquest = $this->getListquestService()->fetchById($data['listquestId']);
+        $hydrator = new DoctrineHydrator(
+            $this->getObjectManager(),
+            $this->_classEntity
+        );
         
         //date come from javascript in UGT timezone, they have to be converted
         //in local time to be stored in the database in local time
         $localTimeZone = (new DateTime())->getTimezone();
-        $round->startDate = (new DateTime($data['startDate']['date']))
-                            ->setTimezone($localTimeZone);
-        $round->endDate = (new DateTime($data['endDate']['date']))
-                            ->setTimezone($localTimeZone);
         
+        $dataHydrate = [
+            'listquest' => $data['listquestId'],
+            'startDate' => (new DateTime($data['startDate']['date']))
+                            ->setTimezone($localTimeZone)->getTimestamp(),
+            'endDate' => (new DateTime($data['endDate']['date']))
+                            ->setTimezone($localTimeZone)->getTimestamp(),
+        ];
+        
+        $hydrator->hydrate($dataHydrate,$round);
         $this->getObjectManager()->persist($round);
         
         try {
@@ -108,13 +116,5 @@ class RoundService
         } catch (\Exception $e) {
             throw new ServiceException('Doctrine deleting failed');
         }
-    }
-    
-    public function setListquestService(ListquestService $service){
-        $this->_listquestService = $service;
-    }
-    
-    public function getListquestService(){
-        return $this->_listquestService;
     }
 }
