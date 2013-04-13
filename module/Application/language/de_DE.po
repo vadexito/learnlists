@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-12 19:25+0100\n"
-"PO-Revision-Date: 2013-04-12 19:25+0100\n"
+"POT-Creation-Date: 2013-04-13 11:34+0100\n"
+"PO-Revision-Date: 2013-04-13 11:50+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -62,9 +62,8 @@ msgid "Tip"
 msgstr "Kommentar"
 
 #: ../../Question/src/Question/Form/TagFieldset.php:27
-#, fuzzy
 msgid "Tag"
-msgstr "Tags"
+msgstr "Tag"
 
 #: ../../../config/autoload/global.php:24
 msgid "Learnlists"
@@ -80,7 +79,7 @@ msgstr "Neue Liste"
 
 #: ../../../config/autoload/global.php:42
 msgid "Offers"
-msgstr ""
+msgstr "Angebote"
 
 #: ../../../config/autoload/global.php:53
 msgid "My program"
@@ -117,152 +116,161 @@ msgstr "Schritt 1: Email-Überprüfung"
 msgid "You have successfully completed Step 1!"
 msgstr ""
 
-#: ../view/error/403.phtml:1
+#: ../view/error/403.phtml:2
+msgid "Error 403"
+msgstr "403 Fehler"
+
+#: ../view/error/403.phtml:6
 msgid "A 403 error occurred"
 msgstr "Es trat ein 403 Fehler auf"
 
-#: ../view/error/403.phtml:11
+#: ../view/error/403.phtml:16
 msgid "The requested controller was not authorized."
 msgstr "Der angeforderte Controller ist nicht erlaubt."
 
-#: ../view/error/403.phtml:14
+#: ../view/error/403.phtml:19
 msgid "The requested route was not authorized."
 msgstr "Die angeforderte Route ist nicht erlaubt."
 
-#: ../view/error/403.phtml:17
+#: ../view/error/403.phtml:22
 msgid "The requested page was not authorized."
 msgstr "Die angeforderte Seite ist nicht erlaubt."
 
-#: ../view/error/403.phtml:20
+#: ../view/error/403.phtml:25
 msgid "We cannot determine at this time why a 403 was generated."
 msgstr ""
 "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 403 "
 "Fehler aufgetreten ist."
 
-#: ../view/error/404.phtml:1
-msgid "A 404 error occurred"
-msgstr "Es trat ein 404 Fehler auf"
+#: ../view/error/404.phtml:2 ../view/error/404.phtml:71
+msgid "Error 404"
+msgstr "404 Fehler"
 
-#: ../view/error/404.phtml:10
+#: ../view/error/404.phtml:13
 msgid "The requested controller was unable to dispatch the request."
 msgstr ""
 "Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten."
 
-#: ../view/error/404.phtml:13
+#: ../view/error/404.phtml:16
 msgid ""
 "The requested controller could not be mapped to an existing controller class."
 msgstr ""
 "Der angeforderte Controller konnte keiner Controller Klasse zugeordnet "
 "werden."
 
-#: ../view/error/404.phtml:16
+#: ../view/error/404.phtml:19
 msgid "The requested controller was not dispatchable."
 msgstr "Der angeforderte Controller ist nicht aufrufbar."
 
-#: ../view/error/404.phtml:19
+#: ../view/error/404.phtml:22
 msgid "The requested URL could not be matched by routing."
 msgstr "Für die angeforderte URL konnte keine Übereinstimmung gefunden werden."
 
-#: ../view/error/404.phtml:22
+#: ../view/error/404.phtml:25
 msgid "We cannot determine at this time why a 404 was generated."
 msgstr ""
 "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 "
 "Fehler aufgetreten ist."
 
-#: ../view/error/404.phtml:34
-msgid "Controller"
-msgstr "Controller"
-
-#: ../view/error/404.phtml:41
+#: ../view/error/404.phtml:35
 #, php-format
 msgid "resolves to %s"
 msgstr "wird aufgelöst in %s"
 
-#: ../view/error/404.phtml:53 ../view/error/index.phtml:8
-msgid "Additional information"
-msgstr "Zusätzliche Information"
+#: ../view/error/404.phtml:76
+msgid ""
+"The page you requested could not be found, either contact your webmaster or "
+"try again. Use your browsers <b>Back</b> button to navigate to the page you "
+"have prevously come from</p>\n"
+"    <p><b>Or you could just press this neat little button:</b></p>"
+msgstr ""
 
-#: ../view/error/404.phtml:56 ../view/error/404.phtml:80
-#: ../view/error/index.phtml:11 ../view/error/index.phtml:35
-msgid "File"
-msgstr "Datei"
-
-#: ../view/error/404.phtml:60 ../view/error/404.phtml:84
-#: ../view/error/index.phtml:15 ../view/error/index.phtml:39
-msgid "Message"
-msgstr "Meldung"
-
-#: ../view/error/404.phtml:64 ../view/error/404.phtml:88
-#: ../view/error/index.phtml:19 ../view/error/index.phtml:43
-msgid "Stack trace"
-msgstr "Stapelüberwachung"
-
-#: ../view/error/404.phtml:74 ../view/error/index.phtml:29
-msgid "Previous exceptions"
-msgstr "Vorherige Ausnahme"
-
-#: ../view/error/404.phtml:103 ../view/error/index.phtml:58
-msgid "No Exception available"
-msgstr "Es ist keine Ausnahme verfügbar"
+#: ../view/error/404.phtml:78
+msgid "Take Me Home"
+msgstr "Nach Hause"
 
 #: ../view/error/index.phtml:1
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
+#: ../view/error/index.phtml:8
+msgid "Additional information"
+msgstr "Zusätzliche Information"
+
+#: ../view/error/index.phtml:11 ../view/error/index.phtml:35
+msgid "File"
+msgstr "Datei"
+
+#: ../view/error/index.phtml:15 ../view/error/index.phtml:39
+msgid "Message"
+msgstr "Meldung"
+
+#: ../view/error/index.phtml:19 ../view/error/index.phtml:43
+msgid "Stack trace"
+msgstr "Stapelüberwachung"
+
+#: ../view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr "Vorherige Ausnahme"
+
+#: ../view/error/index.phtml:58
+msgid "No Exception available"
+msgstr "Es ist keine Ausnahme verfügbar"
+
 #: ../view/layout/admin.phtml:6 ../view/layout/layout.phtml:6
 msgid "LearnLists"
 msgstr "LearnLists"
 
-#: ../view/layout/layout.phtml:50
-msgid "Company"
-msgstr ""
-
 #: ../view/layout/layout.phtml:52
+msgid "Company"
+msgstr "Unternehmen"
+
+#: ../view/layout/layout.phtml:54
 msgid "About"
 msgstr "Über uns"
 
-#: ../view/layout/layout.phtml:53
+#: ../view/layout/layout.phtml:55
 msgid "Terms"
 msgstr "Bedingungen"
 
-#: ../view/layout/layout.phtml:54
+#: ../view/layout/layout.phtml:56
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: ../view/layout/layout.phtml:55 ../view/phly-contact/contact/index.phtml:1
+#: ../view/layout/layout.phtml:57 ../view/phly-contact/contact/index.phtml:1
 #: ../view/phly-contact/contact/thank-you.phtml:2
 msgid "Contact"
 msgstr "Kontakt"
 
-#: ../view/layout/layout.phtml:59
+#: ../view/layout/layout.phtml:61
 msgid "Help"
 msgstr "Hilfe"
 
-#: ../view/layout/layout.phtml:61
+#: ../view/layout/layout.phtml:63
 msgid "Q&A"
-msgstr ""
+msgstr "Q&A"
 
-#: ../view/layout/layout.phtml:65
+#: ../view/layout/layout.phtml:67
 msgid "Localisation"
-msgstr ""
+msgstr "Lokalisation"
 
-#: ../view/layout/layout.phtml:70
+#: ../view/layout/layout.phtml:72
 msgid "German"
 msgstr "Deutsch"
 
-#: ../view/layout/layout.phtml:71
+#: ../view/layout/layout.phtml:73
 msgid "French"
 msgstr "Französisch"
 
-#: ../view/layout/layout.phtml:72
+#: ../view/layout/layout.phtml:74
 msgid "English"
 msgstr "Englisch"
 
-#: ../view/layout/layout.phtml:79
+#: ../view/layout/layout.phtml:81
 msgid "2013 by Voilamylife."
 msgstr "2013 Voilamylife."
 
-#: ../view/layout/layout.phtml:79
+#: ../view/layout/layout.phtml:81
 msgid "All rights reserved."
 msgstr "Alle Rechte vorbehalten."
 
@@ -271,6 +279,8 @@ msgid ""
 "This site is under test, please feel free to contact me to report any "
 "question, remark, suggestions..."
 msgstr ""
+"Die Seite ist zur Zeit in einer Testphase, Bitte teilen Sie uns Ihre Fragen, "
+"Bemerkungen, Verbesserung,... mit!"
 
 #: ../view/phly-contact/contact/index.phtml:11
 msgid ""
@@ -281,11 +291,11 @@ msgstr ""
 #: ../view/phly-contact/contact/thank-you.phtml:3
 #: ../view/phly-contact/contact/thank-you.phtml:6
 msgid "Thank you!"
-msgstr ""
+msgstr "Danke!"
 
 #: ../view/phly-contact/contact/thank-you.phtml:9
 msgid "Your message has been sent!"
-msgstr ""
+msgstr "Die Nachricht wurde abgeschikt!"
 
 #: ../view/zfc-user/user/login.phtml:31
 msgid "Sign Up!"
@@ -293,7 +303,7 @@ msgstr "Melde dich an!"
 
 #: ../view/zfc-user/user/register.phtml:1
 msgid "Register"
-msgstr ""
+msgstr "Anmelden"
 
 #: ../../Question/view/question/listquest/add.phtml:3
 msgid "Add new list"
@@ -304,20 +314,17 @@ msgid "Advanced, average, beginner for example"
 msgstr "Schwer, sehr schwer, durchschnittlich, einfach zum Beispiel"
 
 #: ../../Question/view/question/listquest/delete.phtml:3
-#, fuzzy
 msgid "Delete List"
-msgstr "Löschen"
+msgstr "Liste Löschen"
 
 #: ../../Question/view/question/listquest/delete.phtml:8
-#, fuzzy
 msgid "Are you sure that you want to delete the whole list"
-msgstr ""
-"Sind Sie sicher, dass Sie die Frage mit folgendem Text löschen möchten "
+msgstr "Sind Sie sicher, dass Sie die Liste löschen möchten?"
 
 #: ../../Question/view/question/listquest/edit.phtml:3
-#, fuzzy, php-format
+#, php-format
 msgid "Edit %s"
-msgstr "Liste bearbeiten"
+msgstr "%s bearbeiten"
 
 #: ../../Question/view/question/listquest/edit.phtml:22
 msgid "Rules for entering question text"
@@ -351,7 +358,6 @@ msgid "Edit question"
 msgstr "Frage editieren"
 
 #: ../../Question/view/question/listquest/edit.phtml:46
-#, fuzzy
 msgid "Remove question"
 msgstr "Frage löschen"
 
@@ -360,19 +366,18 @@ msgid "Press to add a new empty line. Press the save button below to save"
 msgstr ""
 
 #: ../../Question/view/question/listquest/home.phtml:2
-#, fuzzy
 msgid "Learn with quizzes"
-msgstr "Lerne mit den besten Quiz"
+msgstr "Lerne mit Quiz"
 
 #: ../../Question/view/question/listquest/home.phtml:9
 #, php-format
 msgid ""
 "Learn with %d high quality quizzes proposed by our community of teachers."
-msgstr ""
+msgstr "Lerne mit %d besten Quiz von unserem Lehrercommunity."
 
 #: ../../Question/view/question/listquest/home.phtml:11
 msgid "Which quizz are you looking for?"
-msgstr ""
+msgstr "Welche Quizz suchst du?"
 
 #: ../../Question/view/question/listquest/home.phtml:12
 msgid "Language"
@@ -384,24 +389,24 @@ msgid "Search"
 msgstr "Suchen"
 
 #: ../../Question/view/question/listquest/home.phtml:20
-#, fuzzy
 msgid "Find high quality quizzes"
-msgstr "Spitzenqualität Quiz"
+msgstr "Finde spitzenqualität Quiz"
 
 #: ../../Question/view/question/listquest/home.phtml:21
 msgid ""
 "Quizzes are developed by profesionnal teachers and evaluated by the user "
 "commnunity which ensures top quality."
 msgstr ""
+"Quiz werden von profesionalen Lehrern entwickelt und von Benutzern bewertet "
+"um die Qualität der Quiz zu maximieren."
 
 #: ../../Question/view/question/listquest/home.phtml:22
 msgid "Browse lists"
 msgstr "Listen ansehen"
 
 #: ../../Question/view/question/listquest/home.phtml:26
-#, fuzzy
 msgid "Learn through efficient methods"
-msgstr "Lerne mittels bewährter Techniken und anspruchsvoller Listen"
+msgstr "Lerne mittels bewährter Techniken"
 
 #: ../../Question/view/question/listquest/home.phtml:27
 msgid ""
@@ -412,24 +417,21 @@ msgstr ""
 
 #: ../../Question/view/question/listquest/home.phtml:28
 msgid "About our methods"
-msgstr ""
+msgstr "Über unsere Methoden"
 
 #: ../../Question/view/question/listquest/home.phtml:32
-#, fuzzy
 msgid "Create and share quizzes"
 msgstr "Erstelle und teile eine Liste"
 
 #: ../../Question/view/question/listquest/home.phtml:33
-#, fuzzy
 msgid "You can also create and share your own private lists."
 msgstr ""
 "Du kannst private oder öffentliche Liste erstellen. Man braucht dafür "
 "eingeloggt zu sein."
 
 #: ../../Question/view/question/listquest/home.phtml:34
-#, fuzzy
 msgid "Learn how create lists"
-msgstr "Mit Learnlists lernen"
+msgstr "Lerne wie man eine Liste erstellt."
 
 #: ../../Question/view/question/listquest/index.phtml:3
 msgid "Learn at LearnLists"
@@ -572,6 +574,12 @@ msgstr "Student"
 #: ../language/_XMLforPoedit/role.xml:8
 msgid "premium"
 msgstr "Premium"
+
+#~ msgid "A 404 error occurred"
+#~ msgstr "Es trat ein 404 Fehler auf"
+
+#~ msgid "Controller"
+#~ msgstr "Controller"
 
 #~ msgid "Find the quizz you need"
 #~ msgstr "Finde das passende Quiz"
