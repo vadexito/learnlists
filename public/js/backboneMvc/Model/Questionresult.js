@@ -19,7 +19,7 @@ window.Questionresult = Backbone.Model.extend({
         answerPart:0
     },
     
-    urlRoot: "/questionresult-rest",
+    urlRoot: "/learnlists-rest/questionresult",
     
     setAnswerType: function(){
         var answerType = true;
@@ -140,5 +140,5 @@ window.Questionresults = Backbone.Collection.extend({
         return -parseInt(questionresult.get('answerType'));
     },
     
-    url: "/questionresult-rest"
+    url: "/learnlists-rest/questionresult"
 });

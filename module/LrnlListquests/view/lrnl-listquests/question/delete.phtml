@@ -1,0 +1,17 @@
+<?php
+
+$title = $this->translate('Delete question');
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p><?php $this->translate('Are you sure that you want to delete the question with the text'); ?>: 
+    '<?php echo $this->escapeHtml($question->text); ?>'?
+</p>
+<form action="<?php echo $this->url('listquests/question/delete', ['id'     => $this->id]); ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $question->id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>

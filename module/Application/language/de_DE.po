@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-04-13 11:34+0100\n"
-"PO-Revision-Date: 2013-04-13 11:50+0100\n"
+"PO-Revision-Date: 2013-04-13 12:00+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -377,7 +377,7 @@ msgstr "Lerne mit %d besten Quiz von unserem Lehrercommunity."
 
 #: ../../Question/view/question/listquest/home.phtml:11
 msgid "Which quizz are you looking for?"
-msgstr "Welche Quizz suchst du?"
+msgstr "Welche Quiz suchst du?"
 
 #: ../../Question/view/question/listquest/home.phtml:12
 msgid "Language"
@@ -390,7 +390,7 @@ msgstr "Suchen"
 
 #: ../../Question/view/question/listquest/home.phtml:20
 msgid "Find high quality quizzes"
-msgstr "Finde spitzenqualität Quiz"
+msgstr "Finde die besten Lernquiz"
 
 #: ../../Question/view/question/listquest/home.phtml:21
 msgid ""
@@ -406,7 +406,7 @@ msgstr "Listen ansehen"
 
 #: ../../Question/view/question/listquest/home.phtml:26
 msgid "Learn through efficient methods"
-msgstr "Lerne mittels bewährter Techniken"
+msgstr "Lerne mit bewährter Techniken"
 
 #: ../../Question/view/question/listquest/home.phtml:27
 msgid ""
@@ -414,6 +414,9 @@ msgid ""
 "doctors), Learnlists offers specific method that maximize the memorization "
 "processs and minimize the effort"
 msgstr ""
+"Mithilfe Fachspezialisten des Bereichs (Lehrer, Gedächtnisforscher und -"
+"ärtzte) bietet Learnlists eine einzelne Methode an, die den Speicherprozess "
+"optimisieren kann während gleichzeitig die Zeit beträchtlich reduziert wird. "
 
 #: ../../Question/view/question/listquest/home.phtml:28
 msgid "About our methods"

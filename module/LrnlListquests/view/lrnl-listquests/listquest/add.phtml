@@ -1,0 +1,32 @@
+<?php
+
+$title = $this->translate('Add new list');
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->setAttribute('action', $this->url('listquests/list/add'));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+$listquestFieldset = $form->get('listquest');
+echo $this->formHidden($listquestFieldset->get('id'));
+echo $this->formRow($listquestFieldset->get('title'));?>
+
+<div class="input-append">
+    <span id="tags_element">
+    <?php 
+        echo $this->formCollection($listquestFieldset->get('tags')); ?>
+    </span>
+    <button data-collection ="tags_element" class="btn add_item_to_collection_button" id="add_tags_button"><i class="icon-plus"></i></button>
+    
+</div>
+ <?php 
+echo $this->formRow($listquestFieldset->get('level')); ?>
+(<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Advanced, average, beginner for example'); ?>">?</a>) 
+<?php echo $this->formRow($listquestFieldset->get('rules')); ?>
+<div class="form-actions">
+    <?php echo $this->formSubmit($form->get('submit')); ?>
+</div>
+<?php echo $this->form()->closeTag();?> 
+

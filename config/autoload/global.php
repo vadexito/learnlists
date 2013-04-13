@@ -28,12 +28,12 @@ return [
                     [
                         'id' => 'list_show',
                         'label' => _('Browse'),
-                        'route' => 'list'
+                        'route' => 'listquests/list'
                     ],
                     [
                         'id' => 'list_create',
                         'label' => _('New list'),
-                        'route' => 'list/add',
+                        'route' => 'listquests/list/add',
                         'resource' => 'listquest',
                         'privilege' => 'add',
                     ], 
@@ -41,6 +41,7 @@ return [
                         'id' => 'offers',
                         'label' => _('Offers'),
                         'route' => 'offers',
+                        'resource' => 'premium',//to be change when introducing the offers
                     ],                      
                     [
                         'id' => 'admin-lists',
@@ -51,7 +52,7 @@ return [
                     [
                         'id' => 'premium-myprogram',
                         'label' => _('My program'),
-                        'route' => 'list/premium',
+                        'route' => 'listquests/list/premium',
                         'resource' => 'premium',
                     ],
                 ],
@@ -85,7 +86,7 @@ return [
                     [
                         'id' => 'user_account',
                         'label' => _('My account'),
-                        'route' => 'question/user',
+                        'route' => 'lrnluser',
                         'resource' => 'user',
                         'privilege' => 'account',
                     ],

@@ -64,7 +64,7 @@ window.Round = Backbone.Model.extend({
             }
         };
     },
-    urlRoot: "/round-rest",
+    urlRoot: "/learnlists-rest/round",
     
     defaults:{
       finalnote:0,
@@ -143,7 +143,7 @@ window.Rounds = Backbone.Collection.extend({
         
         
     },
-    url: "/round-rest"
+    url: "/learnlists-rest/round"
     
 });
 

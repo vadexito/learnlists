@@ -9,7 +9,7 @@ window.Listquest= Backbone.Model.extend({
         questions : 'undefined'
     },
     
-    urlRoot: "/listquest-rest"
+    urlRoot: "/learnlists-rest/listquest"
     
 });
 

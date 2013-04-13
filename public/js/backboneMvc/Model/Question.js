@@ -8,9 +8,7 @@ window.Question = Backbone.Model.extend({
         text: undefined,
         answer: undefined,
         tip: undefined
-    },
-    
-    urlRoot: "/question-rest"
+    }
     
 });
 
@@ -26,8 +24,6 @@ window.Questions = Backbone.Collection.extend({
     
     
 
-    url: "/question-rest",
-    
     initQuestions: function (list){
         //localId is the id within the list (show to the student)
         var localId = 1;
