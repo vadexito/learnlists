@@ -44,7 +44,7 @@ $title = $this->escapeHtml($list->title)
 if ($nbQuestion == 0) {
     echo $title;
 } else { ?>
-            <a href="<?php echo $this->url('learn',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
+            <a href="<?php echo $this->url('learn/basic',['id' => $list->id]); ?>"><?php echo $this->escapeHtml($list->title); ?></a> 
             (<?php  echo $nbQuestion.' '.$this->translatePlural('question','questions',$nbQuestion);?>)
 <?php } ?>      
                 <p>

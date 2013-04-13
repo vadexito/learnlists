@@ -2,17 +2,18 @@
 
 namespace LrnlListquests\Service;
 
-use LrnlListquests\Service\ListquestService;
+use LrnlListquests\Service\QuestionresultService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use LrnlListquests\Entity\Questionresult;
 
-class ListquestServiceFactory implements FactoryInterface
+
+class QuestionresultServiceFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $services)
     {
         $objectManager = $services->get('doctrine.entitymanager.orm_default');
-        $user = $services->get('zfcuser_auth_service')->getIdentity();
-        $service   = new ListquestService($objectManager,$user);
+        $service   = new QuestionresultService($objectManager,new Questionresult);
         
         return $service;
     }

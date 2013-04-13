@@ -18,23 +18,9 @@ class QuestionresultController extends AbstractRestfulController
     
     public function create($data)
     {
-        $questionresult = new Questionresult();
-        $questionresult->question = $this->_getRepository('LrnlListquests\Entity\Question')
-                                 ->find($data['questionId']);
-        
-        $questionresult->round = $this  ->_getRepository('LrnlListquests\Entity\Round')
-                                        ->find($data['roundId']);     
-        
-        $questionresult->answerType = $data['answerType'];
-        
-        $this->getEntityManager()->persist($questionresult);
-        
-        try {
-            
-            $this->getEntityManager()->flush();
-        } catch (Exception $e) {
-            throw new \Exception('Doctrine creating failed');
-        }
+        $this  ->getServiceLocator()
+                        ->get('learnlists-questionresultfactory-service')
+                        ->createNewEntity($data);
         
         return new JsonModel((array)$questionresult->toArray());
     }
@@ -46,29 +32,13 @@ class QuestionresultController extends AbstractRestfulController
     
     public function delete($id)
     {
-        $this->getEntityManager()->remove($this->_getRepository()->find($id));
-        
-        try {
-            
-            $this->getEntityManager()->flush();
-        } catch (Exception $e) {
-            throw new \Exception('Doctrine deleting failed');
-        }
+        $this->getServiceLocator()
+                        ->get('learnlists-questionresultfactory-service')
+                        ->deleteQuestionresult($id);
         
         return new JsonModel([]);
+        
     }
-    
-    public function getEntityManager()
-    {
-        return $this   ->getServiceLocator()
-                        ->get('Doctrine\ORM\EntityManager');
-    }
-    
-    protected function _getRepository($entity = 'LrnlListquests\Entity\Questionresult')
-    {
-        return $this->getEntityManager()->getRepository($entity);
-    }
-    
     
 }
 

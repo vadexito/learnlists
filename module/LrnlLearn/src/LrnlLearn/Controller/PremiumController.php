@@ -9,7 +9,6 @@ class PremiumController extends AbstractActionController
     
     public function indexAction()
     {
-        
     }
 
     

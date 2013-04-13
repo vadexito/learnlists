@@ -52,7 +52,7 @@ return [
                     [
                         'id' => 'premium-myprogram',
                         'label' => _('My program'),
-                        'route' => 'listquests/list/premium',
+                        'route' => 'learn/premium',
                         'resource' => 'premium',
                     ],
                 ],

@@ -15,6 +15,7 @@ class RoundService
     protected $repository;
     protected $user;  
     protected $_listquestService;
+    protected $_classEntity;
     
     use ProvidesObjectManager;
     
@@ -23,17 +24,18 @@ class RoundService
         $this->setObjectManager($om);
         $this->repository = $om->getRepository(get_class($round));
         $this->user = $user;
+        $this->_classEntity = get_class($round);
     }
     
     public function createNewEntity(Array $data = NULL)
     {
-        $round = new get_class($round);
+        $round = new $this->_classEntity;
         $round->user = $this->user;
         if ($data === NULL){            
             return $round;
         }
         
-        $round->listquest = $this->getListquestService->fetch($data['listquestId']);
+        $round->listquest = $this->getListquestService()->fetchById($data['listquestId']);
         
         //date come from javascript in UGT timezone, they have to be converted
         //in local time to be stored in the database in local time
@@ -49,7 +51,7 @@ class RoundService
             
             $this->getObjectManager()->flush();
         } catch (Exception $e) {
-            throw new \Exception('Doctrine creating failed');
+            throw new ServiceException('Doctrine creating failed');
         }
         
         return $round;
@@ -90,7 +92,7 @@ class RoundService
     
     public function fetchById($id)
     {
-        return $this->repository->get($id);
+        return $this->repository->find($id);
     }
     
     public function deleteRound($id)

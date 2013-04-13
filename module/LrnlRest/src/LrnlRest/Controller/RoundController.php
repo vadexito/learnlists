@@ -4,8 +4,6 @@ namespace LrnlRest\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
-use LrnlListquests\Entity\Round;
-use Zend\Stdlib\DateTime;
 
 class RoundController extends AbstractRestfulController
 {

@@ -15,7 +15,7 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => 'Question\Controller\Listquest',
+                        'controller' => 'LrnlListquests\Controller\Listquest',
                         'action'     => 'home',
                     ],
                 ],
