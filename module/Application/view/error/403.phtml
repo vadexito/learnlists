@@ -3,10 +3,6 @@ $title = $this->translate('Error 403');
 $this->headTitle($title);
 ?>
 
-<h1><?php echo $this->translate('A 403 error occurred') ?></h1
-
-<h2><?php echo $this->message ?></h2>
-
 <?php if (isset($error) && $error): ?>
 
 <?php
@@ -26,7 +22,18 @@ switch ($error) {
         break;
 }
 ?>
-
-<p><?php echo $reasonMessage ?></p>
-
 <?php endif ?>
+
+<style>
+  .center {text-align: center; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto;}
+</style>
+<div class="hero-unit center">
+    <h1><?php echo $this->message ?> <small><font face="Tahoma" color="red"><?php echo $this->translate('Error 403'); ?></font></small></h1>
+    <br />
+    <p>
+        <?php echo $controllerMessage='';?><?php echo $additionalInfo='';?><?php echo $previousExc='';?>
+    </p>
+    <p><?php echo $reasonMessage ?> <?php echo $this->translate('The page you requested is not permitted.').' '.$this->translate('Either contact your webmaster or try again. Use your browsers <b>Back</b> button to navigate to the page you have prevously come from</p>
+    <p><b>Or you could just press this neat little button:</b></p>'); ?>
+    <a href="<?php echo $this->url('home'); ?>" class="btn btn-large btn-info"><i class="icon-home icon-white"></i> <?php echo $this->translate('Take Me Home'); ?></a>
+</div>

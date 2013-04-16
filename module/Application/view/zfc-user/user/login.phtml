@@ -1,4 +1,8 @@
-<h1><?php echo $this->translate('Sign In'); ?></h1>
+<?php
+$title = $this->translate('Sign In');
+$this->headTitle($title);
+?>
+<h1><?php echo $title ?></h1>
 
 <?php
 $form = $this->loginForm;
@@ -8,25 +12,24 @@ $form->setAttribute('method', 'post');
 ?>
 
 <?php echo $this->form()->openTag($form) ?>
-
-    <dl class="zend_form">
+    
         <?php echo $this->formElementErrors($form->get('identity')) ?>
+        <?php echo $this->formRow($form->get('identity')) ?>
+        <?php echo $this->formRow($form->get('credential')) ?>
 
-        <dt><?php echo $this->formLabel($form->get('identity')) ?></dt>
-        <dd><?php echo $this->formInput($form->get('identity')) ?></dd>
-
-        <dt><?php echo $this->formLabel($form->get('credential')) ?></dt>
-        <dd><?php echo $this->formInput($form->get('credential')) ?></dd>
-
+        <label class="checkbox">
+            <?php //echo $this->formCheckbox($form->get('remember_me')) ?> <?php //echo $form->get('remember_me')->getLabel() ?>
+        </label>
+        
         <?php if ($this->redirect): ?>
             <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
         <?php endif ?>
-
-        <dd><?php echo $this->formButton($form->get('submit')) ?></dd>
-    </dl>
+            <div class="form-actions">
+               <?php echo $this->formButton($form->get('submit')) ?> 
+            </div>
 
 <?php echo $this->form()->closeTag() ?>
-
+<p><a href="<?php //echo $this->url('zfcuser/forgotpassword') ?>">Forgot your password?</a></p>
 <?php if ($this->enableRegistration) : ?>
-Not registered? <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign Up!'); ?></a>
+<?php echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign Up!'); ?></a>
 <?php endif; ?>

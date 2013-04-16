@@ -9,7 +9,7 @@ $offerOption1 = [
     ],
     'price' => [
         'amount' => $this->translate('FREE'),
-        'frequency' => $this->translate(''),
+        'frequency' => '',
     ],
     'volumes' => [
         'volume1' => [
@@ -18,11 +18,11 @@ $offerOption1 = [
         ],
         'volume2' => [
             'title' => $this->translate('Teacher quizzes'),
-            'number' => $this->translate('10/month'),
+            'number' => sprintf($this->translate('%d/month'),'10'),
         ],
         'volume3' => [
             'title' => $this->translate('Top best quizzes'),
-            'number' => $this->translate('1/month'),
+            'number' => sprintf($this->translate('%d/month'),'1'),
         ],
     ],
     'coreFeatures' => [
@@ -46,7 +46,7 @@ $offerOption2 = [
         'description' => $this->translate('Excellent for intense learning'),
     ],
     'price' => [
-        'amount' => $this->translate('10 €'),
+        'amount' => $this->translate('10 euros'),
         'frequency' => $this->translate('per month (no minimum)'),
     ],
     'volumes' => [
@@ -56,17 +56,17 @@ $offerOption2 = [
         ],
         'volume2' => [
             'title' => $this->translate('Teacher quizzes'),
-            'number' => $this->translate('20/month'),
+            'number' => sprintf($this->translate('%d/month'),'10'),
         ],
         'volume3' => [
             'title' => $this->translate('Top best quizzes'),
-            'number' => $this->translate('10/month'),
+            'number' => sprintf($this->translate('%d/month'),'10'),
         ],
     ],
     'coreFeatures' => [
         'title' => $this->translate('Search through the whole set of quizzes'),
         'features' => [
-            $this->translate('Create unlimited  quizzes'),
+            $this->translate('Create unlimited quizzes'),
             $this->translate('Access profesionnal learning method'),
             $this->translate('Access unlimited tips and comments form teachers'),
         ]
@@ -85,7 +85,7 @@ $offerOption3 = [
         'description' => $this->translate('The most complete offer'),
     ],
     'price' => [
-        'amount' => $this->translate('12 €'),
+        'amount' => $this->translate('12 euros'),
         'frequency' => $this->translate('per month (no minimum)'),
     ],
     'volumes' => [

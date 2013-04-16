@@ -140,6 +140,7 @@ return [
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
             'phly-contact/contact/index'     => __DIR__ . '/../view/phly-contact/contact/index.phtml',
             'phly-contact/contact/thank-you' => __DIR__ . '/../view/phly-contact/contact/thank-you.phtml',
+            'zfc-user/user/login' => __DIR__ . '/../view/zfc-user/user/login.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

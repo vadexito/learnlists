@@ -1,4 +1,8 @@
-<h1><?php echo $this->translate('Register'); ?></h1>
+<?php
+$title = $this->translate('Register');
+$this->headTitle($title);
+?>
+<h1><?php echo $title ?></h1>
 
 <?php
 if (!$this->enableRegistration) {

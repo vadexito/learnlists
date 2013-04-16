@@ -28,7 +28,7 @@ return [
                     [
                         'id' => 'list_show',
                         'label' => _('Browse'),
-                        'route' => 'listquests/list'
+                        'route' => 'lrnl-search'
                     ],
                     [
                         'id' => 'list_create',
