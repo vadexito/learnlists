@@ -125,9 +125,13 @@ header
     text-shadow: 0 0 15px rgba(0,0,0,0.6),0 -1px 1px rgba(0,0,0,0.6);
 }
 
-input.home,button.home {
+#searchForm input {
     font-size: 17.5px;
     padding: 11px 19px;
+}
+
+#searchForm {
+    margin:0;
 }
 /*=======================================
 list of lists page

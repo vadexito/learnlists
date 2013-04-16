@@ -1,17 +1,23 @@
 <?php
 $title = $this->translate('Learn with quizzes');
 $this->headTitle($title);
+
+$searchForm->setAttribute('action', $this->url('lrnl-search'));
+$searchForm->prepare();
+
 ?>
 <?php $this->placeholder('header')->captureStart();?>
 <header id="jumbotron-header" class="home">
     <div class="container">
         <h1><?php echo $this->escapeHtml($title); ?></h1>
         <h3><?php echo sprintf($this->translate('Learn with %d high quality quizzes proposed by our community of teachers.'),count($lists),'x'); ?></h3>
-        <form method="post" action="<?php echo $this->url('listquests/list'); ?>" class="well well-small form-inline">
-            <input id="tags" name="tags" type="text" class="input-xxlarge home" placeholder="<?php echo $this->translate('Which quizz are you looking for?'); ?>">
-            <input name="language" type="text" class="input-medium home" placeholder="<?php echo $this->translate('Language'); ?>">
+        <div class="well well-small ">
+            <?php echo $this->form()->openTag($searchForm);?>
+            <?php echo $this->formRow($searchForm->get('search')); ?>
+            <?php echo $this->formRow($searchForm->get('language')); ?>
             <button type="submit" class="btn btn-large btn-primary home"><i class="icon-white icon-search"></i> <?php echo $this->translate('Search'); ?></button>
-        </form>
+            <?php echo $this->form()->closeTag();?> 
+        </div>
     </div>
 </header>
 <?php $this->placeholder('header')->captureEnd(); ?>

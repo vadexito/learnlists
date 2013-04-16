@@ -8,9 +8,12 @@ return [
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',
-        'BjyAuthorize',
-        'ZfcAdmin',
         'CdliTwoStageSignup',        
+        //'GoalioMailService',
+        //'GoalioForgotPassword',
+        //'GoalioRememberMe',
+        'BjyAuthorize',
+        'ZfcAdmin',        
         'WtRating', 
         'PhlyContact', 
         'AsseticBundle',
@@ -24,6 +27,7 @@ return [
         'LrnlListquests',
         'LrnlUser',
         'LrnlRest',
+        'LrnlSearch',
     ],
     
     // These are various options for the listeners attached to the ModuleManager

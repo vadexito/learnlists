@@ -1,12 +1,31 @@
 $(function() {
     
-    //focus on home page
-    if ($('#tags').length > 0){
-        $('#tags').focus();
+    //focus on home page and search url
+    if ($('#search').length > 0){
+        if ($('.home').length > 0){
+            $('#search').focus();
+        }
+        
+        $('#searchForm').submit(function(e){
+            var url = $('#searchForm').attr('action')
+                +'?search='
+                +$('#search').val();
+            $('#searchForm').attr('action',url);
+        });
+        
+        $('#authorName_0').click(function(e){
+            var href = $(e.currentTarget).attr('data-href');
+            window.location.href = href;
+        });
+        
+        if ($('.checkbox-filter').length >0) {
+            
+            $('.checkbox-filter').click(function(e){
+                var href = $(e.currentTarget).attr('data-url');
+                window.location.href = href;
+            });
+        }
     }
-    
-    
-    
     
     if (typeof learnMVC === 'object') {
         learnMVC.start({
@@ -20,12 +39,29 @@ $(function() {
     $('a[data-toggle="tooltip"]').tooltip();
     $('a[data-toggle="popover"]').popover();
     
+    if ($('#questionNb').length >0){
+        //slide in show list of lists page
+        var rangeMin = $('#questionNb').parents('.filter-choice').first().children('.min-slider').first();
+        var rangeMax = $('#questionNb').parents('.filter-choice').first().children('.max-slider').first();
+        var updateSlider = function(range){        
+            var patt1 = /^(\d)?\d,/;
+            var patt2 = /,(\d)?\d$/;        
+            rangeMin.html(range.replace(patt2,''));
+            rangeMax.html(range.replace(patt1,''));
+        };
+        $('#questionNb').hide().slider().on('slide', function(e){
+            updateSlider($(e.currentTarget).val());
+        });
+        rangeMin.html($('#questionNb').attr('data-slider-min'));
+        rangeMax.html($('#questionNb').attr('data-slider-max'));
+    }
+        
     
     //table for the lists
     if ($("table.listquest_table").length > 0){
         var idTable = $('table').attr('id');
         $("table").dataTable({
-            "iDisplayLength": 5,
+            "iDisplayLength": 10,
             "sPaginationType": "full_numbers",
             "bLengthChange": false,
             "oLanguage": {
@@ -37,14 +73,19 @@ $(function() {
                     "sLast": ">>"
                 }
             },
-            "fnInitComplete": function(oSettings, json) {                
-                $('#search_hidden').hide();
-                $('#'+idTable+'_filter input').attr('placeholder',$('#search_hidden input').attr('placeholder'))
-                    .unwrap().wrap('<div class="input-append"/>')
-                    .after('<button type="submit" class="btn"><i class="icon-search"></i></button>');
+            "fnInitComplete": function(oSettings, json) { 
+                  $('#'+idTable+'_filter input').attr('placeholder',$('#keywords-bar').attr('data-placeholder'));
+                  $('#keywords-bar').append($('#'+idTable+'_filter input'));
+                  
+                  
+                  
+//                $('#search_hidden').hide();
+//                $('#'+idTable+'_filter input').attr('placeholder',$('#search_hidden input').attr('placeholder'))
+//                    .unwrap().wrap('<div class="input-append"/>')
+//                    .after('<button type="submit" class="btn"><i class="icon-search"></i></button>');
                 },
             "fnDrawCallback": function( oSettings ) {
-                $('#'+idTable+'_paginate').addClass('pagination');
+                $('#'+idTable+'_paginate').addClass('pagination pull-right');
            
                 if ($('#'+idTable+'_paginate ul').length == 0){
                     $('#'+idTable+'_paginate').children().wrapAll('<ul/>');
@@ -56,11 +97,14 @@ $(function() {
                 $('#'+idTable+'_paginate ul>li').eq(1).after($('#'+idTable+'_paginate span li'));
                 $('#'+idTable+'_paginate span').hide(); 
                 $('#'+idTable+'_paginate a.paginate_active').parent().addClass('active');
+                
+                $('#search-pagination').append($('#'+idTable+'_paginate'));
+                $('#search-results').append($('#'+idTable+'_info'));
              }
         });
     } 
     
-    //multi line elements
+    //multi line elements in forms
     var collection = $('#questions_element');
     collection.find('tr.populate input').attr('readonly','true');
     //multi line element for edit list (several questions)

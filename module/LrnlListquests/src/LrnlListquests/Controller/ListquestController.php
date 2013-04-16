@@ -4,29 +4,30 @@ namespace LrnlListquests\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use LrnlListquests\Entity\Listquest;          
-use LrnlListquests\Form\ListquestForm; 
-use DoctrineORMModule\Stdlib\Hydrator\DoctrineEntity;
+use LrnlListquests\Entity\Listquest;
 
 class ListquestController extends AbstractActionController
 {
     protected $listquestService = NULL;
+    protected $_redirectRoute = NULL;
     
     public function indexAction()
     {
-        $ratingService = $this->getServiceLocator()->get('wtrating.service');
-        
+        $searchForm = $this->getServiceLocator()->get('learnlists-form-search');
         
         return [
-            'ratingService' => $ratingService,
-            'lists' => $this->getListquestService()->fetchAll()
+            'ratingService' => $this->getServiceLocator()->get('wtrating.service'),
+            'lists' => $this->getListquestService()->fetchAll(),
+            'searchForm' => $searchForm
         ];
     }
     
     public function homeAction()
     {
+        $searchForm = $this->getServiceLocator()->get('learnlists-form-search');
         return [
-            'lists' => $this->getListquestService()->fetchAll()
+            'lists' => $this->getListquestService()->fetchAll(),
+            'searchForm' => $searchForm
         ];
     }
     
@@ -45,9 +46,7 @@ class ListquestController extends AbstractActionController
             if ($form->isValid()) {
      
                 $this->getListquestService()->insertListquest($listquest);
-
-                // Redirect to list of questions
-                return $this->redirect()->toRoute('listquests/list');
+                return $this->redirect()->toRoute($this->getRedirectRoute());
             }
         }
         return ['form' => $form];
@@ -57,12 +56,12 @@ class ListquestController extends AbstractActionController
     {
         $listId = (int) $this->params()->fromRoute('id', 0);
         if (!$listId) {
-            return $this->redirect()->toRoute('home');
+            return $this->redirect()->toRoute($this->getRedirectRoute());
         }
         $listquest = $this->getListquestService()->fetchById($listId);
         
         if (!$this->_checkUserIsAuthorized($listquest)) {
-            return $this->redirect()->toRoute('home');
+            return $this->redirect()->toRoute($this->getRedirectRoute());
         }
         
         $form = $this->getServiceLocator()->get('LrnlListquests\Form\EditQuestionsInListquestForm');
@@ -88,7 +87,7 @@ class ListquestController extends AbstractActionController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('listquests/list');
+            return $this->redirect()->toRoute($this->getRedirectRoute());
         }
         
         $request = $this->getRequest();
@@ -101,7 +100,7 @@ class ListquestController extends AbstractActionController
                     $this->getListquestService()->deleteListquest($list);
                 }
             }
-            return $this->redirect()->toRoute('listquests/list');
+            return $this->redirect()->toRoute($this->getRedirectRoute());
         }
 
         return [
@@ -155,6 +154,24 @@ class ListquestController extends AbstractActionController
         }
         
         return $listquest && ($listquest->author->getId() === $user->getId());
+    }
+    
+    public function setRedirectRoute($route)
+    {
+        $this->_redirectRoute = $route;
+            
+        return $this;
+    }
+    
+    public function getRedirectRoute()            
+    {
+        if ($this->_redirectRoute === NULL)
+        {
+            $config = $this->getServiceLocator()->get('config');
+            $configModule = $config['lrnl-listquests'];
+            $this->_redirectRoute = $configModule['redirect_route_after_listquestCrud'];
+        }
+        return $this->_redirectRoute;
     }
 }
 

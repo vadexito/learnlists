@@ -15,17 +15,6 @@ use LrnlListquests\Entity\Question;
 use DateTime;
 
 
-/**
- *
- * @property int $id
- * @property string $title
- * @property string $author
- * @property string $rules
- * @property string $level
- * @property datetime $creationDate
- * @property ArrayCollection $tags
- */
-
 class Listquest extends EntityAbstract implements InputFilterAwareInterface
 {
     /**
@@ -43,6 +32,21 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
      * @access protected
      */
     protected $title;
+    /**
+     * description of the list
+     *
+     * @var string
+     * @access protected
+     */
+    protected $description;
+    
+    /**
+     * language of the list
+     *
+     * @var string
+     * @access protected
+     */
+    protected $language;
     
     /**
      * Rules for the quiz
@@ -124,6 +128,26 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
     public function getTitle()
     {
         return $this->title;
+    }
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+    
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+        return $this;
+    }
+    
+    public function getLanguage()
+    {
+        return $this->language;
     }
     
     public function setLevel($level)
@@ -291,6 +315,42 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                     ],
                 ],
             ]));
+            $inputFilter->add($factory->createInput([
+                'name'     => 'description',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 0,
+                            'max'      => 250,
+                        ],
+                    ],
+                ],
+            ]));
+            $inputFilter->add($factory->createInput([
+                'name'     => 'language',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 0,
+                            'max'      => 50,
+                        ],
+                    ],
+                ],
+            ]));
             
             $inputFilter->add($factory->createInput([
                 'name'     => 'rules',
@@ -339,8 +399,6 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                     ],
                 ],
             ]));
-            
-            
 
             $this->inputFilter = $inputFilter;
         }

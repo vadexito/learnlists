@@ -1,0 +1,46 @@
+<li class="search_result_listquest_item">
+    <div class="row-fluid">
+        <div class="span2">
+             <?php echo $this->gravatar($authorEmail,['img_size' => '20px'])?>
+             <?php echo $this->zfcUserDisplayName($author).' ('.$author->getRoles()[0]->getRoleId(). ')'; ?>
+        </div>
+        <div class="span10">
+            <a href="<?php if ($questionNb == 0) : echo $this->url('learn/basic',['id' => $id]); endif; ?>">
+                <h2><?php echo $this->escapeHtml($title); ?></h2>
+            </a>
+            <h3><?php echo $this->dateFormat($creationDate,IntlDateFormatter::MEDIUM); ?></h3>
+            <span class="pull-right questionNb"><?php echo $questionNb.' '.$this->translatePlural('question','questions',$questionNb); ?></span>
+            <div class="badge tags">
+                <?php echo $this->escapeHtml($tags); ?>
+            </div>
+            <div class="button_list pull-right">
+                <span class="like_button">
+                    <?php if ($hasLike) : ?>                   
+                    <a class="btn btn-mini" disabled>
+                        <i class="icon-thumbs-up"></i> <?php echo $this->translate('Like');?>
+                        <?php echo $this->translate('I like this');?>
+                    </a>
+                    <?php else : ?>
+                    <a class="btn btn-mini" href="<?php echo $this->url('listquests/list/rate',['id' => $id]); ?>">
+                        <i class="icon-thumbs-up"></i> <?php echo $this->translate('Like');?>
+                    </a>    
+                    <?php endif;?>
+                </span>
+                <span class="edit_button">
+                    <?php if ($this->zfcUserIdentity() && ($author->getId() === $this->zfcUserIdentity()->getId())) :?> 
+                            <a class="btn btn-mini btn-primary" href="<?php echo $this->url('listquests/list/edit',['id' => $id]); ?>" title="<?php echo $this->translate('Edit list'); ?>">
+                                <i class="icon-edit icon-white"></i>
+                            </a>
+                    <?php endif; ?>
+                </span>
+            </div>
+            <div class="badge rating">
+                <?php if (isset($ratingService)) : echo round($ratingService->getRatingSet($id)->getAmount());endif; ?>
+            </div>
+            <div class="badge level">
+                <?php echo $this->escapeHtml($level); ?> 
+            </div>
+        </div>
+    </div>
+</li>            
+               
