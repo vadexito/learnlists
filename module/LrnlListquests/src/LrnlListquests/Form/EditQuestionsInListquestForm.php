@@ -38,6 +38,7 @@ class EditQuestionsInListquestForm extends Form
         
         $this->add([
             'name' => 'submit',
+            'type'  => 'submit',
             'attributes' => [
                 'type'  => 'submit',
                 'value' => 'Check',

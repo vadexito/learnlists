@@ -10,9 +10,12 @@ use ZendSearch\Lucene\Search\Query;
 
 use LrnlSearch\Exception\ServiceException;
 use LrnlSearch\Document\ListquestDocument;
+use LrnlSearch\Traits\LuceneSearchTrait;
 
 class SearchService
 {
+    use LuceneSearchTrait;
+    
     protected $_indexPath;
     
     public function __construct($indexPath)
@@ -20,14 +23,14 @@ class SearchService
         $this->setIndexPath($indexPath);
     }
     
-    public function getListquestsFromQuery($queryData)
+    public function getResultsFromQuery($queryData,$sortOptions = NULL)
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
         $query = new Query\Boolean();
         $rangeQuery = new Query\Range(new Index\Term('0','docId'),null,true);
         $query->addSubquery($rangeQuery,true);
         
-        $termParams = ['search','authorName','level'];
+        $termParams = ['search','authorName','level','language'];
         foreach ($termParams as $param){
             if (isset($queryData[$param]) && $queryData[$param]){
                 if (!is_array($queryData[$param])){
@@ -46,11 +49,14 @@ class SearchService
         foreach ($rangeParams as $param){
             $termMin = NULL;
             $termMax = NULL;
+                    
             if (isset($queryData[$param.'Min']) && $queryData[$param.'Min']){
-                $termMin = new Index\Term($queryData[$param.'Min']);
+                $min = $this->convertNumToString($queryData[$param.'Min']);
+                $termMin = new Index\Term($min,$param);
             } 
             if (isset($queryData[$param.'Max']) && $queryData[$param.'Max']){
-                $termMax = new Index\Term($queryData[$param.'Max']);
+                $max = $this->convertNumToString($queryData[$param.'Max']);
+                $termMax = new Index\Term($max,$param);
             }
             if ($termMin || $termMax){
                 $query->addSubquery(new Query\Range($termMin,$termMax,true),true);
@@ -58,7 +64,11 @@ class SearchService
         }   
         
         try {
-            $hits = $index->find($query);
+            if ($sortOptions !== NULL){                
+                $hits = $index->find($query,$sortOptions['name'],$sortOptions['type'],$sortOptions['direction']);
+            } else {
+                $hits = $index->find($query);
+            }
         }
         catch (LuceneException $ex) {
             $hits = [];
@@ -77,6 +87,5 @@ class SearchService
     {
         return $this->_indexPath;
     }
-
     
 }

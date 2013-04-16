@@ -137,9 +137,64 @@ header
 list of lists page
 =========================================*/
 
-table {
-    margin-top:15px;
+li.search_result_listquest_item {
+    list-style-type: none;
+    margin:0;
 }
+
+.title_search_result_line
+{
+    margin:0;
+    padding:0;
+    line-height: normal;
+}
+
+.questionNb {
+    margin:0;
+}
+
+#search_results_body hr {
+    margin-bottom: 5px;
+    margin-top:5px;
+}
+
+.title_with_icon a,.title_with_icon h4 {
+    display: inline;
+}
+
+.edit_button {
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.title_badge {
+    opacity: 0.5;
+}
+
+.badge_item {
+    margin-right:20px;
+}
+#left_side_filters {
+    background: none;
+    padding:0;
+}
+
+.filter-search h5 {
+    margin:0;
+    padding-top:6px;
+    padding-bottom:6px;
+}
+
+.filter-choice .well{
+   background: none; 
+   margin:0;
+   border:0;
+}
+
+span.min-slider, span.max-slider {
+    margin-bottom:10px;
+}
+
 
 /*=======================================
 edit list page

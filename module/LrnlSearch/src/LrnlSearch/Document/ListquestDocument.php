@@ -5,14 +5,18 @@ namespace LrnlSearch\Document;
 use ZendSearch\Lucene\Document;
 use ZendSearch\Lucene\Document\Field;
 use LrnlListquests\Entity\Listquest;
+use LrnlSearch\Traits\LuceneSearchTrait;
 
 class ListquestDocument extends Document
 {
+    use LuceneSearchTrait;
+    
     public function setData($id,Listquest $list)
     {
-        $this->addField(Field::keyword('listId',$list->id));  
-        $this->addField(Field::keyword('questionNb',count($list->questions)));  
-        $this->addField(Field::keyword('docId',(string)$id));  
+        $this->addField(Field::keyword('listId',$this->convertNumToString($list->id)));  
+        $this->addField(Field::keyword('questionNb',
+                $this->convertNumToString(count($list->questions))));  
+        $this->addField(Field::keyword('docId',$this->convertNumToString($id)));  
         $this->addField(Field::Text('title',$list->title));  
         $this->addField(Field::Text('description',$list->description));  
         $this->addField(Field::Text('language',$list->language));  
@@ -39,4 +43,6 @@ class ListquestDocument extends Document
         
         return $this;
     }
+    
+    
 }

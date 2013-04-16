@@ -9,6 +9,8 @@ use ZendSearch\Lucene\Index;
 use ZendSearch\Lucene;
 use ZendSearch\Lucene\Exception as LuceneException;
 use ZendSearch\Lucene\Search\Query;
+use ZendSearch\Lucene\Analysis\Analyzer\Analyzer;
+use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive as UTF8NumCaseInsensitiveAnalyser;
 use LrnlSearch\Document\ListquestDocument;
 
 
@@ -23,20 +25,72 @@ class SearchController extends AbstractActionController
         $searchService = $this->getServiceLocator()
                               ->get('learnlists-search-service-factory');
         $queryData = $this->getRequest()->getQuery();
-        $hits = $searchService->getListquestsFromQuery($queryData);
+        $hits = $searchService->getResultsFromQuery($queryData,[
+            'name' => 'questionNb',
+            'type' => SORT_NUMERIC,
+            'direction' => SORT_DESC,
+        ]);
+        
+        
         
         $filtersShow = [
             'filterTerm' => [
                 _('level') => [_('advanced'),_('easy'),_('beginner')],
-                _('language') => [_('German'),_('French'),_('Polish')],
+                _('language') => [_('german'),_('french'),_('polish')],
                 _('authorName') => [_('madi'),_('vadex'),_('bgo')],
             ],
             'filterRange' => [
-                _('questionNb'),
+                [
+                    'name' => _('questionNb'),
+                    'label' => _('questions'),
+                    'rangeMin' => 0,
+                    'rangeMax' => 10,
+                    'rangeStep' => 1,
+                    'rangeValue' => '[5,10]',
+                ]
             ]
         ];
         
         $filterForm = new \Zend\Form\Fieldset('filtersForm');
+        foreach ($filtersShow['filterRange'] as $filter){
+            $nameMin = $filter['name'].'Min';
+            $nameMax = $filter['name'].'Max';
+            
+            $rangeValue = $filter['rangeValue'];
+            $queryForUrl = clone $queryData;
+            if ($queryData->get($nameMin) !== NULL && $queryData->get($nameMax)){
+                $rangeValue = '['.$queryData->get($nameMin)
+                    .','.$queryData->get($nameMax).']';
+            } else {
+                $queryForUrl->set($nameMin,$filter['rangeMin']);
+                $queryForUrl->set($nameMax,$filter['rangeMax']);
+            }
+            
+            
+            
+            
+            $filterForm->add([
+                'name' => $filter['name'],
+                'type'  => 'text',                    
+                'attributes' => [
+                    'id'    => $filter['name'],
+                    'type'  => 'text',    
+                    'class' => 'span9',
+                    'data-url' => $this->url()->fromRoute(
+                            'lrnl-search',[],
+                            ['query' => $queryForUrl->toArray()]
+                    ),
+                    'data-filterNameMin' => $nameMin,
+                    'data-filterNameMax' => $nameMax,
+                    'data-slider-min' => $filter['rangeMin'],
+                    'data-slider-max' => $filter['rangeMax'],
+                    'data-slider-value' => $rangeValue,
+                    'data-slider-step' => $filter['rangeStep'],
+                    'data-slider-selection' => 'after',
+                    'data-slider-tooltip' => 'hide'
+                ],
+            ]);
+        }
         foreach ($filtersShow['filterTerm'] as $filter => $values){
             $subForm = new \Zend\Form\Fieldset($filter);
             $filterForm->add($subForm);
@@ -46,7 +100,7 @@ class SearchController extends AbstractActionController
                 //calculate the hit number of each option
                 $filteredQuery = clone $queryData; 
                 $filteredQuery->set($filter,[$value]);                
-                $hitNb = count($searchService->getListquestsFromQuery($filteredQuery));
+                $hitNb = count($searchService->getResultsFromQuery($filteredQuery));
                 
                 //url for checkbox (used by javascript)
                 $filteredQueryforUrl = clone $queryData; 
@@ -118,6 +172,7 @@ class SearchController extends AbstractActionController
     public function buildAction()
     {
         $index = Lucene\Lucene::create('data/indexes/learnlists');
+        Analyzer::setDefault(new UTF8NumCaseInsensitiveAnalyser);
         $lists = $this  ->getServiceLocator()
                         ->get('learnlists-listquestfactory-service')
                         ->fetchAll();

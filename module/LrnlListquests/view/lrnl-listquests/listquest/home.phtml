@@ -4,7 +4,7 @@ $this->headTitle($title);
 
 $searchForm->setAttribute('action', $this->url('lrnl-search'));
 $searchForm->prepare();
-
+$searchForm->get('search')->setAttribute('class','home '.$searchForm->get('search')->getAttribute('class'));
 ?>
 <?php $this->placeholder('header')->captureStart();?>
 <header id="jumbotron-header" class="home">

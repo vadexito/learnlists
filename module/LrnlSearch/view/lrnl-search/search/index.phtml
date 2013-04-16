@@ -22,40 +22,58 @@ $searchForm->prepare();
     </div>
 </div>
 <div class="row-fluid search_engine">
-    <div class="span3 left_side_filters">        
-        <?php foreach ($filtersShow['filterTerm'] as $filter => $values): ?>
-        <div class="filter-search">
-            <h4><?php echo $this->translate($filter); ?></h4>
-            <div class="filter-choice">
-                <?php foreach ($values as $value): ?>
-                <label class="checkbox">
-                    <?php echo $this->formCheckbox($filterForm->get($filter)->get($value)); ?> <?php echo $filterForm->get($filter)->get($value)->getLabel(); ?>
-                    <button class="btn btn-mini disabled pull-right"><?php echo $filterForm->get($filter)->get($value)->getAttribute('data-hitNb'); ?></button>
-                </label>
-                <?php endforeach; ?>
+    <div class="span3">
+        <div class="span11 well" id="left_side_filters">
+            <?php foreach ($filtersShow['filterTerm'] as $filter => $values): ?>
+            <div class="filter-search filter-search-term">
+                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$filter;echo $name; ?>">
+                    <h5 class="well"><?php echo ucfirst($this->translate($filter)); ?></h5>
+                </a>
+                <div class="collapse in filter-choice" id="<?php echo $name; ?>">
+                    <div class="well">
+                        <?php foreach ($values as $value): ?>
+                        <label class="checkbox">
+                            <?php echo $this->formCheckbox($filterForm->get($filter)->get($value)); ?> <?php echo $filterForm->get($filter)->get($value)->getLabel(); ?>
+                            <span class="badge pull-right"><?php echo $filterForm->get($filter)->get($value)->getAttribute('data-hitNb'); ?></span>
+                        </label>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
-        </div>
-        <?php endforeach; ?>
-        <div class="filter-search">
-            <h4><?php echo $this->translate('Questions'); ?></h4>
-            <div class="filter-choice">
-                <button class="min-slider btn btn-mini disabled pull-left"></button>
-                <button class="max-slider btn btn-mini disabled pull-right"></button>
-                <input id="questionNb" type="text" class="span12" value="" data-slider-min="0" data-slider-max="50" data-slider-step="1" data-slider-value="[0,50]" data-slider-selection="after" data-slider-tooltip="hide">  
+            <?php endforeach; ?>
+            <?php foreach ($filtersShow['filterRange'] as $range): ?>
+            <div class="filter-search filter-search-range">
+                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$range['name'];echo $name; ?>">
+                     <h5 class="well"><?php echo ucfirst($this->translate($range['label'])); ?></h5>
+                </a>               
+                <div class="collapse in filter-choice" id="<?php echo $name; ?>">
+                    <div class="well">
+                        <span class="min-slider label label-important pull-left"></span>
+                        <span class="max-slider label label-important pull-right"></span>
+                        <?php echo $this->formRow($filterForm->get($range['name'])); ?>  
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="filter-search">
-            <h4><?php echo $this->translate('Keywords'); ?></h4>
-            <span id="keywords-bar" data-placeholder="<?php echo $this->translate('Enter a keyword'); ?>"></span>
+            <?php endforeach; ?>
+            <div class="filter-search filter-search-keyword">
+                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$range['name'];echo $name; ?>">
+                    <h5 class="well"><?php echo $this->translate('Keywords'); ?></h5>
+                </a>
+                <div class="collapse in filter-choice" id="<?php echo $name; ?>">
+                    <div class="well">
+                        <span id="keywords-bar" data-placeholder="<?php echo $this->translate('Enter a keyword'); ?>"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="span9" id="search_results_body">
         <div class="row-fluid  well well-small" id="search_result_summary">
             <?php echo sprintf($this->translate('%s results'),count($lists)); ?>
         </div>
+        <hr>
         <div class="row-fluid">
             <ul id="search_result_lists">
-                
                 <?php echo $this->listquestCollection($lists); ?>               
             </ul>
         </div>

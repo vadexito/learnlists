@@ -1,31 +1,18 @@
 $(function() {
     
+    $('.checkbox-filter').click(function(e){
+        window.location.href = $(e.currentTarget).attr('data-url');
+    });
+    
+    $('#searchForm').submit(function(e){
+        var url = $('#searchForm').attr('action')
+            +'?search='
+            +$('#search').val();
+        $('#searchForm').attr('action',url);
+    });
+    
     //focus on home page and search url
-    if ($('#search').length > 0){
-        if ($('.home').length > 0){
-            $('#search').focus();
-        }
-        
-        $('#searchForm').submit(function(e){
-            var url = $('#searchForm').attr('action')
-                +'?search='
-                +$('#search').val();
-            $('#searchForm').attr('action',url);
-        });
-        
-        $('#authorName_0').click(function(e){
-            var href = $(e.currentTarget).attr('data-href');
-            window.location.href = href;
-        });
-        
-        if ($('.checkbox-filter').length >0) {
-            
-            $('.checkbox-filter').click(function(e){
-                var href = $(e.currentTarget).attr('data-url');
-                window.location.href = href;
-            });
-        }
-    }
+    $('#search.home').focus();
     
     if (typeof learnMVC === 'object') {
         learnMVC.start({
@@ -39,22 +26,47 @@ $(function() {
     $('a[data-toggle="tooltip"]').tooltip();
     $('a[data-toggle="popover"]').popover();
     
-    if ($('#questionNb').length >0){
-        //slide in show list of lists page
-        var rangeMin = $('#questionNb').parents('.filter-choice').first().children('.min-slider').first();
-        var rangeMax = $('#questionNb').parents('.filter-choice').first().children('.max-slider').first();
-        var updateSlider = function(range){        
-            var patt1 = /^(\d)?\d,/;
-            var patt2 = /,(\d)?\d$/;        
-            rangeMin.html(range.replace(patt2,''));
-            rangeMax.html(range.replace(patt1,''));
+    $('.filter-search-range').each(function(){
+        
+        var rangeMin = $(this).find('.min-slider').first();
+        var rangeMax = $(this).find('.max-slider').first();
+        
+        var updateSlider = function(range){ 
+            var patt1 = /^\[/;
+            var patt2 = /\]$/;
+            var patt3 = /(\[)?(\d)?\d,/;
+            var patt4 = /,(\d)?\d(\])?/; 
+            
+            rangeMin.html(((range.replace(patt1,'')).replace(patt2,'')).replace(patt4,''));
+            rangeMax.html(((range.replace(patt1,'')).replace(patt2,'')).replace(patt3,''));
         };
-        $('#questionNb').hide().slider().on('slide', function(e){
+        
+        $(this).find('input').hide().slider().on('slide', function(e){
             updateSlider($(e.currentTarget).val());
         });
-        rangeMin.html($('#questionNb').attr('data-slider-min'));
-        rangeMax.html($('#questionNb').attr('data-slider-max'));
-    }
+        var self = this;
+        $(this).find('input').hide().slider().on('slideStop', function(e){
+            var url = $(e.currentTarget).attr('data-url');
+            var nameMin = $(e.currentTarget).attr('data-filterNameMin');
+            var nameMax = $(e.currentTarget).attr('data-filterNameMax');
+            var rangeMin = $(self).find('.min-slider').first().html();
+            var rangeMax = $(self).find('.max-slider').first().html();
+            
+            var patt1 = new RegExp('(.*'+nameMin+'=)([0-9]*)(&'+nameMax+'=)([0-9]*)(.*)');
+            if (patt1.test(url)){
+                var matches = url.match(patt1);
+                url = matches[1]+rangeMin+matches[3]+rangeMax+matches[5];
+                
+                window.location.href = url;
+            }
+            
+        });
+        
+        //an initialization
+        updateSlider($(this).find('input').attr('data-slider-value'));
+        
+    });
+   
         
     
     //table for the lists
