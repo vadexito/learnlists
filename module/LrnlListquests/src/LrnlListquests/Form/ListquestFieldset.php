@@ -46,6 +46,28 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
             ],
         ]);
         $this->add([
+            'name' => 'description',
+            'attributes' => [
+                'type'  => 'textarea',
+                'id'    => 'description',
+                'autocomplete'    => 'off'
+            ],
+            'options' => [
+                'label' => _('Description')
+            ],
+        ]);
+        $this->add([
+            'name' => 'language',
+            'attributes' => [
+                'type'  => 'text',
+                'id'    => 'language',
+                'autocomplete'    => 'off'
+            ],
+            'options' => [
+                'label' => _('Language')
+            ],
+        ]);
+        $this->add([
             'name' => 'level',
             'attributes' => [
                 'type'  => 'text',
@@ -120,6 +142,42 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
                             'encoding' => 'UTF-8',
                             'min'      => 2,
                             'max'      => 50,
+                        ],
+                    ],
+                ],
+            ],
+            'description' => [
+                'name'     => 'description',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 0,
+                            'max'      => 255,
+                        ],
+                    ],
+                ],
+            ],
+            'language' => [
+                'name'     => 'language',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 20,
                         ],
                     ],
                 ],

@@ -6,6 +6,7 @@ namespace LrnlListquests;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
 use LrnlListquests\Form\TagFieldset;
 use LrnlListquests\Form\EditQuestionsInListquestForm;
@@ -55,5 +56,20 @@ class Module implements
                 },
             ],
         ];
+    }
+    
+    public function getViewHelperConfig()
+    {
+        return array(
+            'factories' => array(
+                'listquestCollection' => function ($sm) {
+                    $locator = $sm->getServiceLocator();
+                    $viewHelper = new View\Helper\ListquestCollection;
+                    $viewHelper->setListquestService($locator->get('learnlists-listquestfactory-service'));
+                    $viewHelper->setRatingService($locator->get('wtrating.service'));
+                    return $viewHelper;
+                },
+            ),
+        );
     }
 }
