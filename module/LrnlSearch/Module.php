@@ -8,6 +8,8 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 use LrnlSearch\Form\SearchForm;
+use LrnlSearch\Form\FiltersForm;
+use LrnlSearch\Form\FilterTermCheckboxElement;
 
 class Module implements 
     AutoloaderProviderInterface,
@@ -37,8 +39,12 @@ class Module implements
     {
         return [
             'factories' => [
-                'learnlists-form-search' =>  function($sm) {            
+                'learnlists-form-search' =>  function($sm) {
                     return new SearchForm();
+                },
+                'learnlists-form-filter' =>  function($sm) {
+                    $searchService = $sm->get('learnlists-search-service-factory');
+                    return new FiltersForm('filtersForm',$searchService);
                 },
             ],
         ];

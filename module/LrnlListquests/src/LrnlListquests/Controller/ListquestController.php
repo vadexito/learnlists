@@ -11,17 +11,6 @@ class ListquestController extends AbstractActionController
     protected $listquestService = NULL;
     protected $_redirectRoute = NULL;
     
-    public function indexAction()
-    {
-        $searchForm = $this->getServiceLocator()->get('learnlists-form-search');
-        
-        return [
-            'ratingService' => $this->getServiceLocator()->get('wtrating.service'),
-            'lists' => $this->getListquestService()->fetchAll(),
-            'searchForm' => $searchForm
-        ];
-    }
-    
     public function homeAction()
     {
         $searchForm = $this->getServiceLocator()->get('learnlists-form-search');

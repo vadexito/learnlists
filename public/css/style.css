@@ -189,11 +189,23 @@ li.search_result_listquest_item {
    background: none; 
    margin:0;
    border:0;
+   padding-bottom:15px;
+   padding-top:15px;
 }
 
 span.min-slider, span.max-slider {
     margin-bottom:10px;
 }
+
+.filter-search-keyword input{
+    margin:0;
+    font-size:12px;
+}
+
+.filter-search-keyword div.input-append{
+    margin:0;
+}
+
 
 
 /*=======================================

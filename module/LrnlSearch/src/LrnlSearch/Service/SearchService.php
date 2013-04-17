@@ -2,25 +2,29 @@
 
 namespace LrnlSearch\Service;
 
-use ZendSearch\Lucene\Document;
 use ZendSearch\Lucene\Index;
 use ZendSearch\Lucene;
 use ZendSearch\Lucene\Exception as LuceneException;
 use ZendSearch\Lucene\Search\Query;
+use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive as UTF8NumCaseInsensitiveAnalyser;
+use ZendSearch\Lucene\Analysis\Analyzer\Analyzer;
 
-use LrnlSearch\Exception\ServiceException;
 use LrnlSearch\Document\ListquestDocument;
 use LrnlSearch\Traits\LuceneSearchTrait;
+use LrnlListquests\Service\ListquestService;
+use LrnlListquests\Provider\ProvidesListquestService;
 
 class SearchService
 {
     use LuceneSearchTrait;
+    use ProvidesListquestService;
     
     protected $_indexPath;
     
-    public function __construct($indexPath)
+    public function __construct($indexPath,ListquestService $listquestService = NULL)
     {
         $this->setIndexPath($indexPath);
+        $this->setListquestService($listquestService);
     }
     
     public function getResultsFromQuery($queryData,$sortOptions = NULL)
@@ -75,6 +79,37 @@ class SearchService
         }
 
         return $hits;
+    }
+    
+    public function buildIndex()
+    {
+        $index = Lucene\Lucene::create($this->getIndexPath());
+        Analyzer::setDefault(new UTF8NumCaseInsensitiveAnalyser);
+        $lists = $this->getListquestService()->fetchAll();
+        
+        $id =0;
+        foreach ($lists as $list) {
+            $index->addDocument((new ListquestDocument())->setData($id,$list));
+            $id++;
+        }
+        $index->commit();
+        $index->optimize();
+    }
+    
+    //TO DO to be updated
+    public function updateIndex()
+    {
+        $document = getDocument();
+        $index = Zend_Search_Lucene::open($this->getIndexPath());
+
+        // find the document based on the indexed document_id field
+        $term = new Index\Term($document->id, 'document_id');
+        foreach ($index->termDocs($term) as $id)
+            $index->delete($id);
+
+        // re-add the document
+        $index->addDocument(new ListquestDocument($listquest));
+        $index->commit();
     }
     
     public function setIndexPath($indexPath)

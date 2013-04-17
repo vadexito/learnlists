@@ -10,10 +10,9 @@ class SearchServiceFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $services)
     {
-        $objectManager = $services->get('doctrine.entitymanager.orm_default');
-        $user = $services->get('zfcuser_auth_service')->getIdentity();
         $config = $services->get('config')['lrnl-search'];
-        $service   = new SearchService($config['indexPath']);
+        $listquestService = $services->get('learnlists-listquestfactory-service');
+        $service   = new SearchService($config['indexPath'],$listquestService);
         return $service;
     }
 }

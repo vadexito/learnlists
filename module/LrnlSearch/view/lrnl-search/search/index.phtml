@@ -24,47 +24,68 @@ $searchForm->prepare();
 <div class="row-fluid search_engine">
     <div class="span3">
         <div class="span11 well" id="left_side_filters">
-            <?php foreach ($filtersShow['filterTerm'] as $filter => $values): ?>
+            <?php foreach ($filterForm->getFieldsets() as $filter):  ?>
+            
+            
+            <?php if ($filter->getAttribute('data-filterType') === 'checkboxes'): ?>
             <div class="filter-search filter-search-term">
-                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$filter;echo $name; ?>">
-                    <h5 class="well"><?php echo ucfirst($this->translate($filter)); ?></h5>
+                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$filter->getName();echo $name; ?>">
+                    <h5 class="well"><?php echo ucfirst($this->translate($filter->getLabel())); ?></h5>
                 </a>
                 <div class="collapse in filter-choice" id="<?php echo $name; ?>">
                     <div class="well">
-                        <?php foreach ($values as $value): ?>
+            <?php foreach ($filter->getElements() as $checkbox): 
+                $checkbox->setAttribute('data-url',$this->url('lrnl-search',[],['query' => $checkbox->getQueryUrl()]));
+                ?>
                         <label class="checkbox">
-                            <?php echo $this->formCheckbox($filterForm->get($filter)->get($value)); ?> <?php echo $filterForm->get($filter)->get($value)->getLabel(); ?>
-                            <span class="badge pull-right"><?php echo $filterForm->get($filter)->get($value)->getAttribute('data-hitNb'); ?></span>
+                            <?php echo $this->formCheckbox($checkbox); ?> <?php echo $checkbox->getLabel(); ?>
+                            <span class="badge pull-right"><?php echo $checkbox->getAttribute('data-hitNb'); ?></span>
                         </label>
-                        <?php endforeach; ?>
+            <?php endforeach; ?>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
-            <?php foreach ($filtersShow['filterRange'] as $range): ?>
+            <?php endif;?>
+            
+            
+            <?php if ($filter->getAttribute('data-filterType')==='range'): ?>
+            <?php foreach ($filter->getElements() as $range): 
+                $range->setAttribute('data-url',$this->url('lrnl-search',[],['query' => $range->getQueryUrl()]));
+            ?>
             <div class="filter-search filter-search-range">
-                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$range['name'];echo $name; ?>">
-                     <h5 class="well"><?php echo ucfirst($this->translate($range['label'])); ?></h5>
+                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$range->getName();echo $name; ?>">
+                     <h5 class="well"><?php echo ucfirst($this->translate($range->getLabel())); ?></h5>
                 </a>               
                 <div class="collapse in filter-choice" id="<?php echo $name; ?>">
                     <div class="well">
                         <span class="min-slider label label-important pull-left"></span>
                         <span class="max-slider label label-important pull-right"></span>
-                        <?php echo $this->formRow($filterForm->get($range['name'])); ?>  
+                        <?php echo $this->formInput($range); ?>  
                     </div>
                 </div>
             </div>
             <?php endforeach; ?>
+            
+            
+            <?php endif;?>
+            <?php if ($filter->getAttribute('data-filterType')==='simpleSearch'): ?>
+            <?php foreach ($filter->getElements() as $search): ?>
             <div class="filter-search filter-search-keyword">
-                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$range['name'];echo $name; ?>">
-                    <h5 class="well"><?php echo $this->translate('Keywords'); ?></h5>
+                <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$search->getName();echo $name; ?>">
+                    <h5 class="well"><?php echo $search->getLabel(); ?></h5>
                 </a>
                 <div class="collapse in filter-choice" id="<?php echo $name; ?>">
-                    <div class="well">
-                        <span id="keywords-bar" data-placeholder="<?php echo $this->translate('Enter a keyword'); ?>"></span>
+                    <div class="well input-append">
+                        <?php echo $this->formInput($search); ?>
+                        <button class="btn btn-primary">
+                            <i class="icon icon-white icon-search"></i>
+                        </button>
                     </div>
                 </div>
             </div>
+            <?php endforeach; ?>
+            <?php endif;?>
+            <?php endforeach; ?>
         </div>
     </div>
     <div class="span9" id="search_results_body">

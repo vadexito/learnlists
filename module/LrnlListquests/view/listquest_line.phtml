@@ -8,7 +8,7 @@
             <div class="row-fuild">
                 <div class="span10">
                     <div class="title_with_icon">
-                        <?php $tag = ($questionNb != 0) ? 'a' : 'div'; ?>
+                        <?php $tag = ($questionNb != 0) ? 'a' : 'span'; ?>
                         <<?php echo $tag; ?> href="<?php echo $this->url('learn/basic',['id' => $id]); ?>">
                             <h4 class="title_search_result_line"><?php echo $this->escapeHtml($title); ?></h4>                            
                         </<?php echo $tag; ?>>                        

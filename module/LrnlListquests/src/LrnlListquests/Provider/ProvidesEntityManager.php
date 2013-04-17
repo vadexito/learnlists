@@ -9,7 +9,7 @@ trait ProvidesEntityManager
     /**
      * @var Doctrine\ORM\EntityManager
      */
-    protected $em;
+    protected $em = NULL;
     
     public function setEntityManager(EntityManager $em)
     {

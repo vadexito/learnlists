@@ -41,6 +41,7 @@ $(function() {
             rangeMax.html(((range.replace(patt1,'')).replace(patt2,'')).replace(patt3,''));
         };
         
+        //slider filter elements
         $(this).find('input').hide().slider().on('slide', function(e){
             updateSlider($(e.currentTarget).val());
         });
@@ -62,7 +63,7 @@ $(function() {
             
         });
         
-        //an initialization
+        //on initialization of the sliders
         updateSlider($(this).find('input').attr('data-slider-value'));
         
     });
