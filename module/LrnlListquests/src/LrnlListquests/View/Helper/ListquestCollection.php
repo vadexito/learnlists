@@ -38,7 +38,6 @@ class ListquestCollection extends AbstractHelper
                 'author' => $listDataBase->author,
                 'questions' => $list->questions,
                 'questionNb' => $list->questionNb,
-                'tags' => $list->tags,
                 'level' => $listDataBase->level,
                 'hasLike' => $hasLike,
                 'rating' => round($this->getRatingService()

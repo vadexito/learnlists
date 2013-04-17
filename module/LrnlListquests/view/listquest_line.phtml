@@ -5,13 +5,13 @@
              <?php echo $this->zfcUserDisplayName($author).' ('.$author->getRoles()[0]->getRoleId(). ')'; ?>
         </div>
         <div class="span10">
-            <div class="row-fuild">
+            <div class="row-fluid">
                 <div class="span10">
                     <div class="title_with_icon">
-                        <?php $tag = ($questionNb != 0) ? 'a' : 'span'; ?>
-                        <<?php echo $tag; ?> href="<?php echo $this->url('learn/basic',['id' => $id]); ?>">
+                        <?php $htmlTag = ($questionNb != 0) ? 'a' : 'span'; ?>
+                        <<?php echo $htmlTag; ?> href="<?php echo $this->url('learn/basic',['id' => $id]); ?>">
                             <h4 class="title_search_result_line"><?php echo $this->escapeHtml($title); ?></h4>                            
-                        </<?php echo $tag; ?>>                        
+                        </<?php echo $htmlTag; ?>>                        
                         <span class="edit_button">
                             <?php if ($this->zfcUserIdentity() && ($author->getId() === $this->zfcUserIdentity()->getId())) :?> 
                                     <a class="btn btn-mini btn-primary" href="<?php echo $this->url('listquests/list/edit',['id' => $id]); ?>" title="<?php echo $this->translate('Edit list'); ?>">
@@ -20,6 +20,7 @@
                             <?php endif; ?>
                         </span>
                         <small><?php echo $this->dateFormat($creationDate,IntlDateFormatter::MEDIUM); ?></small>
+                        <span class="badge"><?php echo $this->escapeHtml($language); ?></span>
                     </div>
                     <p><?php echo $this->escapeHtml($description); ?></p>
                 </div>
@@ -28,13 +29,11 @@
                     <p class="text-right"><?php echo $this->translatePlural('question','questions',$questionNb); ?></p>
                 </div>
             </div>
-            <div class="row-fuild">
+            <div class="row-fluid">
                 <div class="span9">
                     <?php foreach ([
-                        ['name' => 'Tags','value' => $tags],
                         ['name' => 'Rating','value' => $rating],
-                        ['name' => 'Level','value' => $level],
-                        ['name' => '','value' => $language],
+                        ['name' => 'Level','value' => $level]
                     ] as $badge) : ?>
                     <span class="badge_item">
                         <span class="badge">
