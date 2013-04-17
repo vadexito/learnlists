@@ -41,6 +41,14 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
     protected $description;
     
     /**
+     * $category of the list
+     *
+     * @var string
+     * @access protected
+     */
+    protected $category;
+    
+    /**
      * language of the list
      *
      * @var string
@@ -138,6 +146,16 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
     public function getDescription()
     {
         return $this->description;
+    }
+    public function setCategory($category)
+    {
+        $this->category = $category;
+        return $this;
+    }
+    
+    public function getCategory()
+    {
+        return $this->category;
     }
     public function setLanguage($language)
     {
@@ -329,6 +347,24 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                             'encoding' => 'UTF-8',
                             'min'      => 0,
                             'max'      => 250,
+                        ],
+                    ],
+                ],
+            ]));
+            $inputFilter->add($factory->createInput([
+                'name'     => 'category',
+                'required' => true,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 0,
+                            'max'      => 50,
                         ],
                     ],
                 ],

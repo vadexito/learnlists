@@ -45,8 +45,9 @@ class ListquestForm extends Form
             'listquest' => [
                 'title',
                 'description',
+                'category',
                 'language',
-                'tags',// => ['tag'],
+                'tags',
                 'level',
                 'rules'
             ],

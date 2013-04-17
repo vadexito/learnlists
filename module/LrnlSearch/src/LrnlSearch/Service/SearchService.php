@@ -34,7 +34,7 @@ class SearchService
         $rangeQuery = new Query\Range(new Index\Term('0','docId'),null,true);
         $query->addSubquery($rangeQuery,true);
         
-        $termParams = ['search','authorName','level','language'];
+        $termParams = ['search','authorName','level','language','authorRole'];
         foreach ($termParams as $param){
             if (isset($queryData[$param]) && $queryData[$param]){
                 if (!is_array($queryData[$param])){

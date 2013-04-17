@@ -21,7 +21,7 @@ class ListquestDocument extends Document
         $this->addField(Field::Text('description',$list->description));  
         $this->addField(Field::Text('language',$list->language));  
         $this->addField(Field::Text('authorName',$list->author->getUserName()));  
-        $this->addField(Field::Text('AuthorRole',$list->author->getRoles()[0]->getRoleId()));  
+        $this->addField(Field::Text('authorRole',$list->author->getRoles()[0]->getRoleId()));  
         $this->addField(Field::Text('level',$list->level));          
         $this->addField(Field::unIndexed('authorEmail',$list->author->getEmail()));  
         $this->addField(Field::unIndexed('creationDate',$list->creationDate->getTimeStamp()));  

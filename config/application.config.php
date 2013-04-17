@@ -15,6 +15,7 @@ return [
         'BjyAuthorize',
         'ZfcAdmin',        
         'WtRating', 
+        'DelCountriesFlags',
         'PhlyContact', 
         'AsseticBundle',
         'VxoLocale',
@@ -27,7 +28,7 @@ return [
         'LrnlListquests',
         'LrnlUser',
         'LrnlRest',
-        'LrnlSearch',
+        'LrnlSearch',        
     ],
     
     // These are various options for the listeners attached to the ModuleManager

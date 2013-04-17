@@ -111,15 +111,16 @@ class ListquestController extends AbstractActionController
         $serviceLocator = $this->getServiceLocator();
         $ratingService = $serviceLocator->get('wtrating.service');
         
+       
         if (!$ratingService->getMapper()->hasRated($userId,$typeId)){
             $rating = $serviceLocator->create('wtrating.rating');
             $rating->setTypeId($typeId);
             $rating->setUserId($userId);
             $rating->setRating(1);
-            $ratingService->persist($rating);
+            
         }
         
-        return $this->redirect()->toRoute('listquests/list');
+        return $this->redirect()->toRoute('lrnl-search');
         
     }
     

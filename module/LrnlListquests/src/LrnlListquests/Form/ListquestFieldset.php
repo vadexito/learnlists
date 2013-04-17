@@ -57,25 +57,55 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
             ],
         ]);
         $this->add([
-            'name' => 'language',
+            'name' => 'category',
+            'type' => 'select',
             'attributes' => [
-                'type'  => 'text',
-                'id'    => 'language',
-                'autocomplete'    => 'off'
+                'id'    => 'category',
             ],
             'options' => [
-                'label' => _('Language')
+                'label' => _('category'),
+                'value_options' => [
+                    'Foreign Languages - Verb-Noun structures' => _('Foreign Languages - Verb-Noun structures'),
+                    'Foreign Languages - Vocabulary' => _('Foreign Languages - Vocabulary'),
+                    'Foreign Languages - Prepositions' => _('Foreign Languages - Prepositions'),
+                    'Other' => _('Other'),
+                ],
+            ],
+        ]);
+        $this->add([
+            'name' => 'language',
+            'type' => 'select',
+            'attributes' => [
+                'id'    => 'language',
+            ],
+            'options' => [
+                'label' => _('Language'),
+                'value_options' => [
+                    'English' => _('English'),
+                    'German' => _('German'),
+                    'French' => _('French'),
+                    'Polish' => _('Polish'),
+                ],
             ],
         ]);
         $this->add([
             'name' => 'level',
+            'type' => 'select',
             'attributes' => [
-                'type'  => 'text',
-                'id'    => 'level',
-                'autocomplete'    => 'off',
+                'id'    => 'level'
             ],
             'options' => [
-                'label' => _('Level')
+                'label' => _('Level'),
+                'value_options' => [
+                    _('Top level') => _('Top level'),
+                    _('Very high level') => _('Very high level'),
+                     _('High level') => _('High level'),
+                    _('Good level') => _('Good level'),
+                    _('Average plus level') => _('Average plus level'),
+                    _('Average level') => _('Average level'),
+                     _('Basic level') => _('Basic level'),
+                    _('Elementary level') => _('Elementary level'),
+                ],
             ],
         ]);
         

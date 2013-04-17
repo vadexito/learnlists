@@ -19,7 +19,7 @@ class ListquestCollection extends AbstractHelper
         
         foreach ($lists as $list){
             $hasLike = false;
-            $listId = $list->listId;
+            $listId = (int)$list->listId;
             $listDataBase= $this->getListquestService()->fetchById($listId);
             
             $user = $this->getView()->zfcUserIdentity();
@@ -37,7 +37,7 @@ class ListquestCollection extends AbstractHelper
                 'authorEmail' => $list->authorEmail,
                 'author' => $listDataBase->author,
                 'questions' => $list->questions,
-                'questionNb' => $list->questionNb,
+                'questionNb' => (int)$list->questionNb,
                 'level' => $listDataBase->level,
                 'hasLike' => $hasLike,
                 'rating' => round($this->getRatingService()

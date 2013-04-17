@@ -30,6 +30,7 @@
         "vxo/vxo-locale": "dev-master",
         "phly/phly-simple-page": "dev-develop",
         "braintree/braintree_php": "2.19.0",
-        "juriansluiman/slm-google-analytics": "dev-master"
+        "juriansluiman/slm-google-analytics": "dev-master",
+        "delboy1978uk/del-countries-flags": "dev-master"
     }
 }

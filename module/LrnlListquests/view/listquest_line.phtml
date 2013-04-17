@@ -21,6 +21,7 @@
                         </span>
                         <small><?php echo $this->dateFormat($creationDate,IntlDateFormatter::MEDIUM); ?></small>
                         <span class="badge"><?php echo $this->escapeHtml($language); ?></span>
+                        <?php echo $this->delCountriesFlagsFlag('USA','tiny'); ?> 
                     </div>
                     <p><?php echo $this->escapeHtml($description); ?></p>
                 </div>
@@ -61,4 +62,4 @@
     </div>
 </li>
 <hr>
-               
+      

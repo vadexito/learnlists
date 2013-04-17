@@ -29,11 +29,10 @@ class FiltersForm extends Form
               ->add(new FilterTermCheckboxElement(_('french'),$searchService))
               ->add(new FilterTermCheckboxElement(_('polish'),$searchService));
         
-        $authorName = new FilterTermCheckboxesFieldset('authorName');
+        $authorName = new FilterTermCheckboxesFieldset('authorRole');
         $authorName->setLabel(_('author'))
-              ->add(new FilterTermCheckboxElement(_('madi'),$searchService))
-              ->add(new FilterTermCheckboxElement(_('vadex'),$searchService))
-              ->add(new FilterTermCheckboxElement(_('bgo'),$searchService));
+              ->add(new FilterTermCheckboxElement(_('teacher'),$searchService))
+              ->add(new FilterTermCheckboxElement(_('student'),$searchService));
         
         $questionNb = new Fieldset('questionNb');
         $questionNb->setAttribute('data-filterType','range');
