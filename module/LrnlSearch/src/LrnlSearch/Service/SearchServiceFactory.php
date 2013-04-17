@@ -12,7 +12,8 @@ class SearchServiceFactory implements FactoryInterface
     {
         $config = $services->get('config')['lrnl-search'];
         $listquestService = $services->get('learnlists-listquestfactory-service');
-        $service   = new SearchService($config['indexPath'],$listquestService);
+        $ratingService = $services->get('wtrating.service');
+        $service   = new SearchService($config['indexPath'],$listquestService,$ratingService);
         return $service;
     }
 }

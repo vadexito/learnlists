@@ -13,6 +13,7 @@ use LrnlSearch\Document\ListquestDocument;
 use LrnlSearch\Traits\LuceneSearchTrait;
 use LrnlListquests\Service\ListquestService;
 use LrnlListquests\Provider\ProvidesListquestService;
+use WtRating\Service\RatingService;
 
 class SearchService
 {
@@ -20,11 +21,14 @@ class SearchService
     use ProvidesListquestService;
     
     protected $_indexPath;
+    protected $_ratingService;
     
-    public function __construct($indexPath,ListquestService $listquestService = NULL)
+    public function __construct($indexPath,
+            ListquestService $listquestService = NULL,RatingService $ratingService = NULL)
     {
         $this->setIndexPath($indexPath);
         $this->setListquestService($listquestService);
+        $this->setRatingService($ratingService);
     }
     
     public function getResultsFromQuery($queryData,$sortOptions = NULL)
@@ -49,7 +53,7 @@ class SearchService
             } 
         }
         
-        $rangeParams = ['questionNb'];
+        $rangeParams = ['questionNb,rating'];
         foreach ($rangeParams as $param){
             $termMin = NULL;
             $termMax = NULL;
@@ -89,7 +93,7 @@ class SearchService
         
         $id =0;
         foreach ($lists as $list) {
-            $index->addDocument((new ListquestDocument())->setData($id,$list));
+            $index->addDocument((new ListquestDocument($this->getRatingService()))->setData($id,$list));
             $id++;
         }
         $index->commit();
@@ -99,7 +103,7 @@ class SearchService
     //TO DO to be updated
     public function updateIndex()
     {
-        $document = getDocument();
+        $document = new ListquestDocument($this->getRatingService());
         $index = Zend_Search_Lucene::open($this->getIndexPath());
 
         // find the document based on the indexed document_id field
@@ -108,7 +112,7 @@ class SearchService
             $index->delete($id);
 
         // re-add the document
-        $index->addDocument(new ListquestDocument($listquest));
+        $index->addDocument(new ListquestDocument($this->getRatingService()));
         $index->commit();
     }
     
@@ -123,4 +127,14 @@ class SearchService
         return $this->_indexPath;
     }
     
+    public function getRatingService()
+    {
+        return $this->_ratingService;
+    }
+    
+    public function setRatingService(RatingService $service)
+    {
+        $this->_ratingService = $service;
+        return $this;
+    }
 }

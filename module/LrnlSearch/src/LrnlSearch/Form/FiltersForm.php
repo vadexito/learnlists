@@ -46,6 +46,18 @@ class FiltersForm extends Form
         ]);
         $questionNb->add($questionNbElement);
         
+        $rating = new Fieldset('rating');
+        $rating->setAttribute('data-filterType','range');
+        $ratingElement = new FilterRangeSliderFormElement('rating');
+        $ratingElement  ->setLabel(_('rating'))
+                            ->setAttributes([
+                             'data-slider-min' => 0,
+                             'data-slider-max' => 50,
+                             'data-slider-value' => '[0,50]',
+                             'data-slider-step' => 1,
+        ]);
+        $rating->add($ratingElement);
+        
         $keyword = new Fieldset('keyword');
         $keyword->setAttribute('data-filterType','simpleSearch');
         $keywordElement = new Text('keyword');
@@ -61,6 +73,7 @@ class FiltersForm extends Form
         $this->add($level)
              ->add($language)
              ->add($authorName)
+             ->add($rating)
              ->add($questionNb)
              ->add($keyword);
     }
