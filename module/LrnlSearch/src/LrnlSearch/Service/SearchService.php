@@ -15,6 +15,7 @@ use LrnlListquests\Service\ListquestService;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Form\FiltersForm;
 use LrnlSearch\Exception\ServiceException;
+use LrnlListquests\Entity\Listquest;
 
 use WtRating\Service\RatingService;
 use Traversable;
@@ -102,26 +103,27 @@ class SearchService
         
         $id =0;
         foreach ($lists as $list) {
-            $index->addDocument((new ListquestDocument($this->getRatingService()))->setData($id,$list));
+            $newDocument = new ListquestDocument($this->getRatingService());
+            $index->addDocument($newDocument->setData($id,$list));
             $id++;
         }
         $index->commit();
         $index->optimize();
     }
     
-    //TO DO to be updated
-    public function updateIndex()
+    public function updateIndex(Listquest $listquest)
     {
-        $document = new ListquestDocument($this->getRatingService());
-        $index = Zend_Search_Lucene::open($this->getIndexPath());
-
-        // find the document based on the indexed document_id field
-        $term = new Index\Term($document->id, 'document_id');
-        foreach ($index->termDocs($term) as $id)
-            $index->delete($id);
-
-        // re-add the document
-        $index->addDocument(new ListquestDocument($this->getRatingService()));
+        $index = Lucene\Lucene::open($this->getIndexPath());
+        
+        $query = new Index\Term($this->convertNumToString($listquest->id), 'listquestId');
+        $hit = $index->find($query);
+        $docId = $hit->docId;
+        $index->delete($hit->id);
+        
+        $newDocument = new ListquestDocument($this->getRatingService());
+        $newDocument->setData((int)$docId,$listquest);
+        
+        $index->add($newDocument);
         $index->commit();
     }
     
