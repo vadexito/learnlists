@@ -6,6 +6,7 @@ namespace LrnlSearch;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\Stdlib\Parameters;
 
 use LrnlSearch\Form\SearchForm;
 use LrnlSearch\Form\FiltersForm;
@@ -44,7 +45,9 @@ class Module implements
                 },
                 'learnlists-form-filter' =>  function($sm) {
                     $searchService = $sm->get('learnlists-search-service-factory');
-                    return new FiltersForm('filtersForm',$searchService);
+                    $filterConfig = $sm->get('config')['lrnl-search']['filters'];
+                    return new FiltersForm('filtersForm',
+                            $searchService,new Parameters($filterConfig));
                 },
             ],
         ];

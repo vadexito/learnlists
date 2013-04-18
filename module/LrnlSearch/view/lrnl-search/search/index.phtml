@@ -27,7 +27,7 @@ $searchForm->prepare();
             <?php foreach ($filterForm->getFieldsets() as $filter):  ?>
             
             
-            <?php if ($filter->getAttribute('data-filterType') === 'checkboxes'): ?>
+            <?php if ($filter->getAttribute('data-filterType') === 'checkbox'): ?>
             <div class="filter-search filter-search-term">
                 <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$filter->getName();echo $name; ?>">
                     <h5 class="well"><?php echo ucfirst($this->translate($filter->getLabel())); ?></h5>
@@ -68,9 +68,11 @@ $searchForm->prepare();
             
             
             <?php endif;?>
-            <?php if ($filter->getAttribute('data-filterType')==='simpleSearch'): ?>
-            <?php foreach ($filter->getElements() as $search): ?>
-            <div class="filter-search filter-search-keyword">
+            <?php if ($filter->getAttribute('data-filterType')==='search'): ?>
+            <?php foreach ($filter->getElements() as $search): 
+                $search->setAttribute('data-url',$this->url('lrnl-search',[],['query' => $search->getQueryUrl()]));            
+            ?>
+            <div class="filter-search filter-search-search">
                 <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$search->getName();echo $name; ?>">
                     <h5 class="well"><?php echo $search->getLabel(); ?></h5>
                 </a>

@@ -2,6 +2,8 @@
 
 namespace LrnlSearch\Exception;
 
-class ServiceException extends \RuntimeException
+use ZendSearch\Lucene\Exception as LuceneException;
+
+class ServiceException extends LuceneException
 {
 }

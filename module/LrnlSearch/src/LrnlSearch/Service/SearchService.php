@@ -13,7 +13,11 @@ use LrnlSearch\Document\ListquestDocument;
 use LrnlSearch\Traits\LuceneSearchTrait;
 use LrnlListquests\Service\ListquestService;
 use LrnlListquests\Provider\ProvidesListquestService;
+use LrnlSearch\Form\FiltersForm;
+use LrnlSearch\Exception\ServiceException;
+
 use WtRating\Service\RatingService;
+use Traversable;
 
 class SearchService
 {
@@ -22,54 +26,59 @@ class SearchService
     
     protected $_indexPath;
     protected $_ratingService;
+    protected $_filterConfig;
     
     public function __construct($indexPath,
-            ListquestService $listquestService = NULL,RatingService $ratingService = NULL)
+            ListquestService $listquestService = NULL,
+            RatingService $ratingService = NULL, Traversable $filterConfig = NULL)
     {
         $this->setIndexPath($indexPath);
         $this->setListquestService($listquestService);
         $this->setRatingService($ratingService);
+        $this->setFilterConfig($filterConfig);
     }
     
     public function getResultsFromQuery($queryData,$sortOptions = NULL)
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
         $query = new Query\Boolean();
-        $rangeQuery = new Query\Range(new Index\Term('0','docId'),null,true);
-        $query->addSubquery($rangeQuery,true);
         
-        $termParams = ['search','authorName','level','language','authorRole'];
-        foreach ($termParams as $param){
-            if (isset($queryData[$param]) && $queryData[$param]){
-                if (!is_array($queryData[$param])){
-                    $termQuery = new Query\Term(new Index\Term($queryData[$param]));
-                } else {
-                    $termQuery = new Query\MultiTerm();
-                    foreach ($queryData[$param] as $value) {
-                        $termQuery->addTerm(new Index\Term($value));
-                    }
+        //add all, so that if no query it return everything
+        $allQuery = new Query\Range(new Index\Term('0','docId'),null,true);
+        $query->addSubquery($allQuery,true);
+        
+        foreach ($queryData as $filter => $values){
+            
+            $filterConfig = $this->getFilterConfig()->get($filter);
+            if ($filterConfig !== NULL){
+                switch ($filterConfig['type']){
+                    case FiltersForm::$CHECKBOX :
+                        if (!is_array($values)){
+                            throw new ServiceException('You must provide an array for each checkbox element in your url.');
+                        }                        
+                        $termQuery = new Query\MultiTerm();
+                        foreach ($values as $value){
+                            $termQuery->addTerm(new Index\Term($value,$filter));
+                        }
+                        $query->addSubquery($termQuery,true);                        
+                        break;
+                    case FiltersForm::$RANGE :
+                        if (!is_array($values) || 
+                                (!isset($values['min']) || !isset($values['max']))){
+                            throw new ServiceException('You must provide an array with min and max value');
+                        }
+                        $min = $this->convertNumToString($values['min']);
+                        $max = $this->convertNumToString($values['max']);                        
+                        $termMin = new Index\Term($min,$filter);
+                        $termMax = new Index\Term($max,$filter);
+                        $query->addSubquery(new Query\Range($termMin,$termMax,true),true);                        
+                        break;
+                    case FiltersForm::$SEARCH :
+                        break;
+                    default:
                 }
-                $query->addSubquery($termQuery,true);
-            } 
+            }
         }
-        
-        $rangeParams = ['questionNb,rating'];
-        foreach ($rangeParams as $param){
-            $termMin = NULL;
-            $termMax = NULL;
-                    
-            if (isset($queryData[$param.'Min']) && $queryData[$param.'Min']){
-                $min = $this->convertNumToString($queryData[$param.'Min']);
-                $termMin = new Index\Term($min,$param);
-            } 
-            if (isset($queryData[$param.'Max']) && $queryData[$param.'Max']){
-                $max = $this->convertNumToString($queryData[$param.'Max']);
-                $termMax = new Index\Term($max,$param);
-            }
-            if ($termMin || $termMax){
-                $query->addSubquery(new Query\Range($termMin,$termMax,true),true);
-            }
-        }   
         
         try {
             if ($sortOptions !== NULL){                
@@ -135,6 +144,17 @@ class SearchService
     public function setRatingService(RatingService $service)
     {
         $this->_ratingService = $service;
+        return $this;
+    }
+    
+    public function getFilterConfig()
+    {
+        return $this->_filterConfig;
+    }
+    
+    public function setFilterConfig(Traversable $filterConfig)
+    {
+        $this->_filterConfig = $filterConfig;
         return $this;
     }
 }

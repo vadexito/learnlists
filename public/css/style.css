@@ -208,12 +208,12 @@ span.min-slider, span.max-slider {
     margin-bottom:10px;
 }
 
-.filter-search-keyword input{
+.filter-search-search input{
     margin:0;
     font-size:12px;
 }
 
-.filter-search-keyword div.input-append{
+.filter-search-search div.input-append{
     margin:0;
 }
 .badge-level {

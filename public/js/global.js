@@ -26,6 +26,7 @@ $(function() {
     $('a[data-toggle="tooltip"]').tooltip();
     $('a[data-toggle="popover"]').popover();
     
+    //slider elements
     $('.filter-search-range').each(function(){
         
         var rangeMin = $(this).find('.min-slider').first();
@@ -41,34 +42,55 @@ $(function() {
             rangeMax.html(((range.replace(patt1,'')).replace(patt2,'')).replace(patt3,''));
         };
         
-        //slider filter elements
         $(this).find('input').hide().slider().on('slide', function(e){
             updateSlider($(e.currentTarget).val());
         });
         var self = this;
         $(this).find('input').hide().slider().on('slideStop', function(e){
             var url = $(e.currentTarget).attr('data-url');
-            var nameMin = $(e.currentTarget).attr('data-filterNameMin');
-            var nameMax = $(e.currentTarget).attr('data-filterNameMax');
+            var name = $(e.currentTarget).attr('name');
             var rangeMin = $(self).find('.min-slider').first().html();
             var rangeMax = $(self).find('.max-slider').first().html();
             
-            var patt1 = new RegExp('(.*'+nameMin+'=)([0-9]*)(&'+nameMax+'=)([0-9]*)(.*)');
-            if (patt1.test(url)){
+            var patt1 = new RegExp('(.*'+name+'%5Bmin%5D'+'=)([0-9]*)(&'+name+'%5Bmax%5D'+'=)([0-9]*)(.*)');
+            if (patt1.test(url)){                
                 var matches = url.match(patt1);
                 url = matches[1]+rangeMin+matches[3]+rangeMax+matches[5];
                 
                 window.location.href = url;
             }
             
-        });
-        
+        });        
         //on initialization of the sliders
         updateSlider($(this).find('input').attr('data-slider-value'));
         
     });
    
+    //simple search elements
+    $('.filter-search-search').each(function(){
+        var self=$(this);
+        var input = self.find('input'); 
+        var searchButton = $(this).find('button');
+        searchButton.click(function(e){
+            var url = input.attr('data-url');
+            var name = input.attr('name');
+            var value = input.val();
+            
+            var patt = new RegExp('(.*'+name+'%5B'+name+'%5D'+'=)(var)');
+            var matches = url.match(patt);
+            url = matches[1]+value;     
+            if (matches[3]){
+                url +=matches[3];
+            }         
+            window.location.href = url;
+        });
         
+        input.keydown(function(e){
+            if(e.which == 13) {
+                searchButton.click();
+            }
+        });
+    });
     
     //table for the lists
     if ($("table.listquest_table").length > 0){

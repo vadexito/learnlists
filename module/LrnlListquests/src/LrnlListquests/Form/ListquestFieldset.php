@@ -65,9 +65,9 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
             'options' => [
                 'label' => _('category'),
                 'value_options' => [
-                    'Foreign Languages - Verb-Noun structures' => _('Foreign Languages - Verb-Noun structures'),
-                    'Foreign Languages - Vocabulary' => _('Foreign Languages - Vocabulary'),
-                    'Foreign Languages - Prepositions' => _('Foreign Languages - Prepositions'),
+                    'Foreign Languages - English' => _('English'),
+                    'Foreign Languages - German' => _('German'),
+                    'Foreign Languages - French' => _('French'),
                     'Other' => _('Other'),
                 ],
             ],

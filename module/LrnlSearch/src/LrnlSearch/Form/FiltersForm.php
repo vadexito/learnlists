@@ -4,78 +4,57 @@ namespace LrnlSearch\Form;
 
 use Zend\Form\Form;
 use LrnlSearch\Form\FilterTermCheckboxesFieldset;
-use LrnlSearch\Form\FilterRangeSliderElement;
-use LrnlSearch\Form\FilterTermCheckboxElement;
+use LrnlSearch\Form\FilterRangeSliderFormElement as Slider;
+use LrnlSearch\Form\FilterTermCheckboxElement as Checkbox;
+use LrnlSearch\Form\FilterSearchFormElement as Search;
 use LrnlSearch\Service\SearchService;
+use Traversable;
 
 use Zend\Form\Element\Text;
 use Zend\Form\Fieldset;
 
 class FiltersForm extends Form
 {
-    public function __construct($name = NULL,SearchService $searchService)
+    public static $CHECKBOX  = 'checkbox';
+    public static $RANGE = 'range';
+    public static $SEARCH  = 'search';
+    
+    public function __construct($name = NULL,
+            SearchService $searchService,Traversable $filterConfig = NULL)
     {
         parent::__construct($name);
         
-        $level = new FilterTermCheckboxesFieldset('level');
-        $level->setLabel(_('level'))
-              ->add(new FilterTermCheckboxElement(_('advanced'),$searchService))
-              ->add(new FilterTermCheckboxElement(_('easy'),$searchService))
-              ->add(new FilterTermCheckboxElement(_('beginner'),$searchService));
-        
-        $language = new FilterTermCheckboxesFieldset('language');
-        $language->setLabel(_('language'))
-              ->add(new FilterTermCheckboxElement(_('german'),$searchService))
-              ->add(new FilterTermCheckboxElement(_('french'),$searchService))
-              ->add(new FilterTermCheckboxElement(_('polish'),$searchService));
-        
-        $authorName = new FilterTermCheckboxesFieldset('authorRole');
-        $authorName->setLabel(_('author'))
-              ->add(new FilterTermCheckboxElement(_('teacher'),$searchService))
-              ->add(new FilterTermCheckboxElement(_('student'),$searchService));
-        
-        $questionNb = new Fieldset('questionNb');
-        $questionNb->setAttribute('data-filterType','range');
-        $questionNbElement = new FilterRangeSliderFormElement('questionNb');
-        $questionNbElement  ->setLabel(_('questions'))
-                            ->setAttributes([
-                             'data-slider-min' => 0,
-                             'data-slider-max' => 50,
-                             'data-slider-value' => '[0,50]',
-                             'data-slider-step' => 1,
-        ]);
-        $questionNb->add($questionNbElement);
-        
-        $rating = new Fieldset('rating');
-        $rating->setAttribute('data-filterType','range');
-        $ratingElement = new FilterRangeSliderFormElement('rating');
-        $ratingElement  ->setLabel(_('rating'))
-                            ->setAttributes([
-                             'data-slider-min' => 0,
-                             'data-slider-max' => 50,
-                             'data-slider-value' => '[0,50]',
-                             'data-slider-step' => 1,
-        ]);
-        $rating->add($ratingElement);
-        
-        $keyword = new Fieldset('keyword');
-        $keyword->setAttribute('data-filterType','simpleSearch');
-        $keywordElement = new Text('keyword');
-        $keywordElement ->setLabel(_('Keywords'))
-                        ->setAttributes([
-                            'type' => 'text',
-                            'class' => 'span9',
-                            'id' => 'keywords-bar',
-                            'placeholder' => _('Enter a keyword'),
-        ]);
-        $keyword->add($keywordElement);
-        
-        $this->add($level)
-             ->add($language)
-             ->add($authorName)
-             ->add($rating)
-             ->add($questionNb)
-             ->add($keyword);
+        foreach ($filterConfig as $name => $options){
+            switch ($options['type']){
+                case self::$CHECKBOX :
+                    $filter = new FilterTermCheckboxesFieldset($name);
+                    $filter->setAttribute('data-filterType',self::$CHECKBOX);
+                    $filter->setLabel($options['label']);
+                    foreach ($options['values'] as $value){
+                        $filterElement = new Checkbox($value,$searchService);
+                        $filter->add($filterElement);
+                    }
+                    break;
+                case self::$RANGE :
+                    $filter = new Fieldset($name);
+                    $filter->setAttribute('data-filterType',self::$RANGE);
+                    $filterElement = new Slider($name);
+                    $filterElement->setLabel($options['label'])
+                                  ->setAttributes($options['attributes']);
+                    $filter->add($filterElement);
+                    break;
+                case self::$SEARCH :
+                    $filter = new Fieldset($name);
+                    $filter->setAttribute('data-filterType',self::$SEARCH);
+                    $filterElement = new Search($name);
+                    $filterElement->setLabel($options['label'])
+                                  ->setAttributes($options['attributes']);
+                    $filter->add($filterElement);
+                    break;
+                default : 
+            }
+            $this->add($filter);
+        }
     }
     
     public function initUrlInFilters($queryData)
@@ -91,6 +70,4 @@ class FiltersForm extends Form
              }
         }
     }
-    
-    
 }
