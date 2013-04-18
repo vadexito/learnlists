@@ -2,7 +2,11 @@ $(function() {
     
     
     var loadingIconAndGoToRef = function(href){
+        $('.modal').modal({
+            keyboard:false
+        });
         $('.modal').modal('show');
+        new Spinner(opts).spin(target);
         window.location.href = href;
     }
     
@@ -166,5 +170,5 @@ $(function() {
         left: 50 // Left position relative to parent in px
       };
       var target = document.getElementById('loading-icon');
-      new Spinner(opts).spin(target);
+      
 });

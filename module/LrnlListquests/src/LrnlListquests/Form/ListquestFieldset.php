@@ -65,9 +65,9 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
             'options' => [
                 'label' => _('category'),
                 'value_options' => [
-                    'Foreign Languages - English' => _('English'),
-                    'Foreign Languages - German' => _('German'),
-                    'Foreign Languages - French' => _('French'),
+                    'English' => _('Foreign Languages - English'),
+                    'German' => _('Foreign Languages - German'),
+                    'French' => _('Foreign Languages - French'),
                     'Other' => _('Other'),
                 ],
             ],
@@ -99,11 +99,11 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
                 'value_options' => [
                     _('Top level') => _('Top level'),
                     _('Very high level') => _('Very high level'),
-                     _('High level') => _('High level'),
+                    _('High level') => _('High level'),
                     _('Good level') => _('Good level'),
                     _('Average plus level') => _('Average plus level'),
                     _('Average level') => _('Average level'),
-                     _('Basic level') => _('Basic level'),
+                    _('Basic level') => _('Basic level'),
                     _('Elementary level') => _('Elementary level'),
                 ],
             ],
