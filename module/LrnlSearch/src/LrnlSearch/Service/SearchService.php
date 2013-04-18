@@ -92,7 +92,6 @@ class SearchService
                                 $query->addSubquery($termQuery,true);
                             }
                         }
-                        
                         break;
                     default:
                 }

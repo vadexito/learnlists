@@ -1,7 +1,13 @@
 $(function() {
     
+    
+    var loadingIconAndGoToRef = function(href){
+        $('.modal').modal('show');
+        window.location.href = href;
+    }
+    
     $('.checkbox-filter').click(function(e){
-        window.location.href = $(e.currentTarget).attr('data-url');
+        loadingIconAndGoToRef($(e.currentTarget).attr('data-url'));
     });
     
     $('#searchForm').submit(function(e){
@@ -57,7 +63,8 @@ $(function() {
                 var matches = url.match(patt1);
                 url = matches[1]+rangeMin+matches[3]+rangeMax+matches[5];
                 
-                window.location.href = url;
+                loadingIconAndGoToRef(url);
+                
             }
             
         });        
@@ -81,8 +88,8 @@ $(function() {
             url = matches[1]+value;     
             if (matches[3]){
                 url +=matches[3];
-            }         
-            window.location.href = url;
+            }      
+            loadingIconAndGoToRef(url);
         });
         
         input.keydown(function(e){
@@ -91,53 +98,6 @@ $(function() {
             }
         });
     });
-    
-    //table for the lists
-    if ($("table.listquest_table").length > 0){
-        var idTable = $('table').attr('id');
-        $("table").dataTable({
-            "iDisplayLength": 10,
-            "sPaginationType": "full_numbers",
-            "bLengthChange": false,
-            "oLanguage": {
-                "sSearch": "",
-                 "oPaginate": {
-                    "sNext": ">",
-                    "sPrevious": "<",
-                    "sFirst": "<<",
-                    "sLast": ">>"
-                }
-            },
-            "fnInitComplete": function(oSettings, json) { 
-                  $('#'+idTable+'_filter input').attr('placeholder',$('#keywords-bar').attr('data-placeholder'));
-                  $('#keywords-bar').append($('#'+idTable+'_filter input'));
-                  
-                  
-                  
-//                $('#search_hidden').hide();
-//                $('#'+idTable+'_filter input').attr('placeholder',$('#search_hidden input').attr('placeholder'))
-//                    .unwrap().wrap('<div class="input-append"/>')
-//                    .after('<button type="submit" class="btn"><i class="icon-search"></i></button>');
-                },
-            "fnDrawCallback": function( oSettings ) {
-                $('#'+idTable+'_paginate').addClass('pagination pull-right');
-           
-                if ($('#'+idTable+'_paginate ul').length == 0){
-                    $('#'+idTable+'_paginate').children().wrapAll('<ul/>');
-                    $('#'+idTable+'_paginate ul>a').wrap('<li/>');
-                }
-                
-                $('#'+idTable+'_paginate li.page_number').remove(); 
-                $('#'+idTable+'_paginate span>a').wrap('<li class="page_number"/>'); 
-                $('#'+idTable+'_paginate ul>li').eq(1).after($('#'+idTable+'_paginate span li'));
-                $('#'+idTable+'_paginate span').hide(); 
-                $('#'+idTable+'_paginate a.paginate_active').parent().addClass('active');
-                
-                $('#search-pagination').append($('#'+idTable+'_paginate'));
-                $('#search-results').append($('#'+idTable+'_info'));
-             }
-        });
-    } 
     
     //multi line elements in forms
     var collection = $('#questions_element');
@@ -185,4 +145,26 @@ $(function() {
     });
     
     
+    
+    //loading icon (layout)
+    var opts = {
+        lines: 11, // The number of lines to draw
+        length: 8, // The length of each line
+        width: 5, // The line thickness
+        radius: 15, // The radius of the inner circle
+        corners: 1, // Corner roundness (0..1)
+        rotate: 0, // The rotation offset
+        direction: 1, // 1: clockwise, -1: counterclockwise
+        color: '#FFCB0F', // #rgb or #rrggbb
+        speed: 1, // Rounds per second
+        trail: 60, // Afterglow percentage
+        shadow: false, // Whether to render a shadow
+        hwaccel: false, // Whether to use hardware acceleration
+        className: 'spinner', // The CSS class to assign to the spinner
+        zIndex: 2e9, // The z-index (defaults to 2000000000)
+        top: -10, // Top position relative to parent in px
+        left: 50 // Left position relative to parent in px
+      };
+      var target = document.getElementById('loading-icon');
+      new Spinner(opts).spin(target);
 });
