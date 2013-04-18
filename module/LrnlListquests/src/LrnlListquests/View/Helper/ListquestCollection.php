@@ -33,6 +33,7 @@ class ListquestCollection extends AbstractHelper
                 'id' => $listId,
                 'title' => $list->title,
                 'description' => $list->description,
+                'category' => $list->category,
                 'authorEmail' => $list->authorEmail,
                 'author' => $listDataBase->author,
                 'questionNb' => (int)$list->questionNb,

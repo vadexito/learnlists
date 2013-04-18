@@ -1,16 +1,20 @@
 <li class="search_result_listquest_item">
     <div class="row-fluid ">
-        <div class="span2">
-             <?php echo $this->gravatar($authorEmail,['img_size' => '20px'])?>
-             <?php echo $this->zfcUserDisplayName($author).' ('.$author->getRoles()[0]->getRoleId(). ')'; ?>
+        <div class="span2">            
+             <img src="/images/thumbnails/categories/<?php echo $category; ?>.jpg" title="<?php echo sprintf($this->translate('Category %s'),$category); ?>" alt="category" style="height:84px;width:124px;">
         </div>
         <div class="span10">
             <div class="row-fluid">
                 <div class="span10">
                     <div class="title_with_icon">
+                        <?php echo $this->gravatar(
+                                $authorEmail,
+                                ['img_size' => '30px'],
+                                ['alt' => 'gravatar','title' => $this->zfcUserDisplayName($author).' ('.$author->getRoles()[0]->getRoleId(). ')'])
+                        ?>
                         <?php $htmlTag = ($questionNb != 0) ? 'a' : 'span'; ?>
                         <<?php echo $htmlTag; ?> href="<?php echo $this->url('learn/basic',['id' => $id]); ?>">
-                            <h4 class="title_search_result_line"><?php echo $this->escapeHtml($title); ?></h4>                            
+                            <h4 class="title_search_result_line"><?php echo ucfirst($this->escapeHtml($title)); ?></h4>                            
                         </<?php echo $htmlTag; ?>>                        
                         <span class="edit_button">
                             <?php if ($this->zfcUserIdentity() && ($author->getId() === $this->zfcUserIdentity()->getId())) :?> 
