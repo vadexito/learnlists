@@ -39,6 +39,14 @@ class SearchService
         $this->setFilterConfig($filterConfig);
     }
     
+    /**
+     * 
+     * @param type $queryData containing all the parameter for a query to 
+     * lucene index
+     * @param type $sortOptions for sorting options
+     * @return array of hits (lucene hit)
+     * @throws SearchException
+     */
     public function getResultsFromQuery($queryData,$sortOptions = NULL)
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
@@ -66,7 +74,8 @@ class SearchService
                         }                        
                         $termQuery = new Query\MultiTerm();
                         foreach ($values as $value){
-                            $termQuery->addTerm(new Index\Term($value,$filter));
+                            $term = new Index\Term(strtolower($value),$filter);
+                            $termQuery->addTerm($term);
                         }
                         $query->addSubquery($termQuery,true);                        
                         break;
@@ -88,7 +97,8 @@ class SearchService
                         foreach ($values as $value){
                             //no search if no value
                             if ($value){
-                                $termQuery = new Query\Term(new Index\Term($value));
+                                $term = new Index\Term(strtolower($value));
+                                $termQuery = new Query\Term($term);
                                 $query->addSubquery($termQuery,true);
                             }
                         }

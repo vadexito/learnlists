@@ -30,6 +30,7 @@ class SearchController extends AbstractActionController
             'direction' => SORT_DESC,
         ]);
         
+        
         return [
             'lists' => $hits,
             'searchForm' => $searchForm,
