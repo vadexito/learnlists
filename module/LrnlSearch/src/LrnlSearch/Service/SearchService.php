@@ -14,7 +14,7 @@ use LrnlSearch\Traits\LuceneSearchTrait;
 use LrnlListquests\Service\ListquestService;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Form\FiltersForm;
-use LrnlSearch\Exception\ServiceException;
+use LrnlSearch\Exception\SearchException;
 use LrnlListquests\Entity\Listquest;
 
 use WtRating\Service\RatingService;
@@ -49,13 +49,20 @@ class SearchService
         $query->addSubquery($allQuery,true);
         
         foreach ($queryData as $filter => $values){
+            if ($filter === 'search' && is_string($values)){
+                if (!is_string($values)){
+                    throw new SearchException('You must provide a string for each search.');
+                }       
+                $termQuery = new Query\Term(new Index\Term($values));
+                $query->addSubquery($termQuery,true);
+            }
             
             $filterConfig = $this->getFilterConfig()->get($filter);
             if ($filterConfig !== NULL){
                 switch ($filterConfig['type']){
                     case FiltersForm::$CHECKBOX :
                         if (!is_array($values)){
-                            throw new ServiceException('You must provide an array for each checkbox element in your url.');
+                            throw new SearchException('You must provide an array for each checkbox element in your url.');
                         }                        
                         $termQuery = new Query\MultiTerm();
                         foreach ($values as $value){
@@ -66,7 +73,7 @@ class SearchService
                     case FiltersForm::$RANGE :
                         if (!is_array($values) || 
                                 (!isset($values['min']) || !isset($values['max']))){
-                            throw new ServiceException('You must provide an array with min and max value');
+                            throw new SearchException('You must provide an array with min and max value');
                         }
                         $min = $this->convertNumToString($values['min']);
                         $max = $this->convertNumToString($values['max']);                        
@@ -75,6 +82,17 @@ class SearchService
                         $query->addSubquery(new Query\Range($termMin,$termMax,true),true);                        
                         break;
                     case FiltersForm::$SEARCH :
+                        if (!is_array($values) && count($values) === 1){
+                            throw new SearchException('You must provide an array for each search.');
+                        }
+                        foreach ($values as $value){
+                            //no search if no value
+                            if ($value){
+                                $termQuery = new Query\Term(new Index\Term($value));
+                                $query->addSubquery($termQuery,true);
+                            }
+                        }
+                        
                         break;
                     default:
                 }
@@ -115,16 +133,19 @@ class SearchService
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
         
-        $query = new Index\Term($this->convertNumToString($listquest->id), 'listquestId');
-        $hit = $index->find($query);
-        $docId = $hit->docId;
-        $index->delete($hit->id);
+        $hit = $index->find('listquestId:'.$this->convertNumToString($listquest->id));
+        $docId = $index->count()+1;
+        if ($hit){
+            $docId = $hit->docId;
+            $index->delete($hit->id);
+        }
         
         $newDocument = new ListquestDocument($this->getRatingService());
         $newDocument->setData((int)$docId,$listquest);
         
-        $index->add($newDocument);
+        $index->addDocument($newDocument);
         $index->commit();
+        $index->optimize();
     }
     
     public function setIndexPath($indexPath)

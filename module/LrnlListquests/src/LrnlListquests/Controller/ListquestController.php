@@ -5,11 +5,16 @@ namespace LrnlListquests\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use LrnlListquests\Entity\Listquest;
+use LrnlListquests\Provider\ProvidesListquestService;
+use LrnlSearch\Provider\ProvidesSearchService;
 
 class ListquestController extends AbstractActionController
 {
     protected $listquestService = NULL;
     protected $_redirectRoute = NULL;
+    
+    use ProvidesListquestService;
+    use ProvidesSearchService;
     
     public function homeAction()
     {
@@ -35,6 +40,7 @@ class ListquestController extends AbstractActionController
             if ($form->isValid()) {
      
                 $this->getListquestService()->insertListquest($listquest);
+                $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute($this->getRedirectRoute());
             }
         }
@@ -126,11 +132,20 @@ class ListquestController extends AbstractActionController
     
     public function getListquestService()
     {
-        if ($this->listquestService === NULL){
-            $this->listquestService = $this->getServiceLocator()
-                        ->get('learnlists-listquestfactory-service'); 
+        if ($this->_listquestService === NULL){
+            $sm = $this->getServiceLocator();
+            $this->_listquestService = $sm->get('learnlists-listquestfactory-service'); 
         }
-        return $this->listquestService;
+        return $this->_listquestService;
+    }
+    
+    public function getSearchService()
+    {
+        if ($this->_searchService === NULL){
+            $this->_searchService = $this->getServiceLocator()
+                        ->get('learnlists-search-service-factory'); 
+        }
+        return $this->_searchService;
     }
     
     protected function _checkUserIsAuthorized(Listquest $listquest)

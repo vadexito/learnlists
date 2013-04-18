@@ -6,16 +6,16 @@ use LrnlListquests\Service\ListquestService;
 
 trait ProvidesListquestService
 {
-    protected $_service = NULL;
+    protected $_listquestService = NULL;
     
     public function setListquestService(ListquestService $service)
     {
-        $this->_service = $service;
+        $this->_listquestService = $service;
         return $this;
     }
     
     public function getListquestService()
     {
-        return $this->_service;
+        return $this->_listquestService;
     }
 }
