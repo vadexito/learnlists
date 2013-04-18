@@ -149,13 +149,24 @@ li.search_result_listquest_item {
     line-height: normal;
 }
 
+p.text-right {
+    margin: 0;
+    line-height: 0.5;
+}
+
 .questionNb {
     margin:0;
+    line-height: normal;
+}
+
+.date-listquest {
+    opacity: 0.7;
+    font-size: 0.8em;
 }
 
 #search_results_body hr {
-    margin-bottom: 5px;
-    margin-top:5px;
+    margin-bottom: 7px;
+    margin-top:7px;
 }
 
 .title_with_icon a,.title_with_icon h4 {
@@ -204,6 +215,33 @@ span.min-slider, span.max-slider {
 
 .filter-search-keyword div.input-append{
     margin:0;
+}
+.badge-level {
+    position: relative;
+    display: inline-block;
+    color:#666666;
+    background-color:#e6e6e6;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+.badge-bubble {
+    background-image: url("../images/icons/bubble.png");
+    display: inline-block;
+    height: 25px;
+    width:32px;
+    line-height: 14px;
+    vertical-align: text-bottom;
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    color: black;
+    font-weight: bold;
+    padding-left:13px;
+    padding-top:8px;
+}
+
+.btn-go {
+    margin-top:10px;
 }
 
 

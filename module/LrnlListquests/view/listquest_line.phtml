@@ -19,11 +19,11 @@
                                     </a>
                             <?php endif; ?>
                         </span>
-                        <small><?php echo $this->dateFormat($creationDate,IntlDateFormatter::MEDIUM); ?></small>
-                        <span class="badge"><?php echo $this->escapeHtml($language); ?></span>
-                        <?php echo $this->delCountriesFlagsFlag('USA','tiny'); ?> 
                     </div>
-                    <p><?php echo $this->escapeHtml($description); ?></p>
+                    <p>
+                        <?php echo $this->escapeHtml($description); ?>
+                        <span class="date-listquest"><?php echo $this->dateFormat($creationDate,IntlDateFormatter::MEDIUM); ?></span>
+                    </p>
                 </div>
                 <div class="span2">
                     <h2 class="text-right questionNb"><?php echo (int)$questionNb; ?></h2>
@@ -33,29 +33,33 @@
             <div class="row-fluid">
                 <div class="span9">
                     <?php foreach ([
-                        ['name' => 'Rating','value' => $rating],
-                        ['name' => 'Level','value' => $level]
+                        ['name' => 'Rating','value' => $rating,'class'=>'badge-bubble'],
+                        ['name' => 'Level','value' => $level,'class'=>'badge badge-level']
                     ] as $badge) : ?>
                     <span class="badge_item">
-                        <span class="badge">
+                        <span class="<?php echo $this->escapeHtml($badge['class']); ?>">
                             <?php echo $this->escapeHtml($badge['value']); ?>
                         </span>
                         <span class="title_badge"><small><?php echo $this->translate($badge['name']);?></small></span>
                     </span>
                     <?php endforeach; ?>
-                </div>
-                <div class="span3">
-                    <span class="like_button pull-right">
+                    <span class="like_button">
                         <?php if ($hasLike) : ?>                   
-                        <span class="badge badge-success">
-                            <i class="icon-thumbs-up"></i> <?php echo $this->translate('Yes');?>
+                        <span class="btn btn-mini disabled">
+                            <i class="icon-thumbs-up"></i>                            
                         </span>
+                        <span class="title_badge"><small><?php echo $this->translate('You like it');?></small></span>
                         <?php else : ?>
                         <a class="btn btn-mini" href="<?php echo $this->url('listquests/list/rate',['id' => $id]); ?>">
                             <i class="icon-thumbs-up"></i> <?php echo $this->translate('Yes');?>
                         </a>    
                         <?php endif;?>
                     </span>
+                </div>
+                <div class="span3">
+                    <?php if ($questionNb != 0) : ?>
+                    <a href="<?php echo $this->url('learn/basic',['id' => $id]); ?>" class="btn btn-small btn-success pull-right btn-go"><?php echo $this->translate('Go now!');?></a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
