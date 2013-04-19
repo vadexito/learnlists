@@ -13,14 +13,20 @@ $form->setAttribute('method', 'POST');
 
 echo $this->form()->openTag($form);
 ?>
-<dl class="zend_form">
+
 
 <?php foreach ($form->getElements() as $element) { ?>
     <?php if ($element->getLabel() != null) { ?>
-    <dt><?php echo $this->formLabel($element); ?></dt>
+    <?php echo $this->formLabel($element); ?>
     <?php } ?>
-    <dd><?php echo $this->formInput($element) . $this->formElementErrors($element); ?></dd>
+    <?php if ($element->getAttribute('type') !== 'submit') { ?>
+    <?php echo $this->formInput($element) . $this->formElementErrors($element); ?>
+    <?php } else {?>
+<div class="form-actions">
+     <?php echo $this->formInput($element) . $this->formElementErrors($element); ?>
+</div>
 <?php } ?>
-</dl>
+<?php } ?>
+
 
 <?php $this->url('zfcuser/register/step1'); ?>

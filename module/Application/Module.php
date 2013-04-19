@@ -9,64 +9,10 @@
 
 namespace Application;
 
-use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\MvcEvent;
-use Zend\Session\Container;
-use Locale;
-use DateTime;
-use Zend\View\Helper\Navigation;
-use Zend\Authentication\Result;
+
 
 class Module
 {
-    public function onBootstrap(MvcEvent $e)
-    {
-        $services = $e->getApplication()->getServiceManager();
-        $em = $e->getApplication()->getEventManager();
-        
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($em);
-        
-        //initiate default role after registering
-        $entityManager = $services->get('Doctrine\ORM\EntityManager');
-        $zfcuserService = $services->get('zfcuser_user_service');
-        $zfcuserEventManager = $zfcuserService->getEventManager();
-        $zfcuserEventManager->attach('register', function($e) use ($entityManager) {
-            
-            $role = $entityManager->getRepository('ZfcUserLL\Entity\Role')->find(5);
-            $e->getParam('user')->addRole($role);
-            $e->getParam('user')->setCreationDate(new DateTime());
-            $e->getParam('user')->setIp($_SERVER['REMOTE_ADDR']);
-            $e->getParam('user')->setLastActivityDate(new DateTime());
-        });
-        
-        //initialize nagivation with ACL
-        $authorize = $services->get('BjyAuthorize\Service\Authorize');
-        $acl = $authorize->getAcl();
-        $role = $authorize->getIdentity();
-        Navigation::setDefaultAcl($acl);
-        Navigation::setDefaultRole($role);
-        
-        //after each login save IP and date of last activity
-        $zfcServiceEvents = $services->get('ZfcUser\Authentication\Adapter\AdapterChain')->getEventManager();
-        $zfcServiceEvents->attach(
-            'authenticate',
-            function ($e) use ($entityManager) {
-                //if authentical successful
-                if ($e->getParams('code') === Result::SUCCESS){
-                    $userEntity = $entityManager->getRepository('ZfcUserLL\Entity\User')
-                                      ->find($user['identity']);
-                    $userEntity->setIp($_SERVER['REMOTE_ADDR']);
-                    $userEntity->setLastActivityDate(new DateTime());
-                    $entityManager->flush();
-                }
-            }
-        );
-        
-    }
-
-    
-    
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';

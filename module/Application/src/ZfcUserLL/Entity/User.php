@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ZfcUser\Entity\UserInterface;
 use DateTime;
+use Doctrine\Common\Collections\Collection;
 
 class User implements UserInterface, ProviderInterface
 {
@@ -207,13 +208,13 @@ class User implements UserInterface, ProviderInterface
     }
 
     /**
-     * Get role.
+     * Get roles.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getRoles()
     {
-        return $this->roles->getValues();
+        return $this->roles;
     }
 
     /**
@@ -225,7 +226,21 @@ class User implements UserInterface, ProviderInterface
      */
     public function addRole($role)
     {
-        $this->roles[] = $role;
+        $this->roles->add($role);
+    }
+    
+    public function addRoles(Collection $roles)
+    {
+        foreach ($roles as $role) {
+            $this->addRole($role);
+        }
+    }
+
+    public function removeRoles(Collection $roles)
+    {
+        foreach ($roles as $role) {
+            $this->roles->removeElement($role);
+        }
     }
     
     /**
