@@ -28,11 +28,11 @@ class Grid extends AbstractHelper
             $listId = $row['id'];
             
             $btnEdit = '<a href="'
-                .$this->getView()->url('list/edit',['id' => $listId])
+                .$this->getView()->url('listquests/list/edit',['id' => $listId])
                 .'" class="btn"><i class="icon-edit"></i></a>';
             
             $btnDelete = '<a href="'
-                .$this->getView()->url('list/delete',['id' => $listId])
+                .$this->getView()->url('listquests/list/delete',['id' => $listId])
                 .'" class="btn"><i class="icon-trash"></i></a>';
             
             

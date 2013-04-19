@@ -3,9 +3,7 @@
 namespace LrnlListquests\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 use LrnlListquests\Entity\Question;          
-use LrnlListquests\Form\EditQuestionForm;     
 use LrnlListquests\Entity\Listquest;     
 use LrnlListquests\Provider\ProvidesEntityManager;
 
@@ -40,8 +38,8 @@ class QuestionController extends AbstractActionController
                 $this->getEntityManager()->flush();
 
                 return $this->redirect()->toRoute(
-                    'listquests/list',
-                    ['action' => 'edit','id' => $question->listquest->id]
+                    'listquests/list/edit',
+                    ['id' => $question->listquest->id]
                 );
             }
         }
@@ -73,8 +71,8 @@ class QuestionController extends AbstractActionController
                 }
             }
             return $this->redirect()->toRoute(
-                'listquests/list',
-                ['action' => 'show','id' => $listId]
+                'listquests/list/edit',
+                ['id' => $listId]
             );
         }
 

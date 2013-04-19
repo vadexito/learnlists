@@ -6,6 +6,7 @@ use Zend\View\Helper\AbstractHelper;
 use LrnlListquests\Service\ListquestService;
 use WtRating\Service\RatingService;
 use DateTime;
+use ZendSearch\Lucene\Exception\InvalidArgumentException;
 
 class ListquestCollection extends AbstractHelper
 {
@@ -18,10 +19,13 @@ class ListquestCollection extends AbstractHelper
         $data = [];
         
         foreach ($lists as $list){
-            $hasLike = false;
+            
             $listId = (int)$list->listId;
             $listDataBase= $this->getListquestService()->fetchById($listId);
-            
+            if (!$listDataBase){
+                continue;
+            }
+            $hasLike = false;
             $user = $this->getView()->zfcUserIdentity();
             if ($user && $this->getRatingService()->getMapper()->hasRated(
                     $user->getId(),$listId)) {

@@ -157,6 +157,19 @@ class SearchService
         $index->optimize();
     }
     
+    public function deleteFromIndex($listquestId)
+    {
+        $index = Lucene\Lucene::open($this->getIndexPath());        
+        $hit = $index->find('listquestId:'.$this->convertNumToString($listquestId));
+        
+        if ($hit){            
+            $index->delete($hit->id);
+        }
+        
+        $index->commit();
+        $index->optimize();
+    }
+    
     public function setIndexPath($indexPath)
     {
         $this->_indexPath = $indexPath;

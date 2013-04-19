@@ -57,9 +57,18 @@ class ListquestService
         $this->getObjectManager()->flush();
     }
     
-    public function deleteListquest(Listquest $listquest)
+    /**
+     * Delete listquest if it exists and return true, return false otherwise
+     * @param type $listquestId
+     */
+    public function deleteListquest($listquestId)
     {
-        $this->getObjectManager()->remove($listquest);
-        $this->getObjectManager()->flush();
+        $listquest = $this->repository->find($listquestId);
+        if ($listquest){
+            $this->getObjectManager()->remove($listquest);
+            $this->getObjectManager()->flush();
+            return true;
+        }
+        return false;
     }
 }

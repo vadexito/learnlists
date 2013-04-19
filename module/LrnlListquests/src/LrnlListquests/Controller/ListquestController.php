@@ -3,7 +3,6 @@
 namespace LrnlListquests\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Provider\ProvidesSearchService;
@@ -89,11 +88,9 @@ class ListquestController extends AbstractActionController
         if ($request->isPost()) {
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
-                $id = (int) $request->getPost('id');
-                $list = $this->getListquestService()->fetchById($id);
-                if ($list){
-                    $this->getListquestService()->deleteListquest($list);
-                }
+                $id = (int) $request->getPost('id');                
+                $this->getSearchService()->deleteFromIndex($id);  
+                $this->getListquestService()->deleteListquest($id);
             }
             return $this->redirect()->toRoute($this->getRedirectRoute());
         }

@@ -1,13 +1,18 @@
 <?php
 namespace LrnlListquests\Entity;
 
+
 use Zend\InputFilter\Factory as InputFactory;     
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
-use Zend\InputFilter\InputFilterInterface;   
+use Zend\InputFilter\InputFilterInterface;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use LrnlListquests\Entity\Listquest;
+use LrnlListquests\Entity\Questionresult;
 
 /**
  *
@@ -48,6 +53,11 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
     protected $tip;
 
     /**
+     * @var ArrayCollection of LrnlListquests\Entity\Questionresult
+     */
+    protected $questionresults;
+    
+    /**
     * 
     * @var LrnlListquests\Entity\ListQuest
     */
@@ -55,6 +65,38 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
     
     protected $inputFilter;
     
+    public function __construct() 
+    {
+        $this->questionresults = new ArrayCollection();
+    }
+    
+    public function getQuestionresults()
+    {
+        return $this->questionresults;
+    }
+    
+    public function addQuestionresult(Questionresult $questionresult)
+    {
+        $this->questionresults->add($questionresult);
+        $questionresult->setListquest($this);
+        return $this;
+    }
+    
+    public function addQuestionresults(Collection $questionresults)
+    {
+        foreach ($questionresults as $questionresult) {
+            $this->addQuestionresult($questionresult);
+        }
+        return $this;
+    }
+    
+    public function removeQuestionresults(Collection $questionresults)
+    {
+        foreach ($questionresults as $questionresult) {
+            $questionresult->setQuestion(null);
+            $this->questionresults->removeElement($questionresult);
+        }
+    }
     public function toArray()
     {
         $array = [

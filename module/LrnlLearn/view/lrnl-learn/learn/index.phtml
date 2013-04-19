@@ -1,21 +1,5 @@
 <?php
-
-//$this->headScript() ->prependFile($this->basePath() . '/js/lib/marionette.min.js')
-//                    ->prependFile($this->basePath() . '/js/lib/backbone.min.js')
-//                    ->prependFile($this->basePath() . '/js/lib/underscore.min.js')
-//                    ->prependFile($this->basePath() . '/js/lib/jquery.knob.js')
-                //    ->prependFile($this->basePath() . '/js/lib/bootstrap-progressbar.min.js');
-
-//$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/View/CurrentStatsView.js')
-//                     ->prependFile($this->basePath() . '/js/backboneMvc/View/FollowerView.js')
-//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Question.js')
-//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Listquest.js')
-//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Round.js')
-//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Questionresult.js')
-//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/LearnMain.js')
-//                     ->prependFile($this->basePath() . '/js/backboneMvc/learnMVC.js');
-
-$title = 'Learn at LearnLists';
+$title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);?>
 <article class="well" id="questionMain"></article>
 <input name="id" type="hidden" data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-maxRound="<?php echo $maxRound?>" id="listId" value="<?php echo $listId ?>">

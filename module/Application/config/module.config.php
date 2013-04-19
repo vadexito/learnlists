@@ -182,12 +182,57 @@ return [
         ],        
     ],
     'assetic_configuration' => [
+        /**
+        * Module is not enabled if an MvcEvent::EVENT_DISPATCH_ERROR event occurs.
+        * However, we may still want our assets for pages with dispatch errors.
+        * So, we can build up a whitelist of errors for the module to be enabled for.
+        */
+        'acceptableErrors' => [
+            //defaults
+            \Zend\Mvc\Application::ERROR_CONTROLLER_NOT_FOUND,
+            \Zend\Mvc\Application::ERROR_CONTROLLER_INVALID,
+            \Zend\Mvc\Application::ERROR_ROUTER_NO_MATCH,
+
+            //allow assets when authorisation fails when using the BjyAuthorize module
+            \BjyAuthorize\Guard\Route::ERROR,
+        ],
+        /*
+        * Enable cache
+        */
+       'cacheEnabled' => true,
+
+       /*
+        * Cache dir
+        */
+       'cachePath' => __DIR__ . '/../../../data/cache',
+
+       /*
+        * Debug on (used via \Assetic\Factory\AssetFactory::setDebug)
+        *
+        * @optional
+        */
+        'debug' => false,
+
+       /*
+        * set Umask
+        * 
+        * @optional
+        */
+        'umask' => null,
+
+       /*
+        * Define base URL which will prepend your resources address
+        *
+        * @example
+        * <link href="http://resources.example.com/twitter_bootstrap_css.css?1320257242" media="screen" rel="stylesheet" type="text/css">
+        *
+        * @optional
+        * @default autodetect by ZF2
+        */
+        'baseUrl' => null,
+
         'routes' => [
             'home' => [
-                // Is disabled because 'default' option key will mix with this configuration section
-                // and provide @base_css assets.
-                // '@base_css',
-                //'@base_js',
                 '@global_js'
             ],
             'lrnl-search' => [
@@ -204,7 +249,6 @@ return [
             'listquests/list/edit' => [
                 '@global_js'
             ],
-            
         ],
 
         'default' => [
@@ -237,6 +281,7 @@ return [
                     ],
                     'base_js' => [
                         'assets' => [
+                            'js/lib/html5.js',
                             'js/lib/jquery.min.js',
                             'js/lib/bootstrap.min.js',
                             'js/lib/spin.min.js',
@@ -287,8 +332,6 @@ return [
                             'move_raw' => true,
                         ],
                     ],
-                    
-                    
                 ],
             ],
         ],
