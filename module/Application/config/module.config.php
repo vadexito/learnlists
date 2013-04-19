@@ -8,6 +8,17 @@
  */
 
 return [
+    'bjyauthorize' => [
+        'guards'                => [
+            'BjyAuthorize\Guard\Route' => [
+                ['route' => 'home', 'roles' => ['guest', 'user']],                
+                ['route' => 'footer/about', 'roles' => ['guest', 'user']],
+                ['route' => 'footer/privacy', 'roles' => ['guest', 'user']],
+                ['route' => 'footer/terms', 'roles' => ['guest', 'user']],
+                ['route' => 'footer/help', 'roles' => ['guest', 'user']],
+            ],
+        ],
+    ],
     'router' => [
         'routes' => [
             'home' => [
@@ -176,13 +187,31 @@ return [
                 // Is disabled because 'default' option key will mix with this configuration section
                 // and provide @base_css assets.
                 // '@base_css',
-                '@base_js',
+                //'@base_js',
+                '@global_js'
             ],
+            'lrnl-search' => [
+                '@search_css',
+                '@search_js',
+                '@global_js'
+            ],
+            'learn/basic' => [
+                '@marionette_js',
+                '@jqknob_js',
+                '@mvclearn_js',
+                '@global_js'
+            ],
+            'listquests/list/edit' => [
+                '@global_js'
+            ],
+            
         ],
 
         'default' => [
             'assets' => [
+                '@base_js',
                 '@base_css',
+                //'@base-images',
             ],
             'options' => [
                 'mixin' => true
@@ -190,22 +219,14 @@ return [
         ],
 
         'modules' => [
-            /*
-             * Application moodule - assets configuration
-             */
             'application' => [
-
-                # module root path for yout css and js files
                 'root_path' => __DIR__ . '/../assets',
-
-                # collection od assets
                 'collections' => [
-
                     'base_css' => [
                         'assets' => [
-//                            'css/bootstrap/css/bootstrap-responsive.min.css',
-//                            'css/style.css',
-//                            'css/bootstrap/css/bootstrap.min.css'                            
+                            'css/vendor/bootstrap/css/bootstrap.min.css',
+                            'css/vendor/bootstrap/css/bootstrap-responsive.min.css',
+                            'css/style.css',        
                         ],
                         'filters' => [
                             'CssRewriteFilter' => [
@@ -214,24 +235,60 @@ return [
                         ],
                         'options' => [],
                     ],
-
                     'base_js' => [
                         'assets' => [
-//                            'js/lib/jquery.min.js',
-//                            'js/lib/bootstrap.min.js'
+                            'js/lib/jquery.min.js',
+                            'js/lib/bootstrap.min.js',
+                            'js/lib/spin.min.js',
                         ],
                     ],
-
+                    
+                    'global_js' => [
+                        'assets' => [
+                            'js/global.js',
+                        ],
+                    ],
+                    'search_js' => [
+                        'assets' => [
+                            'js/lib/bootstrap-slider.js',
+                        ],
+                    ],
+                    'search_css' => [
+                        'assets' => [
+                            'css/vendor/slider.css',
+                        ],
+                    ],
+                    'mvclearn_js' => [
+                        'assets' => [
+                            'js/backboneMvc/Model/*.js',
+                            'js/backboneMvc/View/*.js',
+                            'js/backboneMvc/learnMVC.js',
+                        ],
+                    ],
+                    'jqknob_js' => [
+                        'assets' => [
+                            'js/lib/jquery.knob.js',
+                        ],
+                    ],
+                    'marionette_js' => [
+                        'assets' => [
+                            'js/lib/underscore.min.js',
+                            'js/lib/backbone.min.js',
+                            'js/lib/marionette.min.js',
+                        ],
+                    ],
                     'base_images' => [
                         'assets' => [
-//                            'images/*.png',
-//                            'images/*.ico',
-//                            'images/*.jpg'
+                            'images/*.png',
+                            'images/*.ico',
+                            'images/*.jpg'
                         ],
                         'options' => [
                             'move_raw' => true,
                         ],
                     ],
+                    
+                    
                 ],
             ],
         ],

@@ -3,28 +3,18 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle($this->translate('LearnLists'))->setSeparator(' - ')->setAutoEscape(false) ?>
-
-        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
-        <?php echo $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'])
-                        ->prependStylesheet($this->basePath() . '/css/vendor/bootstrap/css/bootstrap-responsive.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/vendor/font-awesome/css/font-awesome.min.css') 
-                        ->prependStylesheet($this->basePath() . '/css/vendor/bootstrap/css/bootstrap.min.css') ?>
-                        
-
-        <!-- Scripts -->
-         <!-- Scripts -->
-        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/lib/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-                                      ->prependFile($this->basePath() . '/js/lib/bootstrap.min.js')
-                                      ->prependFile($this->basePath() . '/js/lib/spin.min.js')
-                                      ->prependFile($this->basePath() . '/js/lib/jquery.min.js') ?>
+        <?php $this->headTitle($this->translate('LearnLists'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+        <?php $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'])?>
+        <?php $this->headScript()->prependFile($this->basePath() . '/js/lib/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))?>
         
-        <?php $this->inlineScript()->appendFile($this->basePath() . '/js/global.js');?>
         <?php
-// for asset maneger  echo $this->plugin('HeadLink');
-//            echo $this->plugin('HeadStyle');
-//            echo $this->plugin('HeadScript');
+// for asset manager  assetic
+            echo $this->plugin('HeadTitle');
+            echo $this->plugin('HeadMeta');
+            echo $this->plugin('HeadLink');
+            echo $this->plugin('HeadStyle');
+            echo $this->plugin('HeadScript');
         ?>
     </head>
     <body>
@@ -65,7 +55,7 @@ echo $this->navigation('navigation')->menu()->setPartial($partial)->render();
                        </ul>
                    </div>
                    <div class="offset2 span3">
-                       <h5><?php echo $this->translate('Localisation'); ?></h5>
+                       <h5><?php echo $this->translate('Language'); ?></h5>
                        <ul>
                            <li class="footer-item dropdown">
                                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#"><?php echo $this->language(); ?> <b class="caret"></b></a>

@@ -1,21 +1,19 @@
 <?php
 
-$this->headLink()   ->prependStylesheet($this->basePath() . '/css/vendor/bootstrap-progressbar.min.css');
+//$this->headScript() ->prependFile($this->basePath() . '/js/lib/marionette.min.js')
+//                    ->prependFile($this->basePath() . '/js/lib/backbone.min.js')
+//                    ->prependFile($this->basePath() . '/js/lib/underscore.min.js')
+//                    ->prependFile($this->basePath() . '/js/lib/jquery.knob.js')
+                //    ->prependFile($this->basePath() . '/js/lib/bootstrap-progressbar.min.js');
 
-$this->headScript() ->prependFile($this->basePath() . '/js/lib/marionette.min.js')
-                    ->prependFile($this->basePath() . '/js/lib/backbone.min.js')
-                    ->prependFile($this->basePath() . '/js/lib/underscore.min.js')
-                    ->prependFile($this->basePath() . '/js/lib/jquery.knob.js')
-                    ->prependFile($this->basePath() . '/js/lib/bootstrap-progressbar.min.js');
-
-$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/View/CurrentStatsView.js')
-                     ->prependFile($this->basePath() . '/js/backboneMvc/View/FollowerView.js')
-                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Question.js')
-                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Listquest.js')
-                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Round.js')
-                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Questionresult.js')
-                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/LearnMain.js')
-                     ->prependFile($this->basePath() . '/js/backboneMvc/learnMVC.js');
+//$this->inlineScript()->prependFile($this->basePath() . '/js/backboneMvc/View/CurrentStatsView.js')
+//                     ->prependFile($this->basePath() . '/js/backboneMvc/View/FollowerView.js')
+//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Question.js')
+//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Listquest.js')
+//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Round.js')
+//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/Questionresult.js')
+//                     ->prependFile($this->basePath() . '/js/backboneMvc/Model/LearnMain.js')
+//                     ->prependFile($this->basePath() . '/js/backboneMvc/learnMVC.js');
 
 $title = 'Learn at LearnLists';
 $this->headTitle($title);?>

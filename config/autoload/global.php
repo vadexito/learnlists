@@ -105,6 +105,10 @@ return [
                 'label' => 'Lists of questions',
                 'route' => 'zfcadmin/lists',
             ],
+            'search' => [
+                'label' => 'Lucene Build',
+                'route' => 'lrnl-search/build'
+            ],
             'home' => [
                 'label' => 'Learnlists',
                 'route' => 'home',

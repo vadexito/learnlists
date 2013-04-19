@@ -64,7 +64,7 @@ window.Round = Backbone.Model.extend({
             }
         };
     },
-    urlRoot: "/round-rest",
+    urlRoot: "/learnlists-rest/round",
     
     defaults:{
       finalnote:0,
@@ -132,7 +132,18 @@ window.Rounds = Backbone.Collection.extend({
         });
     },
     
-    url: "/round-rest"
+    newRoundOrder: function(questions){
+        //if there are historical data
+        if (this.models.length > 0){
+            var lastResults = _.last(this.models).get('questionresults');
+            return lastResults.pluck('questionId');            
+        } else {
+            return _.shuffle(questions.pluck('id'));         
+        }
+        
+        
+    },
+    url: "/learnlists-rest/round"
     
 });
 

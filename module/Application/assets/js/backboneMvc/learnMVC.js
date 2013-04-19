@@ -16,6 +16,14 @@ LearnListsLayout = Backbone.Marionette.Layout.extend({
       currentstats: '#current_stats',
       presCorner  : '#first_presentation_corner',
       tip         : '#question_tip'
+    },
+    
+    modelEvents:{
+        'change:title_list': 'renderTitle'
+    },
+    
+    renderTitle: function(model,data){
+        $('#title_list').html(data);
     }
 });
 
@@ -103,12 +111,7 @@ InsideNavBarView = Backbone.Marionette.ItemView.extend({
             
             this.ui.cancelButton.hide();
         },this); 
-    },
-    
-    modelEvents:{
-        'change:title_list': 'render'
     }
-    
 });
 
 AskingQuestionView = Backbone.Marionette.ItemView.extend({
@@ -124,36 +127,52 @@ AskingQuestionView = Backbone.Marionette.ItemView.extend({
     },
     initialize: function(){
         
-        learnMVC.vent.on('learn:initNewRound',function(){
-            $('#question-asking').show();
-            $('#percent-firsttime,#percent-noanswerused').html(0);
-            $('#bar-progress').html('').css('width','0');         
-        });
-        
-        learnMVC.vent.on('learn:initNewQuestion',function(){             
-            this.ui.answerButtons.removeAttr('disabled');
-            this.ui.answerInput.val('').focus().removeAttr('readonly'); 
-            $('#answer-group').removeClass('error').removeClass('success');
-            $('.answer-sign').hide();
-        },this);
-        
         learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){             
             this.ui.answerButton.attr('disabled','disabled');
             this.ui.checkButton.attr('disabled','disabled');
             this.ui.answerInput.attr('readonly','readonly');
-            this.ui.nextButton.focus();
+            this.ui.nextButton.html(this.ui.nextButton.attr('data-text-toggle'));
         },this);
+        
+        learnMVC.vent.on('learn:initNewQuestion',this.initNewQuestion,this);
+        learnMVC.vent.on('learn:answerSuccess',this.showSuccess,this);
+        learnMVC.vent.on('learn:answerError',this.showError,this);
     },
+    
+    initNewQuestion: function(){
+        this.ui.answerButtons.removeAttr('disabled');
+        this.ui.answerInput.val('').focus().removeAttr('readonly');
+        $('#answer-group').removeClass('error').removeClass('success');
+    },
+    
+    showSuccess: function(){
+        $('#answer-group').addClass('success');        
+    },
+    
+    showError: function(){
+        $('#answer-group').addClass('error');
+    },
+    
     events:{
         'click #question_asked_submitbutton'   : 'checkAnswer',
         'click #question_asked_answer'         : function(e){e.preventDefault();learnMVC.vent.trigger("learn:answerAsked");},
         'click #question_asked_nextbutton'     : function(e){e.preventDefault();learnMVC.vent.trigger("learn:nextQuestion");},
-        'click #question_asked_showanswerbutton':function(e){e.preventDefault();learnMVC.vent.trigger("learn:showAnswer");}
+        'click #question_asked_showanswerbutton':function(e){e.preventDefault();learnMVC.vent.trigger("learn:showAnswer");},
+        'keydown #question_asked_answer'      :'enterKeyNoSubmit'
+    },
+    
+    enterKeyNoSubmit : function(e){
+        //deactivate function when no answer has to be given
+        
+        if (e.keyCode == 13 &&
+            this.ui.checkButton.attr('disabled') === 'disabled') {
+            e.preventDefault();
+            this.ui.nextButton.click();
+        }
     },
 
     checkAnswer: function(e){
         e.preventDefault(); 
-        $('.answer-sign').hide();
         learnMVC.vent.trigger("learn:answerCheck",this.ui.answerInput.val());
     },
 
@@ -168,12 +187,23 @@ RoundResultView = Backbone.Marionette.ItemView.extend({
     templateHelpers: {
         roundinfo: function(){
             
-            var duration = this.duration;        
-            return (duration.now ? 'current' : 
-                (duration.days ? (duration.days + 'd') : '')
-                + (duration.hours ? (duration.hours + 'h') : '')
-                + (duration.minutes ? (duration.minutes + 'm') : '')
-                + (duration.seconds ? (duration.seconds + 's') : '')+' ago');
+            var duration = this.duration; 
+            var time;
+            
+            if (duration.now){
+                return 'current';
+            }            
+            if (duration.days > 0){
+                time = duration.days + 'd';
+            } else if (duration.hours > 0){
+                time = duration.hours + 'h';
+            } else if (duration.minutes > 0){
+                time = duration.minutes + 'm';
+            } else if (duration.seconds > 0){
+                time = duration.seconds + 's';
+            }
+            
+            return time+' ago';
         }
     },
     initialize: function(){
@@ -212,23 +242,29 @@ learnMVC.addInitializer(function(options){
         loggedIn: options.loggedIn,
         maxRound: options.maxRound,
         saveRoundsWhenNotLogged : this.saveRoundsWhenNotLogged
-    });    
+    });   
+    
     var layout = new LearnListsLayout({model:learnMain});    
     learnMVC.main.show(layout);  
     
     layout.follower.show(new FollowerView({model:layout.model}));
     layout.presCorner.show(new InsideNavBarView({model:layout.model}));
-    //layout.currentstats.show(new CurrentStatsView({model:layout.model}));
     
     learnMVC.vent.on('learn:initNewRound',function(){
-        layout.central_area.show(new AskingQuestionView({model:layout.model}));
+        var askingQuestionView = new AskingQuestionView({model:layout.model});
+        layout.central_area.show(askingQuestionView);
+        //has to be initiated because initNewQuestion is not triggered 
+        //on the first question before the view has been created
+        askingQuestionView.initNewQuestion();
     });
+    
     learnMVC.vent.on('learn:initNewQuestion',function(){
         layout.answer.close();
-        layout.answer.show(new AnswerView({model:layout.model})); 
+        layout.answer.show(new AnswerView({model:layout.model}));
         layout.tip.close();
         layout.tip.show(new TipView({model:layout.model})); 
     });
+    
     learnMVC.vent.on('learn:showResult',function(){
         layout.tip.close();
         layout.answer.close();

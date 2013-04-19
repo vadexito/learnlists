@@ -18,6 +18,7 @@ window.LearnMain = Backbone.Model.extend({
                 collection:new Questions()
             };
             
+            
             this.questions.collection.initQuestions(list.get('questions'));  
             
             learnMVC.vent.trigger("learn:init");
@@ -30,9 +31,10 @@ window.LearnMain = Backbone.Model.extend({
             
             //init last rounds
             this.lastRounds = new Rounds();
-            if (loggedIn === 'true'){
+            if (loggedIn === 'true'){                
                 this.lastRounds.init(listId,maxRound);
             } else {
+                //no last round to init if not logged
                 learnMVC.vent.trigger("learn:initNewRound");
             }
         },this)});
@@ -62,8 +64,8 @@ window.LearnMain = Backbone.Model.extend({
 
         var roundOrder = this.currentRound.get('roundOrder');
 
-        if (roundOrder.length > 0) {            
-            learnMVC.vent.trigger("learn:initNewQuestion",_.first(this.currentRound.get('roundOrder')));
+        if (roundOrder.length > 0) {   
+            learnMVC.vent.trigger("learn:initNewQuestion",_.first(roundOrder));
         } else {
             learnMVC.vent.trigger("learn:roundCompleted");
         }
@@ -111,6 +113,7 @@ window.LearnMain = Backbone.Model.extend({
         this.model.setAnswerType();
         this.currentRound.get('questionresults').add(this.model);
         
+        var answerType = this.model.get('answerType');
         this.set({
             'nb_question': this.currentRound.get('roundOrder').length,
             'tip': this.questions.collection.get(this.model.get('questionId')).get('tip'),
@@ -123,7 +126,7 @@ window.LearnMain = Backbone.Model.extend({
             average = this.get('nb_average_answering') * total/100,
                 bad = this.get('nb_bad_answering') * total/100;
 
-        switch(this.model.get('answerType')){
+        switch(answerType){
             case '1':
                 perfect++;
                 break;
@@ -147,6 +150,35 @@ window.LearnMain = Backbone.Model.extend({
             'nb_bad_answering':bad/total * 100
         });
         
+        if (this.lastRounds.models.length > 0 ){
+            var lastAnswerType = _.first(_.last(this.lastRounds.models)
+                              .get('questionresults')
+                              .where({'questionId':this.model.get('questionId')}))
+                              .get('answerType');
+            
+            var commentsValues = {
+                '1':{
+                    '1' : 'Always perfect',
+                    '2' : 'You did perfect in less than 10 seconds now',
+                    '3' : 'Perfect, no more mistake like last time!',
+                    '4' : 'Perfect, no more mistakes like last time!',
+                    '5' : 'Perfect and you did not ask the answer like last time!'
+                },
+                '2':{
+                    '1' : 'Last time you were quicker',
+                    '2' : 'Like last time, you are still too slow',
+                    '3' : 'Great, no more mistake like last time but too slow!',
+                    '4' : 'Great, no more mistakes like last time but too slow!',
+                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
+                }
+            };
+
+            if (commentsValues[String(answerType)]){
+                this.set('comments',commentsValues[String(answerType)][String(lastAnswerType)] || '');
+            }
+            
+        }
+        
         
         
     },
@@ -155,12 +187,12 @@ window.LearnMain = Backbone.Model.extend({
         
         this.set('round_nb',this.lastRounds.models.length + 1);
         
-        //fetch former rounds from the database and create new Round       
+        //create new Round       
         this.currentRound = new Round({
             listquestId: this.questions.listId,
             startDate: {date:new Date()},
             questionresults : new Questionresults(),
-            roundOrder: _.shuffle(this.questions.collection.pluck('id')), 
+            roundOrder: this.lastRounds.newRoundOrder(this.questions.collection), 
             localDate:true
         });
         
@@ -171,7 +203,6 @@ window.LearnMain = Backbone.Model.extend({
                 'nb_average_answering':0,
                 'nb_bad_answering':0
             });
-            
         learnMVC.vent.trigger("learn:nextQuestion");
     },
     
@@ -180,14 +211,15 @@ window.LearnMain = Backbone.Model.extend({
         //push the new id to the end of the array (in case the next button is pushed before the question is answered)
         this.currentRound.get('roundOrder').shift();
         this.currentRound.get('roundOrder').push(questionId);
-
+        this.set('comments','');
+        
         var question = this.questions.collection.get(questionId);
         this.model = new Questionresult({
             startDate:new Date(),
             answerPart:0,
             questionId:questionId
         });      
-
+        
         this.set({
             'text': question.get('text')
         });
@@ -226,6 +258,7 @@ window.LearnMain = Backbone.Model.extend({
         nb_average_answering:0,
         nb_bad_answering:0,
         score:0,
-        maxPoint:0
+        maxPoint:0,
+        comments:''
     }
 }); 

@@ -3,9 +3,6 @@
 $title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);
 $this->placeholder('header')->captureStart();
-$this->headScript()->appendFile($this->basePath() . '/js/lib/jquery.datatable.min.js');
-$this->headScript()->appendFile($this->basePath() . '/js/lib/bootstrap-slider.js');
-$this->headLink()->prependStylesheet($this->basePath() . '/css/vendor/slider.css');
 $searchForm->setAttribute('action', $this->url('lrnl-search'));
 $searchForm->prepare();
 ?>

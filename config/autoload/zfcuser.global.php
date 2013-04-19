@@ -236,4 +236,19 @@ return array(
             'zfcuser_zend_db_adapter' => (isset($settings['zend_db_adapter'])) ? $settings['zend_db_adapter']: 'Zend\Db\Adapter\Adapter',
         ),
     ),
+    'bjyauthorize' => [
+        'guards'                => [
+            'BjyAuthorize\Guard\Route' => [
+                ['route' => 'zfcuser', 'roles' => ['user']],
+                ['route' => 'zfcuser/logout', 'roles' => ['user']],
+                ['route' => 'zfcuser/changeemail', 'roles' => ['user']],
+                ['route' => 'zfcuser/login', 'roles' => ['guest']],
+                ['route' => 'zfcuser/register', 'roles' => ['guest']],
+                ['route' => 'zfcuser/register/step1', 'roles' => ['guest']],
+                ['route' => 'zfcuser/register/step2', 'roles' => ['guest']],
+                ['route' => 'zfcuser/forgotpassword', 'roles' => ['guest']],
+                ['route' => 'zfcuser/resetpassword', 'roles' => ['guest']],
+            ],
+        ],
+    ],
 );
