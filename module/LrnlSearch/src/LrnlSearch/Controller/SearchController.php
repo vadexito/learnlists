@@ -29,12 +29,16 @@ class SearchController extends AbstractActionController
             'type' => SORT_NUMERIC,
             'direction' => SORT_DESC,
         ]);
-        
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($hits));
+        $paginator->setCurrentPageNumber($this->params()->fromRoute('page'));
+        $paginator->setItemCountPerPage(10);
         
         return [
-            'lists' => $hits,
+            'lists' => $paginator,
+            'resultNb' => count($hits),
             'searchForm' => $searchForm,
-            'filterForm' => $filterForm
+            'filterForm' => $filterForm,
+            'query' => (array)$queryData
         ];
         
     }

@@ -2,7 +2,7 @@
 <div class="paginationControl">
 <!-- Previous page link -->
 <?php if (isset($this->previous)): ?>
-  <a href="<?php echo $this->url($this->route, array('page' => $this->previous)); ?>">
+  <a href="<?php echo $this->url($this->route, array('page' => $this->previous),['query'=>$this->query]); ?>">
     < Previous
   </a> |
 <?php else: ?>
@@ -12,7 +12,7 @@
 <!-- Numbered page links -->
 <?php foreach ($this->pagesInRange as $page): ?>
   <?php if ($page != $this->current): ?>
-    <a href="<?php echo $this->url($this->route, array('page' => $page)); ?>">
+    <a href="<?php echo $this->url($this->route, array('page' => $page),['query'=>$this->query]); ?>">
         <?php echo $page; ?>
     </a> |
   <?php else: ?>
@@ -22,7 +22,7 @@
 
 <!-- Next page link -->
 <?php if (isset($this->next)): ?>
-  <a class="next" href="<?php echo $this->url($this->route, array('page' => $this->next)); ?>">
+  <a class="next" href="<?php echo $this->url($this->route, array('page' => $this->next),['query'=>$this->query]); ?>">
     Next >
   </a>
 <?php else: ?>

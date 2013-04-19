@@ -22,8 +22,6 @@ $searchForm->prepare();
     <div class="span3">
         <div class="span11 well" id="left_side_filters">
             <?php foreach ($filterForm->getFieldsets() as $filter):  ?>
-            
-            
             <?php if ($filter->getAttribute('data-filterType') === 'checkbox'): ?>
             <div class="filter-search filter-search-term">
                 <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$filter->getName();echo $name; ?>">
@@ -89,13 +87,14 @@ $searchForm->prepare();
     </div>
     <div class="span9" id="search_results_body">
         <div class="row-fluid  well well-small" id="search_result_summary">
-            <?php echo sprintf($this->translate('%s results'),count($lists)); ?>
+            <?php echo sprintf($this->translate('%s results'),$resultNb); ?>
         </div>
         <hr>
         <div class="row-fluid">
             <ul id="search_result_lists">
                 <?php echo $this->listquestCollection($lists); ?>               
             </ul>
+            <?php echo $this->paginationControl($this->lists,'Sliding','pagination_control', ['route' => 'lrnl-search','query' => $query]); ?>
         </div>
         <div class="row-fluid" id="bottom_search_result_pagination_info">
             <div class="span6">
