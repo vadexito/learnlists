@@ -14,6 +14,10 @@ composer.lock
 vendor/
 data/
 
+#######################
+## Asset manager
+#######################
+public/assets
 
 #######################
 ## Config
