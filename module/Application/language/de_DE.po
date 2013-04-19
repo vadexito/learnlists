@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-15 09:59+0100\n"
-"PO-Revision-Date: 2013-04-15 10:01+0100\n"
+"POT-Creation-Date: 2013-04-19 21:52+0100\n"
+"PO-Revision-Date: 2013-04-19 21:53+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -18,62 +18,141 @@ msgstr ""
 "X-Poedit-SearchPath-1: ../../../module\n"
 "X-Poedit-SearchPath-2: ../../../config\n"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:38
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:71
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:30
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:62
 msgid "Add"
 msgstr "Erstellen"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/QuestionController.php:31
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/QuestionController.php:29
 msgid "Edit"
 msgstr "Editieren"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/EditQuestionForm.php:37
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestForm.php:38
-#: ../../../module/LrnlUser/src/LrnlUser/Form/EditQuestionForm.php:36
-#: ../../../module/LrnlUser/src/LrnlUser/Form/ListquestForm.php:37
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:98
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:79
 msgid "Check"
 msgstr "Anworten"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:45
-#: ../../../module/LrnlUser/src/LrnlUser/Form/ListquestFieldset.php:45
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:23
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:103
 msgid "Title"
 msgstr "Titel"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:56
-#: ../../../module/LrnlUser/src/LrnlUser/Form/ListquestFieldset.php:56
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:22
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:45
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:102
+#, fuzzy
+msgid "Description"
+msgstr "Frage"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:66
+#: ../../../config/autoload/lrnlsearch.global.php:15
+#: ../../../config/autoload/lrnlsearch.global.php:16
+msgid "category"
+msgstr "Kategorie"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:68
+msgid "Foreign Languages - English"
+msgstr "Fremdsprache - Englisch"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:69
+msgid "Foreign Languages - German"
+msgstr "Fremdsprache - Deutsch"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:70
+msgid "Foreign Languages - French"
+msgstr "Fremdsprache - Franzözisch"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:71
+msgid "Other"
+msgstr "Andere"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:82
+#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:36
+#: ../view/layout/layout.phtml:57
+#: ../../../module/Application/view/layout/layout.phtml:57
+msgid "Language"
+msgstr "Sprache"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:84
+#: ../../../config/autoload/lrnlsearch.global.php:18
+#: ../view/layout/layout.phtml:64
+#: ../../../module/Application/view/layout/layout.phtml:64
+msgid "English"
+msgstr "Englisch"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:85
+#: ../../../config/autoload/lrnlsearch.global.php:18
+#: ../view/layout/layout.phtml:62
+#: ../../../module/Application/view/layout/layout.phtml:62
+msgid "German"
+msgstr "Deutsch"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:86
+#: ../../../config/autoload/lrnlsearch.global.php:18
+#: ../view/layout/layout.phtml:63
+#: ../../../module/Application/view/layout/layout.phtml:63
+msgid "French"
+msgstr "Französisch"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:87
+#, fuzzy
+msgid "Polish"
+msgstr "Englisch"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:98
 msgid "Level"
 msgstr "Niveau"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:68
-#: ../../../module/LrnlUser/src/LrnlUser/Form/ListquestFieldset.php:68
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:100
+msgid "Top level"
+msgstr "Top Niveau"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:101
+msgid "Very high level"
+msgstr "Sehr hohes Niveau"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:102
+msgid "High level"
+msgstr "Hohes Niveau"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:103
+msgid "Good level"
+msgstr "Gutes Niveau"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:104
+msgid "Average plus level"
+msgstr "Durchschnitt + Niveau"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:105
+#, fuzzy
+msgid "Average level"
+msgstr "Durchschnitt"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:106
+msgid "Basic level"
+msgstr "Basic Niveau"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:107
+msgid "Elementary level"
+msgstr "Grundliches Niveau"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:120
 msgid "Rules"
 msgstr "Regeln"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/QuestionFieldset.php:43
-#: ../../../module/LrnlUser/src/LrnlUser/Form/QuestionFieldset.php:42
 msgid "Text"
 msgstr "Text"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/QuestionFieldset.php:56
-#: ../../../module/LrnlUser/src/LrnlUser/Form/QuestionFieldset.php:55
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:110
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:91
 msgid "Answer"
 msgstr "Lösung"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/QuestionFieldset.php:68
-#: ../../../module/LrnlUser/src/LrnlUser/Form/QuestionFieldset.php:67
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:125
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:106
 msgid "Tip"
 msgstr "Kommentar"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/TagFieldset.php:27
-#: ../../../module/LrnlUser/src/LrnlUser/Form/TagFieldset.php:27
 msgid "Tag"
 msgstr "Tag"
 
@@ -81,17 +160,15 @@ msgstr "Tag"
 msgid "Which quizz are you looking for?"
 msgstr "Welche Quiz suchst du?"
 
-#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:36
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:36
-msgid "Language"
-msgstr "Sprache"
-
 #: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:44
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:18
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:12
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:19
+#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:16
 msgid "Search"
 msgstr "Suchen"
+
+#: ../../../module/LrnlUser/src/LrnlUser/Form/RoleElement.php:14
+msgid "Role"
+msgstr "Role"
 
 #: ../../../module/VxoBraintree/src/VxoBraintree/Controller/TransactionController.php:20
 #: ../../../module/VxoBraintree/view/vxo-braintree/transaction/create.phtml:2
@@ -134,8 +211,8 @@ msgstr "Angebote"
 msgid "My program"
 msgstr "Mein Programm"
 
-#: ../../../config/autoload/global.php:66 ../view/zfc-user/user/login.phtml:1
-#: ../../../module/Application/view/zfc-user/user/login.phtml:1
+#: ../../../config/autoload/global.php:66 ../view/zfc-user/user/login.phtml:2
+#: ../../../module/Application/view/zfc-user/user/login.phtml:2
 msgid "Sign In"
 msgstr "Einloggen"
 
@@ -148,8 +225,104 @@ msgid "My account"
 msgstr "Mein Konto"
 
 #: ../../../config/autoload/global.php:95
+#, fuzzy
+msgid "Profile"
+msgstr "Benutzerkonto"
+
+#: ../../../config/autoload/global.php:102
 msgid "Log out"
-msgstr "Ausloggen"
+msgstr "Abmelden"
+
+#: ../../../config/autoload/lrnlsearch.global.php:5
+#: ../../../config/autoload/lrnlsearch.global.php:7
+#, fuzzy
+msgid "level"
+msgstr "Niveau"
+
+#: ../../../config/autoload/lrnlsearch.global.php:8
+msgid "advanced"
+msgstr ""
+
+#: ../../../config/autoload/lrnlsearch.global.php:8
+msgid "easy"
+msgstr "einfach"
+
+#: ../../../config/autoload/lrnlsearch.global.php:8
+msgid "beginner"
+msgstr "Anfänger"
+
+#: ../../../config/autoload/lrnlsearch.global.php:10
+#: ../../../config/autoload/lrnlsearch.global.php:11
+#, fuzzy
+msgid "language"
+msgstr "Sprache"
+
+#: ../../../config/autoload/lrnlsearch.global.php:13
+#, fuzzy
+msgid "german"
+msgstr "Deutsch"
+
+#: ../../../config/autoload/lrnlsearch.global.php:13
+#, fuzzy
+msgid "french"
+msgstr "Französisch"
+
+#: ../../../config/autoload/lrnlsearch.global.php:13
+#, fuzzy
+msgid "polish"
+msgstr "Englisch"
+
+#: ../../../config/autoload/lrnlsearch.global.php:20
+#, fuzzy
+msgid "authorRole"
+msgstr "Autor"
+
+#: ../../../config/autoload/lrnlsearch.global.php:21
+#, fuzzy
+msgid "author"
+msgstr "Autor"
+
+#: ../../../config/autoload/lrnlsearch.global.php:23
+#: ../language/_XMLforPoedit/role.xml:6
+#: ../../../module/Application/language/_XMLforPoedit/role.xml:6
+msgid "teacher"
+msgstr "Lehrer"
+
+#: ../../../config/autoload/lrnlsearch.global.php:23
+#: ../language/_XMLforPoedit/role.xml:7
+#: ../../../module/Application/language/_XMLforPoedit/role.xml:7
+msgid "student"
+msgstr "Student"
+
+#: ../../../config/autoload/lrnlsearch.global.php:25
+#, fuzzy
+msgid "questionNb"
+msgstr "Frage"
+
+#: ../../../config/autoload/lrnlsearch.global.php:26
+#, fuzzy
+msgid "questions"
+msgstr "Frage"
+
+#: ../../../config/autoload/lrnlsearch.global.php:35
+#: ../../../config/autoload/lrnlsearch.global.php:36
+#, fuzzy
+msgid "rating"
+msgstr "Bewertung"
+
+#: ../../../config/autoload/lrnlsearch.global.php:45
+#, fuzzy
+msgid "keyword"
+msgstr "Schlagwörter"
+
+#: ../../../config/autoload/lrnlsearch.global.php:46
+#, fuzzy
+msgid "keywords"
+msgstr "Schlagwörter"
+
+#: ../../../config/autoload/lrnlsearch.global.php:51
+msgid "Enter a keyword"
+msgstr "Schlagwort eingeben"
 
 #: ../view/cdli-twostagesignup/email/verification.phtml:2
 #: ../../../module/Application/view/cdli-twostagesignup/email/verification.phtml:2
@@ -171,37 +344,68 @@ msgstr "Schritt 1: Email-Überprüfung"
 msgid "You have successfully completed Step 1!"
 msgstr "Etape 2 ist erfolgreich!"
 
-#: ../view/error/403.phtml:2
+#: ../view/cdli-twostagesignup/email-verification/sent.phtml:2
+#: ../../../module/Application/view/cdli-twostagesignup/email-verification/sent.phtml:2
+#, php-format
+msgid ""
+"An email has been sent to <strong>%s</strong> with instructions on how to "
+"proceed with the account registration process."
+msgstr ""
+"Eine Email wurde zu <strong>%s</strong> abgeschickt  mit Hinweise, wie man "
+"sie anmeldet.."
+
+#: ../view/error/403.phtml:2 ../view/error/403.phtml:31
 #: ../../../module/Application/view/error/403.phtml:2
+#: ../../../module/Application/view/error/403.phtml:31
 msgid "Error 403"
 msgstr "403 Fehler"
 
-#: ../view/error/403.phtml:6
-#: ../../../module/Application/view/error/403.phtml:6
-msgid "A 403 error occurred"
-msgstr "Es trat ein 403 Fehler auf"
-
-#: ../view/error/403.phtml:16
-#: ../../../module/Application/view/error/403.phtml:16
+#: ../view/error/403.phtml:12
+#: ../../../module/Application/view/error/403.phtml:12
 msgid "The requested controller was not authorized."
 msgstr "Der angeforderte Controller ist nicht erlaubt."
 
-#: ../view/error/403.phtml:19
-#: ../../../module/Application/view/error/403.phtml:19
+#: ../view/error/403.phtml:15
+#: ../../../module/Application/view/error/403.phtml:15
 msgid "The requested route was not authorized."
 msgstr "Die angeforderte Route ist nicht erlaubt."
 
-#: ../view/error/403.phtml:22
-#: ../../../module/Application/view/error/403.phtml:22
+#: ../view/error/403.phtml:18
+#: ../../../module/Application/view/error/403.phtml:18
 msgid "The requested page was not authorized."
 msgstr "Die angeforderte Seite ist nicht erlaubt."
 
-#: ../view/error/403.phtml:25
-#: ../../../module/Application/view/error/403.phtml:25
+#: ../view/error/403.phtml:21
+#: ../../../module/Application/view/error/403.phtml:21
 msgid "We cannot determine at this time why a 403 was generated."
 msgstr ""
 "Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 403 "
 "Fehler aufgetreten ist."
+
+#: ../view/error/403.phtml:36
+#: ../../../module/Application/view/error/403.phtml:36
+#, fuzzy
+msgid "The page you requested is not permitted."
+msgstr "Die angeforderte Seite ist nicht erlaubt."
+
+#: ../view/error/403.phtml:36
+#: ../../../module/Application/view/error/403.phtml:36
+#, fuzzy
+msgid ""
+"Either contact your webmaster or try again. Use your browsers <b>Back</b> "
+"button to navigate to the page you have prevously come from</p>\n"
+"    <p><b>Or you could just press this neat little button:</b></p>"
+msgstr ""
+"Die Seite konnte nicht gefunden werden, Bitten kontaktieren Sie Ihre "
+"Webmaster. Drucken Sie den <b>Zurück</b> Knofp um die ehemalige Seite "
+"erreichen zu können <p><b>oder drucken Sie auf diesen kleinen Knopf "
+"hierunten:</p></b>"
+
+#: ../view/error/403.phtml:38 ../view/error/404.phtml:78
+#: ../../../module/Application/view/error/403.phtml:38
+#: ../../../module/Application/view/error/404.phtml:78
+msgid "Take Me Home"
+msgstr "Nach Hause"
 
 #: ../view/error/404.phtml:2 ../view/error/404.phtml:71
 #: ../../../module/Application/view/error/404.phtml:2
@@ -259,11 +463,6 @@ msgstr ""
 "erreichen zu können <p><b>oder drucken Sie auf diesen kleinen Knopf "
 "hierunten:</p></b>"
 
-#: ../view/error/404.phtml:78
-#: ../../../module/Application/view/error/404.phtml:78
-msgid "Take Me Home"
-msgstr "Nach Hause"
-
 #: ../view/error/index.phtml:1
 #: ../../../module/Application/view/error/index.phtml:1
 msgid "An error occurred"
@@ -308,73 +507,58 @@ msgstr "Es ist keine Ausnahme verfügbar"
 msgid "LearnLists"
 msgstr "LearnLists"
 
-#: ../view/layout/layout.phtml:52
-#: ../../../module/Application/view/layout/layout.phtml:52
+#: ../view/layout/layout.phtml:42
+#: ../../../module/Application/view/layout/layout.phtml:42
 msgid "Company"
 msgstr "Unternehmen"
 
-#: ../view/layout/layout.phtml:54
-#: ../../../module/Application/view/layout/layout.phtml:54
+#: ../view/layout/layout.phtml:44
+#: ../../../module/Application/view/layout/layout.phtml:44
 msgid "About"
 msgstr "Über uns"
 
-#: ../view/layout/layout.phtml:55
-#: ../../../module/Application/view/layout/layout.phtml:55
+#: ../view/layout/layout.phtml:45
+#: ../../../module/Application/view/layout/layout.phtml:45
 msgid "Terms"
 msgstr "Bedingungen"
 
-#: ../view/layout/layout.phtml:56
-#: ../../../module/Application/view/layout/layout.phtml:56
+#: ../view/layout/layout.phtml:46
+#: ../../../module/Application/view/layout/layout.phtml:46
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: ../view/layout/layout.phtml:57 ../view/phly-contact/contact/index.phtml:1
+#: ../view/layout/layout.phtml:47 ../view/phly-contact/contact/index.phtml:1
 #: ../view/phly-contact/contact/thank-you.phtml:2
-#: ../../../module/Application/view/layout/layout.phtml:57
+#: ../../../module/Application/view/layout/layout.phtml:47
 #: ../../../module/Application/view/phly-contact/contact/index.phtml:1
 #: ../../../module/Application/view/phly-contact/contact/thank-you.phtml:2
 msgid "Contact"
 msgstr "Kontakt"
 
-#: ../view/layout/layout.phtml:61
-#: ../../../module/Application/view/layout/layout.phtml:61
+#: ../view/layout/layout.phtml:51
+#: ../../../module/Application/view/layout/layout.phtml:51
 msgid "Help"
 msgstr "Hilfe"
 
-#: ../view/layout/layout.phtml:63
-#: ../../../module/Application/view/layout/layout.phtml:63
+#: ../view/layout/layout.phtml:53
+#: ../../../module/Application/view/layout/layout.phtml:53
 msgid "Q&A"
 msgstr "Q&A"
 
-#: ../view/layout/layout.phtml:67
-#: ../../../module/Application/view/layout/layout.phtml:67
-msgid "Localisation"
-msgstr "Lokalisation"
-
-#: ../view/layout/layout.phtml:72
-#: ../../../module/Application/view/layout/layout.phtml:72
-msgid "German"
-msgstr "Deutsch"
-
-#: ../view/layout/layout.phtml:73
-#: ../../../module/Application/view/layout/layout.phtml:73
-msgid "French"
-msgstr "Französisch"
-
-#: ../view/layout/layout.phtml:74
-#: ../../../module/Application/view/layout/layout.phtml:74
-msgid "English"
-msgstr "Englisch"
-
-#: ../view/layout/layout.phtml:81
-#: ../../../module/Application/view/layout/layout.phtml:81
+#: ../view/layout/layout.phtml:71
+#: ../../../module/Application/view/layout/layout.phtml:71
 msgid "2013 by Voilamylife."
 msgstr "2013 Voilamylife."
 
-#: ../view/layout/layout.phtml:81
-#: ../../../module/Application/view/layout/layout.phtml:81
+#: ../view/layout/layout.phtml:71
+#: ../../../module/Application/view/layout/layout.phtml:71
 msgid "All rights reserved."
 msgstr "Alle Rechte vorbehalten."
+
+#: ../view/layout/layout.phtml:77
+#: ../../../module/Application/view/layout/layout.phtml:77
+msgid "Loading..."
+msgstr ""
 
 #: ../view/phly-contact/contact/index.phtml:6
 #: ../../../module/Application/view/phly-contact/contact/index.phtml:6
@@ -404,88 +588,156 @@ msgstr "Danke!"
 msgid "Your message has been sent!"
 msgstr "Die Nachricht wurde abgeschikt!"
 
-#: ../view/zfc-user/user/login.phtml:31
-#: ../../../module/Application/view/zfc-user/user/login.phtml:31
+#: ../view/zfc-user/user/login.phtml:12
+#: ../../../module/Application/view/zfc-user/user/login.phtml:12
+msgid "Email or Username"
+msgstr ""
+
+#: ../view/zfc-user/user/login.phtml:13
+#: ../../../module/Application/view/zfc-user/user/login.phtml:13
+msgid "Password"
+msgstr "Passwort"
+
+#: ../view/zfc-user/user/login.phtml:14
+#: ../../../module/Application/view/zfc-user/user/login.phtml:14
+msgid "Sign in"
+msgstr "Einloggen"
+
+#: ../view/zfc-user/user/login.phtml:20
+#: ../../../module/Application/view/zfc-user/user/login.phtml:20
+msgid "Try again!"
+msgstr ""
+
+#: ../view/zfc-user/user/login.phtml:25
+#: ../../../module/Application/view/zfc-user/user/login.phtml:25
+msgid "Please fill in with you email and password for login"
+msgstr ""
+
+#: ../view/zfc-user/user/login.phtml:44
+#: ../../../module/Application/view/zfc-user/user/login.phtml:44
+msgid "Forgot your password?"
+msgstr "Passwort vergessen?"
+
+#: ../view/zfc-user/user/login.phtml:46
+#: ../../../module/Application/view/zfc-user/user/login.phtml:46
+#, fuzzy
+msgid "Not registered?"
+msgstr "Anmelden"
+
+#: ../view/zfc-user/user/login.phtml:46
+#: ../../../module/Application/view/zfc-user/user/login.phtml:46
 msgid "Sign Up!"
 msgstr "Melde dich an!"
 
-#: ../view/zfc-user/user/register.phtml:1
-#: ../../../module/Application/view/zfc-user/user/register.phtml:1
+#: ../view/zfc-user/user/register.phtml:2
+#: ../../../module/Application/view/zfc-user/user/register.phtml:2
 msgid "Register"
 msgstr "Anmelden"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:43
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:71
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:2
+#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:3
+msgid "Learn at LearnLists"
+msgstr "Mit Learnlists lernen"
+
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:24
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:52
 msgid "Round"
 msgstr "Runde"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:49
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:30
 msgid "Still"
 msgstr "Noch"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:51
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:32
 msgid "Score:"
 msgstr "Ergebnis:"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:67
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:48
 msgid "Your results"
 msgstr "Ergebnisse:"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:72
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:53
 msgid "Final Note"
 msgstr "Ergebnis:"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:73
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:54
 msgid "Perfect"
 msgstr "Perfekt"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:74
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:55
 msgid "Average"
 msgstr "Durchschnitt"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:75
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:56
 msgid "Bad"
 msgstr "Schlecht"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:76
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:57
 msgid "Not done"
 msgstr "Nicht verfügbar"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:96
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:77
 msgid "Answer here"
 msgstr "Hier antworten"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:102
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:83
 msgid "Next"
 msgstr "Nächste"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:102
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:83
 msgid "Skip"
 msgstr "Überspringen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:105
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid "Answer?"
 msgstr "Lösung"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:115
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:96
 msgid "Again"
 msgstr "Wiederholen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:118
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:99
 msgid "Cancel round"
 msgstr "Neu anfangen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:121
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:102
 msgid "Reset rounds"
 msgstr "Alle Runden löschen"
+
+#: ../../../module/LrnlLearn/view/lrnl-learn/premium/index.phtml:2
+#, fuzzy
+msgid "Premium offer"
+msgstr "Premium"
+
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:4
+#, php-format
+msgid "Category %s"
+msgstr "Kategorie %s"
+
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:21
+msgid "Edit list"
+msgstr "Liste bearbeiten"
+
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:47
+msgid "name"
+msgstr "Name"
+
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:55
+#, fuzzy
+msgid "You like it"
+msgstr "Das mag ich"
+
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:58
+msgid "Yes"
+msgstr "Ja"
+
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:65
+msgid "Start to learn"
+msgstr "Anfangen"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/add.phtml:3
 msgid "Add new list"
 msgstr "Liste hinzufügen"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/add.phtml:26
-msgid "Advanced, average, beginner for example"
-msgstr "Schwer, sehr schwer, durchschnittlich, einfach zum Beispiel"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/delete.phtml:3
 msgid "Delete List"
@@ -597,61 +849,11 @@ msgstr ""
 msgid "Learn how create lists"
 msgstr "Lerne wie man eine Liste erstellt."
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:3
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:3
-msgid "Learn at LearnLists"
-msgstr "Mit Learnlists lernen"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:20
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:27
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:100
-msgid "Tags"
-msgstr "Tags"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:21
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:101
-msgid "Rating"
-msgstr "Bewertung"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:27
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:63
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:107
-msgid "Date"
-msgstr "Datum"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:52
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:132
-#, php-format
-msgid "by %s"
-msgstr "von %s"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:61
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:63
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:141
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:143
-msgid "Like"
-msgstr "Mag ich"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:61
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:141
-msgid "I like this"
-msgstr "Das mag ich"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:74
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:154
-msgid "See comments"
-msgstr "Sehe Kommentare"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/index.phtml:79
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:159
-msgid "Edit list"
-msgstr "Liste bearbeiten"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/question/delete.phtml:3
+#: ../../../module/LrnlListquests/view/lrnl-listquests/question/delete.phtml:2
 msgid "Delete question"
 msgstr "Frage löschen"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/question/delete.phtml:8
+#: ../../../module/LrnlListquests/view/lrnl-listquests/question/delete.phtml:7
 msgid "Are you sure that you want to delete the question with the text"
 msgstr ""
 "Sind Sie sicher, dass Sie die Frage mit folgendem Text löschen möchten "
@@ -666,23 +868,7 @@ msgstr ""
 "ergänzende Frage handelt, nutzen sie Bitte zweimal die \"%\" Zeichen um die "
 "Antwort herum. Beipsiel : Er %hat% die richtige %Entscheidung %getroffen%."
 
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:54
-msgid "Note"
-msgstr "Bewertung"
-
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:72
-msgid "Author"
-msgstr "Autor"
-
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:88
-msgid "Keywords"
-msgstr "Schlagwörter"
-
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:89
-msgid "Enter a keyword"
-msgstr "Schlagwort eingeben"
-
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:94
+#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:92
 #, php-format
 msgid "%s results"
 msgstr "%s Ergebnisse"
@@ -827,20 +1013,37 @@ msgstr "Gast"
 msgid "user"
 msgstr "Benutzer"
 
-#: ../language/_XMLforPoedit/role.xml:6
-#: ../../../module/Application/language/_XMLforPoedit/role.xml:6
-msgid "teacher"
-msgstr "Lehrer"
-
-#: ../language/_XMLforPoedit/role.xml:7
-#: ../../../module/Application/language/_XMLforPoedit/role.xml:7
-msgid "student"
-msgstr "Student"
-
 #: ../language/_XMLforPoedit/role.xml:8
 #: ../../../module/Application/language/_XMLforPoedit/role.xml:8
 msgid "premium"
 msgstr "Premium"
+
+#~ msgid "A 403 error occurred"
+#~ msgstr "Es trat ein 403 Fehler auf"
+
+#~ msgid "Localisation"
+#~ msgstr "Lokalisation"
+
+#~ msgid "Advanced, average, beginner for example"
+#~ msgstr "Schwer, sehr schwer, durchschnittlich, einfach zum Beispiel"
+
+#~ msgid "Tags"
+#~ msgstr "Tags"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "by %s"
+#~ msgstr "von %s"
+
+#~ msgid "Like"
+#~ msgstr "Mag ich"
+
+#~ msgid "See comments"
+#~ msgstr "Sehe Kommentare"
+
+#~ msgid "Note"
+#~ msgstr "Bewertung"
 
 #, fuzzy
 #~ msgid "Create unlimited  quizzes"
@@ -895,11 +1098,6 @@ msgstr "Premium"
 
 #~ msgid "How do the currentstats work?"
 #~ msgstr "Wie Ergebnis kalkuliert werden."
-
-#~ msgid "question"
-#~ msgid_plural "questions"
-#~ msgstr[0] "Frage"
-#~ msgstr[1] "Fragen"
 
 #~ msgid ""
 #~ "Nothing to enter if the answer was already entered directly in the text "

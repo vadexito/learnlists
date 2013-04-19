@@ -91,6 +91,13 @@ return [
                         'privilege' => 'account',
                     ],
                     [
+                        'id' => 'user_profile',
+                        'label' => _('Profile'),
+                        'route' => 'zfcuser/profile',
+                        'resource' => 'user',
+                        'privilege' => 'account',
+                    ],
+                    [
                         'id' => 'logout',
                         'label' => _('Log out'),
                         'route' => 'zfcuser/logout',

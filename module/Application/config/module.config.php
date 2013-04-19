@@ -199,7 +199,7 @@ return [
         /*
         * Enable cache
         */
-       'cacheEnabled' => true,
+       'cacheEnabled' => false,
 
        /*
         * Cache dir
@@ -281,13 +281,12 @@ return [
                     ],
                     'base_js' => [
                         'assets' => [
-                            'js/lib/html5.js',
                             'js/lib/jquery.min.js',
-                            'js/lib/bootstrap.min.js',
+                            'js/lib/html5.js',
+                            'js/lib/bootstrap.js',
                             'js/lib/spin.min.js',
                         ],
                     ],
-                    
                     'global_js' => [
                         'assets' => [
                             'js/global.js',

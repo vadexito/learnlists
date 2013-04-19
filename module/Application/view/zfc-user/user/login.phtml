@@ -11,15 +11,21 @@ $form->setAttribute('action', $this->url('zfcuser/login'));
 $form->setAttribute('method', 'post');
 $form->get('identity')->setLabel(_('Email or Username'));
 $form->get('credential')->setLabel(_('Password'));
+$form->get('submit')->setValue(_('Sign in'));
+
+if ($form->getMessages()):
+?>
+    <div class="alert alert-error">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        <strong><?php echo $this->translate('Try again!'); ?></strong>
+    </div>
+<?php
+endif;
 ?>
 
 <?php echo $this->form()->openTag($form) ?>
     
-        <?php echo $this->formElementErrors($form->get('identity')) ?>
-        <?php echo $this->formLabel($form->get('identity')) ?>
-        <?php echo $this->formInput($form->get('identity')) ?>
-        <?php echo $this->formLabel($form->get('credential')) ?>
-        <?php echo $this->formInput($form->get('credential')) ?>
+        <?php echo $this->formTwb($form, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_VERTICAL,['elements' => ['submit' => ['class' => 'btn-primary']]]);?>
 
         <label class="checkbox">
             <?php //echo $this->formCheckbox($form->get('remember_me')) ?> <?php //echo $form->get('remember_me')->getLabel() ?>
@@ -28,12 +34,9 @@ $form->get('credential')->setLabel(_('Password'));
         <?php if ($this->redirect): ?>
         <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
         <?php endif ?>
-        <div class="form-actions">
-           <?php echo $this->formButton($form->get('submit')) ?> 
-        </div>
 
 <?php echo $this->form()->closeTag() ?>
-<p><a href="<?php //echo $this->url('zfcuser/forgotpassword') ?>"><?php echo $this->translate('Forgot your password?'); ?></a></p>
+<p><a href="<?php echo $this->url('zfcuser/forgotpassword') ?>"><?php echo $this->translate('Forgot your password?'); ?></a></p>
 <?php if ($this->enableRegistration) : ?>
 <?php echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign Up!'); ?></a>
 <?php endif; ?>

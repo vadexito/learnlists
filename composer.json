@@ -14,8 +14,10 @@
         "bojaspus/zendsearch": "dev-master",
         "doctrine/doctrine-orm-module": "0.*",        
         "zf-commons/zfc-user": "0.*",
-        "zf-commons/zfc-user-doctrine-orm": "dev-master",   
-        "goalio/goalio-forgotpassword": "dev-master",
+        "zf-commons/zfc-user-doctrine-orm": "0.*", 
+        "joacub/zfc-user-admin": "dev-master",
+        "cdli/user-profile": "dev-master",
+        "goalio/goalio-forgotpassword-doctrine-orm" : "dev-master",
         "goalio/goalio-rememberme": "dev-master",
         "bjyoungblood/bjy-authorize":"dev-master",
         "zf-commons/zfc-admin":"dev-master",
@@ -31,6 +33,10 @@
         "phly/phly-simple-page": "dev-develop",
         "braintree/braintree_php": "2.19.0",
         "juriansluiman/slm-google-analytics": "dev-master",
-        "delboy1978uk/del-countries-flags": "dev-master"
+        "delboy1978uk/del-countries-flags": "dev-master",
+        "dlu/dlutwbootstrap": "dev-master",
+        "hybridauth/hybridauth": "dev-master",
+        "socalnick/scn-social-auth": "1.*",
+        "socalnick/scn-social-auth-doctrine-orm": "dev-master"
     }
 }
