@@ -1,32 +1,26 @@
 <?php if ($this->pageCount): ?>
-<div class="paginationControl">
-<!-- Previous page link -->
-<?php if (isset($this->previous)): ?>
-  <a href="<?php echo $this->url($this->route, array('page' => $this->previous),['query'=>$this->query]); ?>">
-    < Previous
-  </a> |
-<?php else: ?>
-  <span class="disabled">< Previous</span> |
-<?php endif; ?>
+<div class="pagination pull-right pagination-small">
+    <ul>
 
-<!-- Numbered page links -->
-<?php foreach ($this->pagesInRange as $page): ?>
-  <?php if ($page != $this->current): ?>
-    <a href="<?php echo $this->url($this->route, array('page' => $page),['query'=>$this->query]); ?>">
-        <?php echo $page; ?>
-    </a> |
-  <?php else: ?>
-    <?php echo $page; ?> |
-  <?php endif; ?>
-<?php endforeach; ?>
+        <!-- First page link -->
+        <li<?php echo (isset($this->previous)) ? '' : ' class="disabled"'; ?>>
+            <a href="<?php echo $this->url($this->route, array('page' => $this->first),['query'=>$this->query]); ?>">&lt;&lt; </a>
+        </li>
 
-<!-- Next page link -->
-<?php if (isset($this->next)): ?>
-  <a class="next" href="<?php echo $this->url($this->route, array('page' => $this->next),['query'=>$this->query]); ?>">
-    Next >
-  </a>
-<?php else: ?>
-  <span class="disabled">Next ></span>
-<?php endif; ?>
+        
+        <!-- Numbered page links -->
+        <?php foreach ($this->pagesInRange as $page): ?>
+        <li<?php echo ($page == $this->current) ? ' class="active"' : ''; ?>>
+            <a href="<?php echo $this->url($this->route, array('page' => $page),['query'=>$this->query]); ?>"><?php echo $page; ?></a>
+        </li>
+        <?php endforeach; ?>
+
+        
+        <!-- Last page link -->
+        <li<?php echo (isset($this->next)) ? '' : ' class="disabled"'; ?>>
+            <a href="<?php echo $this->url($this->route, array('page' => $this->last),['query'=>$this->query]); ?>"> &gt;&gt;</a>
+        </li>
+
+    </ul>
 </div>
 <?php endif; ?>
