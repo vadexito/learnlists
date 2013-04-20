@@ -16,12 +16,8 @@ class SearchController extends AbstractActionController
         //init search bar
         $searchForm = $this->getServiceLocator()->get('learnlists-form-search');  
         $search = $this->params()->fromQuery('search',NULL);        
-        $searchForm->setData(['search' => $search]);
-        
-        //init side filters
-        $filterForm = $this->getServiceLocator()->get('learnlists-form-filter');
-        $filterForm->initUrlInFilters($queryData);
-        $filterForm->setData($queryData);
+        $category = $this->params()->fromQuery('category',NULL);
+        $searchForm->setData(['search' => $search,'category' => $category]);
         
         //init results for main search
         $hits = $this->getSearchService()->getResultsFromQuery($queryData,[
@@ -29,6 +25,12 @@ class SearchController extends AbstractActionController
             'type' => SORT_NUMERIC,
             'direction' => SORT_DESC,
         ]);
+        
+        //init side filters
+        $filterForm = $this->getServiceLocator()->get('learnlists-form-filter');
+        $filterForm->initUrlInFilters($queryData);
+        $filterForm->setData($queryData);
+        
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($hits));
         $paginator->setCurrentPageNumber($this->params()->fromRoute('page'));
         $paginator->setItemCountPerPage(10);

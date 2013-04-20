@@ -30,7 +30,7 @@ return [
         'PhlySimplePage',
         'VxoBraintree', 
         'VxoOffers', 
-        'Vxodisqus', 
+        'VxoDisqus', 
         'LrnlLearn',
         'LrnlListquests',
         'LrnlUser',

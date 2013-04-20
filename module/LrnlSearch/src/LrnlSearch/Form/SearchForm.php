@@ -13,7 +13,7 @@ class SearchForm extends Form
         
         $this->setAttributes([
             'class' => 'form-inline',
-            'method' => 'post'
+            'method' => 'get'
         ]);
         
         $this->add([
