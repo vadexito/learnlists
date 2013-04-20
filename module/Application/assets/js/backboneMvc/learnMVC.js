@@ -143,6 +143,7 @@ AskingQuestionView = Backbone.Marionette.ItemView.extend({
         this.ui.answerButtons.removeAttr('disabled');
         this.ui.answerInput.val('').focus().removeAttr('readonly');
         $('#answer-group').removeClass('error').removeClass('success');
+        
     },
     
     showSuccess: function(){

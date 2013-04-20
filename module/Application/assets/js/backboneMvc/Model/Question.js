@@ -31,7 +31,7 @@ window.Questions = Backbone.Collection.extend({
         _.each(list,function(question){
             
             //replace the question marks in the text
-            var img = '<img class="img-find" src="/images/icons/find.png" alt="icon-hole" style="max-height:30px"/>';
+            var img = '<div class="answer-location"><img class="img-find" src="/images/icons/find.png" alt="icon-hole" style="max-height:30px"/></div>';
             var patternInlineSolution = /%[^%]*%/;
             var text = _.escape(question.text);
             var answers = [];            

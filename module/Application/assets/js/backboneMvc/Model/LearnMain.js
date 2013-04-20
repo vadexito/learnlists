@@ -43,7 +43,7 @@ window.LearnMain = Backbone.Model.extend({
         learnMVC.vent.on("learn:initNewQuestion",this.initNewQuestion,this);
         learnMVC.vent.on("learn:nextQuestion",this.nextQuestion,this);        
         learnMVC.vent.on("learn:answerCheck",this.checkAnswer,this);        
-        learnMVC.vent.on("learn:showAnswer",this.showAnswer,this);        
+        learnMVC.vent.on("learn:showAnswer",this.provideAnswer,this);        
         learnMVC.vent.on("learn:proceedAnsweredQuestion",this.proceedAnsweredQuestion,this);
         learnMVC.vent.on("learn:roundCompleted",this.roundCompleted,this);        
         
@@ -88,7 +88,7 @@ window.LearnMain = Backbone.Model.extend({
         }
     },
     
-    showAnswer: function(){
+    provideAnswer: function(){
         var question = this.questions.collection.get(this.model.get('questionId'));   
         var answer = question.get('answer');
 
@@ -97,16 +97,22 @@ window.LearnMain = Backbone.Model.extend({
         }        
 
         if ($.isArray(answer)){
-            var text = question.get('text');
-            for (var i = 0, iMax = answer.length; i < iMax; i++){
-                text = this.replaceImg(text,answer[i]);
-            };
-            this.set('text',text);
+            var i=0;
+            $(".answer-location").each(function(){                
+                $(this).flippy({
+                    verso:'<span class="right-answer">'+answer[i]+'</span>',
+                    direction:"LEFT",
+                    duration:"400"
+                });
+                i++;
+            });
         }
 
         this.model.set('answer_asked',true);
         learnMVC.vent.trigger("learn:proceedAnsweredQuestion"); 
     },
+    
+    
     
     proceedAnsweredQuestion: function(){
         this.currentRound.get('roundOrder').pop();
@@ -240,8 +246,11 @@ window.LearnMain = Backbone.Model.extend({
         }
         
         return initialText.replace(/<img[^<>]*>/,
-            '<span>'+replacingText+'</span>'
-        );   
+            '<span class="answer-showed">'+replacingText+'</span>'
+        );
+            
+            
+            
     },
     
     defaults: {
