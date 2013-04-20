@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-04-19 21:52+0100\n"
-"PO-Revision-Date: 2013-04-19 21:53+0100\n"
+"PO-Revision-Date: 2013-04-20 16:40+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -38,9 +38,8 @@ msgid "Title"
 msgstr "Titel"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:56
-#, fuzzy
 msgid "Description"
-msgstr "Frage"
+msgstr "Beschreigung"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:66
 #: ../../../config/autoload/lrnlsearch.global.php:15
@@ -93,9 +92,8 @@ msgid "French"
 msgstr "Französisch"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:87
-#, fuzzy
 msgid "Polish"
-msgstr "Englisch"
+msgstr "Polnisch"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:98
 msgid "Level"
@@ -122,9 +120,8 @@ msgid "Average plus level"
 msgstr "Durchschnitt + Niveau"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:105
-#, fuzzy
 msgid "Average level"
-msgstr "Durchschnitt"
+msgstr "Durchschnittlich"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:106
 msgid "Basic level"
@@ -185,11 +182,11 @@ msgstr "CVV"
 
 #: ../../../module/VxoBraintree/src/VxoBraintree/Form/TransactionForm.php:55
 msgid "Expiration Month"
-msgstr ""
+msgstr "Verfallsmonat"
 
 #: ../../../module/VxoBraintree/src/VxoBraintree/Form/TransactionForm.php:69
 msgid "Expiration Year"
-msgstr ""
+msgstr "Verfallsjahr"
 
 #: ../../../config/autoload/global.php:24
 msgid "Learnlists"
@@ -225,9 +222,8 @@ msgid "My account"
 msgstr "Mein Konto"
 
 #: ../../../config/autoload/global.php:95
-#, fuzzy
 msgid "Profile"
-msgstr "Benutzerkonto"
+msgstr "Benutzerprofil"
 
 #: ../../../config/autoload/global.php:102
 msgid "Log out"
@@ -235,13 +231,12 @@ msgstr "Abmelden"
 
 #: ../../../config/autoload/lrnlsearch.global.php:5
 #: ../../../config/autoload/lrnlsearch.global.php:7
-#, fuzzy
 msgid "level"
 msgstr "Niveau"
 
 #: ../../../config/autoload/lrnlsearch.global.php:8
 msgid "advanced"
-msgstr ""
+msgstr "fortgeschritten"
 
 #: ../../../config/autoload/lrnlsearch.global.php:8
 msgid "easy"
@@ -253,32 +248,26 @@ msgstr "Anfänger"
 
 #: ../../../config/autoload/lrnlsearch.global.php:10
 #: ../../../config/autoload/lrnlsearch.global.php:11
-#, fuzzy
 msgid "language"
 msgstr "Sprache"
 
 #: ../../../config/autoload/lrnlsearch.global.php:13
-#, fuzzy
 msgid "german"
 msgstr "Deutsch"
 
 #: ../../../config/autoload/lrnlsearch.global.php:13
-#, fuzzy
 msgid "french"
 msgstr "Französisch"
 
 #: ../../../config/autoload/lrnlsearch.global.php:13
-#, fuzzy
 msgid "polish"
-msgstr "Englisch"
+msgstr "Polnisch"
 
 #: ../../../config/autoload/lrnlsearch.global.php:20
-#, fuzzy
 msgid "authorRole"
 msgstr "Autor"
 
 #: ../../../config/autoload/lrnlsearch.global.php:21
-#, fuzzy
 msgid "author"
 msgstr "Autor"
 
@@ -295,28 +284,23 @@ msgid "student"
 msgstr "Student"
 
 #: ../../../config/autoload/lrnlsearch.global.php:25
-#, fuzzy
 msgid "questionNb"
-msgstr "Frage"
+msgstr "Fragen"
 
 #: ../../../config/autoload/lrnlsearch.global.php:26
-#, fuzzy
 msgid "questions"
-msgstr "Frage"
+msgstr "Fragen"
 
 #: ../../../config/autoload/lrnlsearch.global.php:35
 #: ../../../config/autoload/lrnlsearch.global.php:36
-#, fuzzy
 msgid "rating"
 msgstr "Bewertung"
 
 #: ../../../config/autoload/lrnlsearch.global.php:45
-#, fuzzy
 msgid "keyword"
-msgstr "Schlagwörter"
+msgstr "Schlagwört"
 
 #: ../../../config/autoload/lrnlsearch.global.php:46
-#, fuzzy
 msgid "keywords"
 msgstr "Schlagwörter"
 
@@ -384,13 +368,11 @@ msgstr ""
 
 #: ../view/error/403.phtml:36
 #: ../../../module/Application/view/error/403.phtml:36
-#, fuzzy
 msgid "The page you requested is not permitted."
 msgstr "Die angeforderte Seite ist nicht erlaubt."
 
 #: ../view/error/403.phtml:36
 #: ../../../module/Application/view/error/403.phtml:36
-#, fuzzy
 msgid ""
 "Either contact your webmaster or try again. Use your browsers <b>Back</b> "
 "button to navigate to the page you have prevously come from</p>\n"
@@ -558,7 +540,7 @@ msgstr "Alle Rechte vorbehalten."
 #: ../view/layout/layout.phtml:77
 #: ../../../module/Application/view/layout/layout.phtml:77
 msgid "Loading..."
-msgstr ""
+msgstr "Laden...."
 
 #: ../view/phly-contact/contact/index.phtml:6
 #: ../../../module/Application/view/phly-contact/contact/index.phtml:6
@@ -575,6 +557,8 @@ msgid ""
 "There were one or more isues with your submission. Please correct them as "
 "indicated below."
 msgstr ""
+"Es gab Fehler in Ihrer Anfrage. Bitte korrigieren sie mit den untengegebenen "
+"Hinweisen."
 
 #: ../view/phly-contact/contact/thank-you.phtml:3
 #: ../view/phly-contact/contact/thank-you.phtml:6
@@ -591,7 +575,7 @@ msgstr "Die Nachricht wurde abgeschikt!"
 #: ../view/zfc-user/user/login.phtml:12
 #: ../../../module/Application/view/zfc-user/user/login.phtml:12
 msgid "Email or Username"
-msgstr ""
+msgstr "Email order Benutzername"
 
 #: ../view/zfc-user/user/login.phtml:13
 #: ../../../module/Application/view/zfc-user/user/login.phtml:13
@@ -606,12 +590,12 @@ msgstr "Einloggen"
 #: ../view/zfc-user/user/login.phtml:20
 #: ../../../module/Application/view/zfc-user/user/login.phtml:20
 msgid "Try again!"
-msgstr ""
+msgstr "Noch einmal versuchen"
 
 #: ../view/zfc-user/user/login.phtml:25
 #: ../../../module/Application/view/zfc-user/user/login.phtml:25
 msgid "Please fill in with you email and password for login"
-msgstr ""
+msgstr "Bitte geben sie Email und Passwort an."
 
 #: ../view/zfc-user/user/login.phtml:44
 #: ../../../module/Application/view/zfc-user/user/login.phtml:44
@@ -620,9 +604,8 @@ msgstr "Passwort vergessen?"
 
 #: ../view/zfc-user/user/login.phtml:46
 #: ../../../module/Application/view/zfc-user/user/login.phtml:46
-#, fuzzy
 msgid "Not registered?"
-msgstr "Anmelden"
+msgstr "Nicht angemeldet?"
 
 #: ../view/zfc-user/user/login.phtml:46
 #: ../../../module/Application/view/zfc-user/user/login.phtml:46
@@ -705,9 +688,8 @@ msgid "Reset rounds"
 msgstr "Alle Runden löschen"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/premium/index.phtml:2
-#, fuzzy
 msgid "Premium offer"
-msgstr "Premium"
+msgstr "Premium Angebot"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:4
 #, php-format
@@ -723,7 +705,6 @@ msgid "name"
 msgstr "Name"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:55
-#, fuzzy
 msgid "You like it"
 msgstr "Das mag ich"
 
@@ -819,7 +800,7 @@ msgstr "Listen ansehen"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:32
 msgid "Learn through efficient methods"
-msgstr "Lerne mit bewährter Techniken"
+msgstr "Lerne mit bewährten Techniken"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:33
 msgid ""
@@ -950,7 +931,7 @@ msgstr ""
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:36
 msgid "Choose Standard offer"
-msgstr ""
+msgstr "Standardangebot auswählen"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:45
 msgid "INTENSE"
@@ -991,9 +972,8 @@ msgid "12 euros"
 msgstr "12 Euros"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:108
-#, fuzzy
 msgid "Create your own quizzes"
-msgstr "Erstelle und teile eine Liste"
+msgstr "Erstelle deine Quizz"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:114
 msgid "Choose full offer"
