@@ -3,6 +3,7 @@
 namespace LrnlSearch\Form;
 
 use Zend\Form\Form;
+use LrnlListquests\Form\Element\Category;
 
 class SearchForm extends Form
 {
@@ -26,16 +27,8 @@ class SearchForm extends Form
             ],
         ]);
         
-        $this->add([
-            'name' => 'language',
-            'attributes' => [
-                'type'  => 'text',
-                'id'    => 'language',
-                'autocomplete'    => 'off',
-                'class' => 'input-medium',
-                'placeholder' => _('Language')
-            ],
-        ]);
+        $category = new Category('category');
+        $this->add($category);
         
         $this->add([
             'name' => 'submit',
