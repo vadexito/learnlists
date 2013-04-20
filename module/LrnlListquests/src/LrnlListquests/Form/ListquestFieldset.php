@@ -9,6 +9,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ProvidesObjectManager;
 use DoctrineModule\Stdlib\Hydrator\Strategy\DisallowRemoveByValue;
 
+use LrnlListquests\Form\Element\Category;
+
 
 class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -56,22 +58,10 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('Description')
             ],
         ]);
-        $this->add([
-            'name' => 'category',
-            'type' => 'select',
-            'attributes' => [
-                'id'    => 'category',
-            ],
-            'options' => [
-                'label' => _('category'),
-                'value_options' => [
-                    'English' => _('Foreign Languages - English'),
-                    'German' => _('Foreign Languages - German'),
-                    'French' => _('Foreign Languages - French'),
-                    'Other' => _('Other'),
-                ],
-            ],
-        ]);
+        $category = new Category('category');
+        $category->setLabel(_('category'));
+        $this->add($category);
+        
         $this->add([
             'name' => 'language',
             'type' => 'select',

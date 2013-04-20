@@ -129,6 +129,12 @@ header
     font-size: 17.5px;
     padding: 11px 19px;
 }
+#searchForm select{
+    font-size: 17.5px;
+    margin: 0 8px 0 8px;
+    height: 44px;
+    width:250px;
+}
 
 #searchForm {
     margin:0;
@@ -312,6 +318,18 @@ question ask page general
 
 #answer-group {
     padding: 0;
+}
+
+.answer-showed{
+    font-size: 2em;
+}
+
+.answer-location{
+    display:inline-block;
+}
+
+.right-answer{
+    font-size: 2em;
 }
 
 /*=======================================

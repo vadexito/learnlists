@@ -9,9 +9,9 @@ $this->headTitle($title);?>
     </div>
     <div class="row-fluid">
         <div class="span9"> 
-            <div class="row-fluid" id="central_area"></div>
             <div class="row-fluid" id="answer_show" style="display:none"></div>
             <div class="row-fluid" id="question_tip" style="display:none"></div>
+            <div class="row-fluid" id="central_area"></div>            
             <div class="row-fluid" id="round-results" style="display:none"></div>
         </div>
         <div class="span3">
@@ -70,11 +70,11 @@ $this->headTitle($title);?>
     <th><%= notdone %></th>            
 </script>
 <script id="asking_question-template" type="text/html">    
-    <p id="question_asked_text"><%= text %></p>            
+    <div id="question_asked_text"><%= text %></div>            
     <form action="" method="post" name="questionAskForm" class="well well-small form-inline" id="questionAskForm">
         <input name="id" type="hidden" id="listId" value="<?php echo $listId ?>">        
         <span class="control-group" id="answer-group">
-            <input class="input-xlarge" name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value="klkm"/>
+            <input class="input-xlarge" name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value=""/>
         </span>
         <input name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-large btn-success button-answer" value="<?php echo $this->translate('Check'); ?>"/>
     </form>    

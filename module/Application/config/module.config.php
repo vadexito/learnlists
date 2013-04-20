@@ -244,7 +244,8 @@ return [
                 '@marionette_js',
                 '@jqknob_js',
                 '@mvclearn_js',
-                '@global_js'
+                '@global_js',
+                '@flippy_js'
             ],
             'listquests/list/edit' => [
                 '@global_js'
@@ -319,6 +320,11 @@ return [
                             'js/lib/underscore.min.js',
                             'js/lib/backbone.min.js',
                             'js/lib/marionette.min.js',
+                        ],
+                    ],
+                    'flippy_js' => [
+                        'assets' => [
+                            'js/lib/jquery.flippy.min.js',
                         ],
                     ],
                     'base_images' => [

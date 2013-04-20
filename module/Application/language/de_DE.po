@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-19 21:52+0100\n"
-"PO-Revision-Date: 2013-04-20 16:40+0100\n"
+"POT-Creation-Date: 2013-04-20 18:39+0100\n"
+"PO-Revision-Date: 2013-04-20 18:42+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -21,11 +21,11 @@ msgstr ""
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:30
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:62
 msgid "Add"
-msgstr "Erstellen"
+msgstr "Hinzufügen"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/QuestionController.php:29
 msgid "Edit"
-msgstr "Editieren"
+msgstr "Bearbeiten"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/EditQuestionForm.php:37
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestForm.php:38
@@ -65,29 +65,29 @@ msgstr "Andere"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:82
 #: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:36
-#: ../view/layout/layout.phtml:57
-#: ../../../module/Application/view/layout/layout.phtml:57
+#: ../view/layout/layout.phtml:58
+#: ../../../module/Application/view/layout/layout.phtml:58
 msgid "Language"
 msgstr "Sprache"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:84
 #: ../../../config/autoload/lrnlsearch.global.php:18
-#: ../view/layout/layout.phtml:64
-#: ../../../module/Application/view/layout/layout.phtml:64
+#: ../view/layout/layout.phtml:65
+#: ../../../module/Application/view/layout/layout.phtml:65
 msgid "English"
 msgstr "Englisch"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:85
 #: ../../../config/autoload/lrnlsearch.global.php:18
-#: ../view/layout/layout.phtml:62
-#: ../../../module/Application/view/layout/layout.phtml:62
+#: ../view/layout/layout.phtml:63
+#: ../../../module/Application/view/layout/layout.phtml:63
 msgid "German"
 msgstr "Deutsch"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:86
 #: ../../../config/autoload/lrnlsearch.global.php:18
-#: ../view/layout/layout.phtml:63
-#: ../../../module/Application/view/layout/layout.phtml:63
+#: ../view/layout/layout.phtml:64
+#: ../../../module/Application/view/layout/layout.phtml:64
 msgid "French"
 msgstr "Französisch"
 
@@ -164,8 +164,8 @@ msgid "Search"
 msgstr "Suchen"
 
 #: ../../../module/LrnlUser/src/LrnlUser/Form/RoleElement.php:14
-msgid "Role"
-msgstr "Role"
+msgid "You are..."
+msgstr "Sie sind...."
 
 #: ../../../module/VxoBraintree/src/VxoBraintree/Controller/TransactionController.php:20
 #: ../../../module/VxoBraintree/view/vxo-braintree/transaction/create.phtml:2
@@ -214,6 +214,8 @@ msgid "Sign In"
 msgstr "Einloggen"
 
 #: ../../../config/autoload/global.php:73
+#: ../view/cdli-twostagesignup/register.phtml:13
+#: ../../../module/Application/view/cdli-twostagesignup/register.phtml:13
 msgid "Sign Up"
 msgstr "Anmelden"
 
@@ -308,6 +310,15 @@ msgstr "Schlagwörter"
 msgid "Enter a keyword"
 msgstr "Schlagwort eingeben"
 
+#: ../view/cdli-twostagesignup/register.phtml:19
+#: ../view/cdli-twostagesignup/email-verification/form.phtml:18
+#: ../view/zfc-user/user/login.phtml:20
+#: ../../../module/Application/view/cdli-twostagesignup/register.phtml:19
+#: ../../../module/Application/view/cdli-twostagesignup/email-verification/form.phtml:18
+#: ../../../module/Application/view/zfc-user/user/login.phtml:20
+msgid "Try again!"
+msgstr "Noch einmal versuchen"
+
 #: ../view/cdli-twostagesignup/email/verification.phtml:2
 #: ../../../module/Application/view/cdli-twostagesignup/email/verification.phtml:2
 msgid ""
@@ -336,7 +347,7 @@ msgid ""
 "proceed with the account registration process."
 msgstr ""
 "Eine Email wurde zu <strong>%s</strong> abgeschickt  mit Hinweise, wie man "
-"sie anmeldet.."
+"sich anmeldet.."
 
 #: ../view/error/403.phtml:2 ../view/error/403.phtml:31
 #: ../../../module/Application/view/error/403.phtml:2
@@ -524,21 +535,26 @@ msgstr "Hilfe"
 
 #: ../view/layout/layout.phtml:53
 #: ../../../module/Application/view/layout/layout.phtml:53
-msgid "Q&A"
-msgstr "Q&A"
+msgid "How it works"
+msgstr "Wie funktioniert es?"
 
-#: ../view/layout/layout.phtml:71
-#: ../../../module/Application/view/layout/layout.phtml:71
+#: ../view/layout/layout.phtml:54
+#: ../../../module/Application/view/layout/layout.phtml:54
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ../view/layout/layout.phtml:72
+#: ../../../module/Application/view/layout/layout.phtml:72
 msgid "2013 by Voilamylife."
 msgstr "2013 Voilamylife."
 
-#: ../view/layout/layout.phtml:71
-#: ../../../module/Application/view/layout/layout.phtml:71
+#: ../view/layout/layout.phtml:72
+#: ../../../module/Application/view/layout/layout.phtml:72
 msgid "All rights reserved."
 msgstr "Alle Rechte vorbehalten."
 
-#: ../view/layout/layout.phtml:77
-#: ../../../module/Application/view/layout/layout.phtml:77
+#: ../view/layout/layout.phtml:78
+#: ../../../module/Application/view/layout/layout.phtml:78
 msgid "Loading..."
 msgstr "Laden...."
 
@@ -587,28 +603,18 @@ msgstr "Passwort"
 msgid "Sign in"
 msgstr "Einloggen"
 
-#: ../view/zfc-user/user/login.phtml:20
-#: ../../../module/Application/view/zfc-user/user/login.phtml:20
-msgid "Try again!"
-msgstr "Noch einmal versuchen"
-
-#: ../view/zfc-user/user/login.phtml:25
-#: ../../../module/Application/view/zfc-user/user/login.phtml:25
-msgid "Please fill in with you email and password for login"
-msgstr "Bitte geben sie Email und Passwort an."
-
-#: ../view/zfc-user/user/login.phtml:44
-#: ../../../module/Application/view/zfc-user/user/login.phtml:44
+#: ../view/zfc-user/user/login.phtml:39
+#: ../../../module/Application/view/zfc-user/user/login.phtml:39
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
 
-#: ../view/zfc-user/user/login.phtml:46
-#: ../../../module/Application/view/zfc-user/user/login.phtml:46
+#: ../view/zfc-user/user/login.phtml:41
+#: ../../../module/Application/view/zfc-user/user/login.phtml:41
 msgid "Not registered?"
 msgstr "Nicht angemeldet?"
 
-#: ../view/zfc-user/user/login.phtml:46
-#: ../../../module/Application/view/zfc-user/user/login.phtml:46
+#: ../view/zfc-user/user/login.phtml:41
+#: ../../../module/Application/view/zfc-user/user/login.phtml:41
 msgid "Sign Up!"
 msgstr "Melde dich an!"
 
@@ -771,6 +777,8 @@ msgstr "Frage löschen"
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/edit.phtml:58
 msgid "Press to add a new empty line. Press the save button below to save"
 msgstr ""
+"Auf dem Plus Drücken um eine neue Frage hinzufügen und dann auf \"erstellen"
+"\" um alles zu speichern "
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:2
 msgid "Learn with quizzes"
@@ -849,10 +857,14 @@ msgstr ""
 "ergänzende Frage handelt, nutzen sie Bitte zweimal die \"%\" Zeichen um die "
 "Antwort herum. Beipsiel : Er %hat% die richtige %Entscheidung %getroffen%."
 
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:92
+#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:90
 #, php-format
 msgid "%s results"
 msgstr "%s Ergebnisse"
+
+#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:102
+msgid "Leave a comment!"
+msgstr "Schreiben sie ein Kommentar...."
 
 #: ../../../module/LrnlUser/view/lrnl-user/user/index.phtml:4
 msgid "User profile"
@@ -916,7 +928,7 @@ msgstr "Top beste Quiz"
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:67
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:106
 msgid "Search through the whole set of quizzes"
-msgstr ""
+msgstr "Suche durch die gesamten Listen"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:31
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:69
@@ -927,7 +939,7 @@ msgstr "Erstelle unbegrenzte Zahl von Listen"
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:70
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:109
 msgid "Access profesionnal learning method"
-msgstr ""
+msgstr "Verfüge über profesionnale Lernmethoden"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:36
 msgid "Choose Standard offer"
@@ -939,7 +951,7 @@ msgstr "ANSPRUCHSVOLL"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:46
 msgid "Excellent for intense learning"
-msgstr ""
+msgstr "Ausgezeichnet für intensives Lernen"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:49
 msgid "10 euros"
@@ -953,11 +965,11 @@ msgstr "pro Monat (kein Minimum)"
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:71
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:110
 msgid "Access unlimited tips and comments form teachers"
-msgstr ""
+msgstr "Verfüge über unbegrenzten Zugriff auf Tips und Kommentare von Lehrern"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:75
 msgid "Choose Intense offer"
-msgstr ""
+msgstr "Intensives Angebot auswählen"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:84
 msgid "FULL"
@@ -981,7 +993,7 @@ msgstr "Volles Angebot auswählen"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:123
 msgid "The quizzes that match your needs."
-msgstr ""
+msgstr "Die Quizz, die du suchst"
 
 #: ../language/_XMLforPoedit/role.xml:4
 #: ../../../module/Application/language/_XMLforPoedit/role.xml:4
@@ -997,6 +1009,15 @@ msgstr "Benutzer"
 #: ../../../module/Application/language/_XMLforPoedit/role.xml:8
 msgid "premium"
 msgstr "Premium"
+
+#~ msgid "Role"
+#~ msgstr "Role"
+
+#~ msgid "Q&A"
+#~ msgstr "Q&A"
+
+#~ msgid "Please fill in with you email and password for login"
+#~ msgstr "Bitte geben sie Email und Passwort an."
 
 #~ msgid "A 403 error occurred"
 #~ msgstr "Es trat ein 403 Fehler auf"
@@ -1018,9 +1039,6 @@ msgstr "Premium"
 
 #~ msgid "Like"
 #~ msgstr "Mag ich"
-
-#~ msgid "See comments"
-#~ msgstr "Sehe Kommentare"
 
 #~ msgid "Note"
 #~ msgstr "Bewertung"
@@ -1069,9 +1087,6 @@ msgstr "Premium"
 
 #~ msgid "Questions?"
 #~ msgstr "Fragen?"
-
-#~ msgid "How does it work?"
-#~ msgstr "Wie funktioniert es?"
 
 #~ msgid "Special tips for this list"
 #~ msgstr "Tipps für diese List"
