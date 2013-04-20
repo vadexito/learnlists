@@ -114,7 +114,7 @@ return [
             ],
             'search' => [
                 'label' => 'Lucene Build',
-                'route' => 'lrnl-search/build'
+                'route' => 'zfcadmin/lucene-index-build',
             ],
             'home' => [
                 'label' => 'Learnlists',
