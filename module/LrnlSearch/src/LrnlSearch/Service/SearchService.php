@@ -57,14 +57,19 @@ class SearchService
         $query->addSubquery($allQuery,true);
         
         foreach ($queryData as $filter => $values){
-            if ($filter === 'search' && is_string($values)){
-                if (!is_string($values)){
-                    throw new SearchException('You must provide a string for each search.');
-                }       
-                $termQuery = new Query\Term(new Index\Term($values));
-                $query->addSubquery($termQuery,true);
-            }
+            //if it is the main search
+            $mainSeachElements = ['search','category'];
+            foreach ($mainSeachElements as $element){
+                if ($filter == $element && $values){
+                    if (!is_string($values)){
+                        throw new SearchException('You must provide a string for each element in the main search.');
+                    }       
+                    $termQuery = new Query\Term(new Index\Term(strtolower($values)));
+                    $query->addSubquery($termQuery,true);
+                }
+            }   
             
+            //if it is a filter from the side
             $filterConfig = $this->getFilterConfig()->get($filter);
             if ($filterConfig !== NULL){
                 switch ($filterConfig['type']){
