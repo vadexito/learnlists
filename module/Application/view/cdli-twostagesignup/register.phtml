@@ -10,27 +10,26 @@ $form = $this->registerForm;
 $form->prepare();
 $form->setAttribute('action', $this->url('zfcuser/register/step2', array('token'=>$this->model->getRequestKey())));
 $form->setAttribute('method', 'post');
-?>
+$form->get('submit')->setValue($this->translate('Sign Up'));
+?>  
 
-<?php echo $this->form()->openTag($form) ?>    
-    <?php foreach ($form as $element): ?>
-        <?php if ($element->getName() == 'email') continue; /* Don't render the email element, as we've added it below as a hidden field */ ?>
-        <?php if (!$element instanceof Zend\Form\Element\Button): ?>
-            <?php echo $this->formLabel($element) ?>
-        <?php endif ?>
-        <?php if ($element instanceof Zend\Form\Element\Button): ?>
-            <div class="form-actions">
-                <?php echo $this->formButton($element) ?>
-            </div>
-        <?php elseif ($element instanceof Zend\Form\Element\Captcha): ?>
-            <?php echo $this->formCaptcha($element) . $this->formElementErrors($element) ?>
-        <?php elseif ($element instanceof Zend\Form\Element\Select):  ?>
-            <?php echo $this->formSelect($element) ?>
-        <?php else : ?>
-            <?php echo $this->formInput($element) . $this->formElementErrors($element) ?>
-        <?php endif ?>
-    <?php endforeach ?>
-    
+<?php if ($form->getMessages()):?>
+    <div class="alert alert-error">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        <strong><?php echo $this->translate('Try again!'); ?></strong>
+    </div>
+<?php endif;?>
+<?php echo $this->form()->openTag($form); 
+$formType = \DluTwBootstrap\Form\FormUtil::FORM_TYPE_VERTICAL;
+foreach ($form as $element) {
+    if ($element->getName() == 'submit'){
+        echo $this->formActionsTwb([$element], $formType,['submit' => ['class' => 'btn-primary']]);
+    } else if ($element->getName() != 'email'){
+        echo $this->formRowTwb($element, $formType);
+    }
+}
+echo $this->form()->closeTag() ?>
+
     <?php if ($this->redirect): ?>
         <input type="hidden" name="redirect" value="<?php echo $this->redirect ?>" />
     <?php endif ?>

@@ -11,22 +11,13 @@ $form->prepare();
 $form->setAttribute('action', $this->url('zfcuser/register/step1'));
 $form->setAttribute('method', 'POST');
 
-echo $this->form()->openTag($form);
+if ($form->getMessages()):
 ?>
+    <div class="alert alert-error">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        <strong><?php echo $this->translate('Try again!'); ?></strong>
+    </div>
+<?php
+endif;
+echo $this->formTwb($form, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_VERTICAL,['elements' => ['submit' => ['class' => 'btn-primary']]]);?>
 
-
-<?php foreach ($form->getElements() as $element) { ?>
-    <?php if ($element->getLabel() != null) { ?>
-    <?php echo $this->formLabel($element); ?>
-    <?php } ?>
-    <?php if ($element->getAttribute('type') !== 'submit') { ?>
-    <?php echo $this->formInput($element) . $this->formElementErrors($element); ?>
-    <?php } else {?>
-<div class="form-actions">
-     <?php echo $this->formInput($element) . $this->formElementErrors($element); ?>
-</div>
-<?php } ?>
-<?php } ?>
-
-
-<?php $this->url('zfcuser/register/step1'); ?>
