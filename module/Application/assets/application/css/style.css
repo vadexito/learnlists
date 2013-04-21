@@ -1,0 +1,485 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    color: #666666;
+}
+
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+  background-color: #57a900;
+  background-image: -moz-linear-gradient(top, #70d900, #57a900);
+  background-image: -ms-linear-gradient(top, #70d900, #57a900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+  background-image: -o-linear-gradient(top, #70d900, #57a900);
+  background-image: linear-gradient(top, #70d900, #57a900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #57a900;
+}
+
+div.container a.brand {
+    background: url("images/site-logo.jpg") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+/* Custom container */
+.container {
+  max-width: 1000px;
+}
+
+/*=======================================
+layout nav bar
+=========================================*/
+#gravatar-link img{
+    margin : 5px 0 5px 0;
+}
+
+#menu-profile {
+    padding:0;
+}
+
+#menu-profile span.name {
+    padding:10px 15px 10px 15px;
+}
+
+#menu-profile span.name b.caret{
+    margin-top:20px;
+}
+
+
+#gravatar-link img {
+    padding : 0;
+}
+
+#dropdown-user {
+    padding:0;
+}
+
+/*=======================================
+layout footer
+=========================================*/
+footer ul{
+    list-style-type: none;
+    font-size: 0.9em;
+    margin:0;
+}
+
+footer h5 {
+    border-bottom:1px solid #eee;
+}
+
+
+#copyright {
+    text-align: center;
+    margin:0;
+    font-size: 12px;
+}
+
+.dropdown-menu {
+    min-width: 120px;
+}
+/*=======================================
+header
+=========================================*/
+
+#jumbotron-header {
+    background: url("images/books.jpg");
+    color:#f0f6f8;
+    margin-bottom : 30px; 
+    padding-top: 10px;
+}
+
+#jumbotron-header.home {
+    height: 400px;  
+}
+
+#jumbotron-header h1 {
+    margin-top: 60px;
+    margin-bottom : 35px;
+    font-size: 4em;
+    text-shadow: 0 0 15px rgba(0,0,0,0.6),0 -1px 1px rgba(0,0,0,0.6);
+}
+
+#jumbotron-header.home h1 {
+    margin-top: 70px;
+    margin-bottom : 25px;
+}
+
+#jumbotron-header.home h3 {
+    margin-bottom : 25px;
+    text-shadow: 0 0 15px rgba(0,0,0,0.6),0 -1px 1px rgba(0,0,0,0.6);
+}
+
+#searchForm input {
+    font-size: 17.5px;
+    padding: 11px 19px;
+}
+#searchForm select{
+    font-size: 17.5px;
+    margin: 0 8px 0 8px;
+    height: 44px;
+    width:250px;
+}
+
+#searchForm {
+    margin:0;
+}
+/*=======================================
+list of lists page
+=========================================*/
+
+li.search_result_listquest_item {
+    list-style-type: none;
+    margin:0;
+}
+
+.title_search_result_line
+{
+    margin:0;
+    padding:0;
+    line-height: normal;
+}
+
+p.text-right {
+    margin: 0;
+    line-height: 0.5;
+}
+
+.questionNb {
+    margin:0;
+    line-height: normal;
+}
+
+.date-listquest {
+    opacity: 0.7;
+    font-size: 0.8em;
+}
+
+#search_results_body hr {
+    margin-bottom: 7px;
+    margin-top:7px;
+}
+
+.title_with_icon a,.title_with_icon h4 {
+    display: inline;
+}
+
+.edit_button {
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.title_badge {
+    opacity: 0.5;
+}
+
+.badge_item {
+    margin-right:20px;
+}
+#left_side_filters {
+    background: none;
+    padding:0;
+}
+
+.filter-search h5 {
+    margin:0;
+    padding-top:6px;
+    padding-bottom:6px;
+}
+
+.filter-choice .well{
+   background: none; 
+   margin:0;
+   border:0;
+   padding-bottom:15px;
+   padding-top:15px;
+}
+
+span.min-slider, span.max-slider {
+    margin-bottom:10px;
+}
+
+.filter-search-search input{
+    margin:0;
+    font-size:12px;
+}
+
+.filter-search-search div.input-append{
+    margin:0;
+}
+.badge-level {
+    position: relative;
+    display: inline-block;
+    color:#666666;
+    background-color:#e6e6e6;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+.badge-bubble {
+    background-image: url("images/icons/bubble.png");
+    display: inline-block;
+    height: 25px;
+    width:32px;
+    line-height: 14px;
+    vertical-align: text-bottom;
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+    color: black;
+    font-weight: bold;
+    padding-left:13px;
+    padding-top:8px;
+}
+
+.btn-go {
+    margin-top:10px;
+}
+
+#comment-button{
+    margin-top:20px;
+}
+
+/*=======================================
+edit list page
+=========================================*/
+
+td.btn-group {
+    margin:0;
+    margin-left: 10px;
+    margin-top: 3px;
+    padding:0;
+}
+
+/*=======================================
+question ask page general
+=========================================*/
+
+.card{
+    border:1px solid #cccccc;
+    height: 400px;
+    padding: 25px;
+}
+
+#question_asked_text{
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1.4;
+    height:240px;    
+}
+
+#sub-title{
+    text-align: center;
+}
+
+#results {
+    margin-bottom: 40px;
+}
+
+#results img{
+    margin: 10px 0;
+}
+
+#results h3 small {
+   font-size:15px;
+}
+
+#results h3, #results h4{
+    line-height: 1;    
+}
+
+.img-find {
+    margin-left:20px;
+    margin-right:20px;
+}
+
+#question_asked_submitbutton {
+    margin-left: 15px;
+}
+
+#question_asked_answer {
+    padding: 11px 19px;
+    font-size: 17.5px;
+}
+
+#answer-group {
+    padding: 0;
+}
+
+.answer-showed{
+    font-size: 2em;
+}
+
+.answer-location{
+    display:inline-block;
+}
+
+.right-answer{
+    font-size: 2em;
+}
+
+/*=======================================
+question ask page / pie element
+=========================================*/
+
+input.pie{
+    border:0;
+    background-color:inherit;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+div.pie.row-fluid{
+    text-align: center;
+}
+
+div.progress.vertical{
+    height:50px;
+}
+
+p.title_pie{
+   margin-top:5px; 
+}
+
+/*=======================================
+offers presentation
+=========================================*/
+div.well.offers {
+    background: #6b6b6b; /* Old browsers */
+    background: -moz-linear-gradient(top, #6b6b6b 0%, #a0a0a0 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6b6b6b), color-stop(100%,#a0a0a0)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #6b6b6b 0%,#a0a0a0 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #6b6b6b 0%,#a0a0a0 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #6b6b6b 0%,#a0a0a0 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #6b6b6b 0%,#a0a0a0 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', endColorstr='#a0a0a0',GradientType=0 ); /* IE6-9 */
+}
+
+
+div.price-cell > div.well {
+    border-radius: 30px;
+    border-width: 5px;
+    border-color: grey;
+}
+
+/* Generated with Ultimate CSS Gradient Generator*/
+div.price-cell.offer1 > div.well {
+    
+    background: #88bfe8; /* Old browsers */
+    background: -moz-linear-gradient(top, #88bfe8 1%, #006dcc 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#88bfe8), color-stop(100%,#006dcc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #88bfe8 1%,#006dcc 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #88bfe8 1%,#006dcc 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #88bfe8 1%,#006dcc 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #88bfe8 1%,#006dcc 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88bfe8', endColorstr='#006dcc',GradientType=0 ); /* IE6-9 */
+}
+div.price-cell.offer2 > div.well {
+    
+    background: #a0fb00; /* Old browsers */
+    background: -moz-linear-gradient(top, #a0fb00 2%, #57a900 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#a0fb00), color-stop(100%,#57a900)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a0fb00 2%,#57a900 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a0fb00 2%,#57a900 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a0fb00 2%,#57a900 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #a0fb00 2%,#57a900 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0fb00', endColorstr='#57a900',GradientType=0 ); /* IE6-9 */
+}
+div.price-cell.offer3 > div.well {
+    
+    background: #f9f200; /* Old browsers */
+    background: -moz-linear-gradient(top, #f9f200 1%, #f89406 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f9f200), color-stop(100%,#f89406)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f9f200 1%,#f89406 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f9f200 1%,#f89406 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f9f200 1%,#f89406 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f9f200 1%,#f89406 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f200', endColorstr='#f89406',GradientType=0 ); /* IE6-9 */
+}
+div.price-cell.offer2 div.popular {
+    background: url("images/popular.png") no-repeat;
+    width: 70px;
+    position:relative;
+    height: 74px;
+    top: -109px;
+    right: -191px;
+}
+
+div.offers h1 {
+    color:rgba(250,250,250,1);
+    text-shadow: rgba(10,10,10,10.5) 0 1px 0;
+}
+
+div.offers h3 {
+    color:rgba(250,250,250,1);
+    text-shadow: rgba(0,0,0,1) 0 1px 0;
+}
+
+div.offers h1,div.offers h2,div.offers h3,
+div.offers h4,div.offers h5, div.offers h6,
+div.volume {
+    text-align: center;
+}
+
+div.offers h1,div.offers h2,div.offers h3,
+div.offers h4,div.offers h5, div.offers h6,
+div.volume,div.feature,div.feature_list {
+    text-shadow: rgba(255,255,255,0.5) 0 1px 0;
+}
+h1.offers {
+    margin-bottom: 30px;
+}
+
+div.offers hr {
+    margin-top:10px;
+    margin-bottom:10px;
+    background-color:grey;
+    height:1.5px;
+}
+
+div.top {
+    height: 80px;
+}
+div.price {
+    height: 70px;
+}
+div.price h2 {
+    margin-bottom:0;
+    padding: 0;
+}
+div.price h6 {
+    margin:0;
+}
+
+div.volumes {
+    height: 100px;
+}
+
+div.volumes h5 {
+  margin:0;  
+}
+
+div.core_features {
+    height: 60px;
+}
+div.feature_list {
+    height: 150px;
+}
+div.choose_plan_container {
+    height: 50px;
+}
+

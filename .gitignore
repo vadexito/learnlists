@@ -18,7 +18,7 @@ data/
 ## Asset manager
 #######################
 public/assets
-module/Application/assets
+module/Application/assets/components
 
 #######################
 ## Config
