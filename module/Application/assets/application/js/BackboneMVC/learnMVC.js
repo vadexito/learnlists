@@ -128,10 +128,10 @@ AskingQuestionView = Backbone.Marionette.ItemView.extend({
     initialize: function(){
         
         learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){             
-            this.ui.answerButton.attr('disabled','disabled');
-            this.ui.checkButton.attr('disabled','disabled');
-            this.ui.answerInput.attr('readonly','readonly');
-            this.ui.nextButton.html(this.ui.nextButton.attr('data-text-toggle'));
+            $('#question_asked_showanswerbutton').attr('disabled','disabled');
+            $('#question_asked_submitbutton').attr('disabled','disabled');
+            $('#question_asked_answer').attr('readonly','readonly');
+            $('#question_asked_nextbutton').html(this.ui.nextButton.attr('data-text-toggle'));
         },this);
         
         learnMVC.vent.on('learn:initNewQuestion',this.initNewQuestion,this);

@@ -69,15 +69,23 @@ window.Questionresult = Backbone.Model.extend({
             
             learnMVC.vent.trigger("learn:answerSuccess");
             
-            // if the answer has only one part
+            // if the answer is not in the sentence
             if (typeof answerInDB === 'string'){   
                 return true;
-            // question with multi part answers
-            } 
             
+            } 
+            // if answer is in the sentence
             if ($.isArray(answerInDB)){ 
                 
-                text.html(this.replaceImg(text.html(),answersToCheck));
+                var firstAnswer = $('.answer-location.hiddenanswer').first();
+                answerValue = firstAnswer.attr('data-answer');
+                firstAnswer.flippy({
+                    verso:'<span class="right-answer">'+answerValue+'</span>',
+                    direction:"LEFT",
+                    duration:"400"
+                });
+                firstAnswer.removeClass('hiddenanswer');
+                
                 answerPart++;
                 
                 if (answerInDB.length === answerPart){                    
@@ -108,24 +116,7 @@ window.Questionresult = Backbone.Model.extend({
         if ($.isArray(answer)){
             return ($.inArray(value,answer) > -1);
         }
-    },
-    
-    replaceImg: function(initialText,replacingText,separator){
-        
-        if (!separator) {
-            separator = '\\';
-        }
-        
-        //choose separator for showing arrays
-        if ($.isArray(replacingText)){
-            replacingText = replacingText.join(separator);
-        }
-        
-        return initialText.replace(/<img[^<>]*>/,
-            '<span>'+replacingText+'</span>'
-        );   
     }
-    
 });
 
 

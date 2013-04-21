@@ -107,5 +107,7 @@ $this->headTitle($title);?>
     <p id="tip_text" class="tip"><%= tip %></p>
 </script>
 <script id="noresult-template" type="text/html">
-    <p>Please log In if you want to get more detailed results</p>
+    <p>
+        <?php echo $this->zfcUserIdentity()? $this->translate('You did not yet finished one round!') : $this->translate('Please log In if you want to get more detailed results'); ?>
+    </p>
 </script>

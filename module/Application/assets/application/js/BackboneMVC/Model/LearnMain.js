@@ -94,22 +94,21 @@ window.LearnMain = Backbone.Model.extend({
         var question = this.questions.collection.get(this.model.get('questionId'));   
         var answer = question.get('answer');
 
+        //if it is a normal question
         if (typeof answer === 'string'){
             this.set('answer',_.escape(answer));
-        }        
-
-        if ($.isArray(answer)){
-            var i=0;
-            $(".answer-location").each(function(){                
+        } else {
+            //if it is a sentence with holes
+            $(".answer-location").each(function(){ 
+                answer = $(this).attr('data-answer');
                 $(this).flippy({
-                    verso:'<span class="right-answer">'+answer[i]+'</span>',
+                    verso:'<span class="right-answer">'+answer+'</span>',
                     direction:"LEFT",
                     duration:"400"
                 });
-                i++;
             });
-        }
-
+        } 
+        
         this.model.set('answer_asked',true);
         learnMVC.vent.trigger("learn:proceedAnsweredQuestion"); 
     },
@@ -230,25 +229,6 @@ window.LearnMain = Backbone.Model.extend({
         this.attributes.answer = '';
         this.attributes.tip = '';
         
-    },
-    
-    replaceImg: function(initialText,replacingText,separator){
-        
-        if (!separator) {
-            separator = '\\';
-        }
-        
-        //choose separator for showing arrays
-        if ($.isArray(replacingText)){
-            replacingText = replacingText.join(separator);
-        }
-        
-        return initialText.replace(/<img[^<>]*>/,
-            '<span class="answer-showed">'+replacingText+'</span>'
-        );
-            
-            
-            
     },
     
     defaults: {
