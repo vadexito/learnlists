@@ -13,7 +13,7 @@ class Category extends Select
             ]);
         $this->setOptions([
                 'value_options' => [
-                    '*' => _('All categories'),
+                    '' => _('All categories'),
                     //'English' => _('Foreign Languages - English'),
                     'German' => _('Foreign Languages - German'),
                     //'French' => _('Foreign Languages - French'),
