@@ -211,7 +211,7 @@ return [
         *
         * @optional
         */
-        'debug' => false,
+        'debug' => true,
 
        /*
         * set Umask
@@ -236,8 +236,8 @@ return [
                 '@global_js'
             ],
             'lrnl-search' => [
-                '@search_css',
-                '@search_js',
+                '@slider_css',
+                '@slider_js',
                 '@global_js'
             ],
             'learn/basic' => [
@@ -256,7 +256,7 @@ return [
             'assets' => [
                 '@base_js',
                 '@base_css',
-                //'@base-images',
+                '@bootstrap_js'
             ],
             'options' => [
                 'mixin' => true
@@ -269,12 +269,12 @@ return [
                 'collections' => [
                     'base_css' => [
                         'assets' => [
-                            'css/vendor/bootstrap/css/bootstrap.min.css',
-                            'css/vendor/bootstrap/css/bootstrap-responsive.min.css',
-                            'css/style.css',        
+                            'components/bootstrap/docs/assets/css/bootstrap.css',
+                            'components/bootstrap/docs/assets/css/bootstrap-responsive.css',
+                            'application/css/style.css',        
                         ],
                         'filters' => [
-                            'CssRewriteFilter' => [
+                            '?CssRewriteFilter' => [
                                 'name' => 'Assetic\Filter\CssRewriteFilter'
                             ],
                         ],
@@ -282,53 +282,65 @@ return [
                     ],
                     'base_js' => [
                         'assets' => [
-                            'js/lib/jquery.min.js',
-                            'js/lib/html5.js',
-                            'js/lib/bootstrap.js',
-                            'js/lib/spin.min.js',
+                            'components/jquery/jquery.min.js',
+                            'components/html5shiv/dist/html5shiv.js',
+                            'components/spin.js/dist/spin.min.js',
+                        ],
+                    ],
+                    'bootstrap_js' => [
+                        'assets' => [
+                            'components/bootstrap/docs/assets/js/bootstrap-tooltip.js',
+                            'components/bootstrap/docs/assets/js/bootstrap-popover.js',
+                            'components/bootstrap/docs/assets/js/bootstrap-modal.js',
+                            'components/bootstrap/docs/assets/js/bootstrap-collapse.js',
+                            'components/bootstrap/docs/assets/js/bootstrap-dropdown.js',
+                            'components/bootstrap/docs/assets/js/bootstrap-button.js',
                         ],
                     ],
                     'global_js' => [
                         'assets' => [
-                            'js/global.js',
+                            'application/js/global.js',
                         ],
                     ],
-                    'search_js' => [
+                    'slider_js' => [
                         'assets' => [
-                            'js/lib/bootstrap-slider.js',
+                            'application/js/lib/bootstrap-slider.js',
                         ],
                     ],
-                    'search_css' => [
+                    'slider_css' => [
                         'assets' => [
-                            'css/vendor/slider.css',
+                            'application/css/vendor/slider.css',
                         ],
                     ],
                     'mvclearn_js' => [
                         'assets' => [
-                            'js/backboneMvc/Model/*.js',
-                            'js/backboneMvc/View/*.js',
-                            'js/backboneMvc/learnMVC.js',
+                            'application/js/backboneMvc/Model/*.js',
+                            'application/js/backboneMvc/View/*.js',
+                            'application/js/backboneMvc/learnMVC.js',
                         ],
                     ],
                     'jqknob_js' => [
                         'assets' => [
-                            'js/lib/jquery.knob.js',
+                            'components/jquery-knob/js/jquery.knob.js',
                         ],
                     ],
                     'marionette_js' => [
                         'assets' => [
-                            'js/lib/underscore.min.js',
-                            'js/lib/backbone.min.js',
-                            'js/lib/marionette.min.js',
+                            'components/underscore/underscore-min.js',
+                            'components/backbone/backbone-min.js',
+                            'components/marionette/lib/backbone.marionette.min.js',
                         ],
                     ],
                     'flippy_js' => [
                         'assets' => [
-                            'js/lib/jquery.flippy.min.js',
+                            'application/js/lib/jquery.flippy.min.js',
                         ],
                     ],
                     'base_images' => [
                         'assets' => [
+                            'images/*.png',
+                            'images/icons/*.png',
+                            'images/thumbnails/categories/*.jpg',
                             'images/*.png',
                             'images/*.ico',
                             'images/*.jpg'
