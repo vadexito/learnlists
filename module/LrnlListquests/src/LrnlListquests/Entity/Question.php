@@ -7,9 +7,8 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Entity\Questionresult;
