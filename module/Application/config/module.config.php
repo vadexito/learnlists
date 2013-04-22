@@ -238,7 +238,7 @@ return [
             'lrnl-search' => [
                 '@slider_css',
                 '@slider_js',
-                '@global_js'
+                '@global_js',
             ],
             'learn/basic' => [
                 '@marionette_js',
@@ -256,7 +256,10 @@ return [
             'assets' => [
                 '@base_js',
                 '@base_css',
-                '@bootstrap_js'
+                '@bootstrap_js',
+                '@fontawesome_css',                
+                '@chosen_js',
+                '@chosen_css',
             ],
             'options' => [
                 'mixin' => true
@@ -272,6 +275,18 @@ return [
                             'components/bootstrap/docs/assets/css/bootstrap.css',
                             'components/bootstrap/docs/assets/css/bootstrap-responsive.css',
                             'application/css/style.css',        
+                        ],
+                        'filters' => [
+                            '?CssRewriteFilter' => [
+                                'name' => 'Assetic\Filter\CssRewriteFilter'
+                            ],
+                        ],
+                        'options' => [],
+                    ],
+                    'fontawesome_css' => [
+                        'assets' => [
+                            'components/font-awesome/css/font-awesome.min.css',
+                                   
                         ],
                         'filters' => [
                             '?CssRewriteFilter' => [
@@ -336,6 +351,16 @@ return [
                             'application/js/lib/jquery.flippy.min.js',
                         ],
                     ],
+                    'chosen_js' => [
+                        'assets' => [
+                            'components/chosen/chosen/chosen.jquery.min.js',
+                        ],
+                    ],
+                    'chosen_css' => [
+                        'assets' => [
+                            'components/chosen/chosen/chosen.css',
+                        ],
+                    ],
                     'base_images' => [
                         'assets' => [
                             'images/*.png',
@@ -343,7 +368,8 @@ return [
                             'images/thumbnails/categories/*.jpg',
                             'images/*.png',
                             'images/*.ico',
-                            'images/*.jpg'
+                            'images/*.jpg',
+                            '*.png',
                         ],
                         'options' => [
                             'move_raw' => true,
