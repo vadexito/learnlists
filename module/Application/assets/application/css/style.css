@@ -129,12 +129,19 @@ header
     font-size: 17.5px;
     padding: 11px 19px;
 }
-#searchForm select{
-    font-size: 17.5px;
+
+#category_chzn a{
+    padding:9px;
     margin: 0 8px 0 8px;
-    height: 44px;
-    width:250px;
+    font-size: 17.5px;
+    
 }
+
+#filters_chzn ul.chzn-choices,#filters_chzn {
+    border:0;
+    background-image: none;
+}
+
 
 #searchForm {
     margin:0;
@@ -146,6 +153,10 @@ list of lists page
 li.search_result_listquest_item {
     list-style-type: none;
     margin:0;
+}
+
+#search_result_summary{
+    margin-bottom: 10px;
 }
 
 .title_search_result_line

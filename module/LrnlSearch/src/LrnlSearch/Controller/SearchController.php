@@ -28,8 +28,8 @@ class SearchController extends AbstractActionController
         
         //init side filters
         $filterForm = $this->getServiceLocator()->get('learnlists-form-filter');
-        $filterForm->initUrlInFilters($queryData);
-        $filterForm->setData($queryData);
+        $filterForm->initUrlInFilters($queryData);        
+        $filterForm->setData($queryData->toArray());
         
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($hits));
         $paginator->setCurrentPageNumber($this->params()->fromRoute('page'));

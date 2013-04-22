@@ -84,8 +84,7 @@ window.Questionresult = Backbone.Model.extend({
                     direction:"LEFT",
                     duration:"400"
                 });
-                firstAnswer.removeClass('hiddenanswer');
-                
+                firstAnswer.removeClass('hiddenanswer');                
                 answerPart++;
                 
                 if (answerInDB.length === answerPart){                    

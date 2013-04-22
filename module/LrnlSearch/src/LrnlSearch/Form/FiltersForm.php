@@ -11,6 +11,7 @@ use LrnlSearch\Service\SearchService;
 use Traversable;
 
 use Zend\Form\Element\Text;
+use Zend\Form\Element\Select;
 use Zend\Form\Fieldset;
 
 class FiltersForm extends Form
@@ -22,9 +23,16 @@ class FiltersForm extends Form
     public function __construct($name = NULL,
             SearchService $searchService,Traversable $filterConfig = NULL)
     {
-        parent::__construct($name);
+        parent::__construct($name);        
+        $select =  new Select('filters');
+        $select->setAttribute('multiple','true');
+        $select->setAttribute('id','filters');
+        $select->setAttribute('class','chzn-select');
+        $select->setAttribute('style','width:100%');
         
+        $optionsSelect = [];
         foreach ($filterConfig as $name => $options){
+            $optionsSelect[$name] = $name;
             switch ($options['type']){
                 case self::$CHECKBOX :
                     $filter = new FilterTermCheckboxesFieldset($name);
@@ -55,6 +63,12 @@ class FiltersForm extends Form
             }
             $this->add($filter);
         }
+        
+        $select->setOptions([
+                'value_options' => $optionsSelect,
+        ]);
+        $this->add($select);
+        
     }
     
     public function initUrlInFilters($queryData)
@@ -69,5 +83,25 @@ class FiltersForm extends Form
                 }
              }
         }
+        
+        //init filters select element
+        $select = $this->get('filters');
+        $queryUrls = [];
+        foreach ($select->getOption('value_options') as $filter => $value){
+            $query = clone $queryData;
+            if (isset($query[$filter])) {
+                unset($query[$filter]);
+            }
+            $queryUrls[] = $query;
+        }
+        $select->setAttribute('data-urls',$queryUrls);
+    }
+    
+    public function populateValues($data)
+    {       
+        parent::populateValues(array_merge(
+                $data,
+                ['filters' => array_keys($data)]
+        ));
     }
 }

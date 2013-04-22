@@ -1,5 +1,23 @@
 $(function() {
     
+    $(".chzn-select").chosen();
+    $('#filters_chzn input').hide();
+    var url = $.parseJSON($('#filters').attr('data-urls'));
+    $('#filters_chzn .chzn-drop').hide();
+    $('#filters_chzn').on('mousedown mouseup',function(e){
+        $(e.currentTarget).removeClass('chzn-container-active');
+    });
+    
+    var url = $.parseJSON($('#filters').attr('data-urls'));
+    
+    //select element (from chosen)
+    $("a.search-choice-close").click(function(e){
+        var rel = $(e.currentTarget).attr('rel');
+        href = url[rel];
+        new Spinner(opts).spin(target);
+        window.location.href = href;
+    });
+    
     
     var loadingIconAndGoToRef = function(href){
         $('.modal').modal({
