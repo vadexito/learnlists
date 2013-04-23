@@ -123,7 +123,7 @@ window.LearnMain = Backbone.Model.extend({
         var answerType = this.model.get('answerType');
         this.set({
             'nb_question': this.currentRound.get('roundOrder').length,
-            'tip': this.questions.collection.get(this.model.get('questionId')).get('tip'),
+            'comment': this.questions.collection.get(this.model.get('questionId')).get('tip'),
             'maxPoint': this.get('maxPoint')+ _.max(_.values(this.currentRound.answerTypePointTable)),
             'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')]
         });
@@ -227,20 +227,21 @@ window.LearnMain = Backbone.Model.extend({
             'text': question.get('text')
         });
         this.attributes.answer = '';
-        this.attributes.tip = '';
+        this.attributes.comment = '';
         
     },
     
     defaults: {
         text:'',
         answer:'',
-        tip:'',
+        comment:'',
         
         round_nb:'',
         round_total:'',
         title_list:'',
         
         nb_question:'',
+        nb_questions:'',
         nb_perfect_answering:0,
         nb_average_answering:0,
         nb_bad_answering:0,

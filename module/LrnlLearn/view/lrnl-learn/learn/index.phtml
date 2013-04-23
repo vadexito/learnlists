@@ -5,43 +5,96 @@ $this->headTitle($title);?>
 <input name="id" type="hidden" data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-maxRound="<?php echo $maxRound?>" id="listId" value="<?php echo $listId ?>">
 <script id="layout-template" type="text/html">
     <div class="row-fluid">
-        <h3 id="title_list"><%= title_list %></h3>
-    </div>
-    <div class="row-fluid">
-        <div class="span9"> 
-            <div class="row-fluid" id="answer_show" style="display:none"></div>
-            <div class="row-fluid" id="question_tip" style="display:none"></div>
-            <div class="row-fluid" id="central_area"></div>            
-            <div class="row-fluid" id="round-results" style="display:none"></div>
+        <div class="span9">
+            <div class="row-fluid" id="top-region"></div>
+            <div class="row-fluid" id="main-region"></div>
         </div>
-        <div class="span3">
-            <div class="row-fluid" id="question_follower"></div>
-            <div class="row-fluid" id="first_presentation_corner"></div>
-        </div>
+        <div class="span3" id="side-region"></div>
     </div>
 </script>
-<script id="title_pie-template" type="text/html">
-    <h4 id="round_show"><?php echo $this->translate('Round'); ?> <%= round_nb %> / <%= round_total %></h4>
-    <div class="row-fluid pie">
-        <input type="text" id="current_pie" class="pie">
+<script id="top_region-template" type="text/html">    
+    <div class="span6" id="left-top-region"></div>
+    <div class="span2" id="center-top-region"></div>
+    <div class="span2" id="right-top-region"></div>
+</script>
+<script id="main_region-template" type="text/html">
+    <div class="well">
+        <div class="row-fluid" id="question-region"></div>   
+        <div class="row-fluid">
+            <div class="span6" id="answer-region"></div>
+            <div class="span6" id="comment-region"></div>
+        </div>
     </div>
-    <div class="row-fluid pie">
-        <h3 class="pie title_pie" >
-            <?php echo $this->translate('Still'); ?> <%= nb_question %>
-        </h3>        
+    <div class="row-fluid" id="input-region"></div>
+    <div class="row-fluid">
+        <div class="offset7 span5" id="main_buttons-region"></div>
+    </div>
+</script>    
+<script id="side_region-template" type="text/html"> 
+    <div class="row-fluid" id="top-side-region"></div>
+    <div class="row-fluid" id="middle-side-region"></div>
+    <div class="row-fluid" id="bottom-side-region"></div>
+</script>    
+
+<script id="title_list-template" type="text/html">
+    <h3><%= title_list %></h3>
+</script>    
+<script id="round_number-template" type="text/html">
+    <span class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %> / <%= round_total %></span>
+</script>
+<script id="timer-template" type="text/html">
+    <div id="timer_knob"></div>
+</script>
+<script id="question-template" type="text/html">   
+    <div data-step="1" data-intro="<? echo $this->translate('Here you find the question'); ?>" id="question_asked_text"><%= text %></div>
+</script>
+<script id="answer-template" type="text/html">
+    <h4 id="answer_title" class="answer-region title" style="display:none"><?php echo $this->translate('Answer'); ?></h4>
+    <p class="answer_text answer-region" style="display:none"><%= answer %></p>
+</script>
+<script id="comment-template" type="text/html">
+    <h4 class="comment-region" style="display:none"><?php echo $this->translate('Comment'); ?></h4>
+    <p id="tip_text" class="comment-region" style="display:none"><%= comment %></p>
+</script>
+<script id="input-template" type="text/html">
+    <input name="id" type="hidden" id="listId" value="<?php echo $listId ?>">
+    <span class="control-group" id="answer-group">
+       <input data-step="2" data-intro="<? echo $this->translate('Here to submit your answer. If there are two answers to give, please give the first one and validate and then give the second one'); ?>" class="input-xxlarge" name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value=""/>
+    </span>
+    </script>
+<script id="main_buttons-template" type="text/html">
+    <div class="well">
+       <input data-step="3" data-intro="<? echo $this->translate('Then press the submit button (or press enter)'); ?>" name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-large btn-success button-answer" value="<?php echo $this->translate('Check'); ?>"/>
+        <a title="<?php echo $this->translate('Get the answer'); ?>" data-step="4" data-intro="<? echo $this->translate('Press this button if you want to see the answer. In this case you will get 0 points.'); ?>" id="question_asked_showanswerbutton" class="btn btn-danger btn-large button-answer">
+            <i class="icon-lightbulb"/> 
+        </a>
+       <a title="<?php echo $this->translate('Skip'); ?>" data-step="5" data-intro="<? echo $this->translate('Press this button if you want to skip this question. You will be asked automatically later.'); ?>" id="question_asked_nextbutton" class="btn btn-large btn-primary button-answer" data-text-toggle="<?php echo $this->translate('Next'); ?>">
+            <i class="icon-repeat icon-chevron-right"></i>
+        </a>
+    </div>
+</script>
+<script id="question_follower-template" type="text/html">
+    <span class="label label-important" >
+            <?php echo $this->translate('Questions'); ?> <%= nb_question %> / <%= nb_questions %>
+    </span>    
+</script>
+<script id="score-template" type="text/html">
+    <div class="well">
         <h4><?php echo $this->translate('Score:'); ?> <%= score %> / <%= maxPoint %></h4>
         <p><%= comments %></p>
     </div>
 </script>
-<script id="current_stats-template" type="text/html">
-    <div class="progress bottom vertical progress-success">
-        <div id="perfect_answering_bar"class="bar" data-percentage="<%= nb_perfect_answering %>"></div>
-    </div>
-    <div class="progress bottom vertical progress-warning">
-        <div id="average_answering_bar"class="bar" data-percentage="<%= nb_average_answering %>"></div>
-    </div>
-    <div class="progress bottom vertical progress-danger">
-        <div id="bad_answering_bar" class="bar" data-percentage="<%= nb_bad_answering %>"></div>
+<script id="side_buttons-template" type="text/html">
+    <div class="pull-right">
+        <a title="<?php echo $this->translate('Reset rounds'); ?>" href="#" style="display:none" id="remove_rounds_button" class="btn reset_button">
+            <i class="icon-remove-circle icon-white"></i>
+        </a>
+        <a title="<?php echo $this->translate('Cancel round'); ?>" href="#" id="question_asked_cancelRound" class="btn">
+                <i class="icon-repeat"></i>
+        </a>
+        <a title ="<?php echo $this->translate('Again'); ?>" href="#" style="display:none" id="question_asked_resetbutton" class="btn reset_button">
+            <i class="icon-repeat"></i>
+        </a>
     </div>
 </script>
 <script id="results-template" type="text/html">
@@ -69,45 +122,45 @@ $this->headTitle($title);?>
     <th><%= badanswer %></th>            
     <th><%= notdone %></th>            
 </script>
-<script id="asking_question-template" type="text/html">    
-    <div id="question_asked_text"><%= text %></div>            
-    <form action="" method="post" name="questionAskForm" class="well well-small form-inline" id="questionAskForm">
-        <input name="id" type="hidden" id="listId" value="<?php echo $listId ?>">        
-        <span class="control-group" id="answer-group">
-            <input class="input-xlarge" name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value=""/>
-        </span>
-        <input name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-large btn-success button-answer" value="<?php echo $this->translate('Check'); ?>"/>
-    </form>    
-    <div class="row-fluid">
-        <div class="offset8 span2">
-          <a id="question_asked_nextbutton" class="btn btn-block btn-primary button-answer" data-text-toggle="<?php echo $this->translate('Next'); ?>"><?php echo $this->translate('Skip'); ?></a>
-        </div>
-        <div class="span2">
-           <a id="question_asked_showanswerbutton" class="btn btn-danger btn-block button-answer"><?php echo $this->translate('Answer?'); ?></a>
-        </div>
-    </div>
-</script>
-<script id="answer_show-template" type="text/html">
-    <h4 id="answer_title" class="title"><?php echo $this->translate('Answer'); ?></h4>
-    <p class="answer_text"><%= answer %></p>
-</script>
-<script id="nav_bar_question-template" type="text/html">
-    <a href="#" style="display:none" id="question_asked_resetbutton" class="btn btn-block btn-success reset_button">
-            <i class="icon-repeat icon-white"></i> <?php echo $this->translate('Again'); ?>
-    </a>
-    <a href="#" id="question_asked_cancelRound" class="btn btn-block">
-            <i class="icon-remove-sign"></i> <?php echo $this->translate('Cancel round'); ?>
-    </a>
-    <a href="#" style="display:none" id="remove_rounds_button" class="btn btn-block btn-danger reset_button">
-            <i class="icon-remove-circle icon-white"></i> <?php echo $this->translate('Reset rounds'); ?>
-    </a>
-</script>
-<script id="tip-template" type="text/html">
-    <h4 class="tip"><?php echo $this->translate('Tip'); ?></h4>
-    <p id="tip_text" class="tip"><%= tip %></p>
-</script>
+
 <script id="noresult-template" type="text/html">
     <p>
         <?php echo $this->zfcUserIdentity()? $this->translate('You did not yet finished one round!') : $this->translate('Please log In if you want to get more detailed results'); ?>
     </p>
 </script>
+
+
+<a href="#score-help" role="button" class="btn" data-toggle="modal"><?php echo $this->translate('How is your score calculated?'); ?></a>
+ 
+<!-- Modal -->
+<div id="score-help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"> <?php echo $this->translate('How is your score calculated?'); ?></h3>
+  </div>
+  <div class="modal-body">
+      <p> <?php echo $this->translate('The score depends on your ability to give the correct answer <strong>quickly</strong> and <strong>with no mistakes</strong>.'); ?>
+      <p> <?php echo $this->translate('After each question you will receive :'); ?></p>
+    <ul>
+        <li>
+            <?php echo $this->translate('+4 points if you answer correctly in less than 10 seconds'); ?>
+        </li>
+        <li>
+             <?php echo $this->translate('+3 points if you answer correctly in more than 10 seconds'); ?>
+        </li>
+        <li>
+             <?php echo $this->translate('+2 points if you answer correctly after having given one wrong answer'); ?>
+        </li>
+        <li>
+             <?php echo $this->translate('+1 points if you answer correctly after having given more than one wrong answer'); ?>
+        </li>
+        <li>
+             <?php echo $this->translate('0 point if you have asked for the answer'); ?>
+        </li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true"> <?php $this->translate('Go back to learning'); ?></button>
+  </div>
+</div>
+<button class="btn" id="introjs_start_btn">start introjs</button>

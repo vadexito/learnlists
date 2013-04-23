@@ -244,8 +244,10 @@ return [
                 '@marionette_js',
                 '@jqknob_js',
                 '@mvclearn_js',
+                '@introjs_js',
+                '@introjs_css',
+                '@flippy_js',
                 '@global_js',
-                '@flippy_js'
             ],
             'listquests/list/edit' => [
                 '@global_js'
@@ -310,6 +312,7 @@ return [
                             'components/bootstrap/docs/assets/js/bootstrap-collapse.js',
                             'components/bootstrap/docs/assets/js/bootstrap-dropdown.js',
                             'components/bootstrap/docs/assets/js/bootstrap-button.js',
+                            'components/bootstrap/docs/assets/js/bootstrap-transition.js',
                         ],
                     ],
                     'global_js' => [
@@ -361,6 +364,16 @@ return [
                             'components/chosen/chosen/chosen.css',
                         ],
                     ],
+                    'introjs_js' => [
+                        'assets' => [
+                            'components/intro.js/minified/intro.min.js',
+                        ],
+                    ],
+                    'introjs_css' => [
+                        'assets' => [
+                            'components/intro.js/minified/introjs.min.css',
+                        ],
+                    ],                    
                     'base_images' => [
                         'assets' => [
                             'images/*.png',
