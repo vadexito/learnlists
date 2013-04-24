@@ -136,6 +136,7 @@ window.LearnMain = Backbone.Model.extend({
             this.set({
                 'checkMessageTitle': 'That is right'
             });
+            console.log('event learn:proceedAnsweredQuestion');
             learnMVC.vent.trigger("learn:proceedAnsweredQuestion");
         //if only a part of the answer has been given
         } else if (typeof result === 'number'){
@@ -177,6 +178,7 @@ window.LearnMain = Backbone.Model.extend({
         } 
         
         this.model.set('answer_asked',true);
+        console.log('event learn:proceedAnsweredQuestion');
         learnMVC.vent.trigger("learn:proceedAnsweredQuestion"); 
     },
     

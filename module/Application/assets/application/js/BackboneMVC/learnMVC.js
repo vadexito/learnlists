@@ -88,6 +88,15 @@ learnMVC.addInitializer(function(options){
             comments:'+4 points for your quick and right answer'
         };
         model.set(optionsDemo);
+//        $('#countdown').val(7);
+//        $('#countdown').knob({
+//            'min':0,
+//            'max':10,
+//            'step':1,
+//            'readOnly':true,
+//            'width':100,
+//            'height':100
+//        });
         learnMVC.initLayouts(model);
         
         introJs().oncomplete(function() { 

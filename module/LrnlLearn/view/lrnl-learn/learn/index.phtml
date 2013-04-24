@@ -31,20 +31,21 @@ $this->headTitle($title);?>
     </div>
 </script>    
 <script id="side_region-template" type="text/html"> 
-    <div class="row-fluid" id="top-side-region"></div>
+    <div data-step="10" data-intro="<? echo $this->translate('You have 10 seconds to answer'); ?>" class="row-fluid" id="top-side-region"></div>
     <div class="row-fluid" id="middle_top-side-region"></div>
     <div class="row-fluid" id="middle-side-region"></div>
     <div class="row-fluid" id="bottom-side-region"></div>
 </script>    
 
 <script id="title_list-template" type="text/html">
-    <h3 data-step="1" data-intro="<? echo $this->translate('Here the list you have choosen'); ?>"id="title_list"><%= title_list %></h3>
+    <h3 data-step="1" data-intro="<? echo $this->translate('The list you have choosen'); ?>"id="title_list"><%= title_list %></h3>
 </script>    
 <script id="round_number-template" type="text/html">
-    <span data-step="8" data-intro="<? echo $this->translate('Here you see your round number, it means how much time you did this list already. This function is available only if your are logged in.'); ?>" class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %> / <%= round_total %></span>
+    <span data-step="8" data-intro="<? echo $this->translate('You can do several rounds of the same list, you will see how many you did already.This function is available only if your are logged in since it will save your progress and adapt the method of asking.'); ?>" class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %> / <%= round_total %></span>
 </script>
 <script id="timer-template" type="text/html">
     <input type="text" id="countdown">
+    <div type="text" id="timer"></div>
 </script>
 <script id="question-template" type="text/html">   
     <div data-step="2" data-intro="<? echo $this->translate('Here you find the question you have to answer or containing missing element'); ?>" id="question_asked_text"><%= text %></div>
@@ -114,16 +115,19 @@ $this->headTitle($title);?>
     </div>
 </script>
 <script id="results-template" type="text/html">
-    <h3><?php echo $this->translate('Your results'); ?></h3>
+    <h4><?php echo $this->translate('Score'); ?></h4>
+    <h4><%= score %> (max : <%= maxPoint %> for <%= nb_questions %> questions)</h4>
     <table class="table" id="table_results">
         <thead id="head_table_results">
             <tr>
                 <th><?php echo $this->translate('Round'); ?></th>
-                <th><?php echo $this->translate('Final Note'); ?></th>
-                <th><?php echo $this->translate('Perfect'); ?></th>
-                <th><?php echo $this->translate('Average'); ?></th>
-                <th><?php echo $this->translate('Bad'); ?></th>
-                <th><?php echo $this->translate('Not done'); ?></th>
+                <th><?php echo $this->translate('Score'); ?></th>
+                <th><?php echo $this->translate('4 points'); ?></th>
+                <th><?php echo $this->translate('3 points'); ?></th>
+                <th><?php echo $this->translate('2 points'); ?></th>
+                <th><?php echo $this->translate('1 points'); ?></th>
+                <th><?php echo $this->translate('0 point'); ?></th>
+                <th><?php echo $this->translate('not done'); ?></th>
             </tr>
         </thead>
         <tbody id="body_table_results">
@@ -134,7 +138,9 @@ $this->headTitle($title);?>
     <th><%= roundinfo() %></th>
     <th><%= finalnote %></th>
     <th><%= perfectanswer %></th>
+    <th><%= averageplusanswer %></th>
     <th><%= averageanswer %></th>
+    <th><%= averageminusanswer %></th>
     <th><%= badanswer %></th>            
     <th><%= notdone %></th>            
 </script>

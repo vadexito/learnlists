@@ -54,7 +54,9 @@ window.Round = Backbone.Model.extend({
             this.set({
                 finalnote:totalPoint + '/' + totalPotentialPoint,
                 perfectanswer:perc(answerTypeNb[1],total),  
-                averageanswer:perc([answerTypeNb[2],answerTypeNb[3],answerTypeNb[4]],total),                      
+                averageplusanswer:perc(answerTypeNb[2],total),                      
+                averageanswer:perc(answerTypeNb[3],total),                      
+                averageminusanswer:perc(answerTypeNb[4],total),                      
                 badanswer:perc(answerTypeNb[5],total),  
                 notdone:perc(answerTypeNb['false'],total)  
             });
@@ -69,7 +71,9 @@ window.Round = Backbone.Model.extend({
     defaults:{
       finalnote:0,
       perfectanswer:0,  
+      averageplusanswer:0,  
       averageanswer:0,  
+      averageminusanswer:0,  
       badanswer:0,  
       notdone:0,
       duration:{days:0,hours:0,minutes:0,seconds:0},

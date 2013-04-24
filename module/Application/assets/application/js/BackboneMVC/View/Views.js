@@ -31,6 +31,7 @@ TimerView = Backbone.Marionette.ItemView.extend({
         
         learnMVC.vent.on('learn:initNewQuestion',function(){
             this.timeOut = false;
+            var self = this;
             $('#countdown').val(timeMax);
             $('#countdown').knob({
                 'min':0,
@@ -40,26 +41,21 @@ TimerView = Backbone.Marionette.ItemView.extend({
                 'width':100,
                 'height':100
             });
-            $('#countdown').trigger('change'); 
-            
+            $('#countdown').trigger('change');
+            var now = new Date();
+            var date = new Date(now.getTime()+timeMax* 1000) ;
             //count down
-            var self = this;
-            var id = this.model.model.get('questionId'); 
-            
-            for (var i = 1 ; i < timeMax + 1 ;i++){                
-                setTimeout(function() {                    
-                    if (self.timeOut === false && self.model.model.get('questionId') === id) {
-                        var val = $('#countdown').val();
-                        $('#countdown').val(val-1).trigger('change'); 
+            $('#countdown').countdown({
+                date: date,
+                render: function(time){
+                    this.update(date);
+                    if (self.timeOut === false){
+                        $('#countdown').val(time.sec);
+                        $('#countdown').trigger('change');
                     }
-                }, i*1000);                  
-            }
-            //on the end of the count down
-            setTimeout(function() {
-                var val = $('#countdown').val();
-                $('#countdown').val(val-1).trigger('change');  
-            }, timeMax*1000);
-            
+                    
+                }
+            });
         },this);
         
         learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){
@@ -216,6 +212,9 @@ CheckMessageView = Backbone.Marionette.ItemView.extend({
     initialize: function(){        
         learnMVC.vent.on('learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
             $('.checkMessage-view').hide();
+        },this);
+        learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){
+            $('.checkMessage-view').show();
         },this);
     }
 });
