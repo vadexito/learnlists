@@ -2,6 +2,19 @@ window.LearnMain = Backbone.Model.extend({
     
     initialize: function(){
         
+        learnMVC.vent.on("learn:start",this.start,this);
+        learnMVC.vent.on("learn:initNewRound",this.initNewRound,this);
+        learnMVC.vent.on("learn:initNewQuestion",this.initNewQuestion,this);
+        learnMVC.vent.on("learn:nextQuestion",this.nextQuestion,this);        
+        learnMVC.vent.on("learn:answerCheck",this.checkAnswer,this);        
+        learnMVC.vent.on("learn:showAnswer",this.provideAnswer,this);        
+        learnMVC.vent.on("learn:proceedAnsweredQuestion",this.proceedAnsweredQuestion,this);
+        learnMVC.vent.on("learn:roundCompleted",this.roundCompleted,this);        
+        
+        
+    },
+    
+    start: function(){
         var listId = this.get('listId');
         var loggedIn = this.get('loggedIn');        
         var maxRound = this.get('maxRound');        
@@ -20,9 +33,9 @@ window.LearnMain = Backbone.Model.extend({
             
             
             this.questions.collection.initQuestions(list.get('questions'));  
+            
             console.log('trigger learn:init');
             learnMVC.vent.trigger("learn:init");
-            
             
             this.set('title_list',list.get('title'));
             this.set('rules',list.get('rules'));
@@ -42,16 +55,6 @@ window.LearnMain = Backbone.Model.extend({
                 
             }
         },this)});
-    
-        learnMVC.vent.on("learn:initNewRound",this.initNewRound,this);
-        learnMVC.vent.on("learn:initNewQuestion",this.initNewQuestion,this);
-        learnMVC.vent.on("learn:nextQuestion",this.nextQuestion,this);        
-        learnMVC.vent.on("learn:answerCheck",this.checkAnswer,this);        
-        learnMVC.vent.on("learn:showAnswer",this.provideAnswer,this);        
-        learnMVC.vent.on("learn:proceedAnsweredQuestion",this.proceedAnsweredQuestion,this);
-        learnMVC.vent.on("learn:roundCompleted",this.roundCompleted,this);        
-        
-        
     },
     
     initNewRound:function () { 

@@ -1,6 +1,6 @@
 LearnListsLayout = Backbone.Marionette.Layout.extend({
     template: "#layout-template",
-    className:'row-fluid',
+    className:'row-fluid well',
     regions: {
       top           : '#top-region',
       main          : '#main-region',

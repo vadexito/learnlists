@@ -242,13 +242,13 @@ return [
             ],
             'learn/basic' => [
                 '@marionette_js',
-                '@jqknob_js',
-                '@mvclearn_js',
+                '@jqknob_js',                
                 '@introjs_js',
                 '@introjs_css',
                 '@countdown_js',
                 '@moment_js',
                 '@animate_css',
+                '@mvclearn_js',
                 '@global_js',
             ],
             'listquests/list/edit' => [

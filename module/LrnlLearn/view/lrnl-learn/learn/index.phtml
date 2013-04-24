@@ -1,7 +1,7 @@
 <?php
 $title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);?>
-<article class="well" id="questionMain"></article>
+<article id="questionMain"></article>
 <input name="id" type="hidden" data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-maxRound="<?php echo $maxRound?>" id="listId" value="<?php echo $listId ?>">
 <script id="layout-template" type="text/html">
     <div class="row-fluid">
@@ -38,16 +38,16 @@ $this->headTitle($title);?>
 </script>    
 
 <script id="title_list-template" type="text/html">
-    <h3 id="title_list"><%= title_list %></h3>
+    <h3 data-step="1" data-intro="<? echo $this->translate('Here the list you have choosen'); ?>"id="title_list"><%= title_list %></h3>
 </script>    
 <script id="round_number-template" type="text/html">
-    <span class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %> / <%= round_total %></span>
+    <span data-step="8" data-intro="<? echo $this->translate('Here you see your round number, it means how much time you did this list already. This function is available only if your are logged in.'); ?>" class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %> / <%= round_total %></span>
 </script>
 <script id="timer-template" type="text/html">
     <input type="text" id="countdown">
 </script>
 <script id="question-template" type="text/html">   
-    <div data-step="1" data-intro="<? echo $this->translate('Here you find the question'); ?>" id="question_asked_text"><%= text %></div>
+    <div data-step="2" data-intro="<? echo $this->translate('Here you find the question you have to answer or containing missing element'); ?>" id="question_asked_text"><%= text %></div>
 </script>
 <script id="answer-template" type="text/html">
     <h4 id="answer_title" class="answer-region title" style="display:none"><?php echo $this->translate('Answer'); ?></h4>
@@ -60,27 +60,27 @@ $this->headTitle($title);?>
 <script id="input-template" type="text/html">
     <input name="id" type="hidden" id="listId" value="<?php echo $listId ?>">
     <span class="control-group" id="answer-group">
-       <input data-step="2" data-intro="<? echo $this->translate('Here to submit your answer. If there are two answers to give, please give the first one and validate and then give the second one'); ?>" class="input-xxlarge" name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value=""/>
+       <input data-step="3" data-intro="<? echo $this->translate('Here to submit your answer. If there are several answers to give, please validate after each answer'); ?>" class="input-xxlarge" name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value=""/>
     </span>
     </script>
 <script id="main_buttons-template" type="text/html">
     <div class="well">
-       <input data-step="3" data-intro="<? echo $this->translate('Then press the submit button (or press enter)'); ?>" name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-large btn-success button-answer" value="<?php echo $this->translate('Check'); ?>"/>
-        <a title="<?php echo $this->translate('Get the answer'); ?>" data-step="4" data-intro="<? echo $this->translate('Press this button if you want to see the answer. In this case you will get 0 points.'); ?>" id="question_asked_showanswerbutton" class="btn btn-danger btn-large button-answer">
+       <input data-step="4" data-intro="<? echo $this->translate('Then press the submit button (or press enter)'); ?>" name="submit" type="submit" id="question_asked_submitbutton" class="btn btn-large btn-success button-answer" value="<?php echo $this->translate('Check'); ?>"/>
+        <a title="<?php echo $this->translate('Get the answer'); ?>" data-step="5" data-intro="<? echo $this->translate('Press this button if you want to see the answer. In this case you will get 0 points.'); ?>" id="question_asked_showanswerbutton" class="btn btn-danger btn-large button-answer">
             <i class="icon-lightbulb"/> 
         </a>
-       <a title="<?php echo $this->translate('Skip'); ?>" data-step="5" data-intro="<? echo $this->translate('Press this button if you want to skip this question. You will be asked automatically later.'); ?>" id="question_asked_nextbutton" class="btn btn-large btn-primary button-answer" data-text-toggle="<?php echo $this->translate('Next'); ?>">
+       <a title="<?php echo $this->translate('Skip'); ?>" data-step="6" data-intro="<? echo $this->translate('Press this button if you want to skip this question. You will be asked automatically later.'); ?>" id="question_asked_nextbutton" class="btn btn-large btn-primary button-answer" data-text-toggle="<?php echo $this->translate('Next'); ?>">
             <i class="icon-repeat icon-chevron-right"></i>
         </a>
     </div>
 </script>
 <script id="question_follower-template" type="text/html">
-    <span class="label label-important" >
+    <span data-step="7" data-intro="<? echo $this->translate('Here you find the number of question you have left'); ?>" class="label label-important" >
             <?php echo $this->translate('Questions'); ?> <%= nb_question %> / <%= nb_questions %>
     </span>    
 </script>
 <script id="check_message-template" type="text/html">
-    <div class="well">
+    <div data-step="9" data-intro="<? echo $this->translate('Here you will see if you are wrong or right and receive some comments taking into account you past results'); ?>" class="well">
         <h4 class="checkMessage-view"><%= checkMessageTitle %></h4>
         <p class="checkMessage-view"><%= comments %></p>
         <p class="checkMessage-view"><%= checkMessage %></p>
@@ -88,13 +88,13 @@ $this->headTitle($title);?>
     </div>
 </script>
 <script id="score-template" type="text/html">
-    <div class="well">
+    <div data-step="10" data-intro="<? echo $this->translate('Here is your score. Press on the help button to see how it is computed'); ?>" class="well">
         <h4><?php echo $this->translate('Score'); ?></h4>
         <h4><%= score %> (max : <%= maxPoint %>)</h4>
     </div>
 </script>
 <script id="side_buttons-template" type="text/html">
-    <div class="pull-right">
+    <div data-step="11" data-intro="<? echo $this->translate('Here are buttons so reset the round or to find some help'); ?>"class="pull-right">
         <a title="<?php echo $this->translate('Reset rounds'); ?>" href="#" style="display:none" id="remove_rounds_button" class="btn reset_button">
             <i class="icon-remove-circle icon-white"></i>
         </a>
@@ -173,5 +173,19 @@ $this->headTitle($title);?>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true"> <?php $this->translate('Go back to learning'); ?></button>
+  </div>
+</div>
+<!-- Modal -->
+<div id="start-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Learnlists</h3>
+  </div>
+  <div class="modal-body">
+    <p>You will soon start a new list, please take to time to understand how it works before using Learnlists…It takes 10 seconds!</p>
+  </div>
+  <div class="modal-footer">
+    <button id="start-learn-btn" class="btn" data-dismiss="modal" aria-hidden="true">Start directly</button>
+    <button id="seeHowItWorks-btn" class="btn btn-primary">10s to see how it works</button>
   </div>
 </div>
