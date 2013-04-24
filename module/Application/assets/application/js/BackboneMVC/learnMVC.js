@@ -13,7 +13,7 @@ learnMVC.addInitializer(function(options){
         saveRoundsWhenNotLogged : this.saveRoundsWhenNotLogged
     }); 
     
-    var initLayouts = function(){
+    learnMVC.initLayouts = function(){
         var layout = new LearnListsLayout({model:learnMain}); 
         learnMVC.layout = layout;
         learnMVC.main.show(layout);  
@@ -55,13 +55,17 @@ learnMVC.addInitializer(function(options){
         sideRegionLayout.middle.show(scoreView);
         sideRegionLayout.bottom.show(sideButtonsView);
         
+        learnMVC.topLayout = topRegionLayout;
+        learnMVC.mainLayout = mainRegionLayout;
+        learnMVC.sideLayout = sideRegionLayout;
+        
         console.log('init layouts');
     }
     
-    learnMVC.vent.on('learn:pre-initNewRound',initLayouts);
-    learnMVC.vent.on('learn:showResult',function(){
-        
+    learnMVC.vent.on('learn:pre-initNewRound',learnMVC.initLayouts);
+    learnMVC.vent.on('learn:showResult',function(){        
         learnMVC.layout.main.show(new ResultsView({model: learnMain}));
+        learnMVC.sideLayout.top.close();
     });
     
 });

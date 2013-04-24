@@ -230,7 +230,13 @@ SideButtonsView = Backbone.Marionette.ItemView.extend({
         'click #introjs_start_btn'             : 'startIntrojs',
         'click #remove_rounds_button'          : 'removeRounds',
         'click #question_asked_cancelRound'    : 'cancelRound',
-        'click #question_asked_resetbutton'    : function(e){e.preventDefault();learnMVC.vent.trigger("learn:initNewRound");}
+        'click #question_asked_resetbutton'    : function(e){
+            e.preventDefault();
+            console.log('trigger learn:pre-initNewRound');
+            learnMVC.vent.trigger('learn:pre-initNewRound');
+            console.log('trigger learn:initNewRound');
+            learnMVC.vent.trigger("learn:initNewRound");
+        }
     },
     startIntrojs: function(){
         introJs().start();
@@ -239,7 +245,11 @@ SideButtonsView = Backbone.Marionette.ItemView.extend({
     
     removeRounds: function(e){
         e.preventDefault(); 
+        console.log('trigger learn:removeRounds');
         learnMVC.vent.trigger("learn:removeRounds",this.model.questions.listId);
+        console.log('trigger learn:pre-initNewRound');
+        learnMVC.vent.trigger('learn:pre-initNewRound');
+        console.log('trigger learn:initNewRound');
         learnMVC.vent.trigger("learn:initNewRound");        
     },
 
@@ -248,13 +258,11 @@ SideButtonsView = Backbone.Marionette.ItemView.extend({
         $('#question-asking').hide();
         $(e.currentTarget).hide();
         $('.reset_button').show().focus();
+        console.log('tigger learn:showResult');
         learnMVC.vent.trigger("learn:showResult");
     },
     
     initialize: function(){
-
-       
-
 
         learnMVC.vent.on('learn:initNewRound',function(){
             $('#remove_rounds_button').hide();
