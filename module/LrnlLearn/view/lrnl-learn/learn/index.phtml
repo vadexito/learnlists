@@ -32,18 +32,19 @@ $this->headTitle($title);?>
 </script>    
 <script id="side_region-template" type="text/html"> 
     <div class="row-fluid" id="top-side-region"></div>
+    <div class="row-fluid" id="middle_top-side-region"></div>
     <div class="row-fluid" id="middle-side-region"></div>
     <div class="row-fluid" id="bottom-side-region"></div>
 </script>    
 
 <script id="title_list-template" type="text/html">
-    <h3><%= title_list %></h3>
+    <h3 id="title_list"><%= title_list %></h3>
 </script>    
 <script id="round_number-template" type="text/html">
     <span class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %> / <%= round_total %></span>
 </script>
 <script id="timer-template" type="text/html">
-    <div id="timer_knob"></div>
+    <input type="text" id="countdown">
 </script>
 <script id="question-template" type="text/html">   
     <div data-step="1" data-intro="<? echo $this->translate('Here you find the question'); ?>" id="question_asked_text"><%= text %></div>
@@ -78,10 +79,18 @@ $this->headTitle($title);?>
             <?php echo $this->translate('Questions'); ?> <%= nb_question %> / <%= nb_questions %>
     </span>    
 </script>
+<script id="check_message-template" type="text/html">
+    <div class="well">
+        <h4 class="checkMessage-view"><%= checkMessageTitle %></h4>
+        <p class="checkMessage-view"><%= comments %></p>
+        <p class="checkMessage-view"><%= checkMessage %></p>
+        
+    </div>
+</script>
 <script id="score-template" type="text/html">
     <div class="well">
-        <h4><?php echo $this->translate('Score:'); ?> <%= score %> / <%= maxPoint %></h4>
-        <p><%= comments %></p>
+        <h4><?php echo $this->translate('Score'); ?></h4>
+        <h4><%= score %> (max : <%= maxPoint %>)</h4>
     </div>
 </script>
 <script id="side_buttons-template" type="text/html">
@@ -95,6 +104,13 @@ $this->headTitle($title);?>
         <a title ="<?php echo $this->translate('Again'); ?>" href="#" style="display:none" id="question_asked_resetbutton" class="btn reset_button">
             <i class="icon-repeat"></i>
         </a>
+        <span class="dropdown">
+            <a data-toggle="dropdown" title ="<?php echo $this->translate('Help'); ?>" class="dropdown-toggle btn help_button"><i class="icon-question-sign"></i></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a id="introjs_start_btn" ><?php echo $this->translate('How does it work?'); ?></a></li>
+                <li><a data-toggle="modal" href="#score-help"><?php echo $this->translate('How is the score calculated?'); ?></a></li>
+            </ul>
+        </span>
     </div>
 </script>
 <script id="results-template" type="text/html">
@@ -128,10 +144,6 @@ $this->headTitle($title);?>
         <?php echo $this->zfcUserIdentity()? $this->translate('You did not yet finished one round!') : $this->translate('Please log In if you want to get more detailed results'); ?>
     </p>
 </script>
-
-
-<a href="#score-help" role="button" class="btn" data-toggle="modal"><?php echo $this->translate('How is your score calculated?'); ?></a>
- 
 <!-- Modal -->
 <div id="score-help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
@@ -163,4 +175,3 @@ $this->headTitle($title);?>
     <button class="btn" data-dismiss="modal" aria-hidden="true"> <?php $this->translate('Go back to learning'); ?></button>
   </div>
 </div>
-<button class="btn" id="introjs_start_btn">start introjs</button>
