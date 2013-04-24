@@ -246,7 +246,9 @@ return [
                 '@mvclearn_js',
                 '@introjs_js',
                 '@introjs_css',
-                '@flippy_js',
+                '@countdown_js',
+                '@moment_js',
+                '@animate_css',
                 '@global_js',
             ],
             'listquests/list/edit' => [
@@ -349,11 +351,6 @@ return [
                             'components/marionette/lib/backbone.marionette.min.js',
                         ],
                     ],
-                    'flippy_js' => [
-                        'assets' => [
-                            'application/js/lib/jquery.flippy.min.js',
-                        ],
-                    ],
                     'chosen_js' => [
                         'assets' => [
                             'components/chosen/chosen/chosen.jquery.min.js',
@@ -373,7 +370,22 @@ return [
                         'assets' => [
                             'components/intro.js/minified/introjs.min.css',
                         ],
-                    ],                    
+                    ],  
+                    'countdown_js' => [
+                        'assets' => [
+                            'components/countdown/jquery.countdown.js',
+                        ],
+                    ], 
+                    'moment_js' => [
+                        'assets' => [
+                            'components/moment/min/moment.min.js',
+                        ],
+                    ],                     
+                    'animate_css' => [
+                        'assets' => [
+                            'components/animate.css/animate.min.css',
+                        ],
+                    ],                     
                     'base_images' => [
                         'assets' => [
                             'images/*.png',

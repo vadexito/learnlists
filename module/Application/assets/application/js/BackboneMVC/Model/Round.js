@@ -126,8 +126,12 @@ window.Rounds = Backbone.Collection.extend({
                 //transform questionresults into a collection
                 rounds.each(function(round){                    
                     round.set('questionresults',new Questionresults(round.get('questionresults','')));                    
-                });                
-                learnMVC.vent.trigger("learn:initNewRound");                
+                }); 
+                console.log('trigger learn:pre-initNewRound');
+                learnMVC.vent.trigger("learn:pre-initNewRound"); 
+                console.log('trigger learn:initNewRound');
+                learnMVC.vent.trigger("learn:initNewRound"); 
+                
             }
         });
     },

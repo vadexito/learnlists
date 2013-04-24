@@ -63,7 +63,7 @@ window.Questionresult = Backbone.Model.extend({
         } else if ($.isArray(answerInDB)){            
             answersToCheck = answerInDB[answerPart];
         }
-        console.log(answerInDB);
+        
         //the answer is true   
         if (this.isAnswerRight(answerGiven,answersToCheck)){
             
@@ -78,13 +78,10 @@ window.Questionresult = Backbone.Model.extend({
             if ($.isArray(answerInDB)){ 
                 
                 var firstAnswer = $('.answer-location.hiddenanswer').first();
-                answerValue = firstAnswer.attr('data-answer');
-                firstAnswer.flippy({
-                    verso:'<span class="right-answer">'+answerValue+'</span>',
-                    direction:"LEFT",
-                    duration:"400"
-                });
-                firstAnswer.removeClass('hiddenanswer');                
+                var answerValue = firstAnswer.attr('data-answer');
+                
+                firstAnswer.removeClass('hiddenanswer').addClass('animated bounceInLeft');     
+                firstAnswer.html('<span class="right-answer">'+answerValue+'</span>');
                 answerPart++;
                 
                 if (answerInDB.length === answerPart){                    

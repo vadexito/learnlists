@@ -20,8 +20,9 @@ window.LearnMain = Backbone.Model.extend({
             
             
             this.questions.collection.initQuestions(list.get('questions'));  
-            
+            console.log('trigger learn:init');
             learnMVC.vent.trigger("learn:init");
+            
             
             this.set('title_list',list.get('title'));
             this.set('rules',list.get('rules'));
@@ -35,7 +36,10 @@ window.LearnMain = Backbone.Model.extend({
                 this.lastRounds.init(listId,maxRound);
             } else {
                 //no last round to init if not logged
-                learnMVC.vent.trigger("learn:initNewRound");
+                learnMVC.vent.trigger("learn:pre-initNewRound"); 
+                console.log('trigger initNewRound');
+                learnMVC.vent.trigger("learn:initNewRound"); 
+                
             }
         },this)});
     
@@ -50,6 +54,60 @@ window.LearnMain = Backbone.Model.extend({
         
     },
     
+    initNewRound:function () { 
+        
+        this.set('round_nb',this.lastRounds.models.length + 1);
+        
+        //create new Round       
+        this.currentRound = new Round({
+            listquestId: this.questions.listId,
+            startDate: {date:new Date()},
+            questionresults : new Questionresults(),
+            roundOrder: this.lastRounds.newRoundOrder(this.questions.collection), 
+            localDate:true
+        });
+        
+        this.set('nb_question',this.get('nb_questions'));
+        console.log('trigger learn:nextQuestion');
+        learnMVC.vent.trigger("learn:nextQuestion");
+        
+    },
+    
+    nextQuestion: function(){
+
+        var roundOrder = this.currentRound.get('roundOrder');
+        console.log(roundOrder);
+        if (roundOrder.length > 0) {   
+            console.log('trigger learn:initNewQuestion');
+            learnMVC.vent.trigger("learn:initNewQuestion",_.first(roundOrder));
+            
+        } else {
+            learnMVC.vent.trigger("learn:roundCompleted");
+        }
+    },
+    
+    initNewQuestion: function(questionId){
+            
+        //push the new id to the end of the array (in case the next button is pushed before the question is answered)
+        this.currentRound.get('roundOrder').shift();
+        this.currentRound.get('roundOrder').push(questionId);
+        this.set('comments','');
+        
+        var question = this.questions.collection.get(questionId);
+        this.model = new Questionresult({
+            startDate:new Date(),
+            answerPart:0,
+            questionId:questionId
+        });      
+        
+        this.set({
+            'text': question.get('text')
+        });
+        this.attributes.answer = '';
+        this.attributes.comment = '';
+        
+    },
+    
     roundCompleted: function(){
         if (this.get('loggedIn') === 'true' || this.get('saveRoundsWhenNotLogged') === true ){
             this.currentRound.saveDB();
@@ -60,16 +118,7 @@ window.LearnMain = Backbone.Model.extend({
 
     },
     
-    nextQuestion: function(){
-
-        var roundOrder = this.currentRound.get('roundOrder');
-        console.log(roundOrder);
-        if (roundOrder.length > 0) {   
-            learnMVC.vent.trigger("learn:initNewQuestion",_.first(roundOrder));
-        } else {
-            learnMVC.vent.trigger("learn:roundCompleted");
-        }
-    },
+    
     
     checkAnswer: function(answerGiven){
         var question = this.questions.collection.get(this.model.get('questionId'));
@@ -79,14 +128,31 @@ window.LearnMain = Backbone.Model.extend({
             answerInDB: question.get('answer'),
             answerPart: this.model.get('answerPart')
         });
-        
-        
 
-        if (result === true){
+        if (result === true){            
+            this.set({
+                'checkMessageTitle': 'That is right'
+            });
             learnMVC.vent.trigger("learn:proceedAnsweredQuestion");
         //if only a part of the answer has been given
         } else if (typeof result === 'number'){
+             this.set({
+                'checkMessageTitle': 'That is right',
+                'checkMessage': 'Next part of the answer now'
+            });
             this.model.set('answerPart',result);
+        } else {// wrong answer
+            this.set({
+                'checkMessageTitle': 'No',
+                'checkMessage': 'Try again'
+            });
+            var self = this;
+            setTimeout(function(){
+                self.set({
+                    'checkMessageTitle': '',
+                    'checkMessage': ''
+                });
+            },3000);
         }
     },
     
@@ -101,11 +167,9 @@ window.LearnMain = Backbone.Model.extend({
             //if it is a sentence with holes
             $(".answer-location").each(function(){ 
                 answer = $(this).attr('data-answer');
-                $(this).flippy({
-                    verso:'<span class="right-answer">'+answer+'</span>',
-                    direction:"LEFT",
-                    duration:"400"
-                });
+                $(this).removeClass('hiddenanswer').addClass('animated fadeIn'); 
+                $(this).html('<span class="right-answer">'+answer+'</span>');
+                
             });
         } 
         
@@ -127,34 +191,15 @@ window.LearnMain = Backbone.Model.extend({
             'maxPoint': this.get('maxPoint')+ _.max(_.values(this.currentRound.answerTypePointTable)),
             'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')]
         });
-
-        var total = this.get('nb_questions');
-        var perfect = this.get('nb_perfect_answering') * total/100,
-            average = this.get('nb_average_answering') * total/100,
-                bad = this.get('nb_bad_answering') * total/100;
-
-        switch(answerType){
-            case '1':
-                perfect++;
-                break;
-            case '2':
-                average++;
-                break;
-            case '3':
-                average++;
-                break;
-            case '4':
-                average++;
-                break;
-            case '5':
-                bad++;
-                break;
-            default:                    
-        }
+        var checkMessages = {
+            '1': '<span class="badge">+ 4pt</span> Perfect : quick and right',
+            '2': '<span class="badge">+ 3pt</span> Almost perfect, be quicker next time',
+            '3': '<span class="badge">+ 2pt</span> One single mistake...',
+            '4': '<span class="badge">+ 1pt</span> Despite several mistakes ',
+            '5': 'no point'
+        };
         this.set({
-            'nb_perfect_answering':perfect/total * 100,
-            'nb_average_answering':average/total  * 100,
-            'nb_bad_answering':bad/total * 100
+            'checkMessage': checkMessages[answerType]
         });
         
         if (this.lastRounds.models.length > 0 ){
@@ -186,50 +231,6 @@ window.LearnMain = Backbone.Model.extend({
         }
     },
     
-    initNewRound:function () { 
-        
-        this.set('round_nb',this.lastRounds.models.length + 1);
-        
-        //create new Round       
-        this.currentRound = new Round({
-            listquestId: this.questions.listId,
-            startDate: {date:new Date()},
-            questionresults : new Questionresults(),
-            roundOrder: this.lastRounds.newRoundOrder(this.questions.collection), 
-            localDate:true
-        });
-        
-        this.set('nb_question',this.get('nb_questions'));
-        
-        this.set({
-                'nb_perfect_answering':0,
-                'nb_average_answering':0,
-                'nb_bad_answering':0
-            });
-        learnMVC.vent.trigger("learn:nextQuestion");
-    },
-    
-    initNewQuestion: function(questionId){
-            
-        //push the new id to the end of the array (in case the next button is pushed before the question is answered)
-        this.currentRound.get('roundOrder').shift();
-        this.currentRound.get('roundOrder').push(questionId);
-        this.set('comments','');
-        
-        var question = this.questions.collection.get(questionId);
-        this.model = new Questionresult({
-            startDate:new Date(),
-            answerPart:0,
-            questionId:questionId
-        });      
-        
-        this.set({
-            'text': question.get('text')
-        });
-        this.attributes.answer = '';
-        this.attributes.comment = '';
-        
-    },
     
     defaults: {
         text:'',
@@ -242,10 +243,9 @@ window.LearnMain = Backbone.Model.extend({
         
         nb_question:'',
         nb_questions:'',
-        nb_perfect_answering:0,
-        nb_average_answering:0,
-        nb_bad_answering:0,
         score:0,
+        checkMessage:'',
+        checkMessageTitle:'',
         maxPoint:0,
         comments:''
     }

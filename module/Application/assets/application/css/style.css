@@ -343,27 +343,37 @@ question ask page general
     font-size: 2em;
 }
 
+#top-region label{
+    margin-top:0px;
+}
+
+#title_list{
+    margin-top:5px;
+    line-height: 0.5;
+}
+
+#side-region{
+    text-align:center;
+}
+#top-side-region{
+    margin-bottom:50px;
+}
+
+#middle_top-side-region .well{
+    height:120px;
+}
+
+
+
 /*=======================================
-question ask page / pie element
+question ask page / knob element
 =========================================*/
 
-input.pie{
+#countdown{
     border:0;
     background-color:inherit;
     box-shadow: none;
     -webkit-box-shadow: none;
-}
-
-div.pie.row-fluid{
-    text-align: center;
-}
-
-div.progress.vertical{
-    height:50px;
-}
-
-p.title_pie{
-   margin-top:5px; 
 }
 
 /*=======================================

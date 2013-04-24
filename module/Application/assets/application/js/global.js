@@ -1,18 +1,5 @@
 $(function() {
     
-    $('#introjs_start_btn').click(function(){introJs().start();});
-    
-    if (typeof introJs != 'undefined'){
-       introJs().oncomplete(function() {
-            alert("end of introduction");
-        });
-        introJs().onexit(function() {
-            alert("exit of introduction");
-        }); 
-    }
-    
-    
-    
     $(".chzn-select").chosen();
     $('#filters_chzn input').hide();
     var url = $.parseJSON($('#filters').attr('data-urls'));

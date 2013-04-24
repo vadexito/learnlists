@@ -49,7 +49,7 @@ window.Questions = Backbone.Collection.extend({
                     //replace the %text by a question mark icon
                     var img = '<div class="answer-location hiddenanswer" data-answer="'
                         +solutionPart
-                        +'"><img class="img-find" src="/images/icons/find.png" alt="icon-hole" style="max-height:30px"/></div>';
+                        +'"><img class="img-find" src="/assets/images/icons/find.png" alt="icon-hole" style="max-height:30px"/></div>';
                     text = text.replace(patternInlineSolution,img);
                 }  
                 
