@@ -26,14 +26,13 @@ TimerView = Backbone.Marionette.ItemView.extend({
         countdown:'#countdown'
     },
     initialize: function(){
-        
         var timeMax = this.model.get('timePerQuestion');
-        
-        learnMVC.vent.on('learn:initNewQuestion',function(){
-            this.timeOut = false;
-            var self = this;
-            $('#countdown').val(timeMax);
-            $('#countdown').knob({
+        var self = this;
+        this.listenTo(learnMVC.vent,'learn:initNewQuestion',function(){
+            self.timeOut = false;
+            var countdown = $('#countdown');
+            countdown.val(timeMax);
+            countdown.knob({
                 'min':0,
                 'max':timeMax,
                 'step':1,
@@ -41,26 +40,25 @@ TimerView = Backbone.Marionette.ItemView.extend({
                 'width':100,
                 'height':100
             });
-            $('#countdown').trigger('change');
+            countdown.trigger('change');
             var now = new Date();
             var date = new Date(now.getTime()+10000000) ;
             //count down
-            $('#countdown').countdown({
+            countdown.countdown({
                 date: date,
                 render: function(){
                     if (self.timeOut === false){
-                        var val = $('#countdown').val();
-                        $('#countdown').val(val-1);
-                        $('#countdown').trigger('change');
+                        var val = countdown.val();
+                        countdown.val(val-1);
+                        countdown.trigger('change');
                     }
                 }
             });
-        },this);
+        });
         
-        learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){
-            console.log('i');
-            this.timeOut = true;            
-        },this);
+        this.listenTo(learnMVC.vent,'learn:proceedAnsweredQuestion',function(){            
+            self.timeOut = true;            
+        });
     }
 });
 
@@ -70,6 +68,7 @@ QuestionView = Backbone.Marionette.ItemView.extend({
     modelEvents:{
         'change:text' : function(){
             this.render();
+            console.log('change text of questionview');
         }
     }
 });
@@ -82,9 +81,9 @@ AnswerView = Backbone.Marionette.ItemView.extend({
         }
     },
     initialize: function(){        
-        learnMVC.vent.on('learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
+        this.listenTo(learnMVC.vent,'learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
             $('.answer-region').hide();
-        },this);
+        });
     }
 });
 CommentView = Backbone.Marionette.ItemView.extend({
@@ -96,9 +95,9 @@ CommentView = Backbone.Marionette.ItemView.extend({
         }
     },
     initialize: function(){        
-        learnMVC.vent.on('learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
+        this.listenTo(learnMVC.vent,'learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
             $('.comment-region').hide();
-        },this);
+        });
     }
 });
 InputView = Backbone.Marionette.ItemView.extend({
@@ -108,13 +107,13 @@ InputView = Backbone.Marionette.ItemView.extend({
     },
     initialize: function(){
         
-        learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){             
+        this.listenTo(learnMVC.vent,'learn:proceedAnsweredQuestion',function(){             
             $('#question_asked_answer').attr('readonly','readonly');
-        },this);
+        });
         
-        learnMVC.vent.on('learn:initNewQuestion',this.initNewQuestion,this);
-        learnMVC.vent.on('learn:answerSuccess',this.showSuccess,this);
-        learnMVC.vent.on('learn:answerError',this.showError,this);
+        this.listenTo(learnMVC.vent,'learn:initNewQuestion',this.initNewQuestion);
+        this.listenTo(learnMVC.vent,'learn:answerSuccess',this.showSuccess);
+        this.listenTo(learnMVC.vent,'learn:answerError',this.showError);
     },
     
     initNewQuestion: function(){        
@@ -156,18 +155,18 @@ MainButtonsView = Backbone.Marionette.ItemView.extend({
         answerButtons   : '.button-answer'
     },
     initialize: function(){
-        
-        learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){             
+        this.listenTo(learnMVC.vent,'learn:proceedAnsweredQuestion',function(){  
+            
             $('#question_asked_showanswerbutton').attr('disabled','disabled');
             $('#question_asked_submitbutton').attr('disabled','disabled');
             $('#question_asked_nextbutton').attr('title',$('#question_asked_nextbutton').attr('data-text-toggle'));
-        },this);
+        });
         
-        learnMVC.vent.on('learn:initNewQuestion',this.initNewQuestion,this);
+        this.listenTo(learnMVC.vent,'learn:initNewQuestion',this.initNewQuestion);
     },
     
     initNewQuestion: function(){
-        
+        console.log('init newquestion from main buttons');
         $('.button-answer').removeAttr('disabled');
         $('#answer-group').removeClass('error').removeClass('success');
     },
@@ -182,7 +181,6 @@ MainButtonsView = Backbone.Marionette.ItemView.extend({
 
     checkAnswer: function(e){
         e.preventDefault(); 
-        console.log('i');
         learnMVC.vent.trigger("learn:answerCheck",$('#question_asked_answer').val());
     },
 
@@ -210,12 +208,12 @@ CheckMessageView = Backbone.Marionette.ItemView.extend({
             'change:checkMessage change:checkMessageTitle change:comments' : 'render'
     },
     initialize: function(){        
-        learnMVC.vent.on('learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
+        this.listenTo(learnMVC.vent,'learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
             $('.checkMessage-view').hide();
-        },this);
-        learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){
+        });
+        this.listenTo(learnMVC.vent,'learn:proceedAnsweredQuestion',function(){
             $('.checkMessage-view').show();
-        },this);
+        });
     }
 });
 SideButtonsView = Backbone.Marionette.ItemView.extend({
@@ -257,34 +255,30 @@ SideButtonsView = Backbone.Marionette.ItemView.extend({
         $('#question-asking').hide();
         $(e.currentTarget).hide();
         $('.reset_button').show().focus();
-        console.log('tigger learn:showResult');
+        console.log('event learn:pre-showResult');
+        learnMVC.vent.trigger("learn:pre-showResult");
+        console.log('trigger learn:showResult');
         learnMVC.vent.trigger("learn:showResult");
     },
     
     initialize: function(){
-
-        learnMVC.vent.on('learn:initNewRound',function(){
+        var self = this;
+        this.listenTo(learnMVC.vent,'learn:initNewRound',function(){
             $('#remove_rounds_button').hide();
             $('#question_asked_resetbutton').hide();
-            $('question_asked_cancelRound').show()
-        },this);
+            $('#question_asked_cancelRound').show()
+        });
         
-        learnMVC.vent.on('learn:initNewQuestion',function(){             
-            $('#question_tip').hide();
-        },this);
-        
-        learnMVC.vent.on('learn:roundCompleted',function(){
+        this.listenTo(learnMVC.vent,'learn:showResult',function(){
             
-            if (this.model.get('loggedIn') === 'true'){
-                this.ui.removeRoundsButton.show();
+            if (self.model.get('loggedIn') === 'true'){
+                $('#remove_rounds_button').show();
             }
-            
-            if (this.model.lastRounds.models.length < this.model.get('maxRound')){
-                this.ui.newRoundButton.show().focus();
+            if (self.model.lastRounds.models.length < self.model.get('maxRound')){
+                $('#question_asked_resetbutton').addClass('btn-primary').show();
             }
-            
-            this.ui.cancelButton.hide();
-        },this); 
+            $('#question_asked_cancelRound').hide();
+        }); 
     }    
 });
 

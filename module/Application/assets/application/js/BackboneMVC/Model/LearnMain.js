@@ -11,6 +11,7 @@ window.LearnMain = Backbone.Model.extend({
         learnMVC.vent.on("learn:proceedAnsweredQuestion",this.proceedAnsweredQuestion,this);
         learnMVC.vent.on("learn:roundCompleted",this.roundCompleted,this);        
         
+        console.log('initialize Learnmain model');
         
     },
     
@@ -21,6 +22,9 @@ window.LearnMain = Backbone.Model.extend({
         if (!listId || !loggedIn || !maxRound){
             throw new Error("You must provide a listId, maxRound and loggedIn boolean in order to initialize Learnmain");;
         }
+        
+        this.set('score',0);
+        this.set('maxPoint',0);
         
         new Listquest({id: listId}).fetch({reset:true,success: $.proxy(function(list){
             
@@ -85,6 +89,7 @@ window.LearnMain = Backbone.Model.extend({
             learnMVC.vent.trigger("learn:initNewQuestion",_.first(roundOrder));
             
         } else {
+            console.log('trigger learn:roundCompleted');
             learnMVC.vent.trigger("learn:roundCompleted");
         }
     },
@@ -92,6 +97,7 @@ window.LearnMain = Backbone.Model.extend({
     initNewQuestion: function(questionId){
             
         //push the new id to the end of the array (in case the next button is pushed before the question is answered)
+        //console.log(this.currentRound);
         this.currentRound.get('roundOrder').shift();
         this.currentRound.get('roundOrder').push(questionId);
         this.set('comments','');
@@ -102,7 +108,6 @@ window.LearnMain = Backbone.Model.extend({
             answerPart:0,
             questionId:questionId
         });      
-        
         this.set({
             'text': question.get('text')
         });
@@ -117,6 +122,9 @@ window.LearnMain = Backbone.Model.extend({
             this.lastRounds.add(this.currentRound);
         }
         
+        console.log('event learn:pre-showResult');
+        learnMVC.vent.trigger("learn:pre-showResult");
+        console.log('event learn:showResult');
         learnMVC.vent.trigger("learn:showResult");
 
     },
@@ -134,14 +142,14 @@ window.LearnMain = Backbone.Model.extend({
 
         if (result === true){            
             this.set({
-                'checkMessageTitle': 'That is right'
+                'checkMessageTitle': 'Right'
             });
             console.log('event learn:proceedAnsweredQuestion');
             learnMVC.vent.trigger("learn:proceedAnsweredQuestion");
         //if only a part of the answer has been given
         } else if (typeof result === 'number'){
              this.set({
-                'checkMessageTitle': 'That is right',
+                'checkMessageTitle': 'Right',
                 'checkMessage': 'Next part of the answer now'
             });
             this.model.set('answerPart',result);
