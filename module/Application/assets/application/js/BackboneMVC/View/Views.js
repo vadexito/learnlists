@@ -58,6 +58,7 @@ TimerView = Backbone.Marionette.ItemView.extend({
         },this);
         
         learnMVC.vent.on('learn:proceedAnsweredQuestion',function(){
+            console.log('i');
             this.timeOut = true;            
         },this);
     }

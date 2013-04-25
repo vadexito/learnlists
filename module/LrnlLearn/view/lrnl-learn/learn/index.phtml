@@ -31,7 +31,7 @@ $this->headTitle($title);?>
     </div>
 </script>    
 <script id="side_region-template" type="text/html"> 
-    <div data-step="10" data-intro="<? echo $this->translate('You have 10 seconds to answer'); ?>" class="row-fluid" id="top-side-region"></div>
+    <div data-step="10" data-intro="<? echo $this->translate('You have limited time to answer'); ?>" class="row-fluid" id="top-side-region"></div>
     <div class="row-fluid" id="middle_top-side-region"></div>
     <div class="row-fluid" id="middle-side-region"></div>
     <div class="row-fluid" id="bottom-side-region"></div>
@@ -48,7 +48,7 @@ $this->headTitle($title);?>
     <div type="text" id="timer"></div>
 </script>
 <script id="question-template" type="text/html">   
-    <div data-step="2" data-intro="<? echo $this->translate('Here you find the question you have to answer or containing missing element'); ?>" id="question_asked_text"><%= text %></div>
+    <div data-step="2" data-intro="<? echo $this->translate('Question you have to answer or containing missing element'); ?>" id="question_asked_text"><%= text %></div>
 </script>
 <script id="answer-template" type="text/html">
     <h4 id="answer_title" class="answer-region title" style="display:none"><?php echo $this->translate('Answer'); ?></h4>
@@ -61,7 +61,7 @@ $this->headTitle($title);?>
 <script id="input-template" type="text/html">
     <input name="id" type="hidden" id="listId" value="<?php echo $listId ?>">
     <span class="control-group" id="answer-group">
-       <input data-step="3" data-intro="<? echo $this->translate('Here to submit your answer. If there are several answers to give, please validate after each answer'); ?>" class="input-xxlarge" name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value=""/>
+       <input data-step="3" data-intro="<? echo $this->translate('Submit your answer here. If there are several answers to give, please validate after each answer'); ?>" class="input-xxlarge" name="answer" type="text" id="question_asked_answer" placeholder="<?php echo $this->translate('Answer here'); ?>" autocomplete="off" value=""/>
     </span>
     </script>
 <script id="main_buttons-template" type="text/html">
@@ -76,12 +76,12 @@ $this->headTitle($title);?>
     </div>
 </script>
 <script id="question_follower-template" type="text/html">
-    <span data-step="7" data-intro="<? echo $this->translate('Here you find the number of question you have left'); ?>" class="label label-important" >
+    <span data-step="7" data-intro="<? echo $this->translate('Number of question you have left to complete a round'); ?>" class="label label-important" >
             <?php echo $this->translate('Questions'); ?> <%= nb_question %> / <%= nb_questions %>
     </span>    
 </script>
 <script id="check_message-template" type="text/html">
-    <div data-step="9" data-intro="<? echo $this->translate('Here you will see if you are wrong or right and receive some comments taking into account you past results'); ?>" class="well">
+    <div data-step="9" data-intro="<? echo $this->translate('Check if your answer is wrong or right and some comments according to your past results'); ?>" class="well">
         <h4 class="checkMessage-view"><%= checkMessageTitle %></h4>
         <p class="checkMessage-view"><%= comments %></p>
         <p class="checkMessage-view"><%= checkMessage %></p>
@@ -89,13 +89,13 @@ $this->headTitle($title);?>
     </div>
 </script>
 <script id="score-template" type="text/html">
-    <div data-step="10" data-intro="<? echo $this->translate('Here is your score. Press on the help button to see how it is computed'); ?>" class="well">
+    <div data-step="10" data-intro="<? echo $this->translate('Your score. Press on the help button to see how it is computed'); ?>" class="well">
         <h4><?php echo $this->translate('Score'); ?></h4>
         <h4><%= score %> (max : <%= maxPoint %>)</h4>
     </div>
 </script>
 <script id="side_buttons-template" type="text/html">
-    <div data-step="11" data-intro="<? echo $this->translate('Here are buttons so reset the round or to find some help'); ?>"class="pull-right">
+    <div data-step="11" data-intro="<? echo $this->translate('Reset the round and help buttons'); ?>"class="pull-right">
         <a title="<?php echo $this->translate('Reset rounds'); ?>" href="#" style="display:none" id="remove_rounds_button" class="btn reset_button">
             <i class="icon-remove-circle icon-white"></i>
         </a>
@@ -161,10 +161,10 @@ $this->headTitle($title);?>
       <p> <?php echo $this->translate('After each question you will receive :'); ?></p>
     <ul>
         <li>
-            <?php echo $this->translate('+4 points if you answer correctly in less than 10 seconds'); ?>
+            <?php echo $this->translate('+4 points if you answer correctly in the limited time'); ?>
         </li>
         <li>
-             <?php echo $this->translate('+3 points if you answer correctly in more than 10 seconds'); ?>
+             <?php echo $this->translate('+3 points if you answer correctly but overtime'); ?>
         </li>
         <li>
              <?php echo $this->translate('+2 points if you answer correctly after having given one wrong answer'); ?>
@@ -188,7 +188,7 @@ $this->headTitle($title);?>
     <h3 id="myModalLabel">Learnlists</h3>
   </div>
   <div class="modal-body">
-    <p>You will soon start a new list, please take to time to understand how it works before using Learnlists…It takes 10 seconds!</p>
+    <p>You will soon start a new list, please take to time to understand how it works before using Learnlists…It takes 15 seconds!</p>
   </div>
   <div class="modal-footer">
     <button id="start-learn-btn" class="btn" data-dismiss="modal" aria-hidden="true">Start directly</button>
