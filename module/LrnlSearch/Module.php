@@ -40,7 +40,7 @@ class Module implements
     {
         return [
             'factories' => [
-                'learnlists-form-search' =>  function($sm) {
+                'learnlists-form-search' =>  function() {
                     return new SearchForm();
                 },
                 'learnlists-form-filter' =>  function($sm) {

@@ -58,61 +58,33 @@ class SearchService
         
         foreach ($queryData as $filter => $values){
             //if it is the main search
-            $mainSeachElements = ['search','category'];
-            foreach ($mainSeachElements as $element){
-                if ($filter == $element && $values){
-                    if (!is_string($values)){
-                        throw new SearchException('You must provide a string for each element in the main search.');
-                    }       
-                    $termQuery = new Query\Term(new Index\Term(strtolower($values)));
-                    $query->addSubquery($termQuery,true);
-                }
-            }   
+            if ($filter === 'search' && $values){                
+                $values = explode(' ',$values);
+                $query->addSubquery($this->getQueryForTerms($values,NULL,true),true);
+            }
+            if ($filter === 'category' && $values){
+                $query->addSubquery($this->getQueryForTerms($values,$filter),true);
+            }
             
             //if it is a filter from the side
             $filterConfig = $this->getFilterConfig()->get($filter);
             if ($filterConfig !== NULL){
                 switch ($filterConfig['type']){
-                    case FiltersForm::$CHECKBOX :
-                        if (!is_array($values)){
-                            throw new SearchException('You must provide an array for each checkbox element in your url.');
-                        }                        
-                        $termQuery = new Query\MultiTerm();
-                        foreach ($values as $value){
-                            $term = new Index\Term(strtolower($value),$filter);
-                            $termQuery->addTerm($term);
-                        }
-                        $query->addSubquery($termQuery,true);                        
+                    case FiltersForm::$CHECKBOX :                       
+                        $query->addSubquery($this->getQueryForTerms($values,$filter),true);                        
                         break;
                     case FiltersForm::$RANGE :
-                        if (!is_array($values) || 
-                                (!isset($values['min']) || !isset($values['max']))){
-                            throw new SearchException('You must provide an array with min and max value');
-                        }
-                        $min = $this->convertNumToString($values['min']);
-                        $max = $this->convertNumToString($values['max']);                        
-                        $termMin = new Index\Term($min,$filter);
-                        $termMax = new Index\Term($max,$filter);
-                        $query->addSubquery(new Query\Range($termMin,$termMax,true),true);                        
+                        $query->addSubquery($this->getQueryForRange($values,$filter),true);     
                         break;
                     case FiltersForm::$SEARCH :
-                        if (!is_array($values) && count($values) === 1){
-                            throw new SearchException('You must provide an array for each search.');
-                        }
-                        foreach ($values as $value){
-                            //no search if no value
-                            if ($value){
-                                $term = new Index\Term(strtolower($value));
-                                $termQuery = new Query\Term($term);
-                                $query->addSubquery($termQuery,true);
-                            }
-                        }
+                        $query->addSubquery($this->getQueryForTerms($values),true);
                         break;
                     default:
                 }
             }
         }
         
+        //sort results and perform search
         try {
             if ($sortOptions !== NULL){                
                 $hits = $index->find($query,$sortOptions['name'],$sortOptions['type'],$sortOptions['direction']);
@@ -206,5 +178,40 @@ class SearchService
     {
         $this->_filterConfig = $filterConfig;
         return $this;
+    }
+    
+    
+    protected function getQueryForTerms($values,$filter = NULL,$operator = NULL)
+    {
+        if (!is_array($values) && !is_string($values)){
+            throw new SearchException('You must provide an array or a string for this element in the url.');
+        }
+        if (is_string($values)){
+            $values = [$values];
+        }
+        
+        $query = new Query\MultiTerm();
+        foreach ($values as $value){
+            $term = new Index\Term(strtolower($value),$filter);
+            $query->addTerm($term,$operator);
+        }
+        
+        return $query;
+    }
+    
+    protected function getQueryForRange(Array $values,$filter = NULL,$inbound = true)
+    {
+        if (!is_array($values) || 
+            (!isset($values['min']) || !isset($values['max']))){
+        throw new SearchException('You must provide an array with min and max value');
+        }
+        
+        $min = $this->convertNumToString($values['min']);
+        $max = $this->convertNumToString($values['max']);                        
+        $termMin = new Index\Term($min,$filter);
+        $termMax = new Index\Term($max,$filter);
+        $query = new Query\Range($termMin,$termMax,$inbound);
+        
+        return $query;
     }
 }

@@ -4,6 +4,8 @@ namespace LrnlSearch\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use LrnlSearch\Provider\ProvidesSearchService;
+use Zend\Paginator\Paginator;
+use Zend\Paginator\Adapter\ArrayAdapter;
 
 class SearchController extends AbstractActionController
 {
@@ -31,7 +33,7 @@ class SearchController extends AbstractActionController
         $filterForm->initUrlInFilters($queryData);        
         $filterForm->setData($queryData->toArray());
         
-        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($hits));
+        $paginator = new Paginator(new ArrayAdapter($hits));
         $paginator->setCurrentPageNumber($this->params()->fromRoute('page'));
         $paginator->setItemCountPerPage(10);
         
