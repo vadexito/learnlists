@@ -21,18 +21,22 @@ window.Questionresult = Backbone.Model.extend({
     
     urlRoot: "/learnlists-rest/questionresult",
     
-    setAnswerType: function(){
+    setAnswerType: function(timePerQuestion){ //time for one question in seconds
+        if (!timePerQuestion){
+            timePerQuestion = 10;
+        }
+        
         var answerType = true;
         var timeAnswer = new Date();
         var timeToAnswer = (timeAnswer - this.get('startDate'))/1000;
         
-        // 1: right answer provided in less than 30s
-        // 2: right answer provided in more than 30s
+        // 1: right answer provided in less than the time per question
+        // 2: right answer provided in more than the time per question
         // 3: right answer provided after at least one mistake
         // 4: right answer provided after more than one mistake
         // 5: no right answer provided and asked for answer 
         
-        if ((timeToAnswer < 30) && !this.get('multiple') 
+        if ((timeToAnswer < timePerQuestion) && !this.get('multiple') 
             && !this.get('answer_asked')){
             answerType = '1';
         } else if (!this.get('multiple') && !this.get('answer_asked')){

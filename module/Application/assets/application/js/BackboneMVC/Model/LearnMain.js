@@ -186,7 +186,7 @@ window.LearnMain = Backbone.Model.extend({
     
     proceedAnsweredQuestion: function(){
         this.currentRound.get('roundOrder').pop();
-        this.model.setAnswerType();
+        this.model.setAnswerType(this.get('timePerQuestion'));
         this.currentRound.get('questionresults').add(this.model);
         
         var answerType = this.model.get('answerType');

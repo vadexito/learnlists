@@ -15,7 +15,8 @@ class LearnController extends AbstractActionController
         
         return [
             'listId'    => $id,
-            'maxRound' => 5
+            'maxRound' => 5,
+            'timePerQuestion' => 15
         ];
     }
 }

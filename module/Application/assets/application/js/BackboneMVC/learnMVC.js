@@ -3,7 +3,7 @@ var learnMVC = new Marionette.Application();
 learnMVC.addRegions({
     main:'#questionMain'
 });
-learnMVC.addInitializer(function(options){
+learnMVC.addInitializer(function(){
     learnMVC.initLayouts = function(model){
         var layout = new LearnListsLayout({model:model}); 
         learnMVC.layout = layout;
@@ -61,7 +61,8 @@ learnMVC.addInitializer(function(options){
         listId:options.listId,
         loggedIn: options.loggedIn,
         maxRound: options.maxRound,
-        saveRoundsWhenNotLogged : this.saveRoundsWhenNotLogged
+        saveRoundsWhenNotLogged : this.saveRoundsWhenNotLogged,
+        timePerQuestion : options.timePerQuestion
     });
 
     $('#start-modal').modal();
@@ -125,6 +126,7 @@ $(function(){
             listId:$('#listId').val(),
             loggedIn: $('#listId').attr('data-loggedin'),
             maxRound: $('#listId').attr('data-maxRound'),
-            saveRoundsWhenNotLogged: false
+            saveRoundsWhenNotLogged: false,
+            timePerQuestion:$('#listId').attr('data-timePerQuestion')
     });
 });

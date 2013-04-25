@@ -27,7 +27,7 @@ TimerView = Backbone.Marionette.ItemView.extend({
     },
     initialize: function(){
         
-        var timeMax = 10;
+        var timeMax = this.model.get('timePerQuestion');
         
         learnMVC.vent.on('learn:initNewQuestion',function(){
             this.timeOut = false;
@@ -43,17 +43,16 @@ TimerView = Backbone.Marionette.ItemView.extend({
             });
             $('#countdown').trigger('change');
             var now = new Date();
-            var date = new Date(now.getTime()+timeMax* 1000) ;
+            var date = new Date(now.getTime()+10000000) ;
             //count down
             $('#countdown').countdown({
                 date: date,
-                render: function(time){
-                    this.update(date);
+                render: function(){
                     if (self.timeOut === false){
-                        $('#countdown').val(time.sec);
+                        var val = $('#countdown').val();
+                        $('#countdown').val(val-1);
                         $('#countdown').trigger('change');
                     }
-                    
                 }
             });
         },this);
