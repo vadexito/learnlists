@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-26 11:05+0100\n"
-"PO-Revision-Date: 2013-04-26 11:05+0100\n"
+"POT-Creation-Date: 2013-04-26 12:37+0100\n"
+"PO-Revision-Date: 2013-04-26 12:39+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -17,6 +17,69 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: ../../../module\n"
 "X-Poedit-SearchPath-2: ../../../config\n"
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:16
+msgid "Always perfect"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:17
+msgid "You did perfect in less than 10 seconds now"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:18
+msgid "Perfect, no more mistake like last time!"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:19
+msgid "Perfect, no more mistakes like last time!"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:20
+msgid "Perfect and you did not ask the answer like last time!"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:23
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:30
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:37
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:44
+msgid "Last time you were quicker"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:24
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:31
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:38
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:45
+msgid "Like last time, you are still too slow"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:25
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:32
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:39
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:46
+msgid "Great, no more mistake like last time but too slow!"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:26
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:33
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:40
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:47
+msgid "Great, no more mistakes like last time but too slow!"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:27
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:34
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:41
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:48
+msgid "Great event if too slow but you did not ask the answer like last time!"
+msgstr ""
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:54
+msgid "Right"
+msgstr "Richtig"
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:55
+msgid "Wrong"
+msgstr "Falsch"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:30
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:62
@@ -527,7 +590,7 @@ msgstr "Kontakt"
 
 #: ../view/layout/layout.phtml:51
 #: ../../../module/Application/view/layout/layout.phtml:51
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:109
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:108
 msgid "Help"
 msgstr "Hilfe"
 
@@ -642,7 +705,7 @@ msgstr ""
 "anzupassen."
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:44
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:123
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:122
 msgid "Round"
 msgstr "Runde"
 
@@ -679,7 +742,7 @@ msgid ""
 "Press this button if you want to see the answer. In this case you will get 0 "
 "points."
 msgstr ""
-"Sie können nach der Antwort fragen. Keine Pünkte werden in diesem Fall "
+"Sie können nach der Antwort fragen. Keine Punkte werden in diesem Fall "
 "verdient. "
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:73
@@ -710,73 +773,77 @@ msgid ""
 "past results"
 msgstr "Überprufung of die Antwort falsch oder richtig"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:92
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
+msgid "points"
+msgstr "Punkte"
+
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:91
 msgid "Your score. Press on the help button to see how it is computed"
 msgstr ""
 "der Punktstand. Sie können den Hilfeknopf benutzen, um zu wissen, wie die "
 "Punkte gerechnet werden."
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:93
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:118
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:124
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:92
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:117
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:123
 msgid "Score"
 msgstr "Punktstand"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:99
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:98
 msgid "Reset rounds"
 msgstr "Alle Runden löschen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:102
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:101
 msgid "Cancel round"
 msgstr "Neu anfangen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:105
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:104
 msgid "You can reset the current round to a new round"
 msgstr "Es is möglich die Runde jederzeit zurückzusetzen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:105
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:104
 msgid "Again"
 msgstr "Wiederholen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:108
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:107
 msgid "Get some help anytime"
 msgstr "Sie bekommen Hilfe (FAQ)"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:111
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:110
 msgid "How does it work?"
 msgstr "Wie funktioniert es?"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:112
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:111
 msgid "How is the score calculated?"
 msgstr "Wie ist der Punktstand gerechnet ?"
 
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:124
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:125
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:126
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:127
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:128
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:129
 msgid "point"
 msgid_plural "points"
 msgstr[0] "Punkt"
-msgstr[1] "Pünkte"
+msgstr[1] "Punkte"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:130
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:129
 msgid "not done"
 msgstr "Nicht gemacht"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:150
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:149
 msgid "You did not yet finished one round!"
 msgstr "Sie haben noch keine Runde beendet"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:150
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:149
 msgid "Please log In if you want to get more detailed results"
 msgstr "Bitte "
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:157
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:156
 msgid "How is your score calculated?"
 msgstr "Wie ist der Punktstand gerechnet ?"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:160
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:159
 msgid ""
 "The score depends on your ability to give the correct answer "
 "<strong>quickly</strong> and <strong>with no mistakes</strong>."
@@ -784,43 +851,43 @@ msgstr ""
 "Der Punktstand beruht darauf, dass Sie die richtige Antwort <strong>schnell</"
 "strong> und <strong>ohne Fehler</strong> angeben."
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:161
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:160
 msgid "After each question you will receive :"
 msgstr "Nach jeder beantworteter Frage bekommen Sie:"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:164
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:163
 msgid "+4 points if you answer correctly in the limited time"
 msgstr ""
 "+4 Punkte wenn die Antwort richtig ist und während der begrenzten Zeit "
 "angegeben wurde"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:167
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:166
 msgid "+3 points if you answer correctly but overtime"
 msgstr ""
 "+3 Punkte wenn die Antwort richtig ist aber ausser der begrenzten Zeit "
 "angegeben wurde"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:170
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:169
 msgid "+2 points if you answer correctly after having given one wrong answer"
 msgstr ""
 "+2 Punkte wenn die Antwort richtig ist aber nach fehlerhaften Versuchen "
 "angegeben wurde"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:173
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:172
 msgid ""
 "+1 points if you answer correctly after having given more than one wrong "
 "answer"
 msgstr "+1 Punkt "
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:176
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:175
 msgid "0 point if you have asked for the answer"
 msgstr "Keine Punkte falls Antwort gefragt wurde"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:181
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:180
 msgid "Go back to learning"
 msgstr "Zurück zum Lernen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:191
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:190
 msgid ""
 "You will soon start a new list, please take to time to understand how it "
 "works before using Learnlists. It takes 15 seconds!"
@@ -828,11 +895,11 @@ msgstr ""
 "Sie werden jetzt eine neue Liste anfangen, nehmen aber zuerst die Zeit zu "
 "verstehen wie Learnlists funktioniert. Das dauert nur 15 Sekunden!"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:194
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:193
 msgid "Start learning directly"
 msgstr "Das Lernen trotzdem starten"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:195
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:194
 msgid "Short starting guide"
 msgstr "Die kurze Einleitung ausführen"
 

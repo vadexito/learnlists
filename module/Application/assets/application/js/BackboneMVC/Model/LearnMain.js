@@ -133,7 +133,7 @@ window.LearnMain = Backbone.Model.extend({
     
     checkAnswer: function(answerGiven){
         var question = this.questions.collection.get(this.model.get('questionId'));
-
+        var translations = this.get('translatedCommentArray')['results'];
         var result = this.model.checkAnswer({
             answerGiven: answerGiven,
             answerInDB: question.get('answer'),
@@ -142,21 +142,19 @@ window.LearnMain = Backbone.Model.extend({
 
         if (result === true){            
             this.set({
-                'checkMessageTitle': 'Right'
+                'checkMessageTitle': translations['right']
             });
             console.log('event learn:proceedAnsweredQuestion');
             learnMVC.vent.trigger("learn:proceedAnsweredQuestion");
         //if only a part of the answer has been given
         } else if (typeof result === 'number'){
              this.set({
-                'checkMessageTitle': 'Right',
-                'checkMessage': 'Next part of the answer now'
+                'checkMessageTitle': translations['right']
             });
             this.model.set('answerPart',result);
         } else {// wrong answer
             this.set({
-                'checkMessageTitle': 'No',
-                'checkMessage': 'Try again'
+                'checkMessageTitle': translations['wrong']
             });
             var self = this;
             setTimeout(function(){
@@ -193,6 +191,7 @@ window.LearnMain = Backbone.Model.extend({
     
     
     proceedAnsweredQuestion: function(){
+        var translations = this.get('translatedCommentArray');
         this.currentRound.get('roundOrder').pop();
         this.model.setAnswerType(this.get('timePerQuestion'));
         this.currentRound.get('questionresults').add(this.model);
@@ -221,45 +220,8 @@ window.LearnMain = Backbone.Model.extend({
                               .get('questionresults')
                               .where({'questionId':this.model.get('questionId')}))
                               .get('answerType');
-            
-            var commentsValues = {
-                '1':{
-                    '1' : 'Always perfect',
-                    '2' : 'You did perfect in less than 10 seconds now',
-                    '3' : 'Perfect, no more mistake like last time!',
-                    '4' : 'Perfect, no more mistakes like last time!',
-                    '5' : 'Perfect and you did not ask the answer like last time!'
-                },
-                '2':{
-                    '1' : 'Last time you were quicker',
-                    '2' : 'Like last time, you are still too slow',
-                    '3' : 'Great, no more mistake like last time but too slow!',
-                    '4' : 'Great, no more mistakes like last time but too slow!',
-                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
-                },
-                '3':{
-                    '1' : 'Last time you were quicker',
-                    '2' : 'Like last time, you are still too slow',
-                    '3' : 'Great, no more mistake like last time but too slow!',
-                    '4' : 'Great, no more mistakes like last time but too slow!',
-                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
-                },
-                '4':{
-                    '1' : 'Last time you were quicker',
-                    '2' : 'Like last time, you are still too slow',
-                    '3' : 'Great, no more mistake like last time but too slow!',
-                    '4' : 'Great, no more mistakes like last time but too slow!',
-                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
-                },
-                '5':{
-                    '1' : 'Last time you were quicker',
-                    '2' : 'Like last time, you are still too slow',
-                    '3' : 'Great, no more mistake like last time but too slow!',
-                    '4' : 'Great, no more mistakes like last time but too slow!',
-                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
-                }
-            };
 
+            var commentsValues = translations['comments'];
             if (commentsValues[String(answerType)]){
                 this.set('comments',commentsValues[String(answerType)][String(lastAnswerType)] || '');
             }
@@ -282,6 +244,7 @@ window.LearnMain = Backbone.Model.extend({
         newPoints:'',
         checkMessageTitle:'',
         maxPoint:0,
-        comments:''
+        comments:'',
+        translatedCommentArray:{}
     }
 }); 

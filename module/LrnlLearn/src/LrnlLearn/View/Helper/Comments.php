@@ -9,6 +9,8 @@ class Comments extends AbstractHelper
 {
     public function __invoke($premium = false)
     {
+        //comments for each case of answer,and former anwer
+        
         $comments = [
             '1' => [
                 '1' => $this->getView()->translate('Always perfect'),
@@ -47,6 +49,11 @@ class Comments extends AbstractHelper
             ]
         ];
         
-        return Json::encode($comments);
+        return Json::encode([
+            'results' => [
+                'right' => $this->getView()->translate('Right'),
+                'wrong' => $this->getView()->translate('Wrong'),
+            ],
+            'comments' => $comments]);
     }
 }

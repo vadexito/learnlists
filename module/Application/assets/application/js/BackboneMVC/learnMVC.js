@@ -5,13 +5,7 @@ learnMVC.addRegions({
 });
 learnMVC.addInitializer(function(options){
     
-    learnMVC.model = new LearnMain({
-        listId:options.listId,
-        loggedIn: options.loggedIn,
-        maxRound: options.maxRound,
-        saveRoundsWhenNotLogged : this.saveRoundsWhenNotLogged,
-        timePerQuestion : options.timePerQuestion
-    });
+    learnMVC.model = new LearnMain(options.model);
     
     learnMVC.showLearn = function(optionsModel){
         var model = learnMVC.model;
@@ -174,11 +168,17 @@ learnMVC.addInitializer(function(options){
 
 $(function(){
     
+    var hiddenInput = $('#listId');
     learnMVC.start({
-            listId:$('#listId').val(),
-            loggedIn: $('#listId').attr('data-loggedin'),
-            maxRound: $('#listId').attr('data-maxRound'),
+        model: {
+            listId:hiddenInput.val(),
+            loggedIn: hiddenInput.attr('data-loggedin'),
+            maxRound: hiddenInput.attr('data-maxRound'),
             saveRoundsWhenNotLogged: false,
-            timePerQuestion:$('#listId').attr('data-timePerQuestion')
+            timePerQuestion:hiddenInput.attr('data-timePerQuestion'),
+            translatedCommentArray: $.parseJSON(hiddenInput.attr('data-comments'))
+       }
     });
+    console.log(hiddenInput.attr('data-comments'));             
+    
 });
