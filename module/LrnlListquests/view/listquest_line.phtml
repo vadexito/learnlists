@@ -31,20 +31,20 @@
                 </div>
                 <div class="span2">
                     <h2 class="text-right questionNb"><?php echo (int)$questionNb; ?></h2>
-                    <p class="text-right"><?php echo $this->translatePlural('question','questions',$questionNb); ?></p>
+                    <p class="text-right"><?php echo $this->translatePlural('question','questions',(int)$questionNb); ?></p>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span9">
                     <?php foreach ([
-                        ['name' => 'Rating','value' => $rating,'class'=>'badge-bubble'],
-                        ['name' => 'Level','value' => $level,'class'=>'badge badge-level']
+                        ['name' => _('rating'),'value' => $rating,'class'=>'badge-bubble'],
+                        ['name' => _('level'),'value' => $level,'class'=>'badge badge-level']
                     ] as $badge) : ?>
                     <span class="badge_item">
                         <span class="<?php echo $this->escapeHtml($badge['class']); ?>">
-                            <?php echo $this->escapeHtml($badge['value']); ?>
+                            <?php echo ucfirst($this->translate($this->escapeHtml($badge['value']))); ?>
                         </span>
-                        <span class="title_badge"><small><?php echo $this->translate($badge['name']);?></small></span>
+                        <span class="title_badge"><small><?php echo ucfirst($this->translate($badge['name']));?></small></span>
                     </span>
                     <?php endforeach; ?>
                     <span class="like_button">

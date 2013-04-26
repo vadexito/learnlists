@@ -95,17 +95,17 @@ $this->headTitle($title);?>
     </div>
 </script>
 <script id="side_buttons-template" type="text/html">
-    <div data-step="11" data-intro="<? echo $this->translate('Reset the round and help buttons'); ?>"class="pull-right">
-        <a title="<?php echo $this->translate('Reset rounds'); ?>" href="#" style="display:none" id="remove_rounds_button" class="btn reset_button">
+    <div class="pull-right">
+        <a  title="<?php echo $this->translate('Reset rounds'); ?>" href="#" style="display:none" id="remove_rounds_button" class="btn reset_button">
             <i class="icon-remove-circle icon-white"></i>
         </a>
-        <a title="<?php echo $this->translate('Cancel round'); ?>" href="#" id="question_asked_cancelRound" class="btn">
+        <a  title="<?php echo $this->translate('Cancel round'); ?>" href="#" id="question_asked_cancelRound" class="btn">
                 <i class="icon-repeat"></i>
         </a>
-        <a title ="<?php echo $this->translate('Again'); ?>" href="#" style="display:none" id="question_asked_resetbutton" class="btn reset_button">
+        <a data-step="11" data-intro="<? echo $this->translate('You can reset the current round to a new round'); ?>" title ="<?php echo $this->translate('Again'); ?>" href="#" style="display:none" id="question_asked_resetbutton" class="btn reset_button">
             <i class="icon-repeat"></i>
         </a>
-        <span class="dropdown">
+        <span data-step="12" data-intro="<? echo $this->translate('Get some help anytime'); ?>" class="dropdown">
             <a data-toggle="dropdown" title ="<?php echo $this->translate('Help'); ?>" class="dropdown-toggle btn help_button"><i class="icon-question-sign"></i></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a id="introjs_start_btn" ><?php echo $this->translate('How does it work?'); ?></a></li>
@@ -122,11 +122,11 @@ $this->headTitle($title);?>
             <tr>
                 <th><?php echo $this->translate('Round'); ?></th>
                 <th><?php echo $this->translate('Score'); ?></th>
-                <th><?php echo $this->translate('4 points'); ?></th>
-                <th><?php echo $this->translate('3 points'); ?></th>
-                <th><?php echo $this->translate('2 points'); ?></th>
-                <th><?php echo $this->translate('1 points'); ?></th>
-                <th><?php echo $this->translate('0 point'); ?></th>
+                <th><?php echo '4 '.$this->translatePlural('point','points',4); ?></th>
+                <th><?php echo '3 '.$this->translatePlural('point','points',3); ?></th>
+                <th><?php echo '2 '.$this->translatePlural('point','points',2); ?></th>
+                <th><?php echo '1 '.$this->translatePlural('point','points',1); ?></th>
+                <th><?php echo '0 '.$this->translatePlural('point','points',0); ?></th>
                 <th><?php echo $this->translate('not done'); ?></th>
             </tr>
         </thead>
@@ -188,10 +188,10 @@ $this->headTitle($title);?>
     <h3 id="myModalLabel">Learnlists</h3>
   </div>
   <div class="modal-body">
-    <p>You will soon start a new list, please take to time to understand how it works before using Learnlists…It takes 15 seconds!</p>
+    <p><?php echo $this->translate('You will soon start a new list, please take to time to understand how it works before using Learnlists. It takes 15 seconds!'); ?></p>
   </div>
   <div class="modal-footer">
-    <button id="start-learn-btn" class="btn" data-dismiss="modal" aria-hidden="true">Start directly</button>
-    <button id="seeHowItWorks-btn" class="btn btn-primary">15s starting guide</button>
+    <button id="start-learn-btn" class="btn" data-dismiss="modal" aria-hidden="true"><?php echo $this->translate('Start learning directly'); ?></button>
+    <button id="seeHowItWorks-btn" class="btn btn-primary"><?php echo $this->translate('Short starting guide'); ?></button>
   </div>
 </div>
