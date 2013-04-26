@@ -18,7 +18,8 @@ window.LearnMain = Backbone.Model.extend({
     start: function(){
         var listId = this.get('listId');
         var loggedIn = this.get('loggedIn');        
-        var maxRound = this.get('maxRound');        
+        var maxRound = this.get('maxRound'); 
+        
         if (!listId || !loggedIn || !maxRound){
             throw new Error("You must provide a listId, maxRound and loggedIn boolean in order to initialize Learnmain");;
         }
@@ -26,6 +27,7 @@ window.LearnMain = Backbone.Model.extend({
         this.set('score',0);
         this.set('maxPoint',0);
         
+        //fetch the list of questions
         new Listquest({id: listId}).fetch({reset:true,success: $.proxy(function(list){
             
             //init list of questions

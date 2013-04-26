@@ -1,6 +1,7 @@
 $(function() {
     
     $(".chzn-select").chosen();
+    
     $('#filters_chzn input').hide();
     var url = $.parseJSON($('#filters').attr('data-urls'));
     $('#filters_chzn .chzn-drop').hide();

@@ -1,14 +1,13 @@
-var learnMVC = new Marionette.Application();
+var learnMVC = new Backbone.Marionette.Application();
 
 learnMVC.addRegions({
     main:'#questionMain'
 });
+
 learnMVC.addInitializer(function(options){
-    
-    learnMVC.model = new LearnMain(options.model);
+    var model = new LearnMain(options.model);
     
     learnMVC.showLearn = function(optionsModel){
-        var model = learnMVC.model;
         if (optionsModel){
             model.set(optionsModel);
         }
@@ -72,7 +71,6 @@ learnMVC.addInitializer(function(options){
     
     learnMVC.showResults = function(optionsModel){
         
-        var model = learnMVC.model;
         if (optionsModel){
             model.set(optionsModel);
         }
@@ -107,11 +105,9 @@ learnMVC.addInitializer(function(options){
         views['topRegionLayout'].center.show(views['roundNumberView']);
         views['topRegionLayout'].right.show(views['questionFollowerView']);
         console.log('update layouts for results');
-    }  
-     
+    }
 });
 
-        
 learnMVC.addInitializer(function(options){
 
     $('#start-modal').modal();

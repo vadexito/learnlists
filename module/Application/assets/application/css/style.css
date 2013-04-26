@@ -134,7 +134,7 @@ header
     padding: 11px 19px;
 }
 
-#category_chzn a{
+#searchForm #category_chzn a{
     padding:9px;
     margin: 0 8px 0 8px;
     font-size: 17.5px;

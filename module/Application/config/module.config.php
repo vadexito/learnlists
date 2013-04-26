@@ -254,6 +254,9 @@ return [
             'listquests/list/edit' => [
                 '@global_js'
             ],
+            'listquests/list/add' => [
+                '@global_js'
+            ],
         ],
 
         'default' => [

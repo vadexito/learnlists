@@ -10,10 +10,11 @@ class Category extends Select
         parent::__construct($name);
         $this->setAttributes([
                 'id'    => 'category',
+                'class' => 'chzn-select',
             ]);
         $this->setOptions([
                 'value_options' => [
-                    '' => _('All categories'),
+                    '' => _('Please choose a category'),
                     //'English' => _('Foreign Languages - English'),
                     'German' => _('Foreign Languages - German'),
                     //'French' => _('Foreign Languages - French'),

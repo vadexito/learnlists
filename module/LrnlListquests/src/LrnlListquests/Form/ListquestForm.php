@@ -3,6 +3,7 @@
 namespace LrnlListquests\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element\Csrf;
 use LrnlListquests\Form\ListquestFieldset;
 use LrnlListquests\Entity\Listquest;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
@@ -31,6 +32,8 @@ class ListquestForm extends Form
         $listquestFieldset->remove('questions');
         $this->add($listquestFieldset);
         
+        $this->add(new Csrf('csrf'));
+   
         $this->add([
             'name' => 'submit',
             'attributes' => [
@@ -42,6 +45,7 @@ class ListquestForm extends Form
         ]);
         
         $this->setValidationGroup([
+            'csrf',
             'listquest' => [
                 'title',
                 'description',
@@ -49,7 +53,7 @@ class ListquestForm extends Form
                 'language',
                 'tags',
                 'level',
-                'rules'
+                'rules',                
             ],
         ]);
     }
