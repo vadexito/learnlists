@@ -1,19 +1,23 @@
 <?php
 $title = $this->translate('Edit question');
 $this->headTitle($title);
-?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-
-<?php
 $form->setAttribute('action', $this->url('listquests/question/edit',[
         'id'     => $this->id,
 ]));
 $form->prepare();
-
-echo $this->form()->openTag($form);
 $question = $form->get('question');
-echo $this->formHidden($question->get('id'));
-echo $this->formRow($question->get('text'));?>
+?>
+<?php if ($form->getMessages()): ?>
+<div class="alert alert-error">
+    <button class="close" data-dismiss="alert" type="button">×</button>
+    <strong><?php echo $this->translate('There were some errors. Please try again!'); ?></strong>
+</div>
+<?php endif; ?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php echo $this->form()->openTag($form); ?>
+<?php echo $this->formHidden($question->get('id'));?>
+<?php echo $this->formRow($question->get('text'));?>
 <span class="help-inline">
     (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Enter the text for the question. If this is a sentence to fill in, please use two "%" signs in order to specify answers.Example : He %was% not there %either%.'); ?>">?</a>)
 </span>

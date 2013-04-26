@@ -1,8 +1,9 @@
 <?php
 $title = $this->translate('Learn at LearnLists');
-$this->headTitle($title);?>
+$this->headTitle($title);
+?>
 <article id="questionMain"></article>
-<input name="id" type="hidden" data-comments='<?php echo $this->comments(); ?>' data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-timePerQuestion="<?php echo $timePerQuestion?>" data-maxRound="<?php echo $maxRound?>" id="listId" value="<?php echo $listId ?>">
+<input name="id" type="hidden" data-comments='<?php echo $this->comments(); ?>' data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-timePerQuestion="<?php echo $this->escapeHtml($timePerQuestion)?>" data-maxRound="<?php echo $this->escapeHtml($maxRound)?>" id="listId" value="<?php echo $listId ?>">
 <script id="layout-template" type="text/html">
     <div class="row-fluid">
         <div class="span9">

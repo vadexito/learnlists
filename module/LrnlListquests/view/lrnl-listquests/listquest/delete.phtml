@@ -1,8 +1,8 @@
 <?php
-
 $title = $this->translate('Delete List');
 $this->headTitle($title);
 ?>
+
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
 <p><?php $this->translate('Are you sure that you want to delete the whole list'); ?>: 
@@ -10,7 +10,7 @@ $this->headTitle($title);
 </p>
 <form action="<?php echo $this->url('listquests/list/delete', ['id' => $this->id]); ?>" method="post">
 <div>
-    <input type="hidden" name="id" value="<?php echo (int) $list->id; ?>" />
+    <input type="hidden" name="id" value="<?php echo (int)$list->id; ?>" />
     <div class="form-actions">
         <input type="submit" name="del" value="Yes" />
         <input type="submit" name="del" value="No" />

@@ -129,6 +129,13 @@ return [
                 'type'     => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
+                'text_domain' => 'default'
+            ],
+            [
+                'type'        => 'phpArray',
+                'base_dir'    => __DIR__ . '/../language/Zend',
+                'pattern'     => 'Zend_Validate.php',
+                'text_domain' => 'default',
             ],
         ],
     ],

@@ -1,7 +1,7 @@
 <li class="search_result_listquest_item">
     <div class="row-fluid ">
         <div class="span2">            
-             <img src="/assets/images/thumbnails/categories/<?php echo $category; ?>.jpg" title="<?php echo sprintf($this->translate('Category %s'),$category); ?>" alt="category" style="height:84px;width:124px;">
+             <img src="/assets/images/thumbnails/categories/<?php echo $this->escapeHtml($category); ?>.jpg" title="<?php echo sprintf($this->translate('Category %s'),$this->escapeHtml($category)); ?>" alt="category" style="height:84px;width:124px;">
         </div>
         <div class="span10">
             <div class="row-fluid">
@@ -38,13 +38,13 @@
                 <div class="span9">
                     <?php foreach ([
                         ['name' => _('rating'),'value' => $rating,'class'=>'badge-bubble'],
-                        ['name' => _('level'),'value' => $level,'class'=>'badge badge-level']
+                        ['name' => _('level'),'value' => $this->escapeHtml($level),'class'=>'badge badge-level']
                     ] as $badge) : ?>
                     <span class="badge_item">
                         <span class="<?php echo $this->escapeHtml($badge['class']); ?>">
                             <?php echo ucfirst($this->translate($this->escapeHtml($badge['value']))); ?>
                         </span>
-                        <span class="title_badge"><small><?php echo ucfirst($this->translate($badge['name']));?></small></span>
+                        <span class="title_badge"><small><?php echo $this->escapeHtml(ucfirst($this->translate($badge['name'])));?></small></span>
                     </span>
                     <?php endforeach; ?>
                     <span class="like_button">
