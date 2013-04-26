@@ -136,9 +136,9 @@ learnMVC.addInitializer(function(options){
         nb_questions:'20',
         score:'24 points',
         checkMessageTitle:'Excellent',
-        checkMessage:'You are becoming really better and better',
+        newPoints:'4',
         maxPoint:'25',
-        comments:'+4 points for your quick and right answer'
+        comments:'for your a quick and right answer'
     };
     learnMVC.showLearn(optionsDemo);
         

@@ -2,7 +2,7 @@
 $title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);?>
 <article id="questionMain"></article>
-<input name="id" type="hidden" data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-timePerQuestion="<?php echo $timePerQuestion?>" data-maxRound="<?php echo $maxRound?>" id="listId" value="<?php echo $listId ?>">
+<input name="id" type="hidden" data-comments="<?php echo $this->comments(); ?>" data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-timePerQuestion="<?php echo $timePerQuestion?>" data-maxRound="<?php echo $maxRound?>" id="listId" value="<?php echo $listId ?>">
 <script id="layout-template" type="text/html">
     <div class="row-fluid">
         <div class="span9">
@@ -83,9 +83,8 @@ $this->headTitle($title);?>
 <script id="check_message-template" type="text/html">
     <div data-step="9" data-intro="<? echo $this->translate('Check if your answer is wrong or right and some comments according to your past results'); ?>" class="well">
         <h4 class="checkMessage-view"><%= checkMessageTitle %></h4>
+        <p class="checkMessage-view"><span class="badge">+ <%= newPoints %> <?php echo $this->translate('points'); ?></span></p>
         <p class="checkMessage-view"><%= comments %></p>
-        <p class="checkMessage-view"><%= checkMessage %></p>
-        
     </div>
 </script>
 <script id="score-template" type="text/html">

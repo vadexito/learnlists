@@ -205,7 +205,7 @@ ScoreView = Backbone.Marionette.ItemView.extend({
 CheckMessageView = Backbone.Marionette.ItemView.extend({
     template: "#check_message-template",
     modelEvents:{
-            'change:checkMessage change:checkMessageTitle change:comments' : 'render'
+            'change:newPoints change:checkMessageTitle change:comments' : 'render'
     },
     initialize: function(){        
         this.listenTo(learnMVC.vent,'learn:initNewQuestion learn:roundCompleted learn:showResult',function(){

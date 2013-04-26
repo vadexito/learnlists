@@ -204,17 +204,18 @@ window.LearnMain = Backbone.Model.extend({
             'maxPoint': this.get('maxPoint')+ _.max(_.values(this.currentRound.answerTypePointTable)),
             'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')]
         });
-        var checkMessages = {
-            '1': '<span class="badge">+ 4pt</span> Perfect : quick and right',
-            '2': '<span class="badge">+ 3pt</span> Almost perfect, be quicker next time',
-            '3': '<span class="badge">+ 2pt</span> One single mistake...',
-            '4': '<span class="badge">+ 1pt</span> Despite several mistakes ',
-            '5': 'no point'
+        var newPoints = {
+            '1': '4',
+            '2': '3',
+            '3': '2',
+            '4': '1',
+            '5': '0'
         };
         this.set({
-            'checkMessage': checkMessages[answerType]
+            'newPoints': newPoints[answerType]
         });
         
+        //analysis using the past results
         if (this.lastRounds.models.length > 0 ){
             var lastAnswerType = _.first(_.last(this.lastRounds.models)
                               .get('questionresults')
@@ -230,6 +231,27 @@ window.LearnMain = Backbone.Model.extend({
                     '5' : 'Perfect and you did not ask the answer like last time!'
                 },
                 '2':{
+                    '1' : 'Last time you were quicker',
+                    '2' : 'Like last time, you are still too slow',
+                    '3' : 'Great, no more mistake like last time but too slow!',
+                    '4' : 'Great, no more mistakes like last time but too slow!',
+                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
+                },
+                '3':{
+                    '1' : 'Last time you were quicker',
+                    '2' : 'Like last time, you are still too slow',
+                    '3' : 'Great, no more mistake like last time but too slow!',
+                    '4' : 'Great, no more mistakes like last time but too slow!',
+                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
+                },
+                '4':{
+                    '1' : 'Last time you were quicker',
+                    '2' : 'Like last time, you are still too slow',
+                    '3' : 'Great, no more mistake like last time but too slow!',
+                    '4' : 'Great, no more mistakes like last time but too slow!',
+                    '5' : 'Great event if too slow but you did not ask the answer like last time!'
+                },
+                '5':{
                     '1' : 'Last time you were quicker',
                     '2' : 'Like last time, you are still too slow',
                     '3' : 'Great, no more mistake like last time but too slow!',
@@ -257,7 +279,7 @@ window.LearnMain = Backbone.Model.extend({
         nb_question:'',
         nb_questions:'',
         score:0,
-        checkMessage:'',
+        newPoints:'',
         checkMessageTitle:'',
         maxPoint:0,
         comments:''
