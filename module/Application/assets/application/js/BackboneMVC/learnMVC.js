@@ -115,7 +115,7 @@ learnMVC.addInitializer(function(options){
 learnMVC.addInitializer(function(options){
 
     $('#start-modal').modal();
-    $('#start-learn-btn').click(function(){
+    $('#start-learn-btn,#close-welcome').click(function(){
         console.log('trigger learn:start');
         learnMVC.vent.trigger("learn:start");
     });
@@ -179,6 +179,4 @@ $(function(){
             translatedCommentArray: $.parseJSON(hiddenInput.attr('data-comments'))
        }
     });
-    console.log(hiddenInput.attr('data-comments'));             
-    
 });
