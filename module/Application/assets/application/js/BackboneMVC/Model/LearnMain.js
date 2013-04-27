@@ -205,15 +205,9 @@ window.LearnMain = Backbone.Model.extend({
             'maxPoint': this.get('maxPoint')+ _.max(_.values(this.currentRound.answerTypePointTable)),
             'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')]
         });
-        var newPoints = {
-            '1': '4',
-            '2': '3',
-            '3': '2',
-            '4': '1',
-            '5': '0'
-        };
+        
         this.set({
-            'newPoints': newPoints[answerType]
+            'newPoints': translations['newPoints'][answerType]
         });
         
         //analysis using the past results

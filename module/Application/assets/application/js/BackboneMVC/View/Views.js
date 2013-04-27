@@ -215,11 +215,13 @@ CheckMessageView = Backbone.Marionette.ItemView.extend({
     },
     initialize: function(){        
         this.listenTo(learnMVC.vent,'learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
-            $('.checkMessage-view').hide();
+            this.model.set({
+                newPoints:'',
+                checkMessageTitle:'',
+                comments:''
+            });
         });
-        this.listenTo(learnMVC.vent,'learn:proceedAnsweredQuestion',function(){
-            $('.checkMessage-view').show();
-        });
+        
     }
 });
 SideButtonsView = Backbone.Marionette.ItemView.extend({

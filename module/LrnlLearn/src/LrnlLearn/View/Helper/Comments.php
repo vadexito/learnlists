@@ -54,6 +54,14 @@ class Comments extends AbstractHelper
                 'right' => $this->getView()->translate('Right'),
                 'wrong' => $this->getView()->translate('Wrong'),
             ],
-            'comments' => $comments]);
+            'comments' => $comments,
+            'newPoints' => [
+                '1' => '+ 4 '.$this->getView()->translatePlural('point','points',4),
+                '2' => '+ 3 '.$this->getView()->translatePlural('point','points',3),
+                '3' => '+ 2 '.$this->getView()->translatePlural('point','points',2),
+                '4' => '+ 1 '.$this->getView()->translatePlural('point','points',1),
+                '5' => '+ 0 '.$this->getView()->translatePlural('point','points',0),
+            ],
+        ]);
     }
 }

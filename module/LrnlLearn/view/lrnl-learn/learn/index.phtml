@@ -83,15 +83,15 @@ $this->headTitle($title);
 </script>
 <script id="check_message-template" type="text/html">
     <div data-step="9" data-intro="<? echo $this->translate('Check if your answer is wrong or right and some comments according to your past results'); ?>" class="well">
-        <h4 class="checkMessage-view"><%= checkMessageTitle %></h4>
-        <p class="checkMessage-view"><span class="badge">+ <%= newPoints %> <?php echo $this->translate('points'); ?></span></p>
-        <p class="checkMessage-view"><%= comments %></p>
+        <h4 id="checkMessageTitle" class="checkMessage-view"><%= checkMessageTitle %></h4>
+        <p id="newPoints" class="checkMessage-view"><span class="badge"><%= newPoints %></span></p>
+        <p id="comments" class="checkMessage-view"><%= comments %></p>
     </div>
 </script>
 <script id="score-template" type="text/html">
     <div data-step="10" data-intro="<? echo $this->translate('Your score. Press on the help button to see how it is computed'); ?>" class="well">
         <h4><?php echo $this->translate('Score'); ?></h4>
-        <h4><%= score %> (<?php echo sprintf($this->translate('max : %s'),'<%= maxPoint %>'); ?></h4>
+        <h4><%= score %> (<?php echo sprintf($this->translate('max : %s'),'<%= maxPoint %>'); ?>)</h4>
     </div>
 </script>
 <script id="side_buttons-template" type="text/html">
