@@ -17,6 +17,7 @@
     "countdown": "latest",
     "moment": "~2.0.0",
     "animate.css": "latest",
-    "bootstrap": "~2.3.1"
+    "bootstrap": "~2.3.1",
+    "jquery-file-upload": "~7.4.1"
   }
 }

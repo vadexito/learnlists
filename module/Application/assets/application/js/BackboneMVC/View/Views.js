@@ -1,4 +1,10 @@
 
+LoadingView = Backbone.Marionette.ItemView.extend({
+    template: "#loading-template",
+    initialize: function(){
+    }
+});
+
 TitleListView = Backbone.Marionette.ItemView.extend({
     template: "#title_list-template",
     initialize: function(){

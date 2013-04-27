@@ -4,6 +4,14 @@ learnMVC.addRegions({
     main:'#questionMain'
 });
 
+learnMVC.startLearn = function(){
+    var loadingView = new LoadingView();
+    learnMVC.main.show(loadingView);
+    console.log('trigger learn:start');
+    learnMVC.vent.trigger("learn:start");
+};
+
+
 learnMVC.addInitializer(function(options){
     var model = new LearnMain(options.model);
     
@@ -112,8 +120,7 @@ learnMVC.addInitializer(function(options){
 
     $('#start-modal').modal();
     $('#start-learn-btn,#close-welcome').click(function(){
-        console.log('trigger learn:start');
-        learnMVC.vent.trigger("learn:start");
+        learnMVC.startLearn();
     });
     
     var optionsDemo = {
@@ -144,10 +151,10 @@ learnMVC.addInitializer(function(options){
         });
         $('#countdown').val(5).trigger('change');
        
-        introJs().oncomplete(function() { 
-            learnMVC.vent.trigger("learn:start");
+        introJs().oncomplete(function() {
+            learnMVC.startLearn();
         }).onexit(function() {
-            learnMVC.vent.trigger("learn:start");
+            learnMVC.startLearn();
         }).start();
         
     });

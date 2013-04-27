@@ -150,6 +150,16 @@ $this->headTitle($title);
         <?php echo $this->zfcUserIdentity()? $this->translate('You did not yet finished one round!') : $this->translate('Please log In if you want to get more detailed results'); ?>
     </p>
 </script>
+<script id="loading-template" type="text/html">
+<div class="row-fluid">
+    <div class="offset4 span4">
+        <div class="well well-large well-transparent lead">
+            <i class="icon-spinner icon-spin icon-2x pull-left"></i>
+            <?php echo sprintf($this->translate('Loading your list <em>%s<em>'),''); ?>
+        </div>
+    </div>
+</div>
+</script>
 <!-- Modal -->
 <div id="score-help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
@@ -188,10 +198,10 @@ $this->headTitle($title);
     <h3 id="myModalLabel">Learnlists</h3>
   </div>
   <div class="modal-body">
-    <p><?php echo $this->translate('You will soon start a new list, please take to time to understand how it works before using Learnlists. It takes 15 seconds!'); ?></p>
+    <p><?php echo $this->translate('You will soon start a new list, please take the time to understand how it works before using Learnlists. It takes 15 seconds!'); ?></p>
   </div>
   <div class="modal-footer">
     <button id="start-learn-btn" class="btn" data-dismiss="modal" aria-hidden="true"><?php echo $this->translate('Start learning directly'); ?></button>
-    <button id="seeHowItWorks-btn" class="btn btn-primary"><?php echo $this->translate('Short starting guide'); ?></button>
+    <button id="seeHowItWorks-btn" class="btn btn-primary"><?php echo $this->translate('Show starting guide'); ?></button>
   </div>
 </div>

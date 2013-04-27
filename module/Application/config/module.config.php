@@ -262,7 +262,9 @@ return [
                 '@global_js'
             ],
             'listquests/list/add' => [
-                '@global_js'
+                '@global_js',
+//                '@jqfileupload_js',
+//                '@jqfileupload_css',
             ],
         ],
 
@@ -395,7 +397,21 @@ return [
                         'assets' => [
                             'components/animate.css/animate.min.css',
                         ],
-                    ],                     
+                    ], 
+//                    'jqfileupload_js' => [
+//                        'assets' => [
+//                            'components/jquery-file-upload/js/*.js',
+//                            'components/jquery-file-upload/js/vendor/*.js',
+//                            'http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js',
+//                            'http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js',
+//                            "http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"
+//                        ],
+//                    ], 
+//                    'jqfileupload_css' => [
+//                        'assets' => [
+//                            'components/jquery-file-upload/css/*.css',
+//                        ],
+//                    ], 
                     'base_images' => [
                         'assets' => [
                             'images/*.png',
