@@ -15,10 +15,11 @@ TitleListView = Backbone.Marionette.ItemView.extend({
 });
 
 RoundNumberView = Backbone.Marionette.ItemView.extend({
-    template: "#round_number-template",
-    initialize: function(){
-        if (this.model.get('loggedIn') === 'false'){ 
-            $(this.el).hide();
+    getTemplate: function(){
+        if (this.model.get("round_nb")){
+            return "#round_number-template";
+        } else {
+            return "#empty-template";
         }
     },
     modelEvents:{
@@ -72,23 +73,23 @@ TimerView = Backbone.Marionette.ItemView.extend({
 QuestionView = Backbone.Marionette.ItemView.extend({
     template: "#question-template",
     modelEvents:{
-        'change:text' : function(){
-            this.render();
-            console.log('change text of questionview');
-        }
+        'change:text' : 'render'
     }
 });
 AnswerView = Backbone.Marionette.ItemView.extend({
-    template: "#answer-template",
-    modelEvents:{
-        'change:answer' : function(){
-            this.render();
-            $('.answer-region').show();
+    getTemplate: function(){
+        if (this.model.get("answer")){
+            return "#answer-template";
+        } else {
+            return "#empty-template";
         }
+    },
+    modelEvents:{
+        'change:answer' : 'render'
     },
     initialize: function(){        
         this.listenTo(learnMVC.vent,'learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
-            $('.answer-region').hide();
+            this.model.set('answer','');
         });
     }
 });

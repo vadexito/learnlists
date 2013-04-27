@@ -151,15 +151,16 @@ $this->headTitle($title);
     </p>
 </script>
 <script id="loading-template" type="text/html">
-<div class="row-fluid">
-    <div class="offset4 span4">
-        <div class="well well-large well-transparent lead">
-            <i class="icon-spinner icon-spin icon-2x pull-left"></i>
-            <?php echo sprintf($this->translate('Loading your list <em>%s<em>'),''); ?>
+    <div class="row-fluid">
+        <div class="offset4 span4">
+            <div class="well well-large well-transparent lead">
+                <i class="icon-spinner icon-spin icon-2x pull-left"></i>
+                <?php echo sprintf($this->translate('Loading your list <em>%s<em>'),''); ?>
+            </div>
         </div>
     </div>
-</div>
-</script>
+</script> 
+<script id="empty-template" type="text/html"><span></span></script>
 <!-- Modal -->
 <div id="score-help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
