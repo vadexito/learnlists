@@ -12,10 +12,7 @@ return [
         'guards'                => [
             'BjyAuthorize\Guard\Route' => [
                 ['route' => 'home', 'roles' => ['guest', 'user']],                
-                ['route' => 'footer/about', 'roles' => ['guest', 'user']],
-                ['route' => 'footer/privacy', 'roles' => ['guest', 'user']],
-                ['route' => 'footer/terms', 'roles' => ['guest', 'user']],
-                ['route' => 'footer/help', 'roles' => ['guest', 'user']],
+                ['route' => 'footer/template', 'roles' => ['guest', 'user']],
             ],
         ],
     ],
@@ -41,40 +38,10 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'about' => [
-                        'type'    => 'Literal',
+                    'template' => [
+                        'type'    => 'segment',
                         'options' => [
-                            'route'    => '/about',
-                            'defaults' => [
-                                'template'   => 'application/footer/about',
-                            ],
-                        ],
-                    ],
-                    'terms' => [
-                        'type'    => 'Literal',
-                        'options' => [
-                            'route'    => '/terms',
-                            'defaults' => [
-                                'template'   => 'application/footer/terms',
-                            ],
-                        ],
-                    ],
-                    'privacy' => [
-                        'type'    => 'Literal',
-                        'options' => [
-                            'route'    => '/privacy',
-                            'defaults' => [
-                                'template'   => 'application/footer/privacy',
-                            ],
-                        ],
-                    ],
-                    'help' => [
-                        'type'    => 'Literal',
-                        'options' => [
-                            'route'    => '/help',
-                            'defaults' => [
-                                'template'   => 'application/footer/help',
-                            ],
+                            'route'    => '/:template'
                         ],
                     ],
                 ],
@@ -158,6 +125,11 @@ return [
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
             'phly-contact/contact/index'     => __DIR__ . '/../view/phly-contact/contact/index.phtml',
             'phly-contact/contact/thank-you' => __DIR__ . '/../view/phly-contact/contact/thank-you.phtml',
+            'zfc-user/user/login' => __DIR__ . '/../view/zfc-user/user/login.phtml',
+            'about' => __DIR__ . '/../view/application/footer/about.phtml',
+            'terms' => __DIR__ . '/../view/application/footer/terms.phtml',
+            'privacy' => __DIR__ . '/../view/application/footer/privacy.phtml',
+            'imprint' => __DIR__ . '/../view/application/footer/imprint.phtml',
             'zfc-user/user/login' => __DIR__ . '/../view/zfc-user/user/login.phtml',
         ],
         'template_path_stack' => [

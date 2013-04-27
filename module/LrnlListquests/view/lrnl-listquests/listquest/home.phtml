@@ -32,12 +32,12 @@ $searchForm->get('search')->setAttribute('class','home '.$searchForm->get('searc
     <div class="span4">
         <h2><?php echo $this->translate('Learn through efficient methods') ?></h2>
         <p><?php echo $this->translate('Thanks to teaching profesionnals (teachers and memory scientists and doctors), Learnlists offers specific method that maximize the memorization processs and minimize the effort') ?></p>
-        <p><a class="btn btn-success" href="<?php echo $this->url('learn/help/how_it_works'); ?>"><?php echo $this->translate('About our methods') ?> &raquo;</a></p>
+        <p><a class="btn btn-success" href="<?php echo $this->url('learn/help/template',['template' => 'about_our_method']); ?>"><?php echo $this->translate('About our methods') ?> &raquo;</a></p>
    </div>
 
    <div class="span4">
        <h2><?php echo $this->translate('Create and share quizzes') ?></h2>
        <p><?php echo $this->translate('You can also create and share your own private lists.'); ?></p>
-       <p><a class="btn btn-success" href="<?php echo $this->url('learn/help/how_it_works'); ?>"><?php echo $this->translate('Learn how create lists') ?> &raquo;</a></p>
+       <p><a class="btn btn-success" href="<?php echo $this->url('learn/help/template',['template' => 'how_to_create_a_list']); ?>"><?php echo $this->translate('Learn how create lists') ?> &raquo;</a></p>
    </div>
 </div>

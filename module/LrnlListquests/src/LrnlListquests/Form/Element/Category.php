@@ -14,7 +14,7 @@ class Category extends Select
             ]);
         $this->setOptions([
                 'value_options' => [
-                    '' => _('Please choose a category'),
+                    '' => _('Categories'),
                     //'English' => _('Foreign Languages - English'),
                     'German' => _('Foreign Languages - German'),
                     //'French' => _('Foreign Languages - French'),
