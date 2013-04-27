@@ -1,3 +1,14 @@
+<?php 
+$user = $this->zfcUserIdentity();
+$authorRole = $author->getRoles()[0]->getRoleId();
+$gravatar = $this->gravatar(
+    $authorEmail,
+    ['img_size' => '30px'],
+    ['alt' => 'gravatar','title' => $this->zfcUserDisplayName($author)
+        .' ('.$authorRole. ')']
+);
+$authorIsTeacher = ($authorRole === 'teacher');
+?>
 <li class="search_result_listquest_item">
     <div class="row-fluid ">
         <div class="span2">            
@@ -7,17 +18,18 @@
             <div class="row-fluid">
                 <div class="span10">
                     <div class="title_with_icon">
-                        <?php echo $this->gravatar(
-                                $authorEmail,
-                                ['img_size' => '30px'],
-                                ['alt' => 'gravatar','title' => $this->zfcUserDisplayName($author).' ('.$author->getRoles()[0]->getRoleId(). ')'])
-                        ?>
+                        <?php echo $gravatar ?>
                         <?php $htmlTag = ($questionNb != 0) ? 'a' : 'span'; ?>
                         <<?php echo $htmlTag; ?> href="<?php echo $this->url('learn/basic',['id' => $id]); ?>">
-                            <h4 class="title_search_result_line"><?php echo ucfirst($this->escapeHtml($title)); ?></h4>                            
-                        </<?php echo $htmlTag; ?>>                        
+                            <h4 class="title_search_result_line">
+                                <?php echo ucfirst($this->escapeHtml($title)); ?>
+                                <?php if ($authorIsTeacher): ?>
+                                <i title="<?php echo $this->translate('Teacher list'); ?>" class="icon-star-empty"></i>
+                                <?php endif; ?>
+                            </h4>
+                        </<?php echo $htmlTag; ?>>                     
                         <span class="edit_button">
-                            <?php if ($this->zfcUserIdentity() && ($author->getId() === $this->zfcUserIdentity()->getId())) :?> 
+                            <?php if ($user && ($author->getId() === $user->getId())) :?> 
                                     <a class="btn btn-mini btn-primary" href="<?php echo $this->url('listquests/list/edit',['id' => $id]); ?>" title="<?php echo $this->translate('Edit list'); ?>">
                                         <i class="icon-edit icon-white"></i>
                                     </a>
