@@ -173,7 +173,6 @@ MainButtonsView = Backbone.Marionette.ItemView.extend({
     },
     
     initNewQuestion: function(){
-        console.log('init newquestion from main buttons');
         $('.button-answer').removeAttr('disabled');
         $('#answer-group').removeClass('error').removeClass('success');
     },

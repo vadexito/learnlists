@@ -58,7 +58,6 @@ window.Questionresult = Backbone.Model.extend({
         var answerGiven = options.answerGiven,
             answerInDB = options.answerInDB,
             answerPart = options.answerPart,
-            text = $('#question_asked_text'),
             answer = $('#question_asked_answer'),
             answersToCheck; 
         

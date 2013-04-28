@@ -66,8 +66,8 @@ class ListquestController extends AbstractActionController
             
             $form->setData($request->getPost()); 
             if ($form->isValid()) {  
-                $listquest = $this->getListquestService()->updateListquest($listquest);
-
+                $this->getListquestService()->updateListquest($listquest);
+                $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute(
                     'listquests/list/edit',
                     ['id' => $listId]

@@ -16,9 +16,13 @@ window.LearnMain = Backbone.Model.extend({
     },
     
     reset: function(){
-       this.set('score',0);
-       this.set('maxPoint',0);
-       this.set('round_nb','');
+       this.set({
+           'score' : 0,
+           'maxPoint' : 0,
+           'round_nb':'',
+           'nb_questions' : this.questions.collection.length,
+           'nb_question' : this.questions.collection.length
+       });  
     },
     
     start: function(){
@@ -29,8 +33,6 @@ window.LearnMain = Backbone.Model.extend({
         if (!listId || !loggedIn || !maxRound){
             throw new Error("You must provide a listId, maxRound and loggedIn boolean in order to initialize Learnmain");;
         }
-        
-        this.reset();
         
         //fetch the list of questions
         new Listquest({id: listId}).fetch({reset:true,success: $.proxy(function(list){
@@ -51,9 +53,8 @@ window.LearnMain = Backbone.Model.extend({
             this.set('title_list',list.get('title'));
             this.set('rules',list.get('rules'));
             this.set('round_total',this.questions.maxRound);
-            this.set('nb_questions',this.questions.collection.length);
-            this.set('nb_question',this.questions.collection.length);
             
+            console.log(this.questions.collection);
             //init last rounds
             this.lastRounds = new Rounds();
             if (loggedIn === 'true'){                
@@ -69,6 +70,8 @@ window.LearnMain = Backbone.Model.extend({
     },
     
     initNewRound:function () {
+        this.reset();
+        
         if (this.get('loggedIn') === 'true'){
             this.set('round_nb',this.lastRounds.models.length + 1);
         }
@@ -82,7 +85,6 @@ window.LearnMain = Backbone.Model.extend({
             localDate:true
         });
         
-        this.set('nb_question',this.get('nb_questions'));
         console.log('trigger learn:nextQuestion');
         learnMVC.vent.trigger("learn:nextQuestion");
         
