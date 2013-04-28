@@ -318,9 +318,9 @@ return [
                     ],
                     'mvclearn_js' => [
                         'assets' => [
-                            'application/js/backboneMvc/Model/*.js',
-                            'application/js/backboneMvc/View/*.js',
-                            'application/js/backboneMvc/learnMVC.js',
+                            'application/js/Mvc/Model/*.js',
+                            'application/js/Mvc/View/*.js',
+                            'application/js/Mvc/learnApp.js',
                         ],
                     ],
                     'jqknob_js' => [
