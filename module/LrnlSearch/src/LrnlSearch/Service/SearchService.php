@@ -118,10 +118,10 @@ class SearchService
     public function updateIndex(Listquest $listquest)
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
-        
-        $hit = $index->find('listquestId:'.$this->convertNumToString($listquest->id));
+        $hit = $index->find('listId:'.$this->convertNumToString($listquest->id));
         $docId = $index->count()+1;
         if ($hit){
+            $hit = $hit[0];
             $docId = $hit->docId;
             $index->delete($hit->id);
         }

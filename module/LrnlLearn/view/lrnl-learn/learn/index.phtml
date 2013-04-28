@@ -52,12 +52,12 @@ $this->headTitle($title);
     <div data-step="2" data-intro="<? echo $this->translate('Question you have to answer or containing missing element'); ?>" id="question_asked_text"><%= text %></div>
 </script>
 <script id="answer-template" type="text/html">
-    <h4 id="answer_title" class="answer-region title" style="display:none"><?php echo $this->translate('Answer'); ?></h4>
-    <p class="answer_text answer-region" style="display:none"><%= answer %></p>
+    <h4 id="answer_title" class="answer-region title"><?php echo $this->translate('Answer'); ?></h4>
+    <p class="answer_text answer-region"><%= answer %></p>
 </script>
 <script id="comment-template" type="text/html">
-    <h4 class="comment-region" style="display:none"><?php echo $this->translate('Comment'); ?></h4>
-    <p id="tip_text" class="comment-region" style="display:none"><%= comment %></p>
+    <h4 class="comment-region"><?php echo $this->translate('Comment'); ?></h4>
+    <p id="tip_text" class="comment-region"><%= comment %></p>
 </script>
 <script id="input-template" type="text/html">
     <input name="id" type="hidden" id="listId" value="<?php echo $listId ?>">

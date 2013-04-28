@@ -78,7 +78,7 @@ QuestionView = Backbone.Marionette.ItemView.extend({
 });
 AnswerView = Backbone.Marionette.ItemView.extend({
     getTemplate: function(){
-        if (this.model.get("answer")){
+        if (this.model.get('answer')){
             return "#answer-template";
         } else {
             return "#empty-template";
@@ -86,25 +86,18 @@ AnswerView = Backbone.Marionette.ItemView.extend({
     },
     modelEvents:{
         'change:answer' : 'render'
-    },
-    initialize: function(){        
-        this.listenTo(learnMVC.vent,'learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
-            this.model.set('answer','');
-        });
     }
 });
 CommentView = Backbone.Marionette.ItemView.extend({
-    template: "#comment-template",
-    modelEvents:{
-        'change:comment': function(){
-            this.render();
-            $('.comment-region').show();
+    getTemplate: function(){
+        if (this.model.get("comment")){
+            return "#comment-template";
+        } else {
+            return "#empty-template";
         }
     },
-    initialize: function(){        
-        this.listenTo(learnMVC.vent,'learn:initNewQuestion learn:roundCompleted learn:showResult',function(){
-            $('.comment-region').hide();
-        });
+    modelEvents:{
+        'change:comment': 'render'
     }
 });
 InputView = Backbone.Marionette.ItemView.extend({

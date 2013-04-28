@@ -107,23 +107,21 @@ window.LearnMain = Backbone.Model.extend({
     initNewQuestion: function(questionId){
             
         //push the new id to the end of the array (in case the next button is pushed before the question is answered)
-        //console.log(this.currentRound);
         this.currentRound.get('roundOrder').shift();
         this.currentRound.get('roundOrder').push(questionId);
-        this.set('comments','');
         
-        var question = this.questions.collection.get(questionId);
+        this.set({
+            'comments':'',
+            'comment':'',
+            'answer':'',
+            'text': this.questions.collection.get(questionId).get('text')
+        });
+        
         this.model = new Questionresult({
             startDate:new Date(),
             answerPart:0,
             questionId:questionId
-        });      
-        this.set({
-            'text': question.get('text')
         });
-        this.attributes.answer = '';
-        this.attributes.comment = '';
-        
     },
     
     roundCompleted: function(){
@@ -211,12 +209,10 @@ window.LearnMain = Backbone.Model.extend({
             'nb_question': this.currentRound.get('roundOrder').length,
             'comment': this.questions.collection.get(this.model.get('questionId')).get('tip'),
             'maxPoint': this.get('maxPoint')+ _.max(_.values(this.currentRound.answerTypePointTable)),
-            'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')]
-        });
-        
-        this.set({
+            'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')],
             'newPoints': translations['newPoints'][answerType]
         });
+        
         
         //analysis using the past results
         if (this.lastRounds.models.length > 0 ){
