@@ -1,9 +1,21 @@
 <?php
+
+use Zend\Form\Element\Hidden;
+
 $title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);
+
+$hidden = new Hidden('id');
+$hidden->setAttributes([
+    'data-comments' => $this->comments(),
+    'data-loggedin' => $this->zfcUserIdentity()? 'true' : 'false',
+    'data-timePerQuestion' => $this->escapeHtml($timePerQuestion),
+    'id' => 'listId',
+    'value' => $listId,
+]);
 ?>
 <article id="questionMain"></article>
-<input name="id" type="hidden" data-comments='<?php echo $this->comments(); ?>' data-loggedin="<?php echo $this->zfcUserIdentity()? 'true' : 'false'; ?>" data-timePerQuestion="<?php echo $this->escapeHtml($timePerQuestion)?>" data-maxRound="<?php echo $this->escapeHtml($maxRound)?>" id="listId" value="<?php echo $listId ?>">
+<?php echo $this->formHidden($hidden); ?>
 <script id="layout-template" type="text/html">
     <div class="row-fluid">
         <div class="span9">
@@ -42,7 +54,7 @@ $this->headTitle($title);
     <h3 data-step="1" data-intro="<? echo $this->translate('The list you have choosen'); ?>"id="title_list"><%= title_list %></h3>
 </script>    
 <script id="round_number-template" type="text/html">
-    <span data-step="8" data-intro="<? echo $this->translate('You can do several rounds of the same list, you will see how many you did already.This function is available only if your are logged in since it will save your progress and adapt the method of asking.'); ?>" class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %> / <%= round_total %></span>
+    <span data-step="8" data-intro="<? echo $this->translate('You can do several rounds of the same list, you will see how many you did already.This function is available only if your are logged in since it will save your progress and adapt the method of asking.'); ?>" class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %></span>
 </script>
 <script id="timer-template" type="text/html">
     <input type="text" id="countdown">
