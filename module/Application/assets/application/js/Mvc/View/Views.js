@@ -23,7 +23,7 @@ RoundNumberView = Backbone.Marionette.ItemView.extend({
         }
     },
     modelEvents:{
-        'change:round_nb change:round_total' : 'render'
+        'change:round_nb': 'render'
     }
 });
 
@@ -275,9 +275,7 @@ SideButtonsView = Backbone.Marionette.ItemView.extend({
             if (self.model.get('loggedIn') === 'true'){
                 $('#remove_rounds_button').show();
             }
-            if (self.model.lastRounds.models.length < self.model.get('maxRound')){
-                $('#question_asked_resetbutton').addClass('btn-primary').show();
-            }
+            $('#question_asked_resetbutton').addClass('btn-primary').show();
             $('#question_asked_cancelRound').hide();
         }); 
     }    

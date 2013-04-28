@@ -120,7 +120,7 @@ window.Rounds = Backbone.Collection.extend({
     
     model: Round,
     
-    init: function(listId,maxRound){
+    init: function(listId){
         
         this.fetch({
             data:{

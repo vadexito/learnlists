@@ -27,11 +27,10 @@ window.LearnMain = Backbone.Model.extend({
     
     start: function(){
         var listId = this.get('listId');
-        var loggedIn = this.get('loggedIn');        
-        var maxRound = this.get('maxRound'); 
+        var loggedIn = this.get('loggedIn'); 
         
-        if (!listId || !loggedIn || !maxRound){
-            throw new Error("You must provide a listId, maxRound and loggedIn boolean in order to initialize Learnmain");;
+        if (!listId || !loggedIn){
+            throw new Error("You must provide a listId and loggedIn boolean in order to initialize Learnmain");;
         }
         
         //fetch the list of questions
@@ -40,7 +39,6 @@ window.LearnMain = Backbone.Model.extend({
             //init list of questions
             this.questions = {
                 listId : listId,
-                maxRound:maxRound,
                 collection:new Questions()
             };
             
@@ -52,13 +50,12 @@ window.LearnMain = Backbone.Model.extend({
             
             this.set('title_list',list.get('title'));
             this.set('rules',list.get('rules'));
-            this.set('round_total',this.questions.maxRound);
             
             console.log(this.questions.collection);
             //init last rounds
             this.lastRounds = new Rounds();
             if (loggedIn === 'true'){                
-                this.lastRounds.init(listId,maxRound);
+                this.lastRounds.init(listId);
             } else {
                 //no last round to init if not logged
                 learnMVC.vent.trigger("learn:pre-initNewRound"); 
@@ -235,7 +232,6 @@ window.LearnMain = Backbone.Model.extend({
         comment:'',
         
         round_nb:'',
-        round_total:'',
         title_list:'',
         
         nb_question:'',

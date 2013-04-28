@@ -176,7 +176,6 @@ $(function(){
         model: {
             listId:hiddenInput.val(),
             loggedIn: hiddenInput.attr('data-loggedin'),
-            maxRound: hiddenInput.attr('data-maxRound'),
             saveRoundsWhenNotLogged: false,
             timePerQuestion:hiddenInput.attr('data-timePerQuestion'),
             translatedCommentArray: $.parseJSON(hiddenInput.attr('data-comments'))
