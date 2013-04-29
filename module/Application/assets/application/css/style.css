@@ -286,7 +286,7 @@ question ask page general
 
 .card{
     border:1px solid #cccccc;
-    height: 400px;
+    height: 350px;
     padding: 25px;
 }
 
@@ -294,7 +294,11 @@ question ask page general
     font-size: 1.5em;
     font-weight: 500;
     line-height: 1.4;
-    height:240px;    
+    height:220px;    
+}
+
+#answer-comment{
+   height:80px; 
 }
 
 #sub-title{
@@ -365,6 +369,10 @@ question ask page general
 
 #middle_top-side-region .well{
     height:120px;
+}
+
+.score{
+    text-align:center;
 }
 
 

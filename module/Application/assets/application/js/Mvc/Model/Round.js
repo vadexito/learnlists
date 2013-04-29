@@ -77,7 +77,8 @@ window.Round = Backbone.Model.extend({
       badanswer:0,  
       notdone:0,
       duration:{days:0,hours:0,minutes:0,seconds:0},
-      score:0
+      score:0,
+      roundNb:1
     },
     
     saveDB: function(){

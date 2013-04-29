@@ -33,7 +33,7 @@ $hidden->setAttributes([
 <script id="main_region-template" type="text/html">
     <div class="well">
         <div class="row-fluid" id="question-region"></div>   
-        <div class="row-fluid">
+        <div class="row-fluid" id="answer-comment">
             <div class="span6" id="answer-region"></div>
             <div class="span6" id="comment-region"></div>
         </div>
@@ -127,34 +127,41 @@ $hidden->setAttributes([
     </div>
 </script>
 <script id="results-template" type="text/html">
-    <h4><?php echo $this->translate('Score'); ?></h4>
-    <h4><%= score %> (max : <%= maxPoint %> for <%= nb_questions %> questions)</h4>
-    <table class="table" id="table_results">
-        <thead id="head_table_results">
-            <tr>
-                <th><?php echo $this->translate('Round'); ?></th>
-                <th><?php echo $this->translate('Score'); ?></th>
-                <th><?php echo '4 '.$this->translatePlural('point','points',4); ?></th>
-                <th><?php echo '3 '.$this->translatePlural('point','points',3); ?></th>
-                <th><?php echo '2 '.$this->translatePlural('point','points',2); ?></th>
-                <th><?php echo '1 '.$this->translatePlural('point','points',1); ?></th>
-                <th><?php echo '0 '.$this->translatePlural('point','points',0); ?></th>
-                <th><?php echo $this->translate('not done'); ?></th>
-            </tr>
-        </thead>
-        <tbody id="body_table_results">
-        </tbody>
-    </table>
+    <h4 class="score"><?php echo $this->translate('Score'); ?></h4>
+    <h4 class="score"><%= score %> (max : <%= maxPoint %>)</h4>
+    <br/>
+    <div class="row-fluid">
+        <div class="offset3 span5">
+            <table class="table" id="table_results">
+                <thead id="head_table_results">
+                    <tr>
+                        <th></th>
+                        <th><?php echo $this->translate('Date'); ?></th>
+                        <th><?php echo $this->translate('Score'); ?></th>
+        <!--                <th><?php // echo '4 '.$this->translatePlural('point','points',4); ?></th>
+                        <th><?php // echo '3 '.$this->translatePlural('point','points',3); ?></th>
+                        <th><?php // echo '2 '.$this->translatePlural('point','points',2); ?></th>
+                        <th><?php // echo '1 '.$this->translatePlural('point','points',1); ?></th>
+                        <th><?php // echo '0 '.$this->translatePlural('point','points',0); ?></th>
+                        <th><?php // echo $this->translate('not done'); ?></th>-->
+                    </tr>
+                </thead>
+                <tbody id="body_table_results">
+                </tbody>
+            </table>
+        </div>
+    </div>
 </script>
 <script id="row_resultTable-template" type="text/html">
+    <th><span class="label"><?php echo $this->translate('Round'); ?> <span class="roundNb"></span></span></th>
     <th><%= roundinfo() %></th>
     <th><%= finalnote %></th>
-    <th><%= perfectanswer %></th>
-    <th><%= averageplusanswer %></th>
-    <th><%= averageanswer %></th>
-    <th><%= averageminusanswer %></th>
-    <th><%= badanswer %></th>            
-    <th><%= notdone %></th>            
+    <!--<th><%= perfectanswer %></th>-->
+    <!--<th><%= averageplusanswer %></th>-->
+    <!--<th><%= averageanswer %></th>-->
+    <!--<th><%= averageminusanswer %></th>-->
+    <!--<th><%= badanswer %></th>-->            
+    <!--<th><%= notdone %></th>-->            
 </script>
 
 <script id="noresult-template" type="text/html">

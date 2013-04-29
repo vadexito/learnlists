@@ -306,10 +306,6 @@ RoundResultView = Backbone.Marionette.ItemView.extend({
             return time+' ago';
         }
     },
-    initialize: function(){
-        
-    }, 
-    
     modelEvents: {
         "change": "render"
     }
@@ -330,6 +326,6 @@ ResultsView = Backbone.Marionette.CompositeView.extend({
         this.collection = this.model.lastRounds;
     },
     appendHtml: function(collectionView, itemView, index){
-        collectionView.$('tbody').prepend(itemView.el);
+        collectionView.$('tbody').prepend(itemView.el);;
       }
 });
