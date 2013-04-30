@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-30 11:24+0100\n"
-"PO-Revision-Date: 2013-04-30 11:25+0100\n"
+"POT-Creation-Date: 2013-04-30 18:59+0100\n"
+"PO-Revision-Date: 2013-04-30 19:07+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -19,9 +19,8 @@ msgstr ""
 "X-Poedit-SearchPath-2: ../../../config\n"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:16
-#, fuzzy
 msgid "Max point!"
-msgstr "Punkt"
+msgstr "Maxi Punkte"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:17
 msgid "Almost max point!"
@@ -36,9 +35,8 @@ msgid "Several mistakes!"
 msgstr "mehrere Fehler"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:20
-#, fuzzy
 msgid "Now try to learn!"
-msgstr "Anfangen"
+msgstr "Jetzt lernen!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:24
 msgid "You are imroving!"
@@ -50,101 +48,108 @@ msgstr "wie letztes Mal"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:26
 msgid "Last time was better!"
-msgstr ""
+msgstr "Letztes Mal war besser!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:46
 msgid "Perfect, like last time!"
-msgstr ""
+msgstr "Noch mal perfekt!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:47
-msgid "You did perfect in less than 10 seconds now!"
-msgstr ""
+msgid "You did perfect in due time!"
+msgstr "Perfekt, innerhalb der begrentzten Zeit"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:48
 msgid "This time, no more mistake like last time!"
-msgstr ""
+msgstr "Jetzt, keine Fehler mehr wie letztes Mal!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:49
 msgid "Perfect, no more mistakes like last time!"
-msgstr ""
+msgstr "Perfekt, keine Fehler mehr wie letztes Mal!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:50
 msgid "Perfect,this time you did not ask the answer!"
-msgstr ""
+msgstr "Perfekt und dieses Mal ohne die Antwort zu sehen!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:53
 msgid "Last time you were quicker..."
-msgstr ""
+msgstr "Letztes Mal war schneller!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:54
 msgid "Like last time, you are still too slow"
-msgstr ""
+msgstr "wie letztes Mal, etwas zu langsam"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:55
 msgid "Great, no more mistake like last time but too slow!"
-msgstr ""
+msgstr "Sehr gut, keine Fehler mehr aber noch zu langsam"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:56
 msgid "Great, no more mistakes like last time but too slow!"
-msgstr ""
+msgstr "Gut, keine Fehler mehr aber noch zu langsam"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:57
 msgid "Great even if too slow but you did not ask the answer like last time!"
 msgstr ""
+"Gut, noch zu langsam aber haben Sie gelernt und nicht mehr die Antwort "
+"gebraucht!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:60
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:67
 msgid "You forgot...last time was perfect, you did no mistake!"
-msgstr ""
+msgstr "Sie haben vergessen! Letztes Mal wissen sie es doch perfekt!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:61
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:68
 msgid "You forgot...last time you did no mistake!"
-msgstr ""
+msgstr "Sie haben vergessen! Letztes Mal wissen sie es doch!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:62
 msgid "Still one mistake!"
-msgstr ""
+msgstr "Noch ein Fehler!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:63
 msgid "Better last time you did more mistakes!"
-msgstr ""
+msgstr "Besser, letztes Mal waren mehr Fehler"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:64
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:71
 msgid "Better because you did not ask the answer like last time!"
-msgstr ""
-
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:67
-msgid "You forgot...last time was perfect, you did no mistake"
-msgstr ""
+msgstr "Better, sie brauchten die Antwort nicht mehr"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:69
 msgid "You are doing more mistakes!"
-msgstr ""
+msgstr "SMehr Fehler jetzt!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:70
 msgid "Still mistakes!"
-msgstr ""
+msgstr "Noch Fehler!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:74
 msgid "You forgot this one you knew perfectly, focus on it!"
 msgstr ""
+"Sie haben vergessen! Letztes Mal wissen Sie es doch perfekt, fokussieren Sie "
+"sich darauf!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:75
 msgid "You forgot this one you knew well, focus on it!"
 msgstr ""
+"Sie haben vergessen! Letztes Mal wissen Sie es doch gut, fokussieren Sie "
+"sich darauf!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:76
 msgid "You forgot this one you knew, focus on it!"
 msgstr ""
+"Sie haben vergessen! Letztes Mal wissen Sie es doch, fokussieren Sie sich "
+"darauf!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:77
 msgid "You forgot this one you knew quite well, focus on it!"
 msgstr ""
+"Sie haben vergessen! Letztes Mal wissen Sie es doch ziemlich gut, "
+"fokussieren Sie sich darauf!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:78
 msgid "Still you do not know it at all, focus on it!"
-msgstr ""
+msgstr "Sie wissen es nocht nicht, konzentrieren Sie sich darauf!"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:85
 msgid "Right"
@@ -339,8 +344,8 @@ msgstr "Angebote"
 msgid "My program"
 msgstr "Mein Programm"
 
-#: ../../../config/autoload/global.php:66 ../view/zfc-user/user/login.phtml:2
-#: ../../../module/Application/view/zfc-user/user/login.phtml:2
+#: ../../../config/autoload/global.php:66 ../view/zfc-user/user/login.phtml:5
+#: ../../../module/Application/view/zfc-user/user/login.phtml:5
 msgid "Sign In"
 msgstr "Anmelden"
 
@@ -466,9 +471,9 @@ msgid "Terms"
 msgstr "Bedingungen"
 
 #: ../view/cdli-twostagesignup/register.phtml:19
-#: ../view/zfc-user/user/login.phtml:19
+#: ../view/zfc-user/user/login.phtml:30
 #: ../../../module/Application/view/cdli-twostagesignup/register.phtml:19
-#: ../../../module/Application/view/zfc-user/user/login.phtml:19
+#: ../../../module/Application/view/zfc-user/user/login.phtml:30
 msgid "Try again!"
 msgstr "Noch einmal versuchen"
 
@@ -662,6 +667,26 @@ msgstr "Vorherige Ausnahme"
 msgid "No Exception available"
 msgstr "Es ist keine Ausnahme verfügbar"
 
+#: ../view/goalio-forgot-password/forgot/forgot.phtml:4
+#: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:4
+msgid "Forgot password?"
+msgstr "Passwort vergessen?"
+
+#: ../view/goalio-forgot-password/forgot/forgot.phtml:18
+#: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:18
+msgid "Email"
+msgstr "E-Mail"
+
+#: ../view/goalio-forgot-password/forgot/forgot.phtml:19
+#: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:19
+msgid "Sent reset link"
+msgstr "Passwort zurücksetzen"
+
+#: ../view/goalio-forgot-password/forgot/forgot.phtml:25
+#: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:25
+msgid "Back to login?"
+msgstr "Zurück zur Anmeldung?"
+
 #: ../view/layout/admin.phtml:6 ../view/layout/layout.phtml:6
 #: ../../../module/Application/view/layout/admin.phtml:6
 #: ../../../module/Application/view/layout/layout.phtml:6
@@ -763,20 +788,10 @@ msgstr "Passwort"
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: ../view/zfc-user/user/login.phtml:36
-#: ../../../module/Application/view/zfc-user/user/login.phtml:36
+#: ../view/zfc-user/user/login.phtml:41
+#: ../../../module/Application/view/zfc-user/user/login.phtml:41
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
-
-#: ../view/zfc-user/user/login.phtml:38
-#: ../../../module/Application/view/zfc-user/user/login.phtml:38
-msgid "Not registered?"
-msgstr "Nicht angemeldet?"
-
-#: ../view/zfc-user/user/login.phtml:38
-#: ../../../module/Application/view/zfc-user/user/login.phtml:38
-msgid "Sign Up!"
-msgstr "Melde dich an!"
 
 #: ../view/zfc-user/user/register.phtml:2
 #: ../../../module/Application/view/zfc-user/user/register.phtml:2
@@ -944,8 +959,8 @@ msgstr "Bitte "
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:177
 #, php-format
-msgid "Loading your list <em>%s<em>"
-msgstr "Laden ihrer Liste"
+msgid "Loading your list <em>%s</em>"
+msgstr "Laden ihrer Liste <em>%s</em>"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:187
 msgid "How is your score calculated?"
@@ -1339,6 +1354,15 @@ msgstr "Benutzer"
 #: ../../../module/Application/language/_XMLforPoedit/role.xml:8
 msgid "premium"
 msgstr "Premium"
+
+#~ msgid "You forgot...last time was perfect, you did no mistake"
+#~ msgstr "Sie haben vergessen! Letztes Mal wissen sie es doch perfekt!"
+
+#~ msgid "Not registered?"
+#~ msgstr "Nicht angemeldet?"
+
+#~ msgid "Sign Up!"
+#~ msgstr "Melde dich an!"
 
 #~ msgid "not done"
 #~ msgstr "Nicht gemacht"
