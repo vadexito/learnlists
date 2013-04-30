@@ -1,0 +1,25 @@
+<?php
+use DluTwBootstrap\Form\FormUtil;
+
+$title = $this->translate('Forgot password?');
+$this->headTitle($title);
+$form = $this->forgotForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/forgotpassword'));
+$form->setAttribute('method', 'post');
+$displayOptions = [
+    'elements' => [
+        'submit' => [
+            'class' => 'btn-primary',
+            'label' => false
+        ],
+    ],
+];
+$form->get('email')->setLabel(_('Email'));
+$form->get('submit')->setValue(_('Sent reset link'))->setLabel('');
+?>
+<h1><?php echo $title ?></h1>
+<?php echo $this->form()->openTag($form) ?>
+<?php echo $this->formTwb($form, FormUtil::FORM_TYPE_VERTICAL,$displayOptions); ?>
+<?php echo $this->form()->closeTag() ?>
+<a href="<?php echo $this->url('zfcuser/login') ?>"><?php echo $this->translate('Back to login?'); ?></a>
