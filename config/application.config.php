@@ -14,7 +14,7 @@ return [
         'GoalioForgotPassword',
         'GoalioForgotPasswordDoctrineORM',
         'CdliUserProfile',
-        'GoalioRememberMe',
+        'GoalioRememberMe', 
         'GoalioRememberMeDoctrineORM',
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
