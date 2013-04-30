@@ -27,13 +27,6 @@ class SearchForm extends Form
             ],
         ]);
         
-        $category = new Category('category');
-        $category->setAttribute(
-                'class',
-                $category->getAttribute('class').' '.'chzn-select'
-        );
-        $this->add($category);        
-        
         $this->add([
             'name' => 'submit',
             'attributes' => [

@@ -5,20 +5,19 @@ use Zend\Form\Element\Select;
 
 class Category extends Select
 {
-    public function __construct($name = 'category')
+    public function __construct($name = 'category',Array $categories)
     {
         parent::__construct($name);
+        
+        $categories = array_merge(['' => _('Categories')],$categories);
+        
         $this->setAttributes([
-                'id'    => 'category',
-                'class' => 'chzn-select',
-            ]);
+            'id'    => 'category',
+            'class' => 'chzn-select',
+        ]);
+        
         $this->setOptions([
-                'value_options' => [
-                    '' => _('Categories'),
-                    //'English' => _('Foreign Languages - English'),
-                    'German' => _('Foreign Languages - German'),
-                    //'French' => _('Foreign Languages - French'),
-                ],
+                'value_options' => $categories,
         ]);
     }
 }

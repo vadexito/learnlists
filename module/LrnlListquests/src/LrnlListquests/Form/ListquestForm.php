@@ -27,11 +27,6 @@ class ListquestForm extends Form
              ))
              ->setAttribute('method', 'post');
         
-        $listquestFieldset = new ListquestFieldset($this->getObjectManager());
-        $listquestFieldset->setUseAsBaseFieldset(true);
-        $listquestFieldset->remove('questions');
-        $this->add($listquestFieldset);
-        
         $this->add(new Csrf('csrf'));
    
         $this->add([

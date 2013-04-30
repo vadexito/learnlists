@@ -12,6 +12,8 @@ use LrnlListquests\Form\TagFieldset;
 use LrnlListquests\Form\EditQuestionsInListquestForm;
 use LrnlListquests\Form\ListquestForm;
 use LrnlListquests\Form\EditQuestionForm;
+use LrnlListquests\Form\Element\Category;
+use LrnlListquests\Form\ListquestFieldset;
 
 
 class Module implements 
@@ -43,8 +45,21 @@ class Module implements
         return [
             'factories' => [
                 'LrnlListquests\Form\ListquestForm' =>  function($sm) {            
-                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');    
-                    return new ListquestForm($entityManager);
+                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');
+                    $form = new ListquestForm($entityManager);
+                    
+                    $listquestFieldset = new ListquestFieldset($entityManager);
+                    $listquestFieldset->setUseAsBaseFieldset(true);
+                    $listquestFieldset->remove('questions');
+                    
+                    $categories = $sm->get('config')['lrnl-listquests']['categories'];  
+                    $category = new Category('category',$categories);
+                    $category->setLabel(_('category'));
+                    
+                    $listquestFieldset->add($category);
+                    $form->add($listquestFieldset);
+                    
+                    return $form;
                 },
                 'LrnlListquests\Form\EditQuestionsInListquestForm' =>  function($sm) {            
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
@@ -53,7 +68,7 @@ class Module implements
                 'edit-question-form' =>  function($sm) {            
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
                     return new EditQuestionForm($entityManager);
-                },
+                },       
             ],
         ];
     }

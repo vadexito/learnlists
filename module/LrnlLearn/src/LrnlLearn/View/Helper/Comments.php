@@ -44,7 +44,7 @@ class Comments extends AbstractHelper
             $comments = [
                 '1' => [
                     '1' => $this->getView()->translate('Perfect, like last time!'),
-                    '2' => $this->getView()->translate('You did perfect in less than 10 seconds now!'),
+                    '2' => $this->getView()->translate('You did perfect in due time!'),
                     '3' => $this->getView()->translate('This time, no more mistake like last time!'),
                     '4' => $this->getView()->translate('Perfect, no more mistakes like last time!'),
                     '5' => $this->getView()->translate('Perfect,this time you did not ask the answer!'),
@@ -64,7 +64,7 @@ class Comments extends AbstractHelper
                     '5' => $this->getView()->translate('Better because you did not ask the answer like last time!'),
                 ],
                 '4' => [
-                    '1' => $this->getView()->translate('You forgot...last time was perfect, you did no mistake'),
+                    '1' => $this->getView()->translate('You forgot...last time was perfect, you did no mistake!'),
                     '2' => $this->getView()->translate('You forgot...last time you did no mistake!'),
                     '3' => $this->getView()->translate('You are doing more mistakes!'),
                     '4' => $this->getView()->translate('Still mistakes!'),

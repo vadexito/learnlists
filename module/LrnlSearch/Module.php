@@ -10,7 +10,7 @@ use Zend\Stdlib\Parameters;
 
 use LrnlSearch\Form\SearchForm;
 use LrnlSearch\Form\FiltersForm;
-use LrnlSearch\Form\FilterTermCheckboxElement;
+use LrnlListquests\Form\Element\Category;
 
 class Module implements 
     AutoloaderProviderInterface,
@@ -40,8 +40,15 @@ class Module implements
     {
         return [
             'factories' => [
-                'learnlists-form-search' =>  function() {
-                    return new SearchForm();
+                'learnlists-form-search' =>  function($sm) {
+                    $form = new SearchForm();
+                    
+                    $categories = $sm->get('config')['lrnl-listquests']['categories'];  
+                    $category = new Category('category',$categories);
+                    
+                    $form->add($category);
+                    
+                    return $form;
                 },
                 'learnlists-form-filter' =>  function($sm) {
                     $searchService = $sm->get('learnlists-search-service-factory');

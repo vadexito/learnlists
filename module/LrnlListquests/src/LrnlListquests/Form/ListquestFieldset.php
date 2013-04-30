@@ -58,9 +58,6 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('Description')
             ],
         ]);
-        $category = new Category('category');
-        $category->setLabel(_('category'));
-        $this->add($category);
         
         $this->add([
             'name' => 'language',
