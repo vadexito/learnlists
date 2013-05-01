@@ -158,7 +158,7 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
                         'options' => [
                             'encoding' => 'UTF-8',
                             'min'      => 2,
-                            'max'      => 50,
+                            'max'      => 25,
                         ],
                     ],
                 ],

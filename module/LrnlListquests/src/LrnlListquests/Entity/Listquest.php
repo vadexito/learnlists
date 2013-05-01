@@ -328,7 +328,7 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                         'options' => [
                             'encoding' => 'UTF-8',
                             'min'      => 2,
-                            'max'      => 50,
+                            'max'      => 35,
                         ],
                     ],
                 ],
@@ -353,7 +353,7 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
             ]));
             $inputFilter->add($factory->createInput([
                 'name'     => 'category',
-                'required' => true,
+                'required' => false,
                 'filters'  => [
                     ['name' => 'StripTags'],
                     ['name' => 'StringTrim'],
