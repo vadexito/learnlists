@@ -1,7 +1,48 @@
 
 <?php
-
-$title = $this->translate('User profile');
+$title = $this->translate('Account');
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<ul class="nav nav-tabs">
+    <li><a href="#home" data-toggle="tab">Home</a></li>
+    <li><a href="#profile" data-toggle="tab">Profile</a></li>
+    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+    <li><a href="#settings" data-toggle="tab">Settings</a></li>
+</ul>
+ 
+    
+    <div class="tab-content">
+    <div id ='profile' class='tab-pane well'>yiuy</div>
+    <div id ='messages' class="tab-pane well">tuytut</div>
+    <div id ='settings' class='tab-pane well'>jhgjg</div>
+    <div id ='home' class='active tab-pane well'>
+        <div  class='row-fluid'>
+            <div class='span5'>
+                <h3>Time per question</h3>
+                <h4>15 seconds is the time advised.</h4>
+            </div>
+            <div class='span7'>
+            <p><input checked="checked" id="sms_enabled" name="sms_enabled" type="checkbox" value="1" /> <b><label for="sms_enabled">Activer les notifications par SMS</label></b></p>
+                <div id='sms_phone_number'>
+                    <p>Recevoir les SMS au : <select id="sms_phone_number_id" name="sms_phone_number_id"><option value="2552314" selected="selected">+49 157 730 38130</option></select></p>
+                    <p><a href="https://www.airbnb.fr/users/edit">Modifier mon numéro de téléphone</a></p>
+                </div>
+           </div>
+        </div> 
+        <div class='row-fluid'>
+            <div class='span5'>
+                <h3>Téléphone portable</h3>
+                <h4>Recevoir des mises à jour par téléphone portable par messages SMS.</h4>
+            </div>
+            <div class='span7'>
+            <p><input checked="checked" id="sms_enabled" name="sms_enabled" type="checkbox" value="1" /> <b><label for="sms_enabled">Activer les notifications par SMS</label></b></p>
+                <div id='sms_phone_number'>
+                    <p>Recevoir les SMS au : <select id="sms_phone_number_id" name="sms_phone_number_id"><option value="2552314" selected="selected">+49 157 730 38130</option></select></p>
+                    <p><a href="https://www.airbnb.fr/users/edit">Modifier mon numéro de téléphone</a></p>
+                </div>
+           </div>
+        </div> 
+    </div>
+    </div>
