@@ -2,7 +2,6 @@
 
 namespace LrnlSearch\Service;
 
-use LrnlSearch\Service\SearchService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\Parameters;
@@ -13,12 +12,13 @@ class SearchServiceFactory implements FactoryInterface
     {
         $config = $services->get('config')['lrnl-search'];
         $listquestService = $services->get('learnlists-listquestfactory-service');
-        $ratingService = $services->get('wtrating.service');
         $filterConfig = $services->get('config')['lrnl-search']['filters'];
-        $service   = new SearchService(
+        $service   = new LuceneSearchService(
                 $config['indexPath'],$listquestService,
-                $ratingService,new Parameters($filterConfig)
+                new Parameters($filterConfig)
         );
+        $ratingService = $services->get('wtrating.service');
+        $service->setRatingService($ratingService);
         return $service;
     }
 }

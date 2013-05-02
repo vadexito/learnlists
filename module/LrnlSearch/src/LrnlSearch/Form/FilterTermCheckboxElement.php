@@ -4,7 +4,7 @@ namespace LrnlSearch\Form;
 
 use Zend\Form\Element\Checkbox;
 use LrnlSearch\Provider\ProvidesSearchService;
-use LrnlSearch\Service\SearchService;
+use LrnlSearch\Service\SearchServiceInterface;
 
 class FilterTermCheckboxElement extends Checkbox
 {
@@ -12,7 +12,7 @@ class FilterTermCheckboxElement extends Checkbox
     
     protected $_queryUrl;
     
-    public function __construct($name = NULL,SearchService $searchService)
+    public function __construct($name = NULL,SearchServiceInterface $searchService)
     {
         parent::__construct($name); 
         $this->setSearchService($searchService);
@@ -59,7 +59,7 @@ class FilterTermCheckboxElement extends Checkbox
         //calculate the hit number of each option
         $filteredQuery = clone $queryData; 
         $filteredQuery->set($filter,[$value]);                
-        $hitNb = count($this->getSearchService()->getResultsFromQuery($filteredQuery));
+        $hitNb = $this->getSearchService()->getCountNumberFromQuery($filteredQuery);
         $this->setAttribute('data-hitNb',$hitNb);
                 
         

@@ -42,7 +42,7 @@ class SearchController extends AbstractActionController
             'resultNb' => count($hits),
             'searchForm' => $searchForm,
             'filterForm' => $filterForm,
-            'query' => (array)$queryData
+            'query' => $queryData ? $queryData->toArray() : []
         ];
         
     }
@@ -50,12 +50,6 @@ class SearchController extends AbstractActionController
     public function buildAction()
     {
         $this->getSearchService()->buildIndex();        
-        $this->redirect()->toRoute('home');
-    }
-    
-    public function updateAction()
-    {
-        $this->getSearchService()->updateIndex();        
         $this->redirect()->toRoute('home');
     }
     

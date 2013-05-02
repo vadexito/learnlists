@@ -8,7 +8,7 @@ use LrnlListquests\Entity\Listquest;
 use LrnlSearch\Traits\LuceneSearchTrait;
 use WtRating\Service\RatingService;
 
-class ListquestDocument extends Document
+class LuceneListquestDocument extends Document implements ListquestDocumentInterface
 {
     use LuceneSearchTrait;
     

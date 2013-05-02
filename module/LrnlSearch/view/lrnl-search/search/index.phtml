@@ -9,11 +9,17 @@ $searchForm->prepare();
 //initiate searchForm filters select element (chosen plugin)
 $urlQueries = $filterForm->get('filters')->getAttribute('data-urls');
 $urls = [];
-foreach ($urlQueries as $query){
-    $urls[] = $this->url('lrnl-search',[],['query' => $query->toArray()]);
+foreach ($urlQueries as $urlquery){
+    $urls[] = $this->url('lrnl-search',[],['query' => $urlquery->toArray()]);
 }
 
 $filterForm->get('filters')->setAttribute('data-urls',\Zend\Json\Json::encode($urls));
+$paginationControl = $this->paginationControl(
+    $this->lists,
+    'Sliding',
+    'pagination_control',
+    ['route' => 'lrnl-search','query' => $query]
+);
 ?>
 
 <div class="row-fluid search_bar_top">
@@ -23,7 +29,9 @@ $filterForm->get('filters')->setAttribute('data-urls',\Zend\Json\Json::encode($u
             <?php foreach ($searchForm as $element) : if ($element->getName() != 'submit') : ?>
             <?php echo $this->formRowTwb($element, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_INLINE);?>
             <?php endif; endforeach; ?>
-            <button type="submit" class="btn btn-large btn-primary"><i class="icon-white icon-search"></i> <?php echo $this->translate('Search'); ?></button>
+            <button type="submit" class="btn btn-large btn-primary">
+                <i class="icon-white icon-search"></i> <?php echo $this->translate('Search'); ?>
+            </button>
             <?php echo $this->formTwb()->closeTag($searchForm);?> 
         </div>
     </div>
@@ -112,7 +120,7 @@ $filterForm->get('filters')->setAttribute('data-urls',\Zend\Json\Json::encode($u
                     </button>
                 </div>
                 <div class="span6">
-                    <?php echo $this->paginationControl($this->lists,'Sliding','pagination_control', ['route' => 'lrnl-search','query' => $query->toArray()]); ?>
+                    <?php echo $paginationControl ?>
                 </div>
             </div>
             <div class="row-fluid">

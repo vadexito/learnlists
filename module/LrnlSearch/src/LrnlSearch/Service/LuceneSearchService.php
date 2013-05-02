@@ -9,7 +9,7 @@ use ZendSearch\Lucene\Search\Query;
 use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive as UTF8NumCaseInsensitiveAnalyser;
 use ZendSearch\Lucene\Analysis\Analyzer\Analyzer;
 
-use LrnlSearch\Document\ListquestDocument;
+use LrnlSearch\Document\LuceneListquestDocument;
 use LrnlSearch\Traits\LuceneSearchTrait;
 use LrnlListquests\Service\ListquestService;
 use LrnlListquests\Provider\ProvidesListquestService;
@@ -20,7 +20,7 @@ use LrnlListquests\Entity\Listquest;
 use WtRating\Service\RatingService;
 use Traversable;
 
-class SearchService
+class LuceneSearchService implements SearchServiceInterface
 {
     use LuceneSearchTrait;
     use ProvidesListquestService;
@@ -31,11 +31,10 @@ class SearchService
     
     public function __construct($indexPath,
             ListquestService $listquestService = NULL,
-            RatingService $ratingService = NULL, Traversable $filterConfig = NULL)
+            Traversable $filterConfig = NULL)
     {
         $this->setIndexPath($indexPath);
         $this->setListquestService($listquestService);
-        $this->setRatingService($ratingService);
         $this->setFilterConfig($filterConfig);
     }
     
@@ -85,6 +84,7 @@ class SearchService
         }
         
         //sort results and perform search
+        $hits = [];
         try {
             if ($sortOptions !== NULL){                
                 $hits = $index->find($query,$sortOptions['name'],$sortOptions['type'],$sortOptions['direction']);
@@ -93,10 +93,14 @@ class SearchService
             }
         }
         catch (LuceneException $ex) {
-            $hits = [];
         }
 
         return $hits;
+    }
+    
+    public function getCountNumberFromQuery($queryData)
+    {
+        return count($this->getResultsFromQuery($queryData));
     }
     
     public function buildIndex()
@@ -107,17 +111,19 @@ class SearchService
         
         $id =0;
         foreach ($lists as $list) {
-            $newDocument = new ListquestDocument($this->getRatingService());
+            $newDocument = $this->getNewListquestDocument();
             $index->addDocument($newDocument->setData($id,$list));
             $id++;
         }
         $index->commit();
-        $index->optimize();
     }
     
     public function updateIndex(Listquest $listquest)
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
+        
+        
+        
         $hit = $index->find('listId:'.$this->convertNumToString($listquest->id));
         $docId = $index->count()+1;
         if ($hit){
@@ -126,12 +132,11 @@ class SearchService
             $index->delete($hit->id);
         }
         
-        $newDocument = new ListquestDocument($this->getRatingService());
+        $newDocument = $this->getNewListquestDocument();
         $newDocument->setData((int)$docId,$listquest);
         
         $index->addDocument($newDocument);
         $index->commit();
-        $index->optimize();
     }
     
     public function deleteFromIndex($listquestId)
@@ -144,7 +149,6 @@ class SearchService
         }
         
         $index->commit();
-        $index->optimize();
     }
     
     public function setIndexPath($indexPath)
@@ -158,6 +162,11 @@ class SearchService
         return $this->_indexPath;
     }
     
+    public function getNewListquestDocument()
+    {
+        return new LuceneListquestDocument($this->getRatingService());        
+    }
+    
     public function getRatingService()
     {
         return $this->_ratingService;
@@ -168,6 +177,7 @@ class SearchService
         $this->_ratingService = $service;
         return $this;
     }
+    
     
     public function getFilterConfig()
     {

@@ -7,10 +7,9 @@ use LrnlSearch\Form\FilterTermCheckboxesFieldset;
 use LrnlSearch\Form\FilterRangeSliderFormElement as Slider;
 use LrnlSearch\Form\FilterTermCheckboxElement as Checkbox;
 use LrnlSearch\Form\FilterSearchFormElement as Search;
-use LrnlSearch\Service\SearchService;
+use LrnlSearch\Service\SearchServiceInterface;
 use Traversable;
 
-use Zend\Form\Element\Text;
 use Zend\Form\Element\Select;
 use Zend\Form\Fieldset;
 
@@ -21,7 +20,7 @@ class FiltersForm extends Form
     public static $SEARCH  = 'search';
     
     public function __construct($name = NULL,
-            SearchService $searchService,Traversable $filterConfig = NULL)
+            SearchServiceInterface $searchService,Traversable $filterConfig = NULL)
     {
         parent::__construct($name);        
         $select =  new Select('filters');
