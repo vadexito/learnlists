@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-30 19:12+0100\n"
-"PO-Revision-Date: 2013-04-30 19:16+0100\n"
+"POT-Creation-Date: 2013-05-01 23:13+0100\n"
+"PO-Revision-Date: 2013-05-01 23:14+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
 "Language: fr_FR\n"
@@ -159,6 +159,19 @@ msgid_plural "points"
 msgstr[0] "point"
 msgstr[1] "points"
 
+#: ../../../module/LrnlListquests/Module.php:57
+msgid "category"
+msgstr "catégorie"
+
+#: ../../../module/LrnlListquests/config/module.config.php:8
+msgid "Foreign Languages - German"
+msgstr "Langues étrangères - Allemand"
+
+#: ../../../module/LrnlListquests/config/module.config.php:9
+#, fuzzy
+msgid "Foreign Languages - French"
+msgstr "Langues étrangères - Allemand"
+
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:30
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:62
 msgid "Add"
@@ -169,7 +182,7 @@ msgid "Edit"
 msgstr "Editer"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/EditQuestionForm.php:37
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestForm.php:41
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestForm.php:36
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:82
 msgid "Check"
 msgstr "Vérifier"
@@ -183,76 +196,72 @@ msgstr "Titre"
 msgid "Description"
 msgstr "question"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:62
-msgid "category"
-msgstr "catégorie"
-
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:72
-#: ../view/layout/layout.phtml:58
-#: ../../../module/Application/view/layout/layout.phtml:58
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:69
+#: ../view/layout/layout.phtml:59
+#: ../../../module/Application/view/layout/layout.phtml:59
 msgid "Language"
 msgstr "Langue"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:74
-#: ../view/layout/layout.phtml:65
-#: ../../../module/Application/view/layout/layout.phtml:65
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:71
+#: ../view/layout/layout.phtml:66
+#: ../../../module/Application/view/layout/layout.phtml:66
 msgid "English"
 msgstr "anglais"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:75
-#: ../view/layout/layout.phtml:63
-#: ../../../module/Application/view/layout/layout.phtml:63
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:72
+#: ../view/layout/layout.phtml:64
+#: ../../../module/Application/view/layout/layout.phtml:64
 msgid "German"
 msgstr "Allemand"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:76
-#: ../view/layout/layout.phtml:64
-#: ../../../module/Application/view/layout/layout.phtml:64
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:73
+#: ../view/layout/layout.phtml:65
+#: ../../../module/Application/view/layout/layout.phtml:65
 msgid "French"
 msgstr "français"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:77
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:74
 #, fuzzy
 msgid "Polish"
 msgstr "anglais"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:88
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:85
 msgid "Level"
 msgstr "Niveau"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:90
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:87
 msgid "Top level"
 msgstr "top niveau"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:91
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:88
 msgid "Very high level"
 msgstr "très haut niveau"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:92
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:89
 msgid "High level"
 msgstr "haut niveau"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:93
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:90
 msgid "Good level"
 msgstr "bon niveau"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:94
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:91
 msgid "Average plus level"
 msgstr "niveau moyen plus"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:95
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:92
 msgid "Average level"
 msgstr "niveau moyen"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:96
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:93
 msgid "Basic level"
 msgstr "débutant"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:97
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:94
 msgid "Elementary level"
 msgstr "élémentaire"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:110
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:107
 msgid "Rules"
 msgstr "Règles"
 
@@ -274,19 +283,15 @@ msgstr "Conseil"
 msgid "Tag"
 msgstr "Etiquettes (Tags)"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Category.php:17
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Category.php:12
 msgid "Categories"
 msgstr "Catégories"
-
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Category.php:19
-msgid "Foreign Languages - German"
-msgstr "Langues étrangères - Allemand"
 
 #: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:26
 msgid "Which quizz are you looking for?"
 msgstr "Rechercher un quizz"
 
-#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:41
+#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:34
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:19
 #: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:26
 msgid "Search"
@@ -360,11 +365,6 @@ msgstr "Profil"
 msgid "Log out"
 msgstr "Déconnection"
 
-#: ../../../config/autoload/lrnlsearch.global.php:5
-#, fuzzy
-msgid "authorRole"
-msgstr "Par auteur"
-
 #: ../../../config/autoload/lrnlsearch.global.php:6
 #, fuzzy
 msgid "author"
@@ -382,7 +382,6 @@ msgstr "Professeur"
 msgid "student"
 msgstr "Etudiant"
 
-#: ../../../config/autoload/lrnlsearch.global.php:10
 #: ../../../config/autoload/lrnlsearch.global.php:12
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:53
 #, fuzzy
@@ -401,9 +400,7 @@ msgstr "facile"
 msgid "beginner"
 msgstr "débutant"
 
-#: ../../../config/autoload/lrnlsearch.global.php:15
 #: ../../../config/autoload/lrnlsearch.global.php:16
-#, fuzzy
 msgid "language"
 msgstr "Langue"
 
@@ -413,34 +410,22 @@ msgid "german"
 msgstr "Allemand"
 
 #: ../../../config/autoload/lrnlsearch.global.php:18
-#, fuzzy
 msgid "french"
 msgstr "français"
 
 #: ../../../config/autoload/lrnlsearch.global.php:18
-#, fuzzy
 msgid "polish"
-msgstr "anglais"
-
-#: ../../../config/autoload/lrnlsearch.global.php:20
-#, fuzzy
-msgid "questionNb"
-msgstr "question"
+msgstr "polonais"
 
 #: ../../../config/autoload/lrnlsearch.global.php:21
 msgid "questions"
 msgstr "questions"
 
-#: ../../../config/autoload/lrnlsearch.global.php:30
 #: ../../../config/autoload/lrnlsearch.global.php:31
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:52
 #, fuzzy
 msgid "rating"
 msgstr "Notation"
-
-#: ../../../config/autoload/lrnlsearch.global.php:40
-msgid "keyword"
-msgstr "mot-clé"
 
 #: ../../../config/autoload/lrnlsearch.global.php:41
 msgid "keywords"
@@ -452,15 +437,14 @@ msgstr "Entrer un mot-clé"
 
 #: ../view/application/footer/about.phtml:2
 #: ../../../module/Application/view/application/footer/about.phtml:2
-#, fuzzy
 msgid "About us"
-msgstr "A propos"
+msgstr "A propos de nous"
 
-#: ../view/application/footer/imprint.phtml:2 ../view/layout/layout.phtml:47
+#: ../view/application/footer/imprint.phtml:2 ../view/layout/layout.phtml:48
 #: ../../../module/Application/view/application/footer/imprint.phtml:2
-#: ../../../module/Application/view/layout/layout.phtml:47
+#: ../../../module/Application/view/layout/layout.phtml:48
 msgid "Imprint"
-msgstr ""
+msgstr "Mentions légales"
 
 #: ../view/application/footer/privacy.phtml:2
 #: ../../../module/Application/view/application/footer/privacy.phtml:2
@@ -468,9 +452,9 @@ msgstr ""
 msgid "Privacy policy"
 msgstr "Condentialité"
 
-#: ../view/application/footer/terms.phtml:2 ../view/layout/layout.phtml:44
+#: ../view/application/footer/terms.phtml:2 ../view/layout/layout.phtml:45
 #: ../../../module/Application/view/application/footer/terms.phtml:2
-#: ../../../module/Application/view/layout/layout.phtml:44
+#: ../../../module/Application/view/layout/layout.phtml:45
 msgid "Terms"
 msgstr "Conditions d'utilisation"
 
@@ -479,7 +463,7 @@ msgstr "Conditions d'utilisation"
 #: ../../../module/Application/view/cdli-twostagesignup/register.phtml:19
 #: ../../../module/Application/view/zfc-user/user/login.phtml:30
 msgid "Try again!"
-msgstr ""
+msgstr "Pouvez-vous rééssayer ?"
 
 #: ../view/cdli-twostagesignup/email/verification.phtml:2
 #: ../../../module/Application/view/cdli-twostagesignup/email/verification.phtml:2
@@ -497,17 +481,17 @@ msgstr ""
 #: ../view/cdli-twostagesignup/email-verification/form.phtml:13
 #: ../../../module/Application/view/cdli-twostagesignup/email-verification/form.phtml:13
 msgid "Email address"
-msgstr ""
+msgstr "Adresse email"
 
 #: ../view/cdli-twostagesignup/email-verification/form.phtml:14
 #: ../../../module/Application/view/cdli-twostagesignup/email-verification/form.phtml:14
 msgid "Verify Email Address"
-msgstr ""
+msgstr "Vérifier l'email"
 
 #: ../view/cdli-twostagesignup/email-verification/form.phtml:20
 #: ../../../module/Application/view/cdli-twostagesignup/email-verification/form.phtml:20
 msgid "Please try again!"
-msgstr ""
+msgstr "Essayer encore !"
 
 #: ../view/cdli-twostagesignup/email-verification/sent.phtml:1
 #: ../../../module/Application/view/cdli-twostagesignup/email-verification/sent.phtml:1
@@ -526,7 +510,7 @@ msgstr ""
 #: ../../../module/Application/view/error/403.phtml:2
 #: ../../../module/Application/view/error/403.phtml:31
 msgid "Error 403"
-msgstr ""
+msgstr "Erreur 403"
 
 #: ../view/error/403.phtml:12
 #: ../../../module/Application/view/error/403.phtml:12
@@ -567,13 +551,13 @@ msgstr ""
 #: ../../../module/Application/view/error/403.phtml:38
 #: ../../../module/Application/view/error/404.phtml:78
 msgid "Take Me Home"
-msgstr ""
+msgstr "A la maison"
 
 #: ../view/error/404.phtml:2 ../view/error/404.phtml:71
 #: ../../../module/Application/view/error/404.phtml:2
 #: ../../../module/Application/view/error/404.phtml:71
 msgid "Error 404"
-msgstr ""
+msgstr "Erreur 404"
 
 #: ../view/error/404.phtml:13
 #: ../../../module/Application/view/error/404.phtml:13
@@ -659,21 +643,36 @@ msgstr "Aucune exception disponible"
 #: ../view/goalio-forgot-password/forgot/forgot.phtml:4
 #: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:4
 msgid "Forgot password?"
-msgstr ""
+msgstr "Mot de passe oublié ?"
 
 #: ../view/goalio-forgot-password/forgot/forgot.phtml:18
 #: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:18
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: ../view/goalio-forgot-password/forgot/forgot.phtml:19
 #: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:19
 msgid "Sent reset link"
-msgstr ""
+msgstr "Envoyer un lien de réinitilisation du mot de passe"
 
 #: ../view/goalio-forgot-password/forgot/forgot.phtml:25
 #: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:25
 msgid "Back to login?"
+msgstr ""
+
+#: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:2
+#: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:2
+msgid "You password was reset?"
+msgstr ""
+
+#: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:7
+#: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:7
+msgid "You can now login using your new password."
+msgstr ""
+
+#: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:9
+#: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:9
+msgid "Back to login."
 msgstr ""
 
 #: ../view/layout/admin.phtml:6 ../view/layout/layout.phtml:6
@@ -682,59 +681,59 @@ msgstr ""
 msgid "LearnLists"
 msgstr "Learnlists"
 
-#: ../view/layout/layout.phtml:41
-#: ../../../module/Application/view/layout/layout.phtml:41
+#: ../view/layout/layout.phtml:42
+#: ../../../module/Application/view/layout/layout.phtml:42
 msgid "Company"
-msgstr ""
+msgstr "Entreprise"
 
-#: ../view/layout/layout.phtml:43
-#: ../../../module/Application/view/layout/layout.phtml:43
+#: ../view/layout/layout.phtml:44
+#: ../../../module/Application/view/layout/layout.phtml:44
 msgid "About"
 msgstr "A propos"
 
-#: ../view/layout/layout.phtml:45
-#: ../../../module/Application/view/layout/layout.phtml:45
+#: ../view/layout/layout.phtml:46
+#: ../../../module/Application/view/layout/layout.phtml:46
 msgid "Privacy"
 msgstr "Condentialité"
 
-#: ../view/layout/layout.phtml:46 ../view/phly-contact/contact/index.phtml:1
+#: ../view/layout/layout.phtml:47 ../view/phly-contact/contact/index.phtml:1
 #: ../view/phly-contact/contact/thank-you.phtml:2
-#: ../../../module/Application/view/layout/layout.phtml:46
+#: ../../../module/Application/view/layout/layout.phtml:47
 #: ../../../module/Application/view/phly-contact/contact/index.phtml:1
 #: ../../../module/Application/view/phly-contact/contact/thank-you.phtml:2
 msgid "Contact"
 msgstr "Contact"
 
-#: ../view/layout/layout.phtml:51
-#: ../../../module/Application/view/layout/layout.phtml:51
+#: ../view/layout/layout.phtml:52
+#: ../../../module/Application/view/layout/layout.phtml:52
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:121
 msgid "Help"
 msgstr "Aide"
 
-#: ../view/layout/layout.phtml:53
-#: ../../../module/Application/view/layout/layout.phtml:53
-msgid "How it works"
-msgstr ""
-
 #: ../view/layout/layout.phtml:54
 #: ../../../module/Application/view/layout/layout.phtml:54
-msgid "FAQ"
-msgstr ""
+msgid "How it works"
+msgstr "Comment ça marche"
 
-#: ../view/layout/layout.phtml:72
-#: ../../../module/Application/view/layout/layout.phtml:72
+#: ../view/layout/layout.phtml:55
+#: ../../../module/Application/view/layout/layout.phtml:55
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ../view/layout/layout.phtml:73
+#: ../../../module/Application/view/layout/layout.phtml:73
 msgid "2013 by Voilamylife."
 msgstr "2013 par Voilamylife."
 
-#: ../view/layout/layout.phtml:72
-#: ../../../module/Application/view/layout/layout.phtml:72
+#: ../view/layout/layout.phtml:73
+#: ../../../module/Application/view/layout/layout.phtml:73
 msgid "All rights reserved."
 msgstr "Tous droits réservés."
 
-#: ../view/layout/layout.phtml:78
-#: ../../../module/Application/view/layout/layout.phtml:78
+#: ../view/layout/layout.phtml:79
+#: ../../../module/Application/view/layout/layout.phtml:79
 msgid "Loading..."
-msgstr ""
+msgstr "Chargement en cours..."
 
 #: ../view/phly-contact/contact/index.phtml:6
 #: ../../../module/Application/view/phly-contact/contact/index.phtml:6
@@ -753,22 +752,22 @@ msgstr ""
 #: ../../../module/Application/view/phly-contact/contact/thank-you.phtml:3
 #: ../../../module/Application/view/phly-contact/contact/thank-you.phtml:6
 msgid "Thank you!"
-msgstr ""
+msgstr "merci !"
 
 #: ../view/phly-contact/contact/thank-you.phtml:9
 #: ../../../module/Application/view/phly-contact/contact/thank-you.phtml:9
 msgid "Your message has been sent!"
-msgstr ""
+msgstr "Votre message a bien été envoyé !"
 
 #: ../view/zfc-user/user/login.phtml:12
 #: ../../../module/Application/view/zfc-user/user/login.phtml:12
 msgid "Email or Username"
-msgstr ""
+msgstr "Email ou nom d'utilisateur"
 
 #: ../view/zfc-user/user/login.phtml:13
 #: ../../../module/Application/view/zfc-user/user/login.phtml:13
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: ../view/zfc-user/user/login.phtml:14
 #: ../../../module/Application/view/zfc-user/user/login.phtml:14
@@ -776,24 +775,24 @@ msgstr ""
 msgid "Sign in"
 msgstr "Se connecter"
 
-#: ../view/zfc-user/user/login.phtml:41
-#: ../../../module/Application/view/zfc-user/user/login.phtml:41
+#: ../view/zfc-user/user/login.phtml:43
+#: ../../../module/Application/view/zfc-user/user/login.phtml:43
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Mot de passe oublié ?"
 
 #: ../view/zfc-user/user/register.phtml:2
 #: ../../../module/Application/view/zfc-user/user/register.phtml:2
 msgid "Register"
-msgstr ""
+msgstr "S'inscrire"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/help/about_our_method.phtml:2
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:35
 msgid "About our methods"
-msgstr ""
+msgstr "Nos méthodes..."
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/help/how_to_create_a_list.phtml:2
 msgid "How to create a list"
-msgstr ""
+msgstr "Comment créer une liste"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:5
 #: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:3
@@ -802,11 +801,11 @@ msgstr "Apprendre avec LearnLists"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:47
 msgid "You have limited time to answer"
-msgstr ""
+msgstr "le temps pour répondre et avoir un maximum de points est limité"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:54
 msgid "The list you have choosen"
-msgstr ""
+msgstr "La liste choisie"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:57
 msgid ""
@@ -818,16 +817,15 @@ msgstr ""
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:57
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:156
 msgid "Round"
-msgstr ""
+msgstr "Round"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:64
 msgid "Question you have to answer or containing missing element"
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:71
-#, fuzzy
 msgid "Comment"
-msgstr "Ajouter un commentaire"
+msgstr "Commentaire"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:77
 msgid ""
@@ -836,9 +834,8 @@ msgid ""
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:77
-#, fuzzy
 msgid "Answer here"
-msgstr "Réponse"
+msgstr "Répondre ici"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:82
 msgid "Then press the submit button (or press enter)"
@@ -856,26 +853,27 @@ msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid "Skip"
-msgstr ""
+msgstr "Passer"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid ""
 "Press this button if you want to skip this question. You will be asked "
 "automatically later."
 msgstr ""
+"Appuyer sur ce bouton pour passer à la question suivante et être interrogé "
+"plus tard sur cette question"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:92
 msgid "Number of question you have left to complete a round"
-msgstr ""
+msgstr "Nombre de questions restantes pour compléter un round"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:93
-#, fuzzy
 msgid "Questions"
-msgstr "questions"
+msgstr "Questions"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:97
 msgid ""
@@ -891,20 +889,20 @@ msgstr ""
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:130
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:140
 msgid "Score"
-msgstr ""
+msgstr "Score"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:106
 #, php-format
 msgid "max : %s"
-msgstr ""
+msgstr "max : %s"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:111
 msgid "Reset rounds"
-msgstr ""
+msgstr "Remettre à zéro tous les rounds"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:114
 msgid "Cancel round"
-msgstr ""
+msgstr "Annuler cet round"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:117
 msgid "You can reset the current round to a new round"
@@ -924,7 +922,7 @@ msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:124
 msgid "How is the score calculated?"
-msgstr ""
+msgstr "Comment le score est-il calculé ?"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:139
 msgid "Date"
@@ -1004,12 +1002,11 @@ msgstr ""
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:15
 #, php-format
 msgid "Category %s"
-msgstr ""
+msgstr "Catégorie %s"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:27
-#, fuzzy
 msgid "Teacher list"
-msgstr "Learnlists"
+msgstr "Liste établie par un professeur"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:33
 msgid "Edit list"
@@ -1023,20 +1020,19 @@ msgstr[1] "questions"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:59
 msgid "name"
-msgstr ""
+msgstr "nom"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:67
-#, fuzzy
 msgid "You like it"
 msgstr "J'aime ça"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:70
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:77
 msgid "Start to learn"
-msgstr ""
+msgstr "Commencer !"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/add.phtml:2
 msgid "Add new list"
@@ -1104,15 +1100,16 @@ msgid "Press to add a new empty line. Press the save button below to save"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:2
-#, fuzzy
 msgid "Learn with quizzes"
-msgstr "Apprendre avec des quizs"
+msgstr "Apprendre avec des quizz"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:13
 #, php-format
 msgid ""
 "Learn with %d high quality quizzes proposed by our community of teachers."
 msgstr ""
+"Apprenez avec %d quizz de haute qualité proposés par notre communauté de "
+"professeurs."
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:27
 #, fuzzy
@@ -1179,28 +1176,28 @@ msgstr ""
 #: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:96
 #, php-format
 msgid "%s results"
-msgstr ""
+msgstr "%s résultats"
 
 #: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:111
 #, fuzzy
 msgid "Leave a comment!"
 msgstr "Voir les commentaires"
 
-#: ../../../module/LrnlUser/view/lrnl-user/user/index.phtml:4
-msgid "User profile"
-msgstr ""
+#: ../../../module/LrnlUser/view/lrnl-user/user/index.phtml:3
+msgid "Account"
+msgstr "Compte"
 
 #: ../../../module/VxoBraintree/view/vxo-braintree/transaction/create.phtml:7
 msgid "Your product :"
-msgstr ""
+msgstr "Votre produit :"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:2
 msgid "Our Learning Offers"
-msgstr ""
+msgstr "Nos offres pour apprendre"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:7
 msgid "BASIC"
-msgstr ""
+msgstr "BASIC"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:8
 msgid "Great to get started"
@@ -1208,7 +1205,7 @@ msgstr ""
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:11
 msgid "FREE"
-msgstr ""
+msgstr "GRATUIT"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:16
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:54
@@ -1222,7 +1219,7 @@ msgstr ""
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:98
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:102
 msgid "No limit"
-msgstr ""
+msgstr "Sans limite"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:20
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:58
@@ -1237,13 +1234,13 @@ msgstr "Cherche une liste"
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:63
 #, php-format
 msgid "%d/month"
-msgstr ""
+msgstr "%d/mois"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:24
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:62
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:101
 msgid "Top best quizzes"
-msgstr ""
+msgstr "Top best quizz"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:29
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:67
@@ -1332,6 +1329,17 @@ msgstr "Utilisateur"
 #: ../../../module/Application/language/_XMLforPoedit/role.xml:8
 msgid "premium"
 msgstr ""
+
+#, fuzzy
+#~ msgid "authorRole"
+#~ msgstr "Par auteur"
+
+#, fuzzy
+#~ msgid "questionNb"
+#~ msgstr "question"
+
+#~ msgid "keyword"
+#~ msgstr "mot-clé"
 
 #~ msgid ""
 #~ "One great way to learn is through quiz. The possibilities offered by "

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-30 19:17+0100\n"
-"PO-Revision-Date: 2013-04-30 19:19+0100\n"
+"POT-Creation-Date: 2013-05-02 13:40+0100\n"
+"PO-Revision-Date: 2013-05-02 14:38+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -13,8 +13,8 @@ msgstr ""
 "X-Poedit-KeywordsList: translate;_:1,2,3;translatePlural:1,2\n"
 "X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 1.5.4\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: ../../../module\n"
 "X-Poedit-SearchPath-2: ../../../config\n"
@@ -161,6 +161,18 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
+#: ../../../module/LrnlListquests/Module.php:57
+msgid "category"
+msgstr ""
+
+#: ../../../module/LrnlListquests/config/module.config.php:8
+msgid "Foreign Languages - German"
+msgstr ""
+
+#: ../../../module/LrnlListquests/config/module.config.php:9
+msgid "Foreign Languages - French"
+msgstr ""
+
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:30
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:62
 msgid "Add"
@@ -171,7 +183,7 @@ msgid "Edit"
 msgstr ""
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/EditQuestionForm.php:37
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestForm.php:41
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestForm.php:36
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:82
 msgid "Check"
 msgstr ""
@@ -185,75 +197,67 @@ msgstr ""
 msgid "Description"
 msgstr "Wyjątek"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:62
-msgid "category"
-msgstr ""
-
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:72
-#: ../view/layout/layout.phtml:58
-#: ../../../module/Application/view/layout/layout.phtml:58
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:69
 msgid "Language"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:74
-#: ../view/layout/layout.phtml:65
-#: ../../../module/Application/view/layout/layout.phtml:65
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:71
+#: ../../../config/autoload/vxolocale.global.php:15
 msgid "English"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:75
-#: ../view/layout/layout.phtml:63
-#: ../../../module/Application/view/layout/layout.phtml:63
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:72
+#: ../../../config/autoload/vxolocale.global.php:19
 msgid "German"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:76
-#: ../view/layout/layout.phtml:64
-#: ../../../module/Application/view/layout/layout.phtml:64
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:73
+#: ../../../config/autoload/vxolocale.global.php:10
 msgid "French"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:77
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:74
+#: ../../../config/autoload/vxolocale.global.php:23
 msgid "Polish"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:88
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:85
 msgid "Level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:90
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:87
 msgid "Top level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:91
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:88
 msgid "Very high level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:92
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:89
 msgid "High level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:93
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:90
 msgid "Good level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:94
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:91
 msgid "Average plus level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:95
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:92
 msgid "Average level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:96
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:93
 msgid "Basic level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:97
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:94
 msgid "Elementary level"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:110
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:107
 msgid "Rules"
 msgstr ""
 
@@ -274,19 +278,15 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Category.php:17
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Category.php:12
 msgid "Categories"
-msgstr ""
-
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Category.php:19
-msgid "Foreign Languages - German"
 msgstr ""
 
 #: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:26
 msgid "Which quizz are you looking for?"
 msgstr ""
 
-#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:41
+#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:34
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:19
 #: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:26
 msgid "Search"
@@ -360,10 +360,6 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: ../../../config/autoload/lrnlsearch.global.php:5
-msgid "authorRole"
-msgstr ""
-
 #: ../../../config/autoload/lrnlsearch.global.php:6
 msgid "author"
 msgstr ""
@@ -380,9 +376,8 @@ msgstr ""
 msgid "student"
 msgstr ""
 
-#: ../../../config/autoload/lrnlsearch.global.php:10
 #: ../../../config/autoload/lrnlsearch.global.php:12
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:53
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:57
 msgid "level"
 msgstr ""
 
@@ -398,7 +393,6 @@ msgstr ""
 msgid "beginner"
 msgstr ""
 
-#: ../../../config/autoload/lrnlsearch.global.php:15
 #: ../../../config/autoload/lrnlsearch.global.php:16
 msgid "language"
 msgstr ""
@@ -415,22 +409,13 @@ msgstr ""
 msgid "polish"
 msgstr ""
 
-#: ../../../config/autoload/lrnlsearch.global.php:20
-msgid "questionNb"
-msgstr ""
-
 #: ../../../config/autoload/lrnlsearch.global.php:21
 msgid "questions"
 msgstr ""
 
-#: ../../../config/autoload/lrnlsearch.global.php:30
 #: ../../../config/autoload/lrnlsearch.global.php:31
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:52
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:56
 msgid "rating"
-msgstr ""
-
-#: ../../../config/autoload/lrnlsearch.global.php:40
-msgid "keyword"
 msgstr ""
 
 #: ../../../config/autoload/lrnlsearch.global.php:41
@@ -446,9 +431,9 @@ msgstr ""
 msgid "About us"
 msgstr ""
 
-#: ../view/application/footer/imprint.phtml:2 ../view/layout/layout.phtml:47
+#: ../view/application/footer/imprint.phtml:2 ../view/layout/layout.phtml:48
 #: ../../../module/Application/view/application/footer/imprint.phtml:2
-#: ../../../module/Application/view/layout/layout.phtml:47
+#: ../../../module/Application/view/layout/layout.phtml:48
 msgid "Imprint"
 msgstr ""
 
@@ -457,9 +442,9 @@ msgstr ""
 msgid "Privacy policy"
 msgstr ""
 
-#: ../view/application/footer/terms.phtml:2 ../view/layout/layout.phtml:44
+#: ../view/application/footer/terms.phtml:2 ../view/layout/layout.phtml:45
 #: ../../../module/Application/view/application/footer/terms.phtml:2
-#: ../../../module/Application/view/layout/layout.phtml:44
+#: ../../../module/Application/view/layout/layout.phtml:45
 msgid "Terms"
 msgstr ""
 
@@ -667,63 +652,78 @@ msgstr ""
 msgid "Back to login?"
 msgstr ""
 
+#: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:2
+#: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:2
+msgid "You password was reset?"
+msgstr ""
+
+#: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:7
+#: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:7
+msgid "You can now login using your new password."
+msgstr ""
+
+#: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:9
+#: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:9
+msgid "Back to login."
+msgstr ""
+
 #: ../view/layout/admin.phtml:6 ../view/layout/layout.phtml:6
 #: ../../../module/Application/view/layout/admin.phtml:6
 #: ../../../module/Application/view/layout/layout.phtml:6
 msgid "LearnLists"
 msgstr ""
 
-#: ../view/layout/layout.phtml:41
-#: ../../../module/Application/view/layout/layout.phtml:41
+#: ../view/layout/layout.phtml:42
+#: ../../../module/Application/view/layout/layout.phtml:42
 msgid "Company"
 msgstr ""
 
-#: ../view/layout/layout.phtml:43
-#: ../../../module/Application/view/layout/layout.phtml:43
+#: ../view/layout/layout.phtml:44
+#: ../../../module/Application/view/layout/layout.phtml:44
 msgid "About"
 msgstr ""
 
-#: ../view/layout/layout.phtml:45
-#: ../../../module/Application/view/layout/layout.phtml:45
+#: ../view/layout/layout.phtml:46
+#: ../../../module/Application/view/layout/layout.phtml:46
 msgid "Privacy"
 msgstr ""
 
-#: ../view/layout/layout.phtml:46 ../view/phly-contact/contact/index.phtml:1
+#: ../view/layout/layout.phtml:47 ../view/phly-contact/contact/index.phtml:1
 #: ../view/phly-contact/contact/thank-you.phtml:2
-#: ../../../module/Application/view/layout/layout.phtml:46
+#: ../../../module/Application/view/layout/layout.phtml:47
 #: ../../../module/Application/view/phly-contact/contact/index.phtml:1
 #: ../../../module/Application/view/phly-contact/contact/thank-you.phtml:2
 msgid "Contact"
 msgstr ""
 
-#: ../view/layout/layout.phtml:51
-#: ../../../module/Application/view/layout/layout.phtml:51
+#: ../view/layout/layout.phtml:52
+#: ../../../module/Application/view/layout/layout.phtml:52
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:121
 msgid "Help"
 msgstr ""
 
-#: ../view/layout/layout.phtml:53
-#: ../../../module/Application/view/layout/layout.phtml:53
+#: ../view/layout/layout.phtml:54
+#: ../../../module/Application/view/layout/layout.phtml:54
 msgid "How it works"
 msgstr ""
 
-#: ../view/layout/layout.phtml:54
-#: ../../../module/Application/view/layout/layout.phtml:54
+#: ../view/layout/layout.phtml:55
+#: ../../../module/Application/view/layout/layout.phtml:55
 msgid "FAQ"
 msgstr ""
 
-#: ../view/layout/layout.phtml:72
-#: ../../../module/Application/view/layout/layout.phtml:72
+#: ../view/layout/layout.phtml:63
+#: ../../../module/Application/view/layout/layout.phtml:63
 msgid "2013 by Voilamylife."
 msgstr ""
 
-#: ../view/layout/layout.phtml:72
-#: ../../../module/Application/view/layout/layout.phtml:72
+#: ../view/layout/layout.phtml:63
+#: ../../../module/Application/view/layout/layout.phtml:63
 msgid "All rights reserved."
 msgstr "Wszelkie prawa zastrzeżone."
 
-#: ../view/layout/layout.phtml:78
-#: ../../../module/Application/view/layout/layout.phtml:78
+#: ../view/layout/layout.phtml:69
+#: ../../../module/Application/view/layout/layout.phtml:69
 msgid "Loading..."
 msgstr ""
 
@@ -766,8 +766,8 @@ msgstr ""
 msgid "Sign in"
 msgstr ""
 
-#: ../view/zfc-user/user/login.phtml:41
-#: ../../../module/Application/view/zfc-user/user/login.phtml:41
+#: ../view/zfc-user/user/login.phtml:43
+#: ../../../module/Application/view/zfc-user/user/login.phtml:43
 msgid "Forgot your password?"
 msgstr ""
 
@@ -988,20 +988,20 @@ msgstr ""
 msgid "Premium offer"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:15
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:12
 #, php-format
 msgid "Category %s"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:27
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:31
 msgid "Teacher list"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:33
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:37
 msgid "Edit list"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:46
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:50
 #, fuzzy
 msgid "question"
 msgid_plural "questions"
@@ -1009,19 +1009,19 @@ msgstr[0] "Wyjątek"
 msgstr[1] "Wyjątek"
 msgstr[2] "Wyjątek"
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:59
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:63
 msgid "name"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:67
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:71
 msgid "You like it"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:70
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:74
 msgid "Yes"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:77
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:81
 msgid "Start to learn"
 msgstr ""
 
@@ -1077,7 +1077,7 @@ msgid "Remove question"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/edit.phtml:63
-msgid "Press to add a new empty line. Press the save button below to save"
+msgid "Press to add a new empty line. To save press the button below"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:2
@@ -1151,8 +1151,8 @@ msgstr ""
 msgid "Leave a comment!"
 msgstr ""
 
-#: ../../../module/LrnlUser/view/lrnl-user/user/index.phtml:4
-msgid "User profile"
+#: ../../../module/LrnlUser/view/lrnl-user/user/index.phtml:3
+msgid "Account"
 msgstr ""
 
 #: ../../../module/VxoBraintree/view/vxo-braintree/transaction/create.phtml:7
