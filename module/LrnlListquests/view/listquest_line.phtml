@@ -8,11 +8,15 @@ $gravatar = $this->gravatar(
         .' ('.$authorRole. ')']
 );
 $authorIsTeacher = ($authorRole === 'teacher');
+$DirCategoryThumbnail = '/assets/images/thumbnails/categories/';
+$titleImage = sprintf($this->translate('Category %s'),$this->escapeHtml($category));
+$urlCategory = $DirCategoryThumbnail
+        . ($category ? $this->escapeHtml($category) : 'empty').'.jpg';
 ?>
 <li class="search_result_listquest_item">
     <div class="row-fluid ">
         <div class="span2">            
-             <img src="/assets/images/thumbnails/categories/<?php echo $this->escapeHtml($category); ?>.jpg" title="<?php echo sprintf($this->translate('Category %s'),$this->escapeHtml($category)); ?>" alt="category" style="height:84px;width:124px;">
+             <img src="<?php echo $urlCategory; ?>" title="<?php echo $titleImage; ?>" alt="category" style="height:84px;width:124px;">
         </div>
         <div class="span10">
             <div class="row-fluid">

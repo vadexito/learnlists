@@ -93,6 +93,10 @@ footer h5 {
 .dropdown-menu {
     min-width: 120px;
 }
+
+#drop_languages {
+    text-decoration: none;
+}
 /*=======================================
 header
 =========================================*/
