@@ -35,6 +35,7 @@
         "juriansluiman/slm-google-analytics": "dev-master",
         "delboy1978uk/del-countries-flags": "dev-master",
         "dlu/dlutwbootstrap": "dev-master",
-        "mwillbanks/zfc-twitter-bootstrap": "@dev"
+        "mwillbanks/zfc-twitter-bootstrap": "@dev",
+        "ruflin/elastica": "v0.20.5.0.RC1"
     }
 }

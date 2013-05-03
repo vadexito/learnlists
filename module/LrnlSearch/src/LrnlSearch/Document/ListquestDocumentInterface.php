@@ -6,5 +6,5 @@ use LrnlListquests\Entity\Listquest;
 
 interface ListquestDocumentInterface
 {
-    public function setData($id,Listquest $list);
+    public function createDocumentFromListquest($id,Listquest $list);
 }

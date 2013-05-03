@@ -49,6 +49,10 @@ class SearchController extends AbstractActionController
     
     public function buildAction()
     {
+        
+        
+        
+        
         $this->getSearchService()->buildIndex();        
         $this->redirect()->toRoute('home');
     }

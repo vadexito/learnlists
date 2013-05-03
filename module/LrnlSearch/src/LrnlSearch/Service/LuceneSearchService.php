@@ -112,7 +112,7 @@ class LuceneSearchService implements SearchServiceInterface
         $id =0;
         foreach ($lists as $list) {
             $newDocument = $this->getNewListquestDocument();
-            $index->addDocument($newDocument->setData($id,$list));
+            $index->addDocument($newDocument->createDocumentFromListquest($id,$list));
             $id++;
         }
         $index->commit();
@@ -133,7 +133,7 @@ class LuceneSearchService implements SearchServiceInterface
         }
         
         $newDocument = $this->getNewListquestDocument();
-        $newDocument->setData((int)$docId,$listquest);
+        $newDocument->createDocumentFromListquest((int)$docId,$listquest);
         
         $index->addDocument($newDocument);
         $index->commit();

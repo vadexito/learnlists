@@ -35,8 +35,7 @@ class LuceneListquestDocument extends Document implements ListquestDocumentInter
         $this->addField(Field::Text('authorRole',$list->author->getRoles()[0]->getRoleId()));  
         $this->addField(Field::Text('level',$list->level));          
         $this->addField(Field::unIndexed('authorEmail',$list->author->getEmail()));  
-        $this->addField(Field::unIndexed('creationDate',$list->creationDate->getTimeStamp()));  
-        $this->addField(Field::unStored('rules',$list->rules)); 
+        $this->addField(Field::unIndexed('creationDate',$list->creationDate->getTimeStamp()));
 
         $tags = '';
         foreach ($list->tags as $tag){
