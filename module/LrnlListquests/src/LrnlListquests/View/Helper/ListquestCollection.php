@@ -21,7 +21,7 @@ class ListquestCollection extends AbstractHelper
         foreach ($lists as $list){
             
             $listId = (int)$list->listId;
-            $listDataBase= $this->getListquestService()->fetchById($listId);
+            $listDataBase = $this->getListquestService()->fetchById($listId);
             if (!$listDataBase){
                 continue;
             }
@@ -35,18 +35,18 @@ class ListquestCollection extends AbstractHelper
             
             $data[] = [
                 'id' => $listId,
-                'title' => $list->title,
-                'description' => $list->description,
-                'category' => $list->category,
-                'authorEmail' => $list->authorEmail,
+                'title' => $listDataBase->getTitle(),
+                'description' => $listDataBase->description,
+                'category' => $listDataBase->category,
+                'authorEmail' => $listDataBase->author->getEmail(),
                 'author' => $listDataBase->author,
-                'questionNb' => (int)$list->questionNb,
+                'questionNb' => $listDataBase->questions->count(),
                 'level' => $listDataBase->level,
                 'hasLike' => $hasLike,
                 'rating' => round($this->getRatingService()
                                  ->getRatingSet($listId)
                                  ->getAmount()),
-                'creationDate' => (new DateTime())->setTimestamp($list->creationDate),
+                'creationDate' => $listDataBase->creationDate,
             ];
         }
         $this->_lists = $data;

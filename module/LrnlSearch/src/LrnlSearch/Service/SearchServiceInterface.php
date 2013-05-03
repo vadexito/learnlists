@@ -2,23 +2,10 @@
 
 namespace LrnlSearch\Service;
 
-use ZendSearch\Lucene\Index;
-use ZendSearch\Lucene;
-use ZendSearch\Lucene\Exception as LuceneException;
-use ZendSearch\Lucene\Search\Query;
-use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive as UTF8NumCaseInsensitiveAnalyser;
-use ZendSearch\Lucene\Analysis\Analyzer\Analyzer;
+use Zend\Stdlib\Parameters;
 
-use LrnlSearch\Document\ListquestDocument;
-use LrnlSearch\Traits\LuceneSearchTrait;
-use LrnlListquests\Service\ListquestService;
-use LrnlListquests\Provider\ProvidesListquestService;
-use LrnlSearch\Form\FiltersForm;
 use LrnlSearch\Exception\SearchException;
 use LrnlListquests\Entity\Listquest;
-
-use WtRating\Service\RatingService;
-use Traversable;
 
 interface SearchServiceInterface
 {
@@ -31,7 +18,7 @@ interface SearchServiceInterface
      * @return array of hits (lucene hit)
      * @throws SearchException
      */
-    public function getResultsFromQuery($queryData,$sortOptions = NULL);    
+    public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL);    
     public function getCountNumberFromQuery($queryData);    
     public function buildIndex();       
     public function updateIndex(Listquest $listquest);    

@@ -37,6 +37,8 @@ class ElasticaListquestDocument extends Document implements ListquestDocumentInt
             'listId'  => (int)$list->id,
             'questionNb'  => (int)count($list->questions),
             'rating'  => (int)round($this->getRatingService()->getRatingSet($list->id)->getAmount()),
+            'authorName' => $list->author->getUserName(),
+            'authorRole' => $list->author->getRoles()[0]->getRoleId(),
             'author'    => array(
                 'name'      => $list->author->getUserName(),
                 'role'  => $list->author->getRoles()[0]->getRoleId(),

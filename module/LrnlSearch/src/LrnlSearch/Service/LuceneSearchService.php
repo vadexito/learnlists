@@ -8,6 +8,7 @@ use ZendSearch\Lucene\Exception as LuceneException;
 use ZendSearch\Lucene\Search\Query;
 use ZendSearch\Lucene\Analysis\Analyzer\Common\Utf8Num\CaseInsensitive as UTF8NumCaseInsensitiveAnalyser;
 use ZendSearch\Lucene\Analysis\Analyzer\Analyzer;
+use Zend\Stdlib\Parameters;
 
 use LrnlSearch\Document\LuceneListquestDocument;
 use LrnlSearch\Traits\LuceneSearchTrait;
@@ -46,7 +47,7 @@ class LuceneSearchService implements SearchServiceInterface
      * @return array of hits (lucene hit)
      * @throws SearchException
      */
-    public function getResultsFromQuery($queryData,$sortOptions = NULL)
+    public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL)
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
         $query = new Query\Boolean();

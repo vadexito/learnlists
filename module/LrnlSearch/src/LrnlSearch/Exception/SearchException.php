@@ -2,8 +2,8 @@
 
 namespace LrnlSearch\Exception;
 
-use ZendSearch\Lucene\Exception;
+use Exception;
 
-class SearchException extends \Exception
+class SearchException extends Exception
 {
 }

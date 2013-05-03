@@ -6,6 +6,7 @@ use ZendSearch\Lucene\Index;
 use ZendSearch\Lucene;
 use ZendSearch\Lucene\Exception as LuceneException;
 use ZendSearch\Lucene\Search\Query;
+use Zend\Stdlib\Parameters;
 
 
 use LrnlSearch\Document\ElasticaListquestDocument;
@@ -53,36 +54,60 @@ class ElasticaSearchService implements SearchServiceInterface
      * @return array of hits (lucene hit)
      * @throws SearchException
      */
-    public function getResultsFromQuery($queryData,$sortOptions = NULL)
+    public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL)
     {
+        $queryBool = new \Elastica\Query\Bool();
+        $queryBool->addMust(new \Elastica\Query\MatchAll());
         
-        // Define a Query. We want a string query.
-        $elasticaQueryString 	= new \Elastica\Query\QueryString();
-
-        //'And' or 'Or' default : 'Or'
-        $elasticaQueryString->setDefaultOperator('AND');
-        $elasticaQueryString->setQuery('vadex');
+        foreach ($queryData as $filter => $values){
+            //if it is the main search
+            if ($filter === 'search' && $values){
+                $query = new \Elastica\Query\QueryString();
+                $query->setDefaultOperator('OR');                
+                $query->setQuery((string)$values);                
+                $queryBool->addMust($query);
+            }
+            
+            if ($filter === 'category' && $values){
+                $query = new \Elastica\Query\Text();
+                $query->setField("category",$values);
+                $queryBool->addMust($query);
+            }
+            
+            
+            $filterConfig = $this->getFilterConfig()->get($filter);
+            if ($filterConfig !== NULL){
+                switch ($filterConfig['type']){
+                    case FiltersForm::$CHECKBOX :
+                        if ($values){
+                            foreach ($values as $value){
+                                $query = $this->getQueryForTerm($value,$filter);
+                                $queryBool->addMust($query);
+                            }   
+                        }                
+                        break;
+                    case FiltersForm::$RANGE :
+                        //$query->addSubquery($this->getQueryForRange($values,$filter),true);     
+                        break;
+                    case FiltersForm::$SEARCH :
+                        //$query->addSubquery($this->getQueryForTerms($values),true);
+                        break;
+                    default:
+                }
+            }
+        }
         
-        $elasticaQuery 		= new \Elastica\Query();
-        $elasticaQuery->setQuery($elasticaQueryString);
-        
-        $elasticaFacet 	= new \Elastica\Facet\Terms('myFacetName');
-        $elasticaFacet->setField('tags');
-        $elasticaFacet->setSize(10);
-        $elasticaFacet->setOrder('reverse_count');
-
-        // Add that facet to the search query object.
-        $elasticaQuery->addFacet($elasticaFacet);
-
+        $elasticaQuery = new \Elastica\Query();  
+        $elasticaQuery->setSize(100);
+        $elasticaQuery->setQuery($queryBool);
         
         //Search on the index.
-        $elasticaResultSet 	= $this->getIndex()->search($elasticaQuery);
+        $elasticaResultSet = $this->getIndex()->search($elasticaQuery);
         $hits 	= $elasticaResultSet->getResults();
-        $facets = $elasticaResultSet->getFacets();
-        $totalResults 		= $elasticaResultSet->getTotalHits();
+        $totalResults = $elasticaResultSet->getTotalHits();
         
-        //var_dump($hits);
-        var_dump($facets);die;
+        return $hits;
+       
 
 //
 //
@@ -90,33 +115,7 @@ class ElasticaSearchService implements SearchServiceInterface
 //        $allQuery = new Query\Range(new Index\Term('0','docId'),null,true);
 //        $query->addSubquery($allQuery,true);
 //        
-//        foreach ($queryData as $filter => $values){
-//            //if it is the main search
-//            if ($filter === 'search' && $values){                
-//                $values = explode(' ',$values);
-//                $query->addSubquery($this->getQueryForTerms($values,NULL,true),true);
-//            }
-//            if ($filter === 'category' && $values){
-//                $query->addSubquery($this->getQueryForTerms($values,$filter),true);
-//            }
-//            
-//            //if it is a filter from the side
-//            $filterConfig = $this->getFilterConfig()->get($filter);
-//            if ($filterConfig !== NULL){
-//                switch ($filterConfig['type']){
-//                    case FiltersForm::$CHECKBOX :                       
-//                        $query->addSubquery($this->getQueryForTerms($values,$filter),true);                        
-//                        break;
-//                    case FiltersForm::$RANGE :
-//                        $query->addSubquery($this->getQueryForRange($values,$filter),true);     
-//                        break;
-//                    case FiltersForm::$SEARCH :
-//                        $query->addSubquery($this->getQueryForTerms($values),true);
-//                        break;
-//                    default:
-//                }
-//            }
-//        }
+        
 //        
 //        //sort results and perform search
 //        $hits = [];
@@ -130,7 +129,7 @@ class ElasticaSearchService implements SearchServiceInterface
 //        catch (LuceneException $ex) {
 //        }
 
-        return $hits;
+        
     }
     
     public function getCountNumberFromQuery($queryData)
@@ -138,6 +137,52 @@ class ElasticaSearchService implements SearchServiceInterface
         return count($this->getResultsFromQuery($queryData));
     }
     
+    
+    protected function getQueryForTerm($value,$filter)
+    {
+        $query = new \Elastica\Query\Text();
+	$query->setField($filter, $value);
+        
+        return $query;
+    }
+    
+    protected function getQueryForTerms(Array $values,$filter = NULL,$operator = NULL)
+    {
+        foreach ($values as $value){
+            $this->getQueryForTerm($value,$filter,$operator);
+        }
+        
+        
+        
+        $query = new \Elastica\Query\Text();
+	$query -> setField("title", "hello");
+        
+        
+        
+        $query = new Query\MultiTerm();
+        foreach ($values as $value){
+            $term = new Index\Term(strtolower($value),$filter);
+            $query->addTerm($term,$operator);
+        }
+        
+        return $query;
+    }
+    
+    protected function getQueryForRange(Array $values,$filter = NULL,$inbound = true)
+    {
+        if (!is_array($values) || 
+            (!isset($values['min']) || !isset($values['max']))){
+        throw new SearchException('You must provide an array with min and max value');
+        }
+        
+        $min = $this->convertNumToString($values['min']);
+        $max = $this->convertNumToString($values['max']);                        
+        $termMin = new Index\Term($min,$filter);
+        $termMax = new Index\Term($max,$filter);
+        $query = new Query\Range($termMin,$termMax,$inbound);
+        
+        return $query;
+    }
     
     public function getClient()
     {
@@ -207,6 +252,8 @@ class ElasticaSearchService implements SearchServiceInterface
                 ),
             ),
             'title'     => array('type' => 'string', 'include_in_all' => TRUE),
+            'authorName'     => array('type' => 'string', 'include_in_all' => TRUE),
+            'authorRole'     => array('type' => 'string', 'include_in_all' => TRUE),
             'category'     => array('type' => 'string', 'include_in_all' => TRUE),
             'description'     => array('type' => 'string', 'include_in_all' => TRUE),
             'language'     => array('type' => 'string', 'include_in_all' => TRUE),
@@ -313,40 +360,5 @@ class ElasticaSearchService implements SearchServiceInterface
     {
         $this->_filterConfig = $filterConfig;
         return $this;
-    }
-    
-    
-    protected function getQueryForTerms($values,$filter = NULL,$operator = NULL)
-    {
-        if (!is_array($values) && !is_string($values)){
-            throw new SearchException('You must provide an array or a string for this element in the url.');
-        }
-        if (is_string($values)){
-            $values = [$values];
-        }
-        
-        $query = new Query\MultiTerm();
-        foreach ($values as $value){
-            $term = new Index\Term(strtolower($value),$filter);
-            $query->addTerm($term,$operator);
-        }
-        
-        return $query;
-    }
-    
-    protected function getQueryForRange(Array $values,$filter = NULL,$inbound = true)
-    {
-        if (!is_array($values) || 
-            (!isset($values['min']) || !isset($values['max']))){
-        throw new SearchException('You must provide an array with min and max value');
-        }
-        
-        $min = $this->convertNumToString($values['min']);
-        $max = $this->convertNumToString($values['max']);                        
-        $termMin = new Index\Term($min,$filter);
-        $termMax = new Index\Term($max,$filter);
-        $query = new Query\Range($termMin,$termMax,$inbound);
-        
-        return $query;
     }
 }
