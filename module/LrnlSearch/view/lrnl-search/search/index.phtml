@@ -51,7 +51,7 @@ $paginationControl = $this->paginationControl(
                 $checkbox->setAttribute('data-url',$this->url('lrnl-search',[],['query' => $checkbox->getQueryUrl()]));
                 ?>
                         <label class="checkbox">
-                            <?php echo $this->formCheckbox($checkbox); ?> <?php echo $checkbox->getLabel(); ?>
+                            <?php echo $this->formCheckbox($checkbox); ?> <?php echo ucfirst($this->translate($checkbox->getLabel())); ?>
                             <span class="badge pull-right"><?php echo $checkbox->getAttribute('data-hitNb'); ?></span>
                         </label>
             <?php endforeach; ?>
