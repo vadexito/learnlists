@@ -53,36 +53,38 @@ class LuceneSearchService implements SearchServiceInterface
         $query = new Query\Boolean();
         
         //add all, so that if no query it return everything
-        $allQuery = new Query\Range(new Index\Term('0','docId'),null,true);
-        $query->addSubquery($allQuery,true);
-        
-        foreach ($queryData as $filter => $values){
-            //if it is the main search
-            if ($filter === 'search' && $values){                
-                $values = explode(' ',$values);
-                $query->addSubquery($this->getQueryForTerms($values,NULL,true),true);
-            }
-            if ($filter === 'category' && $values){
-                $query->addSubquery($this->getQueryForTerms($values,$filter),true);
-            }
-            
-            //if it is a filter from the side
-            $filterConfig = $this->getFilterConfig()->get($filter);
-            if ($filterConfig !== NULL){
-                switch ($filterConfig['type']){
-                    case FiltersForm::$CHECKBOX :                       
-                        $query->addSubquery($this->getQueryForTerms($values,$filter),true);                        
-                        break;
-                    case FiltersForm::$RANGE :
-                        $query->addSubquery($this->getQueryForRange($values,$filter),true);     
-                        break;
-                    case FiltersForm::$SEARCH :
-                        $query->addSubquery($this->getQueryForTerms($values),true);
-                        break;
-                    default:
+        if ($queryData->count() ===0){
+            $allQuery = new Query\Range(new Index\Term('0','docId'),null,true);
+            $query->addSubquery($allQuery,true);
+        } else {
+            foreach ($queryData as $filter => $values){
+                //if it is the main search
+                if ($filter === 'search' && $values){                
+                    $values = explode(' ',$values);
+                    $query->addSubquery($this->getQueryForTerms($values,NULL,true),true);
+                }
+                if ($filter === 'category' && $values){
+                    $query->addSubquery($this->getQueryForTerms($values,$filter),true);
+                }
+
+                //if it is a filter from the side
+                $filterConfig = $this->getFilterConfig()->get($filter);
+                if ($filterConfig !== NULL){
+                    switch ($filterConfig['type']){
+                        case FiltersForm::$CHECKBOX :                       
+                            $query->addSubquery($this->getQueryForTerms($values,$filter),true);                        
+                            break;
+                        case FiltersForm::$RANGE :
+                            $query->addSubquery($this->getQueryForRange($values,$filter),true);     
+                            break;
+                        case FiltersForm::$SEARCH :
+                            $query->addSubquery($this->getQueryForTerms($values),true);
+                            break;
+                        default:
+                    }
                 }
             }
-        }
+        }  
         
         //sort results and perform search
         $hits = [];
@@ -104,6 +106,22 @@ class LuceneSearchService implements SearchServiceInterface
         return count($this->getResultsFromQuery($queryData));
     }
     
+    public function getFacet($facet,$queryData,Array $defaultValues)
+    {
+        $facetValues = [];
+        foreach ($defaultValues as $value){                
+            $filteredQuery = clone $queryData; 
+            $filteredQuery->set($facet,[$value]);                
+            $hitNb = $this->getCountNumberFromQuery($filteredQuery);
+            $facetValues[] = [
+                'term' => $value,
+                'count' => $hitNb,
+            ];
+        }
+        
+        return $facetValues;
+    }
+    
     public function buildIndex()
     {
         $index = Lucene\Lucene::create($this->getIndexPath());
@@ -122,8 +140,6 @@ class LuceneSearchService implements SearchServiceInterface
     public function updateIndex(Listquest $listquest)
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
-        
-        
         
         $hit = $index->find('listId:'.$this->convertNumToString($listquest->id));
         $docId = $index->count()+1;

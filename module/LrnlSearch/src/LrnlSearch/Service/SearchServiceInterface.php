@@ -19,7 +19,8 @@ interface SearchServiceInterface
      * @throws SearchException
      */
     public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL);    
-    public function getCountNumberFromQuery($queryData);    
+    public function getCountNumberFromQuery($queryData); 
+    public function getFacet($facet,$queryData,Array $defaultValues);
     public function buildIndex();       
     public function updateIndex(Listquest $listquest);    
     public function deleteFromIndex($listquestId);

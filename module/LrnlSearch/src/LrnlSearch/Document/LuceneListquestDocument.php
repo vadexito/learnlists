@@ -19,7 +19,7 @@ class LuceneListquestDocument extends Document implements ListquestDocumentInter
         $this->setRatingService($ratingService);
     }
     
-    public function setData($id,Listquest $list)
+    public function createDocumentFromListquest($id,Listquest $list)
     {
         $this->addField(Field::keyword('listId',$this->convertNumToString($list->id)));  
         $this->addField(Field::keyword('questionNb',

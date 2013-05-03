@@ -3,19 +3,17 @@
 namespace LrnlSearch\Form;
 
 use Zend\Form\Element\Checkbox;
-use LrnlSearch\Provider\ProvidesSearchService;
-use LrnlSearch\Service\SearchServiceInterface;
+
 
 class FilterTermCheckboxElement extends Checkbox
 {
-    use ProvidesSearchService;
+    protected $_queryUrl = NULL;
+   
     
-    protected $_queryUrl;
-    
-    public function __construct($name = NULL,SearchServiceInterface $searchService)
+    public function __construct($name = NULL)
     {
         parent::__construct($name); 
-        $this->setSearchService($searchService);
+        
         
         $this->setAttributes([
                 'id'    => $name,
@@ -55,18 +53,15 @@ class FilterTermCheckboxElement extends Checkbox
         }
         
         $this->_queryUrl = $filteredQueryforUrl->toArray();
-        
-        //calculate the hit number of each option
-        $filteredQuery = clone $queryData; 
-        $filteredQuery->set($filter,[$value]);                
-        $hitNb = $this->getSearchService()->getCountNumberFromQuery($filteredQuery);
-        $this->setAttribute('data-hitNb',$hitNb);
-                
-        
     }
     
     public function getQueryUrl()
     {
         return $this->_queryUrl;
     }
+    
+    
+    
+    
+    
 }

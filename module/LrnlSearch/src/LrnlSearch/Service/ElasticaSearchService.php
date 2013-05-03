@@ -46,6 +46,59 @@ class ElasticaSearchService implements SearchServiceInterface
         $this->setFilterConfig($filterConfig);
     }
     
+    public function getSearchQueryFromUrlQuery(Parameters $queryData)
+    {
+        $queryBool = new \Elastica\Query\Bool();
+        
+        if ($queryData->count() === 0){
+            $queryBool->addMust(new \Elastica\Query\MatchAll());
+        } else {
+            foreach ($queryData as $filter => $values){
+                //if it is the main search
+                if ($filter === 'search' && $values){
+                    $query = new \Elastica\Query\QueryString();
+                    $query->setDefaultOperator('OR');                
+                    $query->setQuery((string)$values);                
+                    $queryBool->addMust($query);
+                }
+
+                if ($filter === 'category' && $values){
+                    $query = new \Elastica\Query\Text();
+                    $query->setField("category",$values);
+                    $queryBool->addMust($query);
+                }
+
+
+                $filterConfig = $this->getFilterConfig()->get($filter);
+                if ($filterConfig !== NULL){
+                    switch ($filterConfig['type']){
+                        case FiltersForm::$CHECKBOX :
+                            if ($values){
+                                foreach ($values as $value){
+                                    $query = $this->getQueryForTerm($value,$filter);
+                                    $queryBool->addMust($query);
+                                }   
+                            }                
+                            break;
+                        case FiltersForm::$RANGE :
+                            //$query->addSubquery($this->getQueryForRange($values,$filter),true);     
+                            break;
+                        case FiltersForm::$SEARCH :
+                            //$query->addSubquery($this->getQueryForTerms($values),true);
+                            break;
+                        default:
+                    }
+                }
+            }
+        }
+        
+        $elasticaQuery = new \Elastica\Query();  
+        $elasticaQuery->setSize(100);
+        $elasticaQuery->setQuery($queryBool);
+        
+        return $elasticaQuery;
+    }
+    
     /**
      * 
      * @param type $queryData containing all the parameter for a query to 
@@ -56,80 +109,17 @@ class ElasticaSearchService implements SearchServiceInterface
      */
     public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL)
     {
-        $queryBool = new \Elastica\Query\Bool();
-        $queryBool->addMust(new \Elastica\Query\MatchAll());
+        $elasticaQuery = $this->getSearchQueryFromUrlQuery($queryData);
         
-        foreach ($queryData as $filter => $values){
-            //if it is the main search
-            if ($filter === 'search' && $values){
-                $query = new \Elastica\Query\QueryString();
-                $query->setDefaultOperator('OR');                
-                $query->setQuery((string)$values);                
-                $queryBool->addMust($query);
-            }
-            
-            if ($filter === 'category' && $values){
-                $query = new \Elastica\Query\Text();
-                $query->setField("category",$values);
-                $queryBool->addMust($query);
-            }
-            
-            
-            $filterConfig = $this->getFilterConfig()->get($filter);
-            if ($filterConfig !== NULL){
-                switch ($filterConfig['type']){
-                    case FiltersForm::$CHECKBOX :
-                        if ($values){
-                            foreach ($values as $value){
-                                $query = $this->getQueryForTerm($value,$filter);
-                                $queryBool->addMust($query);
-                            }   
-                        }                
-                        break;
-                    case FiltersForm::$RANGE :
-                        //$query->addSubquery($this->getQueryForRange($values,$filter),true);     
-                        break;
-                    case FiltersForm::$SEARCH :
-                        //$query->addSubquery($this->getQueryForTerms($values),true);
-                        break;
-                    default:
-                }
-            }
+        try {
+            $elasticaResultSet = $this->getIndex()->search($elasticaQuery);
+            $hits = $elasticaResultSet->getResults();
+        }
+        catch (\Exception $ex) {
+            $hits = [];
         }
         
-        $elasticaQuery = new \Elastica\Query();  
-        $elasticaQuery->setSize(100);
-        $elasticaQuery->setQuery($queryBool);
-        
-        //Search on the index.
-        $elasticaResultSet = $this->getIndex()->search($elasticaQuery);
-        $hits 	= $elasticaResultSet->getResults();
-        $totalResults = $elasticaResultSet->getTotalHits();
-        
         return $hits;
-       
-
-//
-//
-//        //add all, so that if no query it return everything
-//        $allQuery = new Query\Range(new Index\Term('0','docId'),null,true);
-//        $query->addSubquery($allQuery,true);
-//        
-        
-//        
-//        //sort results and perform search
-//        $hits = [];
-//        try {
-//            if ($sortOptions !== NULL){                
-//                $hits = $index->find($query,$sortOptions['name'],$sortOptions['type'],$sortOptions['direction']);
-//            } else {
-//                $hits = $index->find($query);
-//            }
-//        }
-//        catch (LuceneException $ex) {
-//        }
-
-        
     }
     
     public function getCountNumberFromQuery($queryData)
@@ -142,28 +132,6 @@ class ElasticaSearchService implements SearchServiceInterface
     {
         $query = new \Elastica\Query\Text();
 	$query->setField($filter, $value);
-        
-        return $query;
-    }
-    
-    protected function getQueryForTerms(Array $values,$filter = NULL,$operator = NULL)
-    {
-        foreach ($values as $value){
-            $this->getQueryForTerm($value,$filter,$operator);
-        }
-        
-        
-        
-        $query = new \Elastica\Query\Text();
-	$query -> setField("title", "hello");
-        
-        
-        
-        $query = new Query\MultiTerm();
-        foreach ($values as $value){
-            $term = new Index\Term(strtolower($value),$filter);
-            $query->addTerm($term,$operator);
-        }
         
         return $query;
     }
@@ -270,6 +238,27 @@ class ElasticaSearchService implements SearchServiceInterface
         $this->hydrateIndex();
     }
     
+    public function getFacet($facet,$queryData,Array $defaultValues)
+    {
+        $query = $this->getSearchQueryFromUrlQuery($queryData);
+        
+        $elasticaFacet 	= new \Elastica\Facet\Terms('facet');
+        $elasticaFacet->setField($facet);
+        $elasticaFacet->setSize(3);
+        $query->addFacet($elasticaFacet);
+        
+        $elasticaResultSet = $this->getIndex()->search($query);
+        $elasticaFacets = $elasticaResultSet->getFacets();
+
+        $facetValues = [];
+        foreach ($elasticaFacets['facet']['terms'] as $elasticaFacet) {
+            $facetValues[] = $elasticaFacet;
+        }
+        
+        return $facetValues;
+    }
+    
+    
     public function hydrateIndex()
     {
         $lists = $this->getListquestService()->fetchAll();
@@ -287,10 +276,7 @@ class ElasticaSearchService implements SearchServiceInterface
     
     public function updateIndex(Listquest $listquest)
     {
-        $index = Lucene\Lucene::open($this->getIndexPath());
-        
-        
-        
+        $index = Lucene\Lucene::open($this->getIndexPath());        
         $hit = $index->find('listId:'.$this->convertNumToString($listquest->id));
         $docId = $index->count()+1;
         if ($hit){

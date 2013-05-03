@@ -34,14 +34,11 @@ class FiltersForm extends Form
             $optionsSelect[$name] = $name;
             switch ($options['type']){
                 case self::$CHECKBOX :
-                    $filter = new FilterTermCheckboxesFieldset($name);
+                    $filter = new FilterTermFacetFieldset($name,$searchService);
                     $filter->setAttribute('data-filterType',self::$CHECKBOX);
                     $filter->setLabel($options['label']);
-                    foreach ($options['values'] as $value){
-                        $filterElement = new Checkbox($value,$searchService);
-                        $filter->add($filterElement);
-                    }
-                    break;
+                    $filter->setDefaultValues($options['values']);
+                   break;
                 case self::$RANGE :
                     $filter = new Fieldset($name);
                     $filter->setAttribute('data-filterType',self::$RANGE);
@@ -70,9 +67,14 @@ class FiltersForm extends Form
         
     }
     
-    public function initUrlInFilters($queryData)
+    public function initFilters($queryData)
     {
-        foreach ($this->getFieldsets() as $fieldset){            
+        foreach ($this->getFieldsets() as $fieldset){
+            if (method_exists($fieldset , 'initFacet')){
+                $fieldset->initFacet(
+                        $queryData
+                );
+            } 
             foreach ($fieldset->getElements() as $element){
                 if (method_exists($element, 'setQueryUrl')){
                     $element->setQueryUrl(
@@ -80,7 +82,7 @@ class FiltersForm extends Form
                             $fieldset->getName()
                     );
                 }
-             }
+            }
         }
         
         //init filters select element

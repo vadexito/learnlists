@@ -30,7 +30,7 @@ class SearchController extends AbstractActionController
         
         //init side filters
         $filterForm = $this->getServiceLocator()->get('learnlists-form-filter');
-        $filterForm->initUrlInFilters($queryData);        
+        $filterForm->initFilters($queryData);        
         $filterForm->setData($queryData->toArray());
         
         $paginator = new Paginator(new ArrayAdapter($hits));
