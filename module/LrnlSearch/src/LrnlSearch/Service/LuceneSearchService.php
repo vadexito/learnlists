@@ -101,12 +101,12 @@ class LuceneSearchService implements SearchServiceInterface
         return $hits;
     }
     
-    public function getCountNumberFromQuery($queryData)
+    public function getCountNumberFromQuery(Parameters $queryData)
     {
         return count($this->getResultsFromQuery($queryData));
     }
     
-    public function getFacet($facet,$queryData,Array $defaultValues)
+    public function getFacet($facet,Parameters $queryData,Array $defaultValues)
     {
         $facetValues = [];
         foreach ($defaultValues as $value){                

@@ -111,6 +111,25 @@ class ElasticaSearchService implements SearchServiceInterface
     {
         $elasticaQuery = $this->getSearchQueryFromUrlQuery($queryData);
         
+        if (is_array($sortOptions)){
+            switch ($sortOptions['direction']){
+                case SORT_DESC :
+                    $order = 'desc';
+                    break;
+                case SORT_ASC :
+                    $order = 'asc';
+                    break;
+                default:
+                    $order = 'desc';
+            }
+            
+            $elasticaQuery->addSort([
+                $sortOptions['name'] => [
+                    'order' => $order
+                ]
+            ]);
+        }
+        
         try {
             $elasticaResultSet = $this->getIndex()->search($elasticaQuery);
             $hits = $elasticaResultSet->getResults();
@@ -122,7 +141,7 @@ class ElasticaSearchService implements SearchServiceInterface
         return $hits;
     }
     
-    public function getCountNumberFromQuery($queryData)
+    public function getCountNumberFromQuery(Parameters $queryData)
     {
         return count($this->getResultsFromQuery($queryData));
     }
@@ -238,9 +257,13 @@ class ElasticaSearchService implements SearchServiceInterface
         $this->hydrateIndex();
     }
     
-    public function getFacet($facet,$queryData,Array $defaultValues)
+    public function getFacet($facet,Parameters $queryData,Array $defaultValues)
     {
-        $query = $this->getSearchQueryFromUrlQuery($queryData);
+        $data = clone $queryData;
+        if ($data->offsetExists($facet)){
+            $data->offsetUnset($facet);
+        }
+        $query = $this->getSearchQueryFromUrlQuery($data);
         
         $elasticaFacet 	= new \Elastica\Facet\Terms('facet');
         $elasticaFacet->setField($facet);
