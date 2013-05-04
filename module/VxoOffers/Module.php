@@ -2,7 +2,6 @@
 
 namespace VxoOffers;
 
-
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 

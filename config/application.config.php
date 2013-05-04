@@ -21,6 +21,7 @@ return [
         'BjyAuthorize',
         'ZfcAdmin',        
         'WtRating', 
+        'WtRatingDoctrineORM', 
         'DelCountriesFlags',
         'PhlyContact', 
         'AsseticBundle',

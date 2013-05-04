@@ -6,6 +6,8 @@ namespace LrnlUser;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
+use Zend\Form\Element\Text;
+
 use DateTime;
 use Zend\View\Helper\Navigation;
 use Zend\Authentication\Result;
@@ -67,12 +69,6 @@ class Module implements
                 'ip' => $_SERVER['REMOTE_ADDR'],
                 'lastActivityDate' => new DateTime(),
             ], $user);
-            
-            //$role = $entityManager->getRepository('ZfcUserLL\Entity\Role')->find($form->get('role')->getValue());
-            //$user->addRole($role);
-//            $user->setCreationDate();
-//            $user->setIp();
-//            $user->setLastActivityDate();
         });
         
         //initialize nagivation with ACL
@@ -98,5 +94,29 @@ class Module implements
                 }
             }
         );
+    }
+    
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'CdliUserProfile\Form\Section\ZfcUser' => function($sm) {
+                    $obj = new \CdliUserProfile\Form\Section\ZfcUser($sm->get('zfcuser_module_options'));
+                    $obj->setInputFilter($sm->get('CdliUserProfile\Form\Section\ZfcUserFilter'));
+                    $obj->setHydrator($sm->get('zfcuser_user_hydrator'));
+                    
+                    $obj->add(new Form\Element\FullName());
+                    $obj->add(new Form\Element\Address());
+                    
+                    return $obj;
+                },
+                'CdliUserProfile\Form\Section\ZfcUserFilter' => function($sm) {
+                    return new \CdliUserProfile\Form\Section\ZfcUserFilter(
+                        $sm->get('cdliuserprofile_uemail_validator'),
+                        $sm->get('cdliuserprofile_uusername_validator')
+                    );
+                },
+            ),
+        );      
     }
 }

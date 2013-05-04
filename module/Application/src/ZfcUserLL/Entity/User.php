@@ -10,7 +10,6 @@ namespace ZfcUserLL\Entity;
 
 use BjyAuthorize\Provider\Role\ProviderInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
 use ZfcUser\Entity\UserInterface;
 use DateTime;
 use Doctrine\Common\Collections\Collection;
@@ -36,6 +35,14 @@ class User implements UserInterface, ProviderInterface
      * @var string
      */
     protected $displayName;
+    /**
+     * @var string
+     */
+    protected $fullName;
+    /**
+     * @var string
+     */
+    protected $address;
 
     /**
      * @var string
@@ -141,26 +148,33 @@ class User implements UserInterface, ProviderInterface
         $this->email = $email;
     }
 
-    /**
-     * Get displayName.
-     *
-     * @return string
-     */
     public function getDisplayName()
     {
         return $this->displayName;
     }
 
-    /**
-     * Set displayName.
-     *
-     * @param string $displayName
-     *
-     * @return void
-     */
     public function setDisplayName($displayName)
     {
         $this->displayName = $displayName;
+    }
+    
+    public function getFullName()
+    {
+        return $this->fullName;
+    }
+
+    public function setFullName($fullName)
+    {
+        $this->fullName = $fullName;
+    }
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    public function setAddress($address)
+    {
+        $this->address = $address;
     }
 
     /**

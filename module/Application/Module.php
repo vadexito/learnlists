@@ -24,10 +24,11 @@ class Module
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                    'WtRating' => __DIR__ . '/src/WtRating',
                     'ZfcUserLL' => __DIR__ . '/src/ZfcUserLL',
                 ),
             ),
         );
     }
+    
+    
 }

@@ -82,11 +82,6 @@ return [
         'factories' => [
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
             'Navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'wtrating.mapper' => function ($sm) {     
-                return new WtRating\Mapper\DoctrineMapper(
-                        $sm->get('Doctrine\ORM\EntityManager')                        
-                );
-            }
         ],
     ],
     'translator' => [
