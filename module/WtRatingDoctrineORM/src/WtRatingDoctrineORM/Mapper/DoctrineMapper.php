@@ -1,12 +1,15 @@
 <?php
 
-namespace WtRating\Mapper;
+namespace WtRatingDoctrineORM\Mapper;
 
 use WtRating\Entity\Rating;
 use WtRating\Entity\RatingSet;
-use Doctrine\ORM\EntityManager;
+use WtRating\Mapper\MapperInterface;
+
 use DoctrineModule\Persistence\ProvidesObjectManager;
 use Doctrine\Common\Persistence\ObjectManager;
+
+use WtRatingDoctrineORM\Options\ModuleOptions;
 
 class DoctrineMapper implements MapperInterface
 {
@@ -19,10 +22,10 @@ class DoctrineMapper implements MapperInterface
 
     use ProvidesObjectManager;
     
-    public function __construct(ObjectManager $om)
+    public function __construct(ObjectManager $om, ModuleOptions $options)
     {
         $this->setObjectManager($om);
-        $this->rep = $om->getRepository('WtRating\Entity\Rating');
+        $this->rep = $om->getRepository($options->getWtRatingEntityClass());
         
     }
 
