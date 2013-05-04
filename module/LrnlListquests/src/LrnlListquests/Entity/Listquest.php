@@ -1,14 +1,12 @@
 <?php
 namespace LrnlListquests\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Zend\InputFilter\Factory as InputFactory;     
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface; 
-use Traversable;
 use LrnlListquests\Entity\Round;
 use LrnlListquests\Entity\Tag;
 use LrnlListquests\Entity\Question;
@@ -74,7 +72,7 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
 
     /**
      * 
-     * @var ZfcUserLL\Entity\User
+     * @var LrnlUser\Entity\User
      * 
      */
     protected $author;

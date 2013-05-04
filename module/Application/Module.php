@@ -9,9 +9,14 @@
 
 namespace Application;
 
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 
-class Module
+class Module implements 
+    AutoloaderProviderInterface,
+    ConfigProviderInterface
+        
 {
     public function getConfig()
     {
@@ -24,7 +29,6 @@ class Module
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                    'ZfcUserLL' => __DIR__ . '/src/ZfcUserLL',
                 ),
             ),
         );

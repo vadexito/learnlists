@@ -5,11 +5,11 @@ namespace WtRatingDoctrineORM;
 use Doctrine\ORM\Mapping\Driver\XmlDriver;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ServiceConfigProviderInterface;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 class Module implements AutoloaderProviderInterface,
        ConfigProviderInterface,
-       ServiceConfigProviderInterface
+       ServiceProviderInterface
 {
     public function onBootstrap($e)
     {

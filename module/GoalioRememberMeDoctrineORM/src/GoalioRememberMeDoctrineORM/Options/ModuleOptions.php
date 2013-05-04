@@ -9,7 +9,7 @@ class ModuleOptions extends BaseModuleOptions
     /**
      * @var string
      */
-    protected $rememberMeEntityClass = 'GoalioRememberMeDoctrineORM\Entity\RememberMe';
+    protected $rememberMeEntityClass = 'GoalioRememberMe\Entity\RememberMe';
 
     /**
      * @var bool

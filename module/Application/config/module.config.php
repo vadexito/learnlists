@@ -95,8 +95,14 @@ return [
             ],
             [
                 'type'        => 'phpArray',
-                'base_dir'    => __DIR__ . '/../language/Zend',
-                'pattern'     => 'Zend_Validate.php',
+                'base_dir'    => __DIR__ . '/../language/zend_resources',
+                'pattern'     => '%s/Zend_Validate.php',
+                'text_domain' => 'default',
+            ],
+            [
+                'type'        => 'phpArray',
+                'base_dir'    => __DIR__ . '/../language/zend_resources',
+                'pattern'     => '%s/Zend_Captcha.php',
                 'text_domain' => 'default',
             ],
         ],
@@ -130,30 +136,6 @@ return [
         'template_path_stack' => [
             __DIR__ . '/../view',
         ],
-    ],
-    'doctrine' => [
-        'driver' => [
-            'app_zfcuser_entity' => [
-                'class' => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
-                'cache' => 'array',
-                'paths' => __DIR__ . '/xml',
-            ],
-            'app_zfr_forum_driver' => [
-                'class' => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
-                'cache' => 'array',
-                'paths' => __DIR__ . '/xml',
-            ],            
-            'app_wtrating_entity' => [
-                'class' => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
-                'paths' => __DIR__ . '/xml',
-            ],
-            'orm_default' => [
-                'drivers' => [
-                    'ZfcUserLL\Entity' => 'app_zfcuser_entity',
-                    'WtRating\Entity' => 'app_wtrating_entity',
-                ]
-            ],            
-        ],        
     ],
     'assetic_configuration' => [
         /**

@@ -39,15 +39,33 @@ class Module implements
     public function onBootstrap($e)
     {
         $services = $e->getApplication()->getServiceManager();
+        
+        //get user entity class
+        $zfcuserOptions = $services->get('zfcuser_module_options');
+        $userEntityClass = $zfcuserOptions->getUserEntityClass();
+        
+        //get role entity class
+        $config = $services->get('BjyAuthorize\Config');
+        if ( ! isset($config['role_providers']['BjyAuthorize\Provider\Role\ObjectRepositoryProvider'])) {
+            throw new InvalidArgumentException(
+                'Config for "BjyAuthorize\Provider\Role\ObjectRepositoryProvider" not set'
+            );
+        }
+        $providerConfig = $config['role_providers']['BjyAuthorize\Provider\Role\ObjectRepositoryProvider'];
+        if ( ! isset($providerConfig['role_entity_class'])) {
+            throw new InvalidArgumentException('role_entity_class not set in the bjyauthorize role_providers config.');
+        }
+        $roleEntityClass = $providerConfig['role_entity_class'];
+        
         $em = $e->getApplication()->getEventManager();
         $entityManager = $services->get('Doctrine\ORM\EntityManager');
-
-
+        
         //add element to register form
         $events = $em->getSharedManager();
-        $events->attach('ZfcUser\Form\Register','init', function($e) use ($entityManager) {
+        $events->attach('ZfcUser\Form\Register','init', function($e) use ($entityManager,$roleEntityClass) {
             $form = $e->getTarget();
-            $form->add(new Form\RoleElement('role',$entityManager));
+            $roleElement = new Form\Element\Role('role',$entityManager,$roleEntityClass);
+            $form->add($roleElement);
         });
         
         
@@ -57,7 +75,7 @@ class Module implements
         //initiate user profile after registering
         $zfcuserService = $services->get('zfcuser_user_service');
         $zfcuserEventManager = $zfcuserService->getEventManager();
-        $hydrator = new DoctrineHydrator($entityManager, 'ZfcUserLL\Entity\User');
+        $hydrator = new DoctrineHydrator($entityManager, $userEntityClass);
         $zfcuserEventManager->attach('register', function($e) use ($hydrator) {
             
             $form = $e->getParam('form');
@@ -82,11 +100,11 @@ class Module implements
         $zfcServiceEvents = $services->get('ZfcUser\Authentication\Adapter\AdapterChain')->getEventManager();
         $zfcServiceEvents->attach(
             'authenticate',
-            function ($e) use ($entityManager) {
+            function ($e) use ($entityManager,$userEntityClass) {
                 $user = $e->getParam('user');
                 //if authentical successful
                 if ($e->getParams('code') === Result::SUCCESS){
-                    $userEntity = $entityManager->getRepository('ZfcUserLL\Entity\User')
+                    $userEntity = $entityManager->getRepository($userEntityClass)
                                       ->find($user['identity']);
                     $userEntity->setIp($_SERVER['REMOTE_ADDR']);
                     $userEntity->setLastActivityDate(new DateTime());

@@ -21,5 +21,5 @@ if ($form->getMessages()):
     </div>
 <?php
 endif;
-echo $this->formTwb($form, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_VERTICAL,['elements' => ['submit' => ['class' => 'btn-primary']]]);?>
-
+echo $this->formTwb($form, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_VERTICAL,['elements' => ['submit' => ['class' => 'btn-primary']]]);
+echo $this->translate('Value is required and can\'t be empty');

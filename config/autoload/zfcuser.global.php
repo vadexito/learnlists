@@ -22,7 +22,7 @@ $settings = array(
      * instead of the default one provided. Default is ZfcUser\Entity\User.
      * The entity class should implement ZfcUser\Entity\UserInterface
      */
-     'user_entity_class' => 'ZfcUserLL\Entity\User',
+     'user_entity_class' => 'LrnlUser\Entity\User',
     
     // telling ZfcUserDoctrineORM to skip the entities it defines
      'enable_default_entities' => false,
