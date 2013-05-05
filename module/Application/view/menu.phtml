@@ -1,20 +1,28 @@
 <?php 
 if ($this->zfcUserIdentity()) {
-    $label ='<span id="gravatar-link">'
-        .$this->gravatar($this->zfcUserIdentity()->getEmail(),['img_size' => '30px'])
-        .'</span><span class="name"> '.$this->zfcUserDisplayName().' (' 
-        . $this->translate($this->zfcUserIdentity()->getRoles()[0]->getRoleId()). ') <b class="caret"></b></span>'        
-    ;
-}?>
+    $gravatar = $this->gravatar($this->zfcUserIdentity()->getEmail(),['img_size' => '30px']);
+    $role = $this->translate($this->zfcUserIdentity()->getRoles()[0]->getRoleId());  
+} ?>
 <div class="nav-collapse collapse">
     <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('general'),['ulClass' => 'nav']);?>
     <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('user'),['ulClass' => 'nav pull-right']);?>    
-<?php if ($this->zfcUserIdentity()) : ?>
-    <ul id="menu-profile" class="nav pull-right">   
+
+    <ul id="menu-profile" class="nav pull-right">
+        <?php if (!$this->zfcUserIdentity()) : ?>     
+        <li><a href="<?php echo $this->url('learn/help/template',['template' => 'how_it_works']); ?>"><?php echo $this->translate('How does it work?'); ?></a></li>
+        <?php else : ?>     
         <li class="dropdown">
-            <a id="dropdown-user" href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $label; ?></a>
+            <a id="dropdown-user" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span id="gravatar-link">
+                    <?php echo $gravatar; ?>
+                </span>
+                <span class="name">
+                    <?php echo $this->zfcUserDisplayName(); ?> (<?php echo $role; ?>) <b class="caret"></b>
+                </span>
+            </a>
             <?php echo $this->navigation()->menu()->escapeLabels(false)->renderMenu($this->container->findById('profile'),['ulClass' => 'dropdown-menu']);?>
         </li>
+        <?php endif; ?>
     </ul>
-<?php endif; ?>
+
 </div><!--/.nav-collapse -->
