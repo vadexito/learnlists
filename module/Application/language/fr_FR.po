@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-01 23:13+0100\n"
-"PO-Revision-Date: 2013-05-01 23:14+0100\n"
+"PO-Revision-Date: 2013-05-05 23:27+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
 "Language: fr_FR\n"
@@ -84,46 +84,51 @@ msgstr "Très bien, plus d'erreurs désormais mais encore un peu lent"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:56
 msgid "Great, no more mistakes like last time but too slow!"
-msgstr ""
+msgstr "Excellent, plus d'erreurs comme la dernière fois mais un peu lent"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:57
 msgid "Great even if too slow but you did not ask the answer like last time!"
 msgstr ""
+"Bien même si c'est toujours un peu lent mais vous n'avez pas demandé la "
+"réponse cette fois-ci"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:60
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:67
 msgid "You forgot...last time was perfect, you did no mistake!"
 msgstr ""
+"Vous avez oublié..la dernière fois c'était parfait, vous n'aviez fait aucune "
+"faute"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:61
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:68
 msgid "You forgot...last time you did no mistake!"
-msgstr ""
+msgstr "Vous oubliez....la dernière fois vous n'aviez fait aucune faute"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:62
 msgid "Still one mistake!"
-msgstr ""
+msgstr "il reste toujours une faute"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:63
 msgid "Better last time you did more mistakes!"
-msgstr ""
+msgstr "C'est mieux, la dernière fois il y avait plus de fautes"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:64
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:71
 msgid "Better because you did not ask the answer like last time!"
 msgstr ""
+"C'est mieux car vous n'avez pas demandé la réponse comme la dernière fois"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:69
 msgid "You are doing more mistakes!"
-msgstr ""
+msgstr "Vous faites de plus en plus d'erreurs !"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:70
 msgid "Still mistakes!"
-msgstr ""
+msgstr "Encore des erreurs !"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:74
 msgid "You forgot this one you knew perfectly, focus on it!"
-msgstr ""
+msgstr "Vous avez oublié alors que vous le saviez bien !"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:75
 msgid "You forgot this one you knew well, focus on it!"
@@ -221,9 +226,8 @@ msgid "French"
 msgstr "français"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:74
-#, fuzzy
 msgid "Polish"
-msgstr "anglais"
+msgstr "polonais"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestFieldset.php:85
 msgid "Level"
@@ -279,9 +283,8 @@ msgid "Tip"
 msgstr "Conseil"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/TagFieldset.php:27
-#, fuzzy
 msgid "Tag"
-msgstr "Etiquettes (Tags)"
+msgstr "Etiquette"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Category.php:12
 msgid "Categories"
@@ -366,9 +369,8 @@ msgid "Log out"
 msgstr "Déconnection"
 
 #: ../../../config/autoload/lrnlsearch.global.php:6
-#, fuzzy
 msgid "author"
-msgstr "Par auteur"
+msgstr "auteur"
 
 #: ../../../config/autoload/lrnlsearch.global.php:8
 #: ../language/_XMLforPoedit/role.xml:6
@@ -384,9 +386,8 @@ msgstr "Etudiant"
 
 #: ../../../config/autoload/lrnlsearch.global.php:12
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:53
-#, fuzzy
 msgid "level"
-msgstr "Niveau"
+msgstr "niveau"
 
 #: ../../../config/autoload/lrnlsearch.global.php:13
 msgid "advanced"
@@ -405,9 +406,8 @@ msgid "language"
 msgstr "Langue"
 
 #: ../../../config/autoload/lrnlsearch.global.php:18
-#, fuzzy
 msgid "german"
-msgstr "Allemand"
+msgstr "allemand"
 
 #: ../../../config/autoload/lrnlsearch.global.php:18
 msgid "french"
@@ -423,9 +423,8 @@ msgstr "questions"
 
 #: ../../../config/autoload/lrnlsearch.global.php:31
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:52
-#, fuzzy
 msgid "rating"
-msgstr "Notation"
+msgstr "note"
 
 #: ../../../config/autoload/lrnlsearch.global.php:41
 msgid "keywords"
@@ -448,7 +447,6 @@ msgstr "Mentions légales"
 
 #: ../view/application/footer/privacy.phtml:2
 #: ../../../module/Application/view/application/footer/privacy.phtml:2
-#, fuzzy
 msgid "Privacy policy"
 msgstr "Condentialité"
 
@@ -476,7 +474,7 @@ msgstr ""
 #: ../view/cdli-twostagesignup/email-verification/form.phtml:1
 #: ../../../module/Application/view/cdli-twostagesignup/email-verification/form.phtml:1
 msgid "Step 1: Email Verification"
-msgstr ""
+msgstr "Etape 1 : vérification de l'adresse e-mail"
 
 #: ../view/cdli-twostagesignup/email-verification/form.phtml:13
 #: ../../../module/Application/view/cdli-twostagesignup/email-verification/form.phtml:13
@@ -496,7 +494,7 @@ msgstr "Essayer encore !"
 #: ../view/cdli-twostagesignup/email-verification/sent.phtml:1
 #: ../../../module/Application/view/cdli-twostagesignup/email-verification/sent.phtml:1
 msgid "You have successfully completed Step 1!"
-msgstr ""
+msgstr "Vous avez réussi l'étape 1 !"
 
 #: ../view/cdli-twostagesignup/email-verification/sent.phtml:2
 #: ../../../module/Application/view/cdli-twostagesignup/email-verification/sent.phtml:2
@@ -505,6 +503,8 @@ msgid ""
 "An email has been sent to <strong>%s</strong> with instructions on how to "
 "proceed with the account registration process."
 msgstr ""
+"Un email a été envoyé à l'adresse <strong>%s</strong> avec les explications "
+"pour s'inscrire."
 
 #: ../view/error/403.phtml:2 ../view/error/403.phtml:31
 #: ../../../module/Application/view/error/403.phtml:2
@@ -658,22 +658,22 @@ msgstr "Envoyer un lien de réinitilisation du mot de passe"
 #: ../view/goalio-forgot-password/forgot/forgot.phtml:25
 #: ../../../module/Application/view/goalio-forgot-password/forgot/forgot.phtml:25
 msgid "Back to login?"
-msgstr ""
+msgstr "Retour à la page de connection"
 
 #: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:2
 #: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:2
 msgid "You password was reset?"
-msgstr ""
+msgstr "Votre mot de passe a été réinitialisé ?"
 
 #: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:7
 #: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:7
 msgid "You can now login using your new password."
-msgstr ""
+msgstr "Vous pouvez à présent vous connecter avec votre nouveau mot de passe"
 
 #: ../view/goalio-forgot-password/forgot/passwordchanged.phtml:9
 #: ../../../module/Application/view/goalio-forgot-password/forgot/passwordchanged.phtml:9
 msgid "Back to login."
-msgstr ""
+msgstr "Retour à la page de connection"
 
 #: ../view/layout/admin.phtml:6 ../view/layout/layout.phtml:6
 #: ../../../module/Application/view/layout/admin.phtml:6
@@ -843,13 +843,15 @@ msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:83
 msgid "Get the answer"
-msgstr ""
+msgstr "Obtenir la réponse"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:83
 msgid ""
 "Press this button if you want to see the answer. In this case you will get 0 "
 "points."
 msgstr ""
+"Appuyer sur ce bouton pour voir la réponse. Dans ce cas, vous ne gagnez pas "
+"de point."
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid "Skip"
@@ -880,10 +882,13 @@ msgid ""
 "Check if your answer is wrong or right and some comments according to your "
 "past results"
 msgstr ""
+"Vérifiez si votre réponse est juste ou fausse et obtenez des commentaires en "
+"fonction de vos résultats passés"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:104
 msgid "Your score. Press on the help button to see how it is computed"
 msgstr ""
+"Votre score. Appuyer sur le bouton Aide pour voir comment il est calculé"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:105
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:130
@@ -906,19 +911,19 @@ msgstr "Annuler cet round"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:117
 msgid "You can reset the current round to a new round"
-msgstr ""
+msgstr "Vous pouvez à tout moment annuler le round et revenir au début"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:117
 msgid "Again"
-msgstr ""
+msgstr "Recommencer"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:120
 msgid "Get some help anytime"
-msgstr ""
+msgstr "Obtenez de l'aide à tout moment"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:123
 msgid "How does it work?"
-msgstr ""
+msgstr "Comment ça marche ?"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:124
 msgid "How is the score calculated?"
@@ -926,24 +931,24 @@ msgstr "Comment le score est-il calculé ?"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:139
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:169
 msgid "You did not yet finished one round!"
-msgstr ""
+msgstr "Vous n'avez pas encore fini de round."
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:169
 msgid "Please log In if you want to get more detailed results"
-msgstr ""
+msgstr "Vous pouvez vous identifier pour avoir des résultats plus détaillés."
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:177
 #, php-format
 msgid "Loading your list <em>%s</em>"
-msgstr ""
+msgstr "Chargement de votre liste <em>%s</em>"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:187
 msgid "How is your score calculated?"
-msgstr ""
+msgstr "Comment le score est-il calculé ?"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:190
 msgid ""
@@ -1274,12 +1279,12 @@ msgstr ""
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:49
 msgid "10 euros"
-msgstr ""
+msgstr "10 euros"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:50
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:89
 msgid "per month (no minimum)"
-msgstr ""
+msgstr "par mois (pas de minimum)"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:71
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:110
@@ -1292,7 +1297,7 @@ msgstr ""
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:84
 msgid "FULL"
-msgstr ""
+msgstr "FULL"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:85
 msgid "The most complete offer"
@@ -1300,7 +1305,7 @@ msgstr ""
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:88
 msgid "12 euros"
-msgstr ""
+msgstr "12 euros"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:108
 #, fuzzy
@@ -1309,7 +1314,7 @@ msgstr "Créer et partager vos listes"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:114
 msgid "Choose full offer"
-msgstr ""
+msgstr "Choisir l'offre complète"
 
 #: ../../../module/VxoOffers/view/vxo-offers/nav/offers.phtml:123
 msgid "The quizzes that match your needs."

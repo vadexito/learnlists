@@ -128,9 +128,8 @@ return [
             'phly-contact/contact/thank-you' => __DIR__ . '/../view/phly-contact/contact/thank-you.phtml',
             'zfc-user/user/login' => __DIR__ . '/../view/zfc-user/user/login.phtml',
             'about' => __DIR__ . '/../view/application/footer/about.phtml',
-            'terms' => __DIR__ . '/../view/application/footer/terms.phtml',
-            'privacy' => __DIR__ . '/../view/application/footer/privacy.phtml',
-            'imprint' => __DIR__ . '/../view/application/footer/imprint.phtml',
+            'terms_imprint' => __DIR__ . '/../view/application/footer/terms_imprint.phtml',
+            'features' => __DIR__ . '/../view/application/footer/features.phtml',
             'zfc-user/user/login' => __DIR__ . '/../view/zfc-user/user/login.phtml',
         ],
         'template_path_stack' => [
@@ -276,6 +275,7 @@ return [
                             'components/bootstrap/docs/assets/js/bootstrap-dropdown.js',
                             'components/bootstrap/docs/assets/js/bootstrap-button.js',
                             'components/bootstrap/docs/assets/js/bootstrap-transition.js',
+                            'components/bootstrap/docs/assets/js/bootstrap-tab.js',
                         ],
                     ],
                     'global_js' => [
@@ -347,20 +347,6 @@ return [
                             'components/animate.css/animate.min.css',
                         ],
                     ], 
-//                    'jqfileupload_js' => [
-//                        'assets' => [
-//                            'components/jquery-file-upload/js/*.js',
-//                            'components/jquery-file-upload/js/vendor/*.js',
-//                            'http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js',
-//                            'http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js',
-//                            "http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"
-//                        ],
-//                    ], 
-//                    'jqfileupload_css' => [
-//                        'assets' => [
-//                            'components/jquery-file-upload/css/*.css',
-//                        ],
-//                    ], 
                     'base_images' => [
                         'assets' => [
                             'images/*.png',

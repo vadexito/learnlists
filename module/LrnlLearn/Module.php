@@ -5,10 +5,12 @@ namespace LrnlLearn;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 class Module implements 
     AutoloaderProviderInterface,
-    ConfigProviderInterface
+    ConfigProviderInterface,
+    ServiceProviderInterface
 {
     public function getConfig()
     {
@@ -27,5 +29,14 @@ class Module implements
                 ],
             ],
         ];
+    }
+    
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'help_center_navigation' => 'LrnlLearn\Navigation\Service\HelpNavigationFactory',
+            ),
+        );
     }
 }

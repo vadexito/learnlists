@@ -1,0 +1,26 @@
+<?php
+$title = $this->translate('Terms and imprint');
+$this->headTitle($title);
+?>
+<ul class="nav nav-tabs">
+  <li>
+      <a href="#terms" data-toggle="tab"><?php echo $this->translate('Terms'); ?></a>
+  </li>
+  <li>
+    <a href="#privacy" data-toggle="tab"><?php echo $this->translate('Privacy'); ?></a>
+  </li>
+  <li>
+    <a href="#imprint" data-toggle="tab"><?php echo $this->translate('Imprint'); ?></a>
+  </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="terms">
+        <?php echo $this->partial('application/footer/terms.phtml'); ?>
+    </div>
+    <div class="tab-pane fade in active" id="privacy">
+        <?php echo $this->partial('application/footer/privacy.phtml'); ?>
+    </div>
+    <div class="tab-pane fade in active" id="imprint">
+        <?php echo $this->partial('application/footer/imprint.phtml'); ?>
+    </div>
+</div>

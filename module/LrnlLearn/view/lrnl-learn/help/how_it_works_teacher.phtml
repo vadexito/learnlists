@@ -1,0 +1,29 @@
+<?php
+$title = $this->translate('How does it work?');
+$this->headTitle($title);
+$this->headTitle($this->translate('teacher'));
+?>
+
+<h1><?php echo $this->translate('Use the best tool for your students to learn quizz'); ?></h1>
+<br/>
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#create_list" data-toggle="tab"><?php echo $this->translate('I would like to create a new list'); ?></a>
+  </li>
+  <li>
+      <a href="#student_use_my_lists" data-toggle="tab"><?php echo $this->translate('I would like my student to use my lists'); ?></a>
+  </li>
+</ul>
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="create_list">
+        <p><?php echo $this->translate('As a teacher, your lists will be identified as coming from a profesional and therefore with high quality standards.'); ?></p>
+        <?php echo $this->partial('lrnl-learn/help/how_to_create_a_list.phtml'); ?>
+    </div>
+    <div class="tab-pane fade" id="student_use_my_lists">
+        <p><?php echo $this->translate('There is nothing special to do. Your lists are immediately avaiable for your students and any other.'); ?></p>        
+    </div>
+</div>
+    
+
+

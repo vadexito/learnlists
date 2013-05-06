@@ -1,3 +1,9 @@
+<?php
+$navigation = $this->navigation('navigation')->menu()->setPartial([
+    'layout/topnavbar.phtml','default']
+)->render();
+$footer = $this->partial('layout/footer.phtml');
+?>
 <?php echo $this->doctype(); ?>
 <html lang="en">
     <head>
@@ -24,10 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-<?php
-$partial = ['menu.phtml','default'];
-echo $this->navigation('navigation')->menu()->setPartial($partial)->render();
-?>
+                    <?php echo $navigation; ?>
                 </div>
             </div>
         </nav>
@@ -35,41 +38,7 @@ echo $this->navigation('navigation')->menu()->setPartial($partial)->render();
         <div id="main" class="container">
             <?php echo $this->content; ?>
             <br/><br/>
-            <footer>
-                <div class="row-fluid">
-                    <div class="offset1 span3">
-                        <h5><?php echo $this->translate('Company'); ?></h5>
-                        <ul>
-                            <li class="footer-item"><a href="<?php echo $this->url('footer/template',['template' => 'about']); ?>"><?php echo $this->translate('About'); ?></a></li>
-                            <li class="footer-item"><a href="<?php echo $this->url('footer/template',['template' => 'terms']); ?>"><?php echo $this->translate('Terms'); ?></a></li>
-                            <li class="footer-item"><a href="<?php echo $this->url('footer/template',['template' => 'privacy']); ?>"><?php echo $this->translate('Privacy'); ?></a></li>
-                            <li class="footer-item"><a href="<?php echo $this->url('contact'); ?>"><?php echo $this->translate('Contact'); ?></a></li> 
-                            <li class="footer-item"><a href="<?php echo $this->url('footer/template',['template' => 'imprint']); ?>"><?php echo $this->translate('Imprint'); ?></a></li> 
-                       </ul>
-                   </div>
-                   <div class="span3">
-                       <h5><?php echo $this->translate('Help'); ?></h5>
-                       <ul>
-                           <li class="footer-item"><a href="<?php echo $this->url('learn/help/template',['template' => 'how_it_works']); ?>"><?php echo $this->translate('How does it work?'); ?></a></li>      
-                           <li class="footer-item"><a href="<?php echo $this->url('learn/help/template',['template' => 'faq']); ?>"><?php echo $this->translate('FAQ'); ?></a></li>      
-                       </ul>
-                   </div>
-                   <div class="offset2 span3">
-                       <?php echo $this->selectLanguage(); ?>
-                   </div>
-                </div>
-                <div class="row-fluid"> 
-                    <p id="copyright">&copy; <?php echo $this->translate('2013 by Voilamylife.') ?> <?php echo $this->translate('All rights reserved.') ?></p>
-                </div>
-                <div id="loadingPopup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-body text-center">
-                        <h2 class="text-center">
-                            <div id="loading-icon"></div>
-                            <?php echo $this->translate('Loading...') ?>
-                        </h2>
-                    </div>
-                </div>
-            </footer>
+            <?php echo $footer; ?>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
     </body>

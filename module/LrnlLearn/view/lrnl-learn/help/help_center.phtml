@@ -1,0 +1,9 @@
+<?php 
+$navigation = $this->navigation('help_center_navigation')->menu()->setPartial([
+    'lrnl-learn/help/sidenavbar.phtml','LrnlLearn']
+)->render();
+?>
+<div class="row-fluid">
+    <h3><?php echo $this->translate('Learnlists help center'); ?></h3>
+     <?php echo $navigation; ?>
+</div>

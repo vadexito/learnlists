@@ -9,7 +9,14 @@ if ($this->zfcUserIdentity()) {
 
     <ul id="menu-profile" class="nav pull-right">
         <?php if (!$this->zfcUserIdentity()) : ?>     
-        <li><a href="<?php echo $this->url('learn/help/template',['template' => 'how_it_works']); ?>"><?php echo $this->translate('How does it work?'); ?></a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->translate('How does it work?'); ?></a>
+            <ul class="dropdown-menu">
+                <li><a href="<?php echo $this->url('learn/help/template',['template' => 'how_it_works_learner']); ?>"><?php echo $this->translate('I want to learn'); ?></a></li>
+                <li><a href="<?php echo $this->url('learn/help/template',['template' => 'how_it_works_teacher']); ?>"><?php echo $this->translate('I am a teacher'); ?></a></li>
+                
+            </ul>
+        </li>
         <?php else : ?>     
         <li class="dropdown">
             <a id="dropdown-user" href="#" class="dropdown-toggle" data-toggle="dropdown">

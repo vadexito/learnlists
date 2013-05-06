@@ -121,5 +121,42 @@ return [
                 'route' => 'home',
             ],
         ],
+        'help_center' => [
+            'welcome' => [
+                'label' => _('Welcome'),
+                'route' => 'learn/help/template',
+                'params' => ['template' => 'welcome'],
+            ],
+            'create_a_list' => [
+                'label' => _('How to create a list'),
+                'route' => 'learn/help/template',
+                'params' => ['template' => 'how_to_create_a_list'],
+            ],
+            'recommendation_for_lists' => [
+                'label' => _('Recommandation for new lists'),
+                'route' => 'learn/help/template',
+                'params' => ['template' => 'recommendations_list'],
+            ],
+            'how_to_learn' => [
+                'label' => _('How do I learn?'),
+                'route' => 'learn/help/template',
+                'params' => ['template' => 'faq'],
+            ],
+            'how_does_it_work_learner' => [
+                'label' => _('How does it work (learner)?'),
+                'route' => 'learn/help/template',
+                'params' => ['template' => 'how_it_works_learner'],
+            ],
+            'how_does_it_work_teacher' => [
+                'label' => _('How does it work (teacher)?'),
+                'route' => 'learn/help/template',
+                'params' => ['template' => 'how_it_works_teacher'],
+            ],            
+            'faq' => [
+                'label' => _('FAQ'),
+                'route' => 'learn/help/template',
+                'params' => ['template' => 'faq']
+            ],
+        ],
     ],    
 ];
