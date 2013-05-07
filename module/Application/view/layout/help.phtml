@@ -1,0 +1,56 @@
+<?php
+$navigation = $this->navigation('navigation')->menu()->setPartial([
+    'layout/topnavbar.phtml','default']
+)->render();
+$helpNavigation = $this->navigation('help_center_navigation')->menu()->setPartial([
+    'lrnl-help/help-static/sidenavbar.phtml','LrnlHelp']
+)->render();
+$footer = $this->partial('layout/footer.phtml');
+?>
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php $this->headTitle($this->translate('LearnLists'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+        <?php $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'])?>
+        
+        <?php
+// for asset manager  assetic
+            echo $this->plugin('HeadTitle');
+            echo $this->plugin('HeadMeta');
+            echo $this->plugin('HeadLink');
+            echo $this->plugin('HeadStyle');
+            echo $this->plugin('HeadScript');
+        ?>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <?php echo $navigation; ?>
+                </div>
+            </div>
+        </nav>
+        <?php echo $this->placeholder('header') ?>
+        <div id="main" class="container">
+            <div class="row-fluid">
+                <h3><?php echo $this->translate('Learnlists help center'); ?></h3>
+                <div class="well well-large span3">    
+                    <?php echo $helpNavigation; ?>
+                </div>
+                <div class="span9">
+                    <?php echo $this->content; ?>
+                </div>
+            </div>
+            <br/><br/>
+            <?php echo $footer; ?>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

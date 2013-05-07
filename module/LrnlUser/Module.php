@@ -137,4 +137,17 @@ class Module implements
             ),
         );      
     }
+    
+    public function getViewHelperConfig()
+    {
+        return array(
+            'factories' => array(
+                'hasRole' => function () {
+                    $viewHelper = new View\Helper\HasRole;
+                    return $viewHelper;
+                },
+                
+            ),
+        );
+    }
 }

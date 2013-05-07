@@ -84,6 +84,12 @@ class Module implements
                     $viewHelper->setRatingService($locator->get('wtrating.service'));
                     return $viewHelper;
                 },
+                'listquestCount' => function ($sm) {
+                    $locator = $sm->getServiceLocator();
+                    $viewHelper = new View\Helper\ListquestCount();
+                    $viewHelper->setListquestService($locator->get('learnlists-listquestfactory-service'));
+                    return $viewHelper;
+                },
             ),
         );
     }

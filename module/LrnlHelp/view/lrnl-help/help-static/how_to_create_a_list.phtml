@@ -2,8 +2,8 @@
 $title = $this->translate('How to create a list');
 $this->headTitle($title);
 
-$recommendationLink = '<a href="'.$this->url('learn/help/template',['template' => 'recommendations_list']).'">';
-$addNewQuestionLink = '<a href="'.$this->url('learn/help/template',['template' => 'add_new_question']).'">';
+$recommendationLink = '<a href="'.$this->url('lrnl-help/template',['template' => 'recommendations_list']).'">';
+$addNewQuestionLink = '<a href="'.$this->url('lrnl-help/template',['template' => 'add_new_question']).'">';
 $createListSteps = [
     [
         'number' => 1,
@@ -20,7 +20,7 @@ $createListSteps = [
     [
         'number' => 3,
         'iconName' => 'plus-sign',
-        'title' => _('I add the questions to the list'),
+        'title' => _('I add questions to the list'),
         'text' => sprintf(_('In order to save you time and give you a maximum of flexibility you can enter several questions at the same time, erase or modify any of the questions. Please read the %sadd a new question</a> section for a more detailed information.'),$addNewQuestionLink),
     ],
     [
@@ -32,6 +32,6 @@ $createListSteps = [
 ];
 ?>
 <p><?php echo $this->translate('To create a list, here are the steps you have to complete.'); ?></p>        
-<ul>
-    <?php echo $this->partialLoop('lrnl-learn/help/step.phtml',$createListSteps); ?>
+<ul class="unstyled">
+    <?php echo $this->partialLoop('lrnl-help/help-static/step.phtml',$createListSteps); ?>
 </ul>  

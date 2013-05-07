@@ -1,6 +1,6 @@
 <?php
 
-namespace LrnlLearn\Navigation\Service;
+namespace LrnlHelp\Navigation\Service;
 
 use Zend\Navigation\Service\DefaultNavigationFactory;
 

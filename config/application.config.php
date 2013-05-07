@@ -3,6 +3,7 @@
 return [
     'modules' => [
         'ZendDeveloperTools',
+        'EdpModuleLayouts',
         'DoctrineModule',
         'DoctrineORMModule', 
         'ZfcBase',
@@ -36,6 +37,7 @@ return [
         'LrnlListquests',
         'LrnlUser',
         'LrnlRest',
+        'LrnlHelp',
         'LrnlSearch',        
     ],
     

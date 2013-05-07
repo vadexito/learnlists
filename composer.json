@@ -36,6 +36,7 @@
         "delboy1978uk/del-countries-flags": "dev-master",
         "dlu/dlutwbootstrap": "dev-master",
         "mwillbanks/zfc-twitter-bootstrap": "@dev",
-        "ruflin/elastica": "v0.20.5.0.RC1"
+        "ruflin/elastica": "v0.20.5.0.RC1",
+        "evandotpro/edp-module-layouts": "dev-master"
     }
 }

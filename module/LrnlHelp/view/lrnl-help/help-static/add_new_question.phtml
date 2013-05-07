@@ -1,0 +1,56 @@
+<?php
+$title = $this->translate('Add a new question');
+$this->headTitle($title);
+
+$createAListLink = '<a href="'.$this->url('lrnl-help/template',['template' => 'how_to_create_a_list']).'">';
+$writeQuestion = [
+    $this->translate('Add the <strong>text</strong> of the question. You can add two types of questions : ')
+        .$this->htmlList([
+            $this->translate('question with one or more missing elements'). $this->htmlList([
+                    $this->translate('simple example with one missing word: <em>I cannot ... up with him</em>. In this case you must type the missing word(s) directly into the text and use the % sign to signal this is the answer: <code>I cannot %put% up with him.</code>'),
+                    $this->translate('example with two missing words : <em>I ... already come ... from Scotland.</em>. As if the first example just type the missing word(s) directly into the text and using the % sign: <code>I %have% already %come% back from Scotland.</code>'),
+                    $this->translate('example with one missing word and two possibilities: <em>I cannot ... this situation anymore!</em>. To add several possibilities for one missing word add a double hyphen <em>--</em>: <code>I cannot %stand--bear% this situation anymore.</code>'),
+                ],false,false,false).    
+            $this->translate('question with question mark, for example: <em>what is the most probable: I might go to the cinema or I may go to the cinema?</em> In this case just type the text of the question: <code>What is the most probable: I might go to the cinema or I may go to the cinema?</code>')],
+    false,false,false),
+    $this->translate('Add the <strong>answer</strong> of the question : there will be no answer in the case of a question with missing word(s).'),
+];
+
+if ($this->hasRole('teacher')){
+    $writeQuestion[] =$this->translate('Add a <strong>comment</strong>: the comment by the teacher adds great value added to each student and helps to remembering and learn. You should add a comment for every question as you would do during a standard course. Here are some examples of comments you could add: <code>The expression <em>to put up with</em> has several synonyms like to bear or to stand but it is the most used in the common language,</code>,<code> The verb to put is one of the richest verb as for its phrasal elements and is very commonly used.</code>');
+}
+
+$createListSteps = [
+    [
+        'number' => 1,
+        'iconName' => 'file-alt',
+        'title' => _('Sign in!'),
+        'text' => _('To be able to create a new list of edit you own lists you have to be identified!'),
+    ],
+    [
+        'number' => 2,
+        'iconName' => 'file-alt',
+        'title' => _('I create a new list or I choose one of my lists'),
+        'text' => sprintf(_('You can %screate a list</a> or select a list to add new questions. You must however notice that you can only add question to <em>your</em> lists. In the browse list page, you will see an icon edit new to the name of the list indicating this is your list and you can edit it to add/modifiy/remove questions.'),$createAListLink),
+    ],
+    [
+        'number' => 3,
+        'iconName' => 'plus-sign',
+        'title' => _('I write the content'),
+        'text' => '<p>'.$this->translate('Follow the following steps to define the content of each question: ')
+            .'<p>'
+            .$this->htmlList($writeQuestion,false,false,false),
+    ],
+    [
+        'number' => 4,
+        'iconName' => 'trophy',
+        'title' => _('I can check that my question in now in my list'),
+        'text' => _('The question will be automatically added after pushing on the save button. You can at anytime modify or remove any question.'),
+    ],
+];
+?>
+<h1><?php echo $title; ?></h1>
+<p><?php echo $this->translate('To add a new question to a list, here are the steps you have to complete.'); ?></p>        
+<ul class="unstyled">
+    <?php echo $this->partialLoop('lrnl-help/help-static/step.phtml',$createListSteps); ?>
+</ul>  

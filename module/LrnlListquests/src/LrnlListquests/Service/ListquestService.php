@@ -71,4 +71,14 @@ class ListquestService
         }
         return false;
     }
+    
+    public function getCount()
+    {
+        $qb = $this->repository->createQueryBuilder('l');
+        $count = $qb->select($qb->expr()->count('l'))
+                    ->getQuery()
+                    ->getSingleScalarResult();
+        
+        return $count;
+    }
 }
