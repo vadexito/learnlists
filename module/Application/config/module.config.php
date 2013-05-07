@@ -12,7 +12,7 @@ return [
         'guards'                => [
             'BjyAuthorize\Guard\Route' => [
                 ['route' => 'home', 'roles' => ['guest', 'user']],                
-                ['route' => 'footer/template', 'roles' => ['guest', 'user']],
+                ['route' => 'staticpages/template', 'roles' => ['guest', 'user']],
             ],
         ],
     ],
@@ -28,10 +28,10 @@ return [
                     ],
                 ],
             ],
-            'footer' => [
+            'staticpages' => [
                 'type' => 'Literal',
                 'options' => [
-                    'route'    => '/footer',
+                    'route'    => '/pages',
                     'defaults' => [
                         'controller' => 'PhlySimplePage\Controller\Page'
                     ],
@@ -128,9 +128,11 @@ return [
             'phly-contact/contact/index'     => __DIR__ . '/../view/phly-contact/contact/index.phtml',
             'phly-contact/contact/thank-you' => __DIR__ . '/../view/phly-contact/contact/thank-you.phtml',
             'zfc-user/user/login' => __DIR__ . '/../view/zfc-user/user/login.phtml',
-            'about' => __DIR__ . '/../view/application/footer/about.phtml',
-            'terms_imprint' => __DIR__ . '/../view/application/footer/terms_imprint.phtml',
-            'features' => __DIR__ . '/../view/application/footer/features.phtml',
+            'about' => __DIR__ . '/../view/application/static-pages/about.phtml',
+            'terms_imprint' => __DIR__ . '/../view/application/static-pages/terms_imprint.phtml',
+            'how_it_works_learner' => __DIR__ . '/../view/application/static-pages/how_it_works_learner.phtml',
+            'how_it_works_teacher' => __DIR__ . '/../view/application/static-pages/how_it_works_teacher.phtml',            
+            'features' => __DIR__ . '/../view/application/static-pages/features.phtml',
             'zfc-user/user/login' => __DIR__ . '/../view/zfc-user/user/login.phtml',
         ],
         'template_path_stack' => [

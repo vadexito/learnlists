@@ -187,25 +187,7 @@ $hidden->setAttributes([
     <h3 id="myModalLabel"> <?php echo $this->translate('How is your score calculated?'); ?></h3>
   </div>
   <div class="modal-body">
-      <p> <?php echo $this->translate('The score depends on your ability to give the correct answer <strong>quickly</strong> and <strong>with no mistakes</strong>.'); ?>
-      <p> <?php echo $this->translate('After each question you will receive :'); ?></p>
-    <ul>
-        <li>
-            <?php echo $this->translate('+4 points if you answer correctly in the limited time'); ?>
-        </li>
-        <li>
-             <?php echo $this->translate('+3 points if you answer correctly but overtime'); ?>
-        </li>
-        <li>
-             <?php echo $this->translate('+2 points if you answer correctly after having given one wrong answer'); ?>
-        </li>
-        <li>
-             <?php echo $this->translate('+1 points if you answer correctly after having given more than one wrong answer'); ?>
-        </li>
-        <li>
-             <?php echo $this->translate('0 point if you have asked for the answer'); ?>
-        </li>
-    </ul>
+      <?php echo $this->partial('lrnl-help/help-static/how_is_the_score_calculated','LrnlHelp'); ?>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true"> <?php $this->translate('Go back to learning'); ?></button>

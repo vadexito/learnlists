@@ -1,7 +1,6 @@
 <?php
-$title = $this->translate('How does it work?');
+$title = $this->translate('How to learn');
 $this->headTitle($title);
-$this->headTitle($this->translate('learner'));
 
 $learnerSteps = [
     [
@@ -39,28 +38,7 @@ $learnerSteps = [
 ];
 
 ?>
-<h1><?php echo $this->translate('Find the best quizz to learn'); ?></h1>
-<br/>
-<ul class="nav nav-tabs">
-  <li class="active">
-      <a href="#learn" data-toggle="tab"><?php echo $this->translate('I want to learn'); ?></a>
-  </li>
-  <li>
-    <a href="#create_list" data-toggle="tab"><?php echo $this->translate('I want to create my own list'); ?></a>
-  </li>
+<p><?php echo $this->translate('In order to learn, here are the steps you have to complete.'); ?></p>
+<ul class="unstyled">
+ <?php echo $this->partialLoop('lrnl-help/help-static/step.phtml',$learnerSteps); ?>
 </ul>
-
-<div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade in active" id="learn">
-        <p><?php echo $this->translate('In order to learn, here are the steps you have to complete.'); ?></p>
-        <ul>
-            <?php echo $this->partialLoop('lrnl-help/help-static/step.phtml',$learnerSteps); ?>
-        </ul>
-        
-    </div>
-    <div class="tab-pane fade" id="create_list">
-      <?php echo $this->partial('lrnl-help/help-static/how_to_create_a_list.phtml'); ?>
-    </div>    
-</div>
-
-

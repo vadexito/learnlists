@@ -1,5 +1,28 @@
 <?php
 $title = $this->translate('Recommendation for lists');
 $this->headTitle($title);
+$ourMethodLink = '<a href="'.$this->url('staticpages/template',['template' => 'about_our_method']).'">';
 ?>
-<h1><?php echo $title; ?></h1>
+<p><?php echo $this->translate('In order to have the best experience with Learnlists, we recommend reading and applying following rules: '); ?></p>
+<ul class="unstyled">
+    <li>
+        <h4><?php echo $this->translate('Use clear and explicit name for your lists'); ?></h4>
+        <p><?php echo $this->translate('Due to the great amount of lists, the naming policy is key to help the user finding the list.'); ?></p>
+    </li>    
+    <li>
+        <h4><?php echo $this->translate('Make extensive use of tags'); ?></h4>
+        <p><?php echo $this->translate('Using tags makes it easier for your lists to be found and used. It can be redondant with the title. Typically you should use around 5 tags.'); ?></p>
+    </li>    
+    <li>
+        <h4><?php echo $this->translate('Do not create lists with too many questions : between 15 and 50 is ok'); ?></h4>
+        <p><?php echo $this->translate('We know that concentration is limited. Therefore in order to optimize learning the lists should not be too long.'); ?></p>
+    </li>    
+    <li>
+        <h4><?php echo $this->translate('Try to order the question around a theme can help the learner'); ?></h4>
+        <p><?php echo sprintf($this->translate('It is important to induce from the learner connections between the different questions he can learn in order to maximize its ability to remember. See the %sour method</a> for more information.'),$ourMethodLink); ?></p>
+    </li>    
+</ul>
+
+
+
+

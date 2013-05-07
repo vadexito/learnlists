@@ -28,6 +28,9 @@ class Module implements
             return;
         }
 
+        if ($matches->getMatchedRouteName() !== 'lrnl-help/template'){
+            return;
+        }
         $controller = $matches->getParam('controller');
         if ($controller != 'PhlySimplePage\Controller\Page') {
             return;

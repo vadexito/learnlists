@@ -1,0 +1,26 @@
+<?php
+$title = $this->translate('How does it work?');
+$this->headTitle($title);
+$this->headTitle($this->translate('learner'));
+?>
+<h1><?php echo $this->translate('Find the best quizz to learn'); ?></h1>
+<br/>
+<ul class="nav nav-tabs">
+  <li class="active">
+      <a href="#learn" data-toggle="tab"><?php echo $this->translate('I want to learn'); ?></a>
+  </li>
+  <li>
+    <a href="#create_list" data-toggle="tab"><?php echo $this->translate('I want to create my own list'); ?></a>
+  </li>
+</ul>
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="learn">
+        <?php echo $this->partial('lrnl-help/help-static/how_to_learn.phtml'); ?>
+    </div>
+    <div class="tab-pane fade" id="create_list">
+      <?php echo $this->partial('lrnl-help/help-static/how_to_create_a_list.phtml'); ?>
+    </div>    
+</div>
+
+
