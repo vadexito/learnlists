@@ -41,6 +41,8 @@ class Questionresult extends EntityAbstract
     */
     protected $answerType;
     
+    protected $points;
+    
     public function toArray()
     {
         $array = [
@@ -48,6 +50,7 @@ class Questionresult extends EntityAbstract
             'questionId'    => $this->question->id,
             'roundId'       => $this->round->id,
             'answerType'    => $this->answerType,
+            'points'        => $this->points,
         ];
         
         return $array;
@@ -63,6 +66,17 @@ class Questionresult extends EntityAbstract
     public function getRound()
     {
         return $this->round;
+    }
+    
+    public function setPoints($points)
+    {
+        $this->points = $points;
+        return $this;
+    }
+    
+    public function getPoints()
+    {
+        return $this->points;
     }
     
     public function setQuestion(Question $question = NULL)

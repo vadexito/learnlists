@@ -2,6 +2,7 @@
 
 namespace LrnlListquests\Service;
 
+use Traversable;
 use DoctrineModule\Persistence\ProvidesObjectManager;
 use Doctrine\Common\Persistence\ObjectManager;
 use LrnlListquests\Entity\Listquest;
@@ -53,6 +54,7 @@ class RoundService
         ];
         
         $hydrator->hydrate($dataHydrate,$round);
+        
         $this->getObjectManager()->persist($round);
         
         try {
@@ -96,6 +98,29 @@ class RoundService
         };
         
         return $result;
+    }
+    
+    public function fetchListquestsByUser(UserInterface $user = NULL)
+    {
+        if ($user === NULL){
+            $user = $this->user;
+            if (!$user){
+                return false;
+            }    
+        }    
+        
+        $qb = $this->repository->createQueryBuilder('r');
+        $rounds = $qb   ->join('r.user','u')
+                        ->join('r.listquest','l')
+                        ->groupBy('l.id')
+                        ->select($qb->expr()->count('l.id') . ' as roundNb')
+                        ->addselect('l.title as title')
+                        ->addselect('l.id as listquestId')
+                        ->where('u.id = :userId')
+                        ->setParameter('userId',$user->getId())
+                        ->getQuery()->getArrayResult();
+        
+        return $rounds;
     }
     
     public function fetchById($id)

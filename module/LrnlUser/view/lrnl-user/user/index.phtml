@@ -1,24 +1,23 @@
 
 <?php
-$title = $this->translate('Account');
+$title = $this->translate('My learning');
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
 <ul class="nav nav-tabs">
-    <li><a href="#home" data-toggle="tab">Home</a></li>
-    <li><a href="#profile" data-toggle="tab">Profile</a></li>
-    <li><a href="#messages" data-toggle="tab">Messages</a></li>
-    <li><a href="#settings" data-toggle="tab">Settings</a></li>
+    <li class="active"><a href="#results" data-toggle="tab"><?php echo $this->translate('My results'); ?></a></li>
+    <li><a href="#settings" data-toggle="tab"><?php echo $this->translate('Settings'); ?></a></li>
 </ul>
  
     
-    <div class="tab-content">
-    <div id ='profile' class='tab-pane well'>yiuy</div>
-    <div id ='messages' class="tab-pane well">tuytut</div>
-    <div id ='settings' class='tab-pane well'>jhgjg</div>
-    <div id ='home' class='active tab-pane well'>
-        <div  class='row-fluid'>
+<div class="tab-content">
+    <div id ='results' class='tab-pane active in fade well'>
+        <p><?php echo sprintf($this->translate('Lists you chose:  %s'),$this->results()->countUsedListquest()) ;?></p>
+        <?php echo $this->htmlList($this->results()->listquestResults(),false,['class' => 'unstyled'],false); ?>
+    </div>
+    <div id ='settings' class='tab-pane fade well'>
+<!--        <div  class='row-fluid'>
             <div class='span5'>
                 <h3>Time per question</h3>
                 <h4>15 seconds is the time advised.</h4>
@@ -44,5 +43,5 @@ $this->headTitle($title);
                 </div>
            </div>
         </div> 
-    </div>
+    </div>-->
     </div>

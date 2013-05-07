@@ -169,9 +169,8 @@ class ListquestController extends AbstractActionController
     {
         if ($this->_redirectRoute === NULL)
         {
-            $config = $this->getServiceLocator()->get('config');
-            $configModule = $config['lrnl-listquests'];
-            $this->_redirectRoute = $configModule['redirect_route_after_listquestCrud'];
+            $configModule = $this->getServiceLocator()->get('lrnllistquests_module_options');
+            $this->_redirectRoute = $configModule->getRedirectRouteAfterListquestCrud();
         }
         return $this->_redirectRoute;
     }

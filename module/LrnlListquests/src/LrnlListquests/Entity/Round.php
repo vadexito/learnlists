@@ -35,7 +35,6 @@ class Round extends EntityAbstract
     
     /**
      * 
-     * @ORM\Column(name="start_date",type="datetime")
      * @var datetime
      * @access protected
      * 
@@ -44,12 +43,20 @@ class Round extends EntityAbstract
     
     /**
      * 
-     * @ORM\Column(name="end_date",type="datetime")
      * @var datetime
      * @access protected
      * 
      */
     protected $endDate;
+    
+    /**
+     * 
+     * @var int
+     * @access protected
+     * 
+     */
+    
+    protected $score;
     
     /**
      * @var ArrayCollection of LrnlListquests\Entity\Questionresult
@@ -129,6 +136,17 @@ class Round extends EntityAbstract
         return $this->endDate;
     }
     
+    public function setScore($score)
+    {
+        $this->score = $score;
+        return $this;
+    }
+    
+    public function getScore()
+    {
+        return $this->score;
+    }
+    
     public function addQuestionresults(Collection $questionresults)
     {
         foreach ($questionresults as $questionresult) {
@@ -149,5 +167,4 @@ class Round extends EntityAbstract
     {
         return $this->questionresults;
     }
-    
 }

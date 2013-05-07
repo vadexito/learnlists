@@ -52,7 +52,8 @@ class Module implements
                     $listquestFieldset->setUseAsBaseFieldset(true);
                     $listquestFieldset->remove('questions');
                     
-                    $categories = $sm->get('config')['lrnl-listquests']['categories'];  
+                    $categories = $sm->get('lrnllistquests_module_options')
+                                     ->getCategories();  
                     $category = new Category('category',$categories);
                     $category->setLabel(_('category'));
                     
@@ -68,7 +69,12 @@ class Module implements
                 'edit-question-form' =>  function($sm) {            
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
                     return new EditQuestionForm($entityManager);
-                },       
+                }, 
+                'lrnllistquests_module_options' => function ($sm) {
+                    $config = $sm->get('Config');
+                    return new Options\ModuleOptions(isset($config['lrnl-listquests']) ? $config['lrnl-listquests'] : []);
+                },
+                
             ],
         ];
     }
@@ -88,6 +94,12 @@ class Module implements
                     $locator = $sm->getServiceLocator();
                     $viewHelper = new View\Helper\ListquestCount();
                     $viewHelper->setListquestService($locator->get('learnlists-listquestfactory-service'));
+                    return $viewHelper;
+                },
+                'results' => function ($sm) {
+                    $locator = $sm->getServiceLocator();
+                    $viewHelper = new View\Helper\Results();
+                    $viewHelper->setRoundService($locator->get('learnlists-roundfactory-service'));
                     return $viewHelper;
                 },
             ),
