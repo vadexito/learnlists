@@ -3,7 +3,7 @@ $title = $this->translate('Terms and imprint');
 $this->headTitle($title);
 ?>
 <ul class="nav nav-tabs">
-  <li>
+  <li class="active">
       <a href="#terms" data-toggle="tab"><?php echo $this->translate('Terms'); ?></a>
   </li>
   <li>
@@ -15,12 +15,12 @@ $this->headTitle($title);
 </ul>
 <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade in active" id="terms">
-        <?php echo $this->partial('application/footer/terms.phtml'); ?>
+        <?php echo $this->partial('application/static-pages/terms.phtml'); ?>
     </div>
     <div class="tab-pane fade in active" id="privacy">
-        <?php echo $this->partial('application/footer/privacy.phtml'); ?>
+        <?php echo $this->partial('application/static-pages/privacy.phtml'); ?>
     </div>
     <div class="tab-pane fade in active" id="imprint">
-        <?php echo $this->partial('application/footer/imprint.phtml'); ?>
+        <?php echo $this->partial('application/static-pages/imprint.phtml'); ?>
     </div>
 </div>
