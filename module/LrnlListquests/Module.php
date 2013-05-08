@@ -44,13 +44,10 @@ class Module implements
     {
         return [
             'factories' => [
-                'LrnlListquests\Form\ListquestForm' =>  function($sm) {            
+                'listquest-fieldset' => function($sm) {            
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');
-                    $form = new ListquestForm($entityManager);
                     
                     $listquestFieldset = new ListquestFieldset($entityManager);
-                    $listquestFieldset->setUseAsBaseFieldset(true);
-                    $listquestFieldset->remove('questions');
                     
                     $categories = $sm->get('lrnllistquests_module_options')
                                      ->getCategories();  
@@ -58,13 +55,31 @@ class Module implements
                     $category->setLabel(_('category'));
                     
                     $listquestFieldset->add($category);
+                    
+                    return $listquestFieldset;
+                
+                },
+                
+                'LrnlListquests\Form\ListquestForm' =>  function($sm) {            
+                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');
+                    $form = new ListquestForm($entityManager);
+                    
+                    $listquestFieldset = $sm->get('listquest-fieldset');
+                    $listquestFieldset->setUseAsBaseFieldset(true);
+                    $listquestFieldset->remove('questions');
+                    
                     $form->add($listquestFieldset);
                     
                     return $form;
                 },
-                'LrnlListquests\Form\EditQuestionsInListquestForm' =>  function($sm) {            
-                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
-                    return new EditQuestionsInListquestForm($entityManager);
+                'LrnlListquests\Form\EditQuestionsInListquestForm' =>  function($sm) {                    
+                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');
+                    $form = new EditQuestionsInListquestForm($entityManager);
+                    $listquestFieldset = $sm->get('listquest-fieldset');
+                    $listquestFieldset->setUseAsBaseFieldset(true);
+                    $listquestFieldset->remove('tags');
+                    $form->add($listquestFieldset);
+                    return $form;
                 },
                 'edit-question-form' =>  function($sm) {            
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');  

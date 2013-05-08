@@ -25,16 +25,6 @@ class EditQuestionsInListquestForm extends Form
                 get_class(new Listquest)
         );
         $this->setHydrator($doctrineHydrator);
-             
-        
-        $listquestFieldset = new ListquestFieldset($this->getObjectManager());
-        $listquestFieldset->setUseAsBaseFieldset(true);
-        $listquestFieldset->remove('title');
-        $listquestFieldset->remove('level');
-        $listquestFieldset->remove('rules');
-        $listquestFieldset->remove('tags');
-        $this->add($listquestFieldset);
-        
         
         $this->add([
             'name' => 'submit',
@@ -49,6 +39,12 @@ class EditQuestionsInListquestForm extends Form
         
         $this->setValidationGroup([
             'listquest' => [
+                'title',
+                'description',
+                'category',
+                'level',
+                'rules',
+                'language',
                 'questions'//=> ['question'],
             ],
         ]);

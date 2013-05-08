@@ -3,6 +3,7 @@
 return [
     'modules' => [
         'ZendDeveloperTools',
+        'ZF2NetteDebug',
         'EdpModuleLayouts',
         'DoctrineModule',
         'DoctrineORMModule', 
@@ -28,6 +29,7 @@ return [
         'AsseticBundle',
         'VxoLocale',
         'SlmGoogleAnalytics',
+        'ZF2FileUploadExamples',
         'Application',  
         'PhlySimplePage',
         'VxoBraintree', 

@@ -227,6 +227,8 @@ return [
                 '@fontawesome_css',                
                 '@chosen_js',
                 '@chosen_css',
+                '@jquery_form_js',
+                
             ],
             'options' => [
                 'mixin' => true
@@ -343,6 +345,11 @@ return [
                     'moment_js' => [
                         'assets' => [
                             'components/moment/min/moment.min.js',
+                        ],
+                    ],                     
+                    'jquery_form_js' => [
+                        'assets' => [
+                            'application/js/lib/jquery.form.js',
                         ],
                     ],                     
                     'animate_css' => [

@@ -1,15 +1,12 @@
 <?php
-
 $title = sprintf($this->translate('Edit %s'),$list->title);
 $this->headTitle($title);
-
-$form = $this->form;
 $form->setAttribute('action', $this->url('listquests/list/edit', ['id' => $list->id]));
 $form->prepare();
-echo $this->form()->openTag($form);
-$questionTarget = $this->form->get('listquest')->get('questions')->getTargetElement();
+$questionTarget = $form->get('listquest')->get('questions')->getTargetElement();
 ?>
 
+<?php echo $this->form()->openTag($form); ?>
 <?php if ($form->getMessages()): ?>
 <div class="alert alert-error">
     <button class="close" data-dismiss="alert" type="button">×</button>
@@ -18,6 +15,12 @@ $questionTarget = $this->form->get('listquest')->get('questions')->getTargetElem
 <?php endif; ?>
 
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php echo $this->formRowTwb($form->get('listquest')->get('title')); ?>
+<?php echo $this->formRowTwb($form->get('listquest')->get('description')); ?>
+<?php echo $this->formRowTwb($form->get('listquest')->get('level')); ?>
+<?php echo $this->formRowTwb($form->get('listquest')->get('category')); ?>
+<?php echo $this->formRowTwb($form->get('listquest')->get('rules')); ?>
+<?php echo $this->formRowTwb($form->get('listquest')->get('language'));?>
 <span id="questions_element">
     <table>
         <thead>

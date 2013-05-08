@@ -9,7 +9,7 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.2.0rc1",
+        "zendframework/zendframework": "2.2.0rc2",
         "zendframework/zend-developer-tools": "dev-master",
         "bojaspus/zendsearch": "dev-master",
         "doctrine/doctrine-orm-module": "0.*",        
@@ -37,6 +37,9 @@
         "dlu/dlutwbootstrap": "dev-master",
         "mwillbanks/zfc-twitter-bootstrap": "@dev",
         "ruflin/elastica": "v0.20.5.0.RC1",
-        "evandotpro/edp-module-layouts": "dev-master"
+        "evandotpro/edp-module-layouts": "dev-master",
+        "cgm/zf2-file-upload-examples": ">=1.0.0",
+        "webino/webino-image-thumb" : "1.*",
+        "webino/zf2nette-debug": "dev-develop"
     }
 }
