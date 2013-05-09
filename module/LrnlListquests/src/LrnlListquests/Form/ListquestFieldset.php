@@ -7,6 +7,8 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ProvidesObjectManager;
 
+use LrnlListquests\Form\Element\Picture;
+
 class ListquestFieldset extends Fieldset
 {
     use ProvidesObjectManager;
@@ -70,6 +72,7 @@ class ListquestFieldset extends Fieldset
                 ],
             ],
         ]);
+        
         $this->add([
             'name' => 'level',
             'type' => 'select',
@@ -90,6 +93,10 @@ class ListquestFieldset extends Fieldset
                 ],
             ],
         ]);
+        
+        $pictureCategory = new Picture('category_picture');
+        $this->add($pictureCategory);
+        
         
         $this->add([
             'name' => 'rules',
@@ -115,6 +122,8 @@ class ListquestFieldset extends Fieldset
                 'target_element' => $tagFieldset,
             ],
         ]);
+        
+        
         
         $questionFieldset = new QuestionFieldset($this->getObjectManager());
         $this->add([

@@ -45,6 +45,7 @@ class ListquestForm extends Form
                 'title',
                 'description',
                 'category',
+                'category_picture',
                 'language',
                 'tags',
                 'level',

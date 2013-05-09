@@ -27,7 +27,6 @@ class TagFieldset extends Fieldset implements InputFilterProviderInterface
                 'label' => _('Tag'),
             ],                    
             'attributes' => [
-                'required' => 'required',
                 'type'  => 'text',
                 'id' => 'tag',
                 'autocomplete'    => 'off',
@@ -43,7 +42,6 @@ class TagFieldset extends Fieldset implements InputFilterProviderInterface
         return [
             'tag' => [
                 'name' => 'tag',
-                'required' => true,
                 'filters'  => [
                     ['name' => 'StripTags'],
                     ['name' => 'StringTrim'],

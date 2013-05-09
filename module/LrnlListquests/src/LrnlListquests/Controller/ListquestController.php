@@ -7,6 +7,8 @@ use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Provider\ProvidesSearchService;
 
+use LrnlListquests\InputFilter\Picture as PictureInputFilter;
+
 class ListquestController extends AbstractActionController
 {
     protected $listquestService = NULL;
@@ -18,6 +20,7 @@ class ListquestController extends AbstractActionController
     public function homeAction()
     {
         $searchForm = $this->getServiceLocator()->get('learnlists-form-search');
+        
         return [
             'lists' => $this->getListquestService()->fetchAll(),
             'searchForm' => $searchForm
@@ -32,13 +35,34 @@ class ListquestController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $listquest = $this->getListquestService()->generateNewListquest();
-            
             $form->bind($listquest);
-            $form->setData($request->getPost());
             
-            if ($form->isValid()) {
-     
-                $this->getListquestService()->insertListquest($listquest);
+            $data = $request->isPost();
+            //include element for file upload
+            if ($this->getRequest()->getFiles()){
+                
+                $data = array_merge_recursive(
+                    $this->getRequest()->getPost()->toArray(),
+                    $this->getRequest()->getFiles()->toArray()
+                );
+                $fileFilter =new PictureInputFilter('category_picture');
+                $targetUpload = $this->getServiceLocator()
+                                     ->get('lrnllistquests_module_options')
+                                     ->getTmpPictureUploadDir();
+                $fileFilter->setTargetUpload($targetUpload);
+                $form->getInputFilter()->getInputs()['listquest']->add($fileFilter);
+            }
+            $form->setData($data);
+            
+            if ($form->isValid()) { 
+                $form->getData();
+                
+                //hydrate picture in filebank
+                $hydrator = $this->getServiceLocator()->get('listquest_picture_hydrator');
+                $picture = $form->get('listquest')->get('category_picture')->getValue();
+                $hydrator->hydrate($picture,$listquest);
+                
+                $this->getListquestService()->insertListquest($listquest);                
                 $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute($this->getRedirectRoute());
             }
@@ -61,10 +85,12 @@ class ListquestController extends AbstractActionController
         $form = $this->getServiceLocator()->get('LrnlListquests\Form\EditQuestionsInListquestForm');
         $form->get('submit')->setValue(_('Add'));
         $form->bind($listquest);  
+        
         $request = $this->getRequest();
-        if ($request->isPost()) {
-            
-            $form->setData($request->getPost()); 
+        
+        if ($request->isPost()) {            
+            $data = $request->isPost();
+            $form->setData($data); 
             if ($form->isValid()) {
                 $this->getListquestService()->updateListquest($listquest);
                 $this->getSearchService()->updateIndex($listquest);

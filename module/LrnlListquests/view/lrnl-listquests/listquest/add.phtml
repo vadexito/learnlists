@@ -18,20 +18,21 @@ echo $this->formHidden($form->get('csrf'));
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <div class="row-fluid">
     <div class="span5">
-        <?php echo $this->formRow($listquestFieldset->get('title')); ?>
-        <?php echo $this->formRow($listquestFieldset->get('description')); ?>
-        <?php echo $this->formRow($listquestFieldset->get('language')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('title')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('description')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('language')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('rules')); ?>
     </div>
     <div class="span5">
-        <?php echo $this->formRow($listquestFieldset->get('level')); ?>
-        <?php echo $this->formRow($listquestFieldset->get('category')); ?><br/>
+        <?php echo $this->formRowTwb($listquestFieldset->get('level')); ?>
+        <?php echo $this->formFileTwb($listquestFieldset->get('category_picture')); ?><br/><br/>
+        <?php echo $this->formRowTwb($listquestFieldset->get('category')); ?><br/>
         <div class="input-append">
             <span id="tags_element">
             <?php echo $this->formCollection($listquestFieldset->get('tags')); ?>
             </span>
             <button data-collection ="tags_element" class="btn add_item_to_collection_button" id="add_tags_button"><i class="icon-plus"></i></button>    
         </div>
-        <?php echo $this->formRow($listquestFieldset->get('rules')); ?>
     </div>
 </div>
 <div class="row-fluid">
@@ -39,5 +40,4 @@ echo $this->formHidden($form->get('csrf'));
         <?php echo $this->formSubmit($form->get('submit')); ?>
     </div>
 </div>
-<?php echo $this->form()->closeTag($form);?> 
-
+<?php echo $this->form()->closeTag($form);
