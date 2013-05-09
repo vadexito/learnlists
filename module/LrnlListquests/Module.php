@@ -6,14 +6,13 @@ namespace LrnlListquests;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
-use LrnlListquests\Form\TagFieldset;
 use LrnlListquests\Form\EditQuestionsInListquestForm;
 use LrnlListquests\Form\ListquestForm;
 use LrnlListquests\Form\EditQuestionForm;
 use LrnlListquests\Form\Element\Category;
 use LrnlListquests\Form\ListquestFieldset;
+use LrnlListquests\Hydrator\Picture as PictureHydrator;
 
 
 class Module implements 
@@ -88,6 +87,13 @@ class Module implements
                 'lrnllistquests_module_options' => function ($sm) {
                     $config = $sm->get('Config');
                     return new Options\ModuleOptions(isset($config['lrnl-listquests']) ? $config['lrnl-listquests'] : []);
+                },
+                'listquest_picture_hydrator' => function ($sm) {
+                    $config = $sm->get('lrnllistquests_module_options');
+                    $hydrator = new PictureHydrator($config);
+                    $hydrator->setFileBankService($sm->get('FileBank'));
+                    $hydrator->setListquestService($sm->get('learnlists-listquestfactory-service'));
+                    return $hydrator;
                 },
                 
             ],

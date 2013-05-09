@@ -204,7 +204,7 @@ window.LearnMain = Backbone.Model.extend({
         var answerType = this.model.get('answerType');
         this.set({
             'nb_question': this.currentRound.get('roundOrder').length,
-            'comment': this.questions.collection.get(this.model.get('questionId')).get('tip'),
+            'comment': this.questions.collection.get(this.model.get('questionId')).get('comment'),
             'maxPoint': this.get('maxPoint')+ _.max(_.values(this.currentRound.answerTypePointTable)),
             'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')],
             'newPoints': translations['newPoints'][answerType]

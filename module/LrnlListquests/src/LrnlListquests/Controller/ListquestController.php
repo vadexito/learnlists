@@ -37,19 +37,19 @@ class ListquestController extends AbstractActionController
             $listquest = $this->getListquestService()->generateNewListquest();
             $form->bind($listquest);
             
-            $data = $request->isPost();
+            $data = $request->getPost();
             //include element for file upload
             if ($this->getRequest()->getFiles()){
                 
                 $data = array_merge_recursive(
-                    $this->getRequest()->getPost()->toArray(),
-                    $this->getRequest()->getFiles()->toArray()
+                    $request->getPost()->toArray(),
+                    $request->getFiles()->toArray()
                 );
-                $fileFilter =new PictureInputFilter('category_picture');
+                
                 $targetUpload = $this->getServiceLocator()
                                      ->get('lrnllistquests_module_options')
                                      ->getTmpPictureUploadDir();
-                $fileFilter->setTargetUpload($targetUpload);
+                $fileFilter = new PictureInputFilter('category_picture',$targetUpload);
                 $form->getInputFilter()->getInputs()['listquest']->add($fileFilter);
             }
             $form->setData($data);
@@ -88,10 +88,10 @@ class ListquestController extends AbstractActionController
         
         $request = $this->getRequest();
         
-        if ($request->isPost()) {            
-            $data = $request->isPost();
-            $form->setData($data); 
+        if ($request->isPost()) {   
+            $form->setData($request->getPost());
             if ($form->isValid()) {
+                
                 $this->getListquestService()->updateListquest($listquest);
                 $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute(

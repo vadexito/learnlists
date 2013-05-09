@@ -26,6 +26,7 @@ return [
         'WtRatingDoctrineORM', 
         'DelCountriesFlags',
         'PhlyContact', 
+        'FileBank',
         'AsseticBundle',
         'VxoLocale',
         'SlmGoogleAnalytics',

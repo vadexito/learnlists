@@ -25,7 +25,7 @@ $question = $form->get('question');
 <span class="help-inline">
     (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
 </span>
-<?php echo $this->formRow($question->get('tip'));?>
+<?php echo $this->formRow($question->get('comment'));?>
 <div class="form-actions">
     <?php echo $this->formSubmit($form->get('submit'));?>
 </div>

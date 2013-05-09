@@ -100,6 +100,8 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
      */
     protected $tags;    
     
+    protected $pictureId;
+    
     protected $inputFilter;
     
     public function __construct() 
@@ -175,6 +177,17 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
     public function getLevel()
     {
         return $this->level;
+    }
+    
+    public function setPictureId($pictureId)
+    {
+        $this->pictureId = $pictureId;
+        return $this;
+    }
+    
+    public function getPictureId()
+    {
+        return $this->pictureId;
     }
     
     public function setRules($rules)

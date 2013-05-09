@@ -7,29 +7,17 @@ use Zend\InputFilter\FileInput;
 
 class Picture extends FileInput
 {
-    protected $_target = NULL;
-    
-    public function __construct($name = 'picture')
+    public function __construct($name = 'picture',$targetUpload)
     {
         parent::__construct($name);
         
         $this->getFilterChain()->attachByName(
             'filerenameupload',
             [
-                'target'          => $this->getTargetUpload(),
+                'target'          => $targetUpload,
                 'overwrite'       => true,
                 'use_upload_name' => true,
             ]
         );
-    }
-    
-    public function setTargetUpload($target)
-    {
-        $this->_target = $target;
-    }
-    
-    public function getTargetUpload()
-    {
-        return $this->_target;
     }
 }

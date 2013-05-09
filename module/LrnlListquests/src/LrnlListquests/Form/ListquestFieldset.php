@@ -3,13 +3,15 @@ namespace LrnlListquests\Form;
 
 use LrnlListquests\Entity\Listquest;
 use Zend\Form\Fieldset;
+use Zend\InputFilter\InputFilterProviderInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ProvidesObjectManager;
 
 use LrnlListquests\Form\Element\Picture;
 
-class ListquestFieldset extends Fieldset
+
+class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
 {
     use ProvidesObjectManager;
     
@@ -138,5 +140,84 @@ class ListquestFieldset extends Fieldset
                 
             ],
         ]);
+    }
+
+   /**
+     * @return array
+     */    
+    public function getInputFilterSpecification()    
+    {
+        return [
+            'id' => [
+                'required' => false,
+            ],
+            'title' => [
+                'name'     => 'title',
+                'required' => true,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 2,
+                            'max'      => 25,
+                        ],
+                    ],
+                ],
+            ],
+            'description' => [
+                'name'     => 'description',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 0,
+                            'max'      => 255,
+                        ],
+                    ],
+                ],
+            ],
+            'language' => [
+                'name'     => 'language',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 20,
+                        ],
+                    ],
+                ],
+            ],
+            'tags' => [
+                'required' => true,
+            ],
+            'questions' => [
+                'required' => false,
+            ],
+
+            'rules' => [
+                'required' => false,
+            ],
+            'level' => [
+                'required' => false,
+            ],
+        ];
     }
 }

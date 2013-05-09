@@ -25,7 +25,20 @@ class ModuleOptions extends AbstractOptions
     
     protected $categories = [];
     
+    protected $tmpPictureUploadDir = './data/tmpuploads/';
+    
     protected $redirectRouteAfterListquestCrud;
+    
+    public function getTmpPictureUploadDir()
+    {
+        return $this->tmpPictureUploadDir;        
+    }
+    
+    public function setTmpPictureUploadDir($tmpPictureUploadDir)
+    {
+        $this->tmpPictureUploadDir = $tmpPictureUploadDir;  
+        return $this;
+    }
     
     public function getRedirectRouteAfterListquestCrud()
     {

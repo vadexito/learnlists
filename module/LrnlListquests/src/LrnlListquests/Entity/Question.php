@@ -18,7 +18,7 @@ use LrnlListquests\Entity\Questionresult;
  * @property int $id
  * @property string $text
  * @property string $answer
- * @property string $tip
+ * @property string $comment
  * @property Listquest $listquest
  */
 
@@ -49,7 +49,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
      * @var string
      * @access protected
      */
-    protected $tip;
+    protected $comment;
 
     /**
      * @var ArrayCollection of LrnlListquests\Entity\Questionresult
@@ -102,7 +102,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
             'id'        => $this->id,
             'text'      => $this->text,
             'answer'    => $this->answer,
-            'tip'       => $this->tip,
+            'comment'       => $this->comment,
         ];
         
         if ($this->listquest) {
@@ -180,7 +180,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
             ]));
             
             $inputFilter->add($factory->createInput([
-                'name'     => 'tip',
+                'name'     => 'comment',
                 'required' => false,
                 'filters'  => [
                     ['name' => 'StripTags'],
@@ -217,14 +217,14 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
     {
         return $this->text;
     }
-    public function setTip($tip)
+    public function setComment($comment)
     {
-        $this->tip = $tip;
+        $this->comment = $comment;
         return $this;
     }
-    public function getTip()
+    public function getComment()
     {
-        return $this->tip;
+        return $this->comment;
     }
     public function setAnswer($answer)
     {

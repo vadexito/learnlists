@@ -15,7 +15,7 @@ foreach ($urlQueries as $urlquery){
 
 $filterForm->get('filters')->setAttribute('data-urls',\Zend\Json\Json::encode($urls));
 $paginationControl = $this->paginationControl(
-    $this->lists,
+    $lists,
     'Sliding',
     'pagination_control',
     ['route' => 'lrnl-search','query' => $query]

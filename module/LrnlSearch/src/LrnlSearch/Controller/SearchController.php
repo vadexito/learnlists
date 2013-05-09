@@ -15,6 +15,13 @@ class SearchController extends AbstractActionController
     {
         $queryData = $this->getRequest()->getQuery();
         
+        
+        
+        
+        
+        
+        
+        
         //init search bar
         $searchForm = $this->getServiceLocator()->get('learnlists-form-search');  
         $search = $this->params()->fromQuery('search',NULL);        

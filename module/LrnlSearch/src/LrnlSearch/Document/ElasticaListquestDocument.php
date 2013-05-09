@@ -29,7 +29,7 @@ class ElasticaListquestDocument extends Document implements ListquestDocumentInt
         foreach ($list->questions as $question){
             $questions .= $question->text.' '
                     .$question->answer.' '
-                    .$question->tip;
+                    .$question->comment;
         }
         
         $dataList = array(

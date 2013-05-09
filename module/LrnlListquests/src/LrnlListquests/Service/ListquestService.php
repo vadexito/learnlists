@@ -50,6 +50,8 @@ class ListquestService
     {
         $this->getObjectManager()->persist($listquest);
         $this->getObjectManager()->flush();
+        
+        return $listquest->id;
     }
     
     public function updateListquest(Listquest $listquest)

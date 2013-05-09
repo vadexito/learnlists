@@ -45,7 +45,7 @@ class LuceneListquestDocument extends Document implements ListquestDocumentInter
         foreach ($list->questions as $question){
             $questions .= $question->text.' '
                     .$question->answer.' '
-                    .$question->tip;
+                    .$question->comment;
         }
 
         $this->addField(Field::Text('tags',$tags));

@@ -36,7 +36,7 @@ $questionTarget = $form->get('listquest')->get('questions')->getTargetElement();
                     (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
                 </span>
             </th>
-            <th><?php echo $questionTarget->get('tip')->getLabel();?></th>
+            <th><?php echo $questionTarget->get('comment')->getLabel();?></th>
             <th></th>
         </thead>
         <tbody>
@@ -45,7 +45,7 @@ $questionTarget = $form->get('listquest')->get('questions')->getTargetElement();
             <?php echo $this->formHidden($question->get('id'));?>
             <td><?php echo $this->formInput($question->get('text'));?></td>
             <td><?php echo $this->formInput($question->get('answer'));?></td>
-            <td><?php echo $this->formInput($question->get('tip'));?></td>
+            <td><?php echo $this->formInput($question->get('comment'));?></td>
             <td class="btn-group">
                 <div class="btn-group">
                     <a class="btn btn-mini btn-primary edit-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('listquests/question/edit',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Edit question'); ?>">

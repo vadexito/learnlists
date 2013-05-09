@@ -58,14 +58,14 @@ class QuestionFieldset extends Fieldset implements InputFilterProviderInterface
         ]);
         
         $this->add([
-            'name' => 'tip',
+            'name' => 'comment',
             'attributes' => [
                 'type'  => 'text',
-                'id'    => 'tip',
+                'id'    => 'comment',
                 'autocomplete'    => 'off',
             ],
             'options' => [
-                'label' => _('Tip')
+                'label' => _('Comment')
             ],
         ]);
     }
@@ -85,7 +85,7 @@ class QuestionFieldset extends Fieldset implements InputFilterProviderInterface
             'answer' => [
                 'required' => false,
             ],
-            'tip' => [
+            'comment' => [
                 'required' => false,
             ],
         ];
