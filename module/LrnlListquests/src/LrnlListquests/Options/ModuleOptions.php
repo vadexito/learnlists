@@ -27,8 +27,20 @@ class ModuleOptions extends AbstractOptions
     
     protected $tmpPictureUploadDir = './data/tmpuploads/';
     
-    protected $redirectRouteAfterListquestCrud;
+    protected $redirectRouteAfterListquestCrud = 'lrnl-search';
     
+    protected $listquestEntityClass = 'LrnlListquests\Entity\Listquest';
+    
+    public function getListquestEntityClass()
+    {
+        return $this->listquestEntityClass;        
+    }
+    
+    public function setListquestEntityClass($listquestEntityClass)
+    {
+        $this->listquestEntityClass = $listquestEntityClass;  
+        return $this;
+    }
     public function getTmpPictureUploadDir()
     {
         return $this->tmpPictureUploadDir;        

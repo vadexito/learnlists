@@ -4,28 +4,14 @@ namespace LrnlListquests\Form;
 
 use Zend\Form\Form;
 use Zend\Form\Element\Csrf;
-use LrnlListquests\Form\ListquestFieldset;
-use LrnlListquests\Entity\Listquest;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Doctrine\Common\Persistence\ObjectManager;
-use DoctrineModule\Persistence\ProvidesObjectManager;
 
-
-
-class ListquestForm extends Form
+class CreateListquestForm extends Form
 {
-    use ProvidesObjectManager;
-    
-    public function __construct(ObjectManager $om)
+    public function __construct()
     {
         parent::__construct('listquestForm');
-        $this->setObjectManager($om);
-        
-        $this->setHydrator(new DoctrineHydrator(
-                     $this->getObjectManager(),
-                     get_class(new Listquest())
-             ))
-             ->setAttribute('method', 'post');
+        $this->setAttribute('method', 'post');
         
         $this->add(new Csrf('csrf'));
    
@@ -45,12 +31,12 @@ class ListquestForm extends Form
                 'title',
                 'description',
                 'category',
-                'category_picture',
                 'language',
                 'tags',
                 'level',
                 'rules',                
-            ],
+            ],            
+            'picture' => ['pictureId'],
         ]);
     }
     

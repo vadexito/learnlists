@@ -1,31 +1,19 @@
 <?php
 namespace LrnlListquests\Form;
 
-use LrnlListquests\Entity\Listquest;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
-use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ProvidesObjectManager;
-
-use LrnlListquests\Form\Element\Picture;
-
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
 {
     use ProvidesObjectManager;
     
-    public function __construct(ObjectManager $om)
+    public function __construct($name = 'listquest',ObjectManager $om)
     {
-        parent::__construct('listquest');
-        $this->setObjectManager($om);        
-        $this->setObject(new Listquest());
-        
-        $doctrineHydrator = new DoctrineHydrator(
-                $this->getObjectManager(),
-                get_class(new Listquest())
-        );
-        $this->setHydrator($doctrineHydrator);
+        parent::__construct($name);
+        $this->setObjectManager($om);
     
         $this->add([
             'name'      => 'id',
@@ -96,10 +84,6 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
             ],
         ]);
         
-        $pictureCategory = new Picture('category_picture');
-        $this->add($pictureCategory);
-        
-        
         $this->add([
             'name' => 'rules',
             'attributes' => [
@@ -148,76 +132,76 @@ class ListquestFieldset extends Fieldset implements InputFilterProviderInterface
     public function getInputFilterSpecification()    
     {
         return [
-            'id' => [
-                'required' => false,
-            ],
-            'title' => [
-                'name'     => 'title',
-                'required' => true,
-                'filters'  => [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim'],
-                ],
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'encoding' => 'UTF-8',
-                            'min'      => 2,
-                            'max'      => 25,
-                        ],
-                    ],
-                ],
-            ],
-            'description' => [
-                'name'     => 'description',
-                'required' => false,
-                'filters'  => [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim'],
-                ],
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'encoding' => 'UTF-8',
-                            'min'      => 0,
-                            'max'      => 255,
-                        ],
-                    ],
-                ],
-            ],
-            'language' => [
-                'name'     => 'language',
-                'required' => false,
-                'filters'  => [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim'],
-                ],
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'encoding' => 'UTF-8',
-                            'min'      => 1,
-                            'max'      => 20,
-                        ],
-                    ],
-                ],
-            ],
-            'tags' => [
-                'required' => true,
-            ],
-            'questions' => [
-                'required' => false,
-            ],
-
-            'rules' => [
-                'required' => false,
-            ],
-            'level' => [
-                'required' => false,
-            ],
+//            'id' => [
+//                'required' => false,
+//            ],
+//            'title' => [
+//                'name'     => 'title',
+//                'required' => true,
+//                'filters'  => [
+//                    ['name' => 'StripTags'],
+//                    ['name' => 'StringTrim'],
+//                ],
+//                'validators' => [
+//                    [
+//                        'name'    => 'StringLength',
+//                        'options' => [
+//                            'encoding' => 'UTF-8',
+//                            'min'      => 2,
+//                            'max'      => 25,
+//                        ],
+//                    ],
+//                ],
+//            ],
+//            'description' => [
+//                'name'     => 'description',
+//                'required' => false,
+//                'filters'  => [
+//                    ['name' => 'StripTags'],
+//                    ['name' => 'StringTrim'],
+//                ],
+//                'validators' => [
+//                    [
+//                        'name'    => 'StringLength',
+//                        'options' => [
+//                            'encoding' => 'UTF-8',
+//                            'min'      => 0,
+//                            'max'      => 255,
+//                        ],
+//                    ],
+//                ],
+//            ],
+//            'language' => [
+//                'name'     => 'language',
+//                'required' => false,
+//                'filters'  => [
+//                    ['name' => 'StripTags'],
+//                    ['name' => 'StringTrim'],
+//                ],
+//                'validators' => [
+//                    [
+//                        'name'    => 'StringLength',
+//                        'options' => [
+//                            'encoding' => 'UTF-8',
+//                            'min'      => 1,
+//                            'max'      => 20,
+//                        ],
+//                    ],
+//                ],
+//            ],
+//            'tags' => [
+//                'required' => true,
+//            ],
+//            'questions' => [
+//                'required' => false,
+//            ],
+//
+//            'rules' => [
+//                'required' => false,
+//            ],
+//            'level' => [
+//                'required' => false,
+//            ],
         ];
     }
 }

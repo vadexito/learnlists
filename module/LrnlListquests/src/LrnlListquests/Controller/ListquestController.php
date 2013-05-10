@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Provider\ProvidesSearchService;
-use LrnlListquests\InputFilter\Picture as PictureInputFilter;
+
 
 class ListquestController extends AbstractActionController
 {
@@ -28,38 +28,28 @@ class ListquestController extends AbstractActionController
     
     public function addAction()
     {
-        $form = $this->getServiceLocator()->get('LrnlListquests\Form\ListquestForm');        
+        $form = $this->getServiceLocator()->get('listquest-form-create');        
         $form->get('submit')->setValue(_('Add'));
         
         $request = $this->getRequest();
         if ($request->isPost()) {
             $listquest = $this->getListquestService()->generateNewListquest();
-            $form->bind($listquest);
-            
+            $form->bind($listquest);            
             $data = $request->getPost();
             //include element for file upload
             if ($this->getRequest()->getFiles()){
-                
                 $data = array_merge_recursive(
                     $request->getPost()->toArray(),
                     $request->getFiles()->toArray()
                 );
-                
-                $targetUpload = $this->getServiceLocator()
-                                     ->get('lrnllistquests_module_options')
-                                     ->getTmpPictureUploadDir();
-                $fileFilter = new PictureInputFilter('category_picture',$targetUpload);
-                $form->getInputFilter()->getInputs()['listquest']->add($fileFilter);
             }
             $form->setData($data);
-            
-            if ($form->isValid()) { 
+//            var_dump($data);
+//            var_dump($form->getMessages());die;
+            if ($form->isValid()) {
+                //do the work for the file
                 $form->getData();
-                
-                //hydrate picture in filebank
-                $hydrator = $this->getServiceLocator()->get('listquest_picture_hydrator');
-                $picture = $form->get('listquest')->get('category_picture')->getValue();
-                $hydrator->hydrate($picture,$listquest);
+                $form->get('picture')->getHydrator()->hydrate($data['picture'],$listquest);
                 
                 $this->getListquestService()->insertListquest($listquest);                
                 $this->getSearchService()->updateIndex($listquest);
@@ -81,15 +71,25 @@ class ListquestController extends AbstractActionController
             return $this->redirect()->toRoute($this->getRedirectRoute());
         }
         
-        $form = $this->getServiceLocator()->get('LrnlListquests\Form\EditQuestionsInListquestForm');
+        $form = $this->getServiceLocator()->get('listquest-form-edit');
         $form->get('submit')->setValue(_('Add'));
         $form->bind($listquest);  
         
         $request = $this->getRequest();
         
         if ($request->isPost()) {   
-            $form->setData($request->getPost());
-            if ($form->isValid()) {                
+            $data = $request->getPost();
+            
+            //include element for file upload
+            if ($this->getRequest()->getFiles()){
+                $data = array_merge_recursive(
+                    $request->getPost()->toArray(),
+                    $request->getFiles()->toArray()
+                );
+            }
+            $form->setData($data);
+            if ($form->isValid()) {  
+                $form->get('picture')->getHydrator()->hydrate($data['picture'],$listquest);
                 $this->getListquestService()->updateListquest($listquest);
                 $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute(

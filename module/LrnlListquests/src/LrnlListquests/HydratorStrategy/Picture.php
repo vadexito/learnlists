@@ -1,7 +1,7 @@
 <?php
-namespace LrnlListquests\Hydrator;
+namespace LrnlListquests\HydratorStrategy;
 
-use Zend\Stdlib\Hydrator\HydratorInterface;
+use Zend\Stdlib\Hydrator\Strategy\StrategyInterface;
 use LrnlListquests\Provider\ProvidesListquestService;
 use FileBank\Manager;
 use LrnlListquests\Options\ModuleOptions;
@@ -9,7 +9,7 @@ use WebinoImageThumb\Module as Thumbnailer;
 use LrnlListquests\Exception\HydratorException;
 
 
-class Picture implements HydratorInterface
+class Picture implements StrategyInterface
 {
     protected $_fileBankService;
     protected $_thumbnailer;
@@ -22,12 +22,12 @@ class Picture implements HydratorInterface
         $this->options = $options;
     }
     
-    public function extract($listquest)
+    public function extract($value)
     {
-        return ['pictureId' => $listquest->getPictureId()];
+        return $value;
     }
 
-    public function hydrate(array $value,$listquest)
+    public function hydrate($value)
     {
         if (!isset($value['size'])){
             throw new HydratorException('The value from the form should have a size field for the file');
@@ -45,16 +45,16 @@ class Picture implements HydratorInterface
             $fileBank = $this->getFileBankService();
             $fileBank->save($pictureName,['listquest']);
             
-            $thumb = $this->getThumbnailer()->create($thumbnailName,[]);
+            $thumb = $this->getThumbnailer()->create($pictureName,[]);
             $thumb->resize(114,70);            
             $thumb->save($thumbnailName);
             
             $pictureId = $fileBank->save($thumbnailName,['listquest'])->getId();
-            $listquest->setPictureId($pictureId);
-            $this->getListquestService()->updateListquest($listquest);
             
             unlink($pictureName);
             unlink($thumbnailName);
+            
+            return $pictureId;
         }
     }
     

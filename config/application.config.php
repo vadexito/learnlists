@@ -4,6 +4,7 @@ return [
     'modules' => [
         'ZendDeveloperTools',
         'ZF2NetteDebug',
+        'EdpSuperluminal',
         'EdpModuleLayouts',
         'DoctrineModule',
         'DoctrineORMModule', 

@@ -7,12 +7,16 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+
 use LrnlListquests\Form\EditQuestionsInListquestForm;
-use LrnlListquests\Form\ListquestForm;
+use LrnlListquests\Form\CreateListquestForm;
 use LrnlListquests\Form\EditQuestionForm;
 use LrnlListquests\Form\Element\Category;
 use LrnlListquests\Form\ListquestFieldset;
-use LrnlListquests\Hydrator\Picture as PictureHydrator;
+use LrnlListquests\HydratorStrategy\Picture as PictureStrategy;
+use LrnlListquests\InputFilter\Picture as PictureInputFilter;
+use LrnlListquests\Form\Fieldset\PictureFieldset;
 
 
 class Module implements 
@@ -43,41 +47,56 @@ class Module implements
     {
         return [
             'factories' => [
-                'listquest-fieldset' => function($sm) {            
-                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');
+                'listquest-fieldset' => function($sm) { 
+                    $config = $sm->get('lrnllistquests_module_options');
+                    $listquestEntityClass = $config->getListquestEntityClass();
                     
-                    $listquestFieldset = new ListquestFieldset($entityManager);
+                    $om = $sm->get('Doctrine\ORM\EntityManager');                    
+                    $doctrineHydrator = new DoctrineHydrator(
+                        $om,
+                        $listquestEntityClass
+                    );
                     
-                    $categories = $sm->get('lrnllistquests_module_options')
-                                     ->getCategories();  
-                    $category = new Category('category',$categories);
+                    $category = new Category('category',$config->getCategories());
                     $category->setLabel(_('category'));
                     
+                    $listquestFieldset = new ListquestFieldset('listquest',$om);
                     $listquestFieldset->add($category);
+                    $listquestFieldset->setHydrator($doctrineHydrator);
+                    $listquestFieldset->setObject(new $listquestEntityClass);
                     
                     return $listquestFieldset;
                 
                 },
                 
-                'LrnlListquests\Form\ListquestForm' =>  function($sm) {            
-                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');
-                    $form = new ListquestForm($entityManager);
-                    
+                'listquest-form-create' =>  function($sm) {            
                     $listquestFieldset = $sm->get('listquest-fieldset');
                     $listquestFieldset->setUseAsBaseFieldset(true);
-                    $listquestFieldset->remove('questions');
+                    $listquestFieldset->remove('questions');                    
                     
+                    $pictureFieldset = $sm->get('listquest_picture_fieldset');
+                    $fileFilter = $sm->get('listquest_picture_inputfilter'); 
+                    
+                    $form = new CreateListquestForm(); 
                     $form->add($listquestFieldset);
+                    $form->add($pictureFieldset);
+                    $form->getInputFilter()->getInputs()['picture']->add($fileFilter);
                     
                     return $form;
                 },
-                'LrnlListquests\Form\EditQuestionsInListquestForm' =>  function($sm) {                    
-                    $entityManager = $sm->get('Doctrine\ORM\EntityManager');
-                    $form = new EditQuestionsInListquestForm($entityManager);
+                'listquest-form-edit' =>  function($sm) {                    
                     $listquestFieldset = $sm->get('listquest-fieldset');
                     $listquestFieldset->setUseAsBaseFieldset(true);
                     $listquestFieldset->remove('tags');
+                        
+                    $pictureFieldset = $sm->get('listquest_picture_fieldset');
+                    $fileFilter = $sm->get('listquest_picture_inputfilter');           
+                    
+                    $form = new EditQuestionsInListquestForm();
                     $form->add($listquestFieldset);
+                    $form->add($pictureFieldset);
+                    $form->getInputFilter()->getInputs()['picture']->add($fileFilter);
+                    
                     return $form;
                 },
                 'edit-question-form' =>  function($sm) {            
@@ -90,11 +109,34 @@ class Module implements
                 },
                 'listquest_picture_hydrator' => function ($sm) {
                     $config = $sm->get('lrnllistquests_module_options');
-                    $hydrator = new PictureHydrator($config);
+                    $hydrator = new PictureStrategy($config);
                     $hydrator->setFileBankService($sm->get('FileBank'));
                     $hydrator->setListquestService($sm->get('learnlists-listquestfactory-service'));
                     $hydrator->setThumbnailer($sm->get('WebinoImageThumb'));
                     return $hydrator;
+                },
+                'listquest_picture_inputfilter' => function ($sm) {
+                    $config = $sm->get('lrnllistquests_module_options');
+                    $targetUpload = $config->getTmpPictureUploadDir();
+                    $fileFilter = new PictureInputFilter('pictureId',$targetUpload);
+                    
+                    return $fileFilter;
+                },
+                'listquest_picture_fieldset' => function ($sm) {
+                    $config = $sm->get('lrnllistquests_module_options');
+                    $listquestEntityClass = $config->getListquestEntityClass();                
+                    $om = $sm->get('Doctrine\ORM\EntityManager');
+                    
+                    $fileHydratorStrategy = $sm->get('listquest_picture_hydrator');
+                    $doctrineHydrator = new DoctrineHydrator(
+                        $om,
+                        $listquestEntityClass
+                    );
+                    $doctrineHydrator->addStrategy('pictureId',$fileHydratorStrategy);
+                    $fieldset = new PictureFieldset('picture');
+                    $fieldset->setHydrator($doctrineHydrator);
+                    
+                    return $fieldset;
                 },
                 
             ],

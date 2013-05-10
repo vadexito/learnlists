@@ -43,6 +43,7 @@
         "webino/webino-image-thumb" : "1.*",
         "webino/zf2nette-debug": "dev-develop",
         "artur-gajewski/file-bank": "dev-master",
-        "webino/webino-image-thumb": "dev-master"
+        "webino/webino-image-thumb": "dev-master",
+        "evandotpro/edp-superluminal": "dev-master"
     }
 }
