@@ -11,6 +11,7 @@ return [
         'ZfcUser',
         'ZfcUserAdmin',
         'ZfcTwitterBootstrap',
+        'WebinoImageThumb',
         'CdliTwoStageSignup',        
         'DluTwBootstrap',        
         'GoalioMailService',

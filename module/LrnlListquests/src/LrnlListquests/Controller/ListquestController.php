@@ -6,7 +6,6 @@ use Zend\Mvc\Controller\AbstractActionController;
 use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Provider\ProvidesSearchService;
-
 use LrnlListquests\InputFilter\Picture as PictureInputFilter;
 
 class ListquestController extends AbstractActionController
@@ -90,8 +89,7 @@ class ListquestController extends AbstractActionController
         
         if ($request->isPost()) {   
             $form->setData($request->getPost());
-            if ($form->isValid()) {
-                
+            if ($form->isValid()) {                
                 $this->getListquestService()->updateListquest($listquest);
                 $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute(

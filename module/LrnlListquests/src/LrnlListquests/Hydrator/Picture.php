@@ -5,11 +5,13 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 use LrnlListquests\Provider\ProvidesListquestService;
 use FileBank\Manager;
 use LrnlListquests\Options\ModuleOptions;
+use WebinoImageThumb\Module as Thumbnailer;
 
 
 class Picture implements HydratorInterface
 {
     protected $_fileBankService;
+    protected $_thumbnailer;
     protected $options;
     
     use ProvidesListquestService;
@@ -33,8 +35,13 @@ class Picture implements HydratorInterface
 
             $fileBank = $this->getFileBankService();
             $fileBank->save($dir.$name,['listquest']);
-
-            $pictureId = $fileBank->save($dir.$name,['listquest'])->getId();
+            
+            $thumb = $this->getThumbnailer()->create($dir.$name,[]);
+            $thumb->resize(114,70);
+            $thumbnailName = $dir.'thumb'.$name;
+            $thumb->save($thumbnailName);
+            
+            $pictureId = $fileBank->save($thumbnailName,['listquest'])->getId();
             $listquest->setPictureId($pictureId);
             $this->getListquestService()->updateListquest($listquest);
         }
@@ -49,6 +56,17 @@ class Picture implements HydratorInterface
     public function getFileBankService()
     {
         return $this->_fileBankService;
+    }
+    
+    public function setThumbnailer(Thumbnailer $thumbnailer)
+    {
+        $this->_thumbnailer = $thumbnailer;
+        return $this;
+    }
+    
+    public function getThumbnailer()
+    {
+        return $this->_thumbnailer;
     }
 }
 

@@ -93,6 +93,7 @@ class Module implements
                     $hydrator = new PictureHydrator($config);
                     $hydrator->setFileBankService($sm->get('FileBank'));
                     $hydrator->setListquestService($sm->get('learnlists-listquestfactory-service'));
+                    $hydrator->setThumbnailer($sm->get('WebinoImageThumb'));
                     return $hydrator;
                 },
                 
