@@ -51,6 +51,7 @@ class LuceneSearchService implements SearchServiceInterface
     {
         $index = Lucene\Lucene::open($this->getIndexPath());
         $query = new Query\Boolean();
+        $isNotNullValue = false;
         
         //add all, so that if no query it return everything
         if ($queryData->count() ===0){
@@ -58,6 +59,10 @@ class LuceneSearchService implements SearchServiceInterface
             $query->addSubquery($allQuery,true);
         } else {
             foreach ($queryData as $filter => $values){
+                if (!$values){
+                    continue;
+                }
+                $isNotNullValue = true;
                 //if it is the main search
                 if ($filter === 'search' && $values){                
                     $values = explode(' ',$values);
@@ -86,6 +91,10 @@ class LuceneSearchService implements SearchServiceInterface
             }
         }  
         
+        if (!$isNotNullValue){
+            $allQuery = new Query\Range(new Index\Term('0','docId'),null,true);
+            $query->addSubquery($allQuery,true);
+        }
         //sort results and perform search
         $hits = [];
         try {

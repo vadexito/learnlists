@@ -6,6 +6,7 @@ use LrnlListquests\Provider\ProvidesListquestService;
 use FileBank\Manager;
 use LrnlListquests\Options\ModuleOptions;
 use WebinoImageThumb\Module as Thumbnailer;
+use LrnlListquests\Exception\HydratorException;
 
 
 class Picture implements HydratorInterface
@@ -28,22 +29,32 @@ class Picture implements HydratorInterface
 
     public function hydrate(array $value,$listquest)
     {
+        if (!isset($value['size'])){
+            throw new HydratorException('The value from the form should have a size field for the file');
+        }
         if ($value['size'] >0){
-
+            if (!isset($value['name'])){
+                throw new HydratorException('The value from the form should have a name field for the file');
+            }
+            
             $name = $value['name'];
             $dir = $this->options->getTmpPictureUploadDir();
-
-            $fileBank = $this->getFileBankService();
-            $fileBank->save($dir.$name,['listquest']);
-            
-            $thumb = $this->getThumbnailer()->create($dir.$name,[]);
-            $thumb->resize(114,70);
+            $pictureName = $dir.$name;
             $thumbnailName = $dir.'thumb'.$name;
+            
+            $fileBank = $this->getFileBankService();
+            $fileBank->save($pictureName,['listquest']);
+            
+            $thumb = $this->getThumbnailer()->create($thumbnailName,[]);
+            $thumb->resize(114,70);            
             $thumb->save($thumbnailName);
             
             $pictureId = $fileBank->save($thumbnailName,['listquest'])->getId();
             $listquest->setPictureId($pictureId);
             $this->getListquestService()->updateListquest($listquest);
+            
+            unlink($pictureName);
+            unlink($thumbnailName);
         }
     }
     
