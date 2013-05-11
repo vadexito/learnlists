@@ -11,11 +11,13 @@ namespace Application;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 
 class Module implements 
     AutoloaderProviderInterface,
-    ConfigProviderInterface
+    ConfigProviderInterface,
+    ServiceProviderInterface
         
 {
     public function getConfig()
@@ -32,6 +34,18 @@ class Module implements
                 ),
             ),
         );
+    }
+    
+    public function getServiceConfig()
+    {
+        return [
+            'factories' => [ 
+                //used for cdli twostagesignup module (must be before goaliomail)
+                'Zend\Mail\Transport\Sendmail' => function($sm){
+                    return $sm->get('goaliomailservice_transport');
+                },
+            ],
+        ];
     }
     
     
