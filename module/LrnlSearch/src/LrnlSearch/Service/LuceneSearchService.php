@@ -39,13 +39,18 @@ class LuceneSearchService implements SearchServiceInterface
      * @param type $queryData containing all the parameter for a query to 
      * lucene index
      * @param type $sortOptions for sorting options
-     * @return array of hits (lucene hit)
+     * @return array of hits (lucene hit) or true if all the results are to be given
      * @throws SearchException
      */
     public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL)
     {
         $index = $this->getIndex();
-        $query = $this->getQueryFromArray($queryData);
+        
+        if ($this->isEmptyQuery($queryData)){
+            return true;            
+        } else {
+            $query = $this->getQueryFromArray($queryData);        
+        }
         
         //sort results and perform search
         $hits = [];
@@ -65,29 +70,28 @@ class LuceneSearchService implements SearchServiceInterface
     public function getCountNumberFromQuery(Parameters $queryData)
     {
         $index = $this->getIndex();
-        $query = $this->getQueryFromArray($queryData);
+        try {
+            $query = $this->getQueryFromArray($queryData);
+            $optimalQuery = $query->rewrite($index)->optimize($index);
+            $optimalQuery->execute($index);        
+        }
+        catch (LuceneException $ex) {
+        }
         
-        $query->execute($index);        
-        $docs = $query->matchedDocs();
-        
-        return count($docs);
+        return count($optimalQuery->matchedDocs());
     }
+    
     public function getQueryFromArray(Parameters $queryData)
     {
-        $query = new Query\Boolean();
-        $isNotNullValue = false;
-        
-        //add all, so that if no query it return everything
-        if ($queryData->count() === 0){
-            $allQuery = new Query\Range(new Index\Term('0','docId'),null,true);
-            $query->addSubquery($allQuery,true);
-            return $query;
+        if ($this->isEmptyQuery($queryData)){
+            throw new SearchException('You must provide non null query data');
         } 
+        
+        $query = new Query\Boolean();
         foreach ($queryData as $filter => $values){
             if (!$values){
                 continue;
             }
-            $isNotNullValue = true;
             //if it is the main search
             if ($filter === 'search' && $values){                
                 $values = explode(' ',$values);
@@ -114,18 +118,26 @@ class LuceneSearchService implements SearchServiceInterface
                 }
             } 
         }
-        if (!$isNotNullValue){
-            $allQuery = new Query\Range(new Index\Term('0','docId'),null,true);
-            $query->addSubquery($allQuery,true);
-        }
-        
         return $query;
     }
     
-    
-    
-    
-    
+    public function isEmptyQuery(Parameters $queryData){
+        if ($queryData->count() === 0){
+            return true;
+        } else {
+            $query = $queryData->toArray();
+            foreach ($query as $key => $value){
+                if (empty($value)){
+                    unset($query[$key]);
+                }
+            }
+            if (empty($query)){
+                return true;
+            }
+        }
+        
+        return false;
+    }
     
     public function getFacet($facet,Parameters $queryData,Array $defaultValues)
     {
@@ -145,7 +157,7 @@ class LuceneSearchService implements SearchServiceInterface
     
     public function buildIndex($lists)
     {
-        $index = $this->getIndex();
+        $index = Lucene\Lucene::create($this->getIndexPath());
         Analyzer::setDefault(new UTF8NumCaseInsensitiveAnalyser);
         $id =0;
         foreach ($lists as $list) {
@@ -158,7 +170,7 @@ class LuceneSearchService implements SearchServiceInterface
     
     public function updateIndex(Listquest $listquest)
     {
-        $index = Lucene\Lucene::open($this->getIndexPath());
+        $index = $this->getIndex();
         
         $hit = $index->find('listId:'.$this->convertNumToString($listquest->id));
         $docId = $index->count()+1;

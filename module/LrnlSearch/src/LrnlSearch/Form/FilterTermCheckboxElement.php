@@ -42,7 +42,7 @@ class FilterTermCheckboxElement extends Checkbox
             if (!is_array($filterValueInCurrentUrl)){
                 $filteredQueryforUrl->set($filter,[$filterValueInCurrentUrl]);
             }
-            //find if value is already in crossed checkbox
+            //find if value is already in crossed checkbox            
             $keyValue = array_search($value,$filterValueInCurrentUrl);
             if ($filterValueInCurrentUrl && is_int($keyValue)){
                 unset($filterValueInCurrentUrl[$keyValue]); //remove value if already ckecked

@@ -27,6 +27,9 @@ class SearchController extends AbstractActionController
             'type' => SORT_NUMERIC,
             'direction' => SORT_DESC,
         ]);
+        if ($hits === true){
+            $hits = $this->getServiceLocator()->get('learnlists-listquestfactory-service')->fetchAll();
+        }
         
         //init side filters
         $filterForm = $this->getServiceLocator()->get('learnlists-form-filter');

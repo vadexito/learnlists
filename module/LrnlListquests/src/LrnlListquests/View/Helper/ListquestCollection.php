@@ -19,7 +19,11 @@ class ListquestCollection extends AbstractHelper
         $data = []; 
         
         foreach ($lists as $listquest){
-            $listId = (int)$listquest->listId;
+            if (property_exists($listquest,'listId')){
+                $listId = (int)$listquest->listId;
+            } else {
+                $listId = (int)$listquest->id;
+            }
             
             $listDataBase = $this->getListquestService()->fetchById($listId);
             if (!$listDataBase){

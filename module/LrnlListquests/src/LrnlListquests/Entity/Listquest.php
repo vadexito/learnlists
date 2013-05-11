@@ -15,7 +15,9 @@ use LrnlListquests\Entity\Question;
 use DateTime;
 
 
-class Listquest extends EntityAbstract implements InputFilterAwareInterface
+class Listquest extends EntityAbstract implements 
+    InputFilterAwareInterface,
+    ListquestInterface
 {
     /**
      * Primary Identifier
