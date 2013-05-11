@@ -18,6 +18,7 @@ interface SearchServiceInterface
      * @return array of hits (lucene hit)
      * @throws SearchException
      */
+    public function getQueryFromArray(Parameters $queryData);
     public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL);    
     public function getCountNumberFromQuery(Parameters $queryData); 
     public function getFacet($facet,Parameters $queryData,Array $defaultValues);

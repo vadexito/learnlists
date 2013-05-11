@@ -39,7 +39,7 @@ class ElasticaSearchService implements SearchServiceInterface
         $this->setFilterConfig($filterConfig);
     }
     
-    public function getSearchQueryFromUrlQuery(Parameters $queryData)
+    public function getQueryFromArray(Parameters $queryData)
     {
         $queryBool = new \Elastica\Query\Bool();
         
@@ -102,7 +102,7 @@ class ElasticaSearchService implements SearchServiceInterface
      */
     public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL)
     {
-        $elasticaQuery = $this->getSearchQueryFromUrlQuery($queryData);
+        $elasticaQuery = $this->getQueryFromArray($queryData);
         
         if (is_array($sortOptions)){
             switch ($sortOptions['direction']){
