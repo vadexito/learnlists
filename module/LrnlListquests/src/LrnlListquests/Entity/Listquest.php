@@ -7,6 +7,8 @@ use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;                 
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface; 
+use Zend\InputFilter\CollectionInputFilter;
+
 use LrnlListquests\Entity\Round;
 use LrnlListquests\Entity\Tag;
 use LrnlListquests\Entity\Question;
@@ -418,15 +420,17 @@ class Listquest extends EntityAbstract implements InputFilterAwareInterface
                 ],
             ]));
             
-            $inputFilter->add($factory->createInput([
+            $questionsCollectionFilter = new CollectionInputFilter([
                 'name'     => 'questions',
                 'required' => false,
-            ]));
+            ]);
+            $inputFilter->add($questionsCollectionFilter);
             
-            $inputFilter->add($factory->createInput([
+            $tagsCollectionFilter = new CollectionInputFilter([
                 'name'     => 'tags',
-                'required' => true,
-            ]));
+                'required' => false,
+            ]);
+            $inputFilter->add($tagsCollectionFilter);
             
             $inputFilter->add($factory->createInput([
                 'name'     => 'level',

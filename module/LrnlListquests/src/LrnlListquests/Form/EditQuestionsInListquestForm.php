@@ -31,7 +31,7 @@ class EditQuestionsInListquestForm extends Form
                 'level',
                 'rules',
                 'language',
-                'questions'//=> ['question'],
+                'questions',
             ],
         ]);
     }

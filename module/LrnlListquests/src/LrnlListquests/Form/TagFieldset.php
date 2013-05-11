@@ -41,8 +41,7 @@ class TagFieldset extends Fieldset implements InputFilterProviderInterface
     {
         return [
             'tag' => [
-                'name' => 'tag',
-                'required' => false,
+                'required' => true,
                 'filters'  => [
                     ['name' => 'StripTags'],
                     ['name' => 'StringTrim'],
@@ -52,7 +51,7 @@ class TagFieldset extends Fieldset implements InputFilterProviderInterface
                         'name'    => 'StringLength',
                         'options' => [
                             'encoding' => 'UTF-8',
-                            'min'      => 2,
+                            'min'      => 0,
                             'max'      => 20,
                         ],
                     ],
