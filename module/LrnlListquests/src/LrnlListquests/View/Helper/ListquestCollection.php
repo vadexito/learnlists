@@ -6,6 +6,7 @@ use Zend\View\Helper\AbstractHelper;
 use LrnlListquests\Service\ListquestService;
 use WtRating\Service\RatingService;
 use LrnlListquests\Provider\ProvidesListquestService;
+use ZendSearch\Lucene\Search\QueryHit;
 
 class ListquestCollection extends AbstractHelper
 {
@@ -18,8 +19,8 @@ class ListquestCollection extends AbstractHelper
     {
         $data = []; 
         
-        foreach ($lists as $listquest){
-            if (property_exists($listquest,'listId')){
+        foreach ($lists as $listquest){            
+            if ($listquest instanceof QueryHit){
                 $listId = (int)$listquest->listId;
             } else {
                 $listId = (int)$listquest->id;
