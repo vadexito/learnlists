@@ -6,6 +6,7 @@ namespace LrnlListquests;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\InputFilter\InputFilter;
 
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
@@ -76,11 +77,12 @@ class Module implements
                     
                     $pictureFieldset = $sm->get('listquest_picture_fieldset');
                     $fileFilter = $sm->get('listquest_picture_inputfilter'); 
+                    $fieldsetFilter = (new InputFilter())->add($fileFilter);
                     
                     $form = new CreateListquestForm(); 
                     $form->add($listquestFieldset);
                     $form->add($pictureFieldset);
-                    $form->getInputFilter()->getInputs()['picture']->add($fileFilter);
+                    $form->getInputFilter()->add($fieldsetFilter,'picture');
                     
                     return $form;
                 },
@@ -89,13 +91,8 @@ class Module implements
                     $listquestFieldset->setUseAsBaseFieldset(true);
                     $listquestFieldset->remove('tags');
                         
-                    $pictureFieldset = $sm->get('listquest_picture_fieldset');
-                    $fileFilter = $sm->get('listquest_picture_inputfilter');           
-                    
                     $form = new EditQuestionsInListquestForm();
                     $form->add($listquestFieldset);
-                    $form->add($pictureFieldset);
-                    $form->getInputFilter()->getInputs()['picture']->add($fileFilter);
                     
                     return $form;
                 },

@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Provider\ProvidesSearchService;
+use Zend\Http\PhpEnvironment\Response;
 
 
 class ListquestController extends AbstractActionController
@@ -30,33 +31,31 @@ class ListquestController extends AbstractActionController
     {
         $form = $this->getServiceLocator()->get('listquest-form-create');        
         $form->get('submit')->setValue(_('Add'));
+        $tempFile = null;
         
-        $request = $this->getRequest();
-        if ($request->isPost()) {
-            $listquest = $this->getListquestService()->generateNewListquest();
-            $form->bind($listquest);            
-            $data = $request->getPost();
-            //include element for file upload
-            if ($this->getRequest()->getFiles()){
-                $data = array_merge_recursive(
-                    $request->getPost()->toArray(),
-                    $request->getFiles()->toArray()
-                );
-            }
-            $form->setData($data);
-//            var_dump($data);
-//            var_dump($form->getMessages());die;
+        $prg = $this->fileprg($form);
+        if ($prg instanceof Response) {
+            return $prg; 
+        } elseif (is_array($prg)) {
             if ($form->isValid()) {
-                //do the work for the file
-                $form->getData();
-                $form->get('picture')->getHydrator()->hydrate($data['picture'],$listquest);
-                
+                $listquest = $form->getData();//do the work for the file
+                $form->get('picture')->getHydrator()->hydrate($prg['picture'],$listquest);
+
                 $this->getListquestService()->insertListquest($listquest);                
                 $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute($this->getRedirectRoute());
+            } else {
+                $fileErrors = $form->get('picture')->get('pictureId')->getMessages();
+                if (empty($fileErrors)) {
+                    $tempFile = $form->get('picture')->get('pictureId')->getValue();
+                }
             }
         }
-        return ['form' => $form];
+        
+        return [
+            'form' => $form,
+            'tempFile' => $tempFile,
+        ];
     }
 
     public function editAction()
@@ -65,6 +64,7 @@ class ListquestController extends AbstractActionController
         if (!$listId) {
             return $this->redirect()->toRoute($this->getRedirectRoute());
         }
+        $tempFile = NULL;
         $listquest = $this->getListquestService()->fetchById($listId);
         
         if (!$this->_checkUserIsAuthorized($listquest)) {
@@ -73,32 +73,25 @@ class ListquestController extends AbstractActionController
         
         $form = $this->getServiceLocator()->get('listquest-form-edit');
         $form->get('submit')->setValue(_('Add'));
-        $form->bind($listquest);  
-        
-        $request = $this->getRequest();
+        $form->bind($listquest);
+        $request = $this->getRequest(); 
         
         if ($request->isPost()) {   
-            $data = $request->getPost();
-            
-            //include element for file upload
-            if ($this->getRequest()->getFiles()){
-                $data = array_merge_recursive(
-                    $request->getPost()->toArray(),
-                    $request->getFiles()->toArray()
-                );
-            }
-            $form->setData($data);
-            if ($form->isValid()) {  
-                $form->get('picture')->getHydrator()->hydrate($data['picture'],$listquest);
-                $this->getListquestService()->updateListquest($listquest);
-                $this->getSearchService()->updateIndex($listquest);
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                $this->getListquestService()->updateListquest($form->getData());
+                $this->getSearchService()->updateIndex($form->getData());
                 return $this->redirect()->toRoute(
                     'listquests/list/edit',
                     ['id' => $listId]
                 );
             }
         }
-        return ['form' => $form,'list' => $listquest];       
+        return [
+            'form' => $form,
+            'list' => $listquest,
+            'tempFile' => $tempFile,
+        ];   
     }
 
     public function deleteAction()

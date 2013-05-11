@@ -3,5 +3,6 @@ $title = $this->translate('Add new list');
 $form->setAttribute('action', $this->url('listquests/list/add'));
 echo $this->partial('lrnl-listquests/listquest/save.phtml',[
     'title' => $title,
-    'form' => $form
+    'form' => $form,
+    'tempFile' => $tempFile
  ]);

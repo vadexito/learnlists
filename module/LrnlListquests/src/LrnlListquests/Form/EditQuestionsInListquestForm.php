@@ -7,9 +7,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class EditQuestionsInListquestForm extends Form
 {
-    public function __construct()
+    public function __construct($name = 'EditListquestForm',$options = NULL)
     {
-        parent::__construct('EditListquestForm');
+        parent::__construct($name,$options);
         $this->setAttribute('method', 'post');
         
         $this->add([
@@ -33,7 +33,6 @@ class EditQuestionsInListquestForm extends Form
                 'language',
                 'questions'//=> ['question'],
             ],
-            'picture' => ['pictureId'],
         ]);
     }
 }

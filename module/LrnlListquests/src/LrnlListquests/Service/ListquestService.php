@@ -23,19 +23,6 @@ class ListquestService
         $this->user = $user;
     }
     
-    public function generateNewListquest()
-    {
-        $listquest = new Listquest();
-        
-        $listquest->setCreationDate(new DateTime());
-        
-        if ($this->user){
-            $listquest->author = $this->user;
-        }
-        
-        return $listquest;
-    }
-
     public function fetchAll()
     {
         return $this->repository->findAll();
@@ -48,6 +35,12 @@ class ListquestService
 
     public function insertListquest(Listquest $listquest)
     {
+        $listquest->setCreationDate(new DateTime());
+        
+        if ($this->user){
+            $listquest->author = $this->user;
+        }
+        
         $this->getObjectManager()->persist($listquest);
         $this->getObjectManager()->flush();
         

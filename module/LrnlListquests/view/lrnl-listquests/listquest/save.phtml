@@ -25,7 +25,14 @@ $listquestFieldset = $form->get('listquest');
     </div>
     <div class="span5">
         <?php echo $this->formRowTwb($listquestFieldset->get('level')); ?>
-        <?php echo $this->formFileTwb($form->get('picture')->get('pictureId')); ?><br/><br/>
+        <?php if ($form->get('picture')) : ?>
+        <?php echo $this->formFileTwb($form->get('picture')->get('pictureId')); ?><br/>
+        <?php endif;?>
+        <?php if ($tempFile) : ?>
+        <div class="help-block">
+            Uploaded: <?php echo $this->escapeHtml($tempFile['name']); ?>
+        </div>
+        <?php endif;?><br/>
         <?php echo $this->formRowTwb($listquestFieldset->get('category')); ?><br/>
         <?php if ($listquestFieldset->get('tags')) :?>
         <div class="input-append">
