@@ -11,6 +11,7 @@ class Picture extends FileInput
     {
         parent::__construct($name);
         
+        $this->setRequired(false);
         $this->getFilterChain()->attachByName(
             'filerenameupload',
             [

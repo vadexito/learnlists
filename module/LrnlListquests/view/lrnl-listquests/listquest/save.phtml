@@ -2,6 +2,7 @@
 $this->headTitle($title);
 $form->prepare();
 $listquestFieldset = $form->get('listquest');
+$tags = $listquestFieldset->get('tags');
 ?>
 
 <?php if ($form->getMessages()): ?>
@@ -34,13 +35,18 @@ $listquestFieldset = $form->get('listquest');
         </div>
         <?php endif;?><br/>
         <?php echo $this->formRowTwb($listquestFieldset->get('category')); ?><br/>
-        <?php if ($listquestFieldset->get('tags')) :?>
+        <?php if ($tags) :?>
         <div class="input-append">
             <span id="tags_element">
-            <?php echo $this->formCollection($listquestFieldset->get('tags')); ?>
+            <?php echo $this->formCollection($tags); ?>
             </span>
             <button data-collection ="tags_element" class="btn add_item_to_collection_button" id="add_tags_button"><i class="icon-plus"></i></button>    
         </div>
+        <span class="help-inline">
+            <?php foreach ($tags as $tag) : ?>
+                <?php echo $this->formElementErrors($tag); ?>
+            <?php endforeach; ?>
+        </span>
         <?php endif; ?>
     </div>
 </div>
