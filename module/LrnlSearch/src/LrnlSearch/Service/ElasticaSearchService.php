@@ -4,14 +4,11 @@ namespace LrnlSearch\Service;
 
 use ZendSearch\Lucene\Index;
 use ZendSearch\Lucene;
-use ZendSearch\Lucene\Exception as LuceneException;
 use ZendSearch\Lucene\Search\Query;
 use Zend\Stdlib\Parameters;
 
 
 use LrnlSearch\Document\ElasticaListquestDocument;
-use LrnlListquests\Service\ListquestService;
-use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Form\FiltersForm;
 use LrnlSearch\Exception\SearchException;
 use LrnlListquests\Entity\Listquest;
@@ -23,17 +20,13 @@ use Elastica\Client;
 
 class ElasticaSearchService implements SearchServiceInterface
 {
-    use ProvidesListquestService;
-    
     protected $_indexPath;
     protected $_ratingService;
     protected $_filterConfig;
     protected $client;
     protected $index = NULL;
     
-    public function __construct($indexPath,
-            ListquestService $listquestService = NULL,
-            Traversable $filterConfig = NULL)
+    public function __construct($indexPath,Traversable $filterConfig = NULL)
     {
         
         $client = new Client([
@@ -182,7 +175,7 @@ class ElasticaSearchService implements SearchServiceInterface
         return $this;
     }
     
-    public function buildIndex()
+    public function buildIndex($lists)
     {
         $elasticaIndex = $this->getClient()->getIndex('learnlists');
         $elasticaIndex->create(
@@ -254,7 +247,7 @@ class ElasticaSearchService implements SearchServiceInterface
         $mapping->send();
         
         $this->setIndex($elasticaIndex);
-        $this->hydrateIndex();
+        $this->hydrateIndex($lists);
     }
     
     public function getFacet($facet,Parameters $queryData,Array $defaultValues)
@@ -282,9 +275,8 @@ class ElasticaSearchService implements SearchServiceInterface
     }
     
     
-    public function hydrateIndex()
+    public function hydrateIndex($lists)
     {
-        $lists = $this->getListquestService()->fetchAll();
         $id =0;
         $elasticaType = $this->getIndex()->getType('listquest');
         $documents = [];

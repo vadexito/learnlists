@@ -21,7 +21,7 @@ interface SearchServiceInterface
     public function getResultsFromQuery(Parameters $queryData,$sortOptions = NULL);    
     public function getCountNumberFromQuery(Parameters $queryData); 
     public function getFacet($facet,Parameters $queryData,Array $defaultValues);
-    public function buildIndex();       
+    public function buildIndex($lists);       
     public function updateIndex(Listquest $listquest);    
     public function deleteFromIndex($listquestId);
 }

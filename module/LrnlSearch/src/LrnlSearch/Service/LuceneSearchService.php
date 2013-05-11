@@ -12,8 +12,6 @@ use Zend\Stdlib\Parameters;
 
 use LrnlSearch\Document\LuceneListquestDocument;
 use LrnlSearch\Traits\LuceneSearchTrait;
-use LrnlListquests\Service\ListquestService;
-use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Form\FiltersForm;
 use LrnlSearch\Exception\SearchException;
 use LrnlListquests\Entity\Listquest;
@@ -24,18 +22,15 @@ use Traversable;
 class LuceneSearchService implements SearchServiceInterface
 {
     use LuceneSearchTrait;
-    use ProvidesListquestService;
     
     protected $_indexPath;
     protected $_ratingService;
     protected $_filterConfig;
     
     public function __construct($indexPath,
-            ListquestService $listquestService = NULL,
             Traversable $filterConfig = NULL)
     {
         $this->setIndexPath($indexPath);
-        $this->setListquestService($listquestService);
         $this->setFilterConfig($filterConfig);
     }
     
@@ -131,12 +126,10 @@ class LuceneSearchService implements SearchServiceInterface
         return $facetValues;
     }
     
-    public function buildIndex()
+    public function buildIndex($lists)
     {
         $index = Lucene\Lucene::create($this->getIndexPath());
         Analyzer::setDefault(new UTF8NumCaseInsensitiveAnalyser);
-        $lists = $this->getListquestService()->fetchAll();
-        
         $id =0;
         foreach ($lists as $list) {
             $newDocument = $this->getNewListquestDocument();

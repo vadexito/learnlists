@@ -49,11 +49,11 @@ class SearchController extends AbstractActionController
     
     public function buildAction()
     {
+        $lists = $this  ->getServiceLocator()
+                        ->get('learnlists-listquestfactory-service')
+                        ->fetchAll();
+        $this->getSearchService()->buildIndex($lists); 
         
-        
-        
-        
-        $this->getSearchService()->buildIndex();        
         $this->redirect()->toRoute('home');
     }
     
