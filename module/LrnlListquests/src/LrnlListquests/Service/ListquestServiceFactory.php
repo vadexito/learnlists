@@ -12,7 +12,8 @@ class ListquestServiceFactory implements FactoryInterface
     {
         $objectManager = $services->get('doctrine.entitymanager.orm_default');
         $user = $services->get('zfcuser_auth_service')->getIdentity();
-        $service   = new ListquestService($objectManager,$user);
+        $options = $services->get('lrnllistquests_module_options');
+        $service   = new ListquestService($objectManager,$user,$options);
         
         return $service;
     }

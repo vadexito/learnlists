@@ -27,8 +27,11 @@ class SearchController extends AbstractActionController
             'type' => SORT_NUMERIC,
             'direction' => SORT_DESC,
         ]);
+        //research empty therefore all the lists have to be shown
         if ($hits === true){
-            $hits = $this->getServiceLocator()->get('learnlists-listquestfactory-service')->fetchAll();
+            $hits = $this->getServiceLocator()
+                         ->get('learnlists-listquestfactory-service')
+                         ->fetchAllSortBy('questions',SORT_DESC);
         }
         
         //init side filters
