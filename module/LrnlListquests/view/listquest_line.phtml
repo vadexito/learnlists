@@ -9,14 +9,15 @@ $gravatar = $this->gravatar(
 );
 
 $authorIsTeacher = ($authorRole === 'teacher');
-$titleImage = sprintf($this->translate('Category %s'),$this->escapeHtml($category));
+$titleImage = sprintf($this->translate('Category %s'),$this->escapeHtml($category))
+    .'-'.sprintf($this->translate('Quizz: %s'),$this->escapeHtml($title));
 $urlLearn = $this->url('learn/basic',['id' => $id,'title' => $this->strToUrl($title)]);
 $urlEdit = $this->url('listquests/list/edit',['id' => $id]);
 ?>
 <li class="search_result_listquest_item">
     <div class="row-fluid ">
         <div class="thumbnail span2">            
-             <img src="<?php echo $urlImage; ?>" title="<?php echo $titleImage; ?>" alt="category" style="height:70px;width:114px;">
+             <img src="<?php echo $urlImage; ?>" title="<?php echo $titleImage; ?>" alt="<?php echo $titleImage; ?>" style="height:70px;width:114px;">
         </div>
         <div class="span10">
             <div class="row-fluid">
@@ -42,7 +43,7 @@ $urlEdit = $this->url('listquests/list/edit',['id' => $id]);
                     </div>
                     <p>
                         <?php echo $this->escapeHtml($description); ?>
-                        <span class="date-listquest"><?php echo $this->dateFormat($creationDate,IntlDateFormatter::MEDIUM); ?></span>
+                        <span class="muted date-listquest"><?php echo $this->dateFormat($creationDate,IntlDateFormatter::MEDIUM); ?></span>
                     </p>
                 </div>
                 <div class="span2">
@@ -60,7 +61,7 @@ $urlEdit = $this->url('listquests/list/edit',['id' => $id]);
                         <span class="<?php echo $this->escapeHtml($badge['class']); ?>">
                             <?php echo ucfirst($this->translate($this->escapeHtml($badge['value']))); ?>
                         </span>
-                        <span class="title_badge">
+                        <span class="muted title_badge">
                             <small>
                                 <?php echo $this->escapeHtml(ucfirst($this->translate($badge['name'])));?>
                             </small>
