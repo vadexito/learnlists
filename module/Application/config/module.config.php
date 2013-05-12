@@ -139,6 +139,11 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'view_helpers' => [
+        'invokables' => [
+            'strToUrl' => 'Application\View\Helper\StrToUrl',
+        ],
+    ],
     'assetic_configuration' => [
         /**
         * Module is not enabled if an MvcEvent::EVENT_DISPATCH_ERROR event occurs.
