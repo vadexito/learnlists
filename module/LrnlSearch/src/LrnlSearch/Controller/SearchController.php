@@ -57,7 +57,7 @@ class SearchController extends AbstractActionController
                         ->fetchAll();
         $this->getSearchService()->buildIndex($lists); 
         
-        $this->redirect()->toRoute('home');
+        return $this->redirect()->toRoute('home');
     }
     
     public function getSearchService()
