@@ -12,9 +12,14 @@ class LearnController extends AbstractActionController
         if (!$id) {
             if ($this->zfcUserAuthentication()->hasIdentity()){
                 return $this->redirect()->toRoute('learn/summary');
-            } else {
-                return $this->redirect()->toRoute('zfcuser/login');
-            }
+            } 
+            return $this->redirect()->toRoute('zfcuser/login');
+        }
+        
+        $listquest = $this->getServiceLocator()->get('learnlists-listquestfactory-service')
+                                  ->fetchById($id);
+        if (!$listquest || $listquest->questions->count() === 0){
+            return $this->redirect()->toRoute('learn/summary');
         }
         
         return [

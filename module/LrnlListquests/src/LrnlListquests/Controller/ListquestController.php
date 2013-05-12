@@ -121,7 +121,12 @@ class ListquestController extends AbstractActionController
         ];
     }
     
-    
+    public function mapAction()
+    {
+        return [
+            'lists' => $this->getListquestService()->fetchAll()
+        ];
+    }
     
     public function rateAction()
     {
