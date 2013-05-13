@@ -23,7 +23,10 @@ class ModuleOptions extends AbstractOptions
         '5' => '0',
     ];
     
-    protected $categories = [];
+    protected $categories = [
+        'list' => [],
+        'pictureDirectory' => '/assets/images/thumbnails/categories/',
+    ];
     
     protected $tmpPictureUploadDir = './data/tmpuploads/';
     
@@ -41,6 +44,7 @@ class ModuleOptions extends AbstractOptions
         $this->listquestEntityClass = $listquestEntityClass;  
         return $this;
     }
+    
     public function getTmpPictureUploadDir()
     {
         return $this->tmpPictureUploadDir;        

@@ -13,7 +13,6 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use LrnlListquests\Form\EditQuestionsInListquestForm;
 use LrnlListquests\Form\CreateListquestForm;
 use LrnlListquests\Form\EditQuestionForm;
-use LrnlListquests\Form\Element\Category;
 use LrnlListquests\Form\ListquestFieldset;
 use LrnlListquests\HydratorStrategy\Picture as PictureStrategy;
 use LrnlListquests\InputFilter\Picture as PictureInputFilter;
@@ -48,18 +47,20 @@ class Module implements
     {
         return [
             'factories' => [
+                'lrnllistquests_module_options' => function ($sm) {
+                    $config = $sm->get('Config');
+                    return new Options\ModuleOptions(isset($config['lrnl-listquests']) ? $config['lrnl-listquests'] : []);
+                },                
                 'listquest-fieldset' => function($sm) { 
-                    $config = $sm->get('lrnllistquests_module_options');
-                    $listquestEntityClass = $config->getListquestEntityClass();
+                    $options = $sm->get('lrnllistquests_module_options');
+                    $listquestEntityClass = $options->getListquestEntityClass();
                     
                     $om = $sm->get('Doctrine\ORM\EntityManager');                    
                     $doctrineHydrator = new DoctrineHydrator(
                         $om,
                         $listquestEntityClass
-                    );
-                    
-                    $category = new Category('category',$config->getCategories());
-                    $category->setLabel(_('category'));
+                    );                    
+                    $category = $sm->get('learnlists-category-formelement');
                     
                     $listquestFieldset = new ListquestFieldset('listquest',$om);
                     $listquestFieldset->add($category);
@@ -100,13 +101,9 @@ class Module implements
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
                     return new EditQuestionForm($entityManager);
                 }, 
-                'lrnllistquests_module_options' => function ($sm) {
-                    $config = $sm->get('Config');
-                    return new Options\ModuleOptions(isset($config['lrnl-listquests']) ? $config['lrnl-listquests'] : []);
-                },
                 'listquest_picture_hydrator' => function ($sm) {
-                    $config = $sm->get('lrnllistquests_module_options');
-                    $hydrator = new PictureStrategy($config);
+                    $options = $sm->get('lrnllistquests_module_options');
+                    $hydrator = new PictureStrategy($options);
                     $hydrator->setFileBankService($sm->get('FileBank'));
                     $hydrator->setListquestService($sm->get('learnlists-listquestfactory-service'));
                     $hydrator->setThumbnailer($sm->get('WebinoImageThumb'));
@@ -161,6 +158,13 @@ class Module implements
                     $locator = $sm->getServiceLocator();
                     $viewHelper = new View\Helper\Results();
                     $viewHelper->setRoundService($locator->get('learnlists-roundfactory-service'));
+                    return $viewHelper;
+                },
+                'listquestPictureUrl' => function ($sm) {
+                    $locator = $sm->getServiceLocator();
+                    $options = $locator->get('lrnllistquests_module_options');
+                    $viewHelper = new View\Helper\ListquestPictureUrl();
+                    $viewHelper->setOptions($options);
                     return $viewHelper;
                 },
             ),

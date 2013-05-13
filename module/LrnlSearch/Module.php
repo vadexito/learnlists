@@ -41,12 +41,8 @@ class Module implements
         return [
             'factories' => [
                 'learnlists-form-search' =>  function($sm) {
-                    $form = new SearchForm();
-                    
-                    $categories = $sm->get('config')['lrnl-listquests']['categories'];  
-                    $category = new Category('category',$categories);
-                    
-                    $form->add($category);
+                    $form = new SearchForm();                    
+                    $form->add($sm->get('learnlists-category-formelement'));
                     
                     return $form;
                 },
