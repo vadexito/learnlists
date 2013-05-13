@@ -196,7 +196,9 @@ return [
 
         'routes' => [
             'home' => [
+                '@backstretch_js',
                 '@global_js'
+                
             ],
             'lrnl-search' => [
                 '@slider_css',
@@ -352,6 +354,11 @@ return [
                             'components/moment/min/moment.min.js',
                         ],
                     ],                     
+                    'backstretch_js' => [
+                        'assets' => [
+                            'components/jquery-backstretch/jquery.backstretch.min.js',
+                        ],
+                    ],                     
                     'jquery_form_js' => [
                         'assets' => [
                             'application/js/lib/jquery.form.js',
@@ -366,6 +373,8 @@ return [
                         'assets' => [
                             'images/*.png',
                             'images/icons/*.png',
+                            'images/homeslides/*.png',
+                            'images/homeslides/*.jpg',
                             'images/thumbnails/categories/*.jpg',
                             'images/*.png',
                             'images/*.ico',

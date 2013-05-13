@@ -42,6 +42,8 @@ div.container a.brand {
   max-width: 1000px;
 }
 
+
+
 /*=======================================
 layout nav bar
 =========================================*/
@@ -98,12 +100,10 @@ footer h5 {
     text-decoration: none;
 }
 /*=======================================
-header
+header 
 =========================================*/
 
 #jumbotron-header {
-    background: url("images/books.jpg");
-    margin-bottom : 30px; 
     padding-top: 10px;
 }
 
@@ -154,6 +154,39 @@ header
 #searchForm {
     margin:0;
 }
+
+/*=======================================
+home
+=========================================*/
+div.backstretch{
+    position:relative;
+    top:-20px;
+}
+
+ul.thumbnails.home img{
+    width:260px;
+    height:180px;
+    
+}
+ul.thumbnails.home {
+   margin:0;
+}
+
+ul.thumbnails.home li{
+   padding:0;
+   position:relative;
+}
+
+ul.thumbnails.home .title_image{
+    position:absolute;
+    width: 50%;
+    top:70px;
+    left:60px;
+    color:white;
+    margin:0;
+    line-height: 1em;
+}
+
 /*=======================================
 list of lists page
 =========================================*/

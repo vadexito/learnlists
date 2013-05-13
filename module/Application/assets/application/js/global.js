@@ -1,5 +1,13 @@
 $(function() {
     
+    if ($('.backstretch').length >0){
+        $('.backstretch').backstretch([
+            "/assets/images/books.jpg",
+            "/assets/images/book.jpg"
+        ], {duration: 3000, fade: 750});
+    };
+    
+    //chosen plugin for select form element improvment
     $(".chzn-select").chosen();
     
     $('#filters_chzn input').hide();

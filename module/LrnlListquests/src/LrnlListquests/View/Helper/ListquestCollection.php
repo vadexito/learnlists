@@ -40,7 +40,7 @@ class ListquestCollection extends AbstractHelper
             
             $data[] = [
                 'id' => $listId,
-                'urlImage' => $this->getUrlImage($listDataBase),
+                'urlImage' => $this->getView()->listquestPictureUrl($listDataBase),
                 'title' => $listDataBase->getTitle(),
                 'description' => $listDataBase->description,
                 'category' => $listDataBase->category,
@@ -58,19 +58,6 @@ class ListquestCollection extends AbstractHelper
         $this->_lists = $data;
         
         return $this->render();
-    }
-    
-    public function getUrlImage($listquest)
-    {
-        if ($listquest->getPictureId()){
-            return $this->getView()->getFileById($listquest->getPictureId())->getUrl();
-        }
-        
-        $dirCategoryThumbnail = '/assets/images/thumbnails/categories/';
-        $category = $listquest->getCategory();
-        return $dirCategoryThumbnail
-        . ($category ? $this->getView()->escapeHtml($category) : 'empty').'.jpg';
-                
     }
     
     public function render()

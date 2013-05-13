@@ -7,21 +7,25 @@ $searchForm->prepare();
 $searchForm->get('search')->setAttribute('class','home '.$searchForm->get('search')->getAttribute('class'));
 ?>
 <?php $this->placeholder('header')->captureStart();?>
-<header id="jumbotron-header" class="home">
-    <div class="container">
-        <h1><?php echo $this->escapeHtml($title); ?></h1>
-        <h3><?php echo sprintf($this->translate('Learn with %d high quality quizzes proposed by our community of teachers.'),count($lists),'x'); ?></h3>
-        <div class="well well-small ">
-            <?php echo $this->formTwb()->openTag($searchForm);?>
-            <?php foreach ($searchForm as $element) : if ($element->getName() != 'submit') : ?>
-            <?php echo $this->formRowTwb($element, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_INLINE);?>
-            <?php endif; endforeach; ?>
-            <button type="submit" class="btn btn-large btn-primary"><i class="icon-white icon-search"></i> <?php echo $this->translate('Search'); ?></button>
-            <?php echo $this->formTwb()->closeTag($searchForm);?> 
+<div class="backstretch">
+    <header id="jumbotron-header" class="home">
+        <div class="container">
+            <h1><?php echo $this->escapeHtml($title); ?></h1>
+            <h3><?php echo sprintf($this->translate('Learn with %d high quality quizzes proposed by our community of teachers.'),count($lists),'x'); ?></h3>
+            <div class="well well-small ">
+                <?php echo $this->formTwb()->openTag($searchForm);?>
+                <?php foreach ($searchForm as $element) : if ($element->getName() != 'submit') : ?>
+                <?php echo $this->formRowTwb($element, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_INLINE);?>
+                <?php endif; endforeach; ?>
+                <button type="submit" class="btn btn-large btn-primary"><i class="icon-white icon-search"></i> <?php echo $this->translate('Search'); ?></button>
+                <?php echo $this->formTwb()->closeTag($searchForm);?> 
+            </div>
         </div>
-    </div>
-</header>
+    </header>
+</div>
 <?php $this->placeholder('header')->captureEnd(); ?>
+<?php echo $this->partial('lrnl-listquests/listquest/home_thumbnails.phtml',['lists' => $lists]); ?>
+<br/><br/>
 <div class="row-fluid">
     <div class="span4">
         <h2><?php echo $this->translate('Find high quality quizzes') ?></h2>
