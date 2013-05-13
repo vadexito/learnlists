@@ -1,0 +1,36 @@
+<?php 
+if (!isset($thumbLinesMax)){
+    $thumbLinesMax = 2;
+}
+$thumbs = '';
+$thumbLines = 0;
+foreach ($lists as $listquest) {
+    $imgUrl = $this->listquestPictureUrl($listquest);
+    $imgAlt = ucfirst($this->escapeHtml($listquest->getTitle()));
+    $href = $this->url('lrnl-search',[],['query' => [
+        'category' => $listquest->getCategory(),
+    ]]);
+    $titleText = ucfirst($this->escapeHtml($listquest->getTitle()));
+    $closingTags = '</ul></div>'."\n";
+    
+    $thumbs .=$this->cycle(['<div class="row-fluid"><ul class="thumbnails home">','','',''],'openTag')->next();
+    $thumbs .= $this->partial('lrnl-listquests/listquest/thumbnail.phtml',[
+        'imgUrl' => $imgUrl,
+        'imgAlt' => $imgAlt,
+        'titleText' => $titleText,
+        'href' => $href,
+    ]);
+    $end = $this->cycle(['','','',$closingTags],'closingTag')->next();
+    $thumbs .= $end;   
+    $thumbLines += (string)$this->cycle([0,0,0,1],'nbLine')->next();
+    if ($thumbLines === $thumbLinesMax){
+        break;
+    }
+}
+
+if ($end === ''){
+    $thumbs .= $closingTags; 
+}
+?>
+
+<?php echo $thumbs;?>

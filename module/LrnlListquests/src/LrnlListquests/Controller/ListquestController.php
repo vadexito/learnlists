@@ -6,23 +6,25 @@ use Zend\Mvc\Controller\AbstractActionController;
 use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Provider\ProvidesSearchService;
+use LrnlListquests\Provider\ProvidesCategoryService;
 use Zend\Http\PhpEnvironment\Response;
 
 
 class ListquestController extends AbstractActionController
 {
-    protected $listquestService = NULL;
     protected $_redirectRoute = NULL;
     
     use ProvidesListquestService;
     use ProvidesSearchService;
+    use ProvidesCategoryService;
     
     public function homeAction()
     {
         $searchForm = $this->getServiceLocator()->get('learnlists-form-search');
         
         return [
-            'lists' => $this->getListquestService()->fetchAll(),
+            'lists' => $this->getListquestService()->fetchAllSortBy('questions'),
+            'categories'=> $this->getCategoryService()->fetchAll(),
             'searchForm' => $searchForm
         ];
     }
@@ -152,23 +154,7 @@ class ListquestController extends AbstractActionController
         
     }
     
-    public function getListquestService()
-    {
-        if ($this->_listquestService === NULL){
-            $sm = $this->getServiceLocator();
-            $this->_listquestService = $sm->get('learnlists-listquestfactory-service'); 
-        }
-        return $this->_listquestService;
-    }
     
-    public function getSearchService()
-    {
-        if ($this->_searchService === NULL){
-            $this->_searchService = $this->getServiceLocator()
-                        ->get('learnlists-search-service-factory'); 
-        }
-        return $this->_searchService;
-    }
     
     protected function _checkUserIsAuthorized(Listquest $listquest)
     {

@@ -24,7 +24,16 @@ $searchForm->get('search')->setAttribute('class','home '.$searchForm->get('searc
     </header>
 </div>
 <?php $this->placeholder('header')->captureEnd(); ?>
-<?php echo $this->partial('lrnl-listquests/listquest/home_thumbnails.phtml',['lists' => $lists]); ?>
+<div class="row-fluid">
+    <h3><?php echo $this->translate('Quizz');?></h3>
+    <h4><?php echo $this->translate('Here are some excellent quizz you can choose from.'); ?></h4>
+</div><br/>
+<?php echo $this->partial('lrnl-listquests/listquest/home/listquestThumbnails.phtml',['lists' => $lists,'thumbLinesMax' => 1]); ?>
+<div class="row-fluid">
+    <h3><?php echo $this->translate('Categories guide');?></h3>
+    <h4><?php echo $this->translate('Here are some favourite categories you can choose from.'); ?></h4>
+</div><br/>
+<?php echo $this->partial('lrnl-listquests/listquest/home/categoryThumbnails.phtml',['categories' => $categories,'thumbLinesMax' => 2]); ?>
 <br/><br/>
 <div class="row-fluid">
     <div class="span4">
