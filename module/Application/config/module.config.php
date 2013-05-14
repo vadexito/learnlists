@@ -142,6 +142,7 @@ return [
     'view_helpers' => [
         'invokables' => [
             'strToUrl' => 'Application\View\Helper\StrToUrl',
+            'thumbnail' => 'Application\View\Helper\Thumbnail',
         ],
     ],
     'assetic_configuration' => [

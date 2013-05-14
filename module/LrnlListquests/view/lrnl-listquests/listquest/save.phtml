@@ -30,7 +30,7 @@ $listquest = isset($listquest) ? $listquest : NULL;
         <?php if ($form->get('picture')) : ?>
         <?php echo $this->formFileTwb($form->get('picture')->get('pictureId')); ?><br/>
         <?php if ($listquest) : $imgUrl = $this->listquestPictureUrl($listquest);$imgAlt = ucfirst($this->escapeHtml($listquest->getTitle()));?>
-        <img class="thumbnail" src="<?php echo $imgUrl; ?>" alt="<?php echo $imgAlt; ?>">
+        <?php echo $this->thumbnail(['src' => $imgUrl, 'alt' => $imgAlt], ['size' => 'medium']); ?>
         <?php endif;?>
         <?php endif;?>
         <?php if ($tempFile) : ?>

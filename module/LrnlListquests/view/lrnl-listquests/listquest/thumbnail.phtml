@@ -1,6 +1,13 @@
+<?php 
+$thumbnailAttribs = [
+    'src' => $imgUrl,
+    'alt' => $imgAlt,
+    'title' => sprintf($this->translate('Quiz: %s'),$imgAlt)
+];
+?>
+
 <li class="span3">
-    <a href="<?php echo $href; ?>" class="thumbnail">
-        <img src="<?php echo $imgUrl; ?>" alt="<?php echo $imgAlt; ?>">
-        <h4 class="text-center span6 title_image"><?php echo $titleText; ?></h4>
+    <a href="<?php echo $href; ?>"s>
+        <?php echo $this->thumbnail($thumbnailAttribs, ['title' => $titleText]); ?>
     </a>
 </li>

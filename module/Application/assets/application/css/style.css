@@ -163,11 +163,10 @@ div.backstretch{
     top:-20px;
 }
 
-ul.thumbnails.home img{
-    width:260px;
-    height:180px;
-    
+div.feature{
+    height:350px;
 }
+
 ul.thumbnails.home {
    margin:0;
 }

@@ -57,10 +57,10 @@ class ListquestCollection extends AbstractHelper
         }
         $this->_lists = $data;
         
-        return $this->render();
+        return $this;
     }
     
-    public function render()
+    public function __toString()
     {
         return $this->getView()->partialLoop('listquest_line.phtml',$this->_lists);
     }

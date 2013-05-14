@@ -11,13 +11,20 @@ $gravatar = $this->gravatar(
 $authorIsTeacher = ($authorRole === 'teacher');
 $titleImage = sprintf($this->translate('Category %s'),$this->escapeHtml($category))
     .'-'.sprintf($this->translate('Quizz: %s'),$this->escapeHtml($title));
+
+$pictureAttribs=[
+    'src' => $urlImage,
+    'title' => $titleImage,
+    'alt' => $titleImage,
+];
+
 $urlLearn = $this->url('learn/basic',['id' => $id,'title' => $this->strToUrl($title)]);
 $urlEdit = $this->url('listquests/list/edit',['id' => $id]);
 ?>
 <li class="search_result_listquest_item">
     <div class="row-fluid ">
-        <div class="thumbnail span2">            
-             <img src="<?php echo $urlImage; ?>" title="<?php echo $titleImage; ?>" alt="<?php echo $titleImage; ?>" style="height:70px;width:114px;">
+        <div class="span2">            
+             <?php echo $this->thumbnail($pictureAttribs, ['size' => 'small']); ?>
         </div>
         <div class="span10">
             <div class="row-fluid">
