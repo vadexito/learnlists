@@ -41,6 +41,10 @@ if (isset($listquest)){
             <?php echo $this->thumbnail(['src' => $imgUrl, 'alt' => $imgAlt], ['size' => 'medium']); ?>           
         </div>
          <?php endif;?>
+        <?php if ($form->get('picture')) : ?>
+        <?php echo $this->formFileTwb($form->get('picture')->get('pictureId')); ?><br/>
+        <?php echo $this->formElementErrors($form->get('picture')->get('pictureId')); ?><br/>
+        <?php endif;?>
         <?php if ($tempFile) : ?>
         <div class="help-block">
             Uploaded: <?php echo $this->escapeHtml($tempFile['name']); ?>
