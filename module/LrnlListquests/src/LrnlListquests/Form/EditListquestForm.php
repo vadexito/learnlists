@@ -5,7 +5,7 @@ namespace LrnlListquests\Form;
 use Zend\Form\Form;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class EditQuestionsInListquestForm extends Form
+class EditListquestForm extends Form
 {
     public function __construct($name = 'EditListquestForm',$options = NULL)
     {
@@ -27,12 +27,13 @@ class EditQuestionsInListquestForm extends Form
             'listquest' => [
                 'title',
                 'description',
-                'category',                
+                'category',
                 'level',
                 'rules',
                 'language',
                 'questions',
             ],
+            'picture' => ['pictureId']
         ]);
     }
 }
