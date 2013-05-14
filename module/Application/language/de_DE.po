@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-13 15:34+0100\n"
-"PO-Revision-Date: 2013-05-13 15:34+0100\n"
+"POT-Creation-Date: 2013-05-14 11:23+0100\n"
+"PO-Revision-Date: 2013-05-14 11:33+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -178,9 +178,12 @@ msgid "Foreign Languages - French"
 msgstr "Fremdsprache - Franzözisch"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:35
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:80
 msgid "Add"
 msgstr "Hinzufügen"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:79
+msgid "Save"
+msgstr "Speichern"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/QuestionController.php:29
 msgid "Edit"
@@ -1642,16 +1645,16 @@ msgstr "Lerne wie man eine Liste erstellt."
 msgid "Access directly any of our quizz-list:"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:11
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:12
 #: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:13
 msgid "There were some errors. Please try again!"
 msgstr "Es gab Fehler. Bitte versuchen Sie noch einmal"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:61
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:65
 msgid "Rules for entering question text"
 msgstr "Wie man Fragen einträgt"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:61
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:65
 msgid ""
 "(i) Enter the text for the question. (ii) If this is a sentence to fill in, "
 "please use two '%' signs in order to specify answers.Example : He %was% not "
@@ -1666,23 +1669,23 @@ msgstr ""
 "Zeichen '--' benutzt werden wie im folgenden Beipspiel : Ihr habt einen "
 "großen Irrtum %begangen--gemacht%."
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:67
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:71
 #: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:26
 msgid ""
 "Nothing to enter if the answer was already entered directly in the text."
 msgstr ""
 "Keine Antwort einzutragen, wenn es sich um eine zu ergänzende Frage handelt."
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:82
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:86
 #: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:2
 msgid "Edit question"
 msgstr "Frage editieren"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:85
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:89
 msgid "Remove question"
 msgstr "Frage löschen"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:97
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:101
 msgid "Press to add a new empty line. To save press the button below"
 msgstr ""
 "Auf dem Plus Drücken um eine neue Frage hinzufügen und dann auf den hinteren "

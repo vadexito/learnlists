@@ -1,8 +1,9 @@
 <?php
-$title = sprintf($this->translate('Edit %s'),$list->title);
-$form->setAttribute('action', $this->url('listquests/list/edit', ['id' => $list->id]));
+$title = sprintf($this->translate('Edit %s'),$listquest->title);
+$form->setAttribute('action', $this->url('listquests/list/edit', ['id' => $listquest->id]));
 echo $this->partial('lrnl-listquests/listquest/save.phtml',[
     'title' => $title,
     'form' => $form,
     'tempFile' => $tempFile,
+    'listquest' => $listquest
  ]);

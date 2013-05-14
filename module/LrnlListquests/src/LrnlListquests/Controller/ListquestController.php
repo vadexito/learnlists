@@ -75,17 +75,19 @@ class ListquestController extends AbstractActionController
         if (!$this->_checkUserIsAuthorized($listquest)) {
             return $this->redirect()->toRoute($this->getRedirectRoute());
         }
-        
         $form = $this->getServiceLocator()->get('listquest-form-edit');
-        $form->get('submit')->setValue(_('Add'));
-        $form->bind($listquest);
-        $request = $this->getRequest(); 
-        
-        if ($request->isPost()) {   
-            $form->setData($request->getPost());
+        $form->get('submit')->setValue(_('Save'));
+        $prg = $this->fileprg($form);
+        if ($prg instanceof Response) {
+            return $prg; 
+        } elseif (is_array($prg)) {
             if ($form->isValid()) {
-                $this->getListquestService()->updateListquest($form->getData());
-                $this->getSearchService()->updateIndex($form->getData());
+                $listquest = $form->getData();
+                if (isset($prg['picture'])){
+                    $form->get('picture')->getHydrator()->hydrate($prg['picture'],$listquest);
+                }
+                $this->getListquestService()->updateListquest($listquest);
+                $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute(
                     'listquests/list/edit',
                     ['id' => $listId]
@@ -94,10 +96,45 @@ class ListquestController extends AbstractActionController
         }
         return [
             'form' => $form,
-            'list' => $listquest,
+            'listquest' => $listquest,
             'tempFile' => $tempFile,
         ];   
     }
+//    public function editAction()
+//    {
+//        $listId = (int) $this->params()->fromRoute('id', 0);
+//        if (!$listId) {
+//            return $this->redirect()->toRoute($this->getRedirectRoute());
+//        }
+//        $tempFile = NULL;
+//        $listquest = $this->getListquestService()->fetchById($listId);
+//        
+//        if (!$this->_checkUserIsAuthorized($listquest)) {
+//            return $this->redirect()->toRoute($this->getRedirectRoute());
+//        }
+//        
+//        $form = $this->getServiceLocator()->get('listquest-form-edit');
+//        $form->get('submit')->setValue(_('Save'));
+//        $form->bind($listquest);
+//        $request = $this->getRequest(); 
+//        
+//        if ($request->isPost()) {   
+//            $form->setData($request->getPost());
+//            if ($form->isValid()) {
+//                $this->getListquestService()->updateListquest($form->getData());
+//                $this->getSearchService()->updateIndex($form->getData());
+//                return $this->redirect()->toRoute(
+//                    'listquests/list/edit',
+//                    ['id' => $listId]
+//                );
+//            }
+//        }
+//        return [
+//            'form' => $form,
+//            'list' => $listquest,
+//            'tempFile' => $tempFile,
+//        ];   
+//    }
 
     public function deleteAction()
     {

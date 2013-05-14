@@ -10,7 +10,7 @@ use Zend\InputFilter\InputFilter;
 
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
-use LrnlListquests\Form\EditQuestionsInListquestForm;
+use LrnlListquests\Form\EditListquestForm;
 use LrnlListquests\Form\CreateListquestForm;
 use LrnlListquests\Form\EditQuestionForm;
 use LrnlListquests\Form\ListquestFieldset;
@@ -91,9 +91,15 @@ class Module implements
                     $listquestFieldset = $sm->get('listquest-fieldset');
                     $listquestFieldset->setUseAsBaseFieldset(true);
                     $listquestFieldset->remove('tags');
-                        
-                    $form = new EditQuestionsInListquestForm();
+                    
+                    $form = new EditListquestForm();
                     $form->add($listquestFieldset);
+                    
+                    $pictureFieldset = $sm->get('listquest_picture_fieldset');
+                    //$fileFilter = $sm->get('listquest_picture_inputfilter'); 
+                    //$fieldsetFilter = (new InputFilter())->add($fileFilter);
+                    $form->add($pictureFieldset);
+                    //$form->getInputFilter()->add($fieldsetFilter,'picture');
                     
                     return $form;
                 },
