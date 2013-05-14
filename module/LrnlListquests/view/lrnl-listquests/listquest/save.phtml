@@ -3,7 +3,13 @@ $this->headTitle($title);
 $form->prepare();
 $listquestFieldset = $form->get('listquest');
 $tags = $listquestFieldset->get('tags');
-$listquest = isset($listquest) ? $listquest : NULL;
+if (isset($listquest)){    
+    $imgUrl = $this->listquestPictureUrl($listquest);
+    $imgAlt = ucfirst($this->escapeHtml($listquest->getTitle()));
+} else {
+    $listquest = NULL;
+}
+
 ?>
 
 <?php if ($form->getMessages()): ?>
@@ -12,7 +18,9 @@ $listquest = isset($listquest) ? $listquest : NULL;
     <strong><?php echo $this->translate('There were some errors. Please try again!'); ?></strong>
 </div>
 <?php endif; ?>
-
+<?php echo $this->ztbflashMessenger('success'); ?>
+<?php echo $this->ztbflashMessenger('error'); ?>
+<?php echo $this->ztbflashMessenger('info'); ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
 <?php echo $this->form()->openTag($form); ?>
@@ -27,12 +35,12 @@ $listquest = isset($listquest) ? $listquest : NULL;
     </div>
     <div class="span5">
         <?php echo $this->formRowTwb($listquestFieldset->get('level')); ?>
-        <?php if ($form->get('picture')) : ?>
-        <?php echo $this->formFileTwb($form->get('picture')->get('pictureId')); ?><br/>
-        <?php if ($listquest) : $imgUrl = $this->listquestPictureUrl($listquest);$imgAlt = ucfirst($this->escapeHtml($listquest->getTitle()));?>
-        <?php echo $this->thumbnail(['src' => $imgUrl, 'alt' => $imgAlt], ['size' => 'medium']); ?>
-        <?php endif;?>
-        <?php endif;?>
+        <?php if ($listquest) : ?>
+        <div class="picture_change">
+            <p><?php echo sprintf($this->translate('%sChange</a> your current picture?'),'<a data-toggle="modal" href="#changePictureForm">'); ?></p>
+            <?php echo $this->thumbnail(['src' => $imgUrl, 'alt' => $imgAlt], ['size' => 'medium']); ?>           
+        </div>
+         <?php endif;?>
         <?php if ($tempFile) : ?>
         <div class="help-block">
             Uploaded: <?php echo $this->escapeHtml($tempFile['name']); ?>

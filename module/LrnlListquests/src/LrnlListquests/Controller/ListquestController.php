@@ -40,12 +40,10 @@ class ListquestController extends AbstractActionController
             return $prg; 
         } elseif (is_array($prg)) {
             if ($form->isValid()) {
-                $listquest = $form->getData();//do the work for the file
-                
+                $listquest = $form->getData();//do the work for the file                
                 if (isset($prg['picture'])){
                     $form->get('picture')->getHydrator()->hydrate($prg['picture'],$listquest);
                 }
-
                 $this->getListquestService()->insertListquest($listquest);                
                 $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute($this->getRedirectRoute());
@@ -62,9 +60,58 @@ class ListquestController extends AbstractActionController
             'tempFile' => $tempFile,
         ];
     }
+    
+    public function changepictureAction()
+    {
+        $listId = (int) $this->params()->fromRoute('id', 0);
+        if (!$listId) {
+            return $this->redirect()->toRoute($this->getRedirectRoute());
+        }
+        $listquest = $this->getListquestService()->fetchById($listId);
+        
+        if (!$listquest || !$this->_checkUserIsAuthorized($listquest)) {
+            return $this->redirect()->toRoute($this->getRedirectRoute());
+        }
+        
+        $form = $this->getServiceLocator()->get('listquest-form-changepicture');        
+        
+        if ($this->getRequest()->isPost()) {
+            $data = array_merge_recursive(
+                $this->getRequest()->getPost()->toArray(),
+                $this->getRequest()->getFiles()->toArray()
+            );
 
+            $form->setData($data);
+            if ($form->isValid()) {   
+                $form->getData();
+                
+                $pictureData = $data['picture'];
+                $form->get('picture')->getHydrator()->hydrate($pictureData,$listquest);
+                
+                $this->getListquestService()->updateListquest($listquest);
+                $this->flashMessenger()->addSuccessMessage(_('Your picture has been successfully changed'));
+                
+            } else {
+                $this->flashMessenger()->addErrorMessage(
+                    _('Your picture could not be changed. Please try again.')
+                );
+                if (isset($form->getMessages()['picture']['pictureId'])){
+                    foreach ($form->getMessages()['picture']['pictureId'] as $message){
+                        $this->flashMessenger()->addInfoMessage($message);
+                    }
+                }  
+            }
+        }
+        return $this->redirect()->toRoute(
+            'listquests/list/edit',
+            ['id' => $listquest->id]
+        );
+    }
+
+  
     public function editAction()
     {
+        
         $listId = (int) $this->params()->fromRoute('id', 0);
         if (!$listId) {
             return $this->redirect()->toRoute($this->getRedirectRoute());
@@ -72,22 +119,21 @@ class ListquestController extends AbstractActionController
         $tempFile = NULL;
         $listquest = $this->getListquestService()->fetchById($listId);
         
-        if (!$this->_checkUserIsAuthorized($listquest)) {
+        if (!$listquest || !$this->_checkUserIsAuthorized($listquest)) {
             return $this->redirect()->toRoute($this->getRedirectRoute());
         }
-        $form = $this->getServiceLocator()->get('listquest-form-edit');
+        
+        $sl = $this->getServiceLocator();
+        $form = $sl->get('listquest-form-edit');
         $form->get('submit')->setValue(_('Save'));
-        $prg = $this->fileprg($form);
-        if ($prg instanceof Response) {
-            return $prg; 
-        } elseif (is_array($prg)) {
+        $form->bind($listquest);
+        $request = $this->getRequest(); 
+        
+        if ($request->isPost()) {   
+            $form->setData($request->getPost());
             if ($form->isValid()) {
-                $listquest = $form->getData();
-                if (isset($prg['picture'])){
-                    $form->get('picture')->getHydrator()->hydrate($prg['picture'],$listquest);
-                }
-                $this->getListquestService()->updateListquest($listquest);
-                $this->getSearchService()->updateIndex($listquest);
+                $this->getListquestService()->updateListquest($form->getData());
+                $this->getSearchService()->updateIndex($form->getData());
                 return $this->redirect()->toRoute(
                     'listquests/list/edit',
                     ['id' => $listId]
@@ -98,43 +144,9 @@ class ListquestController extends AbstractActionController
             'form' => $form,
             'listquest' => $listquest,
             'tempFile' => $tempFile,
+            'changePictureForm' => $sl->get('listquest-form-changepicture')
         ];   
     }
-//    public function editAction()
-//    {
-//        $listId = (int) $this->params()->fromRoute('id', 0);
-//        if (!$listId) {
-//            return $this->redirect()->toRoute($this->getRedirectRoute());
-//        }
-//        $tempFile = NULL;
-//        $listquest = $this->getListquestService()->fetchById($listId);
-//        
-//        if (!$this->_checkUserIsAuthorized($listquest)) {
-//            return $this->redirect()->toRoute($this->getRedirectRoute());
-//        }
-//        
-//        $form = $this->getServiceLocator()->get('listquest-form-edit');
-//        $form->get('submit')->setValue(_('Save'));
-//        $form->bind($listquest);
-//        $request = $this->getRequest(); 
-//        
-//        if ($request->isPost()) {   
-//            $form->setData($request->getPost());
-//            if ($form->isValid()) {
-//                $this->getListquestService()->updateListquest($form->getData());
-//                $this->getSearchService()->updateIndex($form->getData());
-//                return $this->redirect()->toRoute(
-//                    'listquests/list/edit',
-//                    ['id' => $listId]
-//                );
-//            }
-//        }
-//        return [
-//            'form' => $form,
-//            'list' => $listquest,
-//            'tempFile' => $tempFile,
-//        ];   
-//    }
 
     public function deleteAction()
     {

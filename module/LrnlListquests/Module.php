@@ -13,6 +13,7 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use LrnlListquests\Form\EditListquestForm;
 use LrnlListquests\Form\CreateListquestForm;
 use LrnlListquests\Form\EditQuestionForm;
+use LrnlListquests\Form\ChangePictureForm;
 use LrnlListquests\Form\ListquestFieldset;
 use LrnlListquests\HydratorStrategy\Picture as PictureStrategy;
 use LrnlListquests\InputFilter\Picture as PictureInputFilter;
@@ -61,6 +62,7 @@ class Module implements
                         $listquestEntityClass
                     );                    
                     $category = $sm->get('learnlists-category-formelement');
+                    $category->setLabel(_('Categories'));
                     
                     $listquestFieldset = new ListquestFieldset('listquest',$om);
                     $listquestFieldset->add($category);
@@ -87,6 +89,18 @@ class Module implements
                     
                     return $form;
                 },
+                        
+                'listquest-form-changepicture' =>  function($sm) {            
+                    $pictureFieldset = $sm->get('listquest_picture_fieldset');
+                    $fileFilter = $sm->get('listquest_picture_inputfilter'); 
+                    $fieldsetFilter = (new InputFilter())->add($fileFilter);
+                    
+                    $form = new ChangePictureForm(); 
+                    $form->add($pictureFieldset);
+                    $form->getInputFilter()->add($fieldsetFilter,'picture');
+                    
+                    return $form;
+                },
                 'listquest-form-edit' =>  function($sm) {                    
                     $listquestFieldset = $sm->get('listquest-fieldset');
                     $listquestFieldset->setUseAsBaseFieldset(true);
@@ -94,12 +108,6 @@ class Module implements
                     
                     $form = new EditListquestForm();
                     $form->add($listquestFieldset);
-                    
-                    $pictureFieldset = $sm->get('listquest_picture_fieldset');
-                    //$fileFilter = $sm->get('listquest_picture_inputfilter'); 
-                    //$fieldsetFilter = (new InputFilter())->add($fileFilter);
-                    $form->add($pictureFieldset);
-                    //$form->getInputFilter()->add($fieldsetFilter,'picture');
                     
                     return $form;
                 },

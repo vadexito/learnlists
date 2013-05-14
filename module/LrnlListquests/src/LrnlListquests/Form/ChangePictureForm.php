@@ -5,9 +5,9 @@ namespace LrnlListquests\Form;
 use Zend\Form\Form;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class EditListquestForm extends Form
+class ChangePictureForm extends Form
 {
-    public function __construct($name = 'EditListquestForm',$options = NULL)
+    public function __construct($name = 'ChangePictureForm',$options = NULL)
     {
         parent::__construct($name,$options);
         $this->setAttribute('method', 'post');
@@ -17,21 +17,9 @@ class EditListquestForm extends Form
             'type'  => 'submit',
             'attributes' => [
                 'type'  => 'submit',
-                'value' => 'Check',
+                'value' => 'Save changes',
                 'id' => 'submitbutton',
                 'class' => 'btn btn-primary',
-            ],
-        ]);
-        
-        $this->setValidationGroup([
-            'listquest' => [
-                'title',
-                'description',
-                'category',
-                'level',
-                'rules',
-                'language',
-                'questions',
             ],
         ]);
     }

@@ -1,9 +1,9 @@
 <?php
 namespace LrnlListquests\InputFilter;
 
-use Zend\InputFilter\InputFilter;
-use Zend\InputFilter\Input;
 use Zend\InputFilter\FileInput;
+use Zend\Validator\File\IsImage;
+use Zend\Validator\File\Size;
 
 class Picture extends FileInput
 {
@@ -11,7 +11,14 @@ class Picture extends FileInput
     {
         parent::__construct($name);
         
-        $this->setRequired(false);
+        $this->setRequired(true);
+        $this->getValidatorChain()
+             ->attach(new IsImage(),true)
+             ->attach(new Size([
+                'min' => '1kB',
+                'max' => '0.5MB'
+            ]));
+        
         $this->getFilterChain()->attachByName(
             'filerenameupload',
             [
