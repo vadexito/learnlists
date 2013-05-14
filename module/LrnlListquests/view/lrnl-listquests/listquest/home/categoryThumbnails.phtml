@@ -12,13 +12,12 @@ foreach ($categories as $category) {
     ]]);
     $titleText = ucfirst($this->escapeHtml($category));
     $closingTags = '</ul></div>'."\n";
-    
     $thumbs .=$this->cycle(['<div class="row-fluid"><ul class="thumbnails home">','','',''],'openTag')->next();
     $thumbs .= $this->partial('lrnl-listquests/listquest/thumbnail.phtml',[
         'imgUrl' => $imgUrl,
         'imgAlt' => $imgAlt,
         'titleText' => $titleText,
-        'href' => $href,
+        'href' => $href
     ]);
     $end = $this->cycle(['','','',$closingTags],'closingTag')->next();
     $thumbs .= $end;   

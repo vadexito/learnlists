@@ -4,10 +4,14 @@ $thumbnailAttribs = [
     'alt' => $imgAlt,
     'title' => sprintf($this->translate('Quiz: %s'),$imgAlt)
 ];
+$options = ['title' => $titleText];
+if (isset($add)){
+    $options['add'] = $add;
+}        
 ?>
 
 <li class="span3">
     <a href="<?php echo $href; ?>"s>
-        <?php echo $this->thumbnail($thumbnailAttribs, ['title' => $titleText]); ?>
+        <?php echo $this->thumbnail($thumbnailAttribs, $options); ?>
     </a>
 </li>

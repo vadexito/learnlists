@@ -162,6 +162,12 @@ class Module implements
                     $viewHelper->setRatingService($locator->get('wtrating.service'));
                     return $viewHelper;
                 },
+                'rating' => function ($sm) {
+                    $locator = $sm->getServiceLocator();
+                    $viewHelper = new View\Helper\Rating();
+                    $viewHelper->setRatingService($locator->get('wtrating.service'));
+                    return $viewHelper;
+                },
                 'listquestCount' => function ($sm) {
                     $locator = $sm->getServiceLocator();
                     $viewHelper = new View\Helper\ListquestCount();

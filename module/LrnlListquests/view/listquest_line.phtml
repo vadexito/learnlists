@@ -32,7 +32,7 @@ $urlEdit = $this->url('listquests/list/edit',['id' => $id]);
                     <div class="title_with_icon">
                         <?php echo $gravatar ?>
                         <?php $htmlTag = ($questionNb != 0) ? 'a' : 'span'; ?>
-                        <<?php echo $htmlTag; ?> href="<?php echo $this->url('learn/basic',['id' => $id]); ?>">
+                        <<?php echo $htmlTag; ?> href="<?php echo $urlLearn; ?>">
                             <h4 class="title_search_result_line">
                                 <?php echo ucfirst($this->escapeHtml($title)); ?>
                                 <?php if ($authorIsTeacher): ?>

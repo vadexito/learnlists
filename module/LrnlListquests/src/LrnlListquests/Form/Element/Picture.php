@@ -10,7 +10,7 @@ class Picture extends File
     {
         parent::__construct($name);
         
-        $this->setLabel(_('Choose a picture for the category'))
+        $this->setLabel(_('Picture for your list'))
              ->setAttributes([
                 'id' => 'listquest_picture',
             ]);

@@ -376,6 +376,7 @@ return [
                             'images/icons/*.png',
                             'images/homeslides/*.png',
                             'images/homeslides/*.jpg',
+                            'images/adds/*',
                             'images/thumbnails/categories/*.jpg',
                             'images/*.png',
                             'images/*.ico',

@@ -4,7 +4,10 @@ if (!isset($thumbLinesMax)){
 }
 $thumbs = '';
 $thumbLines = 0;
+$minRating = 1;
+$minDaysForNew = 30;
 foreach ($lists as $listquest) {
+    $add = NULL;
     $imgUrl = $this->listquestPictureUrl($listquest);
     $imgAlt = ucfirst($this->escapeHtml($listquest->getTitle()));
     $href = $this->url('lrnl-search',[],['query' => [
@@ -12,14 +15,20 @@ foreach ($lists as $listquest) {
     ]]);
     $titleText = ucfirst($this->escapeHtml($listquest->getTitle()));
     $closingTags = '</ul></div>'."\n";
-    
+    if (((new DateTime())->getTimestamp() - $listquest->getCreationDate()->getTimestamp()) < $minDaysForNew*24*3600){
+        $add = 'new';
+    } else if ($this->rating($listquest) > $minRating){
+        $add = 'popular';
+    }    
     $thumbs .=$this->cycle(['<div class="row-fluid"><ul class="thumbnails home">','','',''],'openTag')->next();
     $thumbs .= $this->partial('lrnl-listquests/listquest/thumbnail.phtml',[
         'imgUrl' => $imgUrl,
         'imgAlt' => $imgAlt,
         'titleText' => $titleText,
         'href' => $href,
+        'add' => $add
     ]);
+    
     $end = $this->cycle(['','','',$closingTags],'closingTag')->next();
     $thumbs .= $end;   
     $thumbLines += (string)$this->cycle([0,0,0,1],'nbLine')->next();
