@@ -1,11 +1,10 @@
 $(function() {
     
-    if ($('.backstretch').length >0){
-        $('.backstretch').backstretch([
-            "/assets/images/books.jpg",
-            "/assets/images/book.jpg"
-        ], {duration: 3000, fade: 750});
-    };
+    
+        $('.backstretch').each(function(){        
+        var dataFiles = $.parseJSON($(this).attr('data-filebackstretch'));
+        $(this).backstretch(dataFiles, {duration: 3000, fade: 750});        
+    });
     
     //chosen plugin for select form element improvment
     $(".chzn-select").chosen();

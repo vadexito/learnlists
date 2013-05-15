@@ -1,6 +1,7 @@
 <?php
 $title = $this->translate('Learn with quizzes');
 $this->headTitle($title);
+$this->headMeta()->appendName('description', $this->translate('Find the best quizzes to learn what you wish from lists of questions prepared by our community of teachers or create your own quizz.'));
 
 $searchForm->setAttribute('action', $this->url('lrnl-search'));
 $searchForm->prepare();
@@ -30,9 +31,21 @@ $features = [
     ],
 ];
 
+$dir = './module/Application/assets/images/homeslides/';
+$dirLocale = '/assets/images/homeslides/';
+$handler = opendir($dir);
+$files=[];
+// open directory and walk through the filenames
+while ($file = readdir($handler)) {
+    if (preg_match('#.*.(jpg|png|tif)$#',$file)){
+        $files[] = $dirLocale.$file;
+    }
+}
+$homeFiles = Zend\Json\Json::encode($files);
+
 ?>
 <?php $this->placeholder('header')->captureStart();?>
-<div class="backstretch">
+<div class="backstretch" data-filebackstretch='<?php echo $homeFiles; ?>'>
     <header id="jumbotron-header" class="home">
         <div class="container">
             <h1><?php echo $this->escapeHtml($title); ?></h1>
