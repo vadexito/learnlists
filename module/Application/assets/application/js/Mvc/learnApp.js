@@ -11,7 +11,6 @@ learnMVC.startLearn = function(){
     learnMVC.vent.trigger("learn:start");
 };
 
-
 learnMVC.addInitializer(function(options){
     var model = new LearnMain(options.model);
     
@@ -75,7 +74,7 @@ learnMVC.addInitializer(function(options){
         learnMVC.sideLayout = views['sideRegionLayout'];
         
         console.log('initiated layouts for learning');
-    }
+    };
     
     learnMVC.showResults = function(optionsModel){
         
@@ -113,16 +112,21 @@ learnMVC.addInitializer(function(options){
         views['topRegionLayout'].center.show(views['roundNumberView']);
         views['topRegionLayout'].right.show(views['questionFollowerView']);
         console.log('update layouts for results');
-    }
+    };
 });
 
 learnMVC.addInitializer(function(options){
-
+    var currentStatus;
+    //modal for choice between demo and direct learning
     $('#start-modal').modal();
-    $('#start-learn-btn,#close-welcome').click(function(){
-        learnMVC.startLearn();
+    $('#start-modal').on('hide', function () {
+        if (currentStatus !== 'demo'){
+            learnMVC.startLearn();
+        }
     });
     
+    
+    //options for the demo
     var optionsDemo = {
         text:'Text of the question',
         title_list:'Title of the list',
@@ -140,6 +144,7 @@ learnMVC.addInitializer(function(options){
     learnMVC.showLearn(optionsDemo);
         
     $('#seeHowItWorks-btn').click(function(){
+        currentStatus = 'demo';
         $('#start-modal').modal('hide');
         $('#countdown').knob({
             'min':0,
