@@ -1,11 +1,11 @@
+/*=======================================
+general
+=========================================*/
+
 body {
     padding-top: 60px;
     padding-bottom: 40px;
     color: #666666;
-}
-
-.zf-green {
-    color: #68b604;
 }
 
 .btn-success {
@@ -32,7 +32,7 @@ body {
 }
 
 div.container a.brand {
-    background: url("images/site-logo.jpg") no-repeat scroll 0 10px transparent;
+    background: url("images/logo/site-logo.jpg") no-repeat scroll 0 10px transparent;
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }
@@ -41,8 +41,6 @@ div.container a.brand {
 .container {
   max-width: 1000px;
 }
-
-
 
 /*=======================================
 layout nav bar
@@ -63,7 +61,6 @@ layout nav bar
     margin-top:20px;
 }
 
-
 #gravatar-link img {
     padding : 0;
 }
@@ -83,13 +80,6 @@ footer ul{
 
 footer h5 {
     border-bottom:1px solid #eee;
-}
-
-
-#copyright {
-    text-align: center;
-    margin:0;
-    font-size: 12px;
 }
 
 .dropdown-menu {
@@ -164,7 +154,7 @@ div.backstretch{
 }
 
 div.feature{
-    height:350px;
+    height:300px;
 }
 
 ul.thumbnails.home {

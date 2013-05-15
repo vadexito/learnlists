@@ -1,3 +1,6 @@
+<?php
+$this->selectLanguage()->setLabel($this->translate('Language: ').$this->language());
+?>
 <footer>
     <div class="row-fluid">
         <div class="offset1 span3">
@@ -24,7 +27,9 @@
     </div>
     <br/>
     <div class="row-fluid"> 
-        <p id="copyright">&copy; <?php echo $this->translate('2013 by Voilamylife.') ?> <?php echo $this->translate('All rights reserved.') ?></p>
+        <p class="text-center" id="copyright">
+            <small>&copy; <?php echo $this->translate('2013 by Voilamylife.') ?> <?php echo $this->translate('All rights reserved.') ?></small>
+        </p>
     </div>
     <div id="loadingPopup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-body text-center">

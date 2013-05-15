@@ -380,6 +380,7 @@ return [
                             'images/homeslides/*.png',
                             'images/homeslides/*.jpg',
                             'images/adds/*',
+                            'images/logo/*',
                             'images/thumbnails/categories/*.jpg',
                             'images/*.png',
                             'images/*.ico',
