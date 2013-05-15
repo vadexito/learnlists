@@ -1,19 +1,21 @@
 <?php 
+
+use \DateTime;
+
 if (!isset($thumbLinesMax)){
     $thumbLinesMax = 2;
 }
 $thumbs = '';
 $thumbLines = 0;
-$minRating = 1;
+$minRating = 2;
 $minDaysForNew = 30;
 foreach ($lists as $listquest) {
     $add = NULL;
+    $title = $listquest->getTitle();
     $imgUrl = $this->listquestPictureUrl($listquest);
-    $imgAlt = ucfirst($this->escapeHtml($listquest->getTitle()));
-    $href = $this->url('lrnl-search',[],['query' => [
-        'category' => $listquest->getCategory(),
-    ]]);
-    $titleText = ucfirst($this->escapeHtml($listquest->getTitle()));
+    $imgAlt = ucfirst($this->escapeHtml($title));
+    $href = $this->url('learn/basic',['id' => $listquest->id,'title' => $this->strToUrl($title)]);
+    $titleText = ucfirst($this->escapeHtml($title));
     $closingTags = '</ul></div>'."\n";
     if (((new DateTime())->getTimestamp() - $listquest->getCreationDate()->getTimestamp()) < $minDaysForNew*24*3600){
         $add = 'new';
