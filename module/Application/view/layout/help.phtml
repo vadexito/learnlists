@@ -6,12 +6,13 @@ $helpNavigation = $this->navigation('help_center_navigation')->menu()->setPartia
     'lrnl-help/help-static/sidenavbar.phtml','LrnlHelp']
 )->render();
 $footer = $this->partial('layout/footer.phtml');
+$siteName = $this->site();
 ?>
 <?php echo $this->doctype(); ?>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php $this->headTitle($this->translate('LearnLists'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php $this->headTitle($siteName)->setSeparator(' - ')->setAutoEscape(false) ?>
         <?php $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
         <?php $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'])?>
         
@@ -39,7 +40,7 @@ $footer = $this->partial('layout/footer.phtml');
         </nav>
         <?php echo $this->placeholder('header') ?>
         <div id="main" class="container">
-            <h1><?php echo $this->translate('Learnlists help center'); ?></h1>
+            <h1><?php echo $this->translate('Help center'); ?></h1>
             <div class="row-fluid">                
                 <div class="well span3">    
                     <?php echo $helpNavigation; ?>

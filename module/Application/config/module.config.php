@@ -143,6 +143,7 @@ return [
         'invokables' => [
             'strToUrl' => 'Application\View\Helper\StrToUrl',
             'thumbnail' => 'Application\View\Helper\Thumbnail',
+            'site' => 'Application\View\Helper\Site',
         ],
     ],
     'assetic_configuration' => [

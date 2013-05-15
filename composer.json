@@ -44,6 +44,7 @@
         "webino/zf2nette-debug": "dev-develop",
         "artur-gajewski/file-bank": "dev-master",
         "webino/webino-image-thumb": "dev-master",
-        "evandotpro/edp-superluminal": "dev-master"
+        "evandotpro/edp-superluminal": "dev-master",
+        "rhysr/ZF2PhpSettings": "dev-master"
     }
 }
