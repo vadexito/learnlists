@@ -3,12 +3,13 @@ $navigation = $this->navigation('navigation')->menu()->setPartial([
     'layout/topnavbar.phtml','default']
 )->render();
 $footer = $this->partial('layout/footer.phtml');
+$siteName = $this->site();
 ?>
 <?php echo $this->doctype(); ?>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php $this->headTitle($this->translate('LearnLists'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php $this->headTitle($siteName)->setSeparator(' - ')->setAutoEscape(false) ?>
         <?php $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
         <?php $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'])?>
         
