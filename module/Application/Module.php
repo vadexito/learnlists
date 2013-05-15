@@ -14,6 +14,7 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\ModuleRouteListener;
+use Application\Listener\ApplicationListener;
 
 class Module implements 
     AutoloaderProviderInterface,
@@ -26,6 +27,8 @@ class Module implements
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        
+        $eventManager->attachAggregate(new ApplicationListener());
     }
     
     public function getConfig()
@@ -55,6 +58,4 @@ class Module implements
             ],
         ];
     }
-    
-    
 }

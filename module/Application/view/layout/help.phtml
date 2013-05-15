@@ -1,11 +1,7 @@
 <?php
-$navigation = $this->navigation('navigation')->menu()->setPartial([
-    'layout/topnavbar.phtml','default']
-)->render();
 $helpNavigation = $this->navigation('help_center_navigation')->menu()->setPartial([
     'lrnl-help/help-static/sidenavbar.phtml','LrnlHelp']
 )->render();
-$footer = $this->partial('layout/footer.phtml');
 $siteName = $this->site();
 ?>
 <?php echo $this->doctype(); ?>
@@ -26,18 +22,7 @@ $siteName = $this->site();
         ?>
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <?php echo $navigation; ?>
-                </div>
-            </div>
-        </nav>
+        <?php echo $this->header; ?>
         <?php echo $this->placeholder('header') ?>
         <div id="main" class="container">
             <h1><?php echo $this->translate('Help center'); ?></h1>
@@ -50,7 +35,7 @@ $siteName = $this->site();
                 </div>
             </div>
             <br/><br/>
-            <?php echo $footer; ?>
+            <?php echo $this->footer; ?>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
     </body>
