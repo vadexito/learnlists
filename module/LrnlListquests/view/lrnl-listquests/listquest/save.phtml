@@ -30,11 +30,11 @@ if (isset($listquest)){
     <div class="span5">
         <?php echo $this->formRowTwb($listquestFieldset->get('title')); ?>
         <?php echo $this->formRowTwb($listquestFieldset->get('description')); ?>
-        <?php echo $this->formRowTwb($listquestFieldset->get('language')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('language')->get('id')); ?>
         <?php echo $this->formRowTwb($listquestFieldset->get('rules')); ?>
     </div>
     <div class="span5">
-        <?php echo $this->formRowTwb($listquestFieldset->get('level')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('level')->get('id')); ?>
         <?php if ($listquest) : ?>
         <div class="picture_change">
             <p><?php echo sprintf($this->translate('%sChange</a> your current picture?'),'<a data-toggle="modal" href="#changePictureForm">'); ?></p>
@@ -50,7 +50,7 @@ if (isset($listquest)){
             Uploaded: <?php echo $this->escapeHtml($tempFile['name']); ?>
         </div>
         <?php endif;?><br/>
-        <?php echo $this->formRowTwb($listquestFieldset->get('category')); ?><br/>
+        <?php echo $this->formRowTwb($listquestFieldset->get('category')->get('id')); ?><br/>
         <?php if ($tags) :?>
         <div class="input-append">
             <span id="tags_element">

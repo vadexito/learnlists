@@ -27,11 +27,11 @@ class LuceneListquestDocument extends Document implements ListquestDocumentInter
         $this->addField(Field::keyword('docId',$this->convertNumToString($id)));  
         $this->addField(Field::unStored('title',$list->title));  
         $this->addField(Field::unStored('description',$list->description));  
-        $this->addField(Field::unStored('category',$list->category));  
-        $this->addField(Field::unStored('language',$list->language));  
+        $this->addField(Field::unStored('category',$list->category->getName()));  
+        $this->addField(Field::unStored('language',$list->language->getName()));  
         $this->addField(Field::unStored('authorName',$list->author->getUserName()));  
         $this->addField(Field::unStored('authorRole',$list->author->getRoles()[0]->getRoleId()));  
-        $this->addField(Field::unStored('level',$list->level));          
+        $this->addField(Field::unStored('level',$list->level->getName()));          
         $this->addField(Field::unIndexed('authorEmail',$list->author->getEmail()));  
         $this->addField(Field::unIndexed('creationDate',$list->creationDate->getTimeStamp()));
 

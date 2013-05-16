@@ -12,6 +12,10 @@ use Zend\InputFilter\CollectionInputFilter;
 use LrnlListquests\Entity\Round;
 use LrnlListquests\Entity\Tag;
 use LrnlListquests\Entity\Question;
+use LrnlListquests\Entity\Level;
+use LrnlListquests\Entity\Category;
+use LrnlListquests\Entity\Language;
+
 use DateTime;
 
 
@@ -151,7 +155,8 @@ class Listquest extends EntityAbstract implements
     {
         return $this->description;
     }
-    public function setCategory($category)
+    
+    public function setCategory(Category $category)
     {
         $this->category = $category;
         return $this;
@@ -161,7 +166,7 @@ class Listquest extends EntityAbstract implements
     {
         return $this->category;
     }
-    public function setLanguage($language)
+    public function setLanguage(Language $language)
     {
         $this->language = $language;
         return $this;
@@ -172,7 +177,7 @@ class Listquest extends EntityAbstract implements
         return $this->language;
     }
     
-    public function setLevel($level)
+    public function setLevel(Level $level)
     {
         $this->level = $level;
         return $this;
@@ -310,7 +315,6 @@ class Listquest extends EntityAbstract implements
         ];
     }
     
-    // Add content to this method:
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new \Exception("Not used");
@@ -369,38 +373,15 @@ class Listquest extends EntityAbstract implements
             $inputFilter->add($factory->createInput([
                 'name'     => 'category',
                 'required' => false,
-                'filters'  => [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim'],
-                ],
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'encoding' => 'UTF-8',
-                            'min'      => 0,
-                            'max'      => 50,
-                        ],
-                    ],
-                ],
             ]));
             $inputFilter->add($factory->createInput([
                 'name'     => 'language',
                 'required' => false,
-                'filters'  => [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim'],
-                ],
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'encoding' => 'UTF-8',
-                            'min'      => 0,
-                            'max'      => 50,
-                        ],
-                    ],
-                ],
+            ]));
+            
+            $inputFilter->add($factory->createInput([
+                'name'     => 'level',
+                'required' => false,                
             ]));
             
             $inputFilter->add($factory->createInput([
@@ -434,24 +415,7 @@ class Listquest extends EntityAbstract implements
             ]);
             $inputFilter->add($tagsCollectionFilter);
             
-            $inputFilter->add($factory->createInput([
-                'name'     => 'level',
-                'required' => false,
-                'filters'  => [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim'],
-                ],
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'encoding' => 'UTF-8',
-                            'min'      => 1,
-                            'max'      => 20,
-                        ],
-                    ],
-                ],
-            ]));
+            
 
             $this->inputFilter = $inputFilter;
         }
