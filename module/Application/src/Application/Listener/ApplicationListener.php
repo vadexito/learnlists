@@ -37,7 +37,10 @@ class ApplicationListener implements ListenerAggregateInterface
 
     public function renderLayoutSegments(EventInterface $e)
     {
-        $viewModel = $e->getViewModel();
+        $viewModel = $e->getViewModel();        
+        if (!($viewModel instanceof ViewModel)){
+            return $e->getResponse();
+        }
         
         $header = new ViewModel();
         $header->setTemplate('layout/header');
