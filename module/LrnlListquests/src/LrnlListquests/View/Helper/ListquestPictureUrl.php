@@ -4,7 +4,6 @@ namespace LrnlListquests\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use LrnlListquests\Entity\Listquest;
-use LrnlListquests\Options\ModuleOptions;
 
 class ListquestPictureUrl extends AbstractHelper
 {
@@ -20,7 +19,8 @@ class ListquestPictureUrl extends AbstractHelper
         if ($listquest === NULL){
             return $this;
         }
-        if ($listquest->getPictureId()){
+        if ($listquest->getPictureId() &&
+            $this->getView()->getFileById($listquest->getPictureId())->getUrl()){
             return $this->getView()->getFileById($listquest->getPictureId())->getUrl();
         }        
         return $this->getCategoryUrl($listquest->getCategory());
@@ -28,20 +28,27 @@ class ListquestPictureUrl extends AbstractHelper
     
     public function getCategoryUrl($category)
     {
-        $dirCategoryThumbnail = $this->options->getCategories()['pictureDirectory'];
-        return $dirCategoryThumbnail
-        . ($category ? $this->getView()->escapeHtml($category) : 'empty').'.jpg';
+        $dirCategoryThumbnail = $this->getCategoryPictureDirectory();            
+        if ($category){
+            $file = $dirCategoryThumbnail
+                . $this->getView()->escapeHtml($category)
+                .'.jpg';
+            if (file_exists('./module/Application'.$file)){
+                return $file;
+            }
+        }
+        return $dirCategoryThumbnail.'empty.jpg';
     }
     
-    public function setOptions(ModuleOptions $options)
+    public function setCategoryPictureDirectory($categoryPictureDirectory)
     {
-        $this->options = $options;
+        $this->categoryPictureDirectory = $categoryPictureDirectory;
         return $this;
     }
     
-    public function getOptions()
+    public function getCategoryPictureDirectory()
     {
-        return $this->options;
+        return $this->categoryPictureDirectory;
     }
     
     
