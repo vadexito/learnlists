@@ -55,6 +55,10 @@ class Level extends EntityAbstract implements
         return $this->difficulty;
     }
     
+    public function __toString()
+    {
+        return $this->getName();
+    }
     
     public function setInputFilter(InputFilterInterface $inputFilter)
     {

@@ -1,0 +1,20 @@
+<?php 
+$name = 'collapse'.$filter->getName();
+?>
+<div class="filter-search filter-search-term">
+    <a type="button" data-toggle="collapse" data-target="#<?php echo $name; ?>">
+        <h5 class="well"><?php echo ucfirst($this->translate($filter->getLabel())); ?></h5>
+    </a>
+    <div class="collapse in filter-choice" id="<?php echo $name; ?>">
+        <div class="well">
+<?php foreach ($filter->getElements() as $checkbox): 
+    $checkbox->setAttribute('data-url',$this->url('lrnl-search',[],['query' => $checkbox->getQueryUrl()]));
+    ?>
+            <label class="checkbox">
+                <?php echo $this->formCheckbox($checkbox); ?> <?php echo ucfirst($this->translate((string)$checkbox->getLabel())); ?>
+                <span class="badge pull-right"><?php echo $checkbox->getAttribute('data-hitNb'); ?></span>
+            </label>
+<?php endforeach; ?>
+        </div>
+    </div>
+</div>

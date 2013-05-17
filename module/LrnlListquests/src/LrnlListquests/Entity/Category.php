@@ -61,6 +61,11 @@ class Category extends EntityAbstract implements
         throw new \Exception("Not used");
     }
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
+    
     public function getInputFilter()
     {
         if (!$this->inputFilter) {

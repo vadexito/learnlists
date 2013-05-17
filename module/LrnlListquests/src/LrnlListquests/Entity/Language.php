@@ -55,6 +55,10 @@ class Language extends EntityAbstract implements
         return $this->code;
     }
     
+    public function __toString()
+    {
+        return $this->getName();
+    }
     
     public function setInputFilter(InputFilterInterface $inputFilter)
     {

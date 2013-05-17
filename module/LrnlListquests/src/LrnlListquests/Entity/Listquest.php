@@ -166,6 +166,17 @@ class Listquest extends EntityAbstract implements
     {
         return $this->category;
     }
+    
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+        return $this;
+    }
+    
+    public function getAuthor()
+    {
+        return $this->author;
+    }
     public function setLanguage(Language $language)
     {
         $this->language = $language;

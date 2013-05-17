@@ -1,0 +1,17 @@
+<?php foreach ($filter->getElements() as $search): 
+       $search->setAttribute('data-url',$this->url('lrnl-search',[],['query' => $search->getQueryUrl()]));            
+   ?>
+   <div class="filter-search filter-search-search">
+       <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$search->getName();echo $name; ?>">
+           <h5 class="well"><?php echo $search->getLabel(); ?></h5>
+       </a>
+       <div class="collapse in filter-choice" id="<?php echo $name; ?>">
+           <div class="well input-append">
+               <?php echo $this->formInput($search); ?>
+               <button class="btn btn-primary">
+                   <i class="icon icon-white icon-search"></i>
+               </button>
+           </div>
+       </div>
+   </div>
+   <?php endforeach; ?>
