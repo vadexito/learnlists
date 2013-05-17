@@ -1,6 +1,6 @@
 <?php
 
-namespace LrnlSearch\Form;
+namespace LrnlSearch\Form\Element;
 
 use Zend\Form\Element;
 

@@ -28,6 +28,7 @@ class ListquestPictureUrl extends AbstractHelper
     
     public function getCategoryUrl($category)
     {
+        $category = 'French';
         $dirCategoryThumbnail = $this->getCategoryPictureDirectory();            
         if ($category){
             $file = $dirCategoryThumbnail

@@ -37,4 +37,11 @@ class SearchForm extends Form
             ],            
         ]);
     }
+    
+    public function init()
+    {
+        $this->add([
+            'type' => 'Category'
+        ]);
+    }
 }

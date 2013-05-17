@@ -6,15 +6,13 @@ namespace LrnlListquests;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use \Zend\ModuleManager\Feature\FormElementProviderInterface;
 use Zend\InputFilter\InputFilter;
 
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
-use LrnlListquests\Form\EditListquestForm;
-use LrnlListquests\Form\CreateListquestForm;
 use LrnlListquests\Form\EditQuestionForm;
 use LrnlListquests\Form\ChangePictureForm;
-use LrnlListquests\Form\ListquestFieldset;
 use LrnlListquests\HydratorStrategy\Picture as PictureStrategy;
 use LrnlListquests\InputFilter\Picture as PictureInputFilter;
 use LrnlListquests\Form\Fieldset\PictureFieldset;
@@ -23,7 +21,8 @@ use LrnlListquests\Form\Fieldset\PictureFieldset;
 class Module implements 
     AutoloaderProviderInterface,
     ConfigProviderInterface,
-    ServiceProviderInterface
+    ServiceProviderInterface,
+    FormElementProviderInterface
 {
     public function getConfig()
     {
@@ -51,39 +50,15 @@ class Module implements
                 'lrnllistquests_module_options' => function ($sm) {
                     $config = $sm->get('Config');
                     return new Options\ModuleOptions(isset($config['lrnl-listquests']) ? $config['lrnl-listquests'] : []);
-                },                
-                'listquest-fieldset' => function($sm) { 
-                    $options = $sm->get('lrnllistquests_module_options');
-                    $listquestEntityClass = $options->getListquestEntityClass();
-                    
-                    $om = $sm->get('Doctrine\ORM\EntityManager');                    
-                    $doctrineHydrator = new DoctrineHydrator(
-                        $om,
-                        $listquestEntityClass
-                    );                    
-                    $category = $sm->get('learnlists-category-formelement');
-                    $category->setLabel(_('Categories'));
-                    
-                    $listquestFieldset = new ListquestFieldset('listquest',$om);
-                    $listquestFieldset->add($category);
-                    $listquestFieldset->setHydrator($doctrineHydrator);
-                    $listquestFieldset->setObject(new $listquestEntityClass);
-                    
-                    return $listquestFieldset;
-                
                 },
-                
                 'listquest-form-create' =>  function($sm) {            
-                    $listquestFieldset = $sm->get('listquest-fieldset');
-                    $listquestFieldset->setUseAsBaseFieldset(true);
-                    $listquestFieldset->remove('questions');                    
-                    
                     $pictureFieldset = $sm->get('listquest_picture_fieldset');
                     $fileFilter = $sm->get('listquest_picture_inputfilter'); 
+                    $fileFilter->setRequired(false);
                     $fieldsetFilter = (new InputFilter())->add($fileFilter);
                     
-                    $form = new CreateListquestForm(); 
-                    $form->add($listquestFieldset);
+                    $formManager = $sm->get('FormElementManager');
+                    $form = $formManager->get('LrnlListquests\Form\CreateListquestForm');
                     $form->add($pictureFieldset);
                     $form->getInputFilter()->add($fieldsetFilter,'picture');
                     
@@ -102,13 +77,8 @@ class Module implements
                     return $form;
                 },
                 'listquest-form-edit' =>  function($sm) {                    
-                    $listquestFieldset = $sm->get('listquest-fieldset');
-                    $listquestFieldset->setUseAsBaseFieldset(true);
-                    $listquestFieldset->remove('tags');
-                    
-                    $form = new EditListquestForm();
-                    $form->add($listquestFieldset);
-                    
+                    $formManager = $sm->get('FormElementManager');
+                    $form = $formManager->get('LrnlListquests\Form\EditListquestForm'); 
                     return $form;
                 },
                 'edit-question-form' =>  function($sm) {            
@@ -151,6 +121,23 @@ class Module implements
         ];
     }
     
+    public function getFormElementConfig()
+    {
+        return [
+            'abstract_factories' => [
+                'LrnlListquests\Form\Element\AbstractSelectElementFactory'
+            ],
+            'factories' => [
+                'ListquestFieldset' => 'LrnlListquests\Form\Fieldset\ListquestFieldsetFactory'
+            ],
+            'invokables' => [
+               'QuestionFieldset' =>  'LrnlListquests\Form\Fieldset\QuestionFieldset',
+               'TagFieldset' =>  'LrnlListquests\Form\Fieldset\TagFieldset',
+            ],
+        ];
+    }
+    
+    
     public function getViewHelperConfig()
     {
         return array(
@@ -183,8 +170,9 @@ class Module implements
                 'listquestPictureUrl' => function ($sm) {
                     $locator = $sm->getServiceLocator();
                     $options = $locator->get('lrnllistquests_module_options');
+                    $directory = $options->getListquestItems()['category']['pictureDirectory'];
                     $viewHelper = new View\Helper\ListquestPictureUrl();
-                    $viewHelper->setOptions($options);
+                    $viewHelper->setCategoryPictureDirectory($directory);
                     return $viewHelper;
                 },
             ),

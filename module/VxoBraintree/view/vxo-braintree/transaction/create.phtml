@@ -20,7 +20,79 @@ echo $this->formRow($form->get('number')); ?>
 </div>
 <?php echo $this->form()->closeTag();
 ?>
-
+<form class="form-horizontal span6">
+	<fieldset>
+		<legend>Payment</legend>
+ 
+		<div class="control-group">
+			<label class="control-label">Card Holder's Name</label>
+			<div class="controls">
+				<input type="text" class="input-block-level" pattern="\w+ \w+.*" title="Fill your first and last name" required>
+			</div>
+		</div>
+ 
+		<div class="control-group">
+			<label class="control-label">Card Number</label>
+			<div class="controls">
+				<div class="row-fluid">
+					<div class="span3">
+						<input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required>
+					</div>
+					<div class="span3">
+						<input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required>
+					</div>
+					<div class="span3">
+						<input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required>
+					</div>
+					<div class="span3">
+						<input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required>
+					</div>
+				</div>
+			</div>
+		</div>
+ 
+		<div class="control-group">
+			<label class="control-label">Card Expiry Date</label>
+			<div class="controls">
+				<div class="row-fluid">
+					<div class="span9">
+						<select class="input-block-level">
+							<option>January</option>
+							<option>...</option>
+							<option>December</option>
+						</select>
+					</div>
+					<div class="span3">
+						<select class="input-block-level">
+							<option>2013</option>
+							<option>...</option>
+							<option>2015</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+ 
+		<div class="control-group">
+			<label class="control-label">Card CVV</label>
+			<div class="controls">
+				<div class="row-fluid">
+					<div class="span3">
+						<input type="text" class="input-block-level" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required>
+					</div>
+					<div class="span8">
+						<!-- screenshot may be here -->
+					</div>
+				</div>
+			</div>
+		</div>
+ 
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="button" class="btn">Cancel</button>
+		</div>
+	</fieldset>
+</form>
 <script type="text/javascript" src="https://js.braintreegateway.com/v1/braintree.js"></script>
 <script type="text/javascript">
   var braintree = Braintree.create("MIIBCgKCAQEAz7xGfzZe8pS64I1b4FAxDDJhvz5WjvVE2/T/7iP/OtqNTqKVTv3hwN+pbzCgqCi04hzXOmbqsps2YoMBaBT4JEfEPh6UxlWMmQfR9TJqrovYcjOi3i9QC5og4nufL8nwZhUFwVvRq4iDumYSShq7jmebw62t4KGR7XyF1JZwjNfrnHZvkggmx+ZncTiBOZnwHB1Lf8IVm5hKA4Js/C7kRxFgyJap0rSSo8DOTihFegUBXpevNmgTn1NbONj4zBcZrGMlQZqj+hhQk028bY/MUtn/qFa/45Wgx2Wi8ATdqXCupBYpR1VGwb0j3WsjK5u/BgEqirMwmwx5fsk8467/aQIDAQAB");

@@ -13,7 +13,7 @@ class SearchServiceFactory implements FactoryInterface
         $config = $services->get('config')['lrnl-search'];
         $service   = new $config['lrnl_search_service'](
                 $config['indexPath'],
-                new Parameters($config['filters'])
+                new Parameters($config['filtersForm'])
         );
         $ratingService = $services->get('wtrating.service');
         $service->setRatingService($ratingService);

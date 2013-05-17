@@ -230,6 +230,14 @@ class User implements UserInterface, ProviderInterface
     {
         return $this->roles;
     }
+    
+    public function getRole()
+    {
+        $roles = $this->roles->toArray();
+        if (isset($roles[0])){
+            return $roles[0]->getRoleId();
+        }
+    }
 
     /**
      * Add a role to the user.

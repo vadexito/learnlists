@@ -28,7 +28,7 @@ class SearchController extends AbstractActionController
             'direction' => SORT_DESC,
         ]);
         //research empty therefore all the lists have to be shown
-        if ($hits === true){
+        if ($hits === 'empty_query'){
             $hits = $this->getServiceLocator()
                          ->get('learnlists-listquestfactory-service')
                          ->fetchAllSortBy('questions',SORT_DESC);

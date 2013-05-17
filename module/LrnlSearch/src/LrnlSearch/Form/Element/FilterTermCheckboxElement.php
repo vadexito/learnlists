@@ -1,6 +1,6 @@
 <?php
 
-namespace LrnlSearch\Form;
+namespace LrnlSearch\Form\Element;
 
 use Zend\Form\Element\Checkbox;
 
@@ -10,18 +10,16 @@ class FilterTermCheckboxElement extends Checkbox
     protected $_queryUrl = NULL;
    
     
-    public function __construct($name = NULL)
+    public function __construct($name = null,$options = null)
     {
-        parent::__construct($name); 
+        parent::__construct($name,$options); 
         
         
         $this->setAttributes([
-                'id'    => $name,
                 'data-filter-type' => 'checkbox',                    
                 'class' => 'checkbox-filter'
             ])
             ->setOptions([
-                'label' => $name,
                 'use_hidden_element' => true,
                 'checked_value' => 'checked',
                 'unchecked_value' => 'unchecked'

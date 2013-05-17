@@ -47,7 +47,7 @@ class LuceneSearchService implements SearchServiceInterface
         $index = $this->getIndex();
         
         if ($this->isEmptyQuery($queryData)){
-            return true;            
+            return 'empty_query';            
         } else {
             $query = $this->getQueryFromArray($queryData);        
         }
@@ -95,34 +95,43 @@ class LuceneSearchService implements SearchServiceInterface
             //if it is the main search
             if ($filter === 'search' && $values){                
                 $values = explode(' ',$values);
-                $query->addSubquery($this->getQueryForTerms($values,NULL,true),true);
+                $this->addQueryForTerms($query,$values,NULL,true);
             }
             if ($filter === 'category' && $values){
-                $query->addSubquery($this->getQueryForTerms($values,$filter),true);
+                $this->addQueryForTerms($query,$values,$filter);
             }
 
             //if it is a filter from the side
-            $filterConfig = $this->getFilterConfig()->get($filter);
-            if ($filterConfig !== NULL){
-                switch ($filterConfig['type']){
-                    case FiltersForm::$CHECKBOX :                       
-                        $query->addSubquery($this->getQueryForTerms($values,$filter),true);                        
-                        break;
-                    case FiltersForm::$RANGE :
-                        $query->addSubquery($this->getQueryForRange($values,$filter),true);     
-                        break;
-                    case FiltersForm::$SEARCH :
-                        $query->addSubquery($this->getQueryForTerms($values),true);
-                        break;
-                    default:
+            $filterForm = $this->getFilterConfig();
+            $type = NULL;
+            foreach ($filterForm as $filterElement){
+                if ($filterElement['name'] == $filter){
+                    $type = $filterElement['options']['filterType'];
                 }
-            } 
+            }
+
+            switch ($type){
+                case FiltersForm::$CHECKBOX_FACET_SEARCH :                       
+                case FiltersForm::$CHECKBOX_FACET_SELECT :                       
+                    $this->addQueryForTerms($query,$values,$filter);                        
+                    break;
+                case FiltersForm::$RANGE :
+                    $query->addSubquery($this->getQueryForRange($values,$filter),true);     
+                    break;
+                case FiltersForm::$SEARCH :
+                    $query->addSubquery($this->getQueryForTerms($values),true);
+                    break;
+                default:
+            }
+            
         }
         return $query;
     }
     
     public function isEmptyQuery(Parameters $queryData){
-        if ($queryData->count() === 0){
+        
+        if ($queryData->count() === 0 
+                || count($queryData->toArray()) === 0){
             return true;
         } else {
             $query = $queryData->toArray();
@@ -239,7 +248,7 @@ class LuceneSearchService implements SearchServiceInterface
     }
     
     
-    protected function getQueryForTerms($values,$filter = NULL,$operator = NULL)
+    protected function addQueryForTerms($query,$values,$filter = NULL,$operator = NULL)
     {
         if (!is_array($values) && !is_string($values)){
             throw new SearchException('You must provide an array or a string for this element in the url.');
@@ -248,13 +257,20 @@ class LuceneSearchService implements SearchServiceInterface
             $values = [$values];
         }
         
-        $query = new Query\MultiTerm();
+        $newQuery = new Query\Boolean();
         foreach ($values as $value){
-            $term = new Index\Term(strtolower($value),$filter);
-            $query->addTerm($term,$operator);
+            $value = (string)strtolower(trim($value));
+            $words = explode(' ',$value);
+            if (count($words) > 0){
+                $newQuery->addSubquery(new Query\Phrase($words));
+            } else {
+                $term = new Index\Term($value,$filter);
+                $newQuery->addSubquery(new Query\Term($term));
+            }
         }
         
-        return $query;
+        $query->addSubquery($newQuery,true);   
+        return true;
     }
     
     protected function getQueryForRange(Array $values,$filter = NULL,$inbound = true)

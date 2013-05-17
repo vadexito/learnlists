@@ -23,9 +23,11 @@ class ModuleOptions extends AbstractOptions
         '5' => '0',
     ];
     
-    protected $categories = [
-        'list' => [],
-        'pictureDirectory' => '/assets/images/thumbnails/categories/',
+    protected $listquestItems = [
+        'category' => [
+            'list' => [],
+            'pictureDirectory' => '/assets/images/thumbnails/categories/',
+        ]  
     ];
     
     protected $tmpPictureUploadDir = './data/tmpuploads/';
@@ -79,14 +81,14 @@ class ModuleOptions extends AbstractOptions
         return $this;
     }
     
-    public function getCategories()
+    public function getListquestItems()
     {
-        return $this->categories;        
+        return $this->listquestItems;        
     }
     
-    public function setCategories(Array $categories)
+    public function setListquestItems(Array $listquestItems)
     {
-        $this->categories = $categories;  
+        $this->listquestItems = $listquestItems;  
         return $this;
     }
     

@@ -16,6 +16,6 @@ class CategoryService
     
     public function fetchAll()
     {
-        return array_keys($this->options->getCategories()['list']);
+        return $this->options->getListquestItems()['category']['list'];
     }
 }

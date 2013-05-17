@@ -39,8 +39,9 @@ class ListquestController extends AbstractActionController
         if ($prg instanceof Response) {
             return $prg; 
         } elseif (is_array($prg)) {
+            
             if ($form->isValid()) {
-                $listquest = $form->getData();//do the work for the file                
+                $listquest = $form->getData();
                 if (isset($prg['picture'])){
                     $form->get('picture')->getHydrator()->hydrate($prg['picture'],$listquest);
                 }
@@ -127,11 +128,12 @@ class ListquestController extends AbstractActionController
         $form = $sl->get('listquest-form-edit');
         $form->get('submit')->setValue(_('Save'));
         $form->bind($listquest);
+        
         $request = $this->getRequest(); 
         
         if ($request->isPost()) {   
             $form->setData($request->getPost());
-            if ($form->isValid()) {
+            if ($form->isValid()) {                
                 $this->getListquestService()->updateListquest($form->getData());
                 $this->getSearchService()->updateIndex($form->getData());
                 return $this->redirect()->toRoute(

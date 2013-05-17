@@ -43,12 +43,7 @@ class ListquestService
      */
     public function fetchAllSortBy($property , $direction = SORT_DESC)
     {
-        $listquestClass = $this->options->getListquestEntityClass();
-        $reflectionClass = new ReflectionClass($listquestClass);
-        if (!$reflectionClass->hasProperty($property)){
-            throw new ServiceException('The Class '.$listquestClass. 'has no '.$property. 'property.');
-        }
-        
+        $this->checkIsListquestProperty($property);
         
         $sortCallable = function($list1,$list2) use ($property,$direction) {
             
@@ -76,7 +71,26 @@ class ListquestService
         $listquestClass = $this->options->getListquestEntityClass();
         return $this->getObjectManager()->find($listquestClass,$id);
     }
-
+    
+    public function fetchByIds(array $ids)
+    {
+        if (empty($ids)){
+            return [];
+        }
+        
+        $qb = $this->repository->createQueryBuilder('l');
+        $results = $qb; 
+        foreach ($ids as $id){
+            $orContent[] = $qb->expr()->eq('l.id', ':'.'listquestId'.$id);
+            $results = $results->setParameter('listquestId'.$id,$id);
+        }
+        $or = call_user_func_array([$qb->expr(),'orX'],$orContent);        
+        $results = $results->where($or)->getQuery()->getResult();        
+        return $results;
+    }
+    
+    
+    
     public function insertListquest(Listquest $listquest)
     {
         $listquest->setCreationDate(new DateTime());
@@ -119,5 +133,81 @@ class ListquestService
                     ->getSingleScalarResult();
         
         return $count;
+    }
+    
+    /**
+     * 
+     * @param type $property
+     * @param type $Idlist
+     * @param type $values
+     * @return array of array with property term and count
+     * @throws ServiceException
+     */
+    public function getFacet($property,$Idlist,array $values)
+    {
+        $this->checkIsListquestProperty($values['properties'][0]);
+        
+        if ($Idlist === 'all'){
+            $lists = $this->fetchAll();
+        } else if (!is_array($Idlist)){
+           throw new ServiceException('The property $Idlist in getFacet function should be either array of equal to string "all"');
+        } else {
+            $lists = $this->fetchByIds($Idlist);
+        }
+        
+        if (!is_array($values) || !isset($values['properties'])
+                || !isset($values['values']) || !isset($values['values_key'])){
+            throw new ServiceException('You should provide as $value an array with properties,values_key and values properties');
+        }
+        
+        if (!isset($values['propertyForNaming'])){
+            $values['propertyForNaming'] = $values['values_key'];
+        }
+        $getterTerm = 'get'.ucfirst($values['propertyForNaming']); 
+        $getterKey = 'get'.ucfirst($values['values_key']);
+        $facetValues=[];
+        foreach ($values['values'] as $value){
+            $count = 0;            
+            foreach ($lists as $list){
+                $entity = $list;
+                foreach ($values['properties'] as $prop){
+                    $getter = 'get'.ucfirst($prop);
+                    $entity = $entity->$getter();
+                }
+                
+                if ($entity->$getterKey() === $value){
+                    $count ++;
+                }
+            }
+            
+            if (isset($values['targetEntity'])){
+                $method = 'findOneBy'.ucfirst(strtolower($values['values_key']));
+                $entity = $this->getObjectManager()
+                             ->getRepository($values['targetEntity'])
+                             ->$method($value);
+                $term = $entity->$getterTerm();
+            } else {
+                $term = $value;
+            }   
+            
+            $facetValues[]= [
+                'term'  => $term,
+                'count' => $count,
+            ];
+        }
+        
+        return $facetValues;
+
+    }
+    
+    public function checkIsListquestProperty($property)
+    {
+        $listquestClass = $this->options->getListquestEntityClass();
+        $reflectionClass = new ReflectionClass($listquestClass);
+        if (!$reflectionClass->hasProperty($property)){
+            throw new ServiceException('The Class '.$listquestClass. 'has no '.$property. 'property.');
+        }
+        
+        return true;
     }
 }
