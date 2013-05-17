@@ -4,7 +4,7 @@
     <translate>guest</translate>
     <translate>user</translate>
     <translate>teacher</translate>
-    <translate>student</translate>  
+    <translate>lerner</translate>  
     <translate>premium</translate>  
   </role>  
 </zend-config>
