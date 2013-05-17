@@ -142,14 +142,16 @@ window.Rounds = Backbone.Collection.extend({
     },
     
     newRoundOrder: function(questions){
-        //if there are historical data
+        //if there is historical data
+        var roundOrder;
         if (this.models.length > 0){
             var lastResults = _.last(this.models).get('questionresults');
-            return lastResults.pluck('questionId');            
+            roundOrder =   lastResults.pluck('questionId');            
         } else {
-            return _.shuffle(questions.pluck('id'));         
+            roundOrder =  _.shuffle(questions.pluck('id'));         
         }
         
+        return roundOrder;
         
     },
     url: "/learnlists-rest/round"

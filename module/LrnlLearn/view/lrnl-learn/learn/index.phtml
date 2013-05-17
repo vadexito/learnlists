@@ -94,7 +94,7 @@ $hidden->setAttributes([
     </span>    
 </script>
 <script id="check_message-template" type="text/html">
-    <div data-step="9" data-intro="<? echo $this->translate('Check if your answer is wrong or right and some comments according to your past results'); ?>" class="well">
+    <div data-step="9" data-intro="<? echo $this->translate('Check if your answer is wrong or right and get some comments depending on your past results'); ?>" class="well">
         <h4 id="checkMessageTitle" class="checkMessage-view"><%= checkMessageTitle %></h4>
         <p id="newPoints" class="checkMessage-view"><span class="badge"><%= newPoints %></span></p>
         <p id="comments" class="checkMessage-view"><%= comments %></p>
@@ -166,7 +166,7 @@ $hidden->setAttributes([
 
 <script id="noresult-template" type="text/html">
     <p>
-        <?php echo $this->zfcUserIdentity()? $this->translate('You did not yet finished one round!') : $this->translate('Please log In if you want to get more detailed results'); ?>
+        <?php echo $this->zfcUserIdentity()? $this->translate('You did not yet finish one round!') : $this->translate('Please log In if you want to get more detailed results'); ?>
     </p>
 </script>
 <script id="loading-template" type="text/html">

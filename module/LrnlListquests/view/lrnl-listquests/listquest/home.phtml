@@ -3,6 +3,7 @@ $title = $this->translate('Learn with quizzes');
 $this->headTitle($title);
 $this->headMeta()->appendName('description', $this->translate('Find the best quizzes to learn what you wish from lists of questions prepared by our community of teachers or create your own quizz.'));
 
+$site = $this->site();
 $searchForm->setAttribute('action', $this->url('lrnl-search'));
 $searchForm->prepare();
 $searchForm->get('search')->setAttribute('class','home '.$searchForm->get('search')->getAttribute('class'));
@@ -11,14 +12,14 @@ $features = [
     [
         'classWrap' => 'well span4',
         'title' => $this->translate('Find high quality quizzes'),
-        'text' => $this->translate('Quizzes are developed by profesionnal teachers and evaluated by the user commnunity which ensures top quality.'),
+        'text' => $this->translate('Quizzes are developed by professional teachers and evaluated by the user commnunity which ensures top quality.'),
         'buttonUrl' => $this->url('lrnl-search'),
         'buttonText' => $this->translate('Browse lists')
     ],
     [
         'classWrap' => 'well span4',
         'title' => $this->translate('Learn through efficient methods'),
-        'text' => $this->translate('Thanks to teaching profesionnals (teachers and memory scientists and doctors), Learnlists offers specific method that maximize the memorization processs and minimize the effort'),
+        'text' => sprintf($this->translate('Thanks to teaching professionals (teachers and memory scientists and doctors), %s offers specific method that maximize the memorization processs and minimize the effort'),$site),
         'buttonUrl' => $this->url('lrnl-help/template',['template' => 'about_our_method']),
         'buttonText' => $this->translate('About our methods')
     ],

@@ -51,10 +51,11 @@ window.LearnMain = Backbone.Model.extend({
             this.set('title_list',list.get('title'));
             this.set('rules',list.get('rules'));
             
-            console.log(this.questions.collection);
+            console.log(this.questions.collection.models.length+' questions loaded');
             //init last rounds
             this.lastRounds = new Rounds();
-            if (loggedIn === 'true'){                
+            if (loggedIn === 'true'){
+                console.log('loggedIn');
                 this.lastRounds.init(listId);
             } else {
                 //no last round to init if not logged
@@ -90,7 +91,7 @@ window.LearnMain = Backbone.Model.extend({
     nextQuestion: function(){
 
         var roundOrder = this.currentRound.get('roundOrder');
-        console.log(roundOrder);
+        console.log('Round order array: '+roundOrder);
         if (roundOrder.length > 0) {   
             console.log('trigger learn:initNewQuestion');
             learnMVC.vent.trigger("learn:initNewQuestion",_.first(roundOrder));
