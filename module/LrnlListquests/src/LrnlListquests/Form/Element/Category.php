@@ -24,6 +24,13 @@ class Category extends ObjectSelect
             'object_manager' => $this->getObjectManager(),
             'target_class'   => 'LrnlListquests\Entity\Category',
             'property'       => 'name',
+            'is_method'      => true,
+            'find_method'    => array(
+                'name'   => 'findBy',
+                'params' => array(
+                    'criteria' => array('depth' => [2]),
+                ),
+            ),
         ]);
     }
 }
