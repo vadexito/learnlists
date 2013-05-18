@@ -1,21 +1,13 @@
 <?php
 namespace LrnlListquests\Form\Fieldset;
 
-use Zend\Form\Fieldset;
-use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use Zend\ServiceManager\ServiceLocatorAwareTrait;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
-use LrnlListquests\Form\Fieldset\CategoryFieldset;
-use LrnlListquests\Form\Fieldset\LevelFieldset;
-use LrnlListquests\Form\Fieldset\LanguageFieldset;
+use LrnlListquests\Form\Fieldset\AbstractEntityManagerAwareFieldset;
 
-class ListquestFieldset extends Fieldset implements ServiceLocatorAwareInterface
+class ListquestFieldset extends AbstractEntityManagerAwareFieldset
 {
-    use ServiceLocatorAwareTrait;
-    
-    public function __construct($name = 'listquest')
+    public function __construct($name = 'listquest',$options = null)
     {
-        parent::__construct($name);
+        parent::__construct($name,$options);
     
         $this->add([
             'name'      => 'id',
@@ -67,12 +59,18 @@ class ListquestFieldset extends Fieldset implements ServiceLocatorAwareInterface
         if (!$formElementManager){
             throw new ServiceNotFoundException('The form element manager was not initialized. Use the form element manager to initiate the fieldset');
         }
-        $applicationServices = $formElementManager->getServiceLocator();
-        $om = $applicationServices->get('Doctrine\ORM\EntityManager');  
         
-        $this->add(new CategoryFieldset($om,'category'));
-        $this->add(new LevelFieldset($om,'level'));
-        $this->add(new LanguageFieldset($om,'language'));
+        $this->add([            
+            'type' => 'CategoryFieldset',
+        ]); 
+        
+        $this->add([
+            'type' => 'LevelFieldset',
+        ]); 
+        
+        $this->add([
+            'type' => 'LanguageFieldset',
+        ]);
         
         $this->add([     
             'name' => 'tags',
@@ -100,15 +98,12 @@ class ListquestFieldset extends Fieldset implements ServiceLocatorAwareInterface
         ]);
         
         
-        
+        //initialize the entity class
+        $applicationServices = $formElementManager->getServiceLocator();
         $options = $applicationServices->get('lrnllistquests_module_options');
-        $listquestEntityClass = $options->getListquestEntityClass();               
-        $doctrineHydrator = new DoctrineHydrator(
-            $om,
-            $listquestEntityClass
-        ); 
-
-        $this->setHydrator($doctrineHydrator);
-        $this->setObject(new $listquestEntityClass); 
+        $this->setEntityClass($options->getListquestEntityClass()); 
+        
+        //the entity class has to be first initialized before the init
+        parent::init();
     }
 }

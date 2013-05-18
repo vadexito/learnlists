@@ -124,6 +124,9 @@ class Module implements
     public function getFormElementConfig()
     {
         return [
+            'initializers' => [
+                'Application\Initializer\EntityManagerInitializer', 
+            ],
             'abstract_factories' => [
                 'LrnlListquests\Form\Element\AbstractSelectElementFactory'
             ],
@@ -133,6 +136,9 @@ class Module implements
             'invokables' => [
                'QuestionFieldset' =>  'LrnlListquests\Form\Fieldset\QuestionFieldset',
                'TagFieldset' =>  'LrnlListquests\Form\Fieldset\TagFieldset',
+               'LevelFieldset' =>  'LrnlListquests\Form\Fieldset\LevelFieldset',
+               'LanguageFieldset' =>  'LrnlListquests\Form\Fieldset\LanguageFieldset',
+               'CategoryFieldset' =>  'LrnlListquests\Form\Fieldset\CategoryFieldset',
             ],
         ];
     }
