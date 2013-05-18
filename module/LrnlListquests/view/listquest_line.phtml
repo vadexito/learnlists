@@ -10,7 +10,7 @@ $gravatar = $this->gravatar(
 
 $authorIsTeacher = ($authorRole === 'teacher');
 $titleImage = sprintf($this->translate('Category %s'),$this->escapeHtml($category))
-    .'-'.sprintf($this->translate('Quizz: %s'),$this->escapeHtml($title));
+    .'-'.sprintf($this->translate('Quiz: %s'),$this->escapeHtml($title));
 
 $pictureAttribs=[
     'src' => $urlImage,

@@ -23,7 +23,7 @@ class SearchForm extends Form
                 'id'    => 'search',
                 'autocomplete'    => 'off',
                 'class' => 'input-xxlarge',
-                'placeholder' => _('Which quizz are you looking for?')
+                'placeholder' => _('Which quiz are you looking for?')
             ],
         ]);
         
@@ -41,6 +41,7 @@ class SearchForm extends Form
     public function init()
     {
         $this->add([
+            'name' => 'category',
             'type' => 'Category'
         ]);
     }

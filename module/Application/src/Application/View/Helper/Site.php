@@ -7,7 +7,7 @@ use Zend\View\Helper\AbstractHelper;
 
 class Site extends AbstractHelper
 {
-    protected $_siteName = 'Learnlists';
+    protected $_siteName = 'LearnQuiz';
     
     public function __invoke()
     {

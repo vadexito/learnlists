@@ -3,7 +3,7 @@
    ?>
    <div class="filter-search filter-search-search">
        <a type="button" data-toggle="collapse" data-target="#<?php $name = 'collapse'.$search->getName();echo $name; ?>">
-           <h5 class="well"><?php echo $search->getLabel(); ?></h5>
+           <h5 class="well"><?php echo ucfirst($this->translate($search->getLabel())); ?></h5>
        </a>
        <div class="collapse in filter-choice" id="<?php echo $name; ?>">
            <div class="well input-append">

@@ -2,10 +2,7 @@
 
 $title = $this->translate('Learn at LearnLists');
 $this->headTitle($title);
-$this->headMeta()->appendName('description', $this->translate('Search to find the best quizzes to learn what you wish from lists of questions prepared by our community of teachers.'));
-$searchForm->setAttribute('action', $this->url('lrnl-search'));
-$searchForm->prepare();
-
+$this->headMeta()->appendName('description', $this->translate('Search to find the best quizes to learn what you wish from lists of questions prepared by our community of teachers.'));
 $paginationControl = $this->paginationControl(
     $lists,
     'Sliding',
@@ -17,14 +14,7 @@ $paginationControl = $this->paginationControl(
 <div class="row-fluid search_bar_top">
     <div class="span12">
         <div class="row-fluid  well well-small">
-            <?php echo $this->formTwb()->openTag($searchForm);?>
-            <?php foreach ($searchForm as $element) : if ($element->getName() != 'submit') : ?>
-            <?php echo $this->formRowTwb($element, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_INLINE);?>
-            <?php endif; endforeach; ?>
-            <button type="submit" class="btn btn-large btn-primary">
-                <i class="icon-white icon-search"></i> <?php echo $this->translate('Search'); ?>
-            </button>
-            <?php echo $this->formTwb()->closeTag($searchForm);?> 
+            <?php echo $this->listSearchBar($searchForm); ?>
         </div>
     </div>
 </div>

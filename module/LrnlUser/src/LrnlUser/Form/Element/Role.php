@@ -20,7 +20,7 @@ class Role extends Select
             'find_method'    => array(
                 'name'   => 'findBy',
                 'params' => array(
-                    'criteria' => array('roleId' => ['teacher','student']),
+                    'criteria' => array('roleId' => ['teacher','learner']),
                 ),
             ),
         ]);

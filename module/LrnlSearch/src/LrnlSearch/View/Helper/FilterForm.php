@@ -42,10 +42,10 @@ class FilterForm extends AbstractHelper
                 $template = 'filterCheckboxes';
                 break;
             case FiltersForm::$RANGE :
-                $template = 'filterSearch';
+                $template = 'filterRange';
                 break;
             case FiltersForm::$SEARCH :
-                $template = 'filterRange';
+                $template = 'filterSearch';
                 break;
         }
         

@@ -7,7 +7,12 @@ $(function() {
     });
     
     //chosen plugin for select form element improvment
-    $(".chzn-select").chosen();
+    $(".chzn-select").each(function(){
+        var options = {
+            'no_results_text' : $(this).attr('data-noresultstext')
+        };
+        $(this).chosen(options);
+    });
     
     $('#filters_chzn input').hide();
     var url = $.parseJSON($('#filters').attr('data-urls'));

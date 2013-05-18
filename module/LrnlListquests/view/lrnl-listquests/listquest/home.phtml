@@ -1,18 +1,16 @@
 <?php
-$title = $this->translate('Learn with quizzes');
+$title = $this->translate('Learn with quizes');
 $this->headTitle($title);
-$this->headMeta()->appendName('description', $this->translate('Find the best quizzes to learn what you wish from lists of questions prepared by our community of teachers or create your own quizz.'));
+$this->headMeta()->appendName('description', $this->translate('Find the best quizes to learn what you wish from lists of questions prepared by our community of teachers or create your own quiz.'));
 
 $site = $this->site();
-$searchForm->setAttribute('action', $this->url('lrnl-search'));
-$searchForm->prepare();
 $searchForm->get('search')->setAttribute('class','home '.$searchForm->get('search')->getAttribute('class'));
 
 $features = [
     [
         'classWrap' => 'well span4',
-        'title' => $this->translate('Find high quality quizzes'),
-        'text' => $this->translate('Quizzes are developed by professional teachers and evaluated by the user commnunity which ensures top quality.'),
+        'title' => $this->translate('Find high quality quizes'),
+        'text' => $this->translate('Quizes are developed by professional teachers and evaluated by the user commnunity which ensures top quality.'),
         'buttonUrl' => $this->url('lrnl-search'),
         'buttonText' => $this->translate('Browse lists')
     ],
@@ -25,7 +23,7 @@ $features = [
     ],
     [
         'classWrap' => 'well span4',
-        'title' => $this->translate('Create and share quizzes'),
+        'title' => $this->translate('Create and share quizes'),
         'text' => $this->translate('You can also create and share your own private lists.'),
         'buttonUrl' => $this->url('lrnl-help/template',['template' => 'how_to_create_a_list']),
         'buttonText' => $this->translate('Learn how create lists')
@@ -50,22 +48,17 @@ $homeFiles = Zend\Json\Json::encode($files);
     <header id="jumbotron-header" class="home">
         <div class="container">
             <h1><?php echo $this->escapeHtml($title); ?></h1>
-            <h3><?php echo sprintf($this->translate('Learn with %d high quality quizzes proposed by our community of teachers.'),count($lists),'x'); ?></h3>
+            <h3><?php echo sprintf($this->translate('Learn with %d high quality quizes proposed by our community of teachers.'),count($lists),'x'); ?></h3>
             <div class="well well-small ">
-                <?php echo $this->formTwb()->openTag($searchForm);?>
-                <?php foreach ($searchForm as $element) : if ($element->getName() != 'submit') : ?>
-                <?php echo $this->formRowTwb($element, \DluTwBootstrap\Form\FormUtil::FORM_TYPE_INLINE);?>
-                <?php endif; endforeach; ?>
-                <button type="submit" class="btn btn-large btn-primary"><i class="icon-white icon-search"></i> <?php echo $this->translate('Search'); ?></button>
-                <?php echo $this->formTwb()->closeTag($searchForm);?> 
+                <?php echo $this->listSearchBar($searchForm); ?>
             </div>
         </div>
     </header>
 </div>
 <?php $this->placeholder('header')->captureEnd(); ?>
 <div class="row-fluid">
-    <h3><?php echo $this->translate('Quizz');?></h3>
-    <h4><?php echo $this->translate('Here are some excellent quizz you can choose from.'); ?></h4>
+    <h3><?php echo $this->translate('Quiz');?></h3>
+    <h4><?php echo $this->translate('Here are some excellent quiz you can choose from.'); ?></h4>
 </div><br/>
 <?php echo $this->partial('lrnl-listquests/listquest/home/listquestThumbnails.phtml',['lists' => $lists,'thumbLinesMax' => 1]); ?>
 <div class="row-fluid">

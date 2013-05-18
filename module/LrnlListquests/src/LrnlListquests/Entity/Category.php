@@ -35,7 +35,31 @@ class Category extends EntityAbstract implements
      * @var integer
      * @access protected
      */
-    protected $pictureId;    
+    protected $pictureId; 
+    
+    /**
+     * Description
+     *
+     * @var string
+     * @access protected
+     */
+    protected $description;
+    
+    /**
+     * Depth in hierarchie
+     *
+     * @var integer
+     * @access protected
+     */
+    protected $depth;
+    
+    /**
+     * Parent category
+     *
+     * @var integer
+     * @access protected
+     */
+    protected $parent;
     
     protected $inputFilter;
     
@@ -53,6 +77,38 @@ class Category extends EntityAbstract implements
     public function getPictureId()
     {
         return $this->pictureId;
+    }
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+    
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    
+    public function setDepth($depth)
+    {
+        $this->depth = $depth;
+        return $this;
+    }
+    
+    public function getDepth()
+    {
+        return $this->depth;
+    }
+    
+    public function setParent(Category $parent)
+    {
+        $this->parent = $parent;
+        return $this;
+    }
+    
+    public function getParent()
+    {
+        return $this->parent;
     }
     
     
@@ -96,6 +152,35 @@ class Category extends EntityAbstract implements
                             'max'      => 50,
                         ],
                     ],
+                ],
+            ]));
+            $inputFilter->add($factory->createInput([
+                'name'     => 'description',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'encoding' => 'UTF-8',
+                            'min'      => 0,
+                            'max'      => 250,
+                        ],
+                    ],
+                ],
+            ]));
+            $inputFilter->add($factory->createInput([
+                'name'     => 'depth',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StripTags'],
+                    ['name' => 'StringTrim'],
+                ],
+                'validators' => [
+                    ['name'    => 'Int'],
                 ],
             ]));
             $inputFilter->add($factory->createInput([

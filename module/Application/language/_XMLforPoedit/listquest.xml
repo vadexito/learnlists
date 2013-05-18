@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<zend-config xmlns:zf="http://framework.zend.com/xml/zend-config-xml/1.0/">
+  <category>
+    <translate>French</translate>
+    <translate>English</translate>
+    <translate>Polish</translate>
+    <translate>Languages</translate>
+  </category>  
+  <level>
+    <translate>Very difficult</translate>
+    <translate>Difficult</translate>
+    <translate>Average</translate>
+    <translate>Easy</translate>  
+    <translate>Basic</translate>  
+  </level>  
+  <language>
+    <translate>German</translate>
+    <translate>French</translate>
+    <translate>Polish</translate> 
+  </language>  
+</zend-config>
