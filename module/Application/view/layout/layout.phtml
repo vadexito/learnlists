@@ -2,19 +2,18 @@
 $siteName = $this->site();
 $this->headTitle($siteName)->setSeparator(' - ')->setAutoEscape(false);
 $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
-$this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico']);
+$this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/assets/application/images/logo/favicon.ico']);
 ?>
 <?php echo $this->doctype(); ?>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <?php 
-// for asset manager  assetic
-            echo $this->plugin('HeadTitle');
-            echo $this->plugin('HeadMeta');
-            echo $this->plugin('HeadLink');
-            echo $this->plugin('HeadStyle');
-            echo $this->plugin('HeadScript');
+            echo $this->headTitle();
+            echo $this->headMeta();
+            echo $this->headLink();
+            echo $this->headStyle();
+            echo $this->headScript();
         ?>
     </head>
     <body>

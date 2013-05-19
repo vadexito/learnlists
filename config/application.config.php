@@ -5,6 +5,7 @@ return [
         'ZendDeveloperTools',
         'ZF2NetteDebug',
         'ZF2PhpSettings',
+        'ZfrPusher',
         'EdpSuperluminal',
         'EdpModuleLayouts',
         'DoctrineModule',

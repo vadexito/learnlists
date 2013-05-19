@@ -2,10 +2,15 @@
 general
 =========================================*/
 
+
+@import "variables.less"; 
+
 body {
     padding-top: 60px;
     padding-bottom: 40px;
-    color: #666666;
+    /*color: #666666;*/
+    color: @gray;
+    
 }
 
 .btn-success {
@@ -32,7 +37,7 @@ body {
 }
 
 div.container a.brand {
-    background: url("images/logo/site-logo.jpg") no-repeat scroll 0 10px transparent;
+    background: url("../images/logo/site-logo.jpg") no-repeat scroll 0 10px transparent;
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }
@@ -269,7 +274,7 @@ span.min-slider, span.max-slider {
 }
 
 .badge-bubble {
-    background-image: url("images/icons/bubble.png");
+    background-image: url("../images/icons/bubble.png");
     display: inline-block;
     height: 25px;
     width:32px;
@@ -466,7 +471,7 @@ div.price-cell.offer3 > div.well {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f200', endColorstr='#f89406',GradientType=0 ); /* IE6-9 */
 }
 div.price-cell.offer2 div.popular {
-    background: url("images/popular.png") no-repeat;
+    background: url("../images/icons/popular.png") no-repeat;
     width: 70px;
     position:relative;
     height: 74px;

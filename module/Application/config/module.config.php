@@ -150,6 +150,25 @@ return [
     ],
     'assetic_configuration' => [
         /**
+        * Set to true if you're working in a development environment and you want for
+        * every assets to be moved to public directory after some changes.
+        * Set to false on production environment - to boost your application.
+        * Default true - for backward compatibility.
+        */
+       'buildOnRequest'     => true,
+        
+        
+        /**
+         * Map how given view renderer instance will be interpreted by AsseticBundle.
+         * Those are default options.
+         */
+        'rendererToStrategy' => array(
+            'Zend\View\Renderer\PhpRenderer'  => 'AsseticBundle\View\ViewHelperStrategy',
+            'Zend\View\Renderer\FeedRenderer' => 'AsseticBundle\View\NoneStrategy',
+            'Zend\View\Renderer\JsonRenderer' => 'AsseticBundle\View\NoneStrategy',
+        ),
+
+        /**
         * Module is not enabled if an MvcEvent::EVENT_DISPATCH_ERROR event occurs.
         * However, we may still want our assets for pages with dispatch errors.
         * So, we can build up a whitelist of errors for the module to be enabled for.
@@ -209,17 +228,6 @@ return [
                 '@slider_js',
                 '@global_js',
             ],
-            'learn/basic' => [
-                '@marionette_js',
-                '@jqknob_js',                
-                '@introjs_js',
-                '@introjs_css',
-                '@countdown_js',
-                '@moment_js',
-                '@animate_css',
-                '@mvclearn_js',
-                '@global_js',
-            ],
             'listquests/list/edit' => [
                 '@global_js'
             ],
@@ -234,8 +242,6 @@ return [
             'assets' => [
                 '@base_js',
                 '@base_css',
-                '@bootstrap_js',
-                '@fontawesome_css',                
                 '@chosen_js',
                 '@chosen_css',
                 '@jquery_form_js',
@@ -249,19 +255,20 @@ return [
         'modules' => [
             'application' => [
                 'root_path' => __DIR__ . '/../assets',
-                'collections' => [
-                    'base_css' => [
+                'collections' => [                 
+                    'bootstrap_less' => [
                         'assets' => [
-                            'components/bootstrap/docs/assets/css/bootstrap.css',
-                            'components/bootstrap/docs/assets/css/bootstrap-responsive.css',
-                            'application/css/style.css',        
+                            'application/less/bootstrap.less',
+                            'application/less/responsive.less',
                         ],
                         'filters' => [
-                            '?CssRewriteFilter' => [
-                                'name' => 'Assetic\Filter\CssRewriteFilter'
+                            'LessphpFilter' => [
+                                'name' => 'Assetic\Filter\LessphpFilter'
                             ],
                         ],
-                        'options' => [],
+                        'options' => [
+                            'output' => 'bootstrap.css'
+                        ],
                     ],
                     'fontawesome_css' => [
                         'assets' => [
@@ -275,11 +282,14 @@ return [
                         ],
                         'options' => [],
                     ],
-                    'base_js' => [
+                    'global_app_less' => [
                         'assets' => [
-                            'components/jquery/jquery.min.js',
-                            'components/html5shiv/dist/html5shiv.js',
-                            'components/spin.js/dist/spin.min.js',
+                            'application/less/style.less',  
+                        ],
+                        'filters' => [
+                            'LessphpFilter' => [
+                                'name' => 'Assetic\Filter\LessphpFilter'
+                            ],
                         ],
                     ],
                     'bootstrap_js' => [
@@ -294,6 +304,27 @@ return [
                             'components/bootstrap/docs/assets/js/bootstrap-tab.js',
                         ],
                     ],
+                    'chosen_js' => [
+                        'assets' => [
+                            'components/chosen/chosen/chosen.jquery.min.js',
+                        ],
+                    ],
+                    'chosen_css' => [
+                        'assets' => [
+                            'components/chosen/chosen/chosen.css',
+                        ],
+                        'filters' => [
+                            'CssRewriteFilter' => [
+                                'name' => 'Assetic\Filter\CssRewriteFilter'
+                            ],
+                        ],
+                    ],
+                    'jquery_js' => [
+                        'assets' => [
+                            'components/jquery/jquery.min.js',
+                        ],
+                    ],
+                    
                     'global_js' => [
                         'assets' => [
                             'application/js/global.js',
@@ -309,13 +340,6 @@ return [
                             'application/css/vendor/slider.css',
                         ],
                     ],
-                    'mvclearn_js' => [
-                        'assets' => [
-                            'application/js/Mvc/Model/*.js',
-                            'application/js/Mvc/View/*.js',
-                            'application/js/Mvc/learnApp.js',
-                        ],
-                    ],
                     'jqknob_js' => [
                         'assets' => [
                             'components/jquery-knob/js/jquery.knob.js',
@@ -326,16 +350,6 @@ return [
                             'components/underscore/underscore-min.js',
                             'components/backbone/backbone-min.js',
                             'components/marionette/lib/backbone.marionette.min.js',
-                        ],
-                    ],
-                    'chosen_js' => [
-                        'assets' => [
-                            'components/chosen/chosen/chosen.jquery.min.js',
-                        ],
-                    ],
-                    'chosen_css' => [
-                        'assets' => [
-                            'components/chosen/chosen/chosen.css',
                         ],
                     ],
                     'introjs_js' => [
@@ -372,20 +386,72 @@ return [
                         'assets' => [
                             'components/animate.css/animate.min.css',
                         ],
-                    ], 
+                    ],
+                    'fontawesome_font' => [
+                        'assets' => [
+                            'components/font-awesome/font/*',
+                        ],
+                        'options' => [
+                            'move_raw' => true,
+                        ],
+                    ],
+                    
+                    'base_css' => [
+                        'assets' => [
+                            '@bootstrap_less',
+                            '@fontawesome_css',
+                            '@global_app_less'
+                        ],
+                        'filters' => [
+                            'CssRewriteFilter' => [
+                                'name' => 'Assetic\Filter\CssRewriteFilter'
+                            ],
+                        ],
+                        'options' => [
+                            'output' => 'base_css.css'
+                        ],
+                    ],
+                    
+                    'base_js' => [
+                        'assets' => [
+                            '@jquery_js',
+                            'components/html5shiv/dist/html5shiv.js',
+                            'components/spin.js/dist/spin.min.js',
+                            '@bootstrap_js'
+                        ],
+                        'options' => [
+                            'output' => 'base_js.js'
+                        ],
+                    ],
+                    'bootstrap_img' => [
+                        'assets' => [
+                            'components/bootstrap/img/*',
+                        ],
+                        'options' => [
+                            'move_raw' => true,
+                        ],
+                    ],
+                    'chosen_img' => [
+                        'assets' => [
+                            'components/chosen/chosen/*.png',
+                        ],
+                        'options' => [
+                            'move_raw' => true,
+                        ],
+                    ],
                     'base_images' => [
                         'assets' => [
+                            'application/images/icons/*',
+                            'application/images/logo/*',
                             'images/*.png',
                             'images/icons/*.png',
                             'images/homeslides/*.png',
                             'images/homeslides/*.jpg',
                             'images/adds/*',
-                            'images/logo/*',
                             'images/thumbnails/categories/*.jpg',
                             'images/*.png',
                             'images/*.ico',
                             'images/*.jpg',
-                            '*.png',
                         ],
                         'options' => [
                             'move_raw' => true,

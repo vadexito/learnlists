@@ -1,0 +1,57 @@
+
+@base-url : "../../components/bootstrap/less/";
+
+
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "@{base-url}mixins.less";
+
+// CSS Reset
+@import "@{base-url}reset.less";
+
+// Grid system and page structure
+@import "@{base-url}scaffolding.less";
+@import "@{base-url}grid.less";
+@import "@{base-url}layouts.less";
+
+// Base CSS
+@import "@{base-url}type.less";
+@import "@{base-url}code.less";
+@import "@{base-url}forms.less";
+@import "@{base-url}tables.less";
+
+// Components: common
+@import "@{base-url}sprites.less";
+@import "@{base-url}dropdowns.less";
+@import "@{base-url}wells.less";
+@import "@{base-url}component-animations.less";
+@import "@{base-url}close.less";
+
+// Components: Buttons & Alerts
+@import "@{base-url}buttons.less";
+@import "@{base-url}button-groups.less";
+@import "@{base-url}alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+@import "@{base-url}navs.less";
+@import "@{base-url}navbar.less";
+@import "@{base-url}breadcrumbs.less";
+@import "@{base-url}pagination.less";
+@import "@{base-url}pager.less";
+
+// Components: Popovers
+@import "@{base-url}modals.less";
+@import "@{base-url}tooltip.less";
+@import "@{base-url}popovers.less";
+
+// Components: Misc
+@import "@{base-url}thumbnails.less";
+@import "@{base-url}media.less";
+@import "@{base-url}labels-badges.less";
+@import "@{base-url}progress-bars.less";
+@import "@{base-url}accordion.less";
+@import "@{base-url}carousel.less";
+@import "@{base-url}hero-unit.less";
+
+// Utility classes
+@import "@{base-url}utilities.less"; // Has to be last to override when necessary

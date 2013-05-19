@@ -45,6 +45,8 @@
         "artur-gajewski/file-bank": "dev-master",
         "webino/webino-image-thumb": "dev-master",
         "evandotpro/edp-superluminal": "dev-master",
-        "rhysr/ZF2PhpSettings": "dev-master"
+        "rhysr/ZF2PhpSettings": "dev-master",
+        "leafo/lessphp": "0.3.*@dev",
+        "zfr/zfr-pusher": "1.0.*"
     }
 }
