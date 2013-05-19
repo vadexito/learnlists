@@ -11,20 +11,41 @@ class Disqus extends AbstractHelper
 {
     protected $options ;
 
-    public function __invoke()
+    /**
+     * See http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables for javascript parameters
+     * 
+     * @param type $identifier
+     * @param type $title
+     * @param type $url
+     * @return string
+     * @throws InvalidArgumentException
+     */
+    public function __invoke($identifier = '',$title = '',$url = '')
     {
         if (!$this->getOptions()->getEnabled()){
            return '';
         }
+        $script = '';
         
         $shortName = $this->getOptions()->getShortName();
         if (!$shortName || !is_string($shortName)){
             throw new InvalidArgumentException('Please provide a short name (string)in the configuration file.');
-        }
-        
-        $script = '';
+        }        
         $script .= sprintf("var disqus_shortname = '%s';\n",
                  $shortName); 
+        
+        if ($identifier){
+            $script .= sprintf("var disqus_identifier = '%s';\n",
+                 $identifier); 
+        }
+        if ($title){
+            $script .= sprintf("var disqus_title = '%s';\n",
+                 $title); 
+        }
+        if ($url){
+            $script .= sprintf("var disqus_url = '%s';\n",
+                 $url); 
+        }
 
         $script .= <<<SCRIPT
 (function() {
