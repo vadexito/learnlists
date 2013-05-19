@@ -4,20 +4,27 @@ namespace VxoDisqus\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\Stdlib\Parameters;
+use VxoDisqus\Options\ModuleOptions;
+use VxoDisqus\Exception\InvalidArgumentException;
 
 class Disqus extends AbstractHelper
 {
-    protected $_config ;
+    protected $options ;
 
     public function __invoke()
     {
-        $config = new Parameters($this->getConfig());
+        if (!$this->getOptions()->getEnabled()){
+           return '';
+        }
+        
+        $shortName = $this->getOptions()->getShortName();
+        if (!$shortName || !is_string($shortName)){
+            throw new InvalidArgumentException('Please provide a short name (string)in the configuration file.');
+        }
+        
         $script = '';
-        if ($config->get('developer')){
-            $script .= "var disqus_developer = 1 \n";  
-        }            
         $script .= sprintf("var disqus_shortname = '%s';\n",
-                 $config->get('shortname')); 
+                 $shortName); 
 
         $script .= <<<SCRIPT
 (function() {
@@ -35,14 +42,14 @@ SCRIPT;
         return $render;
     }
     
-    public function setConfig($config)
+    public function setOptions(ModuleOptions $options)
     {
-        $this->_config = $config;
+        $this->options = $options;
         return $this;
     }
     
-    public function getConfig()
+    public function getOptions()
     {
-        return $this->_config;
+        return $this->options;
     }
 }

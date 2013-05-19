@@ -6,11 +6,13 @@ namespace VxoDisqus;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 class Module implements 
     AutoloaderProviderInterface,
     ConfigProviderInterface,
-    ViewHelperProviderInterface
+    ViewHelperProviderInterface,
+    ServiceProviderInterface
 {
     public function getConfig()
     {
@@ -31,15 +33,27 @@ class Module implements
         ];
     }
     
+    public function getServiceConfig()
+    {
+        return [
+            'factories' => [
+                'disqus_module_options' => function ($sm) {
+                    $config = $sm->get('Config');
+                    return new Options\ModuleOptions(isset($config['vxo-disqus']) ? $config['vxo-disqus'] : []);
+                },
+            ],
+        ];
+    }
+    
     public function getViewHelperConfig()
     {
         return array(
             'factories' => array(
                 'disqus' => function ($sm) {
                     $config = $sm->getServiceLocator()
-                                 ->get('config')['vxo-disqus']['config'];
+                                 ->get('disqus_module_options');
                     $viewHelper = new View\Helper\Disqus();
-                    $viewHelper->setConfig($config);
+                    $viewHelper->setOptions($config);
                     return $viewHelper;
                 },
             ),
