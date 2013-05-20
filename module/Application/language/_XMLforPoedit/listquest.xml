@@ -3,9 +3,17 @@
   <category>
     <translate>French</translate>
     <translate>English</translate>
+    <translate>German</translate>
     <translate>Polish</translate>
     <translate>Languages</translate>
   </category>  
+  <description>
+    <translate>English as a foreigh language</translate>
+    <translate>German as a foreigh language</translate>
+    <translate>French as a foreigh language</translate>
+    <translate>Polish as a foreign language</translate>
+    <translate>Languages</translate>
+  </description>  
   <level>
     <translate>Very difficult</translate>
     <translate>Difficult</translate>

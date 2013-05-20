@@ -43,11 +43,11 @@ class ListquestCollection extends AbstractHelper
                 'urlImage' => $this->getView()->listquestPictureUrl($listDataBase),
                 'title' => $listDataBase->getTitle(),
                 'description' => $listDataBase->description,
-                'category' => $listDataBase->category->getName(),
+                'category' => $listDataBase->category,
                 'authorEmail' => $listDataBase->author->getEmail(),
                 'author' => $listDataBase->author,
                 'questionNb' => $listDataBase->questions->count(),
-                'level' => $listDataBase->level->getName(),
+                'level' => $listDataBase->level,
                 'hasLike' => $hasLike,
                 'rating' => round($this->getRatingService()
                                  ->getRatingSet($listId)

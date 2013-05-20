@@ -175,9 +175,12 @@ class ListquestService
                     $entity = $entity->$getter();
                 }
                 
-                if ($entity->$getterKey() === $value){
-                    $count ++;
+                if (is_object($entity) && method_exists($entity,$getterKey)){
+                    if ($entity->$getterKey() === $value){
+                        $count ++;
+                    }
                 }
+                    
             }
             
             if (isset($values['targetEntity'])){
@@ -185,7 +188,9 @@ class ListquestService
                 $entity = $this->getObjectManager()
                              ->getRepository($values['targetEntity'])
                              ->$method($value);
-                $term = $entity->$getterTerm();
+                if (is_object($entity)){
+                    $term = $entity->$getterTerm();
+                }                 
             } else {
                 $term = $value;
             }   

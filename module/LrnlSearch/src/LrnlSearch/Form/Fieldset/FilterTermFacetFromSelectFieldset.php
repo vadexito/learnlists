@@ -42,12 +42,14 @@ class FilterTermFacetFromSelectFieldset extends AbstractFilterFieldset
             $this->getValues()   
         );
         
-        foreach ($facetValues as $key => $facetValue){            
+        foreach ($facetValues as $facetValue){ 
             $term = $facetValue['term'];
-            $filterElement = new Checkbox($term);
-            $filterElement->setLabel((string)$term);
-            $filterElement->setAttribute('data-hitNb',$facetValue['count']);
-            $this->add($filterElement);
+            if ($term){                
+                $filterElement = new Checkbox($term);
+                $filterElement->setLabel((string)$term);
+                $filterElement->setAttribute('data-hitNb',$facetValue['count']);
+                $this->add($filterElement);
+            }  
         }
     }
     
