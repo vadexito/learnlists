@@ -2,7 +2,8 @@
 
 use Zend\Form\Element\Hidden;
 
-$title = $this->translate('Learn at LearnLists');
+$siteName = $this->site();
+$title = sprintf($this->translate('Learn at %s'),$siteName);
 $this->headTitle($title);
 
 $hidden = new Hidden('id');
@@ -13,6 +14,7 @@ $hidden->setAttributes([
     'id' => 'listId',
     'value' => $listId,
 ]);
+
 ?>
 <article id="questionMain"></article>
 <?php echo $this->formHidden($hidden); ?>
@@ -51,7 +53,7 @@ $hidden->setAttributes([
 </script>    
 
 <script id="title_list-template" type="text/html">
-    <h3 data-step="1" data-intro="<? echo $this->translate('The list you have choosen'); ?>"id="title_list"><%= title_list %></h3>
+    <h4 data-step="1" data-intro="<? echo $this->translate('The list you have choosen'); ?>"id="title_list"><%= title_list %></h4>
 </script>    
 <script id="round_number-template" type="text/html">
     <span data-step="8" data-intro="<? echo $this->translate('You can do several rounds of the same list, you will see how many you did already.This function is available only if your are logged in since it will save your progress and adapt the method of asking.'); ?>" class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %></span>
@@ -197,10 +199,10 @@ $hidden->setAttributes([
 <div id="start-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button id="close-welcome" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Learnlists</h3>
+    <h3 id="myModalLabel"><?php echo $siteName; ?></h3>
   </div>
   <div class="modal-body">
-    <p><?php echo $this->translate('You will soon start a new list, please take the time to understand how it works before using Learnlists. It takes 15 seconds!'); ?></p>
+    <p><?php echo $this->translate('You will soon start a new list, please take the time to understand how it works. It takes 15 seconds!'); ?></p>
   </div>
   <div class="modal-footer">
     <button id="start-learn-btn" class="btn" data-dismiss="modal" aria-hidden="true"><?php echo $this->translate('Start learning directly'); ?></button>
