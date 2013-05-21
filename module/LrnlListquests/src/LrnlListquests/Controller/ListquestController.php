@@ -42,6 +42,7 @@ class ListquestController extends AbstractActionController
             
             if ($form->isValid()) {
                 $listquest = $form->getData();
+                
                 if (isset($prg['picture'])){
                     $form->get('picture')->getHydrator()->hydrate($prg['picture'],$listquest);
                 }
