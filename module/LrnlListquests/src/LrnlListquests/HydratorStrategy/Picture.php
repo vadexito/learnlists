@@ -37,19 +37,20 @@ class Picture implements StrategyInterface
                 throw new HydratorException('The value from the form should have a name field for the file');
             }
             
+            
             $name = $value['name'];
             $dir = $this->options->getTmpPictureUploadDir();
             $pictureName = $dir.$name;
             $thumbnailName = $dir.'thumb'.$name;
             
             $fileBank = $this->getFileBankService();
-            $fileBank->save($pictureName,['listquest']);
             
             $thumb = $this->getThumbnailer()->create($pictureName,[]);
-            $thumb->resize(114,70);            
+            $thumb->resize(114,70); 
             $thumb->save($thumbnailName);
-            
-            $pictureId = $fileBank->save($thumbnailName,['listquest'])->getId();
+
+            $fileBank->save($pictureName,['listquest','normal']);
+            $pictureId = $fileBank->save($thumbnailName,['listquest','thumb'])->getId();
             
             unlink($pictureName);
             unlink($thumbnailName);

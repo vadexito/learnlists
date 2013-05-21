@@ -20,8 +20,8 @@ class ListquestPictureUrl extends AbstractHelper
             return $this;
         }
         if ($listquest->getPictureId() &&
-            $this->getView()->getFileById($listquest->getPictureId())->getUrl()){
-            return $this->getView()->getFileById($listquest->getPictureId())->getUrl();
+            $this->getView()->fileBank()->getFileById($listquest->getPictureId())->getUrl()){
+            return $this->getView()->fileBank()->getFileById($listquest->getPictureId())->getUrl();
         }        
         return $this->getCategoryUrl($listquest->getCategory());
     }
