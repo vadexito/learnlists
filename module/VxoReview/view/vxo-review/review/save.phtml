@@ -1,0 +1,123 @@
+<?php
+$this->headTitle($title);
+$form->prepare();
+$listquestFieldset = $form->get('listquest');
+$tags = $listquestFieldset->get('tags');
+if (isset($listquest)){    
+    $imgUrl = $this->listquestPictureUrl($listquest);
+    $imgAlt = ucfirst($this->escapeHtml($listquest->getTitle()));
+} else {
+    $listquest = NULL;
+}
+
+?>
+
+<?php if ($form->getMessages()): ?>
+<div class="alert alert-error">
+    <button class="close" data-dismiss="alert" type="button">×</button>
+    <strong><?php echo $this->translate('There were some errors. Please try again!'); ?></strong>
+</div>
+<?php endif; ?>
+<?php echo $this->ztbflashMessenger('success'); ?>
+<?php echo $this->ztbflashMessenger('error'); ?>
+<?php echo $this->ztbflashMessenger('info'); ?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php echo $this->form()->openTag($form); ?>
+<?php echo $listquestFieldset->get('id') ?  $this->formHiddenTwb($listquestFieldset->get('id')) : ''?>
+<?php echo $form->get('csrf') ? $this->formHiddenTwb($form->get('csrf')) : '' ?>
+<div class="row-fluid">
+    <div class="span5">
+        <?php echo $this->formRowTwb($listquestFieldset->get('title')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('description')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('language')->get('id')); ?>
+        <?php echo $this->formRowTwb($listquestFieldset->get('rules')); ?>
+    </div>
+    <div class="span5">
+        <?php echo $this->formRowTwb($listquestFieldset->get('level')->get('id')); ?>
+        <?php if ($listquest) : ?>
+        <div class="picture_change">
+            <p><?php echo sprintf($this->translate('%sChange</a> your current picture?'),'<a data-toggle="modal" href="#changePictureForm">'); ?></p>
+            <?php echo $this->thumbnail(['src' => $imgUrl, 'alt' => $imgAlt], ['size' => 'medium']); ?>           
+        </div>
+         <?php endif;?>
+        <?php if ($form->get('picture')) : ?>
+        <?php echo $this->formFileTwb($form->get('picture')->get('pictureId')); ?><br/>
+        <?php echo $this->formElementErrors($form->get('picture')->get('pictureId')); ?><br/>
+        <?php endif;?>
+        <?php if ($tempFile) : ?>
+        <div class="help-block">
+            Uploaded: <?php echo $this->escapeHtml($tempFile['name']); ?>
+        </div>
+        <?php endif;?><br/>
+        <?php echo $this->formRowTwb($listquestFieldset->get('category')->get('id')); ?><br/>
+        <?php if ($tags) :?>
+        <div class="input-append">
+            <span id="tags_element">
+            <?php echo $this->formCollection($tags); ?>
+            </span>
+            <button data-collection ="tags_element" class="btn add_item_to_collection_button" id="add_tags_button"><i class="icon-plus"></i></button>    
+        </div>
+        <span class="help-inline">
+            <?php foreach ($tags as $tag) : ?>
+                <?php echo $this->formElementErrors($tag); ?>
+            <?php endforeach; ?>
+        </span>
+        <?php endif; ?>
+    </div>
+</div>
+<?php if ($listquestFieldset->get('questions')) : $questionTarget = $listquestFieldset->get('questions')->getTargetElement(); ?>
+<div class="row-fluid">
+        <span id="questions_element">
+        <table>
+            <thead>
+                <th>
+                    <?php echo $questionTarget->get('text')->getLabel();?>
+                    <span class="help-inline">
+                        (<a href="#" data-toggle="popover" data-placement="bottom" title="<?php echo $this->translate('Rules for entering question text'); ?>" data-content="<?php echo $this->translate('(i) Enter the text for the question. (ii) If this is a sentence to fill in, please use two \'%\' signs in order to specify answers.Example : He %was% not there %either% (maximum two answers). (iii) in the case of multiple possibilities you can use the sign \'--\'. Example : He is tired %because--since% he did not sleep enough.'); ?>">?</a>)
+                    </span>
+                </th>
+                <th>
+                    <?php echo $questionTarget->get('answer')->getLabel();?>
+                    <span class="help-inline">
+                        (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
+                    </span>
+                </th>
+                <th><?php echo $questionTarget->get('comment')->getLabel();?></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <?php foreach ($form->get('listquest')->get('questions') as $question) : ?>        
+            <tr class="populate">
+                <?php echo $this->formHidden($question->get('id'));?>
+                <td><?php echo $this->formInput($question->get('text'));?></td>
+                <td><?php echo $this->formInput($question->get('answer'));?></td>
+                <td><?php echo $this->formInput($question->get('comment'));?></td>
+                <td class="btn-group">
+                    <div class="btn-group">
+                        <a class="btn btn-mini btn-primary edit-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('listquests/question/edit',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Edit question'); ?>">
+                            <i class="icon-edit icon-white"></i>
+                        </a>
+                        <a class="btn btn-mini btn-primary delete-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('listquests/question/delete',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Remove question'); ?>">
+                            <i class="icon-remove icon-white"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>  
+            <?php endforeach;?>
+            </tbody>
+        </table>
+        <div id="questions_element_adding">
+            <?php echo $this->formCollection()->renderTemplate($this->form->get('listquest')->get('questions')) ?>
+            <div class="added_elements"></div>
+            <a data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Press to add a new empty line. To save press the button below'); ?>" data-collection="questions_element" class="btn add_item_to_collection_button" id="add_questions_button"><i class="icon-plus"></i></a>
+        </div>
+    </span>
+</div>
+<?php endif; ?>
+<div class="row-fluid">
+    <div class="form-actions">
+        <?php echo $this->formSubmit($form->get('submit')); ?>
+    </div>
+</div>
+<?php echo $this->form()->closeTag($form);

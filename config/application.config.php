@@ -39,6 +39,7 @@ return [
         'VxoBraintree', 
         'VxoOffers', 
         'VxoDisqus', 
+        'VxoReview',
         'LrnlLearn',
         'LrnlListquests',
         'LrnlUser',

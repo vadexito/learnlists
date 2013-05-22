@@ -1,7 +1,7 @@
 <?php
 namespace LrnlListquests\Form\Fieldset;
 
-use LrnlListquests\Form\Fieldset\AbstractEntityManagerAwareFieldset;
+use Application\Form\Fieldset\AbstractEntityManagerAwareFieldset;
 
 class CategoryFieldset extends AbstractEntityManagerAwareFieldset
 {

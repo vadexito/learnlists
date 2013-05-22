@@ -7,12 +7,15 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ModuleManager\Feature\FormElementProviderInterface;
+
 
 class Module implements 
     AutoloaderProviderInterface,
     ConfigProviderInterface,
     ViewHelperProviderInterface,
-    ServiceProviderInterface
+    ServiceProviderInterface,
+    FormElementProviderInterface
 {
     public function getConfig()
     {
@@ -33,22 +36,27 @@ class Module implements
         ];
     }
     
+    
     public function getServiceConfig()
     {
         return [
             'factories' => [
+                'vxo-review-service' => 'VxoReview\Service\ReviewServiceFactory',
                 'vxoreview_module_options' => function ($sm) {
                     $config = $sm->get('Config');
                     return new Options\ModuleOptions(isset($config['vxo-review']) ? $config['vxo-review'] : []);
                 },
+            ],
+            'aliases' => [
+                'review-service' => 'vxo-review-service',
             ],
         ];
     }
     
     public function getViewHelperConfig()
     {
-        return array(
-            'factories' => array(
+        return [
+            'factories' => [
                 'vxoreview' => function ($sm) {
                     $config = $sm->getServiceLocator()
                                  ->get('vxoreview_module_options');
@@ -56,7 +64,17 @@ class Module implements
                     $viewHelper->setOptions($config);
                     return $viewHelper;
                 },
-            ),
-        );
+            ],
+        ];
+    }
+
+    public function getFormElementConfig()
+    {
+        return [
+            'factories' => [
+                'review-create-form' => 'VxoReview\Form\ReviewCreateFormFactory',
+                'review-edit-form' => 'VxoReview\Form\ReviewEditFormFactory',
+            ],
+        ];
     }
 }

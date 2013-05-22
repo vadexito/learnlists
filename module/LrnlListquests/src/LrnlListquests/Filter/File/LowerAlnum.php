@@ -18,7 +18,7 @@ class LowerAlnum extends PregReplace
     public function filter($value)
     {
         $sourceInfo = pathinfo($value['name']);
-        $fileName = parent::filter(strtolower($sourceInfo['filename']));        
+        $fileName = parent::filter(strtolower(trim($sourceInfo['filename'])));        
         $value['name'] = $sourceInfo['dirname']
             .$fileName.
             $sourceInfo['extension'];        

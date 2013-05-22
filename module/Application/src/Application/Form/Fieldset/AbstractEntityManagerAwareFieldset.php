@@ -1,5 +1,5 @@
 <?php
-namespace LrnlListquests\Form\Fieldset;
+namespace Application\Form\Fieldset;
 
 use DoctrineModule\Persistence\ProvidesObjectManager;
 use Zend\Form\Fieldset;

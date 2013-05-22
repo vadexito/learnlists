@@ -1,0 +1,20 @@
+<?php
+$title = $this->translate('Edit your review');
+$form->setAttribute('action', $this->url('vxoreview/edit',['id' => $id]));
+$form->prepare();
+$fierdsetReview = $form->get('review');
+?>
+<?php if ($form->getMessages()): ?>
+<div class="alert alert-error">
+    <button class="close" data-dismiss="alert" type="button">×</button>
+    <strong><?php echo $this->translate('There were some errors. Please try again!'); ?></strong>
+</div>
+<?php endif; ?>
+
+<?php echo $this->formTwb()->openTag($form); ?>
+<?php echo $this->formHiddenTwb($fierdsetReview->get('id')); ?>
+<?php echo $this->formHiddenTwb($form->get('csrf')); ?>
+<?php echo $this->formRowTwb($fierdsetReview->get('text')); ?>
+<?php echo $this->formRange($fierdsetReview->get('rating')); ?>
+<?php echo $this->formActionsTwb([$form->get('submit')]); ?>
+<?php echo $this->formTwb()->closeTag($form); ?>

@@ -6,38 +6,29 @@ use Zend\Stdlib\AbstractOptions;
 
 class ModuleOptions extends AbstractOptions 
 {
-    /**
-     * @var string
-     */
-    protected $enabled = true;
-
-    /**
-     * @var array
-     */
-    protected $shortName = '';
+    protected $reviewEntityClass = 'VxoReview\Entity\Review';
     
+    protected $redirectRoute = 'home';
     
-    public function getEnabled()
+    public function getReviewEntityClass()
     {
-        return $this->enabled;        
+        return $this->reviewEntityClass;        
     }
     
-    public function setEnabled($enabled)
+    public function setReviewEntityClass($reviewEntityClass)
     {
-        $this->enabled = $enabled;  
+        $this->reviewEntityClass = $reviewEntityClass;  
         return $this;
     }
     
-    public function getShortName()
+    public function getRedirectRoute()
     {
-        return $this->shortName;        
+        return $this->redirectRoute;        
     }
     
-    public function setShortName($shortName)
+    public function setRedirectRoute($redirectRoute)
     {
-        $this->shortName = $shortName;  
+        $this->redirectRoute = $redirectRoute;  
         return $this;
     }
-    
-    
 }

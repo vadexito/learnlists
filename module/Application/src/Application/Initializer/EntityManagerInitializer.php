@@ -11,6 +11,7 @@ class EntityManagerInitializer implements InitializerInterface
     public function initialize($instance, ServiceLocatorInterface $serviceLocator)
     {
         if ($instance instanceof ObjectManagerAwareInterface) {
+            
             $objectManager = $serviceLocator->getServiceLocator()
                                             ->get('Doctrine\ORM\EntityManager');                        
             $instance->setObjectManager($objectManager);

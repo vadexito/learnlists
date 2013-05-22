@@ -1,0 +1,15 @@
+<?php
+$title = $this->translate('We need your opinion!');
+$form->setAttribute('action', $this->url('vxoreview/create',['entityId' => $entityId]));
+$form->prepare();
+
+?>
+<?php if ($form->getMessages()): ?>
+<div class="alert alert-error">
+    <button class="close" data-dismiss="alert" type="button">×</button>
+    <strong><?php echo $this->translate('There were some errors. Please try again!'); ?></strong>
+</div>
+<?php endif; ?>
+<?php echo $this->formTwb()->openTag($form); ?>
+<?php echo $this->formCollection($form); ?>
+<?php echo $this->formTwb()->closeTag($form); ?>
