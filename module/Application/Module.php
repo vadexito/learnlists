@@ -12,6 +12,7 @@ namespace Application;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\ModuleRouteListener;
 use Application\Listener\ApplicationListener;
@@ -20,6 +21,7 @@ class Module implements
     AutoloaderProviderInterface,
     ConfigProviderInterface,
     ServiceProviderInterface
+
         
 {
     public function onBootstrap(MvcEvent $e)

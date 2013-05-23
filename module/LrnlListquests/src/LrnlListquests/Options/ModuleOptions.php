@@ -23,13 +23,6 @@ class ModuleOptions extends AbstractOptions
         '5' => '0',
     ];
     
-    protected $listquestItems = [
-        'category' => [
-            'list' => [],
-            'pictureDirectory' => '/assets/images/thumbnails/categories/',
-        ]  
-    ];
-    
     protected $tmpPictureUploadDir = './data/tmpuploads/';
     
     protected $redirectRouteAfterListquestCrud = 'lrnl-search';
@@ -78,17 +71,6 @@ class ModuleOptions extends AbstractOptions
     public function setScoreTable(Array $scoreTable)
     {
         $this->scoreTable = $scoreTable;  
-        return $this;
-    }
-    
-    public function getListquestItems()
-    {
-        return $this->listquestItems;        
-    }
-    
-    public function setListquestItems(Array $listquestItems)
-    {
-        $this->listquestItems = $listquestItems;  
         return $this;
     }
     

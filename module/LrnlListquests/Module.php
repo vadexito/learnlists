@@ -6,7 +6,7 @@ namespace LrnlListquests;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
-use \Zend\ModuleManager\Feature\FormElementProviderInterface;
+use Zend\ModuleManager\Feature\FormElementProviderInterface;
 use Zend\InputFilter\InputFilter;
 
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
@@ -85,14 +85,7 @@ class Module implements
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
                     return new EditQuestionForm($entityManager);
                 }, 
-                'listquest_picture_hydrator' => function ($sm) {
-                    $options = $sm->get('lrnllistquests_module_options');
-                    $hydrator = new PictureStrategy($options);
-                    $hydrator->setFileBankService($sm->get('FileBank'));
-                    $hydrator->setListquestService($sm->get('learnlists-listquestfactory-service'));
-                    $hydrator->setThumbnailer($sm->get('WebinoImageThumb'));
-                    return $hydrator;
-                },
+                'listquest_picture_hydratorstrategy' => 'LrnlListquests\HydratorStrategy\PictureHydratorStrategyFactory',                
                 'listquest_picture_inputfilter' => function ($sm) {
                     $config = $sm->get('lrnllistquests_module_options');
                     $targetUpload = $config->getTmpPictureUploadDir();
@@ -105,7 +98,7 @@ class Module implements
                     $listquestEntityClass = $config->getListquestEntityClass();                
                     $om = $sm->get('Doctrine\ORM\EntityManager');
                     
-                    $fileHydratorStrategy = $sm->get('listquest_picture_hydrator');
+                    $fileHydratorStrategy = $sm->get('listquest_picture_hydratorstrategy');
                     $doctrineHydrator = new DoctrineHydrator(
                         $om,
                         $listquestEntityClass
@@ -174,11 +167,9 @@ class Module implements
                     return $viewHelper;
                 },
                 'listquestPictureUrl' => function ($sm) {
-                    $locator = $sm->getServiceLocator();
-                    $options = $locator->get('lrnllistquests_module_options');
-                    $directory = $options->getListquestItems()['category']['pictureDirectory'];
+                    $fileBankService = $sm->get('FileBank');
                     $viewHelper = new View\Helper\ListquestPictureUrl();
-                    $viewHelper->setCategoryPictureDirectory($directory);
+                    $viewHelper->setFileBankService($fileBankService);
                     return $viewHelper;
                 },
             ),

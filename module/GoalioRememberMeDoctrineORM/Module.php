@@ -3,11 +3,19 @@
 namespace GoalioRememberMeDoctrineORM;
 
 use Doctrine\ORM\Mapping\Driver\XmlDriver;
-use ZfcUser\Module as ZfcUser;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ModuleManager\Feature\BootstrapListenerInterface;
+use Zend\EventManager\EventInterface;
 
-class Module
+class Module implements
+    AutoloaderProviderInterface,
+    ConfigProviderInterface,
+    ServiceProviderInterface,
+    BootstrapListenerInterface
 {
-    public function onBootstrap($e)
+    public function onBootstrap(EventInterface $e)
     {
         $app     = $e->getParam('application');
         $sm      = $app->getServiceManager();

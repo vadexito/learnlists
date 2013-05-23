@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Provider\ProvidesSearchService;
-use LrnlListquests\Provider\ProvidesCategoryService;
+use LrnlCategory\Provider\ProvidesCategoryService;
 use VxoReview\Provider\ProvidesReviewService;
 use Zend\Http\PhpEnvironment\Response;
 

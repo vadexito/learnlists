@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-18 17:53+0100\n"
-"PO-Revision-Date: 2013-05-19 11:47+0100\n"
+"POT-Creation-Date: 2013-05-23 11:13+0100\n"
+"PO-Revision-Date: 2013-05-23 11:14+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -218,42 +218,46 @@ msgstr "Englisch"
 
 #: ../../../module/LrnlListquests/config/module.config.php:36
 #: ../../../config/autoload/global/vxolocale.global.php:19
-#: ../language/_XMLforPoedit/listquest.xml:17
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:17
+#: ../language/_XMLforPoedit/listquest.xml:6
+#: ../language/_XMLforPoedit/listquest.xml:26
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:6
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:26
 msgid "German"
 msgstr "Deutsch"
 
 #: ../../../module/LrnlListquests/config/module.config.php:37
 #: ../../../config/autoload/global/vxolocale.global.php:10
 #: ../language/_XMLforPoedit/listquest.xml:4
-#: ../language/_XMLforPoedit/listquest.xml:18
+#: ../language/_XMLforPoedit/listquest.xml:27
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:4
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:18
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:27
 msgid "French"
 msgstr "Französisch"
 
 #: ../../../module/LrnlListquests/config/module.config.php:38
 #: ../../../config/autoload/global/vxolocale.global.php:23
-#: ../language/_XMLforPoedit/listquest.xml:6
-#: ../language/_XMLforPoedit/listquest.xml:19
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:6
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:19
+#: ../language/_XMLforPoedit/listquest.xml:7
+#: ../language/_XMLforPoedit/listquest.xml:28
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:7
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:28
 msgid "Polish"
 msgstr "Polnisch"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:35
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:44
+#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:118
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:93
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:103
 msgid "Your picture has been successfully changed"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:97
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:107
 msgid "Your picture could not be changed. Please try again."
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:129
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:139
+#: ../../../module/VxoReview/src/VxoReview/Controller/ReviewController.php:52
 msgid "Save"
 msgstr "Speichern"
 
@@ -263,7 +267,7 @@ msgstr "Bearbeiten"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/CreateListquestForm.php:27
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/EditQuestionForm.php:37
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:82
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:84
 msgid "Check"
 msgstr "Anworten"
 
@@ -271,27 +275,27 @@ msgstr "Anworten"
 msgid "Picture for your list"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/CategoryFieldset.php:38
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/CategoryFieldset.php:23
 msgid "Category"
 msgstr "Kategorie"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/LanguageFieldset.php:38
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/LanguageFieldset.php:23
 msgid "Language"
 msgstr "Sprache"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/LevelFieldset.php:38
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/LevelFieldset.php:24
 msgid "Level"
 msgstr "Niveau"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldset.php:36
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldset.php:28
 msgid "Title"
 msgstr "Titel"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldset.php:47
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldset.php:39
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldset.php:59
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldset.php:51
 msgid "Rules"
 msgstr "Regeln"
 
@@ -300,12 +304,12 @@ msgid "Text"
 msgstr "Text"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/QuestionFieldset.php:52
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:67
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:69
 msgid "Answer"
 msgstr "Lösung"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/QuestionFieldset.php:64
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:71
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:73
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -362,6 +366,14 @@ msgstr "Verfallsmonat"
 #: ../../../module/VxoBraintree/src/VxoBraintree/Form/TransactionForm.php:69
 msgid "Expiration Year"
 msgstr "Verfallsjahr"
+
+#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:78
+msgid "You can leave your review here"
+msgstr ""
+
+#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:93
+msgid "Rating"
+msgstr "Bewertung"
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:17
 msgid "author"
@@ -453,7 +465,7 @@ msgstr "Wie lernt man?"
 
 #: ../../../config/autoload/global/navigation.global.php:134
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:2
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:124
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:126
 msgid "How is the score calculated?"
 msgstr "Wie wird der Punktestand berechnet ?"
 
@@ -498,11 +510,11 @@ msgstr "Erstelle dein eigenes Quiz"
 
 #: ../view/application/static-pages/how_it_works_learner.phtml:2
 #: ../view/application/static-pages/how_it_works_teacher.phtml:2
-#: ../view/layout/topnavbar.phtml:13
+#: ../view/layout/topnavbar.phtml:16
 #: ../../../module/Application/view/application/static-pages/how_it_works_learner.phtml:2
 #: ../../../module/Application/view/application/static-pages/how_it_works_teacher.phtml:2
-#: ../../../module/Application/view/layout/topnavbar.phtml:13
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:123
+#: ../../../module/Application/view/layout/topnavbar.phtml:16
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:125
 msgid "How does it work?"
 msgstr "Wie funktioniert es?"
 
@@ -520,9 +532,9 @@ msgid "Find the best quiz to learn"
 msgstr "Ihr Quiz finden"
 
 #: ../view/application/static-pages/how_it_works_learner.phtml:10
-#: ../view/layout/topnavbar.phtml:15
+#: ../view/layout/topnavbar.phtml:18
 #: ../../../module/Application/view/application/static-pages/how_it_works_learner.phtml:10
-#: ../../../module/Application/view/layout/topnavbar.phtml:15
+#: ../../../module/Application/view/layout/topnavbar.phtml:18
 msgid "I want to learn"
 msgstr "Ich möchte lernen"
 
@@ -877,8 +889,8 @@ msgstr "Alle Rechte vorbehalten."
 msgid "Loading..."
 msgstr "Lädt...."
 
-#: ../view/layout/topnavbar.phtml:16
-#: ../../../module/Application/view/layout/topnavbar.phtml:16
+#: ../view/layout/topnavbar.phtml:19
+#: ../../../module/Application/view/layout/topnavbar.phtml:19
 msgid "I am a teacher"
 msgstr "Ich bin Lehrer"
 
@@ -1301,20 +1313,21 @@ msgstr ""
 "Learnlists ist absolut kostenlos. Alle Inhalte sind trotzdem geschützt. Für "
 "mehr Informationen: %sBedingungen</a>"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:5
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:6
 #: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:3
-msgid "Learn at LearnLists"
-msgstr "Mit Learnlists lernen"
+#, php-format
+msgid "Learn at %s"
+msgstr "Mit %s lernen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:47
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:49
 msgid "You have limited time to answer"
 msgstr "Zeit zur Antwort ist begrenzt"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:54
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:56
 msgid "The list you have choosen"
 msgstr "Ausgewählte Liste"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:57
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:59
 msgid ""
 "You can do several rounds of the same list, you will see how many you did "
 "already.This function is available only if your are logged in since it will "
@@ -1324,16 +1337,16 @@ msgstr ""
 "Diese Funktion ist nur bei Anmmeldung verfügbar, weil sie ihre Fortschritte "
 "speichert und die Lernmethode anpasst."
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:57
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:156
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:59
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:158
 msgid "Round"
 msgstr "Runde"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:64
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:66
 msgid "Question you have to answer or containing missing element"
 msgstr "Frage die beantwortet werden soll oder mit Lücken"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:77
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:79
 msgid ""
 "Submit your answer here. If there are several answers to give, please "
 "validate after each answer"
@@ -1341,47 +1354,47 @@ msgstr ""
 "Antwort hier eingeben. Wenn mehrere Antworten einzugeben sind, nach jeder "
 "Antwort überprüfen ."
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:77
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:79
 msgid "Answer here"
 msgstr "Hier antworten"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:82
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:84
 msgid "Then press the submit button (or press enter)"
 msgstr "Dann \"Eingabe\" drücken"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:83
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:85
 msgid "Get the answer"
 msgstr "Antwort sehen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:83
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:85
 msgid ""
 "Press this button if you want to see the answer. In this case you will get 0 "
 "points."
 msgstr "Antwort sehen. In diesem Fall keine Punkte. "
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:88
 msgid "Skip"
 msgstr "Überspringen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:88
 msgid ""
 "Press this button if you want to skip this question. You will be asked "
 "automatically later."
 msgstr "Klicken, falls diese Frage später beantwortet werden soll."
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:88
 msgid "Next"
 msgstr "Nächste"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:92
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:94
 msgid "Number of question you have left to complete a round"
 msgstr "Wie viele Fragen bleiben noch zu beantworten"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:93
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:95
 msgid "Questions"
 msgstr "Fragen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:97
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:99
 msgid ""
 "Check if your answer is wrong or right and get some comments depending on "
 "your past results"
@@ -1389,85 +1402,85 @@ msgstr ""
 "Überprufung, ob die Antwort falsch oder richtig ist und Kommentare auf der "
 "Basis voriger Ergebnisse"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:104
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:106
 msgid "Your score. Press on the help button to see how it is computed"
 msgstr ""
 "Ihr Punktestand. Hilfeknopf benutzen, um zu wissen, wie die Punkte berechnet "
 "werden."
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:105
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:130
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:140
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:107
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:132
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:142
 msgid "Score"
 msgstr "Punketstand"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:106
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:108
 #, php-format
 msgid "max : %s"
 msgstr "max: %s"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:111
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:113
 msgid "Reset rounds"
 msgstr "Alle Runden löschen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:114
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:116
 msgid "Cancel round"
 msgstr "Neu anfangen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:117
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:119
 msgid "You can reset the current round to a new round"
 msgstr "Es is möglich die Runde jederzeit zurückzusetzen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:117
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:119
 msgid "Again"
 msgstr "Wiederholen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:120
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:122
 msgid "Get some help anytime"
 msgstr "Hilfe (FAQ)"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:121
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:123
 msgid "Help"
 msgstr "Hilfe"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:139
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:141
 msgid "Date"
 msgstr "Datum"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:169
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:171
 msgid "You did not yet finish one round!"
 msgstr "Sie haben noch keine Runde beendet"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:169
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:171
 msgid "Please log In if you want to get more detailed results"
 msgstr "Bitte anmelden, um detailliertere Ergebnisse zu erzielen "
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:177
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:179
 #, php-format
 msgid "Loading your list <em>%s</em>"
 msgstr "Liste <em>%s</em> wird geladen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:187
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:189
 msgid "How is your score calculated?"
 msgstr "Wie wird der Punktestand berechnet ?"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:193
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:195
 msgid "Go back to learning"
 msgstr "Zurück zum Lernen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:203
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:205
 msgid ""
 "You will soon start a new list, please take the time to understand how it "
-"works before using Learnlists. It takes 15 seconds!"
+"works. It takes 15 seconds!"
 msgstr ""
 "Sie beginnen gleich mit einer neuen Liste, nehmen Sie sich 15 Sekunden Zeit, "
 "um zu verstehen, wie Learnlists funktioniert."
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:206
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:208
 msgid "Start learning directly"
 msgstr "Direkt zum Quiz"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:207
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:209
 msgid "Show starting guide"
 msgstr "Einleitung starten"
 
@@ -1635,6 +1648,8 @@ msgstr "Direkt zu einem Quiz gehen"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:18
 #: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:13
+#: ../../../module/VxoReview/view/vxo-review/review/create.phtml:10
+#: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:10
 msgid "There were some errors. Please try again!"
 msgstr "Es gab Fehler. Bitte erneut versuchen"
 
@@ -1682,6 +1697,10 @@ msgstr "Frage löschen"
 msgid "Press to add a new empty line. To save press the button below"
 msgstr ""
 "Plus drücken, um neue Frage hinzuzufügen. Zum Speichern unten klicken. "
+
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/show.phtml:2
+msgid "See one quiz"
+msgstr "Sehe dein eigenes Quiz"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/question/delete.phtml:2
 msgid "Delete question"
@@ -1870,33 +1889,76 @@ msgstr "Komplettes Angebot auswählen"
 msgid "The quizes that match your needs."
 msgstr "Die gesuchten Quiz"
 
-#: ../language/_XMLforPoedit/listquest.xml:7
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:7
+#: ../../../module/VxoReview/view/vxo-review/review/create.phtml:2
+msgid "We need your opinion!"
+msgstr ""
+
+#: ../../../module/VxoReview/view/vxo-review/review/delete.phtml:2
+msgid "Delete review"
+msgstr "Bewertung löschen"
+
+#: ../../../module/VxoReview/view/vxo-review/review/delete.phtml:8
+msgid "Are you sure you want to delete the review"
+msgstr "Sind Sie sicher, dass Sie die Bewertung löschen möchten?"
+
+#: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:2
+msgid "Edit your review"
+msgstr ""
+
+#: ../language/_XMLforPoedit/listquest.xml:8
+#: ../language/_XMLforPoedit/listquest.xml:16
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:8
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:16
 msgid "Languages"
 msgstr "Sprachen"
 
-#: ../language/_XMLforPoedit/listquest.xml:10
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:10
-msgid "Very difficult"
-msgstr "Sehr schwer"
-
 #: ../language/_XMLforPoedit/listquest.xml:11
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:11
-msgid "Difficult"
-msgstr "Schwierig"
+msgid "Foreign languages"
+msgstr "Fremdsprachen"
 
 #: ../language/_XMLforPoedit/listquest.xml:12
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:12
-msgid "Average"
-msgstr "Durchschnitt"
+msgid "English as a foreign language"
+msgstr ""
 
 #: ../language/_XMLforPoedit/listquest.xml:13
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:13
-msgid "Easy"
-msgstr "Einfach"
+msgid "German as a foreign language"
+msgstr ""
 
 #: ../language/_XMLforPoedit/listquest.xml:14
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:14
+msgid "French as a foreign language"
+msgstr ""
+
+#: ../language/_XMLforPoedit/listquest.xml:15
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:15
+msgid "Polish as a foreign language"
+msgstr ""
+
+#: ../language/_XMLforPoedit/listquest.xml:19
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:19
+msgid "Very difficult"
+msgstr "Sehr schwer"
+
+#: ../language/_XMLforPoedit/listquest.xml:20
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:20
+msgid "Difficult"
+msgstr "Schwierig"
+
+#: ../language/_XMLforPoedit/listquest.xml:21
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:21
+msgid "Average"
+msgstr "Durchschnitt"
+
+#: ../language/_XMLforPoedit/listquest.xml:22
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:22
+msgid "Easy"
+msgstr "Einfach"
+
+#: ../language/_XMLforPoedit/listquest.xml:23
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:23
 #, fuzzy
 msgid "Basic"
 msgstr "Basic-Niveau"

@@ -1,0 +1,9 @@
+<?php
+$title = $this->translate('Categories');
+?>
+<h3>See all categories</h3>
+<?php echo $this->categories($categories);?>
+
+<a href="<?php echo $this->url('lrnlcategory/create'); ?>">
+    Add new category
+</a>

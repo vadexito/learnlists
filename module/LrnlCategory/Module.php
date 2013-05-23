@@ -1,11 +1,10 @@
 <?php
 
-namespace VxoReview;
+namespace LrnlCategory;
 
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\FormElementProviderInterface;
 
@@ -40,24 +39,28 @@ class Module implements
     {
         return [
             'factories' => [
-                'vxo-review-service' => 'VxoReview\Service\ReviewServiceFactory',
-                'vxoreview_module_options' => function ($sm) {
+                'lrnl-category-service' => 'LrnlCategory\Service\CategoryServiceFactory',
+                'lrnlcategory_module_options' => function ($sm) {
                     $config = $sm->get('Config');
-                    return new Options\ModuleOptions(isset($config['vxo-review']) ? $config['vxo-review'] : []);
+                    return new Options\ModuleOptions(isset($config['lrnl-category']) ? $config['lrnl-category'] : []);
                 },
             ],
             'aliases' => [
-                'review-service' => 'vxo-review-service',
+                'category-service' => 'lrnl-category-service',
             ],
         ];
     }
     
+
+
     public function getFormElementConfig()
     {
         return [
             'factories' => [
-                'review-create-form' => 'VxoReview\Form\ReviewCreateFormFactory',
-                'review-edit-form' => 'VxoReview\Form\ReviewEditFormFactory',
+                'category-create-form' => 'LrnlCategory\Form\CategoryCreateFormFactory',
+                'category-edit-form' => 'LrnlCategory\Form\CategoryEditFormFactory',
+                'category-changepicture-form' => 'LrnlCategory\Form\CategoryChangePictureFormFactory',
+                'LrnlCategoryFieldset' => 'LrnlCategory\Form\Fieldset\CategoryFieldsetFactory',
             ],
         ];
     }

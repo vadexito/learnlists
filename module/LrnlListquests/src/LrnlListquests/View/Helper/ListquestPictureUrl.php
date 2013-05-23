@@ -14,20 +14,25 @@ class ListquestPictureUrl extends AbstractHelper
     
     protected $options;
     
+    protected $fileBankService;
+    
     public function __invoke(Listquest $listquest = NULL)
     {
         if ($listquest === NULL){
             return $this;
         }
         if ($listquest->getPictureId() &&
-            $this->getView()->fileBank()->getFileById($listquest->getPictureId())->getUrl()){
-            return $this->getView()->fileBank()->getFileById($listquest->getPictureId())->getUrl();
+            $this->getFileBankService()->getFileById($listquest->getPictureId())->getUrl()){
+            return $this->getFileBankService()->getFileById($listquest->getPictureId())->getUrl();
         }        
         return $this->getCategoryUrl($listquest->getCategory());
     }
     
     public function getCategoryUrl($category)
     {
+        return $this->getFileBankService()->getFileById(54)->getUrl();
+        
+        
         $category = 'French';
         $dirCategoryThumbnail = $this->getCategoryPictureDirectory();            
         if ($category){
@@ -41,16 +46,17 @@ class ListquestPictureUrl extends AbstractHelper
         return $dirCategoryThumbnail.'empty.jpg';
     }
     
-    public function setCategoryPictureDirectory($categoryPictureDirectory)
-    {
-        $this->categoryPictureDirectory = $categoryPictureDirectory;
+    public function getFileBankService() {
+        return $this->fileBank;
+    }
+
+    /**
+     * Set FileBank service.
+     *
+     * @param $service
+     */
+    public function setFileBankService($fileBank) {
+        $this->fileBank = $fileBank;
         return $this;
     }
-    
-    public function getCategoryPictureDirectory()
-    {
-        return $this->categoryPictureDirectory;
-    }
-    
-    
 }

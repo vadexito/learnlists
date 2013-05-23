@@ -9,7 +9,7 @@ use WebinoImageThumb\Module as Thumbnailer;
 use LrnlListquests\Exception\HydratorException;
 
 
-class Picture implements StrategyInterface
+class PictureHydratorStrategy implements StrategyInterface
 {
     protected $_fileBankService;
     protected $_thumbnailer;
@@ -37,14 +37,12 @@ class Picture implements StrategyInterface
                 throw new HydratorException('The value from the form should have a name field for the file');
             }
             
-            
             $name = $value['name'];
             $dir = $this->options->getTmpPictureUploadDir();
             $pictureName = $dir.$name;
             $thumbnailName = $dir.'thumb'.$name;
             
-            $fileBank = $this->getFileBankService();
-            
+            $fileBank = $this->getFileBankService();            
             $thumb = $this->getThumbnailer()->create($pictureName,[]);
             $thumb->resize(114,70); 
             $thumb->save($thumbnailName);

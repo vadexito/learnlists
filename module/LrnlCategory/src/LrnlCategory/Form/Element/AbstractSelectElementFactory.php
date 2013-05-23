@@ -9,9 +9,9 @@ class AbstractSelectElementFactory implements AbstractFactoryInterface
 {
     
     protected $_services = [
-        'Category' => 'LrnlListquests\Form\Element\Category',
-        'Level' => 'LrnlListquests\Form\Element\Level',
-        'Language' => 'LrnlListquests\Form\Element\Language',
+        'Category' => '\LrnlListquests\Form\Element\Category',
+        'Level' => '\LrnlListquests\Form\Element\Level',
+        'Language' => '\LrnlListquests\Form\Element\Language',
     ];
     
     public function canCreateServiceWithName(

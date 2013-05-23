@@ -1,6 +1,6 @@
 <?php
 
-namespace VxoReview\Exception;
+namespace LrnlCategory\Exception;
 
 class InvalidArgumentException extends \InvalidArgumentException
 {
