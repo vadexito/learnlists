@@ -1,11 +1,11 @@
 <?php
 
-namespace LrnlListquests\Filter\File;
+namespace VxoUtils\Filter\File;
 
 use Zend\Filter\PregReplace;
 
 
-class LowerAlnum extends PregReplace
+class AlnumStrictFileFilter extends PregReplace
 {
     public function __construct($options = null)
     {

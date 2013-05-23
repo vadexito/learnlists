@@ -33,4 +33,22 @@ class CategoryService extends AbstractDoctrineEntityService
         
         return parent::update($category);
     }
+
+    /**
+     * fetch categories by depth
+     * 
+     * @param mixed $depths int || array
+     * @param array $orderBy in an array ['property' => 'ASC'||'DESC']
+     * @param integer $limit
+     * @param type $offset
+     * @return type array
+     * @throws InvalidArgumentException
+     */
+    public function fetchByDepth($depth,array $orderBy = null, $limit = null, $offset = null)
+    {
+        if (!is_int($depth) && !is_array($depth)){
+            throw new InvalidArgumentException('The depth should be an integer or an array.');
+        }        
+        return $this->getRepository()->findBy(['depth' => $depth],$orderBy,$limit,$offset);
+    }
 }

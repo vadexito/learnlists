@@ -3,7 +3,7 @@ use DluTwBootstrap\Form\FormUtil;
 
 $formType = FormUtil::FORM_TYPE_VERTICAL;
 
-$title = 'Change picture of a category';
+$title = 'Change picture for the category: '.$categoryName;
 $form->setAttribute('action', $this->url('lrnlcategory/editpicture', ['id' => $id]));
 $form->prepare();
 ?>

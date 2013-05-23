@@ -30,20 +30,18 @@ class ListquestPictureUrl extends AbstractHelper
     
     public function getCategoryUrl($category)
     {
-        return $this->getFileBankService()->getFileById(54)->getUrl();
-        
-        
-        $category = 'French';
-        $dirCategoryThumbnail = $this->getCategoryPictureDirectory();            
-        if ($category){
-            $file = $dirCategoryThumbnail
-                . $this->getView()->escapeHtml($category)
-                .'.jpg';
-            if (file_exists('./module/Application'.$file)){
-                return $file;
-            }
+        $pictureId = $category->getPictureId();
+        if ($pictureId && 
+            $this->getFileBankService()->getFileById($pictureId)->getUrl()){
+            return $this->getFileBankService()->getFileById($pictureId)->getUrl();
         }
-        return $dirCategoryThumbnail.'empty.jpg';
+        
+        $empty = $this->getFileBankService()->getFilesByKeywords(['category','empty']);
+        if (count($empty)>0){
+            return $empty[0]->getUrl();
+        } else {
+            return '';
+        }
     }
     
     public function getFileBankService() {

@@ -26,7 +26,7 @@ class ListquestController extends AbstractActionController
         
         return [
             'lists' => $this->getListquestService()->fetchAllSortBy('questions'),
-            'categories'=> $this->getCategoryService()->fetchAll(),
+            'categories'=> $this->getCategoryService()->fetchByDepth([1,2]),
             'searchForm' => $searchForm
         ];
     }

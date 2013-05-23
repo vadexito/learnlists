@@ -78,6 +78,7 @@ class CategoryController extends AbstractActionController
         }
         return [
             'id' => $id,
+            'categoryName' => $category->getName(),
             'form' => $form,
         ];
         

@@ -18,7 +18,7 @@ class Picture extends FileInput
                 'min' => '1kB',
                 'max' => '0.5MB'
             ]));
-        
+        $this->getFilterChain()->attachByName('filerenamealnumstrict');
         $this->getFilterChain()->attachByName(
             'filerenameupload',
             [

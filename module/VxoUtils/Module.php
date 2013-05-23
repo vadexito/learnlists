@@ -5,17 +5,13 @@ namespace VxoUtils;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
-use Zend\ModuleManager\Feature\FormElementProviderInterface;
+use Zend\ModuleManager\Feature\FilterProviderInterface;
 
 
 class Module implements 
     AutoloaderProviderInterface,
     ConfigProviderInterface,
-    ViewHelperProviderInterface,
-    ServiceProviderInterface,
-    FormElementProviderInterface
+    FilterProviderInterface   
 {
     public function getConfig()
     {
@@ -36,44 +32,11 @@ class Module implements
         ];
     }
     
-    
-    public function getServiceConfig()
+    public function getFilterConfig()
     {
         return [
-            'factories' => [
-                'vxo-review-service' => 'VxoReview\Service\ReviewServiceFactory',
-                'vxoreview_module_options' => function ($sm) {
-                    $config = $sm->get('Config');
-                    return new Options\ModuleOptions(isset($config['vxo-review']) ? $config['vxo-review'] : []);
-                },
-            ],
-            'aliases' => [
-                'review-service' => 'vxo-review-service',
-            ],
-        ];
-    }
-    
-    public function getViewHelperConfig()
-    {
-        return [
-            'factories' => [
-                'vxoreview' => function ($sm) {
-                    $config = $sm->getServiceLocator()
-                                 ->get('vxoreview_module_options');
-                    $viewHelper = new View\Helper\VxoReview();
-                    $viewHelper->setOptions($config);
-                    return $viewHelper;
-                },
-            ],
-        ];
-    }
-
-    public function getFormElementConfig()
-    {
-        return [
-            'factories' => [
-                'review-create-form' => 'VxoReview\Form\ReviewCreateFormFactory',
-                'review-edit-form' => 'VxoReview\Form\ReviewEditFormFactory',
+            'invokables' => [
+                'filerenamealnumstrict' => 'VxoUtils\Filter\File\AlnumStrictFileFilter',
             ],
         ];
     }

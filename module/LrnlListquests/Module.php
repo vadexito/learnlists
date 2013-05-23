@@ -13,7 +13,6 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 use LrnlListquests\Form\EditQuestionForm;
 use LrnlListquests\Form\ChangePictureForm;
-use LrnlListquests\HydratorStrategy\Picture as PictureStrategy;
 use LrnlListquests\InputFilter\Picture as PictureInputFilter;
 use LrnlListquests\Form\Fieldset\PictureFieldset;
 
