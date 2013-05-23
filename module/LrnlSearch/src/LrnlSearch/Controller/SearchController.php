@@ -21,6 +21,7 @@ class SearchController extends AbstractActionController
         $category = $this->params()->fromQuery('category',NULL);
         $searchForm->setData(['search' => $search,'category' => $category]);
         
+        
         //init results for main search
         $hits = $this->getSearchService()->getResultsFromQuery($queryData,[
             'name' => 'questionNb',

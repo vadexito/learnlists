@@ -2,7 +2,6 @@
 
 namespace LrnlListquests\Service;
 
-use DoctrineModule\Persistence\ProvidesObjectManager;
 use Doctrine\Common\Persistence\ObjectManager;
 use LrnlListquests\Entity\Listquest;
 use ZfcUser\Entity\UserInterface;
@@ -10,27 +9,18 @@ use LrnlListquests\Options\ModuleOptions;
 use LrnlListquests\Exception\ServiceException;
 use ReflectionClass;
 use DateTime;
+use Application\Service\AbstractDoctrineEntityService;
 
-class ListquestService
+class ListquestService extends AbstractDoctrineEntityService
 {
-    protected $repository;    
-    protected $user;    
-    protected $options;
-    
-    use ProvidesObjectManager;
+    protected $user;
     
     public function __construct(ObjectManager $om,
         UserInterface $user = NULL, ModuleOptions $options)
     {
-        $this->setObjectManager($om);
-        $this->repository = $om->getRepository($options->getListquestEntityClass());
+        parent::__construct($om,$options->getListquestEntityClass());        
         $this->user = $user;
-        $this->options = $options;        
-    }
-    
-    public function fetchAll()
-    {
-        return $this->repository->findAll();
+               
     }
     
     /**
@@ -60,36 +50,16 @@ class ListquestService
             return  $diff > 0 ? -1 : 1;
         };
         
-        $lists = $this->repository->findAll();
+        $lists = $this->fetchAll();
         usort($lists,$sortCallable);
         
         return $lists;
     }
     
-    public function fetchById($id)
-    {
-        $listquestClass = $this->options->getListquestEntityClass();
-        return $this->getObjectManager()->find($listquestClass,$id);
-    }
-    
     public function fetchByIds(array $ids)
     {
-        if (empty($ids)){
-            return [];
-        }
-        
-        $qb = $this->repository->createQueryBuilder('l');
-        $results = $qb; 
-        foreach ($ids as $id){
-            $orContent[] = $qb->expr()->eq('l.id', ':'.'listquestId'.$id);
-            $results = $results->setParameter('listquestId'.$id,$id);
-        }
-        $or = call_user_func_array([$qb->expr(),'orX'],$orContent);        
-        $results = $results->where($or)->getQuery()->getResult();        
-        return $results;
+        return $this->getRepository()->findById($ids);
     }
-    
-    
     
     public function insertListquest(Listquest $listquest)
     {
@@ -99,35 +69,22 @@ class ListquestService
             $listquest->author = $this->user;
         }
         
-        $this->getObjectManager()->persist($listquest);
-        $this->getObjectManager()->flush();
-        
-        return $listquest->id;
+        return parent::insert($listquest);
     }
     
     public function updateListquest(Listquest $listquest)
     {
-        $this->getObjectManager()->flush();
+        return $this->update($listquest);
     }
     
-    /**
-     * Delete listquest if it exists and return true, return false otherwise
-     * @param type $listquestId
-     */
     public function deleteListquest($listquestId)
     {
-        $listquest = $this->repository->find($listquestId);
-        if ($listquest){
-            $this->getObjectManager()->remove($listquest);
-            $this->getObjectManager()->flush();
-            return true;
-        }
-        return false;
+        return delete($listquestId);
     }
     
     public function getCount()
     {
-        $qb = $this->repository->createQueryBuilder('l');
+        $qb = $this->getRepository()->createQueryBuilder('l');
         $count = $qb->select($qb->expr()->count('l'))
                     ->getQuery()
                     ->getSingleScalarResult();
@@ -207,7 +164,7 @@ class ListquestService
     
     public function checkIsListquestProperty($property)
     {
-        $listquestClass = $this->options->getListquestEntityClass();
+        $listquestClass = $this->getEntityClass();
         $reflectionClass = new ReflectionClass($listquestClass);
         if (!$reflectionClass->hasProperty($property)){
             throw new ServiceException('The Class '.$listquestClass. 'has no '.$property. 'property.');

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-23 11:13+0100\n"
-"PO-Revision-Date: 2013-05-23 11:14+0100\n"
+"POT-Creation-Date: 2013-05-23 23:43+0100\n"
+"PO-Revision-Date: 2013-05-23 23:44+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -17,6 +17,44 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: ../../../module\n"
 "X-Poedit-SearchPath-2: ../../../config\n"
+
+#: ../../../module/LrnlCategory/src/LrnlCategory/Controller/CategoryController.php:64
+msgid "The picture has been successfully changed"
+msgstr ""
+
+#: ../../../module/LrnlCategory/src/LrnlCategory/Controller/CategoryController.php:69
+#, fuzzy
+msgid "The picture could not be changed. Please try again."
+msgstr "Es gab Fehler. Bitte erneut versuchen"
+
+#: ../../../module/LrnlCategory/src/LrnlCategory/Controller/CategoryController.php:100
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:139
+#: ../../../module/VxoReview/src/VxoReview/Controller/ReviewController.php:52
+msgid "Save"
+msgstr "Speichern"
+
+#: ../../../module/LrnlCategory/src/LrnlCategory/Form/CategoryCreateFormFactory.php:61
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:44
+#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:118
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:50
+msgid "Name (unique) for the category"
+msgstr ""
+
+#: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:65
+msgid "Description for the category"
+msgstr ""
+
+#: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:80
+msgid "Depth of the category in the hierarchie (1 are the highest parents"
+msgstr ""
+
+#: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:117
+#, fuzzy
+msgid "Choose a picture"
+msgstr "Bild wechseln?"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:16
 msgid "Max point!"
@@ -169,85 +207,6 @@ msgid_plural "points"
 msgstr[0] "Punkt"
 msgstr[1] "Punkte"
 
-#: ../../../module/LrnlListquests/config/module.config.php:17
-msgid "Foreign Languages - German"
-msgstr "Fremdsprache - Deutsch"
-
-#: ../../../module/LrnlListquests/config/module.config.php:18
-msgid "Foreign Languages - French"
-msgstr "Fremdsprache - Franzözisch"
-
-#: ../../../module/LrnlListquests/config/module.config.php:23
-msgid "Top level"
-msgstr "Top Niveau"
-
-#: ../../../module/LrnlListquests/config/module.config.php:24
-msgid "Very high level"
-msgstr "Sehr hohes Niveau"
-
-#: ../../../module/LrnlListquests/config/module.config.php:25
-msgid "High level"
-msgstr "Hohes Niveau"
-
-#: ../../../module/LrnlListquests/config/module.config.php:26
-msgid "Good level"
-msgstr "Gutes Niveau"
-
-#: ../../../module/LrnlListquests/config/module.config.php:27
-msgid "Average plus level"
-msgstr "Durchschnitt + Niveau"
-
-#: ../../../module/LrnlListquests/config/module.config.php:28
-msgid "Average level"
-msgstr "Durchschnittsniveau"
-
-#: ../../../module/LrnlListquests/config/module.config.php:29
-msgid "Basic level"
-msgstr "Basic-Niveau"
-
-#: ../../../module/LrnlListquests/config/module.config.php:30
-msgid "Elementary level"
-msgstr "Basis-Niveau"
-
-#: ../../../module/LrnlListquests/config/module.config.php:35
-#: ../../../config/autoload/global/vxolocale.global.php:15
-#: ../language/_XMLforPoedit/listquest.xml:5
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:5
-msgid "English"
-msgstr "Englisch"
-
-#: ../../../module/LrnlListquests/config/module.config.php:36
-#: ../../../config/autoload/global/vxolocale.global.php:19
-#: ../language/_XMLforPoedit/listquest.xml:6
-#: ../language/_XMLforPoedit/listquest.xml:26
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:6
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:26
-msgid "German"
-msgstr "Deutsch"
-
-#: ../../../module/LrnlListquests/config/module.config.php:37
-#: ../../../config/autoload/global/vxolocale.global.php:10
-#: ../language/_XMLforPoedit/listquest.xml:4
-#: ../language/_XMLforPoedit/listquest.xml:27
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:4
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:27
-msgid "French"
-msgstr "Französisch"
-
-#: ../../../module/LrnlListquests/config/module.config.php:38
-#: ../../../config/autoload/global/vxolocale.global.php:23
-#: ../language/_XMLforPoedit/listquest.xml:7
-#: ../language/_XMLforPoedit/listquest.xml:28
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:7
-#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:28
-msgid "Polish"
-msgstr "Polnisch"
-
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:44
-#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:118
-msgid "Add"
-msgstr "Hinzufügen"
-
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:103
 msgid "Your picture has been successfully changed"
 msgstr ""
@@ -255,11 +214,6 @@ msgstr ""
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:107
 msgid "Your picture could not be changed. Please try again."
 msgstr ""
-
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:139
-#: ../../../module/VxoReview/src/VxoReview/Controller/ReviewController.php:52
-msgid "Save"
-msgstr "Speichern"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/QuestionController.php:29
 msgid "Edit"
@@ -271,7 +225,7 @@ msgstr "Bearbeiten"
 msgid "Check"
 msgstr "Anworten"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Picture.php:13
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Element/Picture.php:12
 msgid "Picture for your list"
 msgstr ""
 
@@ -327,6 +281,7 @@ msgid "Search"
 msgstr "Suchen"
 
 #: ../../../module/LrnlSearch/src/LrnlSearch/View/Helper/ListSearchBar.php:34
+#: ../../../module/LrnlCategory/view/lrnl-category/category/index.phtml:2
 msgid "Categories"
 msgstr "Kategorien"
 
@@ -445,34 +400,64 @@ msgstr "Benutzerprofil"
 msgid "Log out"
 msgstr "Abmelden"
 
-#: ../../../config/autoload/global/navigation.global.php:114
+#: ../../../config/autoload/global/navigation.global.php:118
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:2
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: ../../../config/autoload/global/navigation.global.php:119
+#: ../../../config/autoload/global/navigation.global.php:123
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:2
 msgid "How to create a list"
 msgstr "Wie eine Liste erstellt wird."
 
-#: ../../../config/autoload/global/navigation.global.php:124
+#: ../../../config/autoload/global/navigation.global.php:128
 msgid "Recommandation for new lists"
 msgstr "Empfehlungen für die Erstellung der Listen"
 
-#: ../../../config/autoload/global/navigation.global.php:129
+#: ../../../config/autoload/global/navigation.global.php:133
 msgid "How do I learn?"
 msgstr "Wie lernt man?"
 
-#: ../../../config/autoload/global/navigation.global.php:134
+#: ../../../config/autoload/global/navigation.global.php:138
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:2
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:126
 msgid "How is the score calculated?"
 msgstr "Wie wird der Punktestand berechnet ?"
 
-#: ../../../config/autoload/global/navigation.global.php:139
+#: ../../../config/autoload/global/navigation.global.php:143
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/faq.phtml:2
 msgid "FAQ"
 msgstr "FAQ"
+
+#: ../../../config/autoload/global/vxolocale.global.php:10
+#: ../language/_XMLforPoedit/listquest.xml:4
+#: ../language/_XMLforPoedit/listquest.xml:27
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:4
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:27
+msgid "French"
+msgstr "Französisch"
+
+#: ../../../config/autoload/global/vxolocale.global.php:15
+#: ../language/_XMLforPoedit/listquest.xml:5
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:5
+msgid "English"
+msgstr "Englisch"
+
+#: ../../../config/autoload/global/vxolocale.global.php:19
+#: ../language/_XMLforPoedit/listquest.xml:6
+#: ../language/_XMLforPoedit/listquest.xml:26
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:6
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:26
+msgid "German"
+msgstr "Deutsch"
+
+#: ../../../config/autoload/global/vxolocale.global.php:23
+#: ../language/_XMLforPoedit/listquest.xml:7
+#: ../language/_XMLforPoedit/listquest.xml:28
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:7
+#: ../../../module/Application/language/_XMLforPoedit/listquest.xml:28
+msgid "Polish"
+msgstr "Polnisch"
 
 #: ../view/application/static-pages/about.phtml:2
 #: ../view/layout/footer.phtml:20
@@ -926,6 +911,36 @@ msgstr "Danke!"
 #: ../../../module/Application/view/phly-contact/contact/thank-you.phtml:9
 msgid "Your message has been sent!"
 msgstr "Die Nachricht wurde abgeschickt!"
+
+#: ../../../module/LrnlCategory/view/lrnl-category/category/changepicture.phtml:14
+#: ../../../module/LrnlCategory/view/lrnl-category/category/create.phtml:10
+#: ../../../module/LrnlCategory/view/lrnl-category/category/edit.phtml:10
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:18
+#: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:13
+#: ../../../module/VxoReview/view/vxo-review/review/create.phtml:10
+#: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:10
+msgid "There were some errors. Please try again!"
+msgstr "Es gab Fehler. Bitte erneut versuchen"
+
+#: ../../../module/LrnlCategory/view/lrnl-category/category/create.phtml:2
+#: ../../../module/VxoReview/view/vxo-review/review/create.phtml:2
+msgid "We need your opinion!"
+msgstr ""
+
+#: ../../../module/LrnlCategory/view/lrnl-category/category/delete.phtml:2
+#: ../../../module/VxoReview/view/vxo-review/review/delete.phtml:2
+msgid "Delete review"
+msgstr "Bewertung löschen"
+
+#: ../../../module/LrnlCategory/view/lrnl-category/category/delete.phtml:8
+#: ../../../module/VxoReview/view/vxo-review/review/delete.phtml:8
+msgid "Are you sure you want to delete the review"
+msgstr "Sind Sie sicher, dass Sie die Bewertung löschen möchten?"
+
+#: ../../../module/LrnlCategory/view/lrnl-category/category/edit.phtml:2
+#: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:2
+msgid "Edit your review"
+msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/about_our_method.phtml:2
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:22
@@ -1646,13 +1661,6 @@ msgstr "Einige beliebte Kategorien unserer Auswahl"
 msgid "Access directly any of our quiz-list:"
 msgstr "Direkt zu einem Quiz gehen"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:18
-#: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:13
-#: ../../../module/VxoReview/view/vxo-review/review/create.phtml:10
-#: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:10
-msgid "There were some errors. Please try again!"
-msgstr "Es gab Fehler. Bitte erneut versuchen"
-
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:40
 #, php-format
 msgid "%sChange</a> your current picture?"
@@ -1889,22 +1897,6 @@ msgstr "Komplettes Angebot auswählen"
 msgid "The quizes that match your needs."
 msgstr "Die gesuchten Quiz"
 
-#: ../../../module/VxoReview/view/vxo-review/review/create.phtml:2
-msgid "We need your opinion!"
-msgstr ""
-
-#: ../../../module/VxoReview/view/vxo-review/review/delete.phtml:2
-msgid "Delete review"
-msgstr "Bewertung löschen"
-
-#: ../../../module/VxoReview/view/vxo-review/review/delete.phtml:8
-msgid "Are you sure you want to delete the review"
-msgstr "Sind Sie sicher, dass Sie die Bewertung löschen möchten?"
-
-#: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:2
-msgid "Edit your review"
-msgstr ""
-
 #: ../language/_XMLforPoedit/listquest.xml:8
 #: ../language/_XMLforPoedit/listquest.xml:16
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:8
@@ -1977,6 +1969,36 @@ msgstr "Benutzer"
 #: ../../../module/Application/language/_XMLforPoedit/user.xml:8
 msgid "premium"
 msgstr "Premium"
+
+#~ msgid "Foreign Languages - German"
+#~ msgstr "Fremdsprache - Deutsch"
+
+#~ msgid "Foreign Languages - French"
+#~ msgstr "Fremdsprache - Franzözisch"
+
+#~ msgid "Top level"
+#~ msgstr "Top Niveau"
+
+#~ msgid "Very high level"
+#~ msgstr "Sehr hohes Niveau"
+
+#~ msgid "High level"
+#~ msgstr "Hohes Niveau"
+
+#~ msgid "Good level"
+#~ msgstr "Gutes Niveau"
+
+#~ msgid "Average plus level"
+#~ msgstr "Durchschnitt + Niveau"
+
+#~ msgid "Average level"
+#~ msgstr "Durchschnittsniveau"
+
+#~ msgid "Basic level"
+#~ msgstr "Basic-Niveau"
+
+#~ msgid "Elementary level"
+#~ msgstr "Basis-Niveau"
 
 #~ msgid "LearnQuiz"
 #~ msgstr "LearnQuiz"

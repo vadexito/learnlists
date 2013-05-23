@@ -103,7 +103,7 @@ class LuceneSearchService implements SearchServiceInterface
 
             //if it is a filter from the side
             $filterForm = $this->getFilterConfig();
-            $type = NULL;
+            $type = NULL;            
             foreach ($filterForm as $filterElement){
                 if ($filterElement['name'] == $filter){
                     $type = $filterElement['options']['filterType'];
@@ -112,7 +112,7 @@ class LuceneSearchService implements SearchServiceInterface
 
             switch ($type){
                 case FiltersForm::$CHECKBOX_FACET_SEARCH :                       
-                case FiltersForm::$CHECKBOX_FACET_SELECT :                       
+                case FiltersForm::$CHECKBOX_FACET_SELECT :               
                     $this->addQueryForTerms($query,$values,$filter);                        
                     break;
                 case FiltersForm::$RANGE :
@@ -261,7 +261,7 @@ class LuceneSearchService implements SearchServiceInterface
         foreach ($values as $value){
             $value = (string)strtolower(trim($value));
             $words = explode(' ',$value);
-            if (count($words) > 0){
+            if (count($words) > 1){
                 $newQuery->addSubquery(new Query\Phrase($words));
             } else {
                 $term = new Index\Term($value,$filter);
