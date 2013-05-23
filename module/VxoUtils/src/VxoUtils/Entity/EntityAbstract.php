@@ -1,6 +1,6 @@
 <?php
 
-namespace LrnlListquests\Entity;
+namespace VxoUtils\Entity;
 
 abstract class EntityAbstract
 {

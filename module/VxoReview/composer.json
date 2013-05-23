@@ -1,0 +1,26 @@
+{
+    "name": "vxo/vxo-review",
+    "description": "A review manager module for ZF2. Supports only Doctrine2.",
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "review",
+    ],
+    "authors": [
+        {
+            "name": "Vadexito"
+        }
+    ],        
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zendframework": "~2.2"
+    },
+    "autoload": {
+        "psr-0": {
+            "VxoReview": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}

@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use DateTime;
 use LrnlListquests\Entity\Listquest;
 use ZfcUser\Entity\UserInterface;
-
+use VxoUtils\Entity\EntityAbstract;
 
 class Round extends EntityAbstract
 {

@@ -36,6 +36,7 @@ return [
         'ZF2FileUploadExamples',
         'Application',  
         'PhlySimplePage',
+        'VxoUtils', 
         'VxoBraintree', 
         'VxoOffers', 
         'VxoDisqus', 

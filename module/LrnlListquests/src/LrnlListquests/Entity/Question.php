@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\Collection;
 
 use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Entity\Questionresult;
-
+use VxoUtils\Entity\EntityAbstract;
 /**
  *
  * @property int $id

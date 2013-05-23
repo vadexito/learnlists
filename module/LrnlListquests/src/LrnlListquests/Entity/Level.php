@@ -6,7 +6,7 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;   
 use Zend\InputFilter\InputFilterInterface; 
 use LrnlListquests\Entity\Provider\ProvidesNameField;
-
+use VxoUtils\Entity\EntityAbstract;
 
 class Level extends EntityAbstract implements 
     InputFilterAwareInterface

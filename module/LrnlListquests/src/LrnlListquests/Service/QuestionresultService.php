@@ -8,8 +8,6 @@ use LrnlListquests\Exception\ServiceException;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use LrnlListquests\Options\ModuleOptions;
 
-use LrnlListquests\Entity\Questionresult;
-
 class QuestionresultService
 {
     protected $repository;

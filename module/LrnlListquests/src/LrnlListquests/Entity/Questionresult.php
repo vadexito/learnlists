@@ -1,10 +1,9 @@
 <?php
 namespace LrnlListquests\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use LrnlListquests\Entity\Round;
 use LrnlListquests\Entity\Question;
+use VxoUtils\Entity\EntityAbstract;
 
 class Questionresult extends EntityAbstract
 {

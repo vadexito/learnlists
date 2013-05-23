@@ -9,7 +9,8 @@ use Application\Service\AbstractDoctrineEntityService;
 use VxoReview\Exception\InvalidArgumentException;
 use DateTime;
 
-class ReviewService extends AbstractDoctrineEntityService
+class ReviewService extends AbstractDoctrineEntityService 
+    implements ReviewServiceInterface
 {
     protected $user;
     
@@ -42,5 +43,11 @@ class ReviewService extends AbstractDoctrineEntityService
         }
         
         return parent::update($review);
+    }
+    
+    public function fetchByReviewedItem($reviewedItemId)
+    {
+        $reviews = $this->getRepository()->findBy(['reviewedItem' => $reviewedItemId]);        
+        return $reviews;
     }
 }

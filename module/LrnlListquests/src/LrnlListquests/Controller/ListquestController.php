@@ -7,6 +7,7 @@ use LrnlListquests\Entity\Listquest;
 use LrnlListquests\Provider\ProvidesListquestService;
 use LrnlSearch\Provider\ProvidesSearchService;
 use LrnlListquests\Provider\ProvidesCategoryService;
+use VxoReview\Provider\ProvidesReviewService;
 use Zend\Http\PhpEnvironment\Response;
 
 
@@ -17,6 +18,7 @@ class ListquestController extends AbstractActionController
     use ProvidesListquestService;
     use ProvidesSearchService;
     use ProvidesCategoryService;
+    use ProvidesReviewService;
     
     public function homeAction()
     {
@@ -27,6 +29,13 @@ class ListquestController extends AbstractActionController
             'categories'=> $this->getCategoryService()->fetchAll(),
             'searchForm' => $searchForm
         ];
+    }
+    
+    public function showAction()
+    {
+        $listId = (int) $this->params()->fromRoute('id', 0);        
+        $reviews = $this->getReviewService()->fetchByReviewedItem($listId);        
+        return ['reviews' => $reviews];
     }
     
     public function addAction()

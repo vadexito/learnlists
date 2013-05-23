@@ -15,6 +15,7 @@ use LrnlListquests\Entity\Question;
 use LrnlListquests\Entity\Level;
 use LrnlListquests\Entity\Category;
 use LrnlListquests\Entity\Language;
+use VxoUtils\Entity\EntityAbstract;
 
 use DateTime;
 

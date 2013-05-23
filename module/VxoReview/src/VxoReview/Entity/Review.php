@@ -7,6 +7,7 @@ use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface; 
 use ZfcUser\Entity\UserInterface as User;
 use DateTime;
+use VxoUtils\Entity\EntityAbstract;
 
 
 class Review extends EntityAbstract implements 
