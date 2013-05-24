@@ -35,7 +35,9 @@ class FilterTermFacetFromSelectFieldset extends AbstractFilterFieldset
             // the facet gives the result for this value OR for an another value
             // in the same filter
             $filteredQuery = clone $queryData;
-            $filteredQuery->offsetUnset($this->getName());
+            if($queryData->get($this->getName())){                
+                $filteredQuery->offsetUnset($this->getName());
+            }
             
             $hits = $this->getSearchService()->getResultsFromQuery($filteredQuery);
             foreach ($hits as $hit){

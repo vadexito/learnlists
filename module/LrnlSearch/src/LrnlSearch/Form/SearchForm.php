@@ -3,7 +3,6 @@
 namespace LrnlSearch\Form;
 
 use Zend\Form\Form;
-use LrnlListquests\Form\Element\Category;
 
 class SearchForm extends Form
 {

@@ -20,9 +20,10 @@ class ListSearchBar extends AbstractHelper
         $initialOptions = $category->getValueOptions();
         $valueOptions = [];
         foreach ($initialOptions as $value){
+            
             $valueOptions[] = [
+                'value' => $value['value'].'-'.$value['label'],
                 'label' => $value['label'],
-                'value' => $value['label'],
             ];
         }
         $title = [
