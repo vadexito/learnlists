@@ -30,12 +30,19 @@ class FilterTermFacetFromSelectFieldset extends AbstractFilterFieldset
             $idList = 'all';
         } else {
             $idList = [];
-            $hits = $this->getSearchService()->getResultsFromQuery($queryData);
+            
+            //check if the filter is already in the query so that the number of
+            // the facet gives the result for this value OR for an another value
+            // in the same filter
+            $filteredQuery = clone $queryData;
+            $filteredQuery->offsetUnset($this->getName());
+            
+            $hits = $this->getSearchService()->getResultsFromQuery($filteredQuery);
             foreach ($hits as $hit){
                $idList[] = (int)$hit->listId; 
             }
         }
-
+        
         $facetValues = $this->getListquestService()->getFacet(
             $this->getName(),
             $idList ,
