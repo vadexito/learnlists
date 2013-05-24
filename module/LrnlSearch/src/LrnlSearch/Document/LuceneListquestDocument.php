@@ -30,10 +30,10 @@ class LuceneListquestDocument extends Document implements ListquestDocumentInter
             $this->convertNumToString(count($list->questions))));  
         $this->addField(Field::keyword('docId',$this->convertNumToString($id)));  
         $this->addField(Field::unStored('title',$list->title));  
-        $this->addUnstoredProperty('description');
-        $this->addUnstoredProperty('level');
-        $this->addUnstoredProperty('category');
-        $this->addUnstoredProperty('language');
+        $this->addEntityProperty('description','unstored');
+        $this->addEntityProperty(['level','id'],'keyword');
+        $this->addEntityProperty(['category','id'],'keyword');
+        $this->addEntityProperty(['language','id'],'keyword');
         $this->addField(Field::unStored('author',$list->author->getRoles()[0]->getRoleId())); 
         $this->addField(Field::unStored('authorName',$list->author->getUserName()));
         $this->addField(Field::unIndexed('authorEmail',$list->author->getEmail()));  
@@ -56,10 +56,16 @@ class LuceneListquestDocument extends Document implements ListquestDocumentInter
         return $this;
     }
     
-    public function addUnstoredProperty($property)
+    public function addEntityProperty($properties,$type)
     {
+        $property = $properties;
+        if (is_array($properties)){
+            $subProperty = $property[1];
+            $property = $property[0];
+        }
+        
         $entity = $this->_entity;
-        if (!property_exists($entity,'description')){
+        if (!property_exists($entity,$property)){
            return false;
         }
         $getter = 'get'.ucfirst(strtolower($property));
@@ -67,7 +73,16 @@ class LuceneListquestDocument extends Document implements ListquestDocumentInter
         if (!$value){
             return false;
         }
-        $this->addField(Field::unStored($property,(string)$value));
+        
+        if (is_array($properties)){
+            $value = $value->$subProperty;
+        } else {
+            $value = (string)$value;
+        }
+        if ($type === 'keyword'){
+            $value = $this->convertNumToString($value);
+        }
+        $this->addField(Field::$type($property,$value));
         return true;
     }
     

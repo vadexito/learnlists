@@ -32,43 +32,6 @@ class FiltersForm extends Form
             $optionsSelect[$name] = $name;
         }
         
-//        foreach ($filterConfig as $name => $options){
-//            $optionsSelect[$name] = $name;
-//            switch ($options['type']){
-//                case self::$CHECKBOX_FACET_SEARCH :
-//                    $filter = new FilterTermFacetFieldset($name,$searchService);
-//                    
-//                    $filter->setAttribute('data-filterType',self::$CHECKBOX);
-//                    $filter->setLabel($options['label']);
-//                    $filter->setDefaultValues($options['values']);
-//                    break;
-//                case self::$CHECKBOX_FACET_DATABASE :
-//                    $filter = new FilterTermFacetFieldset($name,$searchService);
-//                    $filter->setAttribute('data-filterType',self::$CHECKBOX);
-//                    $filter->setLabel($options['label']);
-//                    $filter->setDefaultValues($options['values']);
-//                    break;
-//                case self::$RANGE :
-//                    $filter = new Fieldset($name);
-//                    $filter->setAttribute('data-filterType',self::$RANGE);
-//                    $filterElement = new Slider($name);
-//                    $filterElement->setLabel($options['label'])
-//                                  ->setAttributes($options['attributes']);
-//                    $filter->add($filterElement);
-//                    break;
-//                case self::$SEARCH :
-//                    $filter = new Fieldset($name);
-//                    $filter->setAttribute('data-filterType',self::$SEARCH);
-//                    $filterElement = new Search($name);
-//                    $filterElement->setLabel($options['label'])
-//                                  ->setAttributes($options['attributes']);
-//                    $filter->add($filterElement);
-//                    break;
-//                default : 
-//            }
-//            $this->add($filter);
-//        }
-        
         $this->add([
             'name' => 'filters',
             'type' => 'select',

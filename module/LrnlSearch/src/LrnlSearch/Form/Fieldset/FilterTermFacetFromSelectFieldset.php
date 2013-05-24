@@ -43,10 +43,15 @@ class FilterTermFacetFromSelectFieldset extends AbstractFilterFieldset
         );
         
         foreach ($facetValues as $facetValue){ 
-            $term = $facetValue['term'];
+            $term = (string)$facetValue['term'];
+            $name = $term;
+            if (isset($facetValue['termId'])){
+                $termId = (string)$facetValue['termId'];
+                $name = $termId.'-'.$term;
+            }
             if ($term){                
-                $filterElement = new Checkbox($term);
-                $filterElement->setLabel((string)$term);
+                $filterElement = new Checkbox($name);
+                $filterElement->setLabel($term);
                 $filterElement->setAttribute('data-hitNb',$facetValue['count']);
                 $this->add($filterElement);
             }  

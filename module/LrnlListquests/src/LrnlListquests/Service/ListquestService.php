@@ -58,6 +58,10 @@ class ListquestService extends AbstractDoctrineEntityService
     
     public function fetchByIds(array $ids)
     {
+         if (empty($ids)){
+            return [];
+         }
+        
         return $this->getRepository()->findById($ids);
     }
     
@@ -97,7 +101,7 @@ class ListquestService extends AbstractDoctrineEntityService
      * @param type $property
      * @param type $Idlist
      * @param type $values
-     * @return array of array with property term and count
+     * @return array of array with property term, termId and count
      * @throws ServiceException
      */
     public function getFacet($property,$Idlist,array $values)
@@ -139,23 +143,22 @@ class ListquestService extends AbstractDoctrineEntityService
                 }
                     
             }
-            
+            $newValue =  ['count' => $count];
             if (isset($values['targetEntity'])){
-                $method = 'findOneBy'.ucfirst(strtolower($values['values_key']));
                 $entity = $this->getObjectManager()
                              ->getRepository($values['targetEntity'])
-                             ->$method($value);
+                             ->findOneBy([$values['values_key'] => $value]);
                 if (is_object($entity)){
                     $term = $entity->$getterTerm();
-                }                 
+                }
+                $newValue['termId'] = $value;
             } else {
                 $term = $value;
             }   
             
-            $facetValues[]= [
-                'term'  => $term,
-                'count' => $count,
-            ];
+            $newValue['term']=$term;
+            $facetValues[] = $newValue;
+            
         }
         
         return $facetValues;

@@ -112,7 +112,7 @@ class LuceneSearchService implements SearchServiceInterface
 
             switch ($type){
                 case FiltersForm::$CHECKBOX_FACET_SEARCH :                       
-                case FiltersForm::$CHECKBOX_FACET_SELECT :               
+                case FiltersForm::$CHECKBOX_FACET_SELECT :
                     $this->addQueryForTerms($query,$values,$filter);                        
                     break;
                 case FiltersForm::$RANGE :
@@ -247,7 +247,16 @@ class LuceneSearchService implements SearchServiceInterface
         return $this;
     }
     
-    
+    protected function prepareValueForSearch($value)
+    {
+        $pattern = '/^(\d)*-(.*)/';
+        $value =(string)strtolower(trim($value)); 
+        if (preg_match($pattern, $value)){
+            $number = (int)preg_replace($pattern,'$1',$value);
+            $value = $this->convertNumToString($number);
+        } 
+        return $value;
+    }
     protected function addQueryForTerms($query,$values,$filter = NULL,$operator = NULL)
     {
         if (!is_array($values) && !is_string($values)){
@@ -259,7 +268,7 @@ class LuceneSearchService implements SearchServiceInterface
         
         $newQuery = new Query\Boolean();
         foreach ($values as $value){
-            $value = (string)strtolower(trim($value));
+            $value = $this->prepareValueForSearch($value);
             $words = explode(' ',$value);
             if (count($words) > 1){
                 $newQuery->addSubquery(new Query\Phrase($words));
