@@ -3,6 +3,7 @@
 return [
     'modules' => [
         'ZendDeveloperTools',
+        'SlmLocale',
         'ZF2NetteDebug',
         'ZF2PhpSettings',
         'EdpSuperluminal',

@@ -46,6 +46,7 @@
         "evandotpro/edp-superluminal": "dev-master",
         "rhysr/ZF2PhpSettings": "dev-master",
         "leafo/lessphp": "0.3.*@dev",
-        "pusher/pusher-php-server": "dev-serializer"
+        "pusher/pusher-php-server": "dev-serializer",
+        "slm/locale": "dev-master"
     }
 }
