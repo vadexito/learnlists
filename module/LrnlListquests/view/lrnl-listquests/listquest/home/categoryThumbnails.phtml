@@ -8,7 +8,7 @@ foreach ($categories as $category) {
     $imgUrl = $this->listquestPictureUrl()->getCategoryUrl($category);
     $imgAlt = ucfirst($this->escapeHtml($category));
     $href = $this->url('lrnl-search',[],['query' => [
-        'category' => $category,
+        'category' => $category->getName(),
     ]]);
     $titleText = ucfirst($this->escapeHtml($category));
     $closingTags = '</ul></div>'."\n";
