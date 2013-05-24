@@ -13,7 +13,9 @@ class PictureInputFilterFactory implements FactoryInterface
     {
         $options = $services->get('lrnlcategory_module_options');
         $tempDir = $options->getTmpPictureUploadDir();
-        $service = new PictureInputFilter($tempDir,'pictureId');
+        $filterPluginManager = $services->get('FilterManager');
+        
+        $service = new PictureInputFilter($filterPluginManager,$tempDir,'pictureId');
         
         return $service;
     }

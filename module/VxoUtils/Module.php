@@ -5,13 +5,11 @@ namespace VxoUtils;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\FilterProviderInterface;
 
 
 class Module implements 
     AutoloaderProviderInterface,
-    ConfigProviderInterface,
-    FilterProviderInterface   
+    ConfigProviderInterface  
 {
     public function getConfig()
     {
@@ -28,15 +26,6 @@ class Module implements
                 'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ],
-            ],
-        ];
-    }
-    
-    public function getFilterConfig()
-    {
-        return [
-            'invokables' => [
-                'filerenamealnumstrict' => 'VxoUtils\Filter\File\AlnumStrictFileFilter',
             ],
         ];
     }
