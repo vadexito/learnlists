@@ -1,5 +1,5 @@
 <?php
-namespace LrnlCategory\InputFilter;
+namespace Application\InputFilter;
 
 use Zend\InputFilter\FileInput;
 use Zend\Validator\File\IsImage;
@@ -7,7 +7,7 @@ use Zend\Validator\File\Size;
 
 class PictureInputFilter extends FileInput
 {
-    public function __construct($name = 'picture',$targetUpload)
+    public function __construct($targetUpload,$name = 'picture')
     {
         parent::__construct($name);
         

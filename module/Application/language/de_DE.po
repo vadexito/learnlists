@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-23 23:43+0100\n"
-"PO-Revision-Date: 2013-05-23 23:44+0100\n"
+"POT-Creation-Date: 2013-05-24 09:16+0100\n"
+"PO-Revision-Date: 2013-05-24 09:17+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -52,9 +52,8 @@ msgid "Depth of the category in the hierarchie (1 are the highest parents"
 msgstr ""
 
 #: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:117
-#, fuzzy
 msgid "Choose a picture"
-msgstr "Bild wechseln?"
+msgstr "Ein Bild auswählen"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/Comments.php:16
 msgid "Max point!"

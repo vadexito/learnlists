@@ -121,7 +121,7 @@ class CategoryFieldsetFactory implements FactoryInterface
             ],
         ]);
 
-        $strategy = $sl->get('listquest_picture_hydratorstrategy');
+        $strategy = $sl->get('category_picture_hydratorstrategy');
         $fieldset->getHydrator()->addStrategy('pictureId',$strategy);
         return $fieldset;
     }

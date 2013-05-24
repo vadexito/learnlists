@@ -40,6 +40,8 @@ class Module implements
         return [
             'factories' => [
                 'lrnl-category-service' => 'LrnlCategory\Service\CategoryServiceFactory',
+                'category_picture_hydratorstrategy' => 'LrnlCategory\HydratorStrategy\PictureHydratorStrategyFactory', 
+                'category_picture_inputfilter' => 'LrnlCategory\InputFilter\PictureInputFilterFactory', 
                 'lrnlcategory_module_options' => function ($sm) {
                     $config = $sm->get('Config');
                     return new Options\ModuleOptions(isset($config['lrnl-category']) ? $config['lrnl-category'] : []);

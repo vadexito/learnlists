@@ -1,25 +1,23 @@
 <?php
-namespace LrnlListquests\HydratorStrategy;
+namespace Application\HydratorStrategy;
 
 use Zend\Stdlib\Hydrator\Strategy\StrategyInterface;
-use LrnlListquests\Provider\ProvidesListquestService;
 use FileBank\Manager;
-use LrnlListquests\Options\ModuleOptions;
 use WebinoImageThumb\Module as Thumbnailer;
-use LrnlListquests\Exception\HydratorException;
+use Application\Exception\InvalidArgumentException;
 
 
 class PictureHydratorStrategy implements StrategyInterface
 {
     protected $_fileBankService;
     protected $_thumbnailer;
-    protected $options;
+    protected $tempDir;
+    protected $keywords;
     
-    use ProvidesListquestService;
-    
-    public function __construct(ModuleOptions $options)
+    public function __construct($tempDir,array $keywords = [])
     {
-        $this->options = $options;
+        $this->tempDir = $tempDir;
+        $this->keywords = $keywords;
     }
     
     public function extract($value)
@@ -30,25 +28,23 @@ class PictureHydratorStrategy implements StrategyInterface
     public function hydrate($value)
     {
         if (!isset($value['size'])){
-            throw new HydratorException('The value from the form should have a size field for the file');
+            throw new InvalidArgumentException('The value from the form should have a size field for the file');
         }
         if ($value['size'] >0){
             if (!isset($value['name'])){
-                throw new HydratorException('The value from the form should have a name field for the file');
+                throw new InvalidArgumentException('The value from the form should have a name field for the file');
             }
             
             $name = $value['name'];
-            $dir = $this->options->getTmpPictureUploadDir();
-            $pictureName = $dir.$name;
-            $thumbnailName = $dir.'thumb'.$name;
+            $pictureName = $this->tempDir.$name;
+            $thumbnailName = $this->tempDir.'thumb'.$name;
             
             $fileBank = $this->getFileBankService();            
             $thumb = $this->getThumbnailer()->create($pictureName,[]);
             $thumb->resize(114,70); 
             $thumb->save($thumbnailName);
 
-            $fileBank->save($pictureName,['listquest','normal']);
-            $pictureId = $fileBank->save($thumbnailName,['listquest','thumb'])->getId();
+            $pictureId = $fileBank->save($thumbnailName,$this->keywords)->getId();
             
             unlink($pictureName);
             unlink($thumbnailName);

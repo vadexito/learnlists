@@ -13,7 +13,6 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 use LrnlListquests\Form\EditQuestionForm;
 use LrnlListquests\Form\ChangePictureForm;
-use LrnlListquests\InputFilter\Picture as PictureInputFilter;
 use LrnlListquests\Form\Fieldset\PictureFieldset;
 
 
@@ -84,14 +83,8 @@ class Module implements
                     $entityManager = $sm->get('Doctrine\ORM\EntityManager');  
                     return new EditQuestionForm($entityManager);
                 }, 
-                'listquest_picture_hydratorstrategy' => 'LrnlListquests\HydratorStrategy\PictureHydratorStrategyFactory',                
-                'listquest_picture_inputfilter' => function ($sm) {
-                    $config = $sm->get('lrnllistquests_module_options');
-                    $targetUpload = $config->getTmpPictureUploadDir();
-                    $fileFilter = new PictureInputFilter('pictureId',$targetUpload);
-                    
-                    return $fileFilter;
-                },
+                       
+                
                 'listquest_picture_fieldset' => function ($sm) {
                     $config = $sm->get('lrnllistquests_module_options');
                     $listquestEntityClass = $config->getListquestEntityClass();                

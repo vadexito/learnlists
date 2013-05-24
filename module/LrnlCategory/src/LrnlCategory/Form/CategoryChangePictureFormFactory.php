@@ -4,7 +4,6 @@ namespace LrnlCategory\Form;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use LrnlCategory\InputFilter\PictureInputFilter;
 use Zend\InputFilter\InputFilter;
 
 class CategoryChangePictureFormFactory implements FactoryInterface
@@ -20,9 +19,7 @@ class CategoryChangePictureFormFactory implements FactoryInterface
         
         //input filter initialization
         $sl = $services->getServiceLocator();
-        $options = $sl->get('lrnlcategory_module_options');
-        $targetUpload = $options->getTmpPictureUploadDir();        
-        $pictureInputFilter   = new PictureInputFilter('pictureId',$targetUpload);        
+        $pictureInputFilter   = $sl->get('category_picture_inputfilter');      
         $categoryInputFilter = (new InputFilter())->add($pictureInputFilter);        
         $form->getInputFilter()->add($categoryInputFilter,'category');
         
