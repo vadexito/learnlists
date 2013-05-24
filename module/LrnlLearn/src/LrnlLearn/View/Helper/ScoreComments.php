@@ -5,7 +5,7 @@ namespace LrnlLearn\View\Helper;
 use Zend\View\Helper\AbstractHelper;
 use Zend\Json\Json;
 
-class Comments extends AbstractHelper
+class ScoreComments extends AbstractHelper
 {
     public function __invoke($premium = false)
     {

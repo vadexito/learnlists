@@ -13,8 +13,9 @@ learnMVC.startLearn = function(){
 
 learnMVC.addInitializer(function(options){
     var model = new LearnMain(options.model);
-    
+        
     learnMVC.showLearn = function(optionsModel){
+        
         if (optionsModel){
             model.set(optionsModel);
         }
@@ -127,36 +128,20 @@ learnMVC.addInitializer(function(options){
     
     
     //options for the demo
-    var optionsDemo = {
-        text:'Text of the question',
-        title_list:'Title of the list',
-        comment:'Comment area for the teacher',
-        round_nb:'4',
-        round_total:'5',
-        nb_question:'5',
-        nb_questions:'20',
-        score:'24 points',
-        checkMessageTitle:'Excellent',
-        newPoints:'4',
-        maxPoint:'25',
-        comments:'for your a quick and right answer'
-    };
-    learnMVC.showLearn(optionsDemo);
-        
+    learnMVC.showLearn(options.demo.model);    
     $('#seeHowItWorks-btn').click(function(){
         currentStatus = 'demo';
         $('#start-modal').modal('hide');
         $('#countdown').knob({
             'min':0,
-            'max':options.timePerQuestion,
+            'max':options.model.timePerQuestion,
             'step':1,
             'readOnly':true,
             'width':100,
             'height':100
         });
         $('#countdown').val(5).trigger('change');
-       
-        introJs().oncomplete(function() {
+        introJs().setOptions(options.demo.introJs).oncomplete(function() {
             learnMVC.startLearn();
         }).onexit(function() {
             learnMVC.startLearn();
@@ -175,7 +160,6 @@ learnMVC.addInitializer(function(options){
 });
 
 $(function(){
-    
     var hiddenInput = $('#listId');
     learnMVC.start({
         model: {
@@ -183,7 +167,8 @@ $(function(){
             loggedIn: hiddenInput.attr('data-loggedin'),
             saveRoundsWhenNotLogged: false,
             timePerQuestion:hiddenInput.attr('data-timePerQuestion'),
-            translatedCommentArray: $.parseJSON(hiddenInput.attr('data-comments'))
-       }
+            translatedCommentArray: $.parseJSON(hiddenInput.attr('data-comments'))            
+       },
+       demo : $.parseJSON(hiddenInput.attr('data-demo'))
     });
 });
