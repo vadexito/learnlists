@@ -20,6 +20,10 @@ $pictureAttribs=[
 
 $urlLearn = $this->url('learn/basic',['id' => $id,'title' => $this->strToUrl($title)]);
 $urlEdit = $this->url('listquests/list/edit',['id' => $id]);
+
+$editAuthorized = $user && 
+    ((($author->getId() === $user->getId()) 
+        || ($user->getRoles()[0]->getRoleId() === 'admin')));
 ?>
 <li class="search_result_listquest_item">
     <div class="row-fluid ">
@@ -41,7 +45,7 @@ $urlEdit = $this->url('listquests/list/edit',['id' => $id]);
                             </h4>
                         </<?php echo $htmlTag; ?>>                     
                         <span class="edit_button">
-                            <?php if ($user && ($author->getId() === $user->getId())) :?> 
+                            <?php if ($editAuthorized) :?> 
                                     <a class="btn btn-mini btn-primary" href="<?php echo $urlEdit; ?>" title="<?php echo $this->translate('Edit list'); ?>">
                                         <i class="icon-edit icon-white"></i>
                                     </a>

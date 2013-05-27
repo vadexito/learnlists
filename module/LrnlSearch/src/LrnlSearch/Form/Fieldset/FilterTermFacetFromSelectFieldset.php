@@ -26,20 +26,19 @@ class FilterTermFacetFromSelectFieldset extends AbstractFilterFieldset
     
     public function initFacet($queryData)
     {
-        if ($this->getSearchService()->isEmptyQuery($queryData)){
+        //check if the filter is already in the query so that the number of
+        // the facet gives the result for this value OR for an another value
+        // in the same filter
+        $filteredQuery = clone $queryData;
+        if($queryData->get($this->getName())){                
+            $filteredQuery->offsetUnset($this->getName());
+        }
+        if ($this->getSearchService()->isEmptyQuery($filteredQuery)){
             $idList = 'all';
         } else {
             $idList = [];
-            
-            //check if the filter is already in the query so that the number of
-            // the facet gives the result for this value OR for an another value
-            // in the same filter
-            $filteredQuery = clone $queryData;
-            if($queryData->get($this->getName())){                
-                $filteredQuery->offsetUnset($this->getName());
-            }
-            
             $hits = $this->getSearchService()->getResultsFromQuery($filteredQuery);
+            
             foreach ($hits as $hit){
                $idList[] = (int)$hit->listId; 
             }
