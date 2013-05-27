@@ -104,7 +104,7 @@ $hidden->setAttributes([
     </div>
 </script>
 <script id="score-template" type="text/html">
-    <div data-step="10" data-intro="<? echo $this->translate('Your score. Press on the help button to see how it is computed'); ?>" class="well">
+    <div data-step="11" data-intro="<? echo $this->translate('Your score. Press on the help button to see how it is computed'); ?>" class="well">
         <h4><?php echo $this->translate('Score'); ?></h4>
         <h4><%= score %> (<?php echo sprintf($this->translate('max : %s'),'<%= maxPoint %>'); ?>)</h4>
     </div>
@@ -114,13 +114,13 @@ $hidden->setAttributes([
         <a  title="<?php echo $this->translate('Reset rounds'); ?>" href="#" style="display:none" id="remove_rounds_button" class="btn reset_button">
             <i class="icon-remove-circle icon-white"></i>
         </a>
-        <a  title="<?php echo $this->translate('Cancel round'); ?>" href="#" id="question_asked_cancelRound" class="btn">
+        <a data-step="12" data-intro="<? echo $this->translate('You can reset the current round to a new round'); ?>" title="<?php echo $this->translate('Cancel round'); ?>" href="#" id="question_asked_cancelRound" class="btn">
                 <i class="icon-repeat"></i>
         </a>
-        <a data-step="11" data-intro="<? echo $this->translate('You can reset the current round to a new round'); ?>" title ="<?php echo $this->translate('Again'); ?>" href="#" style="display:none" id="question_asked_resetbutton" class="btn reset_button">
+        <a title ="<?php echo $this->translate('Again'); ?>" href="#" style="display:none" id="question_asked_resetbutton" class="btn reset_button">
             <i class="icon-repeat"></i>
         </a>
-        <span data-step="12" data-intro="<? echo $this->translate('Get some help anytime'); ?>" class="dropdown">
+        <span data-step="13" data-intro="<? echo $this->translate('Get some help anytime'); ?>" class="dropdown">
             <a data-toggle="dropdown" title ="<?php echo $this->translate('Help'); ?>" class="dropdown-toggle btn help_button"><i class="icon-question-sign"></i></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a id="introjs_start_btn" ><?php echo $this->translate('How does it work?'); ?></a></li>
