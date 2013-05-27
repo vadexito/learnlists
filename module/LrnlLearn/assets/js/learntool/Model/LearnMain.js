@@ -21,7 +21,7 @@ window.LearnMain = Backbone.Model.extend({
            'maxPoint' : 0,
            'round_nb':'',
            'nb_questions' : this.questions.collection.length,
-           'nb_question' : this.questions.collection.length
+           'nb_question' : 1
        });  
     },
     
@@ -95,6 +95,9 @@ window.LearnMain = Backbone.Model.extend({
         if (roundOrder.length > 0) {   
             console.log('trigger learn:initNewQuestion');
             learnMVC.vent.trigger("learn:initNewQuestion",_.first(roundOrder));
+            this.set({
+                'nb_question': this.get('nb_questions')-this.currentRound.get('roundOrder').length+1
+            });
             
         } else {
             console.log('trigger learn:roundCompleted');
@@ -103,7 +106,7 @@ window.LearnMain = Backbone.Model.extend({
     },
     
     initNewQuestion: function(questionId){
-            
+        
         //push the new id to the end of the array (in case the next button is pushed before the question is answered)
         this.currentRound.get('roundOrder').shift();
         this.currentRound.get('roundOrder').push(questionId);
@@ -204,13 +207,11 @@ window.LearnMain = Backbone.Model.extend({
         
         var answerType = this.model.get('answerType');
         this.set({
-            'nb_question': this.currentRound.get('roundOrder').length,
             'comment': this.questions.collection.get(this.model.get('questionId')).get('comment'),
             'maxPoint': this.get('maxPoint')+ _.max(_.values(this.currentRound.answerTypePointTable)),
             'score': this.get('score') + this.currentRound.answerTypePointTable[this.model.get('answerType')],
             'newPoints': translations['newPoints'][answerType]
         });
-        
         
         //analysis using the past results
         if (this.lastRounds.models.length > 0 ){

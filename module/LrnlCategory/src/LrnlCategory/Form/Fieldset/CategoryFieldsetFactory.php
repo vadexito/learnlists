@@ -36,7 +36,7 @@ class CategoryFieldsetFactory implements FactoryInterface
                         ],
                     ],
                 ],
-               [
+                [
                     'flags' => [
                         'name' => 'name',
                     ],
@@ -51,7 +51,7 @@ class CategoryFieldsetFactory implements FactoryInterface
                         ],
                     ],
                 ],
-               [
+                [
                     'flags' => [
                         'name' => 'description',
                     ],

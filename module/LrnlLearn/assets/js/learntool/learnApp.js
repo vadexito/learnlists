@@ -161,6 +161,7 @@ learnMVC.addInitializer(function(options){
 
 $(function(){
     var hiddenInput = $('#listId');
+    //$('#review-modal').modal('show');
     learnMVC.start({
         model: {
             listId:hiddenInput.val(),

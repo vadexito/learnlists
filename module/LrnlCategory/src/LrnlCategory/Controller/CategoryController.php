@@ -102,7 +102,6 @@ class CategoryController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {            
             $form->setData($request->getPost());
-            $form->isValid();
             if ($form->isValid()) {
                 $this->getCategoryService()->update($form->getData());
                 return $this->redirect()->toRoute($this->getRedirectRoute());

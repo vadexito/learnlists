@@ -38,16 +38,13 @@ class PictureHydratorStrategy implements StrategyInterface
             $name = $value['name'];
             $pictureName = $this->tempDir.$name;
             $thumbnailName = $this->tempDir.'thumb'.$name;
-            
+      
             $fileBank = $this->getFileBankService();            
             $thumb = $this->getThumbnailer()->create($pictureName,[]);
             $thumb->resize(114,70); 
             $thumb->save($thumbnailName);
 
             $pictureId = $fileBank->save($thumbnailName,$this->keywords)->getId();
-            
-            unlink($pictureName);
-            unlink($thumbnailName);
             
             return $pictureId;
         }

@@ -4,9 +4,6 @@ if ($this->zfcUserIdentity()) {
     $role = $this->translate($this->zfcUserIdentity()->getRoles()[0]->getRoleId());  
 } ?>
 <div class="nav-collapse collapse">
-    <div class="pull-left">
-        <img src="/assets/application/images/logo/logo.svg" style="margin:0; width: 37px; padding: 8px 10px 5px 10px;"/>
-    </div>
     <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('general'),['ulClass' => 'nav']);?>
     <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('user'),['ulClass' => 'nav pull-right']);?>    
 

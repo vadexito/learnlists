@@ -415,17 +415,11 @@ class Listquest extends EntityAbstract implements
                 ],
             ]));
             
-            $questionsCollectionFilter = new CollectionInputFilter([
-                'name'     => 'questions',
-                'required' => false,
-            ]);
-            $inputFilter->add($questionsCollectionFilter);
+            $questionsCollectionFilter = new CollectionInputFilter();
+            $inputFilter->add($questionsCollectionFilter,'questions');
             
-            $tagsCollectionFilter = new CollectionInputFilter([
-                'name'     => 'tags',
-                'required' => false,
-            ]);
-            $inputFilter->add($tagsCollectionFilter);
+            $tagsCollectionFilter = new CollectionInputFilter();
+            $inputFilter->add($tagsCollectionFilter,'tags');
             
             
 

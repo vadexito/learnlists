@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-24 12:28+0100\n"
-"PO-Revision-Date: 2013-05-24 12:29+0100\n"
+"POT-Creation-Date: 2013-05-25 01:12+0100\n"
+"PO-Revision-Date: 2013-05-25 01:12+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -72,7 +72,7 @@ msgid "24 points"
 msgstr "24 Punkte"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/DemoOptions.php:25
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:85
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:86
 msgid "Right"
 msgstr "Richtig"
 
@@ -132,116 +132,116 @@ msgstr "wie letztes Mal"
 msgid "Last time was better!"
 msgstr "Letztes Mal waren Sie besser!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:46
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:47
 msgid "Perfect, like last time!"
 msgstr "Wiederum perfekt!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:47
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:48
 msgid "You did perfect in due time!"
 msgstr "Perfekt, innerhalb des Zeitlimits"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:48
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:49
 msgid "This time, no more mistake like last time!"
 msgstr "Jetzt keine Fehler mehr wie letztes Mal!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:49
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:50
 msgid "Perfect, no more mistakes like last time!"
 msgstr "Perfekt: jetzt keine Fehler mehr wie letztes Mal!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:50
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:51
 msgid "Perfect,this time you did not ask the answer!"
 msgstr "Perfekt und dieses Mal, ohne die Antwort einzusehen!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:53
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:54
 msgid "Last time you were quicker..."
 msgstr "Letztes Mal waren Sie schneller!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:54
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:55
 msgid "Like last time, you are still too slow"
 msgstr "wie letztes Mal, etwas zu langsam"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:55
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:56
 msgid "Great, no more mistake like last time but too slow!"
 msgstr "Sehr gut: keine Fehler mehr, aber noch zu langsam"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:56
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:57
 msgid "Great, no more mistakes like last time but too slow!"
 msgstr "Gut: keine Fehler mehr, aber noch zu langsam"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:57
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:58
 msgid "Great even if too slow but you did not ask the answer like last time!"
 msgstr ""
 "Gut, noch zu langsam, aber Sie haben dazu gelernt und die Antwort nicht mehr "
 "gebraucht!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:60
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:67
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:61
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:68
 msgid "You forgot...last time was perfect, you did no mistake!"
 msgstr "Sie haben es vergessen! Letztes Mal wussten sie es doch perfekt!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:61
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:68
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:62
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:69
 msgid "You forgot...last time you did no mistake!"
 msgstr "Sie haben es vergessen! Letztes Mal wussten Sie es doch!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:62
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:63
 msgid "Still one mistake!"
 msgstr "Noch ein Fehler!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:63
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:64
 msgid "Better last time you did more mistakes!"
 msgstr "Besser, letztes Mal waren es mehr Fehler"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:64
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:71
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:65
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:72
 msgid "Better because you did not ask the answer like last time!"
 msgstr "Besser: Sie haben jetzt die Antwort nicht mehr eingesehen"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:69
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:70
 msgid "You are doing more mistakes!"
 msgstr "Enthält jetzt mehr Fehler!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:70
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:71
 msgid "Still mistakes!"
 msgstr "Enthält noch Fehler!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:74
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:75
 msgid "You forgot this one you knew perfectly, focus on it!"
 msgstr ""
 "Sie haben es vergessen! Letztes Mal wussten Sie es doch perfekt, "
 "konzentrieren Sie sich!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:75
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:76
 msgid "You forgot this one you knew well, focus on it!"
 msgstr ""
 "Sie haben es vergessen! Letztes Mal wussten Sie es doch gut, konzentrieren "
 "Sie sich!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:76
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:77
 msgid "You forgot this one you knew, focus on it!"
 msgstr ""
 "Sie haben es vergessen! Letztes Mal wussten Sie es doch, konzentrieren Sie "
 "sich!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:77
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:78
 msgid "You forgot this one you knew quite well, focus on it!"
 msgstr ""
 "Sie haben es vergessen! Letztes Mal wussten Sie es doch ziemlich gut, "
 "konzentrieren Sie sich!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:78
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:79
 msgid "Still you do not know it at all, focus on it!"
 msgstr "Sie wissen es nocht nicht, konzentrieren Sie sich darauf!"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:86
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:87
 msgid "Wrong"
 msgstr "Falsch"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:90
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:91
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:92
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:93
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:94
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/ScoreComments.php:95
 msgid "point"
 msgid_plural "points"
 msgstr[0] "Punkt"
@@ -311,21 +311,21 @@ msgstr "Kommentar"
 msgid "Tag"
 msgstr "Tag"
 
-#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:26
+#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:25
 msgid "Which quiz are you looking for?"
 msgstr "Welches Quiz suchen Sie?"
 
-#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:34
-#: ../../../module/LrnlSearch/src/LrnlSearch/View/Helper/ListSearchBar.php:52
+#: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:33
+#: ../../../module/LrnlSearch/src/LrnlSearch/View/Helper/ListSearchBar.php:53
 msgid "Search"
 msgstr "Suchen"
 
-#: ../../../module/LrnlSearch/src/LrnlSearch/View/Helper/ListSearchBar.php:34
+#: ../../../module/LrnlSearch/src/LrnlSearch/View/Helper/ListSearchBar.php:35
 #: ../../../module/LrnlCategory/view/lrnl-category/category/index.phtml:2
 msgid "Categories"
 msgstr "Kategorien"
 
-#: ../../../module/LrnlSearch/src/LrnlSearch/View/Helper/ListSearchBar.php:35
+#: ../../../module/LrnlSearch/src/LrnlSearch/View/Helper/ListSearchBar.php:36
 msgid "No results for "
 msgstr "Keine Ergebnisse für: "
 
@@ -370,33 +370,33 @@ msgstr ""
 msgid "Rating"
 msgstr "Bewertung"
 
-#: ../../../config/autoload/global/lrnlsearch.global.php:17
+#: ../../../config/autoload/global/lrnlsearch.global.php:21
 msgid "author"
 msgstr "Autor"
 
-#: ../../../config/autoload/global/lrnlsearch.global.php:30
+#: ../../../config/autoload/global/lrnlsearch.global.php:34
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:65
 msgid "level"
 msgstr "Niveau"
 
-#: ../../../config/autoload/global/lrnlsearch.global.php:45
+#: ../../../config/autoload/global/lrnlsearch.global.php:49
 msgid "language"
 msgstr "Sprache"
 
-#: ../../../config/autoload/global/lrnlsearch.global.php:67
+#: ../../../config/autoload/global/lrnlsearch.global.php:71
 msgid "questions"
 msgstr "Fragen"
 
-#: ../../../config/autoload/global/lrnlsearch.global.php:91
+#: ../../../config/autoload/global/lrnlsearch.global.php:95
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:64
 msgid "rating"
 msgstr "Bewertung"
 
-#: ../../../config/autoload/global/lrnlsearch.global.php:115
+#: ../../../config/autoload/global/lrnlsearch.global.php:119
 msgid "keywords"
 msgstr "Schlagwörter"
 
-#: ../../../config/autoload/global/lrnlsearch.global.php:120
+#: ../../../config/autoload/global/lrnlsearch.global.php:124
 msgid "Enter a keyword"
 msgstr "Schlagwort eingeben"
 
@@ -535,10 +535,10 @@ msgstr "Erstelle dein eigenes Quiz"
 
 #: ../view/application/static-pages/how_it_works_learner.phtml:2
 #: ../view/application/static-pages/how_it_works_teacher.phtml:2
-#: ../view/layout/topnavbar.phtml:16
+#: ../view/layout/topnavbar.phtml:13
 #: ../../../module/Application/view/application/static-pages/how_it_works_learner.phtml:2
 #: ../../../module/Application/view/application/static-pages/how_it_works_teacher.phtml:2
-#: ../../../module/Application/view/layout/topnavbar.phtml:16
+#: ../../../module/Application/view/layout/topnavbar.phtml:13
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:126
 msgid "How does it work?"
 msgstr "Wie funktioniert es?"
@@ -557,9 +557,9 @@ msgid "Find the best quiz to learn"
 msgstr "Ihr Quiz finden"
 
 #: ../view/application/static-pages/how_it_works_learner.phtml:10
-#: ../view/layout/topnavbar.phtml:18
+#: ../view/layout/topnavbar.phtml:15
 #: ../../../module/Application/view/application/static-pages/how_it_works_learner.phtml:10
-#: ../../../module/Application/view/layout/topnavbar.phtml:18
+#: ../../../module/Application/view/layout/topnavbar.phtml:15
 msgid "I want to learn"
 msgstr "Ich möchte lernen"
 
@@ -914,8 +914,8 @@ msgstr "Alle Rechte vorbehalten."
 msgid "Loading..."
 msgstr "Lädt...."
 
-#: ../view/layout/topnavbar.phtml:19
-#: ../../../module/Application/view/layout/topnavbar.phtml:19
+#: ../view/layout/topnavbar.phtml:16
+#: ../../../module/Application/view/layout/topnavbar.phtml:16
 msgid "I am a teacher"
 msgstr "Ich bin Lehrer"
 
@@ -963,6 +963,7 @@ msgid "There were some errors. Please try again!"
 msgstr "Es gab Fehler. Bitte erneut versuchen"
 
 #: ../../../module/LrnlCategory/view/lrnl-category/category/create.phtml:2
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:2
 #: ../../../module/VxoReview/view/vxo-review/review/create.phtml:2
 msgid "We need your opinion!"
 msgstr ""
@@ -1428,6 +1429,7 @@ msgid ""
 msgstr "Antwort sehen. In diesem Fall keine Punkte. "
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:89
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:21
 msgid "Skip"
 msgstr "Überspringen"
 
@@ -1442,7 +1444,8 @@ msgid "Next"
 msgstr "Nächste"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:95
-msgid "Number of question you have left to complete a round"
+#, fuzzy
+msgid "Number of question you still have to complete a round"
 msgstr "Wie viele Fragen bleiben noch zu beantworten"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:96

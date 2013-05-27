@@ -9,6 +9,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\View\Model\JsonModel;
 use Zend\View\Model\FeedModel;
 use Zend\View\Model\ConsoleModel;
+use Zend\View\Model\ViewModel;
 
 class ApplicationListener implements ListenerAggregateInterface
 {
@@ -39,8 +40,7 @@ class ApplicationListener implements ListenerAggregateInterface
 
     public function renderLayoutSegments(EventInterface $e)
     {
-        $viewModel = $e->getViewModel();   
-        var_dump($viewModel);die;
+        $viewModel = $e->getViewModel(); 
         
         if (($viewModel instanceof JsonModel)
                 || ($viewModel instanceof FeedModel) 

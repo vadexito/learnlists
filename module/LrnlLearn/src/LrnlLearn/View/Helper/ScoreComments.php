@@ -29,10 +29,10 @@ class ScoreComments extends AbstractHelper
         foreach ($currentResult as $i => $result){
             foreach ($index as $j){
                 if ($j > $i){
-                    $comments[$i][$j] = $result.$comparison[-1];
+                    $comments[$i][$j] = $result.' '.$comparison[-1];
                 }
                 if ($j === $i){
-                    $comments[$i][$j] = $result.$comparison[0];
+                    $comments[$i][$j] = $result.' '.$comparison[0];
                 }
                 if ($j < $i){
                    $comments[$i][$j] = $result.' '.$comparison[1]; 
@@ -40,7 +40,8 @@ class ScoreComments extends AbstractHelper
             }
         }
         
-        if ($premium) {
+        //if ($premium) {
+        if (1) {
             $comments = [
                 '1' => [
                     '1' => $this->getView()->translate('Perfect, like last time!'),

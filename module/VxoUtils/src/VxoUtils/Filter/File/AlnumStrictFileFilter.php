@@ -19,10 +19,7 @@ class AlnumStrictFileFilter extends PregReplace
     {
         $sourceInfo = pathinfo($value['name']);
         $fileName = parent::filter(strtolower(trim($sourceInfo['filename'])));        
-        $value['name'] = $sourceInfo['dirname']
-            .$fileName.
-            $sourceInfo['extension'];        
-        
+        $value['name'] = $fileName.'.'.$sourceInfo['extension'];        
         return $value;
     }
 }

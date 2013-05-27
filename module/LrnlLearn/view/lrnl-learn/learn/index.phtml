@@ -92,7 +92,7 @@ $hidden->setAttributes([
     </div>
 </script>
 <script id="question_follower-template" type="text/html">
-    <span data-step="7" data-intro="<? echo $this->translate('Number of question you have left to complete a round'); ?>" class="label label-important" >
+    <span data-step="7" data-intro="<? echo $this->translate('Number of question you still have to complete a round'); ?>" class="label label-important" >
             <?php echo $this->translate('Questions'); ?> <%= nb_question %> / <%= nb_questions %>
     </span>    
 </script>
@@ -153,7 +153,7 @@ $hidden->setAttributes([
                 </tbody>
             </table>
         </div>
-    </div>
+    </div>    
 </script>
 <script id="row_resultTable-template" type="text/html">
     <th><span class="label"><?php echo $this->translate('Round'); ?> <span class="roundNb"></span></span></th>
@@ -196,7 +196,7 @@ $hidden->setAttributes([
     <button class="btn" data-dismiss="modal" aria-hidden="true"> <?php $this->translate('Go back to learning'); ?></button>
   </div>
 </div>
-<!-- Modal -->
+<!-- Modal starting menu -->
 <div id="start-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button id="close-welcome" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -210,3 +210,5 @@ $hidden->setAttributes([
     <button id="seeHowItWorks-btn" class="btn btn-primary"><?php echo $this->translate('Show starting guide'); ?></button>
   </div>
 </div>
+<!-- Modal review create -->
+<?php echo $this->render($reviewCreate); ?>

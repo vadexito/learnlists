@@ -18,7 +18,8 @@ $changePictureForm->prepare();
   </div>
   <?php echo $this->formTwb()->openTag($changePictureForm); ?>
   <div class="modal-body">
-      <?php echo $this->formFileTwb($changePictureForm->get('picture')->get('pictureId')); ?>
+      <?php echo $this->formhiddenTwb($changePictureForm->get('csrf')); ?>
+      <?php echo $this->formFileTwb($changePictureForm->get('listquest')->get('pictureId')); ?>
   </div>
   <div class="modal-footer">
     <?php echo $this->formSubmitTwb($changePictureForm->get('submit')); ?>
