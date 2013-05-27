@@ -15,6 +15,7 @@ class ReviewCreateFormFactory implements FactoryInterface
         $om = $sl->get('Doctrine\ORM\EntityManager');
         $options = $sl->get('vxoreview_module_options');
         $reviewEntityClass = $options->getReviewEntityClass();
+        $maxRating = $options->getMaxRating();
 
         $factory = new FormFactory($services);
         $form = $factory->createForm([
@@ -87,7 +88,7 @@ class ReviewCreateFormFactory implements FactoryInterface
                                     'type'  => 'Zend\Form\Element\Range',
                                     'attributes' => [
                                         'min'    => '0',
-                                        'max'    => '5',
+                                        'max'    => $maxRating,
                                     ],
                                     'options' => [
                                         'label' => _('Rating')

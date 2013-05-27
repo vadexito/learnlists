@@ -1,24 +1,29 @@
 <?php
 $title = $this->translate('We need your opinion!');
 $form->setAttribute('action', $this->url('vxoreview/create',['entityId' => $entityId]));
+$form->setAttribute('id','add_review-form');
 $form->prepare();
 $reviewFieldset = $form->get('review');
+$form->get('submit')->setValue($this->translate('Add a review and see the results'))
+        ->setAttribute('id','submit_review_btn')
 ?>
-
+<?php echo $this->formTwb()->openTag($form); ?>
 <div id="review-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button id="close-welcome" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel"><?php echo $title; ?></h3>
   </div>
-  <div class="modal-body">
-    <?php echo $this->formTwb()->openTag($form); ?>
+  <div class="modal-body">    
     <?php echo $this->formHiddenTwb($reviewFieldset->get('reviewedItem')); ?>
     <?php echo $this->formRowTwb($reviewFieldset->get('text')); ?>
-    <?php echo $this->formRange($reviewFieldset->get('rating')); ?>
+        <div class="control-group">
+            <?php echo $this->formLabelTwb($reviewFieldset->get('rating')); ?>
+            <div id="star" class="controls"></div>
+        </div>
     <?php echo $this->formRowTwb($form->get('csrf')); ?>
   </div>
   <div class="modal-footer">
-    <button id="skip-btn" class="btn" data-dismiss="modal" aria-hidden="true"><?php echo $this->translate('Skip'); ?></button>
+    <button id="dismiss-btn" class="btn" data-dismiss="modal" aria-hidden="true"><?php echo $this->translate('Do not leave a review'); ?></button>
     <?php echo $this->formSubmit($form->get('submit')); ?>
   </div>
   <?php echo $this->formTwb()->closeTag($form); ?>

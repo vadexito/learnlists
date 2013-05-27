@@ -141,7 +141,7 @@ learnMVC.addInitializer(function(options){
             'height':100
         });
         $('#countdown').val(5).trigger('change');
-        introJs().setOptions(options.demo.introJs).oncomplete(function() {
+        introJs().setOptions(options.plugintranslations.introJs).oncomplete(function() {
             learnMVC.startLearn();
         }).onexit(function() {
             learnMVC.startLearn();
@@ -153,7 +153,23 @@ learnMVC.addInitializer(function(options){
         learnMVC.showLearn();
         console.log('preinit views');
     });
-    learnMVC.vent.on('learn:pre-showResult',function(){        
+    learnMVC.vent.on('learn:pre-showResult',function(){
+        
+         $('#star').raty({
+            starHalf      : '/assets/components/raty/lib/img/star-half.png',
+            starOff       : '/assets/components/raty/lib/img/star-off.png',
+            starOn        : '/assets/components/raty/lib/img/star-on.png',
+            number        : 10,
+            numberMax     : 10,
+            hints         : options.pluginTranslations.raty.hints,
+            scoreName     : 'review[rating]'
+        });
+        $('#review-modal').modal('show');
+        $('#add_review-form').ajaxForm(function() {         
+        }); 
+        $('#submit_review_btn').click(function(){
+            $('#review-modal').modal('hide');
+        });        
         learnMVC.showResults();
     });
     
@@ -161,15 +177,16 @@ learnMVC.addInitializer(function(options){
 
 $(function(){
     var hiddenInput = $('#listId');
-    //$('#review-modal').modal('show');
+    
     learnMVC.start({
         model: {
             listId:hiddenInput.val(),
             loggedIn: hiddenInput.attr('data-loggedin'),
             saveRoundsWhenNotLogged: false,
             timePerQuestion:hiddenInput.attr('data-timePerQuestion'),
-            translatedCommentArray: $.parseJSON(hiddenInput.attr('data-comments'))            
+            translatedCommentArray: $.parseJSON(hiddenInput.attr('data-comments')) 
        },
+       pluginTranslations: $.parseJSON(hiddenInput.attr('data-plugintranslations')),   
        demo : $.parseJSON(hiddenInput.attr('data-demo'))
     });
 });

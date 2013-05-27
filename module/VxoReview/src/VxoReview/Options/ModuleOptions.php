@@ -10,6 +10,8 @@ class ModuleOptions extends AbstractOptions
     
     protected $redirectRoute = 'home';
     
+    protected $maxRating = 10;
+    
     public function getReviewEntityClass()
     {
         return $this->reviewEntityClass;        
@@ -18,6 +20,17 @@ class ModuleOptions extends AbstractOptions
     public function setReviewEntityClass($reviewEntityClass)
     {
         $this->reviewEntityClass = $reviewEntityClass;  
+        return $this;
+    }
+    
+    public function getMaxRating()
+    {
+        return $this->maxRating;        
+    }
+    
+    public function setMaxRating($maxRating)
+    {
+        $this->maxRating = $maxRating;  
         return $this;
     }
     

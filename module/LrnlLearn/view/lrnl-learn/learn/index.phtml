@@ -10,6 +10,7 @@ $hidden = new Hidden('id');
 $hidden->setAttributes([
     'data-demo' => $this->demoOptions(),
     'data-comments' => $this->scoreComments(),
+    'data-plugintranslations' => $this->pluginTranslations(),
     'data-loggedin' => $this->zfcUserIdentity()? 'true' : 'false',
     'data-timePerQuestion' => $this->escapeHtml($timePerQuestion),
     'id' => 'listId',

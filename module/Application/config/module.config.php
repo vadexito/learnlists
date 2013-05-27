@@ -367,6 +367,11 @@ return [
                             'components/countdown/jquery.countdown.js',
                         ],
                     ], 
+                    'raty_js' => [
+                        'assets' => [
+                            'components/raty/lib/jquery.raty.min.js',
+                        ],
+                    ], 
                     'moment_js' => [
                         'assets' => [
                             'components/moment/min/moment.min.js',
@@ -379,7 +384,7 @@ return [
                     ],                     
                     'jquery_form_js' => [
                         'assets' => [
-                            'application/js/lib/jquery.form.js',
+                            'components/jquery-form/jquery.form.js',
                         ],
                     ],                     
                     'animate_css' => [
@@ -452,6 +457,7 @@ return [
                             'images/*.png',
                             'images/*.ico',
                             'images/*.jpg',
+                            'components/raty/lib/img/*'
                         ],
                         'options' => [
                             'move_raw' => true,

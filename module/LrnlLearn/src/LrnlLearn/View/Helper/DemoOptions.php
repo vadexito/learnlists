@@ -28,16 +28,10 @@ class DemoOptions extends AbstractHelper
             'comments' => $this->getView()->translate('Excellent. That was a quick and right answer'),
         ];
         
-        $introJs = [
-            'skipLabel' => $this->getView()->translate('skip'),
-            'nextLabel' => $this->getView()->translate('next'),
-            'prevLabel' => $this->getView()->translate('back'),
-            'doneLabel' => $this->getView()->translate('done'),
-        ];
+        
         
         return Json::encode([
-            'model' => $model,
-            'introJs' => $introJs,
+            'model' => $model
         ]);
     }
 }

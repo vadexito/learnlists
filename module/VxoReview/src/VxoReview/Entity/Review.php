@@ -172,10 +172,6 @@ class Review extends EntityAbstract implements
             $inputFilter->add($factory->createInput([
                 'name'     => 'rating',
                 'required' => false,
-                'filters'  => [
-                    ['name' => 'StripTags'],
-                    ['name' => 'StringTrim'],
-                ],
                 'validators' => [
                     ['name'    => 'Int'],
                 ],
