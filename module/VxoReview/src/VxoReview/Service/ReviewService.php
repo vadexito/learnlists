@@ -8,17 +8,21 @@ use VxoReview\Entity\ReviewInterface;
 use Application\Service\AbstractDoctrineEntityService;
 use VxoReview\Exception\InvalidArgumentException;
 use DateTime;
+use VxoReview\Options\ModuleOptions;
 
 class ReviewService extends AbstractDoctrineEntityService 
     implements ReviewServiceInterface
 {
     protected $user;
     
-    public function __construct(ObjectManager $om,$entityClass,
+    protected $maxRating;
+    
+    public function __construct($maxRating,ObjectManager $om,$entityClass,
         UserInterface $user = NULL)
     {
         parent::__construct($om,$entityClass);
         $this->user = $user;
+        $this->maxRating = $maxRating;
     }
     
     public function insert($review)
@@ -49,5 +53,29 @@ class ReviewService extends AbstractDoctrineEntityService
     {
         $reviews = $this->getRepository()->findBy(['reviewedItem' => $reviewedItemId]);        
         return $reviews;
+    }
+    
+    public function getRatingMax()
+    {
+        return $this->maxRating;
+    }
+    
+    public function getRating($entityId)
+    {
+        $reviews = $this->getRepository()->findBy(['reviewedItem' => $entityId]);
+        if (!$reviews){
+            return false;
+        }
+        $sum = 0;        
+        foreach ($reviews as $review){
+           $sum +=$review->getRating(); 
+        }
+        return $sum / (count($reviews));
+    }
+    
+    public function getReviewCount($entityId)
+    {
+        $reviews = $this->getRepository()->findBy(['reviewedItem' => $entityId]);
+        return count($reviews);
     }
 }

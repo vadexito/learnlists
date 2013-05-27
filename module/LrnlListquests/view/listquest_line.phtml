@@ -32,7 +32,7 @@ $editAuthorized = $user &&
         </div>
         <div class="span10">
             <div class="row-fluid">
-                <div class="span10">
+                <div class="span9">
                     <div class="title_with_icon">
                         <?php echo $gravatar ?>
                         <?php $htmlTag = ($questionNb != 0) ? 'a' : 'span'; ?>
@@ -57,39 +57,36 @@ $editAuthorized = $user &&
                         <span class="muted date-listquest"><?php echo $this->dateFormat($creationDate,IntlDateFormatter::MEDIUM); ?></span>
                     </p>
                 </div>
-                <div class="span2">
-                    <h2 class="text-right questionNb"><?php echo (int)$questionNb; ?></h2>
-                    <p class="text-right"><?php echo $this->translatePlural('question','questions',(int)$questionNb); ?></p>
+                <div class="span3 mainTopRight">
+                    <?php if ($reviewNb) : ?>
+                        <h2 class="text-right"><span class="rating"><?php echo $this->numberFormat(round($rating,1)); ?><span> / <small><?php echo $this->escapeHtml($ratingMax); ?></small></h2>
+                        <p class="text-right"><small>(<?php echo $reviewNb;?> <?php echo $this->translatePlural('review','reviews',(int)$reviewNb); ?>)</small></p>
+                    <?php else :?>
+                        <h2 class="text-right"><small><?php echo $this->translate('Review it!'); ?></small></h2>
+                    <?php endif;?>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span9">
-                    <?php foreach ([
-                        ['name' => _('rating'),'value' => $rating,'class'=>'badge-bubble'],
-                        ['name' => _('level'),'value' => $this->escapeHtml($level),'class'=>'badge badge-level']
-                    ] as $badge) : ?>
-                    <span class="badge_item">
-                        <span class="<?php echo $this->escapeHtml($badge['class']); ?>">
-                            <?php echo ucfirst($this->translate($this->escapeHtml($badge['value']))); ?>
+                    <span class="badge_item rating">
+                        <span class="badge-bubble text_center">
+                            <?php echo (int)$questionNb; ?>
                         </span>
                         <span class="muted title_badge">
                             <small>
-                                <?php echo $this->escapeHtml(ucfirst($this->translate($badge['name'])));?>
+                                <?php echo $this->translatePlural('question','questions',(int)$questionNb); ?>                                
                             </small>
                         </span>
                     </span>
-                    <?php endforeach; ?>
-                    <span class="like_button">
-                        <?php if ($hasLike) : ?>                   
-                        <span class="btn btn-mini disabled">
-                            <i class="icon-thumbs-up"></i>                            
+                    <span class="badge_item level">
+                        <span class="badge badge-level">
+                            <?php echo ucfirst($this->translate($this->escapeHtml($level))); ?>
                         </span>
-                        <span class="title_badge"><small><?php echo $this->translate('You like it');?></small></span>
-                        <?php else : ?>
-                        <a class="btn btn-mini" href="<?php echo $this->url('listquests/list/rate',['id' => $id]); ?>">
-                            <i class="icon-thumbs-up"></i> <?php echo $this->translate('Yes');?>
-                        </a>    
-                        <?php endif;?>
+                        <span class="muted title_badge">
+                            <small>
+                                <?php echo $this->escapeHtml(ucfirst($this->translate('level')));?>
+                            </small>
+                        </span>
                     </span>
                 </div>
                 <div class="span3">

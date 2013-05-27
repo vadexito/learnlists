@@ -3,8 +3,7 @@
 namespace LrnlListquests\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
-use LrnlListquests\Service\ListquestService;
-use WtRating\Service\RatingService;
+use VxoReview\Provider\ProvidesReviewService;
 use LrnlListquests\Provider\ProvidesListquestService;
 use ZendSearch\Lucene\Search\QueryHit;
 
@@ -14,6 +13,7 @@ class ListquestCollection extends AbstractHelper
     protected $_ratingService;
     
     use ProvidesListquestService;
+    use ProvidesReviewService;
     
     public function __invoke($lists)
     {
@@ -30,14 +30,6 @@ class ListquestCollection extends AbstractHelper
             if (!$listDataBase){
                 continue;
             }
-            $hasLike = false;
-            $user = $this->getView()->zfcUserIdentity();
-            if ($user && $this->getRatingService()->getMapper()->hasRated(
-                    $user->getId(),$listId)) {
-                
-                $hasLike = true;
-            }
-            
             $data[] = [
                 'id' => $listId,
                 'urlImage' => $this->getView()->listquestPictureUrl($listDataBase),
@@ -48,11 +40,10 @@ class ListquestCollection extends AbstractHelper
                 'author' => $listDataBase->author,
                 'questionNb' => $listDataBase->questions->count(),
                 'level' => $listDataBase->level,
-                'hasLike' => $hasLike,
-                'rating' => round($this->getRatingService()
-                                 ->getRatingSet($listId)
-                                 ->getAmount()),
                 'creationDate' => $listDataBase->creationDate,
+                'reviewNb' => $this->getReviewService()->getReviewCount($listId),
+                'rating' => $this->getReviewService()->getRating($listId),
+                'ratingMax' => $this->getReviewService()->getRatingMax($listId),
             ];
         }
         $this->_lists = $data;
@@ -63,16 +54,5 @@ class ListquestCollection extends AbstractHelper
     public function __toString()
     {
         return $this->getView()->partialLoop('listquest_line.phtml',$this->_lists);
-    }
-    
-    public function setRatingService(RatingService $service)
-    {
-        $this->_ratingService = $service;
-        return $this;
-    }
-    
-    public function getRatingService()
-    {
-        return $this->_ratingService;
     }
 }

@@ -14,7 +14,8 @@ class ReviewServiceFactory implements FactoryInterface
         $user = $services->get('zfcuser_auth_service')->getIdentity();
         $options = $services->get('vxoreview_module_options');
         $entityClass = $options->getReviewEntityClass();
-        $service   = new ReviewService($objectManager,$entityClass,$user);
+        $maxRating = $options->getMaxRating();
+        $service   = new ReviewService($maxRating, $objectManager,$entityClass,$user);
         
         return $service;
     }

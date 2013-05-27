@@ -91,7 +91,7 @@ class Module implements
                     $locator = $sm->getServiceLocator();
                     $viewHelper = new View\Helper\ListquestCollection;
                     $viewHelper->setListquestService($locator->get('learnlists-listquestfactory-service'));
-                    $viewHelper->setRatingService($locator->get('wtrating.service'));
+                    $viewHelper->setReviewService($locator->get('vxo-review-service'));
                     return $viewHelper;
                 },
                 'rating' => function ($sm) {

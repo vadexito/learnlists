@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-27 19:10+0100\n"
-"PO-Revision-Date: 2013-05-27 19:12+0100\n"
+"POT-Creation-Date: 2013-05-27 22:06+0100\n"
+"PO-Revision-Date: 2013-05-27 22:06+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -35,7 +35,7 @@ msgstr "Speichern"
 
 #: ../../../module/LrnlCategory/src/LrnlCategory/Form/CategoryCreateFormFactory.php:61
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestCreateFormFactory.php:64
-#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:118
+#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:119
 msgid "Add"
 msgstr "Hinzufügen"
 
@@ -85,38 +85,47 @@ msgid "Excellent. That was a quick and right answer"
 msgstr "Ausgezeichnet, richtig und schnell"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:14
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:15
 msgid "bad"
 msgstr "schlecht"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:15
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:16
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:17
 msgid "poor"
 msgstr "schwach"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:16
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:18
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:19
 msgid "regular"
 msgstr "ok"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:17
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:20
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:21
 msgid "good"
 msgstr "gut"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:18
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:22
+#, fuzzy
+msgid "very good"
+msgstr "gut"
+
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:23
 msgid "gorgeous"
 msgstr "ausgezeichnet"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:23
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:28
 msgid "skip"
 msgstr "überspringen"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:24
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:29
 msgid "next"
 msgstr "weiter"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:25
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:30
 msgid "back"
 msgstr "züruck"
 
-#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:26
+#: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:31
 msgid "done"
 msgstr "fertig"
 
@@ -377,11 +386,11 @@ msgstr "Verfallsmonat"
 msgid "Expiration Year"
 msgstr "Verfallsjahr"
 
-#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:78
+#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:79
 msgid "You can leave your review here"
 msgstr ""
 
-#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:93
+#: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:94
 msgid "Rating"
 msgstr "Bewertung"
 
@@ -390,7 +399,7 @@ msgid "author"
 msgstr "Autor"
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:34
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:69
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:83
 msgid "level"
 msgstr "Niveau"
 
@@ -403,7 +412,6 @@ msgid "questions"
 msgstr "Fragen"
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:95
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:68
 msgid "rating"
 msgstr "Bewertung"
 
@@ -1556,11 +1564,11 @@ msgstr "Direkt zum Quiz"
 msgid "Show starting guide"
 msgstr "Einleitung starten"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:6
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:7
 msgid "Add a review and see the results"
 msgstr ""
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:25
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:26
 #, fuzzy
 msgid "Do not leave a review"
 msgstr "Bewertung löschen"
@@ -1602,24 +1610,18 @@ msgid "Edit list"
 msgstr "Liste bearbeiten"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:62
+msgid "review"
+msgid_plural "reviews"
+msgstr[0] "Bewertung"
+msgstr[1] "Bewertungen"
+
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:73
 msgid "question"
 msgid_plural "questions"
 msgstr[0] "Frage"
 msgstr[1] "Fragen"
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:77
-msgid "name"
-msgstr "Name"
-
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:87
-msgid "You like it"
-msgstr "Das mag ich"
-
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:90
-msgid "Yes"
-msgstr "Ja"
-
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:98
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:91
 msgid "Start to learn"
 msgstr "Anfangen"
 
@@ -2035,6 +2037,15 @@ msgstr "Benutzer"
 #: ../../../module/Application/language/_XMLforPoedit/user.xml:8
 msgid "premium"
 msgstr "Premium"
+
+#~ msgid "name"
+#~ msgstr "Name"
+
+#~ msgid "You like it"
+#~ msgstr "Das mag ich"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
 
 #~ msgid "Rules"
 #~ msgstr "Regeln"
