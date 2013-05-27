@@ -79,7 +79,8 @@ class ListquestFieldsetFactory implements FactoryInterface
                             'autocomplete'    => 'off'
                          ],
                         'options' => [
-                            'count' => 1,
+                            'label' => _('Tags'),                            
+                            'count' => 0,
                             'template_placeholder' => '__index__',
                             'should_create_template' => true,
                             'allow_add' => true,

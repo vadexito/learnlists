@@ -16,8 +16,6 @@ class ListquestEditFormFactory implements FactoryInterface
         $listquestFieldset->remove('pictureId')->remove('tags');
         $form->add($listquestFieldset);
         
-        
-        
         $form->setValidationGroup([
             'csrf',
             'listquest' => [

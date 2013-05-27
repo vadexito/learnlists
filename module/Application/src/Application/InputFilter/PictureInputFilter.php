@@ -12,7 +12,8 @@ class PictureInputFilter extends FileInput
     {
         parent::__construct($name);
         
-        $this->setRequired(true);
+        $this->setRequired(false);
+        
         $this->getValidatorChain()
              ->attach(new IsImage(),true)
              ->attach(new Size([

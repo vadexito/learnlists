@@ -10,7 +10,7 @@ use Zend\InputFilter\InputFilterInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-use LrnlListquests\Entity\Listquest;
+use LrnlListquests\Entity\ListquestInterface;
 use LrnlListquests\Entity\Questionresult;
 use VxoUtils\Entity\EntityAbstract;
 /**
@@ -58,7 +58,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
     
     /**
     * 
-    * @var LrnlListquests\Entity\ListQuest
+    * @var LrnlListquests\Entity\ListQuestInterface
     */
     protected $listquest;
     
@@ -135,7 +135,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
 
             $inputFilter->add($factory->createInput([
                 'name'     => 'id',
-                'required' => true,
+                'required' => false,
                 'filters'  => [
                     ['name' => 'Int'],
                 ],
@@ -235,7 +235,7 @@ class Question extends EntityAbstract implements InputFilterAwareInterface
     {
         return $this->answer;
     }
-    public function setListquest(Listquest $listquest = NULL)
+    public function setListquest(ListquestInterface $listquest = NULL)
     {
         $this->listquest = $listquest;
         return $this;

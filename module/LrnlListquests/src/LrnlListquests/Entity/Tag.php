@@ -50,6 +50,8 @@ class Tag extends EntityAbstract implements InputFilterAwareInterface
     */
     protected $listquests;
     
+    protected $inputFilter;
+    
     public function __construct() 
     {
         $this->listquests = new ArrayCollection();
@@ -83,10 +85,6 @@ class Tag extends EntityAbstract implements InputFilterAwareInterface
     {
         return $this->listquests;
     }
-    
-    
-    
-    
     
     public function toArray()
     {
@@ -135,7 +133,15 @@ class Tag extends EntityAbstract implements InputFilterAwareInterface
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();
             $factory     = new InputFactory();
-
+            
+            $inputFilter->add($factory->createInput([
+                'name'     => 'id',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'Int'],
+                ],
+            ]));
+            
             $inputFilter->add($factory->createInput([
                 'name'     => 'tag',
                 'required' => true,
@@ -148,7 +154,7 @@ class Tag extends EntityAbstract implements InputFilterAwareInterface
                         'name'    => 'StringLength',
                         'options' => [
                             'encoding' => 'UTF-8',
-                            'min'      => 2,
+                            'min'      => 1,
                             'max'      => 20,
                         ],
                     ],

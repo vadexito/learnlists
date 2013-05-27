@@ -68,13 +68,13 @@ class Module implements
             ],
             'factories' => [
                 'ListquestFieldset' => 'LrnlListquests\Form\Fieldset\ListquestFieldsetFactory',
+                'TagFieldset' => 'LrnlListquests\Form\Fieldset\TagFieldsetFactory',
                 'listquest-create-form' => 'LrnlListquests\Form\ListquestCreateFormFactory',
                 'listquest-edit-form' => 'LrnlListquests\Form\ListquestEditFormFactory',
                 'listquest-changepicture-form' => 'LrnlListquests\Form\ListquestChangePictureFormFactory',
             ],
             'invokables' => [
                'QuestionFieldset' =>  'LrnlListquests\Form\Fieldset\QuestionFieldset',
-               'TagFieldset' =>  'LrnlListquests\Form\Fieldset\TagFieldset',
                'LevelFieldset' =>  'LrnlListquests\Form\Fieldset\LevelFieldset',
                'LanguageFieldset' =>  'LrnlListquests\Form\Fieldset\LanguageFieldset',
                'CategoryFieldset' =>  'LrnlListquests\Form\Fieldset\CategoryFieldset',

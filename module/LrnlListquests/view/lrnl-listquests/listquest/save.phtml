@@ -54,7 +54,8 @@ if (isset($listquest)){
         <?php if ($tags) :?>
         <div class="input-append">
             <span id="tags_element">
-            <?php echo $this->formCollection($tags); ?>
+            <?php echo $this->formLabelTwb($tags); ?>
+            <?php echo $this->formCollection($tags->setLabel('')); ?>
             </span>
             <button data-collection ="tags_element" class="btn add_item_to_collection_button" id="add_tags_button"><i class="icon-plus"></i></button>    
         </div>

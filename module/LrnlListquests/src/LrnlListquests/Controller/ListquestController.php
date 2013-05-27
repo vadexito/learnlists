@@ -48,7 +48,7 @@ class ListquestController extends AbstractActionController
         if ($prg instanceof Response) {
             return $prg; 
         } elseif (is_array($prg)) {
-            
+                
             if ($form->isValid()) {
                 $listquest = $form->getData();
 
@@ -56,6 +56,7 @@ class ListquestController extends AbstractActionController
                 $this->getSearchService()->updateIndex($listquest);
                 return $this->redirect()->toRoute($this->getRedirectRoute());
             } else {
+                
                 $fileErrors = $form->get('listquest')->get('pictureId')->getMessages();
                 if (empty($fileErrors)) {
                     $tempFile = $form->get('listquest')->get('pictureId')->getValue();
@@ -98,7 +99,7 @@ class ListquestController extends AbstractActionController
                 $this->getListquestService()->updateListquest($listquest);
                 $this->flashMessenger()->addSuccessMessage(_('Your picture has been successfully changed'));
                 
-            } else {                
+            } else {               
                 $this->flashMessenger()->addErrorMessage(
                     _('Your picture could not be changed. Please try again.')
                 );
@@ -139,10 +140,7 @@ class ListquestController extends AbstractActionController
         if ($request->isPost()) {   
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                
-//     \Doctrine\Common\Util\Debug::dump($request->getPost()->toArray()['listquest']['questions']);die;
-//     \Doctrine\Common\Util\Debug::dump($form->getData());die;
-                
+
                 $this->getListquestService()->updateListquest($form->getData());
                 $this->getSearchService()->updateIndex($form->getData());
                 return $this->redirect()->toRoute(
