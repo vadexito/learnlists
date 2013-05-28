@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-28 12:48+0100\n"
-"PO-Revision-Date: 2013-05-28 12:48+0100\n"
+"POT-Creation-Date: 2013-05-28 17:57+0100\n"
+"PO-Revision-Date: 2013-05-28 17:57+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -397,7 +397,7 @@ msgid "author"
 msgstr "Autor"
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:34
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:87
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:80
 msgid "level"
 msgstr "Niveau"
 
@@ -406,8 +406,8 @@ msgid "language"
 msgstr "Sprache"
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:71
-msgid "questions"
-msgstr "Fragen"
+msgid "Quiz size (questions)"
+msgstr "Quiz Größe (Fragen)"
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:119
 msgid "keywords"
@@ -423,7 +423,7 @@ msgstr "Quiz durchgehen"
 
 #: ../../../config/autoload/global/navigation.global.php:23
 msgid "New Quiz"
-msgstr "Quiz"
+msgstr "Quiz erstellen"
 
 #: ../../../config/autoload/global/navigation.global.php:30
 msgid "Offers"
@@ -1612,25 +1612,25 @@ msgstr "Quiz: %s"
 msgid "Teacher list"
 msgstr "Lehrerquiz"
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:49
-msgid "Edit list"
-msgstr "Liste bearbeiten"
-
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:63
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:56
 msgid "review"
 msgid_plural "reviews"
 msgstr[0] "Bewertung"
 msgstr[1] "Bewertungen"
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:65
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:58
 msgid "Review it!"
 msgstr "Bitte bewerten!"
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:77
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:70
 msgid "question"
 msgid_plural "questions"
 msgstr[0] "Frage"
 msgstr[1] "Fragen"
+
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:86
+msgid "Edit list"
+msgstr "Liste bearbeiten"
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:95
 msgid "Start to learn"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-28 12:37+0100\n"
-"PO-Revision-Date: 2013-05-28 12:37+0100\n"
+"PO-Revision-Date: 2013-05-28 18:19+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
 "Language: fr_FR\n"
@@ -423,7 +423,7 @@ msgstr "Rerchercher un quiz"
 
 #: ../../../config/autoload/global/navigation.global.php:23
 msgid "New Quiz"
-msgstr "Quiz"
+msgstr "Créer un quiz"
 
 #: ../../../config/autoload/global/navigation.global.php:30
 msgid "Offers"
@@ -460,7 +460,7 @@ msgstr "Déconnection"
 #: ../../../config/autoload/global/navigation.global.php:118
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:2
 msgid "Welcome"
-msgstr "Bienvenu"
+msgstr "Bienvenue"
 
 #: ../../../config/autoload/global/navigation.global.php:123
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:2
@@ -1668,8 +1668,7 @@ msgid ""
 "Find the best quizes to learn what you wish from lists of questions prepared "
 "by our community of teachers or create your own quiz."
 msgstr ""
-"Parcourez nos quiz de grande qualité proposés par la communauté de "
-"professeurs."
+"Parcourez nos quiz de qualité proposés par la communauté de professeurs."
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:12
 msgid "Find high quality quizes"

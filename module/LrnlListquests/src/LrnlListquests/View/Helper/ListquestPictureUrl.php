@@ -7,13 +7,6 @@ use LrnlListquests\Entity\Listquest;
 
 class ListquestPictureUrl extends AbstractHelper
 {
-    /**
-     *
-     * @var type LrnlListquests\Options\ModuleOptions
-     */
-    
-    protected $options;
-    
     protected $fileBankService;
     
     public function __invoke(Listquest $listquest = NULL)

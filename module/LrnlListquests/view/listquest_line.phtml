@@ -43,14 +43,7 @@ $editAuthorized = $user &&
                                 <i title="<?php echo $this->translate('Teacher list'); ?>" class="icon-star-empty"></i>
                                 <?php endif; ?>
                             </h4>
-                        </<?php echo $htmlTag; ?>>                     
-                        <span class="edit_button">
-                            <?php if ($editAuthorized) :?> 
-                                    <a class="btn btn-mini btn-primary" href="<?php echo $urlEdit; ?>" title="<?php echo $this->translate('Edit list'); ?>">
-                                        <i class="icon-edit icon-white"></i>
-                                    </a>
-                            <?php endif; ?>
-                        </span>
+                        </<?php echo $htmlTag; ?>>
                     </div>
                     <p>
                         <?php echo $this->escapeHtml($description); ?>
@@ -87,6 +80,13 @@ $editAuthorized = $user &&
                                 <?php echo $this->escapeHtml(ucfirst($this->translate('level')));?>
                             </small>
                         </span>
+                    </span>
+                    <span class="edit_button">
+                        <?php if ($editAuthorized) :?> 
+                                <a class="btn btn-mini btn-primary" href="<?php echo $urlEdit; ?>" title="<?php echo $this->translate('Edit list'); ?>">
+                                    <i class="icon-edit icon-white"></i>
+                                </a>
+                        <?php endif; ?>
                     </span>
                 </div>
                 <div class="span3">
