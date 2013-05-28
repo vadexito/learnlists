@@ -15,8 +15,6 @@ class SearchServiceFactory implements FactoryInterface
                 $config['indexPath'],
                 new Parameters($config['filtersForm'])
         );
-        $ratingService = $services->get('wtrating.service');
-        $service->setRatingService($ratingService);
         return $service;
     }
 }

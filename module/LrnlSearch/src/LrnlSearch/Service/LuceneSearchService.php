@@ -16,7 +16,7 @@ use LrnlSearch\Form\FiltersForm;
 use LrnlSearch\Exception\SearchException;
 use LrnlListquests\Entity\Listquest;
 
-use WtRating\Service\RatingService;
+
 use Traversable;
 
 class LuceneSearchService implements SearchServiceInterface
@@ -24,7 +24,6 @@ class LuceneSearchService implements SearchServiceInterface
     use LuceneSearchTrait;
     
     protected $_indexPath;
-    protected $_ratingService;
     protected $_filterConfig;
     protected $_index = NULL;
     
@@ -119,7 +118,7 @@ class LuceneSearchService implements SearchServiceInterface
                     $query->addSubquery($this->getQueryForRange($values,$filter),true);     
                     break;
                 case FiltersForm::$SEARCH :
-                    $query->addSubquery($this->getQueryForTerms($values),true);
+                    $this->addQueryForTerms($query,$values);        
                     break;
                 default:
             }
@@ -221,20 +220,8 @@ class LuceneSearchService implements SearchServiceInterface
     
     public function getNewListquestDocument()
     {
-        return new LuceneListquestDocument($this->getRatingService());        
+        return new LuceneListquestDocument();        
     }
-    
-    public function getRatingService()
-    {
-        return $this->_ratingService;
-    }
-    
-    public function setRatingService(RatingService $service)
-    {
-        $this->_ratingService = $service;
-        return $this;
-    }
-    
     
     public function getFilterConfig()
     {

@@ -6,20 +6,13 @@ use ZendSearch\Lucene\Document;
 use ZendSearch\Lucene\Document\Field;
 use LrnlListquests\Entity\Listquest;
 use LrnlSearch\Traits\LuceneSearchTrait;
-use WtRating\Service\RatingService;
+
 
 class LuceneListquestDocument extends Document implements ListquestDocumentInterface
 {
     use LuceneSearchTrait;
     
-    protected $_ratingService;
-    
     protected $_entity;
-    
-    public function __construct(RatingService $ratingService)
-    {
-        $this->setRatingService($ratingService);
-    }
     
     public function createDocumentFromListquest($id,Listquest $list)
     {
@@ -85,17 +78,4 @@ class LuceneListquestDocument extends Document implements ListquestDocumentInter
         $this->addField(Field::$type($property,$value));
         return true;
     }
-    
-    public function getRatingService()
-    {
-        return $this->_ratingService;
-    }
-    
-    public function setRatingService(RatingService $service)
-    {
-        $this->_ratingService = $service;
-        return $this;
-    }
-    
-    
 }
