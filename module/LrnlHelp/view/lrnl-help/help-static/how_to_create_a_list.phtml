@@ -1,5 +1,5 @@
 <?php
-$title = $this->translate('How to create a list');
+$title = $this->translate('How to create a quiz');
 $this->headTitle($title);
 
 $recommendationLink = '<a href="'.$this->url('lrnl-help/template',['template' => 'recommendations_list']).'">';
@@ -8,30 +8,30 @@ $createListSteps = [
     [
         'number' => 1,
         'iconName' => 'file-alt',
-        'title' => _('I prepare my lists'),
-        'text' => sprintf(_('Preparing the lists requires your time and talent. Please take a look on our %srecommendations</a> to enjoy the best experience for you and your learners'),$recommendationLink),
+        'title' => _('I prepare my quiz'),
+        'text' => sprintf(_('Preparing the quiz requires your time and talent. Please take a look on our %srecommendations</a> to enjoy the best experience for you and your learners'),$recommendationLink),
     ],
     [
         'number' => 2,
         'iconName' => 'edit',
-        'title' => _('I create a new container list'),
-        'text' => _('When you create a new empty list, you will have to carefully choose its name and description. This is how your list will be identified from the user and your learners. It is very important add a maximum of tags in order to facilitate to find you quiz.'),
+        'title' => _('I create an empty quiz'),
+        'text' => _('When you create a new empty quiz, you will have to carefully choose its name and description. This is how your quiz will be identified from the user and your learners. It is very important add a maximum of tags in order to facilitate to find your quiz.'),
     ],
     [
         'number' => 3,
         'iconName' => 'plus-sign',
-        'title' => _('I add questions to the list'),
+        'title' => _('I add questions to the quiz'),
         'text' => sprintf(_('In order to save you time and give you a maximum of flexibility you can enter several questions at the same time, erase or modify any of the questions. Please read the %sadd a new question</a> section for a more detailed information.'),$addNewQuestionLink),
     ],
     [
         'number' => 4,
         'iconName' => 'trophy',
-        'title' => _('I can check that my list has been published'),
-        'text' => _('Automatically the list will be published and available when browsing the different lists.'),
+        'title' => _('I can check that my quiz has been published'),
+        'text' => _('Automatically the quiz will be published and available when browsing the different quiz.'),
     ],
 ];
 ?>
-<p><?php echo $this->translate('To create a list, here are the steps you have to complete.'); ?></p>        
+<p><?php echo $this->translate('To create a quiz, here are the steps you have to complete.'); ?></p>        
 <ul class="unstyled">
     <?php echo $this->partialLoop('lrnl-help/help-static/step.phtml',$createListSteps); ?>
 </ul>  

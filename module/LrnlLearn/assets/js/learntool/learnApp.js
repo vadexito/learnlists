@@ -141,7 +141,7 @@ learnMVC.addInitializer(function(options){
             'height':100
         });
         $('#countdown').val(5).trigger('change');
-        introJs().setOptions(options.plugintranslations.introJs).oncomplete(function() {
+        introJs().setOptions(options.pluginTranslations.introJs).oncomplete(function() {
             learnMVC.startLearn();
         }).onexit(function() {
             learnMVC.startLearn();
