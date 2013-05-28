@@ -14,8 +14,6 @@ return [
         'ZfcUser',
         'ZfcUserAdmin',
         'ZfcUserDoctrineORM',
-        'GoalioRememberMe', 
-        'GoalioRememberMeDoctrineORM', 
         'ZfcTwitterBootstrap',
         'WebinoImageThumb',           
         'DluTwBootstrap',        
@@ -28,6 +26,8 @@ return [
         'ZfcAdmin',        
         'WtRating', 
         'WtRatingDoctrineORM', 
+        'GoalioRememberMe',
+        'GoalioRememberMeDoctrineORM',
         'DelCountriesFlags',
         'PhlyContact', 
         'FileBank',
@@ -35,7 +35,7 @@ return [
         'VxoLocale',
         'SlmGoogleAnalytics',
         'ZF2FileUploadExamples',
-        'Application',  
+        'Application',         
         'PhlySimplePage',
         'VxoUtils', 
         'VxoBraintree', 
@@ -48,7 +48,7 @@ return [
         'LrnlRest',
         'LrnlHelp',
         'LrnlSearch', 
-        'LrnlCategory'
+        'LrnlCategory',        
     ],
     
     // These are various options for the listeners attached to the ModuleManager

@@ -22,7 +22,7 @@ class SearchForm extends Form
                 'id'    => 'search',
                 'autocomplete'    => 'off',
                 'class' => 'input-xxlarge',
-                'placeholder' => _('Which quiz are you looking for?')
+                'placeholder' => _('What would you like to learn?')
             ],
         ]);
         

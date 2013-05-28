@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-28 12:38+0100\n"
-"PO-Revision-Date: 2013-05-28 12:39+0100\n"
+"POT-Creation-Date: 2013-05-28 12:48+0100\n"
+"PO-Revision-Date: 2013-05-28 12:48+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -334,8 +334,8 @@ msgid "Comment"
 msgstr "Kommentar"
 
 #: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:25
-msgid "Which quiz are you looking for?"
-msgstr "Welches Quiz suchen Sie?"
+msgid "What would you like to learn?"
+msgstr "Was möchtest du lernen?"
 
 #: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:33
 #: ../../../module/LrnlSearch/src/LrnlSearch/View/Helper/ListSearchBar.php:53
@@ -418,8 +418,8 @@ msgid "Enter a keyword"
 msgstr "Schlagwort eingeben"
 
 #: ../../../config/autoload/global/navigation.global.php:18
-msgid "Browse"
-msgstr "Quiz browsen"
+msgid "Browse quizes"
+msgstr "Quiz durchgehen"
 
 #: ../../../config/autoload/global/navigation.global.php:23
 msgid "New Quiz"
@@ -2048,6 +2048,12 @@ msgstr "Benutzer"
 #: ../../../module/Application/language/_XMLforPoedit/user.xml:8
 msgid "premium"
 msgstr "Premium"
+
+#~ msgid "Which quiz are you looking for?"
+#~ msgstr "Welches Quiz suchen Sie?"
+
+#~ msgid "Browse"
+#~ msgstr "Quiz browsen"
 
 #~ msgid "How to create a list"
 #~ msgstr "Wie eine Liste erstellt wird."

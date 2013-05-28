@@ -16,6 +16,7 @@ class Module implements AutoloaderProviderInterface,
         $app     = $e->getParam('application');
         $sm      = $app->getServiceManager();
         $options = $sm->get('wtrating_module_options');
+        
 
         // Add the default entity driver only if specified in configuration
         if ($options->getEnableDefaultEntities()) {
