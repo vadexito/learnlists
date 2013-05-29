@@ -1,23 +1,45 @@
 <?php
+$questionExample1 = new LrnlListquests\Form\Fieldset\QuestionFieldset('question1');
+$questionExample1->get('id')->setValue(1);
+$questionExample1->get('text')->setValue($this->translate('I cannot %put% up with him.'))->setAttribute('class','input-large');
+$questionExample1->get('answer')->setValue('');
+$questionExample1->get('comment')->setValue($this->translate('Some comments'))->setAttribute('class','input-medium');
+$questionExample2 = new LrnlListquests\Form\Fieldset\QuestionFieldset('question1');
+$questionExample2->get('id')->setValue(1);
+$questionExample2->get('text')->setValue('I %have% already %come% back from Scotland.')->setAttribute('class','input-large');
+$questionExample2->get('answer')->setValue('');
+$questionExample2->get('comment')->setValue('Some comments')->setAttribute('class','input-medium');
+$questionExample3 = new LrnlListquests\Form\Fieldset\QuestionFieldset('question1');
+$questionExample3->get('id')->setValue(1);
+$questionExample3->get('text')->setValue('I cannot %stand--bear% this.')->setAttribute('class','input-large');
+$questionExample3->get('answer')->setValue('');
+$questionExample3->get('comment')->setValue('Some comments')->setAttribute('class','input-medium');
+$questionExample4 = new LrnlListquests\Form\Fieldset\QuestionFieldset('question1');
+$questionExample4->get('id')->setValue(1);
+$questionExample4->get('text')->setValue('What is the most probable: I might go to the cinema or I may go to the cinema?')->setAttribute('class','input-large');
+$questionExample4->get('answer')->setValue('I may go to the cinema');
+$questionExample4->get('comment')->setValue('Some comments')->setAttribute('class','input-medium');
 
 $writeQuestion = [
-    $this->translate('Add a new question line by pushing on the <em>plus button</em>.'),
-    $this->translate('Add the <strong>text</strong> of the question. You can add two types of questions : ')
+    sprintf($this->translate('Add a new question line by pushing %s, aline with 3 boxes will appear for the text of the question, the answer and comments'),'<a class="btn btn-mini"><i class="icon-plus"></i></a>'),
+    $this->translate('Here are examples how to fullfill text and answers. There are 2 possibilities: ')
         .$this->htmlList([
-            $this->translate('question with one or more missing elements'). $this->htmlList([
-                    $this->translate('simple example with one missing word: <em>I cannot ... up with him</em>. In this case you must type the missing word(s) directly into the text and use the % sign to signal this is the answer: <code>I cannot %put% up with him.</code>'),
-                    $this->translate('example with two missing words : <em>I ... already come ... from Scotland.</em>. As if the first example just type the missing word(s) directly into the text and using the % sign: <code>I %have% already %come% back from Scotland.</code>'),
-                    $this->translate('example with one missing word and two possibilities: <em>I cannot ... this situation anymore!</em>. To add several possibilities for one missing word add a double hyphen <em>--</em>: <code>I cannot %stand--bear% this situation anymore.</code>'),
-                ],false,false,false).    
-            $this->translate('question with question mark, for example: <em>what is the most probable: I might go to the cinema or I may go to the cinema?</em> In this case just type the text of the question: <code>What is the most probable: I might go to the cinema or I may go to the cinema?</code>')],
+            $this->translate('<strong>question with one or more missing elements</strong>'). $this->htmlList([
+                    $this->translate('simple example with one missing word: <em>I cannot (put) up with him</em>. In this case you must type the missing word (<em>put</em>) directly into the text and use the % sign (type <code>%put%</code> instead of <em>put</em>):')
+                        .$this->questionsFieldset([$questionExample1],false),
+                    $this->translate('example with two missing words : <em>I ... already come ... from Scotland.</em>. As if the first example just type the missing words directly into the text and using the % sign:')
+                        .$this->questionsFieldset([$questionExample2],false),
+                    $this->translate('example with one missing word and two possible answers: <em>I cannot ... this situation anymore!</em>. To add several possibilities for one missing word add a double hyphen <em>--</em>:')
+                        .$this->questionsFieldset([$questionExample3],false),
+                ],false,false,false),    
+            $this->translate('<strong>question with question mark</strong>, for example: <em>what has the highest level of probability: I might go to the cinema or I may go to the cinema?</em> In this case just type the text of the question:')
+                    .$this->questionsFieldset([$questionExample2],false)
+        ],
     false,false,false),
-    $this->translate('Add the <strong>answer</strong> of the question : there will be no answer in the case of a question with missing word(s).')
 ];
 if ($this->hasRole('teacher')){
 $writeQuestion[] = $this->partial('lrnl-help/help-static/write_comments');         
 }
 ?>
-<p><?php echo $this->translate('Follow the following steps to add and define the content of each question: '); ?><p>
-    <?php echo $this->htmlList($writeQuestion,false,false,false); 
-   
-
+<p><?php echo $this->translate('For each new each question: '); ?><p>
+    <?php echo $this->htmlList($writeQuestion,false,false,false); ?>
