@@ -3,7 +3,6 @@
 namespace LrnlUser\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
-use LrnlListquests\Provider\ProvidesListquestService;
 
 class HasRole extends AbstractHelper
 {
@@ -12,8 +11,8 @@ class HasRole extends AbstractHelper
         if (!$this->getView()->zfcUserIdentity()){
             return $role === NULL ? 'guest' : ($role === 'guest');
         }
-        $user = $this->zfcUserIdentity();
-        if (!is_array($user->getRoles())){
+        $user = $this->getView()->zfcUserIdentity();
+        if (!count($user->getRoles())){
             throw new \Exception('The user '.$user->getUserName().'should have a role defined.');
         }
         if ($role === NULL){

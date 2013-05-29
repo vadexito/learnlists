@@ -4,30 +4,31 @@ $this->headTitle($title);
 
 $recommendationLink = '<a href="'.$this->url('lrnl-help/template',['template' => 'recommendations_list']).'">';
 $addNewQuestionLink = '<a href="'.$this->url('lrnl-help/template',['template' => 'add_new_question']).'">';
+$newQuizLink = '<a href="'.$this->url('listquests/list/add').'">';
 $createListSteps = [
     [
         'number' => 1,
         'iconName' => 'file-alt',
-        'title' => _('I prepare my quiz'),
-        'text' => sprintf(_('Preparing the quiz requires your time and talent. Please take a look on our %srecommendations</a> to enjoy the best experience for you and your learners'),$recommendationLink),
+        'title' => $this->translate('I prepare my quiz'),
+        'text' => sprintf($this->translate('Preparing the quiz requires your time and talent. Please take a look on our %srecommendations</a> to enjoy the best experience for you and your learners'),$recommendationLink),
     ],
     [
         'number' => 2,
         'iconName' => 'edit',
-        'title' => _('I create an empty quiz'),
-        'text' => _('When you create a new empty quiz, you will have to carefully choose its name and description. This is how your quiz will be identified from the user and your learners. It is very important add a maximum of tags in order to facilitate to find your quiz.'),
+        'title' => $this->translate('I create an empty quiz'),
+        'text' => sprintf($this->translate('To create an empty quiz choose %screate quiz</a>, you will have to carefully choose its name and description. This is how your quiz will be identified from the user and your learners. It is important to add as much tags as possible in order to facilitate finding your quiz.'),$newQuizLink),
     ],
     [
         'number' => 3,
         'iconName' => 'plus-sign',
-        'title' => _('I add questions to the quiz'),
-        'text' => sprintf(_('In order to save you time and give you a maximum of flexibility you can enter several questions at the same time, erase or modify any of the questions. Please read the %sadd a new question</a> section for a more detailed information.'),$addNewQuestionLink),
+        'title' => $this->translate('I add questions to the quiz'),
+        'text' => sprintf($this->translate('In order to save you time and give you a maximum of flexibility you can enter several questions at the same time, erase or modify any of the questions. Please read the %sadd a new question</a> section for a more detailed information.'),$addNewQuestionLink),
     ],
     [
         'number' => 4,
         'iconName' => 'trophy',
-        'title' => _('I can check that my quiz has been published'),
-        'text' => _('Automatically the quiz will be published and available when browsing the different quiz.'),
+        'title' => $this->translate('I can check that my quiz has been published'),
+        'text' => $this->translate('Automatically the quiz will be published and available when browsing the different quiz.'),
     ],
 ];
 ?>

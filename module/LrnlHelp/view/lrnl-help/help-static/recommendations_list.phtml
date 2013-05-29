@@ -16,11 +16,17 @@ $ourMethodLink = '<a href="'.$this->url('staticpages/template',['template' => 'a
     <li>
         <h4><?php echo $this->translate('Do not create lists with too many questions : between 15 and 50 is ok'); ?></h4>
         <p><?php echo $this->translate('We know that concentration is limited. Therefore in order to optimize learning the lists should not be too long.'); ?></p>
-    </li>    
+    </li>
+<?php if ($this->hasRole('teacher')): ?>
     <li>
         <h4><?php echo $this->translate('Try to order the question around a theme can help the learner'); ?></h4>
         <p><?php echo sprintf($this->translate('It is important to induce from the learner connections between the different questions he can learn in order to maximize its ability to remember. See the %sour method</a> for more information.'),$ourMethodLink); ?></p>
-    </li>    
+    </li>
+    <li>
+        <h4><?php echo $this->translate('Add comments to every question'); ?></h4>
+        <p><?php echo $this->partial('lrnl-help/help-static/write_comments'); ?></p>
+    </li>
+<?php endif; ?>
 </ul>
 
 

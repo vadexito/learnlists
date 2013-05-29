@@ -20,6 +20,9 @@ $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon',
         <?php echo $this->header; ?>
         <?php echo $this->placeholder('header') ?>
         <div id="main" class="container">
+            <?php echo $this->ztbflashMessenger('success'); ?>
+            <?php echo $this->ztbflashMessenger('error'); ?>
+            <?php echo $this->ztbflashMessenger('info'); ?>
             <?php echo $this->content; ?>
             <br/><br/>
             <?php echo $this->footer; ?>

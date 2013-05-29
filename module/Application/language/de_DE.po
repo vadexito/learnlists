@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-28 17:57+0100\n"
-"PO-Revision-Date: 2013-05-28 17:57+0100\n"
+"POT-Creation-Date: 2013-05-29 17:16+0100\n"
+"PO-Revision-Date: 2013-05-29 17:20+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -27,13 +27,12 @@ msgid "The picture could not be changed. Please try again."
 msgstr "Das Bild konnte nicht ausgetauscht werden. Bitte erneut versuchen"
 
 #: ../../../module/LrnlCategory/src/LrnlCategory/Controller/CategoryController.php:100
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:136
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:141
 #: ../../../module/VxoReview/src/VxoReview/Controller/ReviewController.php:52
 msgid "Save"
 msgstr "Speichern"
 
 #: ../../../module/LrnlCategory/src/LrnlCategory/Form/CategoryCreateFormFactory.php:61
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestCreateFormFactory.php:64
 #: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:119
 msgid "Add"
 msgstr "Hinzufügen"
@@ -85,16 +84,19 @@ msgstr "Ausgezeichnet, richtig und schnell"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:14
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:15
+#, fuzzy
 msgid "bad"
 msgstr "schlecht"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:16
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:17
+#, fuzzy
 msgid "poor"
 msgstr "schwach"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:18
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:19
+#, fuzzy
 msgid "regular"
 msgstr "ok"
 
@@ -108,6 +110,7 @@ msgid "very good"
 msgstr "sehr gut"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/PluginTranslations.php:23
+#, fuzzy
 msgid "gorgeous"
 msgstr "ausgezeichnet"
 
@@ -274,11 +277,11 @@ msgid_plural "points"
 msgstr[0] "Punkt"
 msgstr[1] "Punkte"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:100
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:105
 msgid "Your picture has been successfully changed"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:104
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:109
 msgid "Your picture could not be changed. Please try again."
 msgstr ""
 
@@ -290,6 +293,11 @@ msgstr "Bearbeiten"
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid "Check"
 msgstr "Anworten"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestCreateFormFactory.php:64
+#, fuzzy
+msgid "Save and add questions"
+msgstr "Neue Frage"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/CategoryFieldset.php:23
 msgid "Category"
@@ -315,7 +323,12 @@ msgstr "Beschreibung"
 msgid "Tags"
 msgstr "Tags"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldsetFactory.php:118
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldsetFactory.php:102
+#, fuzzy
+msgid "Add questions"
+msgstr "Neue Fragen"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldsetFactory.php:119
 msgid "Choose a presentation picture for your quiz"
 msgstr ""
 
@@ -426,28 +439,29 @@ msgid "New Quiz"
 msgstr "Quiz erstellen"
 
 #: ../../../config/autoload/global/navigation.global.php:30
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/summary.phtml:3
+#, fuzzy
+msgid "My learning"
+msgstr "Mein Lernheft"
+
+#: ../../../config/autoload/global/navigation.global.php:37
 msgid "Offers"
 msgstr "Angebote"
 
-#: ../../../config/autoload/global/navigation.global.php:42
+#: ../../../config/autoload/global/navigation.global.php:49
 msgid "My program"
 msgstr "Mein Programm"
 
-#: ../../../config/autoload/global/navigation.global.php:54
+#: ../../../config/autoload/global/navigation.global.php:61
 #: ../../../module/LrnlUser/view/lrnl-user/user/login.phtml:5
 msgid "Sign In"
 msgstr "Anmelden"
 
-#: ../../../config/autoload/global/navigation.global.php:61
+#: ../../../config/autoload/global/navigation.global.php:68
 #: ../view/cdli-twostagesignup/register.phtml:13
 #: ../../../module/Application/view/cdli-twostagesignup/register.phtml:13
 msgid "Sign Up"
 msgstr "Registrieren"
-
-#: ../../../config/autoload/global/navigation.global.php:76
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/summary.phtml:3
-msgid "My learning"
-msgstr "Mein Lernheft"
 
 #: ../../../config/autoload/global/navigation.global.php:83
 msgid "Profile"
@@ -468,25 +482,30 @@ msgid "How to create a quiz"
 msgstr "Wie ein Quiz erstellt wird."
 
 #: ../../../config/autoload/global/navigation.global.php:128
+#, fuzzy
+msgid "How to add new questions to my quiz"
+msgstr "dem Quiz Fragen hinzuzufügen"
+
+#: ../../../config/autoload/global/navigation.global.php:133
 msgid "Recommandation for writing new quiz"
 msgstr "Empfehlungen für die Erstellung der Quiz"
 
-#: ../../../config/autoload/global/navigation.global.php:133
+#: ../../../config/autoload/global/navigation.global.php:138
 msgid "How do I learn?"
 msgstr "Wie lernt man?"
 
-#: ../../../config/autoload/global/navigation.global.php:138
+#: ../../../config/autoload/global/navigation.global.php:143
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:2
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:128
 msgid "How is the score calculated?"
 msgstr "Wie wird der Punktestand berechnet ?"
 
-#: ../../../config/autoload/global/navigation.global.php:143
+#: ../../../config/autoload/global/navigation.global.php:148
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/do_i_have_to_leave_a_review.phtml:2
 msgid "Do I have to leave a review?"
 msgstr "Soll ich eine Bewertung hinterlassen?"
 
-#: ../../../config/autoload/global/navigation.global.php:148
+#: ../../../config/autoload/global/navigation.global.php:153
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/faq.phtml:2
 msgid "FAQ"
 msgstr "FAQ"
@@ -918,8 +937,9 @@ msgstr "Kontakt"
 #: ../view/layout/footer.phtml:21
 #: ../../../module/Application/view/layout/footer.phtml:21
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/map.phtml:2
+#, fuzzy
 msgid "Sitemap"
-msgstr ""
+msgstr "Seitenmappe"
 
 #: ../view/layout/footer.phtml:31
 #: ../../../module/Application/view/layout/footer.phtml:31
@@ -977,7 +997,7 @@ msgstr "Die Nachricht wurde abgeschickt!"
 #: ../../../module/LrnlCategory/view/lrnl-category/category/changepicture.phtml:14
 #: ../../../module/LrnlCategory/view/lrnl-category/category/create.phtml:10
 #: ../../../module/LrnlCategory/view/lrnl-category/category/edit.phtml:10
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:18
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:21
 #: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:13
 #: ../../../module/VxoReview/view/vxo-review/review/create.phtml:10
 #: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:10
@@ -1002,8 +1022,9 @@ msgstr "Sind Sie sicher, dass Sie die Bewertung löschen möchten?"
 
 #: ../../../module/LrnlCategory/view/lrnl-category/category/edit.phtml:2
 #: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:2
+#, fuzzy
 msgid "Edit your review"
-msgstr ""
+msgstr "Ihre Bewertung bearbeiten"
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/about_our_method.phtml:2
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:22
@@ -1038,54 +1059,6 @@ msgstr "Frage hinzufügen"
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:7
 msgid ""
-"Add the <strong>text</strong> of the question. You can add two types of "
-"questions : "
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:9
-msgid "question with one or more missing elements"
-msgstr "Frage mit einer oder mehr Lücken"
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:10
-msgid ""
-"simple example with one missing word: <em>I cannot ... up with him</em>. In "
-"this case you must type the missing word(s) directly into the text and use "
-"the % sign to signal this is the answer: <code>I cannot %put% up with him.</"
-"code>"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:11
-msgid ""
-"example with two missing words : <em>I ... already come ... from Scotland.</"
-"em>. As if the first example just type the missing word(s) directly into the "
-"text and using the % sign: <code>I %have% already %come% back from Scotland."
-"</code>"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:12
-msgid ""
-"example with one missing word and two possibilities: <em>I cannot ... this "
-"situation anymore!</em>. To add several possibilities for one missing word "
-"add a double hyphen <em>--</em>: <code>I cannot %stand--bear% this situation "
-"anymore.</code>"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:14
-msgid ""
-"question with question mark, for example: <em>what is the most probable: I "
-"might go to the cinema or I may go to the cinema?</em> In this case just "
-"type the text of the question: <code>What is the most probable: I might go "
-"to the cinema or I may go to the cinema?</code>"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:16
-msgid ""
-"Add the <strong>answer</strong> of the question : there will be no answer in "
-"the case of a question with missing word(s)."
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:20
-msgid ""
 "Add a <strong>comment</strong>: the comment by the teacher adds great value "
 "added to each learner and helps to remembering and learn. You should add a "
 "comment for every question as you would do during a standard course. Here "
@@ -1096,51 +1069,104 @@ msgid ""
 "code>"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:27
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:14
 msgid "Sign in!"
 msgstr "Melde dich an!"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:28
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:15
+#, fuzzy
 msgid ""
-"To be able to create a new list of edit you own lists you have to be "
+"To be able to create a new quiz or edit you own quizes you have to be "
 "identified!"
-msgstr ""
+msgstr "Bitte anmelden, um ein Quiz hinzuzufügen oder bearbeiten"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:33
-msgid "I create a new list or I choose one of my lists"
-msgstr ""
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:20
+#, fuzzy
+msgid "I create a new quiz or I choose to edit one of my quizes"
+msgstr "I erstelle ein neues Quiz oder wähle eins meiner Quiz aus"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:34
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:21
 #, php-format
 msgid ""
-"You can %screate a list</a> or select a list to add new questions. You must "
-"however notice that you can only add question to <em>your</em> lists. In the "
-"browse list page, you will see an icon edit new to the name of the list "
-"indicating this is your list and you can edit it to add/modifiy/remove "
-"questions."
+"You can %screate a quiz</a> or select one of your quizes to add new "
+"questions. In the browse quiz page, you will see an icon edit indicating you "
+"can edit and add questions to your quiz. Please note that you cannot add "
+"questions in other quizes than yours. "
 msgstr ""
+"Sie können %sein Quiz erstellen</a> oder eines ihrer Quiz auswählen. Auf der "
+"Quiz durchgehen Seite sehen Sie ein Bearbeiten Icon, zeigt, dass Sie das "
+"Quiz bearbeiten und Fragen hinzuzufügen können. Wird darauf hingewiesen, "
+"dass Sie nur Fragen in Ihren Quiz schaffen können."
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:39
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:26
 msgid "I write the content"
 msgstr "Ich schreibe den Inhalt"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:40
-msgid "Follow the following steps to define the content of each question: "
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:32
+msgid "I can check that my question is now in my quiz"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:47
-msgid "I can check that my question in now in my list"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:48
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:33
 msgid ""
 "The question will be automatically added after pushing on the save button. "
 "You can at anytime modify or remove any question."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:53
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:38
 msgid ""
-"To add a new question to a list, here are the steps you have to complete."
+"To add a new question to a quiz, here are the steps you have to complete."
+msgstr "Um eine neue Frage hinzuzufügen, verfolgen Sie folgende Schitte"
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:4
+msgid ""
+"Add the <strong>text</strong> of the question. You can add two types of "
+"questions : "
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:6
+msgid "question with one or more missing elements"
+msgstr "Frage mit einer oder mehr Lücken"
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:7
+msgid ""
+"simple example with one missing word: <em>I cannot ... up with him</em>. In "
+"this case you must type the missing word(s) directly into the text and use "
+"the % sign to signal this is the answer: <code>I cannot %put% up with him.</"
+"code>"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:8
+msgid ""
+"example with two missing words : <em>I ... already come ... from Scotland.</"
+"em>. As if the first example just type the missing word(s) directly into the "
+"text and using the % sign: <code>I %have% already %come% back from Scotland."
+"</code>"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:9
+msgid ""
+"example with one missing word and two possibilities: <em>I cannot ... this "
+"situation anymore!</em>. To add several possibilities for one missing word "
+"add a double hyphen <em>--</em>: <code>I cannot %stand--bear% this situation "
+"anymore.</code>"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:11
+msgid ""
+"question with question mark, for example: <em>what is the most probable: I "
+"might go to the cinema or I may go to the cinema?</em> In this case just "
+"type the text of the question: <code>What is the most probable: I might go "
+"to the cinema or I may go to the cinema?</code>"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:13
+msgid ""
+"Add the <strong>answer</strong> of the question : there will be no answer in "
+"the case of a question with missing word(s)."
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:16
+msgid "Follow the following steps to define the content of each question: "
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/do_i_have_to_leave_a_review.phtml:6
@@ -1209,34 +1235,35 @@ msgstr "+2 Punkte, wenn Sie nach mehreren Fehlern richtig antworten "
 msgid "0 points if you have asked for the answer"
 msgstr "Keine Punkte, falls Antwort eingesehen wurde"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:11
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:12
 msgid "I prepare my quiz"
 msgstr "Ich bereite mein Quiz vor"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:12
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:13
 #, php-format
 msgid ""
 "Preparing the quiz requires your time and talent. Please take a look on our "
 "%srecommendations</a> to enjoy the best experience for you and your learners"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:17
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:18
 msgid "I create an empty quiz"
 msgstr "Ich erstelle ein leeres Quiz"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:18
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:19
+#, php-format
 msgid ""
-"When you create a new empty quiz, you will have to carefully choose its name "
-"and description. This is how your quiz will be identified from the user and "
-"your learners. It is very important add a maximum of tags in order to "
-"facilitate to find your quiz."
+"To create an empty quiz choose %screate quiz</a>, you will have to carefully "
+"choose its name and description. This is how your quiz will be identified "
+"from the user and your learners. It is important to add as much tags as "
+"possible in order to facilitate finding your quiz."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:23
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:24
 msgid "I add questions to the quiz"
 msgstr "Ich füge dem Quiz Fragen hinzu"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:24
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:25
 #, php-format
 msgid ""
 "In order to save you time and give you a maximum of flexibility you can "
@@ -1245,17 +1272,17 @@ msgid ""
 "detailed information."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:29
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:30
 msgid "I can check that my quiz has been published"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:30
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:31
 msgid ""
 "Automatically the quiz will be published and available when browsing the "
 "different quiz."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:34
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:35
 msgid "To create a quiz, here are the steps you have to complete."
 msgstr ""
 
@@ -1344,8 +1371,9 @@ msgid ""
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:13
+#, fuzzy
 msgid "Make extensive use of tags"
-msgstr ""
+msgstr "Benutz Tags so viel wie möglich"
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:14
 msgid ""
@@ -1411,16 +1439,16 @@ msgid "You have limited time to answer"
 msgstr "Zeit zur Antwort ist begrenzt"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:58
-msgid "The list you have choosen"
-msgstr "Ausgewählte Liste"
+msgid "The quiz you have choosen"
+msgstr "Ausgewähltes Quiz"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:61
 msgid ""
-"You can do several rounds of the same list, you will see how many you did "
+"You can do several rounds of the same quiz, you will see how many you did "
 "already.This function is available only if your are logged in since it will "
 "save your progress and adapt the method of asking."
 msgstr ""
-"Sie können mehrmals dieselbe Liste machen. Rundezahl wird hier angezeigt. "
+"Sie können mehrmals dasselbe Quiz machen. Rundezahl wird hier angezeigt. "
 "Diese Funktion ist nur bei Anmmeldung verfügbar, weil sie ihre Fortschritte "
 "speichert und die Lernmethode anpasst."
 
@@ -1545,8 +1573,8 @@ msgstr "Sie haben noch keine Runde beendet"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:181
 #, php-format
-msgid "Loading your list <em>%s</em>"
-msgstr "Liste <em>%s</em> wird geladen"
+msgid "Loading your quiz <em>%s</em>"
+msgstr "Quiz <em>%s</em> wird geladen"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:191
 msgid "How is your score calculated?"
@@ -1558,11 +1586,11 @@ msgstr "Zurück zum Lernen"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:207
 msgid ""
-"You will soon start a new list, please take the time to understand how it "
+"You will soon start a new quiz, please take the time to understand how it "
 "works. It takes 15 seconds!"
 msgstr ""
-"Sie beginnen gleich mit einer neuen Liste, nehmen Sie sich 15 Sekunden Zeit, "
-"um zu verstehen, wie Learnlists funktioniert."
+"Sie beginnen gleich mit einem neuen Quiz, nehmen Sie sich 15 Sekunden Zeit, "
+"um zu verstehen, wie es funktioniert."
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:210
 msgid "Start learning directly"
@@ -1660,6 +1688,14 @@ msgstr "Liste löschen"
 msgid "Are you sure that you want to delete the whole list: %s?"
 msgstr "Sind Sie sicher, dass Sie die Liste %s löschen möchten?"
 
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/edit.phtml:32
+msgid "How to write the content of a new question?"
+msgstr ""
+
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/edit.phtml:38
+msgid "Close"
+msgstr ""
+
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:2
 msgid "Learn with quizes"
 msgstr "Lern per Quiz"
@@ -1740,47 +1776,26 @@ msgstr "Einige beliebte Kategorien unserer Auswahl"
 msgid "Access directly any of our quiz-list:"
 msgstr "Direkt zu einem Quiz gehen"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:39
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:14
+#, fuzzy, php-format
+msgid "Add questions (%sHow?</a>)"
+msgstr "Neue Frage"
+
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:38
 #, php-format
 msgid "%sChange</a> your current picture?"
 msgstr "Aktuelles Foto %swechseln</a>"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:78
-msgid "Rules for entering question text"
-msgstr "Wie man Fragen einträgt"
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:78
-msgid ""
-"(i) Enter the text for the question. (ii) If this is a sentence to fill in, "
-"please use two '%' signs in order to specify answers.Example : He %was% not "
-"there %either% (maximum two answers). (iii) in the case of multiple "
-"possibilities you can use the sign '--'. Example : He is tired %because--"
-"since% he did not sleep enough."
-msgstr ""
-"(i) Text der Frage eintragen. (ii) Wenn es sich um eine zu ergänzende Frage "
-"handelt, nutzen sie Bitte zweimal die '%' Zeichen um die Antwort herum. "
-"Beipsiel : Er %hat% die richtige %Entscheidung %getroffen% (maximal 2 "
-"Antworten). (iii) Falls es verschiede Lösungen gibt, kann das Zeichen '--' "
-"benutzt werden, wie im folgenden Beispiel : Ihr habt einen großen Irrtum "
-"%begangen--gemacht%."
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:84
-#: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:26
-msgid ""
-"Nothing to enter if the answer was already entered directly in the text."
-msgstr ""
-"Keine Antwort eintragen, wenn es sich um eine zu ergänzende Frage handelt."
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:99
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:97
 #: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:2
 msgid "Edit question"
 msgstr "Frage bearbeiten"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:102
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:100
 msgid "Remove question"
 msgstr "Frage löschen"
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:114
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:112
 msgid "Press to add a new empty line. To save press the button below"
 msgstr ""
 "Plus drücken, um neue Frage hinzuzufügen. Zum Speichern unten klicken. "
@@ -1807,6 +1822,12 @@ msgstr ""
 "Hier bitte den Text der Frage eintragen. Wenn eine Lücke auszufüllen ist, "
 "bitte zweimal die \"%\" Zeichen vor und hinter der Antwort nutzen. "
 "Beipsiel : Er %hat% die richtige %Entscheidung %getroffen."
+
+#: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:26
+msgid ""
+"Nothing to enter if the answer was already entered directly in the text."
+msgstr ""
+"Keine Antwort eintragen, wenn es sich um eine zu ergänzende Frage handelt."
 
 #: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:5
 msgid ""
@@ -2010,21 +2031,25 @@ msgstr ""
 
 #: ../language/_XMLforPoedit/listquest.xml:19
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:19
+#, fuzzy
 msgid "Very difficult"
 msgstr "Sehr schwer"
 
 #: ../language/_XMLforPoedit/listquest.xml:20
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:20
+#, fuzzy
 msgid "Difficult"
 msgstr "Schwierig"
 
 #: ../language/_XMLforPoedit/listquest.xml:21
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:21
+#, fuzzy
 msgid "Average"
 msgstr "Durchschnitt"
 
 #: ../language/_XMLforPoedit/listquest.xml:22
 #: ../../../module/Application/language/_XMLforPoedit/listquest.xml:22
+#, fuzzy
 msgid "Easy"
 msgstr "Einfach"
 
@@ -2048,6 +2073,23 @@ msgstr "Benutzer"
 #: ../../../module/Application/language/_XMLforPoedit/user.xml:8
 msgid "premium"
 msgstr "Premium"
+
+#~ msgid "Rules for entering question text"
+#~ msgstr "Wie man Fragen einträgt"
+
+#~ msgid ""
+#~ "(i) Enter the text for the question. (ii) If this is a sentence to fill "
+#~ "in, please use two '%' signs in order to specify answers.Example : He %was"
+#~ "% not there %either% (maximum two answers). (iii) in the case of multiple "
+#~ "possibilities you can use the sign '--'. Example : He is tired %because--"
+#~ "since% he did not sleep enough."
+#~ msgstr ""
+#~ "(i) Text der Frage eintragen. (ii) Wenn es sich um eine zu ergänzende "
+#~ "Frage handelt, nutzen sie bitte zweimal die '%' Zeichen um die Antwort "
+#~ "herum. Beispiel : Er %hat% die richtige Entscheidung %getroffen% (maximal "
+#~ "2 Antworten). (iii) Falls es verschiedene Lösungen gibt, kann das Zeichen "
+#~ "'--' benutzt werden, wie im folgenden Beispiel : Ihr habt einen großen "
+#~ "Irrtum %begangen--gemacht%."
 
 #~ msgid "Which quiz are you looking for?"
 #~ msgstr "Welches Quiz suchen Sie?"
@@ -2309,9 +2351,6 @@ msgstr "Premium"
 #~ "quizzes developed by teachers which ensures their top quality."
 #~ msgstr ""
 #~ "Quiz zu benutzen ist ein anerkanntes Mittel um nachhaltig zu lernen."
-
-#~ msgid "Add question"
-#~ msgstr "Neue Frage"
 
 #~ msgid "by %s created on %s"
 #~ msgstr "von %s erstellt am %s"

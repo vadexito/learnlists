@@ -10,6 +10,9 @@ if (isset($listquest)){
     $listquest = NULL;
 }
 
+$questionsHelpUrl = '#questions_help_modal';
+$form->get('listquest')->get('questions')->setLabel(sprintf($this->translate('Add questions (%sHow?</a>)'),'<a data-toggle="modal" href="'.$questionsHelpUrl.'">')); 
+
 ?>
 
 <?php if ($form->getMessages()): ?>
@@ -18,11 +21,7 @@ if (isset($listquest)){
     <strong><?php echo $this->translate('There were some errors. Please try again!'); ?></strong>
 </div>
 <?php endif; ?>
-<?php echo $this->ztbflashMessenger('success'); ?>
-<?php echo $this->ztbflashMessenger('error'); ?>
-<?php echo $this->ztbflashMessenger('info'); ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
-
 <?php echo $this->form()->openTag($form); ?>
 <?php echo $listquestFieldset->get('id') ?  $this->formHiddenTwb($listquestFieldset->get('id')) : ''?>
 <?php echo $form->get('csrf') ? $this->formHiddenTwb($form->get('csrf')) : '' ?>
@@ -70,19 +69,18 @@ if (isset($listquest)){
 <?php if ($listquestFieldset->get('questions')) : $questionTarget = $listquestFieldset->get('questions')->getTargetElement(); ?>
 <div class="row-fluid">
         <span id="questions_element">
+            <fieldset>
+                <legend>
+                    <?php echo $this->form->get('listquest')->get('questions')->getLabel() ?>
+                </legend>
+            </fieldset>            
         <table>
-            <thead>
+            <thead style="display:none">
                 <th>
                     <?php echo $questionTarget->get('text')->getLabel();?>
-                    <span class="help-inline">
-                        (<a href="#" data-toggle="popover" data-placement="bottom" title="<?php echo $this->translate('Rules for entering question text'); ?>" data-content="<?php echo $this->translate('(i) Enter the text for the question. (ii) If this is a sentence to fill in, please use two \'%\' signs in order to specify answers.Example : He %was% not there %either% (maximum two answers). (iii) in the case of multiple possibilities you can use the sign \'--\'. Example : He is tired %because--since% he did not sleep enough.'); ?>">?</a>)
-                    </span>
                 </th>
                 <th>
                     <?php echo $questionTarget->get('answer')->getLabel();?>
-                    <span class="help-inline">
-                        (<a href="#" data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Nothing to enter if the answer was already entered directly in the text.'); ?>">?</a>)
-                    </span>
                 </th>
                 <th><?php echo $questionTarget->get('comment')->getLabel();?></th>
                 <th></th>
@@ -108,7 +106,7 @@ if (isset($listquest)){
             <?php endforeach;?>
             </tbody>
         </table>
-        <div id="questions_element_adding">
+        <div id="questions_element_adding">            
             <?php echo $this->formCollection()->renderTemplate($this->form->get('listquest')->get('questions')) ?>
             <div class="added_elements"></div>
             <a data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Press to add a new empty line. To save press the button below'); ?>" data-collection="questions_element" class="btn add_item_to_collection_button" id="add_questions_button"><i class="icon-plus"></i></a>

@@ -17,7 +17,7 @@ class Module implements AutoloaderProviderInterface,
         $sm      = $app->getServiceManager();
         $options = $sm->get('wtrating_module_options');
         
-
+        $sm->get('doctrine.entitymanager.orm_default');
         // Add the default entity driver only if specified in configuration
         if ($options->getEnableDefaultEntities()) {
             $chain = $sm->get('doctrine.driver.orm_default');

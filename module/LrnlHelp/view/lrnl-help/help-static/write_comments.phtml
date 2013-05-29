@@ -1,0 +1,11 @@
+<?php
+$title = $this->translate('Add a <strong>comment</strong> for every question as you would do during a standard course. Here are some examples of comments you could add:');
+$content = $this->htmlList([
+            $this->translate('give more information: <code>The expression <em>to put up with</em> has several synonyms like to bear or to stand but it is the most used in the common language,</code>'),
+            $this->translate('provide some explanation: <code> The verb to put is one of the richest verb as for its phrasal elements and is very commonly used.</code>'),
+            $this->translate('link to other questions of the quiz or other quizes: <code> <em>To put up with</em> in contrary to other verbs with to put in the quiz belongs to the common language.</code>'),        
+        ],false,false,false);
+$conclusion = $this->translate('The comments add great value-added and helps remembering and learning.');
+?>  
+
+<?php echo $title.$content.$conclusion;

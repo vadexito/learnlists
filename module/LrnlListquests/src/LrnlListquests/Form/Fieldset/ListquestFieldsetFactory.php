@@ -99,6 +99,7 @@ class ListquestFieldsetFactory implements FactoryInterface
                             'autocomplete'    => 'off'
                          ],
                         'options' => [
+                            'label' => _('Add questions'),
                             'count' => 0,
                             'template_placeholder' => '__index__',
                             'should_create_template' => true,

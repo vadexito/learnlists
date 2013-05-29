@@ -61,7 +61,7 @@ class ListquestCreateFormFactory implements FactoryInterface
                         'type' => 'submit',
                         'attributes' => [
                             'type'  => 'submit',
-                            'value' => _('Add'),
+                            'value' => _('Save and add questions'),
                             'id' => 'submitbutton',
                             'class' => 'btn btn-primary',
                         ], 

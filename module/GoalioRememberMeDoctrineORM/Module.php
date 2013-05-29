@@ -14,9 +14,8 @@ class Module implements
     ConfigProviderInterface,
     ServiceProviderInterface,
     BootstrapListenerInterface
+ 
 {
-    
-    
     public function onBootstrap(EventInterface $e)
     {
         $app     = $e->getParam('application');

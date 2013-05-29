@@ -26,3 +26,15 @@ $changePictureForm->prepare();
   </div>
    <?php echo $this->formTwb()->closeTag($changePictureForm);?>
 </div>
+<div id="questions_help_modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3><?php echo $this->translate('How to write the content of a new question?'); ?></h3>
+  </div>  
+  <div class="modal-body">   
+      <?php echo $this->partial('lrnl-help/help-static/create_new_question_content.phtml','LrnlHelp'); ?>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo $this->translate('Close'); ?></button>
+  </div>   
+</div>

@@ -41,7 +41,8 @@ class ListquestController extends AbstractActionController
     public function addAction()
     {
         $formElementManager = $this->getServiceLocator()->get('FormElementManager');
-        $form = $formElementManager->get('listquest-create-form');        
+        $form = $formElementManager->get('listquest-create-form');
+        
         $tempFile = null;
         
         $prg = $this->fileprg($form);
@@ -52,9 +53,13 @@ class ListquestController extends AbstractActionController
             if ($form->isValid()) {
                 $listquest = $form->getData();
 
-                $this->getListquestService()->insertListquest($listquest);                
+                $id = $this->getListquestService()->insertListquest($listquest);                
                 $this->getSearchService()->updateIndex($listquest);
-                return $this->redirect()->toRoute($this->getRedirectRoute());
+                
+                return $this->redirect()->toRoute(
+                    'listquests/list/edit',
+                    ['id' => $id]
+                );
             } else {
                 
                 $fileErrors = $form->get('listquest')->get('pictureId')->getMessages();
