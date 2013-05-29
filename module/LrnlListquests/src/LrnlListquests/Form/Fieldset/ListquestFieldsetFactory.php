@@ -84,7 +84,9 @@ class ListquestFieldsetFactory implements FactoryInterface
                             'template_placeholder' => '__index__',
                             'should_create_template' => true,
                             'allow_add' => true,
-                            'target_element' => $services->get('TagFieldset'),
+                            'target_element' => [
+                                'type' => 'TagFieldset'
+                            ],
                         ],
                     ],
                 ],
@@ -104,8 +106,9 @@ class ListquestFieldsetFactory implements FactoryInterface
                             'template_placeholder' => '__index__',
                             'should_create_template' => true,
                             'allow_add' => true,
-                            'target_element' => $services->get('QuestionFieldset'),
-
+                            'target_element' => [
+                                'type' => 'QuestionFieldset'
+                            ],
                         ],
                     ],
                 ],

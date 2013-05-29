@@ -67,51 +67,49 @@ $form->get('listquest')->get('questions')->setLabel(sprintf($this->translate('Ad
     </div>
 </div>
 <?php if ($listquestFieldset->get('questions')) : $questionTarget = $listquestFieldset->get('questions')->getTargetElement(); ?>
-<div class="row-fluid">
-        <span id="questions_element">
-            <fieldset>
-                <legend>
-                    <?php echo $this->form->get('listquest')->get('questions')->getLabel() ?>
-                </legend>
-            </fieldset>            
-        <table>
-            <thead style="display:none">
-                <th>
-                    <?php echo $questionTarget->get('text')->getLabel();?>
-                </th>
-                <th>
-                    <?php echo $questionTarget->get('answer')->getLabel();?>
-                </th>
-                <th><?php echo $questionTarget->get('comment')->getLabel();?></th>
-                <th></th>
-            </thead>
-            <tbody>
-                <?php foreach ($form->get('listquest')->get('questions') as $question) : ?>        
-            <tr class="populate">
-                <?php echo $this->formHidden($question->get('id'));?>
-                <td><?php echo $this->formInput($question->get('text'));?></td>
-                <td><?php echo $this->formInput($question->get('answer'));?></td>
-                <td><?php echo $this->formInput($question->get('comment'));?></td>
-                <td class="btn-group">
-                    <div class="btn-group">
-                        <a class="btn btn-mini btn-primary edit-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('listquests/question/edit',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Edit question'); ?>">
-                            <i class="icon-edit icon-white"></i>
-                        </a>
-                        <a class="btn btn-mini btn-primary delete-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('listquests/question/delete',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Remove question'); ?>">
-                            <i class="icon-remove icon-white"></i>
-                        </a>
-                    </div>
-                </td>
-            </tr>  
-            <?php endforeach;?>
-            </tbody>
-        </table>
-        <div id="questions_element_adding">            
-            <?php echo $this->formCollection()->renderTemplate($this->form->get('listquest')->get('questions')) ?>
-            <div class="added_elements"></div>
-            <a data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Press to add a new empty line. To save press the button below'); ?>" data-collection="questions_element" class="btn add_item_to_collection_button" id="add_questions_button"><i class="icon-plus"></i></a>
-        </div>
-    </span>
+<div class="row-fluid collection">        
+    <fieldset>
+        <legend>
+            <?php echo $this->form->get('listquest')->get('questions')->getLabel() ?>
+        </legend>
+    </fieldset>            
+    <table>
+        <thead <?php if (count($listquestFieldset->get('questions')) === 0) echo 'style="display:none"'; ?>>
+            <th>
+                <?php echo $questionTarget->get('text')->getLabel();?>
+            </th>
+            <th>
+                <?php echo $questionTarget->get('answer')->getLabel();?>
+            </th>
+            <th><?php echo $questionTarget->get('comment')->getLabel();?></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <?php foreach ($listquestFieldset->get('questions') as $question) : ?>        
+        <tr class="populate">
+            <?php echo $this->formHidden($question->get('id'));?>
+            <td><?php echo $this->formInput($question->get('text'));?></td>
+            <td><?php echo $this->formInput($question->get('answer'));?></td>
+            <td><?php echo $this->formInput($question->get('comment'));?></td>
+            <td class="btn-group">
+                <div class="btn-group">
+                    <a class="btn btn-mini btn-primary edit-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('listquests/question/edit',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Edit question'); ?>">
+                        <i class="icon-edit icon-white"></i>
+                    </a>
+                    <a class="btn btn-mini btn-primary delete-question" data-questionId="<?php echo $question->get('id')->getValue(); ?>" href="<?php echo $this->url('listquests/question/delete',['id' => $question->get('id')->getValue()]); ?>" title="<?php echo $this->translate('Remove question'); ?>">
+                        <i class="icon-remove icon-white"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>  
+        <?php endforeach;?>
+        </tbody>
+    </table>
+    <div id="questions_element_adding">            
+        <?php echo $this->formCollection()->renderTemplate($this->form->get('listquest')->get('questions')) ?>
+        <div class="added_elements"></div>
+        <a data-toggle="tooltip" data-placement="right" title="<?php echo $this->translate('Press to add a new empty line. To save press the button below'); ?>" data-collection="questions_element" class="btn add_item_to_collection_button"><i class="icon-plus"></i></a>
+    </div>
 </div>
 <?php endif; ?>
 <div class="row-fluid">

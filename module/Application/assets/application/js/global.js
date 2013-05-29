@@ -128,30 +128,7 @@ $(function() {
         });
     });
     
-    //multi line elements in forms
-    var collection = $('#questions_element');
-    collection.find('tr.populate input').attr('readonly','true');
-    //multi line element for edit list (several questions)
-    $('#add_questions_button.add_item_to_collection_button').click(function(e){
-        e.preventDefault();
-        
-        var collectionId = $(e.currentTarget).data('collection');        
-        var currentCount = $('#'+ collectionId+ ' tbody tr').length;
-        
-        var template = $('#'+ collectionId+ '_adding > span').data('template');
-        template = template.replace(/__index__/g, currentCount);
-        
-        var addedPlace = $('#'+ collectionId+' .added_elements');
-        addedPlace.append(template);
-        addedPlace.find('label').remove();
-        addedPlace.find('input').slice(1).wrap('<td>');
-        addedPlace.wrapInner('<tr>');
-        
-        $('#'+ collectionId).find('tbody').append(addedPlace.find('tr'));
-        
-    });
-    
-    //multi line elemnet for create list
+    //multi line elemnet on order to create a quiz
     $('#add_tags_button.add_item_to_collection_button').click(function(e){
         e.preventDefault();
         var collectionId = $(e.currentTarget).data('collection');    

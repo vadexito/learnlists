@@ -227,15 +227,7 @@ return [
                 '@slider_css',
                 '@slider_js',
                 '@global_js',
-            ],
-            'listquests/list/edit' => [
-                '@global_js'
-            ],
-            'listquests/list/add' => [
-                '@global_js',
-//                '@jqfileupload_js',
-//                '@jqfileupload_css',
-            ],
+            ],            
         ],
 
         'default' => [
