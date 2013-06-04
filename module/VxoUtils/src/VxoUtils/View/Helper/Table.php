@@ -61,28 +61,30 @@ class Table extends AbstractHtmlElement
                  .$this->htmlAttribs($dataTable['thead']['attribs']).'>'
                  .$thead.'</thead>';
         } 
-
-        foreach ($dataTable['tbody']['tr'] as $tr){
-            $tds = '';
-            foreach ($tr['td'] as $td){
-                if (is_array($td)){
-                    if (isset($td['attribs'])){
-                        $tds .= '<td'
-                        .$this->htmlAttribs($td['attribs'])
-                        .'>'.$td['content'].'</td>'; 
+        if (isset($dataTable['tbody'])){
+            foreach ($dataTable['tbody']['tr'] as $tr){
+                $tds = '';
+                foreach ($tr['td'] as $td){
+                    if (is_array($td)){
+                        if (isset($td['attribs'])){
+                            $tds .= '<td'
+                            .$this->htmlAttribs($td['attribs'])
+                            .'>'.$td['content'].'</td>'; 
+                        }
+                    } else {
+                        $tds .= '<td>'.$td.'</td>';
                     }
-                } else {
-                    $tds .= '<td>'.$td.'</td>';
                 }
-            }
-            $trAttribs = [];
-            if (isset($tr['attribs'])){
-                $trAttribs = $tr['attribs'];
-            }
-            $tbody .= '<tr '
-                .$this->htmlAttribs($trAttribs).'>'
-                .$tds.'</tr>';
-        }        
+                $trAttribs = [];
+                if (isset($tr['attribs'])){
+                    $trAttribs = $tr['attribs'];
+                }
+                $tbody .= '<tr '
+                    .$this->htmlAttribs($trAttribs).'>'
+                    .$tds.'</tr>';
+            }        
+        }
+            
         $tbody = '<tbody>'.$tbody.'</tbody>';
         
         
