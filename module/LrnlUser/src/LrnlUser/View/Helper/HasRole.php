@@ -20,8 +20,8 @@ class HasRole extends AbstractHelper
         }
         
         $hasRole = false;
-        foreach ($user->getRoles() as $role){
-            if ($role->getRoleId() == $role){
+        foreach ($user->getRoles() as $userRole){
+            if ($userRole->getRoleId() == $role){
                 $hasRole = true;
                 continue;
             }
