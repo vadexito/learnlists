@@ -16,6 +16,8 @@ class Thumbnail extends AbstractHtmlElement
         'large' => ['width' => '260px','height' => '180px'],
         'medium' => ['width' => '150px','height' => '110px'],
         'small' => ['width' => '114px','height' => '80px'],
+        'small' => ['width' => '114px','height' => '80px'],
+        'XS' => ['width' => '50px','height' => '30px'],
     ];    
     protected $_size;
     protected $_sizeDefault = 'large';
@@ -23,9 +25,9 @@ class Thumbnail extends AbstractHtmlElement
     protected $_adds = ['popular','new'];
     protected $_add;
     protected $_dirAdds = '/assets/images/adds';
-    protected $_addDefault = NULL;
+    protected $_addDefault = null;
     
-    public function __invoke(array $attribs,$options = NULL)
+    public function __invoke(array $attribs,$options = null)
     {
         if (!$attribs || !is_array($attribs) || !isset($attribs['src'])){
             throw new InvalidArgumentException('You should provide an array with at least an src for the thumbanil component');

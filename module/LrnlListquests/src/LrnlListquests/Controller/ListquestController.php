@@ -27,7 +27,7 @@ class ListquestController extends AbstractActionController
         return [
             'lists' => $this->getListquestService()->fetchAllSortBy('questions'),
             'categories'=> $this->getCategoryService()->fetchByDepth(2),
-            'searchForm' => $searchForm
+            'searchForm' => $searchForm,
         ];
     }
     
@@ -55,7 +55,7 @@ class ListquestController extends AbstractActionController
 
                 $id = $this->getListquestService()->insertListquest($listquest);                
                 $this->getSearchService()->updateIndex($listquest);
-                
+                $this->flashMessenger()->addSuccessMessage(_('You have successfully created a new empty quiz and you can now add questions'));
                 return $this->redirect()->toRoute(
                     'listquests/list/edit',
                     ['id' => $id]
@@ -148,6 +148,7 @@ class ListquestController extends AbstractActionController
 
                 $this->getListquestService()->updateListquest($form->getData());
                 $this->getSearchService()->updateIndex($form->getData());
+                $this->flashMessenger()->addSuccessMessage(_('You have successfully updated your quiz'));
                 return $this->redirect()->toRoute(
                     'listquests/list/edit',
                     ['id' => $listId]
@@ -176,6 +177,7 @@ class ListquestController extends AbstractActionController
                 $id = (int) $request->getPost('id');                
                 $this->getSearchService()->deleteFromIndex($id);  
                 $this->getListquestService()->deleteListquest($id);
+                $this->flashMessenger()->addSuccessMessage(_('You have successfully deleted your quiz'));
             }
             return $this->redirect()->toRoute($this->getRedirectRoute());
         }

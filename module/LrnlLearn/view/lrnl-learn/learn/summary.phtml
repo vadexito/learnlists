@@ -13,7 +13,7 @@ $this->headTitle($title);
     
 <div class="tab-content">
     <div id ='results' class='tab-pane active in fade well'>
-        <p><?php echo sprintf($this->translate('Lists you chose:  %s'),$this->results()->countUsedListquest()) ;?></p>
+        <p><?php echo sprintf($this->translate('Quizes you chose:  %s'),$this->results()->countUsedListquest()) ;?></p>
         <?php echo $this->htmlList($this->results()->listquestResults(),false,['class' => 'unstyled'],false); ?>
     </div>
     <div id ='settings' class='tab-pane fade well'>

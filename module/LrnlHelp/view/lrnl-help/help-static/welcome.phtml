@@ -2,15 +2,16 @@
 $title = $this->translate('Welcome');
 $this->headTitle($title);
 $termsLink = '<a href="'.$this->url('staticpages/template',['template' => 'terms_imprint']).'">';
+$site = $this->site();
 ?>
 <ul class="unstyled">
     <li>
-        <h4><?php echo $this->translate('What is Learnlists?'); ?></h4>
-        <p><?php echo $this->translate('Learnlists is a great way to learn through the best quality quiz with top learning methods'); ?></p>
+        <h4><?php echo sprintf($this->translate('What is %s?'),$site); ?></h4>
+        <p><?php echo sprintf($this->translate('%s is a great way to learn through the best quality quiz with top learning methods'),$site); ?></p>
     </li>    
     <li>
-        <h4><?php echo $this->translate('Is Learnlists free?'); ?></h4>
-        <p><?php echo sprintf($this->translate('Learnlists is completely free. All the contents is nevertheless protected. Please go the %sTerms</a> for more information.'),$termsLink); ?></p>
+        <h4><?php echo sprintf($this->translate('Is %s free?'),$site); ?></h4>
+        <p><?php echo sprintf($this->translate('%s is completely free. All the contents are nevertheless protected. Please go the %sTerms</a> for more information.'),$site,$termsLink); ?></p>
     </li>    
 </ul>
 

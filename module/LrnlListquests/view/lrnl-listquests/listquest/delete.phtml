@@ -1,11 +1,11 @@
 <?php
-$title = $this->translate('Delete List');
+$title = $this->translate('Delete quiz');
 $this->headTitle($title);
 ?>
 
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-<p><?php echo sprintf($this->translate('Are you sure that you want to delete the whole list: %s?'),$this->escapeHtml($list->title)); ?>'?
+<p><?php echo sprintf($this->translate('Are you sure that you want to delete the whole quiz: %s?'),$this->escapeHtml($list->title)); ?>'?
 </p>
 <form action="<?php echo $this->url('listquests/list/delete', ['id' => $this->id]); ?>" method="post">
 <div>

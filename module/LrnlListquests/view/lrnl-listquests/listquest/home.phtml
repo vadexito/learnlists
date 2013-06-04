@@ -1,7 +1,7 @@
 <?php
 $title = $this->translate('Learn with quizes');
 $this->headTitle($title);
-$this->headMeta()->appendName('description', $this->translate('Find the best quizes to learn what you wish from lists of questions prepared by our community of teachers or create your own quiz.'));
+$this->headMeta()->appendName('description', $this->translate('Find the best quizes to learn what you wish from quizes prepared by our community of teachers or create your own quiz.'));
 
 $site = $this->site();
 $searchForm->get('search')->setAttribute('class','home '.$searchForm->get('search')->getAttribute('class'));
@@ -12,7 +12,7 @@ $features = [
         'title' => $this->translate('Find high quality quizes'),
         'text' => $this->translate('Quizes are developed by professional teachers and evaluated by the user commnunity which ensures top quality.'),
         'buttonUrl' => $this->url('lrnl-search'),
-        'buttonText' => $this->translate('Browse lists')
+        'buttonText' => $this->translate('Explore quizes')
     ],
     [
         'classWrap' => 'well span4',
@@ -24,9 +24,9 @@ $features = [
     [
         'classWrap' => 'well span4',
         'title' => $this->translate('Create and share quizes'),
-        'text' => $this->translate('You can also create and share your own private lists.'),
+        'text' => $this->translate('You can also create and share your own private quizes.'),
         'buttonUrl' => $this->url('lrnl-help/template',['template' => 'how_to_create_a_list']),
-        'buttonText' => $this->translate('Learn how create lists')
+        'buttonText' => $this->translate('Learn how create quizes')
     ],
 ];
 
@@ -47,26 +47,37 @@ $homeFiles = Zend\Json\Json::encode($files);
 <div class="backstretch" data-filebackstretch='<?php echo $homeFiles; ?>'>
     <header id="jumbotron-header" class="home">
         <div class="container">
-            <h1><?php echo $this->escapeHtml($title); ?></h1>
-            <h3><?php echo sprintf($this->translate('Learn with %d high quality quizes proposed by our community of teachers.'),count($lists),'x'); ?></h3>
-            <div class="well well-small ">
-                <?php echo $this->listSearchBar($searchForm); ?>
+            <div class="row">
+                <h1><?php echo $this->escapeHtml($title); ?></h1>
+                <h3><?php echo sprintf($this->translate('Learn with %d high quality quizes proposed by our community of teachers.'),count($lists),'x'); ?></h3>
+            </div>
+            <div class="row">
+                <div class="well well-small ">
+                    <?php echo $this->listSearchBar($searchForm); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <?php foreach ($lists as $list) : ?>
+                <div class="offset9 span3 mini-line">
+                    <?php echo $this->listquestCollection()->miniLine($list); ?>
+                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </header>
 </div>
 <?php $this->placeholder('header')->captureEnd(); ?>
-<div class="row-fluid">
-    <h3><?php echo $this->translate('Quiz');?></h3>
-    <h4><?php echo $this->translate('Here are some excellent quiz you can choose from.'); ?></h4>
-</div><br/>
-<?php echo $this->partial('lrnl-listquests/listquest/home/listquestThumbnails.phtml',['lists' => $lists,'thumbLinesMax' => 1]); ?>
-<div class="row-fluid">
-    <h3><?php echo $this->translate('Category guide');?></h3>
-    <h4><?php echo $this->translate('Here are some favourite categories you can choose from.'); ?></h4>
-</div><br/>
-<?php echo $this->partial('lrnl-listquests/listquest/home/categoryThumbnails.phtml',['categories' => $categories,'thumbLinesMax' => 2]); ?>
-<br/><br/>
-<div class="row-fluid features">    
-    <?php echo $this->partialLoop('lrnl-listquests/listquest/home/feature.phtml',$features); ?>
+<div class="thumb-line row-fluid">
+    <div class="span12">
+        <h2><?php echo $this->translate('Category guide');?></h3>
+        <h4 class="muted"><?php echo $this->translate('Here are some favourite categories you can choose from.'); ?></h4>
+        <?php echo $this->partial('lrnl-listquests/listquest/home/categoryThumbnails.phtml',['categories' => $categories,'thumbLinesMax' => 2]);?>
+        <br/><br/><br/>
+        <div class="row-fluid features">    
+            <?php echo $this->partialLoop('lrnl-listquests/listquest/home/feature.phtml',$features); ?>
+        </div>    
+    </div>
 </div>
+
+    
+

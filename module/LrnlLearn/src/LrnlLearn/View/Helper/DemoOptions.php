@@ -15,7 +15,7 @@ class DemoOptions extends AbstractHelper
         
         $model = [
             'text' => $this->getView()->translate('Text of the question'),
-            'title_list' => $this->getView()->translate('Title of the list'),
+            'title_list' => $this->getView()->translate('Title of the quiz'),
             'comment' => $this->getView()->translate('Comment area for the teacher'),
             'round_nb' => '4',
             'round_total' => '5',

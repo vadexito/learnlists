@@ -1,10 +1,14 @@
 $(function() {
+    $('.mini-line').hide();
     
-    
-        $('.backstretch').each(function(){        
+    $('.backstretch').each(function(){        
         var dataFiles = $.parseJSON($(this).attr('data-filebackstretch'));
-        $(this).backstretch(dataFiles, {duration: 3000, fade: 750});        
+        $(this).backstretch(dataFiles, {duration: 6000, fade: 750});        
     });
+    
+    $(window).on("backstretch.show", function (e, instance) {        
+        $('.mini-line').eq(instance.index).fadeIn(1500).delay(3000).fadeOut(1500);       
+    }); 
     
     //chosen plugin for select form element improvment
     $(".chzn-select").each(function(){

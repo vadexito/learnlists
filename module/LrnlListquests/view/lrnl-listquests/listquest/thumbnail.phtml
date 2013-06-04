@@ -2,7 +2,8 @@
 $thumbnailAttribs = [
     'src' => $imgUrl,
     'alt' => $imgAlt,
-    'title' => sprintf($this->translate('Quiz: %s'),$imgAlt)
+    'title' => sprintf($this->translate('Quiz: %s'),$imgAlt),
+    'style' => 'height:100px;'
 ];
 $options = ['title' => $titleText];
 if (isset($add)){
@@ -10,7 +11,7 @@ if (isset($add)){
 }        
 ?>
 
-<li class="span3">
+<li class="<?php echo $liClass; ?>">
     <a href="<?php echo $href; ?>"s>
         <?php echo $this->thumbnail($thumbnailAttribs, $options); ?>
     </a>

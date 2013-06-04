@@ -40,7 +40,7 @@ $editAuthorized = $user &&
                             <h4 class="title_search_result_line">
                                 <?php echo ucfirst($this->escapeHtml($title)); ?>
                                 <?php if ($authorIsTeacher): ?>
-                                <i title="<?php echo $this->translate('Teacher list'); ?>" class="icon-star-empty"></i>
+                                <i title="<?php echo $this->translate('Teacher quiz'); ?>" class="icon-star-empty"></i>
                                 <?php endif; ?>
                             </h4>
                         </<?php echo $htmlTag; ?>>
@@ -83,7 +83,7 @@ $editAuthorized = $user &&
                     </span>
                     <span class="edit_button">
                         <?php if ($editAuthorized) :?> 
-                                <a class="btn btn-mini btn-primary" href="<?php echo $urlEdit; ?>" title="<?php echo $this->translate('Edit list'); ?>">
+                                <a class="btn btn-mini btn-primary" href="<?php echo $urlEdit; ?>" title="<?php echo $this->translate('Edit quiz'); ?>">
                                     <i class="icon-edit icon-white"></i>
                                 </a>
                         <?php endif; ?>
@@ -100,5 +100,4 @@ $editAuthorized = $user &&
         </div>
     </div>
 </li>
-<hr>
-      
+<hr>      

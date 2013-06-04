@@ -1,10 +1,12 @@
 <?php
 $title = $this->translate('Features');
 $this->headTitle($title);
+$site = $this->site();
+       
 ?>
 <h1><?php echo $title; ?></h1>
 <p>
-    <?php echo $this->translate('At Learnlists you can:'); ?>
+    <?php echo sprintf($this->translate('At %s you can:'),$site); ?>
 </p>
 <ul>
     <li>

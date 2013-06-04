@@ -47,7 +47,7 @@ class CategoryFieldsetFactory implements FactoryInterface
                             'autocomplete'    => 'off'
                         ],
                         'options' => [
-                            'label' => _('Name (unique) for the category')
+                            'label' => 'Name (unique) for the category'
                         ],
                     ],
                 ],
@@ -62,7 +62,7 @@ class CategoryFieldsetFactory implements FactoryInterface
                             'autocomplete'    => 'off'
                         ],
                         'options' => [
-                            'label' => _('Description for the category')
+                            'label' => 'Description for the category'
                         ],
                     ],
                 ],
@@ -77,7 +77,7 @@ class CategoryFieldsetFactory implements FactoryInterface
                             'max'    => '5',
                         ],
                         'options' => [
-                            'label' => _('Depth of the category in the hierarchie (1 are the highest parents')
+                            'label' => 'Depth of the category in the hierarchie (1 are the highest parents)'
                         ],
                     ],
                 ],
@@ -114,7 +114,7 @@ class CategoryFieldsetFactory implements FactoryInterface
                     'spec' => [
                         'type'  => 'Zend\Form\Element\File',
                         'options' => [
-                            'label' => _('Choose a picture')
+                            'label' => 'Choose a picture'
                         ],
                     ],
                 ],

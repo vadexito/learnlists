@@ -7,33 +7,31 @@ $learnerSteps = [
         'number' => 1,
         'iconName' => 'search',
         'title' => $this->translate('I find the quiz I want to learn from'),
-        'text' => $this->translate('Go to "browse" in the navigation bar and choose a list from more than '
-                . $this->listquestCount()
-                .' lists. If you want to be sure of the quality, you can select quiz from teachers. There are indicated with the icon <i class="icon-star-empty"></i>.'),
+        'text' => sprintf($this->translate('Click directly on the choosen quiz in the homepage or go to the explore page and choose from more than %d quizes. If you want to be sure of the quality, you can select quiz from teachers. There are indicated with the icon %s.'),$this->listquestCount(),'<i class="icon-star-empty"></i>'),
     ],
     [
         'number' => 2,
         'iconName' => 'desktop',
         'title' => $this->translate('I answer to the questions'),
-        'text' => $this->translate('Learn easily through answering to questions. After each question, you know how many points you won in the current round. You can obtain more help on how the learnlists tool for learning work directly on the page.'),
+        'text' => $this->translate('Learn easily through answering to questions. After each question, you know how many points you won in the current round. You can obtain more information on how the the learning tool works directly on the learning page.'),
     ],
     [
         'number' => 3,
         'iconName' => 'bar-chart',
         'title' => $this->translate('I can immediately see my results'),
-        'text' => $this->translate('After you have completed a round, you can see you results and compare with previous rounds (you have to be logged in).'),
+        'text' => $this->translate('After you have completed a round, you can immediately see your results (you have to be logged in).'),
     ],
     [
         'number' => 4,
         'iconName' => 'refresh',
         'title' => $this->translate('I repeat to consolidate and perform sustainable learning'),
-        'text' => $this->translate('After each round, Learlists analyses and saves your results in order to optimize the questions the next time you decide to do the quiz. Basically through optimized repetition you can learn in the best way.'),
+        'text' => $this->translate('After each round, your results will be saved and analysed in order to optimize the questions the next time you decide to do the quiz. After each quiz, you will moreover see your improvements.'),
     ],
     [
         'number' => 5,
         'iconName' => 'trophy',
         'title' => $this->translate('I know it now'),
-        'text' => $this->translate('Once you repeated several times the round, you can see how successfully you will reach a maximum point and reach you target to learn.'),
+        'text' => $this->translate('Once you will have repeated several times the round, you will enjoy successfully reaching the maximum points.'),
     ],
 ];
 

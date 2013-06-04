@@ -377,7 +377,7 @@ class Listquest extends EntityAbstract implements
                         'options' => [
                             'encoding' => 'UTF-8',
                             'min'      => 0,
-                            'max'      => 250,
+                            'max'      => 50,
                         ],
                     ],
                 ],

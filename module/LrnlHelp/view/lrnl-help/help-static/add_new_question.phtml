@@ -31,7 +31,6 @@ $createListSteps = [
     ],
 ];
 ?>
-<h1><?php echo $title; ?></h1>
 <p><?php echo $this->translate('To add a new question to a quiz, here are the steps you have to complete.'); ?></p>        
 <ul class="unstyled">
     <?php echo $this->partialLoop('lrnl-help/help-static/step.phtml',$createListSteps); ?>

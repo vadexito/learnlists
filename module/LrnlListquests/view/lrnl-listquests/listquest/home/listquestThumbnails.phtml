@@ -1,47 +1,40 @@
 <?php 
 
-use \DateTime;
+$options = [    
+    'nbElementPerline' => 2,
+    'nbMaxLine' => 2,
+    'openingTags' => '<div class="row-fluid"><ul class="thumbnails home">',
+    'closingTags' => '</ul></div>'."\n",
+];
 
-if (!isset($thumbLinesMax)){
-    $thumbLinesMax = 2;
-}
-$thumbs = '';
-$thumbLines = 0;
-$minRating = 2;
 $minDaysForNew = 30;
+$minRating = 1;
+
+$elements = [];
 foreach ($lists as $listquest) {
     $add = NULL;
     $title = $listquest->getTitle();
     $imgUrl = $this->listquestPictureUrl($listquest);
     $imgAlt = ucfirst($this->escapeHtml($title));
     $href = $this->url('learn/basic',['id' => $listquest->id,'title' => $this->strToUrl($title)]);
-    $titleText = ucfirst($this->escapeHtml($title));
-    $closingTags = '</ul></div>'."\n";
+    $titleText = ucfirst($this->escapeHtml($title)); 
+    
     if (((new DateTime())->getTimestamp() - $listquest->getCreationDate()->getTimestamp()) < $minDaysForNew*24*3600){
         $add = 'new';
     } else if ($this->rating($listquest) > $minRating){
         $add = 'popular';
     }    
-    $thumbs .=$this->cycle(['<div class="row-fluid"><ul class="thumbnails home">','','',''],'openTag')->next();
-    $thumbs .= $this->partial('lrnl-listquests/listquest/thumbnail.phtml',[
+    $elements[] = $this->partial('lrnl-listquests/listquest/thumbnail.phtml',[
         'imgUrl' => $imgUrl,
         'imgAlt' => $imgAlt,
         'titleText' => $titleText,
         'href' => $href,
-        'add' => $add
+        'add' => $add,
+        'liClass' => 'span3'
     ]);
-    
-    $end = $this->cycle(['','','',$closingTags],'closingTag')->next();
-    $thumbs .= $end;   
-    $thumbLines += (string)$this->cycle([0,0,0,1],'nbLine')->next();
-    if ($thumbLines === $thumbLinesMax){
-        break;
-    }
+   
 }
 
-if ($end === ''){
-    $thumbs .= $closingTags; 
-}
 ?>
 
-<?php echo $thumbs;?>
+<?php echo $this->thumbLine($elements,$options);?>

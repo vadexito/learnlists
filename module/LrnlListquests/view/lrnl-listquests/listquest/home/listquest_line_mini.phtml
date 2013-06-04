@@ -1,0 +1,61 @@
+<?php 
+$user = $this->zfcUserIdentity();
+$authorRole = $author->getRoles()[0]->getRoleId();
+$gravatar = $this->gravatar(
+    $authorEmail,
+    ['img_size' => '30px'],
+    ['alt' => 'gravatar','title' => $this->zfcUserDisplayName($author)
+        .' ('.$authorRole. ')']
+);
+
+$authorIsTeacher = ($authorRole === 'teacher');
+$titleImage = sprintf($this->translate('Category %s'),$this->escapeHtml($category))
+    .'-'.sprintf($this->translate('Quiz: %s'),$this->escapeHtml($title));
+
+$pictureAttribs=[
+    'src' => $urlImage,
+    'title' => $titleImage,
+    'alt' => $titleImage,
+];
+
+$urlLearn = $this->url('learn/basic',['id' => $id,'title' => $this->strToUrl($title)]);
+$urlEdit = $this->url('listquests/list/edit',['id' => $id]);
+
+$editAuthorized = $user && 
+    ((($author->getId() === $user->getId()) 
+        || ($user->getRoles()[0]->getRoleId() === 'admin')));
+
+$filter = new \VxoUtils\Filter\TruncateString();
+$title = $filter->setOptions(['limit' => 15])->filter($title);
+$description = $filter->setOptions(['limit' => 20])->filter($title);
+
+?>
+<div class="row-fluid ">
+    <div class="span2">            
+         <?php echo $gravatar ?>
+    </div>
+    <div class="span8">
+        <div class="title_with_icon">
+            <?php $htmlTag = ($questionNb != 0) ? 'a' : 'span'; ?>
+            <<?php echo $htmlTag; ?> href="<?php echo $urlLearn; ?>">
+                <h4 class="title_search_result_line">
+                    <?php echo ucfirst($this->escapeHtml($title)); ?>
+                    <?php if ($authorIsTeacher): ?>
+                    <i title="<?php echo $this->translate('Teacher quiz'); ?>" class="icon-star-empty"></i>
+                    <?php endif; ?>
+                </h4>
+                <p class="muted"><?php echo ucfirst($this->escapeHtml($description)); ?></p>
+            </<?php echo $htmlTag; ?>>
+        </div>
+    </div>
+    <div class="span2">
+        <?php if ($questionNb != 0) : ?>
+        <a href="<?php echo $urlLearn; ?>" class="pull-right">
+            <?php echo $this->thumbnail($pictureAttribs, ['size' => 'XS']); ?>
+        </a>
+        <?php endif; ?>
+    </div>            
+</div>
+
+
+  

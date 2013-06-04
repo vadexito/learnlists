@@ -1,35 +1,33 @@
 <?php 
-if (!isset($thumbLinesMax)){
-    $thumbLinesMax = 2;
-}
-$thumbs = '';
-$thumbLines = 0;
+
+$options = [    
+    'nbElementPerline' => 4,
+    'nbMaxLine' => 2,
+    'openingTags' => '<div class="row-fluid"><ul class="thumbnails home">',
+    'closingTags' => '</ul></div>'
+];
+
+$elements = [];
 foreach ($categories as $category) {
-    $imgUrl = $this->listquestPictureUrl()->getCategoryUrl($category);
-    $imgAlt = ucfirst($this->escapeHtml($category));
+    $imgUrl = $imgUrl = $this->listquestPictureUrl()->getCategoryUrl($category);
+    $imgAlt = ucfirst($this->escapeHtml($category->getName()));
     $href = $this->url('lrnl-search',[],['query' => [
-        'category' => $category->getId().'-'.$category->getName(),
-    ]]);
-    $titleText = ucfirst($this->escapeHtml($category));
-    $closingTags = '</ul></div>'."\n";
-    $thumbs .=$this->cycle(['<div class="row-fluid"><ul class="thumbnails home">','','',''],'openTag')->next();
-    $thumbs .= $this->partial('lrnl-listquests/listquest/thumbnail.phtml',[
-        'imgUrl' => $imgUrl,
-        'imgAlt' => $imgAlt,
-        'titleText' => $titleText,
-        'href' => $href
-    ]);
-    $end = $this->cycle(['','','',$closingTags],'closingTag')->next();
-    $thumbs .= $end;   
-    $thumbLines += (string)$this->cycle([0,0,0,1],'nbLine')->next();
-    if ($thumbLines === $thumbLinesMax){
-        break;
-    }
+            'category' => $category->getId().'-'.$category->getName(),
+        ]]);
+    $thumbnailAttribs = [
+        'src' => $imgUrl,
+        'alt' => $imgAlt,
+        'title' => sprintf($this->translate('Quiz: %s'),$imgAlt),
+    ];
+    $elements[] = (string)$this->partial('lrnl-listquests/listquest/home/categoryBox.phtml',[
+        'href' => $href,
+        'title' => $category->getName(),
+        'subTitle' => $category->getName(),
+        'image' =>$this->thumbnail($thumbnailAttribs,['size'=>'XS']),
+        'wrapClass' =>'span3 choice-box',
+     ]);
+    
+    
 }
 
-if (!(string)$end){
-    $thumbs .= $closingTags; 
-}
-?>
-
-<?php echo $thumbs;?>
+echo $this->thumbLine($elements,$options);?>

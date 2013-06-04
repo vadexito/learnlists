@@ -6,6 +6,7 @@ use Zend\View\Helper\AbstractHelper;
 use VxoReview\Provider\ProvidesReviewService;
 use LrnlListquests\Provider\ProvidesListquestService;
 use ZendSearch\Lucene\Search\QueryHit;
+use LrnlListquests\Entity\ListquestInterface;
 
 class ListquestCollection extends AbstractHelper
 {
@@ -15,8 +16,11 @@ class ListquestCollection extends AbstractHelper
     use ProvidesListquestService;
     use ProvidesReviewService;
     
-    public function __invoke($lists)
+    public function __invoke($lists = null)
     {
+        if ($lists === null){
+            return $this;
+        }
         $data = []; 
         
         foreach ($lists as $listquest){            
@@ -30,21 +34,7 @@ class ListquestCollection extends AbstractHelper
             if (!$listDataBase){
                 continue;
             }
-            $data[] = [
-                'id' => $listId,
-                'urlImage' => $this->getView()->listquestPictureUrl($listDataBase),
-                'title' => $listDataBase->getTitle(),
-                'description' => $listDataBase->description,
-                'category' => $listDataBase->category,
-                'authorEmail' => $listDataBase->author->getEmail(),
-                'author' => $listDataBase->author,
-                'questionNb' => $listDataBase->questions->count(),
-                'level' => $listDataBase->level,
-                'creationDate' => $listDataBase->creationDate,
-                'reviewNb' => $this->getReviewService()->getReviewCount($listId),
-                'rating' => $this->getReviewService()->getRating($listId),
-                'ratingMax' => $this->getReviewService()->getRatingMax($listId),
-            ];
+            $data[] = $this->initDataLine($listDataBase);
         }
         $this->_lists = $data;
         
@@ -55,4 +45,32 @@ class ListquestCollection extends AbstractHelper
     {
         return $this->getView()->partialLoop('listquest_line.phtml',$this->_lists);
     }
+    
+    public function initDataLine(ListquestInterface $listDataBase)
+    {
+        $listId = $listDataBase->id;
+        return [
+            'id' => $listId,
+            'urlImage' => $this->getView()->listquestPictureUrl($listDataBase),
+            'title' => $listDataBase->getTitle(),
+            'description' => $listDataBase->description,
+            'category' => $listDataBase->category,
+            'authorEmail' => $listDataBase->author->getEmail(),
+            'author' => $listDataBase->author,
+            'questionNb' => $listDataBase->questions->count(),
+            'level' => $listDataBase->level,
+            'creationDate' => $listDataBase->creationDate,
+            'reviewNb' => $this->getReviewService()->getReviewCount($listId),
+            'rating' => $this->getReviewService()->getRating($listId),
+            'ratingMax' => $this->getReviewService()->getRatingMax($listId),
+        ];
+        
+    }
+    
+    public function miniLine(ListquestInterface $list)
+    {
+        $data = $this->initDataLine($list);
+        return $this->getView()->partial('lrnl-listquests/listquest/home/listquest_line_mini.phtml',$data);
+    }
+    
 }

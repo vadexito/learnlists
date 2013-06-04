@@ -11,7 +11,10 @@ if (isset($listquest)){
 }
 
 $questionsHelpUrl = '#questions_help_modal';
-$form->get('listquest')->get('questions')->setLabel(sprintf($this->translate('Add questions (%sHow?</a>)'),'<a data-toggle="modal" href="'.$questionsHelpUrl.'">')); 
+if ($form->get('listquest')->get('questions')){
+    $form->get('listquest')->get('questions')->setLabel(sprintf($this->translate('Add questions (%sHow?</a>)'),'<a data-toggle="modal" href="'.$questionsHelpUrl.'">'));  
+}
+
 
 ?>
 

@@ -58,7 +58,7 @@ $hidden->setAttributes([
     <h4 data-step="1" data-intro="<? echo $this->translate('The quiz you have choosen'); ?>"id="title_list"><%= title_list %></h4>
 </script>    
 <script id="round_number-template" type="text/html">
-    <span data-step="8" data-intro="<? echo $this->translate('You can do several rounds of the same quiz, you will see how many you did already.This function is available only if your are logged in since it will save your progress and adapt the method of asking.'); ?>" class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %></span>
+    <span data-step="8" data-intro="<? echo $this->translate('You can do several rounds of the same quiz, here you will see how many you did already (Available when logged in).'); ?>" class="label" ><?php echo $this->translate('Round'); ?> <%= round_nb %></span>
 </script>
 <script id="timer-template" type="text/html">
     <input type="text" id="countdown">

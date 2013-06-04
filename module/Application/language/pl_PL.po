@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-28 12:39+0100\n"
-"PO-Revision-Date: 2013-05-28 12:40+0100\n"
+"POT-Creation-Date: 2013-06-04 20:52+0100\n"
+"PO-Revision-Date: 2013-06-04 20:52+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -28,31 +28,14 @@ msgid "The picture could not be changed. Please try again."
 msgstr ""
 
 #: ../../../module/LrnlCategory/src/LrnlCategory/Controller/CategoryController.php:100
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:136
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:141
 #: ../../../module/VxoReview/src/VxoReview/Controller/ReviewController.php:52
 msgid "Save"
 msgstr ""
 
 #: ../../../module/LrnlCategory/src/LrnlCategory/Form/CategoryCreateFormFactory.php:61
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestCreateFormFactory.php:64
 #: ../../../module/VxoReview/src/VxoReview/Form/ReviewCreateFormFactory.php:119
 msgid "Add"
-msgstr ""
-
-#: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:50
-msgid "Name (unique) for the category"
-msgstr ""
-
-#: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:65
-msgid "Description for the category"
-msgstr ""
-
-#: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:80
-msgid "Depth of the category in the hierarchie (1 are the highest parents"
-msgstr ""
-
-#: ../../../module/LrnlCategory/src/LrnlCategory/Form/Fieldset/CategoryFieldsetFactory.php:117
-msgid "Choose a picture"
 msgstr ""
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/DemoOptions.php:17
@@ -61,8 +44,9 @@ msgid "Text of the question"
 msgstr "Wyjątek"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/DemoOptions.php:18
-msgid "Title of the list"
-msgstr ""
+#, fuzzy
+msgid "Title of the quiz"
+msgstr "Wyjątek"
 
 #: ../../../module/LrnlLearn/src/LrnlLearn/View/Helper/DemoOptions.php:19
 msgid "Comment area for the teacher"
@@ -267,12 +251,25 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:100
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:58
+msgid ""
+"You have successfully created a new empty quiz and you can now add questions"
+msgstr ""
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:105
 msgid "Your picture has been successfully changed"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:104
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:109
 msgid "Your picture could not be changed. Please try again."
+msgstr ""
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:151
+msgid "You have successfully updated your quiz"
+msgstr ""
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:180
+msgid "You have successfully deleted your quiz"
 msgstr ""
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Controller/QuestionController.php:29
@@ -283,6 +280,11 @@ msgstr ""
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid "Check"
 msgstr ""
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/ListquestCreateFormFactory.php:64
+#, fuzzy
+msgid "Save and add questions"
+msgstr "Wyjątek"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/CategoryFieldset.php:23
 msgid "Category"
@@ -309,7 +311,12 @@ msgstr "Wyjątek"
 msgid "Tags"
 msgstr ""
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldsetFactory.php:118
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldsetFactory.php:104
+#, fuzzy
+msgid "Add questions"
+msgstr "Wyjątek"
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/Form/Fieldset/ListquestFieldsetFactory.php:122
 msgid "Choose a presentation picture for your quiz"
 msgstr ""
 
@@ -327,8 +334,29 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
+#: ../../../module/LrnlListquests/src/LrnlListquests/View/Helper/QuestionsFieldset.php:20
+msgid "text"
+msgstr ""
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/View/Helper/QuestionsFieldset.php:21
+msgid "answer"
+msgstr ""
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/View/Helper/QuestionsFieldset.php:22
+msgid "comment"
+msgstr ""
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/View/Helper/QuestionsFieldset.php:58
+#: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:2
+msgid "Edit question"
+msgstr ""
+
+#: ../../../module/LrnlListquests/src/LrnlListquests/View/Helper/QuestionsFieldset.php:59
+msgid "Remove question"
+msgstr ""
+
 #: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:25
-msgid "Which quiz are you looking for?"
+msgid "What would you like to learn?"
 msgstr ""
 
 #: ../../../module/LrnlSearch/src/LrnlSearch/Form/SearchForm.php:33
@@ -391,7 +419,7 @@ msgid "author"
 msgstr ""
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:34
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:87
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:80
 msgid "level"
 msgstr ""
 
@@ -400,7 +428,7 @@ msgid "language"
 msgstr ""
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:71
-msgid "questions"
+msgid "Quiz size (questions)"
 msgstr ""
 
 #: ../../../config/autoload/global/lrnlsearch.global.php:119
@@ -412,75 +440,77 @@ msgid "Enter a keyword"
 msgstr ""
 
 #: ../../../config/autoload/global/navigation.global.php:18
-msgid "Browse"
-msgstr ""
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:15
+#, fuzzy
+msgid "Explore quizes"
+msgstr "Odkryj Moduły ZF2"
 
 #: ../../../config/autoload/global/navigation.global.php:23
 msgid "New Quiz"
 msgstr ""
 
 #: ../../../config/autoload/global/navigation.global.php:30
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/summary.phtml:3
+msgid "My learning"
+msgstr ""
+
+#: ../../../config/autoload/global/navigation.global.php:37
 msgid "Offers"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:42
-msgid "My program"
-msgstr ""
-
-#: ../../../config/autoload/global/navigation.global.php:54
+#: ../../../config/autoload/global/navigation.global.php:55
 #: ../../../module/LrnlUser/view/lrnl-user/user/login.phtml:5
 msgid "Sign In"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:61
+#: ../../../config/autoload/global/navigation.global.php:62
 #: ../view/cdli-twostagesignup/register.phtml:13
 #: ../../../module/Application/view/cdli-twostagesignup/register.phtml:13
 msgid "Sign Up"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:76
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/summary.phtml:3
-msgid "My learning"
-msgstr ""
-
-#: ../../../config/autoload/global/navigation.global.php:83
+#: ../../../config/autoload/global/navigation.global.php:77
 msgid "Profile"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:90
+#: ../../../config/autoload/global/navigation.global.php:84
 msgid "Log out"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:118
+#: ../../../config/autoload/global/navigation.global.php:112
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:2
 msgid "Welcome"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:123
+#: ../../../config/autoload/global/navigation.global.php:117
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:2
 msgid "How to create a quiz"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:128
+#: ../../../config/autoload/global/navigation.global.php:122
+msgid "How to add new questions to my quiz"
+msgstr ""
+
+#: ../../../config/autoload/global/navigation.global.php:127
 msgid "Recommandation for writing new quiz"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:133
+#: ../../../config/autoload/global/navigation.global.php:132
 msgid "How do I learn?"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:138
+#: ../../../config/autoload/global/navigation.global.php:137
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:2
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:128
 msgid "How is the score calculated?"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:143
+#: ../../../config/autoload/global/navigation.global.php:142
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/do_i_have_to_leave_a_review.phtml:2
 msgid "Do I have to leave a review?"
 msgstr ""
 
-#: ../../../config/autoload/global/navigation.global.php:148
+#: ../../../config/autoload/global/navigation.global.php:147
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/faq.phtml:2
 msgid "FAQ"
 msgstr ""
@@ -529,23 +559,24 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: ../view/application/static-pages/features.phtml:7
-#: ../../../module/Application/view/application/static-pages/features.phtml:7
-msgid "At Learnlists you can:"
+#: ../view/application/static-pages/features.phtml:9
+#: ../../../module/Application/view/application/static-pages/features.phtml:9
+#, php-format
+msgid "At %s you can:"
 msgstr ""
 
-#: ../view/application/static-pages/features.phtml:11
-#: ../../../module/Application/view/application/static-pages/features.phtml:11
+#: ../view/application/static-pages/features.phtml:13
+#: ../../../module/Application/view/application/static-pages/features.phtml:13
 msgid "learn with the best quality quizes"
 msgstr ""
 
-#: ../view/application/static-pages/features.phtml:14
-#: ../../../module/Application/view/application/static-pages/features.phtml:14
+#: ../view/application/static-pages/features.phtml:16
+#: ../../../module/Application/view/application/static-pages/features.phtml:16
 msgid "use a great and intelligent tool to learn from quizes"
 msgstr ""
 
-#: ../view/application/static-pages/features.phtml:17
-#: ../../../module/Application/view/application/static-pages/features.phtml:17
+#: ../view/application/static-pages/features.phtml:19
+#: ../../../module/Application/view/application/static-pages/features.phtml:19
 msgid "create you own quiz"
 msgstr ""
 
@@ -581,7 +612,7 @@ msgstr ""
 
 #: ../view/application/static-pages/how_it_works_learner.phtml:13
 #: ../../../module/Application/view/application/static-pages/how_it_works_learner.phtml:13
-msgid "I want to create my own list"
+msgid "I want to create my own quiz"
 msgstr ""
 
 #: ../view/application/static-pages/how_it_works_teacher.phtml:4
@@ -598,25 +629,25 @@ msgstr ""
 
 #: ../view/application/static-pages/how_it_works_teacher.phtml:11
 #: ../../../module/Application/view/application/static-pages/how_it_works_teacher.phtml:11
-msgid "I would like to create a new list"
+msgid "I would like to create a new quiz"
 msgstr ""
 
 #: ../view/application/static-pages/how_it_works_teacher.phtml:14
 #: ../../../module/Application/view/application/static-pages/how_it_works_teacher.phtml:14
-msgid "I would like my learners to be able to use my lists"
+msgid "I would like my learners to be able to use my quizes"
 msgstr ""
 
 #: ../view/application/static-pages/how_it_works_teacher.phtml:20
 #: ../../../module/Application/view/application/static-pages/how_it_works_teacher.phtml:20
 msgid ""
-"As a teacher, your lists will be identified as coming from a professional "
+"As a teacher, your quizes will be identified as coming from a professional "
 "and therefore with high quality standards."
 msgstr ""
 
 #: ../view/application/static-pages/how_it_works_teacher.phtml:24
 #: ../../../module/Application/view/application/static-pages/how_it_works_teacher.phtml:24
 msgid ""
-"There is nothing special to do. Your lists are immediately available for "
+"There is nothing special to do. Your quizes are immediately available for "
 "your learners and any other user."
 msgstr ""
 
@@ -958,7 +989,7 @@ msgstr ""
 #: ../../../module/LrnlCategory/view/lrnl-category/category/changepicture.phtml:14
 #: ../../../module/LrnlCategory/view/lrnl-category/category/create.phtml:10
 #: ../../../module/LrnlCategory/view/lrnl-category/category/edit.phtml:10
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:18
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:24
 #: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:13
 #: ../../../module/VxoReview/view/vxo-review/review/create.phtml:10
 #: ../../../module/VxoReview/view/vxo-review/review/edit.phtml:10
@@ -966,7 +997,6 @@ msgid "There were some errors. Please try again!"
 msgstr ""
 
 #: ../../../module/LrnlCategory/view/lrnl-category/category/create.phtml:2
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:2
 #: ../../../module/VxoReview/view/vxo-review/review/create.phtml:2
 msgid "We need your opinion!"
 msgstr ""
@@ -1018,112 +1048,123 @@ msgstr ""
 msgid "Add a new question"
 msgstr "Wyjątek"
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:7
-msgid ""
-"Add the <strong>text</strong> of the question. You can add two types of "
-"questions : "
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:9
-msgid "question with one or more missing elements"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:10
-msgid ""
-"simple example with one missing word: <em>I cannot ... up with him</em>. In "
-"this case you must type the missing word(s) directly into the text and use "
-"the % sign to signal this is the answer: <code>I cannot %put% up with him.</"
-"code>"
-msgstr ""
-
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:11
-msgid ""
-"example with two missing words : <em>I ... already come ... from Scotland.</"
-"em>. As if the first example just type the missing word(s) directly into the "
-"text and using the % sign: <code>I %have% already %come% back from Scotland."
-"</code>"
+msgid "Sign in!"
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:12
 msgid ""
-"example with one missing word and two possibilities: <em>I cannot ... this "
-"situation anymore!</em>. To add several possibilities for one missing word "
-"add a double hyphen <em>--</em>: <code>I cannot %stand--bear% this situation "
-"anymore.</code>"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:14
-msgid ""
-"question with question mark, for example: <em>what is the most probable: I "
-"might go to the cinema or I may go to the cinema?</em> In this case just "
-"type the text of the question: <code>What is the most probable: I might go "
-"to the cinema or I may go to the cinema?</code>"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:16
-msgid ""
-"Add the <strong>answer</strong> of the question : there will be no answer in "
-"the case of a question with missing word(s)."
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:20
-msgid ""
-"Add a <strong>comment</strong>: the comment by the teacher adds great value "
-"added to each learner and helps to remembering and learn. You should add a "
-"comment for every question as you would do during a standard course. Here "
-"are some examples of comments you could add: <code>The expression <em>to put "
-"up with</em> has several synonyms like to bear or to stand but it is the "
-"most used in the common language,</code>,<code> The verb to put is one of "
-"the richest verb as for its phrasal elements and is very commonly used.</"
-"code>"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:27
-msgid "Sign in!"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:28
-msgid ""
-"To be able to create a new list of edit you own lists you have to be "
+"To be able to create a new quiz or edit you own quizes you have to be "
 "identified!"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:33
-msgid "I create a new list or I choose one of my lists"
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:17
+msgid "I create a new quiz or I choose to edit one of my quizes"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:34
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:18
 #, php-format
 msgid ""
-"You can %screate a list</a> or select a list to add new questions. You must "
-"however notice that you can only add question to <em>your</em> lists. In the "
-"browse list page, you will see an icon edit new to the name of the list "
-"indicating this is your list and you can edit it to add/modifiy/remove "
-"questions."
+"You can %screate a quiz</a> or select one of your quizes to add new "
+"questions. In the browse quiz page, you will see an icon edit indicating you "
+"can edit and add questions to your quiz. Please note that you cannot add "
+"questions in other quizes than yours. "
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:39
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:23
 msgid "I write the content"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:40
-msgid "Follow the following steps to define the content of each question: "
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:29
+msgid "I can check that my question is now in my quiz"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:47
-msgid "I can check that my question in now in my list"
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:48
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:30
 msgid ""
 "The question will be automatically added after pushing on the save button. "
 "You can at anytime modify or remove any question."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:53
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/add_new_question.phtml:34
 msgid ""
-"To add a new question to a list, here are the steps you have to complete."
+"To add a new question to a quiz, here are the steps you have to complete."
 msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:4
+msgid "I cannot %put% up with him."
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:6
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:11
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:16
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:21
+msgid "Some comments"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:9
+msgid "I %have% already %come% back from Scotland."
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:14
+msgid "I cannot %stand--bear% this."
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:19
+msgid "What is the capital of France ?"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:20
+msgid "Paris"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:24
+#, php-format
+msgid ""
+"Add a new question line by pushing %s, a line with 3 empty boxes will appear "
+"for the text of the question, the answer and comments"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:25
+msgid ""
+"Here are examples how to fullfill text and answers. There are 2 "
+"possibilities: "
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:27
+msgid "<strong>question with one or more missing elements</strong>"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:28
+msgid ""
+"simple example with one missing word: <em>I cannot (put) up with him</em>. "
+"In this case you must type the missing word (<em>put</em>) directly into the "
+"text and use the <em>%</em> sign:"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:30
+msgid ""
+"example with two missing words : <em>I ... already come ... from Scotland.</"
+"em>. As if the first example just type the missing words directly into the "
+"text and using the <em>%</em> sign:"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:32
+msgid ""
+"example with one missing word and two possible answers: <em>I cannot ... "
+"this situation anymore!</em>. To add several possibilities for one missing "
+"word add a double hyphen <em>--</em>:"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:35
+msgid ""
+"<strong>question with question mark</strong>. In this case just type the "
+"text and answer of the question:"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:44
+#, fuzzy
+msgid "For each new each question: "
+msgstr "Wyjątek"
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/do_i_have_to_leave_a_review.phtml:6
 msgid "YES!!"
@@ -1135,15 +1176,15 @@ msgid ""
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/faq.phtml:8
-msgid "How can I find the list with the best questions?"
+msgid "How can I find the quiz with the best questions?"
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/faq.phtml:9
 msgid ""
-"Our goal is to provide the best lists to the learners. The seach engine "
-"enables to search though the lists prepared only by teachers in order to "
-"ensure their quality. Moreover every list is rated by its users so that you "
-"can easily identify the best lists."
+"Our goal is to provide the best quizes to the learners. The search engine "
+"enables to search though the quizes prepared only by teachers in order to "
+"ensure their quality. Moreover every quiz is rated by its users so that you "
+"can easily identify the best quizes."
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/faq.phtml:12
@@ -1152,7 +1193,7 @@ msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/faq.phtml:13
 msgid ""
-"A round consists of answering to all the question of a list. We consider "
+"A round consists of answering to all the question of a quiz. We consider "
 "that repeating several rounds allow to learn efficiently."
 msgstr ""
 
@@ -1175,11 +1216,11 @@ msgid "+3 points if you answered correctly but overtime"
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:17
-msgid "+2 points if you answered correctly after several wrong answers"
+msgid "+2 points if you answered correctly after one wrong answer"
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:20
-msgid "+1 point if you answered correctly after one wrong answer"
+msgid "+1 point if you answered correctly after several wrong answers"
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:23
@@ -1203,10 +1244,8 @@ msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:18
 msgid ""
-"When you create a new empty quiz, you will have to carefully choose its name "
-"and description. This is how your quiz will be identified from the user and "
-"your learners. It is very important add a maximum of tags in order to "
-"facilitate to find your quiz."
+"To create an empty quiz, go to create quiz in the navigation bar when logged "
+"in."
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:23
@@ -1216,10 +1255,8 @@ msgstr ""
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:24
 #, php-format
 msgid ""
-"In order to save you time and give you a maximum of flexibility you can "
-"enter several questions at the same time, erase or modify any of the "
-"questions. Please read the %sadd a new question</a> section for a more "
-"detailed information."
+"Please read the %sadd a new question</a> section for a more detailed "
+"information."
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:29
@@ -1245,134 +1282,168 @@ msgid "I find the quiz I want to learn from"
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:10
+#, php-format
 msgid ""
-"Go to \"browse\" in the navigation bar and choose a list from more than "
+"Click directly on the choosen quiz in the homepage or go to the explore page "
+"and choose from more than %d quizes. If you want to be sure of the quality, "
+"you can select quiz from teachers. There are indicated with the icon %s."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:12
-msgid ""
-" lists. If you want to be sure of the quality, you can select quiz from "
-"teachers. There are indicated with the icon <i class=\"icon-star-empty\"></"
-"i>."
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:17
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:15
 msgid "I answer to the questions"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:18
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:16
 msgid ""
 "Learn easily through answering to questions. After each question, you know "
-"how many points you won in the current round. You can obtain more help on "
-"how the learnlists tool for learning work directly on the page."
+"how many points you won in the current round. You can obtain more "
+"information on how the the learning tool works directly on the learning page."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:23
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:21
 msgid "I can immediately see my results"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:24
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:22
 msgid ""
-"After you have completed a round, you can see you results and compare with "
-"previous rounds (you have to be logged in)."
+"After you have completed a round, you can immediately see your results (you "
+"have to be logged in)."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:29
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:27
 msgid "I repeat to consolidate and perform sustainable learning"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:30
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:28
 msgid ""
-"After each round, Learlists analyses and saves your results in order to "
-"optimize the questions the next time you decide to do the quiz. Basically "
-"through optimized repetition you can learn in the best way."
+"After each round, your results will be saved and analysed in order to "
+"optimize the questions the next time you decide to do the quiz. After each "
+"quiz, you will moreover see your improvements."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:35
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:33
 msgid "I know it now"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:36
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:34
 msgid ""
-"Once you repeated several times the round, you can see how successfully you "
-"will reach a maximum point and reach you target to learn."
+"Once you will have repeated several times the round, you will enjoy "
+"successfully reaching the maximum points."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:41
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_learn.phtml:39
 msgid "In order to learn, here are the steps you have to complete."
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:2
-msgid "Recommendation for publishing lists"
+msgid "Recommendation for publishing quizes"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:6
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:7
+#, php-format
 msgid ""
-"In order to have the best experience with Learnlists, we recommend reading "
-"and applying following rules: "
-msgstr ""
-
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:9
-msgid "Use clear and explicit name for your lists"
+"In order to have the best experience with %s, we recommend reading and "
+"applying following rules: "
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:10
-msgid ""
-"Due to the great amount of lists, the naming policy is key to help the user "
-"finding the list."
+msgid "Use clear and explicit name for your quizes"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:13
-msgid "Make extensive use of tags"
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:11
+msgid ""
+"Due to the great amount of quizes, the naming policy is key to help the user "
+"finding the quiz."
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:14
+msgid "Make extensive use of tags"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:15
 msgid ""
-"Using tags makes it easier for your lists to be found and used. It can be "
+"Using tags makes it easier for your quizes to be found and used. It can be "
 "redondant with the title. Typically you should use around 5 tags."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:17
-msgid "Do not create lists with too many questions : between 15 and 50 is ok"
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:18
+msgid "Do not create quizes with too many questions : between 15 and 50 is ok"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:18
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:19
 msgid ""
 "We know that concentration is limited. Therefore in order to optimize "
-"learning the lists should not be too long."
+"learning the quizes should not be too long."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:21
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:23
 msgid "Try to order the question around a theme can help the learner"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:22
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:24
 #, php-format
 msgid ""
-"It is important to induce from the learner connections between the different "
-"questions he can learn in order to maximize its ability to remember. See the "
-"%sour method</a> for more information."
+"The more connections between the different questions the better for the "
+"learning process. See the %sour method</a> for more information."
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:8
-msgid "What is Learnlists?"
-msgstr ""
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:27
+#, fuzzy
+msgid "Add comments to every question"
+msgstr "Wyjątek"
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:9
-msgid ""
-"Learnlists is a great way to learn through the best quality quiz with top "
-"learning methods"
+#, php-format
+msgid "What is %s?"
 msgstr ""
 
-#: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:12
-msgid "Is Learnlists free?"
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:10
+#, php-format
+msgid ""
+"%s is a great way to learn through the best quality quiz with top learning "
+"methods"
 msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:13
 #, php-format
+msgid "Is %s free?"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:14
+#, php-format
 msgid ""
-"Learnlists is completely free. All the contents is nevertheless protected. "
-"Please go the %sTerms</a> for more information."
+"%s is completely free. All the contents are nevertheless protected. Please "
+"go the %sTerms</a> for more information."
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/write_comments.phtml:2
+msgid ""
+"Add a <strong>comment</strong> for every question as you would do during a "
+"standard course. Here are some examples of comments you could add:"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/write_comments.phtml:4
+msgid ""
+"give more information: <code>The expression <em>to put up with</em> has "
+"several synonyms like to bear or to stand but it is the most used in the "
+"common language,</code>"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/write_comments.phtml:5
+msgid ""
+"provide some explanation: <code> The verb to put is one of the richest verb "
+"as for its phrasal elements and is very commonly used.</code>"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/write_comments.phtml:6
+msgid ""
+"link to other questions of the quiz or other quizes: <code> <em>To put up "
+"with</em> in contrary to other verbs with to put in the quiz belongs to the "
+"common language.</code>"
+msgstr ""
+
+#: ../../../module/LrnlHelp/view/lrnl-help/help-static/write_comments.phtml:8
+msgid "The comments add great value-added and helps remembering and learning."
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:6
@@ -1386,14 +1457,13 @@ msgid "You have limited time to answer"
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:58
-msgid "The list you have choosen"
+msgid "The quiz you have choosen"
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:61
 msgid ""
-"You can do several rounds of the same list, you will see how many you did "
-"already.This function is available only if your are logged in since it will "
-"save your progress and adapt the method of asking."
+"You can do several rounds of the same quiz, here you will see how many you "
+"did already (Available when logged in)."
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:61
@@ -1511,7 +1581,7 @@ msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:181
 #, php-format
-msgid "Loading your list <em>%s</em>"
+msgid "Loading your quiz <em>%s</em>"
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:191
@@ -1524,7 +1594,7 @@ msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:207
 msgid ""
-"You will soon start a new list, please take the time to understand how it "
+"You will soon start a new quiz, please take the time to understand how it "
 "works. It takes 15 seconds!"
 msgstr ""
 
@@ -1534,6 +1604,10 @@ msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:211
 msgid "Show starting guide"
+msgstr ""
+
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:2
+msgid "How did you like this quiz? You can rate it now!"
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:7
@@ -1554,7 +1628,7 @@ msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/summary.phtml:16
 #, php-format
-msgid "Lists you chose:  %s"
+msgid "Quizes you chose:  %s"
 msgstr ""
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/premium/index.phtml:2
@@ -1562,35 +1636,35 @@ msgid "Premium offer"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:12
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home/listquest_line_mini.phtml:12
 #, php-format
 msgid "Category %s"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:13
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/thumbnail.phtml:5
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home/categoryThumbnails.phtml:20
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home/listquest_line_mini.phtml:13
 #, php-format
 msgid "Quiz: %s"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:43
-msgid "Teacher list"
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home/listquest_line_mini.phtml:44
+msgid "Teacher quiz"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:49
-msgid "Edit list"
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:63
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:56
 msgid "review"
 msgid_plural "reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:65
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:58
 msgid "Review it!"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/listquest_line.phtml:77
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:70
 #, fuzzy
 msgid "question"
 msgid_plural "questions"
@@ -1598,13 +1672,18 @@ msgstr[0] "Wyjątek"
 msgstr[1] "Wyjątek"
 msgstr[2] "Wyjątek"
 
+#: ../../../module/LrnlListquests/view/listquest_line.phtml:86
+msgid "Edit quiz"
+msgstr ""
+
 #: ../../../module/LrnlListquests/view/listquest_line.phtml:95
 msgid "Start to learn"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/add.phtml:2
-msgid "Add new list"
-msgstr ""
+#, fuzzy
+msgid "Add new quiz"
+msgstr "Wyjątek"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/changepicture.phtml:2
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/edit.phtml:2
@@ -1618,12 +1697,20 @@ msgid "Change your picture?"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/delete.phtml:2
-msgid "Delete List"
+msgid "Delete quiz"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/delete.phtml:8
 #, php-format
-msgid "Are you sure that you want to delete the whole list: %s?"
+msgid "Are you sure that you want to delete the whole quiz: %s?"
+msgstr ""
+
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/edit.phtml:32
+msgid "How to write the content of a new question?"
+msgstr ""
+
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/edit.phtml:38
+msgid "Close"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:2
@@ -1631,9 +1718,10 @@ msgid "Learn with quizes"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:4
+#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:5
 msgid ""
-"Find the best quizes to learn what you wish from lists of questions prepared "
-"by our community of teachers or create your own quiz."
+"Find the best quizes to learn what you wish from quizes prepared by our "
+"community of teachers or create your own quiz."
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:12
@@ -1644,10 +1732,6 @@ msgstr ""
 msgid ""
 "Quizes are developed by professional teachers and evaluated by the user "
 "commnunity which ensures top quality."
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:15
-msgid "Browse lists"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:19
@@ -1667,73 +1751,42 @@ msgid "Create and share quizes"
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:27
-msgid "You can also create and share your own private lists."
+msgid "You can also create and share your own private quizes."
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:29
-msgid "Learn how create lists"
+msgid "Learn how create quizes"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:51
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:52
 #, php-format
 msgid ""
 "Learn with %d high quality quizes proposed by our community of teachers."
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:60
-msgid "Quiz"
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:61
-msgid "Here are some excellent quiz you can choose from."
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:65
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:72
 msgid "Category guide"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:66
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:73
 msgid "Here are some favourite categories you can choose from."
 msgstr ""
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/map.phtml:6
-msgid "Access directly any of our quiz-list:"
+msgid "Access directly any of our quizes:"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:39
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:15
+#, php-format
+msgid "Add questions (%sHow?</a>)"
+msgstr ""
+
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:41
 #, php-format
 msgid "%sChange</a> your current picture?"
 msgstr ""
 
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:78
-msgid "Rules for entering question text"
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:78
-msgid ""
-"(i) Enter the text for the question. (ii) If this is a sentence to fill in, "
-"please use two '%' signs in order to specify answers.Example : He %was% not "
-"there %either% (maximum two answers). (iii) in the case of multiple "
-"possibilities you can use the sign '--'. Example : He is tired %because--"
-"since% he did not sleep enough."
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:84
-#: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:26
-msgid ""
-"Nothing to enter if the answer was already entered directly in the text."
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:99
-#: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:2
-msgid "Edit question"
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:102
-msgid "Remove question"
-msgstr ""
-
-#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:114
+#: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/save.phtml:83
 msgid "Press to add a new empty line. To save press the button below"
 msgstr ""
 
@@ -1756,10 +1809,9 @@ msgid ""
 "%either%."
 msgstr ""
 
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:5
+#: ../../../module/LrnlListquests/view/lrnl-listquests/question/edit.phtml:26
 msgid ""
-"Search to find the best quizes to learn what you wish from lists of "
-"questions prepared by our community of teachers."
+"Nothing to enter if the answer was already entered directly in the text."
 msgstr ""
 
 #: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:29
@@ -2057,9 +2109,6 @@ msgstr ""
 #~ "posłuży jako repozytorium i galeria dla modułów ZF2. Projekt wkrótce "
 #~ "będzie dostępny na %son GitHub%s. Ta strona jest aktualnie online i "
 #~ "udostępnia listę niektórych modułów dostępnych dla ZF2."
-
-#~ msgid "Explore ZF2 Modules"
-#~ msgstr "Odkryj Moduły ZF2"
 
 #~ msgid "Help &amp; Support"
 #~ msgstr "Pomoc &amp; Wsparcie"
