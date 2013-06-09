@@ -3,12 +3,11 @@ $optionPartialNavigation = ['layout/topnavbar.phtml','default'];
 $navigation = $this ->navigation('navigation')
                     ->menu()
                     ->setPartial($optionPartialNavigation);
-$site = $this->site();
 $navigation->findById('logo')->setLabel('<img src="/assets/application/images/logo/hibou/tete.svg" type="image/svg+xml" style="width:42px;"/>');
-$navigation->findById('list_show')->setLabel(strtoupper($navigation->findById('list_show')->getLabel()));
-$navigation->findById('list_create')->setLabel(strtoupper($navigation->findById('list_create')->getLabel()));
-$navigation->findById('login')->setLabel(strtoupper($navigation->findById('login')->getLabel()));
-$navigation->findById('register')->setLabel(strtoupper($navigation->findById('register')->getLabel()));
+$navigation->findById('list_show')->setLabel($this->translate($navigation->findById('list_show')->getLabel()));
+$navigation->findById('list_create')->setLabel($this->translate($navigation->findById('list_create')->getLabel()));
+$navigation->findById('login')->setLabel($this->translate($navigation->findById('login')->getLabel()));
+$navigation->findById('register')->setLabel($this->translate($navigation->findById('register')->getLabel()));
 
 ?>
 <nav class="navbar navbar-inverse">

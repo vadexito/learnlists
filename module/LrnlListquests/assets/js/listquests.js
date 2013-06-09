@@ -10,7 +10,7 @@ $(function() {
         collection.find('.add_item_to_collection_button').click(function(e){
             e.preventDefault();
             collection.find('thead').show();
-            var currentCount = collection.find('tr > input').length;
+            var currentCount = collection.find('table tbody tr').length;
 
             var template = collection.find('span').data('template');
             template = template.replace(/__index__/g, currentCount);
