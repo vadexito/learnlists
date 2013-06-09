@@ -4,17 +4,16 @@ if ($this->zfcUserIdentity()) {
     $role = $this->translate($this->zfcUserIdentity()->getRoles()[0]->getRoleId());  
 } ?>
 <div class="nav-collapse collapse">
-    <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('general'),['ulClass' => 'nav']);?>
+    <?php echo $this->navigation()->menu()->escapeLabels(false)->renderMenu($this->container->findById('general'),['ulClass' => 'nav']);?>
     <?php echo $this->navigation()->menu()->renderMenu($this->container->findById('user'),['ulClass' => 'nav pull-right']);?>    
 
     <ul id="menu-profile" class="nav pull-right">        
         <?php if (!$this->zfcUserIdentity()) : ?>     
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->translate('How does it work?'); ?></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><em><?php echo $this->translate('How does it work?'); ?></em></a>
             <ul class="dropdown-menu">
-                <li><a href="<?php echo $this->url('staticpages/template',['template' => 'how_it_works_learner']); ?>"><?php echo $this->translate('I want to learn'); ?></a></li>
+                <li><a href="<?php echo $this->url('staticpages/template',['template' => 'how_it_works_learner']); ?>"><?php echo $this->translate('I just want to use a quiz'); ?></a></li>
                 <li><a href="<?php echo $this->url('staticpages/template',['template' => 'how_it_works_teacher']); ?>"><?php echo $this->translate('I am a teacher'); ?></a></li>
-                
             </ul>
         </li>
         <?php else : ?>     

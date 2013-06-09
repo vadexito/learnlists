@@ -2,10 +2,16 @@
 $optionPartialNavigation = ['layout/topnavbar.phtml','default'];
 $navigation = $this ->navigation('navigation')
                     ->menu()
-                    ->setPartial($optionPartialNavigation)
-                    ->render();
+                    ->setPartial($optionPartialNavigation);
+$site = $this->site();
+$navigation->findById('logo')->setLabel('<img src="/assets/application/images/logo/hibou/tete.svg" type="image/svg+xml" style="width:42px;"/>');
+$navigation->findById('list_show')->setLabel(strtoupper($navigation->findById('list_show')->getLabel()));
+$navigation->findById('list_create')->setLabel(strtoupper($navigation->findById('list_create')->getLabel()));
+$navigation->findById('login')->setLabel(strtoupper($navigation->findById('login')->getLabel()));
+$navigation->findById('register')->setLabel(strtoupper($navigation->findById('register')->getLabel()));
+
 ?>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse">
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -13,7 +19,7 @@ $navigation = $this ->navigation('navigation')
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <?php echo $navigation; ?>
+            <?php echo $navigation->render(); ?>
         </div>
     </div>
 </nav>

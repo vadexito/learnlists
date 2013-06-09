@@ -440,6 +440,7 @@ return [
                         'assets' => [
                             'application/images/icons/*',
                             'application/images/logo/*',
+                            'application/images/logo/hibou/*',
                             'images/*.png',
                             'images/icons/*.png',
                             'images/homeslides/*.png',

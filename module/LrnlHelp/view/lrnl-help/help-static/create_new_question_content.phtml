@@ -22,7 +22,7 @@ $questionExample4->get('comment')->setValue($this->translate('Some comments'))->
 
 $writeQuestion = [
     sprintf($this->translate('Add a new question line by pushing %s, a line with 3 empty boxes will appear for the text of the question, the answer and comments'),'<a class="btn btn-mini"><i class="icon-plus"></i></a>'),
-    $this->translate('Here are examples how to fullfill text and answers. There are 2 possibilities: ')
+    $this->translate('Here are examples how to fill in text and answers. There are 2 possibilities: ')
         .$this->htmlList([
             $this->translate('<strong>question with one or more missing elements</strong>'). $this->htmlList([
                     $this->translate('simple example with one missing word: <em>I cannot (put) up with him</em>. In this case you must type the missing word (<em>put</em>) directly into the text and use the <em>%</em> sign:')

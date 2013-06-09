@@ -21,7 +21,7 @@ class SearchForm extends Form
                 'type'  => 'text',
                 'id'    => 'search',
                 'autocomplete'    => 'off',
-                'class' => 'span6',
+                'class' => 'input-xxlarge',
                 'placeholder' => _('What would you like to learn?')
             ],
         ]);

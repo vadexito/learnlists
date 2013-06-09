@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-04 20:40+0100\n"
-"PO-Revision-Date: 2013-06-04 20:41+0100\n"
+"POT-Creation-Date: 2013-06-09 20:17+0100\n"
+"PO-Revision-Date: 2013-06-09 20:23+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -283,7 +283,6 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/EditQuestionForm.php:37
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid "Check"
 msgstr "Anworten"
 
@@ -442,77 +441,77 @@ msgstr "Schlagwörter"
 msgid "Enter a keyword"
 msgstr "Schlagwort eingeben"
 
-#: ../../../config/autoload/global/navigation.global.php:18
+#: ../../../config/autoload/global/navigation.global.php:23
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:15
 msgid "Explore quizes"
 msgstr "Quiz durchgehen"
 
-#: ../../../config/autoload/global/navigation.global.php:23
+#: ../../../config/autoload/global/navigation.global.php:28
 msgid "New Quiz"
 msgstr "Quiz erstellen"
 
-#: ../../../config/autoload/global/navigation.global.php:30
+#: ../../../config/autoload/global/navigation.global.php:35
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/summary.phtml:3
 msgid "My learning"
-msgstr "Meine Lehrnerfahrungen"
+msgstr "Meine Lernerfahrungen"
 
-#: ../../../config/autoload/global/navigation.global.php:37
+#: ../../../config/autoload/global/navigation.global.php:42
 msgid "Offers"
 msgstr "Angebote"
 
-#: ../../../config/autoload/global/navigation.global.php:55
+#: ../../../config/autoload/global/navigation.global.php:60
 #: ../../../module/LrnlUser/view/lrnl-user/user/login.phtml:5
 msgid "Sign In"
 msgstr "Anmelden"
 
-#: ../../../config/autoload/global/navigation.global.php:62
+#: ../../../config/autoload/global/navigation.global.php:67
 #: ../view/cdli-twostagesignup/register.phtml:13
 #: ../../../module/Application/view/cdli-twostagesignup/register.phtml:13
 msgid "Sign Up"
 msgstr "Registrieren"
 
-#: ../../../config/autoload/global/navigation.global.php:77
+#: ../../../config/autoload/global/navigation.global.php:82
 msgid "Profile"
 msgstr "Benutzerprofil"
 
-#: ../../../config/autoload/global/navigation.global.php:84
+#: ../../../config/autoload/global/navigation.global.php:89
 msgid "Log out"
 msgstr "Abmelden"
 
-#: ../../../config/autoload/global/navigation.global.php:112
+#: ../../../config/autoload/global/navigation.global.php:117
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/welcome.phtml:2
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: ../../../config/autoload/global/navigation.global.php:117
+#: ../../../config/autoload/global/navigation.global.php:122
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_to_create_a_list.phtml:2
 msgid "How to create a quiz"
 msgstr "Wie ein Quiz erstellt wird."
 
-#: ../../../config/autoload/global/navigation.global.php:122
+#: ../../../config/autoload/global/navigation.global.php:127
 msgid "How to add new questions to my quiz"
 msgstr "Wie man zum Quiz Fragen hinzufügt"
 
-#: ../../../config/autoload/global/navigation.global.php:127
+#: ../../../config/autoload/global/navigation.global.php:132
 msgid "Recommandation for writing new quiz"
 msgstr "Ratschläge für die Erstellung von Quiz"
 
-#: ../../../config/autoload/global/navigation.global.php:132
+#: ../../../config/autoload/global/navigation.global.php:137
 msgid "How do I learn?"
 msgstr "Wie macht man ein Quiz?"
 
-#: ../../../config/autoload/global/navigation.global.php:137
+#: ../../../config/autoload/global/navigation.global.php:142
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:2
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:128
 msgid "How is the score calculated?"
 msgstr "Wie wird der Punktestand berechnet ?"
 
-#: ../../../config/autoload/global/navigation.global.php:142
+#: ../../../config/autoload/global/navigation.global.php:147
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/do_i_have_to_leave_a_review.phtml:2
 msgid "Do I have to leave a review?"
 msgstr "Soll ich eine Bewertung hinterlassen?"
 
-#: ../../../config/autoload/global/navigation.global.php:147
+#: ../../../config/autoload/global/navigation.global.php:152
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/faq.phtml:2
 msgid "FAQ"
 msgstr "FAQ"
@@ -606,9 +605,7 @@ msgid "Find the best quiz to learn"
 msgstr "Ihr Quiz finden"
 
 #: ../view/application/static-pages/how_it_works_learner.phtml:10
-#: ../view/layout/topnavbar.phtml:15
 #: ../../../module/Application/view/application/static-pages/how_it_works_learner.phtml:10
-#: ../../../module/Application/view/layout/topnavbar.phtml:15
 msgid "I want to learn"
 msgstr "Ich möchte lernen"
 
@@ -963,6 +960,11 @@ msgstr "Alle Rechte vorbehalten."
 msgid "Loading..."
 msgstr "Lädt...."
 
+#: ../view/layout/topnavbar.phtml:15
+#: ../../../module/Application/view/layout/topnavbar.phtml:15
+msgid "I just want to use a quiz"
+msgstr "Ich möchte ein Quiz machen"
+
 #: ../view/layout/topnavbar.phtml:16
 #: ../../../module/Application/view/layout/topnavbar.phtml:16
 msgid "I am a teacher"
@@ -1059,8 +1061,8 @@ msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/about_our_method.phtml:17
 msgid ""
-"Create feeling and pleasure: serious games helps also significantly improve "
-"the way we remember."
+"Create feeling and pleasure: serious games helps also significantly to "
+"improve the way we remember."
 msgstr ""
 "Gefühl und Vergnügen auslösen : seriöse Spiele helfen sehr dabei, die "
 "Erinnerungsprozesse zu verbessern "
@@ -1156,7 +1158,7 @@ msgstr ""
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/create_new_question_content.phtml:25
 msgid ""
-"Here are examples how to fullfill text and answers. There are 2 "
+"Here are examples how to fill in text and answers. There are 2 "
 "possibilities: "
 msgstr ""
 "Hier sind Beispiele, wie man Text und Frage einfügt. Es gibt 2 Möglichkeiten:"
@@ -1271,7 +1273,7 @@ msgstr "+2 Punkte, wenn Sie nach einem Fehler richtig antworten "
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:20
 msgid "+1 point if you answered correctly after several wrong answers"
-msgstr "+2 Punkte, wenn Sie nach mehreren Fehlern richtig antworten "
+msgstr "+1 Punkt, wenn Sie nach mehreren Fehlern richtig antworten "
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/how_is_the_score_calculated.phtml:23
 msgid "0 points if you have asked for the answer"
@@ -1420,7 +1422,7 @@ msgstr ""
 "Lernerfahrung mit %s zu haben"
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:10
-msgid "Use clear and explicit name for your quizes"
+msgid "Use clear and explicit names for your quizes"
 msgstr "Wählen Sie eindeutige Namen für Ihre Quiz"
 
 #: ../../../module/LrnlHelp/view/lrnl-help/help-static/recommendations_list.phtml:11
@@ -1588,6 +1590,14 @@ msgstr "Hier antworten"
 msgid "Then press the submit button (or press enter)"
 msgstr "Dann hier drücken"
 
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
+msgid "Click here to check answer"
+msgstr "Hier klicken um die Antwort zu überprüfen"
+
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
+msgid "Check answer"
+msgstr "Antworten"
+
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:87
 msgid "Get the answer"
 msgstr "Antwort sehen"
@@ -1676,7 +1686,8 @@ msgstr "Datum"
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:155
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:173
 msgid "Please log in to get next time all results"
-msgstr "Bitte anmelden, um das nächste Mal alle Ergebnisse zu erzielen "
+msgstr ""
+"Bitte anmelden, um das nächste Mal detailliertere Ergebnisse zu erzielen "
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:173
 msgid "You did not yet finish one round!"
@@ -1717,7 +1728,7 @@ msgstr "Wie gefällt dir der Quiz? Du kannst es jetzt bewerten!"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:7
 msgid "Add a review and see the results"
-msgstr "Eine Bewertung hinzufügen und das Ergebnis ansehen"
+msgstr "Bewerten und das Ergebnis ansehen"
 
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/reviewcreate.phtml:26
 msgid "Do not leave a review"
@@ -1927,12 +1938,12 @@ msgid ""
 msgstr ""
 "Keine Antwort eintragen, wenn es sich um eine zu ergänzende Frage handelt."
 
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:29
+#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:30
 #, php-format
 msgid "%s results"
 msgstr "%s Ergebnisse"
 
-#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:44
+#: ../../../module/LrnlSearch/view/lrnl-search/search/index.phtml:45
 msgid "Leave a comment!"
 msgstr "Kommentar schreiben...."
 

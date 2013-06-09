@@ -6,7 +6,6 @@ general
 @import "variables.less"; 
 
 body {
-    padding-top: 60px;
     padding-bottom: 40px;
     /*color: #666666;*/
     color: @gray;
@@ -36,11 +35,6 @@ body {
   background-color: #57a900;
 }
 
-div.container a.brand {
-    /*background: url("../images/logo/site-logo.jpg") no-repeat scroll 0 10px transparent;*/
-    margin-left: 0;
-    padding: 8px 20px 12px 40px;
-}
 
 /* Custom container */
 .container {
@@ -54,6 +48,10 @@ layout nav bar
     margin : 5px 0 5px 0;
 }
 
+#menu-logo {
+    margin:0;
+    padding:7px 20px 5px 0;
+}
 #menu-profile {
     padding:0;
 }
@@ -73,6 +71,7 @@ layout nav bar
 #dropdown-user {
     padding:0;
 }
+
 
 /*=======================================
 layout footer
@@ -115,7 +114,6 @@ header
     margin-top: 60px;
     margin-bottom : 35px;
     font-size: 4em;
-    text-shadow: 0 0 15px rgba(0,0,0,0.6),0 -1px 1px rgba(0,0,0,0.6);
 }
 
 #jumbotron-header.home h1 {
@@ -124,8 +122,11 @@ header
 }
 
 #jumbotron-header.home h3 {
-    margin-bottom : 25px;
-    text-shadow: 0 0 15px rgba(0,0,0,0.6),0 -1px 1px rgba(0,0,0,0.6);
+    margin-bottom : 25px;    
+}
+
+#jumbotron-header h1, #jumbotron-header h3 {
+    text-shadow: 0 0 30px rgba(0,0,0,1),0 -1px 1px rgba(0,0,0,1);
 }
 
 #searchForm input {
@@ -213,7 +214,9 @@ li.search_result_listquest_item {
     margin:0;
     padding:0;
     line-height: normal;
+    
 }
+
 
 p.text-right {
     margin: 0;

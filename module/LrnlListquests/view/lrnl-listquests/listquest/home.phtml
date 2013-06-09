@@ -47,11 +47,11 @@ $homeFiles = Zend\Json\Json::encode($files);
 <div class="backstretch" data-filebackstretch='<?php echo $homeFiles; ?>'>
     <header id="jumbotron-header" class="home">
         <div class="container">
-            <div class="row">
+            <div class="row-fluid">
                 <h1><?php echo $this->escapeHtml($title); ?></h1>
                 <h3><?php echo sprintf($this->translate('Learn with %d high quality quizes proposed by our community of teachers.'),count($lists),'x'); ?></h3>
             </div>
-            <div class="row">
+            <div class="row-fluid">
                 <div class="well well-small ">
                     <?php echo $this->listSearchBar($searchForm); ?>
                 </div>

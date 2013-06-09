@@ -22,7 +22,7 @@ foreach ($categories as $category) {
     $elements[] = (string)$this->partial('lrnl-listquests/listquest/home/categoryBox.phtml',[
         'href' => $href,
         'title' => $category->getName(),
-        'subTitle' => $category->getName(),
+        'subTitle' => $category->getDescription(),
         'image' =>$this->thumbnail($thumbnailAttribs,['size'=>'XS']),
         'wrapClass' =>'span3 choice-box',
      ]);
