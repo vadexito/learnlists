@@ -9,21 +9,21 @@ $searchForm->get('search')->setAttribute('class','home '.$searchForm->get('searc
 $features = [
     [
         'classWrap' => 'well span4',
-        'title' => $this->translate('Find high quality quizes'),
+        'title' => $this->translate('Find'),
         'text' => $this->translate('Quizes are developed by professional teachers and evaluated by the user commnunity which ensures top quality.'),
         'buttonUrl' => $this->url('lrnl-search'),
         'buttonText' => $this->translate('Explore quizes')
     ],
     [
         'classWrap' => 'well span4',
-        'title' => $this->translate('Learn through efficient methods'),
-        'text' => sprintf($this->translate('Thanks to teaching professionals (teachers and memory scientists and doctors), %s offers specific method that maximize the memorization processs and minimize the effort'),$site),
+        'title' => $this->translate('Learn'),
+        'text' => sprintf($this->translate('Thanks to teaching professionals (teachers and memory scientists and doctors), %s offers specific method that maximize the memorization process and minimize the effort'),$site),
         'buttonUrl' => $this->url('lrnl-help/template',['template' => 'about_our_method']),
         'buttonText' => $this->translate('About our methods')
     ],
     [
         'classWrap' => 'well span4',
-        'title' => $this->translate('Create and share quizes'),
+        'title' => $this->translate('Create'),
         'text' => $this->translate('You can also create and share your own private quizes.'),
         'buttonUrl' => $this->url('lrnl-help/template',['template' => 'how_to_create_a_list']),
         'buttonText' => $this->translate('Learn how create quizes')

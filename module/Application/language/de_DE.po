@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-09 20:17+0100\n"
-"PO-Revision-Date: 2013-06-09 20:23+0100\n"
+"POT-Creation-Date: 2013-06-09 23:38+0100\n"
+"PO-Revision-Date: 2013-06-09 23:38+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -27,7 +27,7 @@ msgid "The picture could not be changed. Please try again."
 msgstr "Das Bild konnte nicht ausgetauscht werden. Bitte erneut versuchen"
 
 #: ../../../module/LrnlCategory/src/LrnlCategory/Controller/CategoryController.php:100
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:141
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:145
 #: ../../../module/VxoReview/src/VxoReview/Controller/ReviewController.php:52
 msgid "Save"
 msgstr "Speichern"
@@ -257,24 +257,24 @@ msgid_plural "points"
 msgstr[0] "Punkt"
 msgstr[1] "Punkte"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:58
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:61
 msgid ""
 "You have successfully created a new empty quiz and you can now add questions"
 msgstr "Sie haben ein leeres Quiz erstellt und können jetzt Fragen hinzufügen"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:105
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:109
 msgid "Your picture has been successfully changed"
 msgstr "Das Bild wurde geändert"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:109
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:113
 msgid "Your picture could not be changed. Please try again."
 msgstr "Das Bild konnte nicht geändert werden. Bitte erneut versuchen."
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:151
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:155
 msgid "You have successfully updated your quiz"
 msgstr "Das Quiz wurde aktualisiert"
 
-#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:180
+#: ../../../module/LrnlListquests/src/LrnlListquests/Controller/ListquestController.php:186
 msgid "You have successfully deleted your quiz"
 msgstr "Das quiz wurde gelöscht"
 
@@ -283,6 +283,7 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: ../../../module/LrnlListquests/src/LrnlListquests/Form/EditQuestionForm.php:37
+#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
 msgid "Check"
 msgstr "Anworten"
 
@@ -1594,10 +1595,6 @@ msgstr "Dann hier drücken"
 msgid "Click here to check answer"
 msgstr "Hier klicken um die Antwort zu überprüfen"
 
-#: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:86
-msgid "Check answer"
-msgstr "Antworten"
-
 #: ../../../module/LrnlLearn/view/lrnl-learn/learn/index.phtml:87
 msgid "Get the answer"
 msgstr "Antwort sehen"
@@ -1838,8 +1835,8 @@ msgid ""
 msgstr "Mit %d besten Quiz unserer Lehrercommunity lernen."
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:12
-msgid "Find high quality quizes"
-msgstr "Die besten Lernquiz finden"
+msgid "Find"
+msgstr "Finden"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:13
 msgid ""
@@ -1850,14 +1847,14 @@ msgstr ""
 "bewertet, um die Qualität zu maximieren."
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:19
-msgid "Learn through efficient methods"
-msgstr "Anhand bewährter Techniken lernen"
+msgid "Learn"
+msgstr "Lernen"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:20
 #, php-format
 msgid ""
 "Thanks to teaching professionals (teachers and memory scientists and "
-"doctors), %s offers specific method that maximize the memorization processs "
+"doctors), %s offers specific method that maximize the memorization process "
 "and minimize the effort"
 msgstr ""
 "Mithilfe von Fachspezialisten (Lehrer, Gedächtnisforscher und -ärzte) bietet "
@@ -1865,8 +1862,8 @@ msgstr ""
 "optimieren kann. "
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:26
-msgid "Create and share quizes"
-msgstr "Erstelle und teile eine Quiz"
+msgid "Create"
+msgstr "Erstellen"
 
 #: ../../../module/LrnlListquests/view/lrnl-listquests/listquest/home.phtml:27
 msgid "You can also create and share your own private quizes."
@@ -2172,6 +2169,18 @@ msgstr "Benutzer"
 msgid "premium"
 msgstr "Premium"
 
+#~ msgid "Check answer"
+#~ msgstr "Antworten"
+
+#~ msgid "Find high quality quizes"
+#~ msgstr "Die besten Lernquiz finden"
+
+#~ msgid "Learn through efficient methods"
+#~ msgstr "Anhand bewährter Techniken lernen"
+
+#~ msgid "Create and share quizes"
+#~ msgstr "Erstelle und teile eine Quiz"
+
 #, fuzzy
 #~ msgid ""
 #~ "Search to find the best quizes to learn what you wish from quizes of "
@@ -2297,9 +2306,6 @@ msgstr "Premium"
 
 #~ msgid "Elementary level"
 #~ msgstr "Basis-Niveau"
-
-#~ msgid "LearnQuiz"
-#~ msgstr "LearnQuiz"
 
 #~ msgid "Learnlists"
 #~ msgstr "Learnlists"

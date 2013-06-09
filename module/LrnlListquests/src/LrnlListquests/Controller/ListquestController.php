@@ -9,9 +9,11 @@ use LrnlSearch\Provider\ProvidesSearchService;
 use LrnlCategory\Provider\ProvidesCategoryService;
 use VxoReview\Provider\ProvidesReviewService;
 use Zend\Http\PhpEnvironment\Response;
+use Zend\I18n\Translator\TranslatorAwareTrait;
+use \Zend\I18n\Translator\TranslatorAwareInterface;
 
-
-class ListquestController extends AbstractActionController
+class ListquestController extends AbstractActionController 
+    implements TranslatorAwareInterface
 {
     protected $_redirectRoute = NULL;
     
@@ -19,6 +21,7 @@ class ListquestController extends AbstractActionController
     use ProvidesSearchService;
     use ProvidesCategoryService;
     use ProvidesReviewService;
+    use TranslatorAwareTrait;
     
     public function homeAction()
     {
@@ -55,7 +58,8 @@ class ListquestController extends AbstractActionController
 
                 $id = $this->getListquestService()->insertListquest($listquest);                
                 $this->getSearchService()->updateIndex($listquest);
-                $this->flashMessenger()->addSuccessMessage(_('You have successfully created a new empty quiz and you can now add questions'));
+                $messageSuccess = $this->getTranslator()->translate('You have successfully created a new empty quiz and you can now add questions');
+                $this->flashMessenger()->addSuccessMessage($messageSuccess);
                 return $this->redirect()->toRoute(
                     'listquests/list/edit',
                     ['id' => $id]
@@ -102,12 +106,12 @@ class ListquestController extends AbstractActionController
                 $form->getData(); 
                 
                 $this->getListquestService()->updateListquest($listquest);
-                $this->flashMessenger()->addSuccessMessage(_('Your picture has been successfully changed'));
+                $message = $this->getTranslator()->translate('Your picture has been successfully changed');
+                $this->flashMessenger()->addSuccessMessage($message);
                 
-            } else {               
-                $this->flashMessenger()->addErrorMessage(
-                    _('Your picture could not be changed. Please try again.')
-                );
+            } else {    
+                $errorMessage = $this->getTranslator()->translate('Your picture could not be changed. Please try again.');
+                $this->flashMessenger()->addErrorMessage($errorMessage);
                 if (isset($form->getMessages()['listquest']['pictureId'])){
                     foreach ($form->getMessages()['listquest']['pictureId'] as $message){
                         $this->flashMessenger()->addInfoMessage($message);
@@ -148,7 +152,8 @@ class ListquestController extends AbstractActionController
 
                 $this->getListquestService()->updateListquest($form->getData());
                 $this->getSearchService()->updateIndex($form->getData());
-                $this->flashMessenger()->addSuccessMessage(_('You have successfully updated your quiz'));
+                $message = $this->getTranslator()->translate('You have successfully updated your quiz');
+                $this->flashMessenger()->addSuccessMessage($message);
                 return $this->redirect()->toRoute(
                     'listquests/list/edit',
                     ['id' => $listId]
@@ -165,6 +170,7 @@ class ListquestController extends AbstractActionController
 
     public function deleteAction()
     {
+        $translator = $this->getServiceLocator()->get('translator');
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute($this->getRedirectRoute());
@@ -177,7 +183,8 @@ class ListquestController extends AbstractActionController
                 $id = (int) $request->getPost('id');                
                 $this->getSearchService()->deleteFromIndex($id);  
                 $this->getListquestService()->deleteListquest($id);
-                $this->flashMessenger()->addSuccessMessage(_('You have successfully deleted your quiz'));
+                $message = $this->getTranslator()->translate('You have successfully deleted your quiz');
+                $this->flashMessenger()->addSuccessMessage($message);
             }
             return $this->redirect()->toRoute($this->getRedirectRoute());
         }

@@ -15,6 +15,7 @@ class ListquestControllerFactory implements FactoryInterface
         $controller->setSearchService($sm->get('learnlists-search-service-factory'));
         $controller->setCategoryService($sm->get('category-service'));
         $controller->setReviewService($sm->get('review-service'));
+        $controller->setTranslator($sm->get('translator'));
         return $controller;
     }
 }

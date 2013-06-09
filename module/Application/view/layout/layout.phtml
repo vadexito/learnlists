@@ -16,13 +16,11 @@ $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon',
             echo $this->headScript();
         ?>
     </head>
-    <body>        
+    <body>             
         <?php echo $this->header; ?>
         <?php echo $this->placeholder('header') ?>
         <div id="main" class="container">
-            <?php echo $this->translate($this->ztbflashMessenger('success')); ?>
-            <?php echo $this->translate($this->ztbflashMessenger('error')); ?>
-            <?php echo $this->translate($this->ztbflashMessenger('info')); ?>
+            <?php echo $this->ztbFlashMessenger()->render();?>            
             <?php echo $this->content; ?>
             <br/><br/>
             <?php echo $this->footer; ?>
