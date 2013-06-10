@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZendSkeletonApplication\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-09 23:38+0100\n"
-"PO-Revision-Date: 2013-06-09 23:38+0100\n"
+"POT-Creation-Date: 2013-06-10 23:36+0100\n"
+"PO-Revision-Date: 2013-06-10 23:36+0100\n"
 "Last-Translator: david mizrahi <david.mizrahi@m4x.org>\n"
 "Language-Team: ZF Contributors <zf-devteam@zend.com>\n"
 "Language: de_DE\n"
@@ -971,15 +971,15 @@ msgstr "Ich möchte ein Quiz machen"
 msgid "I am a teacher"
 msgstr "Ich bin Lehrer"
 
-#: ../view/phly-contact/contact/index.phtml:1
+#: ../view/phly-contact/contact/index.phtml:2
 #: ../view/phly-contact/contact/thank-you.phtml:2
-#: ../../../module/Application/view/phly-contact/contact/index.phtml:1
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:2
 #: ../../../module/Application/view/phly-contact/contact/thank-you.phtml:2
 msgid "Contact"
 msgstr "Kontakt"
 
-#: ../view/phly-contact/contact/index.phtml:6
-#: ../../../module/Application/view/phly-contact/contact/index.phtml:6
+#: ../view/phly-contact/contact/index.phtml:13
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:13
 msgid ""
 "This site is under test, please feel free to contact us to report any "
 "question, remark, suggestions..."
@@ -987,10 +987,41 @@ msgstr ""
 "Die Seite ist zur Zeit in einer Testphase. Bitte lassen Sie uns Ihre Fragen, "
 "Bemerkungen und Verbesserungsvorschläge wissen!"
 
-#: ../view/phly-contact/contact/index.phtml:13
-#: ../../../module/Application/view/phly-contact/contact/index.phtml:13
+#: ../view/phly-contact/contact/index.phtml:16
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:16
+#, php-format
+msgid "You can contact us directly at %s%s</a> or with the contact form:"
+msgstr "Sie können uns gerne kontaktieren : %s%s</a> oder mit dem Formular:"
+
+#: ../view/phly-contact/contact/index.phtml:23
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:23
 msgid "Try again, there were some mistakes..."
 msgstr "Bitte noch einmal, es gab Fehler...."
+
+#: ../view/phly-contact/contact/index.phtml:34
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:34
+msgid "From:"
+msgstr "Von:"
+
+#: ../view/phly-contact/contact/index.phtml:35
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:35
+msgid "Subject:"
+msgstr "Betreff:"
+
+#: ../view/phly-contact/contact/index.phtml:36
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:36
+msgid "Your message:"
+msgstr "Ihre Nachricht:"
+
+#: ../view/phly-contact/contact/index.phtml:37
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:37
+msgid "Please verify you are human."
+msgstr "Sind Sie eine Maschine?"
+
+#: ../view/phly-contact/contact/index.phtml:38
+#: ../../../module/Application/view/phly-contact/contact/index.phtml:38
+msgid "Send"
+msgstr "Senden"
 
 #: ../view/phly-contact/contact/thank-you.phtml:3
 #: ../view/phly-contact/contact/thank-you.phtml:6

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
+<urlset 
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
@@ -9,374 +9,304 @@
 <!-- angeboten durch www.metatags.de -->
 
 <url>
-    <loc>http://www.learnlists.voilamylife.com</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/search-quizz</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/search-quizz</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/user/login</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/user/login</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/user/register</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/user/register</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/pages/how_it_works_learner</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/pages/how_it_works_learner</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/pages/how_it_works_teacher</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/pages/how_it_works_teacher</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/lrnl-help/template/about_our_method</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/learn-quizz/10-feste-nomen-verben-verbindungen-iii-b2</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/lrnl-help/template/how_to_create_a_list</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/learn-quizz/5-feste-nomen-verb-verbindungen-ii-c1-c2</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/pages/features</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/learn-quizz/6-feste-nomen-verb-verbindungen-i-c1-c2</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/pages/about_our_method</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/learn-quizz/9-feste-verben-nomen-verbindungen-ii-b2</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/lrnl-help/template/welcome</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/learn-quizz/8-feste-verben-nomen-verbindungen-i-b2</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/pages/terms_imprint</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/learn-quizz/3-feste-nomen-verb-verbindungen-kurz</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/contact</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/learn-quizz/11-subjonctif-ou-indicatif</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/pages/about</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/learn-quizz/7-wyraz-enia-rzeczownikowo-czasownikowe</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/map</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/search-quizz?category=1-german</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/locale/change/fr_fr</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/search-quizz?category=2-french</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/locale/change/en_us</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/search-quizz?category=3-english</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/locale/change/de_de</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/search-quizz?category=5-polish</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/locale/change/pl_pl</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/about_our_method</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/2-%title%</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/how_to_create_a_list</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/rate/2</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/pages/features</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/2-feste-nomen-verb-verbindungen</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/pages/about_our_method</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/3-%title%</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/welcome</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/rate/3</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/pages/terms_imprint</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/3-feste-nomen-verb-verbindungen</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/contact</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/5-%title%</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/pages/about</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/rate/5</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/quizz-lists/list/map</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/5-feste-nomen-verb-verbindungen-ii-c1-c2</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/locale/change/fr_fr</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/6-%title%</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/locale/change/en_us</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/rate/6</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/locale/change/de_de</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/6-feste-nomen-verb-verbindungen-i-c1-c2</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/locale/change/pl_pl</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/7-%title%</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/search-quizz/page/1</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/rate/7</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/user/forgot-password</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/7-wyraz-enia-rzeczownikowo-czasownikowe</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/recommendations_list</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/8-%title%</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/add_new_question</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/rate/8</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/search-quizz/page/1?category=1-german</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/8-feste-verben-nomen-verbindungen-i-b2</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/how_to_learn</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/9-%title%</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/how_is_the_score_calculated</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/rate/9</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/do_i_have_to_leave_a_review</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/9-feste-verben-nomen-verbindungen-ii-b2</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/lrnl-help/template/faq</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/10-%title%</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/pages/privacy</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
 <url>
-    <loc>http://www.learnlists.voilamylife.com/quizz-lists/list/rate/10</loc>
-
-    <lastmod>2013-05-12</lastmod>
+    <loc>http://www.learnquiz.voilamylife.com/useraccounturl[to</loc>
+    <lastmod>2013-06-10</lastmod>
     <changefreq>monthly</changefreq>
+
     <priority>0.5</priority>
 </url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/learn-quizz/10-feste-nomen-verben-verbindungen-iii-b2</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/search-quizz/page/1</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/user/forgot-password</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/lrnl-help/template/recommendations_list</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/lrnl-help/template/add_new_question</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/lrnl-help/template/how_to_learn</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/lrnl-help/template/how_is_the_score_calculated</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/lrnl-help/template/faq</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/pages/privacy</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-<url>
-    <loc>http://www.learnlists.voilamylife.com/useraccounturl[to</loc>
-
-    <lastmod>2013-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>  
-</urlset>
+</urlset>      
